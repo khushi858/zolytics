@@ -411,11 +411,30 @@
         background: white;
       }
 
+      .partners-container {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .partner-main-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .partner-main-logo img {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+      }
+
       .partners-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
         align-items: center;
         justify-items: center;
       }
@@ -635,7 +654,8 @@
       @media (max-width: 968px) {
         .about-container,
         .why-container,
-        .story-container {
+        .story-container,
+        .partners-container {
           grid-template-columns: 1fr;
         }
 
@@ -749,94 +769,365 @@
     </section>
 
     <!-- Our Expertise -->
-    <section id="solutions" style="background: #fef3f2">
-      <p class="section-subtitle" data-aos="fade-up">Our Solutions</p>
-      <h2 class="section-title" data-aos="fade-up">
+    <section
+      id="solutions"
+      style="
+        background: linear-gradient(135deg, #fefdfd, #e6e2e2);
+        padding: 50px 0;
+        color: #333;
+      "
+    >
+      <p class="section-subtitle" data-aos="fade-up" style="color: #333">
+        Our Solutions
+      </p>
+      <h2 class="section-title" data-aos="fade-up" style="color: #111">
         Unified Zoho Solutions for Every Department
       </h2>
-      <div class="expertise-grid">
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="100">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/books-product-logo-black.png"
-            alt="Zoho Books"
-            class="expertise-icon"
-          />
-          <h3>Zoho Books</h3>
-          <p>Complete accounting automation</p>
-          <a href="#">Learn More →</a>
+
+      <!-- Left to Right Continuous Scroll -->
+      <div class="scrolling-container left-to-right">
+        <div class="scrolling-wrapper">
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/books-product-logo-black.png"
+              alt="Zoho Books"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Books</h3>
+              <p>Complete accounting automation</p>
+              <a href="#books">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/inventory-logo-new.png"
+              alt="Zoho Inventory"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Inventory</h3>
+              <p>Streamline stock management</p>
+              <a href="#inventory">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/414a09bd-c275-4605-8a66-56bcf3c3877f.png"
+              alt="Zoho Expense"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Expense</h3>
+              <p>Track expenses effortlessly</p>
+              <a href="#expense">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/crm.png"
+              alt="Zoho CRM"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho CRM</h3>
+              <p>Manage customer relationships</p>
+              <a href="#crm">Learn More →</a>
+            </div>
+          </div>
+
+          <!-- Repeat for smooth loop -->
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/books-product-logo-black.png"
+              alt="Zoho Books"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Books</h3>
+              <p>Complete accounting automation</p>
+              <a href="#books">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/inventory-logo-new.png"
+              alt="Zoho Inventory"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Inventory</h3>
+              <p>Streamline stock management</p>
+              <a href="#inventory">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/414a09bd-c275-4605-8a66-56bcf3c3877f.png"
+              alt="Zoho Expense"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Expense</h3>
+              <p>Track expenses effortlessly</p>
+              <a href="#expense">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/crm.png"
+              alt="Zoho CRM"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho CRM</h3>
+              <p>Manage customer relationships</p>
+              <a href="#crm">Learn More →</a>
+            </div>
+          </div>
         </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="150">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/inventory-logo-new.png"
-            alt="Zoho Inventory"
-            class="expertise-icon"
-          />
-          <h3>Zoho Inventory</h3>
-          <p>Streamline stock management</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="200">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/414a09bd-c275-4605-8a66-56bcf3c3877f.png"
-            alt="Zoho Expense"
-            class="expertise-icon"
-          />
-          <h3>Zoho Expense</h3>
-          <p>Track expenses effortlessly</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="250">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/crm.png"
-            alt="Zoho CRM"
-            class="expertise-icon"
-          />
-          <h3>Zoho CRM</h3>
-          <p>Manage customer relationships</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="300">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/zohobigin-1.png"
-            alt="Zoho Bigin"
-            class="expertise-icon"
-          />
-          <h3>Zoho Bigin</h3>
-          <p>CRM for small businesses</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="350">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/analytics.png"
-            alt="Zoho Analytics"
-            class="expertise-icon"
-          />
-          <h3>Zoho Analytics</h3>
-          <p>Data-driven insights</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="400">
-          <img
-            src="https://ushma.biz/wp-content/uploads/2025/06/people.png"
-            alt="Zoho People"
-            class="expertise-icon"
-          />
-          <h3>Zoho People</h3>
-          <p>HR management made easy</p>
-          <a href="#">Learn More →</a>
-        </div>
-        <div class="expertise-card" data-aos="fade-up" data-aos-delay="450">
-          <img
-            src="data:image/jpeg;base64,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"
-            alt="Zoho Payroll"
-            class="expertise-icon"
-          />
-          <h3>Zoho Payroll</h3>
-          <p>Automated payroll processing</p>
-          <a href="#">Learn More →</a>
+      </div>
+
+      <!-- Right to Left Continuous Scroll -->
+      <div class="scrolling-container right-to-left" style="margin-top: 30px">
+        <div class="scrolling-wrapper">
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/zohobigin-1.png"
+              alt="Zoho Bigin"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Bigin</h3>
+              <p>CRM for small businesses</p>
+              <a href="#bigin">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/analytics.png"
+              alt="Zoho Analytics"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Analytics</h3>
+              <p>Data-driven insights</p>
+              <a href="#analytics">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/people.png"
+              alt="Zoho People"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho People</h3>
+              <p>HR management made easy</p>
+              <a href="#people">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/payroll.png"
+              alt="Zoho Payroll"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Payroll</h3>
+              <p>Automated payroll processing</p>
+              <a href="#payroll">Learn More →</a>
+            </div>
+          </div>
+
+          <!-- Repeat for smooth loop -->
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/zohobigin-1.png"
+              alt="Zoho Bigin"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Bigin</h3>
+              <p>CRM for small businesses</p>
+              <a href="#bigin">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/analytics.png"
+              alt="Zoho Analytics"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Analytics</h3>
+              <p>Data-driven insights</p>
+              <a href="#analytics">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="https://ushma.biz/wp-content/uploads/2025/06/people.png"
+              alt="Zoho People"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho People</h3>
+              <p>HR management made easy</p>
+              <a href="#people">Learn More →</a>
+            </div>
+          </div>
+
+          <div class="expertise-card">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAACACAMAAAAiTN7wAAABLFBMVEX///8AAAD+/v7jJCf7+/vjJCXjIynxw8ToIirhJirqhobjGB/11NXfeXrtMTSwsLCfn5/q6ur69fXX19d9fX0MDAzw8PBeXl7vzs/vr67lEBbgQ0Th4eE2NjYuLi5ISEgcHBzze3z17OyUlJS/v7+MjIzJycncMzinp6f5shr25eVAQEAlJSXhsrJiYmIUFBTuXFyzs7Ppf4t1dXXiVFRTU1OEhIQzMzPdhof2sx5ra2t3d3fhS0z3sQD1sCDslpXjb3LmCQ3xRErmW2HzpaXcJC/wgoLhZGPzyMnyc3Xlo6H1uLntZGn69u3s4Mfgzarmz6H78dz1yXzvu0bzwmb31575vE3879D84rHzujf4y3b35L39xUX8tC7vuQ/10ozaVU761X39zGLYNj9q6flGAAAWjUlEQVR4nO1dCV/ayhYPQ4LEWAWCoUZELktE4Ko8C15369JNfe/ZVdvX2/fa7/8d3iyZLRugBtB6+msLWWbC/HPWOXNGUQIIqLk4SAWo7aAOnyiYKm8W/noWA/11uDA101RRF094DELq1NGKbsRCtqEdn0wvzIz7Jz4IAkrlFcRBcyl5v6RBNGxbWzk6r4z7hz4Aau69xEgkMQwpRLqe4iR9DjvhuYoRbBY1btgvjw+bTzIqmip/GEk4YDoZ5TQm+j/5In4OO+G5ilLS0CAaug4hThonCxUFPMERSuA0nYJQ6GdnZ2jo0vdLCAYdto2A1lNnr5+P++dOMs3sYbkEhyoeva1pKR0hoaeh3DKMw9yTKRVMQD3VsIJIpjdeTd8/Hb3eW9EMjcgsHSnxo5knLIIp99rAlk5quqnGQLnmzJt3Rys2UR/IQjNePBm2QQSU5jGWT8bb+GxNkGu+e2EYFAp774kvAggoM2fE/D+PsxP49/wCGmhpA9kHxuKT8vYThGKWuGJTsb6psO3Kwp6dRkbzmf4kowJoVFBgaiK1BLlCT9svKjF1BxDF0nLchKAgtmz8UAAldwjdPQ2pDHtajbm3B0ejhAJ1twB7I5Gu01g6sDqNRiNTjKXtmClGKADwCQv4ZQHZUShIuBeLuii2EpAacTQdN8UGBcdAQgOAQwQECodMq/06tOpB1IgSbcXlBw+Fdr9QADjml//817///a9/XnpGPPeX5tpRfXoEipkIotITFEM1e3X9/sM2ppuPn76oYtuVCyOJ4sDaSbTmDoNi+QmKIdq8/PR5dXWVQAE/3Py4EuSV8mYWR+R1aD9HNxMMReQ4P1IoQDD1b/LLz9XVg1WXtrcPDlY/X4u3Tdt4bsl4FckWIVDsWFE3PU4owhJA+jgEAHza3nfZgaGxuv+/S35JZVFLJVOp9Eqf+AfICmTVSmiUW9GG6mOEAjTfTf8jkA5norXt9bYrmghjQJ6AUGwLWLhWVDqtvetrRHGyNjFTdBRB1LEG2VUUirB22aWT55KHQAEPnwgZILZIxmKkjP92s004AQomRAQR+PUHH/eZRWjOppPG0cDRYKBkMBJr8giqlmVJXCpCAc8FjTe6Z9BuR0k0BuXlCvUttPxTyaQWQMZiLrzBqw/bmA8gHtvfb26+k0+IRba/sR5yrwyUWWIcD+7mmfPYkC0KT5md21wulUrLm3NZdowJqGy1sFTaWu555JlZXWuVSlvdnjNxgZdgrgBKc1aTcjvcnAGCjf0mTAAA9f0+hAKN//bXb1eX1tWXHzerLmt85OriHKUeJA1jYVCzzcJDvM7FEyjW55kqX69SMFwo1Mw6PVflLKA6O1z9t2oTxhvhUBiaP+PAZZJQKKDx9H0bQ7H/+Vol0lz98vH76j5WG5/YbTN7qHnNnh5QZKtVPHx5PnqdlmRXdR3SNoEiUxVO1VX32ax6WbonP1mhqjC1nbswgmQTQeIsXEC9x8brwf7NF4Vaw8rlVyiiEFv8hwmF3JGBcnXs1wOKCaeNxm6Ljx1/610q1fBxAkVXOlsjv0zd8dySKEwUX4Sr7ReGHZJ4uRI+4Xf5HVtPq9tfRPvm8gMyog629/nRdxAKpCwGm7YgA0zHFNIc/j5faJimU10iA4vViHtlYr1bz1QLBJEWvkUlFlh7t2aatU3CH4UhRytWCvcrZg5fBeYjvwo3ZqF82oeD/vff+z/kw9+IOcUkFFD+tNNoQj090Cw3yOOB22QHTDz65QzhqSwZZOz7uVC0arjZzhb+ZiL+bOCPyw5poUaumyQHJMLFA7dw8T7tk7jTldzY5U/i8X1Uaa/PIRR6Km2EGgAi1cgoUvEE1B5VAkQCWgWMDGIaAgX8qOC4QAar9jl2IuFQqUkcxuVsZMcjpfuNQSH7CY74/k8p/gc/fyJ6+/MVPdBEk3l62jgfoFcyBwGtJ3pzkbzsFuMxh6hhlY74Gn1dCPtU4SWEKdZ4dz230Ylx9e4XitxXPOL7P7wzRtckDHLDoUghKFKDQOG62XVmxrqaYlO4FYOFYiIEiio9ZXXxrfCmrqxtaICrN4S/HzPdKxQgFIpvJBiF7SpFgMLu71iABhYyLSZKgKs6eHQDKLtYLDm+GBQRXT34AZtg3EME7pG1yZFQ98sVVihXrHq5Iqkhn7EvFPDt3fJYTwAUvEcU7EfM18KhKBJ1I1qvLUkBjZ/uWVf8IEP+U24KgB8+XWEMBoWiEMnSEyY81C7VwOxHkABVJxwKIo66IhTLDwYKUGl6qG/sDr39BzjiJFlQ0Mn7uYpNKBr6QBaUlh4ICuI3dwU5QrnCuQ+u6D4AKNTzoxcy/fcoetYN+xXYldvefw8kKK7dkPknduTPl4NB4WCbs10TLqO6Ys6nK8yhdEX5YegKOFYrbhhWoF/P+73DlzcHB+j1/y57258xU0jeto2s2b5QZNdk64k8GzFMd4Rbl6iwCYPCb0ERA7g+OQHasHBgbtGAilVY3WgYaT190be1/xFJtPqfL3xq5/LrwXcE0LYYg9KS/aEAah2PV0uVXxMTs0oiy/yKGjNMQ6Cg8HV5M5i1yrX+QzQqCo3MplFGpRAmR9+SK33UBZRQq/uuC3Ht6gX1y8cDd6JbjMwSgCOhoEPcdjwnXG97l3rb2YJ7WSgU1E9MoKHHwrPW9unxMVPEfIWmJfkaSCSqNGOvLzuD9/v7eDJ79eDr9Zery6tvZL4C5R38FOcrknj2I5orLDJ8a45EULoTA3fenRcyiQ+YRw8XKqAAMbJKc2Q1f40iMzEeXqiuUP8BhTmfqMDLfY2Xh/2f/OrDvhsS396++fDh5gYHApHW/i7M4k3bmt4XCkBe/kS5LdJ6g4mbRKteq3V6xPFo4xc8lCsUi8TI1wuZWq2xQyKzu7cbtHgo1IKqTK/oMp0tHvZ/haCIglxA5lCJVPobTSUhMD7Jc9v9BdQcn6YTCXvZGe85NxMkHApFXfO2lJ8cna1E+RW553966PlgT359sCpCARkC8cT+D343ODQGgMLyTfUIUChz8izepqkIs3hBUEDztSfN4rWrE6QolDiyAwG4/r7Pc6BWsXhaXf3Bc2+U5qI2CBS+t5hQBt8izW23OnRUPZnkJByYd79Jc9s75kTxRDyJmig7kKekEdv2Wvzd00Yq2R8KtVYNJJPasFYn3221lteqwqBaDXhF3WRtdNBXboGpxczOMrxnp1GcMCDiyplVrz/8LXDG5x+X4tkp6FIMoiv6dgNJVfnnAW8Z8p6RUUyZ5MrV9fvPJDXt81eUSS5Q8wKtyBsAir45u+SzJwrsvcS72gZ/nbzcwPigUMAl9Cmur79B30Ke0ssdYhzuzhVuP7e4ZQJxUOKEAvg/4S+HqMzOfQiox0axQYEb9y4BgFpkwUjq2mAC6jejWKHwk/pOx6luT1D4aZRQkHXbBslcJlg8bigCflpUHHqUUDRf2Boux5Y0NmZ/ByiKvokptRjq4o8KCth2890iQeLsLHnyZtZ47FAAM9PKyD/PcnptM+wXjwAKortzCxdQXRuIJ870FzOVx84VwMlv0SCNS1Znp42zRkPuGAlXqM3TDc1IugrbXpxRKrMDzFc8XFI7JJmdQwGsKglgjggK/0rKSqXZnDq9sF9qZJkMKilx0lQgFMkU/PNIoXBaUuhSYYl1o4Ji5vzQWznw2bPXJ4tnqJYjmUBNp43kqybsqTKLD0WGA03HR6ZJ1N6E4zeX8EKh7iZGBQVQmod7IaW0ceYITllIpWz7FK+TwVBEc0V2p13y0tbScmG3YSoTDgab9OJQ5EcHxfmsDdvRSWYCTxTRk2hSHJX8xTPlZ6/dhZADcAVJHgikVjX7BEUIqaeGQV57vnjSVdKIUKgDlTe9WKBFZu8GRSKx1ZicXDI/jREKyBNMGaQ03xJjjI1tb5zymuQECu3WUCQSa6G/afw0Nijwwr0khSJNUgrlld6GoR9NVYQO7soVkNqTk+7qpfFBof5lk7SmZJDWTp0tnkyfNxVJ1d4DFIktM+zWcdP4BFRzz8BQpFdeexdRTh+eLkzNVEhXAg0HxTwhLxbRRXDGSOOCAigLBi5qrr2YqngcPPg3uNWhoGjXXLeiVsusCYDMT9BKOonGB8UrQ0dIzA5RU3koKMQSdWpWSLpZnlC2GJ+AukDlxlPGxRANDAeFpYhZBh2OxSTlvAo0Pig2NLx9yx9D3DIsFBLVGRS9JyhkwlCkIBSDt3AnKIpLTEKJh73z6LFR347GC4U+Qij47yrzJcSo5pbZqdbzu/l6w8la4hgBi5I/JxDIp9iVOF0Kns06Hbl2FDpYdBr1fB52VCtawJ/N8/twhbsgFZG7uA7+k63lhYzm9lqnyMFQq12XMr5uHPdMAXsp1s4y/racR7USQDHTLScSBR5kgS1aZmON50GvFzKO5WWNMUOhjwwKIKT70x9mNXwO4XKGv8wNenDJ56LTjGZU7gMoVkn4amXctTYC7wFnc8vTUXvT8fyIMUJhjBiKDqv35K4YNgtBazG4C5hl2sVb66ZIxx4Vo4BQ0Au7WZ7KLixjLe7K5b0IlfNycPL35QpQCxgeRHSBPOAireCJ6LITlgcKK7tMTzEo1JDVN9DblBjjt4HCpyvIEscgcvkCKFnKR+uyK8I6wcVbRCiKbPAYFFYmEUrlOUG3/z5QWKIFxUo90bGWRqhB1fomPZIXat0AtxJewpV0IhQZLolcKNRqGE8gagtRmN9GV8h+BeC/EmpqE5qhxTmOTZmyhUNHdl2oj0oXhtMyggIUJdaHK9QAEGpDri/Xa47pNDZLwjFe6eL34QrZ22aVy5fYzhZqlfEGLT9hMbaoC10yUMllAhSs7+VugSzaExRSgWmGbIYLxzatFfa4oRAXuszxMcGr5vPk1Vxy3AUEqIQdS7DYoc0xq2uLrfcArClXv3uhaO92nGKWOH9Z7rUge4k9TY2zYJ329Xih2BK9XavKhTiJzKpFLMQ74s21snQJaq5L7xIUN+2iR454oNgxqXhTaAkefFg2whwmpNhc1q2hSE66rmg7JiHHaUjzFaxChzrXXZNutui7WmJTfczN22HIFt0jZXfhpAxFVWzQZCd8ewXwSHHPbXmMUGh6rFAkyASez37puW88EhSWx1+gTnSbjXKWSvUSW7FK3/QCq/QpQNETwhlA5XZsVfGQyh6U+jF3guJO205toPrlcUIRTKK3JhioRIjTn85q2wClxwbTHXnGOlS3i1DIL7/FHybreWTo/LNzbme3hKKJoUhpd9inDgqoMUARPYVHrSwBCmZq0ZeXKpS2FQCFWCkK3stMsq73iWlFSERugc5bQQEHZQOnMGnHU7fnClQ8ZcRQbFW9tWwVFCbPZouYspQFeMUnoDJ7lnABGx5m3gpQSJWigGC1VX1PDACru9Al+N0OCpBDtQWSqZSxePr8doTK7serK3xU6smJN2i2wqw16jvd1tIWzq6lFpQABXfzyIiZrnnKV58IUCyZUvNMuAXM4QJuXW0R/rolFMoU3uU5lTS0lcXbkZ5Op0cIRbmQ8dXnyDZ2WkExU+ntzrK3F1UpZybVJpN0AhRSqU2gsDvn/UMp8Izryt9SQCmVIwPtjIbTZ5Lp0K0SwimNd5iPEYr5FqHlbnenPmf6t81Rq6EBQQEKIaKbVwDTxOsd4QoOhWyRMaekXAyAgjvi5p2gUGYWkzpOPb4FDASLZLwWVMlSMXHbUh4Kkw1UJBSwSWoyoSRPx/3cFefoxPkKoQeFudTtWKFQzolnoeN1vEPCkHRXE41mbhsA37Q+4Gt8+kLBhXpDYeZuVWwrDAoGdsxQgAXN1lK6jofUv8NRNLkp/ENxBVp1hO4ZMJO8ZEW1nBUc5PVuPjPXqdVqrPKTDAV1rxNrlurKtHVhbMKhGFBXlO+mKxDNvJ3FiyPSaOtAsaapb7sjee8jJNfwahZjSCiaOuS/pGZHVOqPmDqSiJXbmi/UuDan77/HKKX27LpD/bId6XwYFDwYHGBBAXa2RZ70LlAoufNnJ3u/Vm5Bv36tpIaH4rlBRGHEViIDQSE4X3iTFxbADYHCoYO0S99zR3iCcCi4X1H3P7HKxNfOnVw8SrnmzB38imEF1J8G5DhDO2veGQoWHMqrwl6QwVAIBQnLLoKSzx4Ohcks5Zb/EdhsbSID7gGKuxRJ2hgWCkU5tTVUMnUxYtupwQQUd6Hl3+gLfGACYsItpoZ8OhgKycnxjiV3UFiE945ccQcaHorcW9uAUNhvIyr4DQYFi9O15eNU/nhLXXscRznoFw4FYMMtxNjpIzC7Yc190HFCkRwSCiTTEBRRWxQOBgWbESpJh1l6k6/quJy10ZPGNRwKFiWBLXbkMyqzkOcpi42VK4YMfJyfQaUNoYgqZjAkV6wLFi9PH/BDURST+9ry2QgoBBuq5UgbFHeYp8889AcERW4aF+fSVqK2sx0QCmbLCi+ryosz+2vx88ieb7/IKCgs7kiWa/yHqg2e7cPs3AcExcxeEkdZIjd5HtCv4DY9TcNQhWwyHxSAu3kJcTsS92Q4FNwOhpR3sirJKBeKCPMK5w8GCgBOk9i31yO3Ph8QCh50WKrWzKLpzOXFVIGAHSp4Ved1awgoJC1T7uar1equuFmrkFn7YKBQKseaDqEwViIX7w0IhSoMfHmptdSWrVUfFGLEaNdnl0ZBoVYTESRG1R8OFNMv8RSu/UdkMerBoAAswipRmxpWAVzBMsTXvQu/o6FQlIZ3P2NO0sLlBwIFUN6ckSoURvQ2VoPGoJSAl3W9QaVJABTM/vV5CP2gUGoh4fh2XRJ1Y/UrhuCK5ltShaLfitaBobB8acXtOSUUCp6g4V/23RcKpRg4SbUmLxF7KFDkDt1yLOk+6T48na8dGSSHI+iZsSgUeQxq3s8VFGL/nnieVUeBfWV7JamzxHy35uWuW5XmuhcaAgpoPbmlWIxXfXaStRr5Xh5SL1+N1Cl4MqnW6y61y+VyqbVWNbEG2cU353tF77UsB8eXW6Yg1Yw77eUzIZwI+7Jq9cJyCfXWXupuNoqKbzrLJH3n8yz5Te247fbiLZ60gUp8DAIFNMXPNQKFsRfl3g1JqF/LdNCUEUpAiJwmY45I+5bVWnBnRdQZ7C1Lj0wIDQyFAhZW6EzsQv928TJc/xRq8KX8I6A34z9eYhnha75T/L5oeQjCv4mHPb33b/geCEGh94cCKJXDWZRSAnXFy+lx7arCQqzOJL3N90UYigHSDJoXRpqobHsjYqIiVmIxq6WJ22HnPggLqLT9KuISOO6VhT07TZIS7PtUFMMRW3znT7h8DHRhJ/VUyngb9tvQcXD+Wtd0krtgHL8Z5eOJT8Ki5xNc7u72BJRpG5fSPAsLKYFc83TvJclBREhAnhjPGwmULHUKen1M6QdJQFkgUGiv31RUD+UqzZmp02e/DBwbQVBoxsbYpBOfhp6kLYXvk5qLaZznaawcTf8l0fSzo5PFWVSDFtUDRmxhGH+MiycQUUvWW9TgkRBaF6CR6rKhdbA1vF0CtHiT73JjQ0KI4vor4DwKAjhrIJpwgXjN0F+PTTjhJ6WZOqXHyRQKMo8GyXQ27I2FqBnU+KnYJRXny/X+1z5UUk/tSL5AE0Uvjw+bY7ZaVLI6rGhOaCXO+6HzYyMcDMPQjy/Ox8sRvxE1D/dSgWo7NXvsFsJ+ohGRinZ18RbCfjZ9uDA103yU8Z7JJRC011Eup7rnniiQ/g/Ur/IQS6sFBwAAAABJRU5ErkJggg=="
+              alt="Zoho Payroll"
+              class="expertise-icon"
+            />
+            <div class="overlay">
+              <h3>Zoho Payroll</h3>
+              <p>Automated payroll processing</p>
+              <a href="#payroll">Learn More →</a>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <style>
+      .scrolling-container {
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        padding: 20px 0;
+      }
+
+      .scrolling-wrapper {
+        display: inline-flex;
+        gap: 40px;
+        animation: scroll-left 30s linear infinite;
+      }
+
+      .right-to-left .scrolling-wrapper {
+        animation: scroll-right 30s linear infinite;
+      }
+
+      /* Expertise Card */
+      .expertise-card {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s ease;
+        width: 180px;
+        height: 180px;
+        flex-shrink: 0;
+      }
+
+      .expertise-card:hover {
+        transform: scale(1.15);
+        z-index: 100;
+      }
+
+      .expertise-icon {
+        width: 150px;
+        height: auto;
+        display: block;
+        filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+        transition: opacity 0.3s ease;
+        mix-blend-mode: multiply;
+      }
+
+      .expertise-card:hover .expertise-icon {
+        opacity: 0.3;
+      }
+
+      /* Hover overlay card */
+      .overlay {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #fefdfd;
+        color: #111;
+        text-align: center;
+        padding: 25px 20px;
+        border-radius: 16px;
+        min-width: 260px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+        pointer-events: none;
+        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        opacity: 0;
+        z-index: 200;
+      }
+
+      .expertise-card:hover .overlay {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .overlay h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #111;
+        font-weight: 700;
+      }
+
+      .overlay p {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 15px;
+        line-height: 1.5;
+      }
+
+      .overlay a {
+        display: inline-block;
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        transition: color 0.2s ease;
+      }
+
+      .overlay a:hover {
+        color: #004999;
+      }
+
+      /* Smooth continuous scroll */
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes scroll-right {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .scrolling-wrapper:hover {
+        animation-play-state: paused;
+      }
+    </style>
 
     <!-- How We Work -->
     <section class="workflow">
@@ -943,9 +1234,8 @@
         </div>
       </div>
     </section>
-
     <!-- Partners Section -->
-    <section class="partners">
+    <section class="partners" style="padding: 50px 0; background: #f8f8f8">
       <p class="section-subtitle" data-aos="fade-up">Our Network</p>
       <h2 class="section-title" data-aos="fade-up">
         Trusted by Zoho Partners Across the Globe
@@ -963,40 +1253,63 @@
         We've collaborated with certified Zoho Partners and consultants to
         deliver successful implementations in India, UAE, and beyond.
       </p>
-      <div class="partners-grid">
-        <img
-          src="https://ushma.biz/wp-content/uploads/2025/05/Partner-2.png"
-          alt="Zoho Partner"
-          class="partner-logo"
-          data-aos="zoom-in"
-          data-aos-delay="100"
-          style="
-            width: 180px;
-            height: auto;
-            background: transparent;
-            border: none;
-          "
-        />
-        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="150">
-          Enable Solutions
+
+      <!-- Partner Cards -->
+      <div
+        class="partners-grid"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 20px;
+        "
+      >
+        <div class="partner-card" data-aos="zoom-in" data-aos-delay="100">
+          <h3>Enable Solutions</h3>
         </div>
-        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="200">
-          Microsell
+        <div class="partner-card" data-aos="zoom-in" data-aos-delay="150">
+          <h3>Microsell</h3>
         </div>
-        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="250">
-          Global Consultants
+        <div class="partner-card" data-aos="zoom-in" data-aos-delay="200">
+          <h3>Global Consultants</h3>
         </div>
-        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="300">
-          Certified Partners
+        <div class="partner-card" data-aos="zoom-in" data-aos-delay="250">
+          <h3>Certified Partners</h3>
         </div>
-        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="350">
-          Implementation Experts
+        <div class="partner-card" data-aos="zoom-in" data-aos-delay="300">
+          <h3>Implementation Experts</h3>
         </div>
       </div>
-      <p class="partner-note" data-aos="fade-up">
+
+      <p
+        class="partner-note"
+        data-aos="fade-up"
+        style="text-align: center; margin-top: 40px; color: #888"
+      >
         Proud implementation partner for multiple Zoho-authorized consultants.
       </p>
     </section>
+
+    <style>
+      .partner-card {
+        background: #1a73e8; /* Card background color */
+        color: #fff;
+        padding: 30px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        min-width: 200px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        cursor: default;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .partner-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+      }
+    </style>
 
     <!-- Client Stories -->
     <section class="client-stories" id="case-studies">
