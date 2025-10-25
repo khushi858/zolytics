@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zolytics - Transform the Way You Work with Zoho</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Lato", "Open Sans", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #dc2626;
+        letter-spacing: -1px;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #dc2626;
+      }
+
+      .cta-btn {
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white !important;
+        padding: 0.7rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 80px;
+        background: linear-gradient(135deg, #fef3f2 0%, #fff 100%);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(220, 38, 38, 0.3);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #dc2626;
+        padding: 1rem 2.5rem;
+        border: 2px solid #dc2626;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-secondary:hover {
+        background: #dc2626;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Section Styling */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1rem;
+        color: #dc2626;
+        margin-bottom: 3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* About Section with Image */
+      .about-section {
+        background: #fff;
+      }
+
+      .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .about-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .about-content p {
+        color: #666;
+        font-size: 1.1rem;
+        line-height: 1.8;
+      }
+
+      /* Expertise Grid */
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .expertise-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.3s;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .expertise-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(220, 38, 38, 0.15);
+      }
+
+      .expertise-icon {
+        width: 60px;
+        height: 60px;
+      }
+
+      .expertise-card h3 {
+        color: #dc2626;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .expertise-card p {
+        color: #666;
+        margin-bottom: 1rem;
+      }
+
+      .expertise-card a {
+        color: #dc2626;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .expertise-card a:hover {
+        color: #991b1b;
+      }
+
+      /* How We Work */
+      .workflow {
+        background: #fef3f2;
+      }
+
+      .workflow-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .workflow-step {
+        text-align: center;
+        padding: 2rem;
+        position: relative;
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1rem;
+      }
+
+      .workflow-step h3 {
+        color: #1a1a1a;
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+      }
+
+      .workflow-step p {
+        color: #666;
+      }
+
+      .workflow-tagline {
+        text-align: center;
+        font-size: 1.2rem;
+        color: #666;
+        margin-top: 3rem;
+        font-style: italic;
+      }
+
+      /* Why Choose with Image */
+      .why-section {
+        background: #fff;
+      }
+
+      .why-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .why-image {
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .why-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .why-card {
+        background: #fef3f2;
+        padding: 1.5rem;
+        border-radius: 15px;
+        transition: all 0.3s;
+      }
+
+      .why-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+      }
+
+      .why-card h3 {
+        color: #dc2626;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .why-card p {
+        color: #666;
+      }
+
+      /* Industries */
+      .industries {
+        background: #fef3f2;
+      }
+
+      .industries-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .industry-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        cursor: pointer;
+      }
+
+      .industry-card:hover {
+        transform: translateY(-5px);
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+      }
+
+      .industry-card h3 {
+        font-size: 1.2rem;
+      }
+
+      /* Partners Section */
+      .partners {
+        background: white;
+      }
+
+      .partners-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        margin-top: 3rem;
+        align-items: center;
+        justify-items: center;
+      }
+
+      .partner-logo {
+        width: 180px;
+        height: 80px;
+        background: #f9f9f9;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+        color: #666;
+        transition: all 0.3s;
+        border: 2px solid #eee;
+        padding: 1rem;
+      }
+
+      .partner-logo img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      .partner-logo:hover {
+        transform: scale(1.05);
+        border-color: #dc2626;
+      }
+
+      .partner-note {
+        text-align: center;
+        color: #666;
+        margin-top: 2rem;
+        font-style: italic;
+      }
+
+      /* Client Stories with Image */
+      .client-stories {
+        background: #fef3f2;
+      }
+
+      .story-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+      }
+
+      .story-container:nth-child(even) {
+        direction: rtl;
+      }
+
+      .story-container:nth-child(even) > * {
+        direction: ltr;
+      }
+
+      .story-image {
+        width: 100%;
+        height: 400px;
+        border-radius: 20px;
+        object-fit: cover;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .story-content {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .story-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .story-card p {
+        font-size: 1.1rem;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      /* Contact Section */
+      .contact {
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+        text-align: center;
+      }
+
+      .contact h2 {
+        color: white;
+        margin-bottom: 1rem;
+      }
+
+      .contact p {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .contact-form button {
+        background: white;
+        color: #dc2626;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .contact-form button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: white;
+        padding: 3rem 2rem 1rem;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        color: #dc2626;
+        margin-bottom: 1rem;
+      }
+
+      .footer-section p {
+        color: #999;
+        line-height: 1.8;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links a {
+        color: #999;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: #dc2626;
+      }
+
+      .social-icons {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .social-icons a {
+        width: 40px;
+        height: 40px;
+        background: #333;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-icons a:hover {
+        background: #dc2626;
+        transform: translateY(-3px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #333;
+        color: #666;
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .about-container,
+        .why-container,
+        .story-container {
+          grid-template-columns: 1fr;
+        }
+
+        .story-container:nth-child(even) {
+          direction: ltr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .float-logo {
+          width: 60px;
+          height: 60px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">Zolytics</div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#industries">Industries</a></li>
+          <li><a href="#case-studies">Case Studies</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact" class="cta-btn">Book Consultation</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Transform the Way You Work with Zoho.</h1>
+        <p>
+          We help businesses automate accounting, CRM, HR, and analytics —
+          creating connected systems that drive growth.
+        </p>
+        <div class="hero-buttons">
+          <a href="#contact" class="btn-primary">Get Free Consultation</a>
+          <a href="#solutions" class="btn-secondary">Explore Solutions</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <p class="section-subtitle" data-aos="fade-up">Decade of Expertise</p>
+      <h2 class="section-title" data-aos="fade-up">
+        About Zolytics & Our Vision
+      </h2>
+      <div class="about-container">
+        <img
+          src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
+          alt="Team collaboration"
+          class="about-image"
+          data-aos="fade-right"
+        />
+        <div class="about-content" data-aos="fade-left">
+          <p>
+            Zolytics is a Zoho-focused consulting firm helping businesses
+            automate operations, reduce manual work, and scale smarter. We
+            specialize in Zoho Finance (Books, Inventory, Payroll), CRM,
+            E-commerce integration, and end-to-end Zoho implementation,
+            customization, and training.
+          </p>
+
+          <p>
+            Our team brings together seasoned professionals with deep expertise
+            at the crossroads of finance and technology. As certified Zoho
+            experts, we have delivered corporate and individual training across
+            India, the UAE, and the USA, empowering teams in industries ranging
+            from retail and e-commerce to healthcare, fintech, and
+            manufacturing.
+          </p>
+
+          <p>
+            Our remote-first team is built on values of integrity,
+            problem-solving, commitment, and client satisfaction. With a growing
+            portfolio of successful implementations across global markets, we
+            don't just deliver Zoho solutions — we partner with our clients to
+            solve real-world business challenges and support sustainable growth.
+          </p>
+
+          <p>
+            Whether you're starting your automation journey or scaling with
+            Zoho, we're here as your trusted ally in transformation — every step
+            of the way.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Expertise -->
+    <section id="solutions" style="background: #fef3f2">
+      <p class="section-subtitle" data-aos="fade-up">Our Solutions</p>
+      <h2 class="section-title" data-aos="fade-up">
+        Unified Zoho Solutions for Every Department
+      </h2>
+      <div class="expertise-grid">
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="100">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/books-product-logo-black.png"
+            alt="Zoho Books"
+            class="expertise-icon"
+          />
+          <h3>Zoho Books</h3>
+          <p>Complete accounting automation</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="150">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/inventory-logo-new.png"
+            alt="Zoho Inventory"
+            class="expertise-icon"
+          />
+          <h3>Zoho Inventory</h3>
+          <p>Streamline stock management</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="200">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/414a09bd-c275-4605-8a66-56bcf3c3877f.png"
+            alt="Zoho Expense"
+            class="expertise-icon"
+          />
+          <h3>Zoho Expense</h3>
+          <p>Track expenses effortlessly</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="250">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/crm.png"
+            alt="Zoho CRM"
+            class="expertise-icon"
+          />
+          <h3>Zoho CRM</h3>
+          <p>Manage customer relationships</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="300">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/zohobigin-1.png"
+            alt="Zoho Bigin"
+            class="expertise-icon"
+          />
+          <h3>Zoho Bigin</h3>
+          <p>CRM for small businesses</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="350">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/analytics.png"
+            alt="Zoho Analytics"
+            class="expertise-icon"
+          />
+          <h3>Zoho Analytics</h3>
+          <p>Data-driven insights</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="400">
+          <img
+            src="https://ushma.biz/wp-content/uploads/2025/06/people.png"
+            alt="Zoho People"
+            class="expertise-icon"
+          />
+          <h3>Zoho People</h3>
+          <p>HR management made easy</p>
+          <a href="#">Learn More →</a>
+        </div>
+        <div class="expertise-card" data-aos="fade-up" data-aos-delay="450">
+          <img
+            src="data:image/jpeg;base64,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"
+            alt="Zoho Payroll"
+            class="expertise-icon"
+          />
+          <h3>Zoho Payroll</h3>
+          <p>Automated payroll processing</p>
+          <a href="#">Learn More →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- How We Work -->
+    <section class="workflow">
+      <p class="section-subtitle" data-aos="fade-up">Our Process</p>
+      <h2 class="section-title" data-aos="fade-up">How We Work</h2>
+      <div class="workflow-steps">
+        <div class="workflow-step" data-aos="fade-right" data-aos-delay="100">
+          <div class="step-number">1</div>
+          <h3>Discovery</h3>
+          <p>Understanding your business needs and challenges</p>
+        </div>
+        <div class="workflow-step" data-aos="fade-right" data-aos-delay="200">
+          <div class="step-number">2</div>
+          <h3>Design</h3>
+          <p>Creating a customized Zoho solution blueprint</p>
+        </div>
+        <div class="workflow-step" data-aos="fade-right" data-aos-delay="300">
+          <div class="step-number">3</div>
+          <h3>Implement</h3>
+          <p>Seamless deployment and integration</p>
+        </div>
+        <div class="workflow-step" data-aos="fade-right" data-aos-delay="400">
+          <div class="step-number">4</div>
+          <h3>Train & Support</h3>
+          <p>Comprehensive training and ongoing assistance</p>
+        </div>
+      </div>
+      <p class="workflow-tagline" data-aos="fade-up">
+        Our proven 4-step approach ensures successful Zoho implementation, every
+        time.
+      </p>
+    </section>
+
+    <!-- Why Choose -->
+    <section class="why-section">
+      <p class="section-subtitle" data-aos="fade-up">Why Us</p>
+      <h2 class="section-title" data-aos="fade-up">Why Choose Zolytics</h2>
+      <div class="why-container">
+        <div class="why-content" data-aos="fade-right">
+          <div class="why-card">
+            <h3>✅ Certified Zoho Finance Experts</h3>
+            <p>
+              Our team holds official Zoho certifications and deep technical
+              expertise across all finance modules.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3>✅ Deep Domain Knowledge</h3>
+            <p>
+              Experience serving clients across India, UAE, and US with
+              region-specific compliance and best practices.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3>✅ End-to-End Automation</h3>
+            <p>
+              We connect all your business processes - from accounting to
+              analytics - creating unified, efficient workflows.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3>✅ Transparent Communication</h3>
+            <p>
+              Regular updates, clear timelines, and honest feedback throughout
+              your implementation journey.
+            </p>
+          </div>
+          <div class="why-card">
+            <h3>✅ Dedicated Post-Implementation Support</h3>
+            <p>
+              Ongoing assistance, training, and optimization to ensure you get
+              maximum value from your Zoho investment.
+            </p>
+          </div>
+        </div>
+        <img
+          src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Professional team meeting"
+          class="why-image"
+          data-aos="fade-left"
+        />
+      </div>
+    </section>
+
+    <!-- Industries -->
+    <section class="industries" id="industries">
+      <p class="section-subtitle" data-aos="fade-up">Our Expertise</p>
+      <h2 class="section-title" data-aos="fade-up">Industries We Serve</h2>
+      <div class="industries-grid">
+        <div class="industry-card" data-aos="flip-left" data-aos-delay="100">
+          <h3>Accounting & Finance</h3>
+        </div>
+        <div class="industry-card" data-aos="flip-left" data-aos-delay="150">
+          <h3>E-commerce</h3>
+        </div>
+        <div class="industry-card" data-aos="flip-left" data-aos-delay="200">
+          <h3>Hospitality & Real Estate</h3>
+        </div>
+        <div class="industry-card" data-aos="flip-left" data-aos-delay="250">
+          <h3>Professional Services</h3>
+        </div>
+        <div class="industry-card" data-aos="flip-left" data-aos-delay="300">
+          <h3>IT & Software</h3>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="partners">
+      <p class="section-subtitle" data-aos="fade-up">Our Network</p>
+      <h2 class="section-title" data-aos="fade-up">
+        Trusted by Zoho Partners Across the Globe
+      </h2>
+      <p
+        style="
+          text-align: center;
+          color: #666;
+          max-width: 800px;
+          margin: 0 auto 3rem;
+          font-size: 1.1rem;
+        "
+        data-aos="fade-up"
+      >
+        We've collaborated with certified Zoho Partners and consultants to
+        deliver successful implementations in India, UAE, and beyond.
+      </p>
+      <div class="partners-grid">
+        <img
+          src="https://ushma.biz/wp-content/uploads/2025/05/Partner-2.png"
+          alt="Zoho Partner"
+          class="partner-logo"
+          data-aos="zoom-in"
+          data-aos-delay="100"
+          style="
+            width: 180px;
+            height: auto;
+            background: transparent;
+            border: none;
+          "
+        />
+        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="150">
+          Enable Solutions
+        </div>
+        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="200">
+          Microsell
+        </div>
+        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="250">
+          Global Consultants
+        </div>
+        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="300">
+          Certified Partners
+        </div>
+        <div class="partner-logo" data-aos="zoom-in" data-aos-delay="350">
+          Implementation Experts
+        </div>
+      </div>
+      <p class="partner-note" data-aos="fade-up">
+        Proud implementation partner for multiple Zoho-authorized consultants.
+      </p>
+    </section>
+
+    <!-- Client Stories -->
+    <section class="client-stories" id="case-studies">
+      <p class="section-subtitle" data-aos="fade-up">Success Stories</p>
+      <h2 class="section-title" data-aos="fade-up">Client Success Stories</h2>
+
+      <div class="story-container">
+        <img
+          src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Analytics dashboard"
+          class="story-image"
+          data-aos="fade-right"
+        />
+        <div class="story-content" data-aos="fade-left">
+          <div class="story-card">
+            <p>
+              "Automated accounting & reporting for a UAE-based trading group
+              with Zoho Books & Analytics, reducing month-end close time by
+              70%."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-container">
+        <img
+          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="Business growth chart"
+          class="story-image"
+          data-aos="fade-right"
+        />
+        <div class="story-content" data-aos="fade-left">
+          <div class="story-card">
+            <p>
+              "Built a multi-branch setup with unified dashboards for an
+              India–US firm, enabling real-time visibility across 5 locations
+              and 3 time zones."
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-container">
+        <img
+          src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
+          alt="E-commerce platform"
+          class="story-image"
+          data-aos="fade-right"
+        />
+        <div class="story-content" data-aos="fade-left">
+          <div class="story-card">
+            <p>
+              "Implemented complete CRM and inventory integration for an
+              e-commerce company, improving order processing speed by 85%."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+      <h2 data-aos="fade-up">Ready to Transform Your Business with Zoho?</h2>
+      <p data-aos="fade-up">
+        Schedule a quick consultation and we'll help you design the right
+        solution.
+      </p>
+      <form class="contact-form" data-aos="fade-up">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Email Address" required />
+        <input type="text" placeholder="Company Name" required />
+        <textarea placeholder="Tell us about your needs"></textarea>
+        <button type="submit">Book Free Consultation</button>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3 class="logo">Zolytics</h3>
+          <p>
+            Your trusted Zoho Partner for Finance, Analytics, and Automation.
+          </p>
+          <div class="social-icons">
+            <a href="#" aria-label="LinkedIn">in</a>
+            <a href="#" aria-label="Twitter">𝕏</a>
+            <a href="#" aria-label="YouTube">▶</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          © 2025 Zolytics Consulting | All rights reserved | Powered by Zoho
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+        offset: 100,
+      });
+
+      // Smooth scrolling
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Header shadow on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
+        } else {
+          header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        }
+      });
+    </script>
+  </body>
+</html>
