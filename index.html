@@ -850,7 +850,7 @@
               <div class="overlay">
                 <h3>Zoho finance</h3>
                 <p>All-in-one suite to manage your operations and finances.</p>
-                <a href="#finance">Learn More →</a>
+                <a href="finance.html">Learn More →</a>
               </div>
             </div>
 
@@ -1029,6 +1029,7 @@
     </section>
 
     <style>
+      /* Base scroll container */
       .scrolling-container {
         overflow: hidden;
         white-space: nowrap;
@@ -1042,26 +1043,28 @@
         animation: scroll-left 40s linear infinite;
         will-change: transform;
       }
+
       .scrolling-wrapper .logos-loop {
-        display: flex; /* make sure duplicates are flex items */
-        gap: 40px; /* enforce spacing between repeated items */
+        display: flex;
+        gap: 40px;
       }
 
       .right-to-left .scrolling-wrapper {
-        animation: scroll-right 15s linear infinite;
+        animation: scroll-right 40s linear infinite;
       }
 
       .left-to-right .scrolling-wrapper {
-        animation: scroll-left 15s linear infinite;
+        animation: scroll-left 40s linear infinite;
       }
 
+      /* Cards (logos) */
       .expertise-card {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         position: relative;
         cursor: pointer;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s ease;
         width: 250px;
         height: 180px;
         flex-shrink: 0;
@@ -1077,30 +1080,33 @@
         height: auto;
         display: block;
         filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
-        transition: opacity 0.3s ease;
+        transition: opacity 0.3s ease, transform 0.4s ease;
         mix-blend-mode: multiply;
       }
 
       .expertise-card:hover .expertise-icon {
-        opacity: 0.3;
+        opacity: 0.25;
+        transform: scale(1.05);
       }
 
+      /* Floating overlay popup */
       .overlay {
         position: absolute;
         top: 50%;
         left: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        background: #fff;
+        transform: translate(-50%, -50%) scale(0.95);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        border-radius: 16px;
         color: #111;
         text-align: center;
         padding: 25px 20px;
-        border-radius: 16px;
         min-width: 260px;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
         pointer-events: none;
-        transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         opacity: 0;
         z-index: 200;
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       .expertise-card:hover .overlay {
@@ -1109,33 +1115,47 @@
         pointer-events: auto;
       }
 
+      /* Popup content styles */
       .overlay h3 {
         font-size: 20px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         color: #111;
         font-weight: 700;
+        position: relative;
+      }
+
+      /* Accent gradient line under title */
+      .overlay h3::after {
+        content: "";
+        display: block;
+        width: 140px;
+        height: 3px;
+        background: linear-gradient(90deg, #ff4d4f, #1eca37);
+        margin: 6px auto 10px;
+        border-radius: 4px;
       }
 
       .overlay p {
         font-size: 14px;
-        color: #666;
+        color: #444;
         margin-bottom: 15px;
         line-height: 1.5;
       }
 
       .overlay a {
         display: inline-block;
-        color: #0066cc;
+        color: #ff4d4f;
         text-decoration: none;
         font-weight: 600;
         font-size: 14px;
-        transition: color 0.2s ease;
+        transition: color 0.3s ease;
       }
 
       .overlay a:hover {
-        color: #004999;
+        color: #ff7675;
       }
 
+      /* Smooth continuous animation */
       @keyframes scroll-left {
         0% {
           transform: translateX(0);
@@ -1154,6 +1174,7 @@
         }
       }
 
+      /* Pause on hover */
       .scrolling-wrapper:hover {
         animation-play-state: paused;
       }
