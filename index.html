@@ -336,7 +336,7 @@
       .workflow::after {
         width: 500px;
         height: 500px;
-        background: radial-gradient(circle, #ef4444, transparent);
+        background: radial-gradient(circle, #dd2424, transparent);
         bottom: -250px;
         right: -250px;
         animation-delay: 7s;
@@ -437,7 +437,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        background: linear-gradient(135deg, #e23a3a 0%, #b14747 100%);
         border-radius: 20px;
         opacity: 0;
         transition: opacity 0.5s ease;
@@ -451,7 +451,7 @@
       .workflow-step:hover {
         transform: translateY(-15px) rotateX(5deg);
         box-shadow: 0 25px 50px rgba(220, 38, 38, 0.3);
-        border-color: #dc2626;
+        border-color: #d42020;
         color: white;
       }
 
@@ -462,7 +462,7 @@
 
       .workflow-step:hover .step-number {
         background: white;
-        color: #dc2626;
+        color: #d71818;
         transform: scale(1.2) rotate(360deg);
       }
 
@@ -490,7 +490,7 @@
         left: -5px;
         right: -5px;
         bottom: -5px;
-        border: 2px solid #dc2626;
+        border: 2px solid #c81d1d;
         border-radius: 50%;
         opacity: 0;
         animation: pulse-ring 2s infinite;
@@ -525,7 +525,7 @@
       /* Expandable detail on click */
       .workflow-step.expanded {
         grid-column: span 2;
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        background: linear-gradient(135deg, #cf3131 0%, #b11f1f 100%);
         color: white;
       }
 
@@ -620,7 +620,7 @@
       }
 
       .workflow-cta .btn-primary {
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        background: linear-gradient(135deg, #db1313 0%, #ef4444 100%);
         color: white;
         border: none;
         padding: 1rem 2.5rem;
@@ -766,7 +766,7 @@
       /* Section Container */
       .industries-section {
         position: relative;
-        background: #eeeaea;
+        background: #f3e7e7;
         padding: 100px 80px;
         overflow: hidden;
       }
@@ -792,7 +792,7 @@
         left: 0;
         font-size: 6rem;
         font-weight: 800;
-        color: rgba(205, 213, 228, 0.6);
+        color: rgba(242, 243, 247, 0.6);
         z-index: 0;
         pointer-events: none;
       }
@@ -823,7 +823,7 @@
 
       .cta-btn {
         background: linear-gradient(90deg, #dc2626, #ef4444);
-        color: white;
+        color: rgb(222, 220, 220);
         padding: 12px 28px;
         border: none;
         border-radius: 8px;
@@ -848,7 +848,7 @@
       }
 
       .industry-card {
-        background: #fff;
+        background: #f9eded;
         border-radius: 16px;
         padding: 30px 25px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -934,123 +934,267 @@
       }
 
       /* Partners Section */
-      .partners {
-        background: white;
+      .partner-logos img {
+        width: 160px;
+        height: 80px;
+        object-fit: contain;
+        object-position: center;
+        filter: grayscale(0%);
+        opacity: 0.8;
+        transition: all 0.3s ease;
       }
 
-      .partners-container {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
-        gap: 4rem;
-        align-items: center;
-        margin-top: 3rem;
-      }
-
-      .partner-main-logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
-      .partner-main-logo img {
-        max-width: 300px;
-        width: 100%;
-        height: auto;
+      .partner-logos img:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+        transform: scale(1.05);
       }
 
       .partners-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-        align-items: center;
-        justify-items: center;
-      }
-
-      .partner-logo {
-        width: 180px;
-        height: 80px;
-        background: #f9f9f9;
-        border-radius: 10px;
         display: flex;
-        align-items: center;
+        flex-wrap: wrap;
         justify-content: center;
+        gap: 25px;
+      }
+
+      .partner-card {
+        background: linear-gradient(135deg, #d24848, #314587);
+        color: white;
+        padding: 25px 40px;
+        border-radius: 12px;
+        box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
+        font-size: 1.1rem;
         font-weight: 600;
-        color: #666;
-        transition: all 0.3s;
-        border: 2px solid #eee;
-        padding: 1rem;
+        transition: all 0.4s ease;
       }
 
-      .partner-logo img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+      .partner-card:hover {
+        transform: translateY(-8px) rotate(-1deg);
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.35);
+        background: linear-gradient(135deg, #1d4ed8, #2563eb);
       }
 
-      .partner-logo:hover {
-        transform: scale(1.05);
-        border-color: #dc2626;
+      @media (max-width: 768px) {
+        .partner-logos img {
+          width: 120px;
+        }
+        .partner-card {
+          width: 90%;
+        }
       }
 
-      .partner-note {
-        text-align: center;
-        color: #666;
-        margin-top: 2rem;
-        font-style: italic;
+      /* Why Choose with Image - Enhanced */
+      .why-section {
+        background: #fff;
+        padding: 5rem 8%;
+        position: relative;
+        overflow: hidden;
       }
 
-      /* Client Stories with Image */
-      .client-stories {
-        background: #fef3f2;
-      }
-
-      .story-container {
+      .why-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
-        margin-top: 3rem;
-        margin-bottom: 3rem;
       }
 
-      .story-container:nth-child(even) {
-        direction: rtl;
+      .why-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
       }
 
-      .story-container:nth-child(even) > * {
-        direction: ltr;
+      .why-card {
+        background: #fff6f6;
+        padding: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.08);
+        transition: all 0.3s ease;
+        border-left: 4px solid #dc2626;
       }
 
-      .story-image {
+      .why-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 12px 30px rgba(220, 38, 38, 0.2);
+      }
+
+      .why-card h3 {
+        color: #dc2626;
+        margin-bottom: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .why-card p {
+        color: #666;
+        line-height: 1.6;
+      }
+
+      /* SLIDESHOW */
+      .why-slideshow {
+        position: relative;
         width: 100%;
-        height: 400px;
+        height: 500px;
         border-radius: 20px;
-        object-fit: cover;
+        overflow: hidden;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       }
 
-      .story-content {
-        display: flex;
-        flex-direction: column;
-        gap: 2rem;
+      .why-slideshow img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+      }
+
+      .why-slideshow img.active {
+        opacity: 1;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .why-container {
+          grid-template-columns: 1fr;
+        }
+        .why-slideshow {
+          height: 350px;
+          margin-top: 2rem;
+        }
+      }
+
+      /*Client Stories */
+      .client-stories {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: rgba(208, 4, 4, 0.9);
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+      }
+
+      .section-title {
+        text-align: center;
+        color: rgb(17, 17, 17);
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 80px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .stories-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        padding: 20px;
       }
 
       .story-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background: rgb(237, 228, 228);
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .story-card p {
-        font-size: 1.1rem;
-        color: #666;
-        line-height: 1.8;
+      .story-card.slide-left {
+        transform: translateX(-100px);
+      }
+
+      .story-card.slide-right {
+        transform: translateX(100px);
+      }
+
+      .story-card.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .story-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+
+      .story-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .story-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      .industry {
+        font-size: 0.85rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .story-text {
+        color: #444;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .quote-icon {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        font-size: 3rem;
+        color: rgba(102, 126, 234, 0.1);
+        font-family: Georgia, serif;
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .stories-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .story-card.slide-left,
+        .story-card.slide-right {
+          transform: translateY(50px);
+        }
+
+        .story-card.visible {
+          transform: translateY(0);
+        }
       }
 
       /* Contact Section */
       .contact {
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        background: linear-gradient(135deg, #c34141 0%, #ef4444 100%);
         color: white;
         text-align: center;
       }
@@ -1089,7 +1233,7 @@
 
       .contact-form button {
         background: white;
-        color: #dc2626;
+        color: #d81414;
         padding: 1rem 2rem;
         border: none;
         border-radius: 50px;
@@ -2384,7 +2528,6 @@
       <div class="industries-container">
         <!-- Left side: heading + text + CTA -->
         <div class="industries-info" data-aos="fade-right">
-          <div class="background-text">Industries</div>
           <p class="subtitle">Our Expertise</p>
           <h2 class="main-title">Industries We Serve</h2>
           <p class="description">
@@ -2399,12 +2542,7 @@
         <!-- Right side: cards -->
         <div class="industries-cards" data-aos="fade-left">
           <div class="industry-card">
-            <div class="icon">
-              <img
-                src="https://png.pngtree.com/template/20191014/ourmid/pngtree-colorful-diagram-business-and-accounting-logo-image_318295.jpg"
-                alt="Accounting & Finance"
-              />
-            </div>
+            <div class="icon"></div>
             <h3>Accounting & Finance</h3>
             <p>
               Comprehensive financial operations solutions tailored to your
@@ -2413,12 +2551,7 @@
           </div>
 
           <div class="industry-card">
-            <div class="icon">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2331/2331748.png"
-                alt="E-commerce"
-              />
-            </div>
+            <div class="icon"></div>
             <h3>E-commerce</h3>
             <p>
               Scalable e-commerce automation, from order to delivery and
@@ -2427,12 +2560,7 @@
           </div>
 
           <div class="industry-card">
-            <div class="icon">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2331/2331719.png"
-                alt="Hospitality & Real Estate"
-              />
-            </div>
+            <div class="icon"></div>
             <h3>Hospitality & Real Estate</h3>
             <p>
               Streamlined operations for hotels, resorts, properties, and
@@ -2441,12 +2569,7 @@
           </div>
 
           <div class="industry-card">
-            <div class="icon">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2331/2331776.png"
-                alt="Professional Services"
-              />
-            </div>
+            <div class="icon"></div>
             <h3>Professional Services</h3>
             <p>
               Automation and CRM solutions for consultants, agencies, and
@@ -2455,12 +2578,7 @@
           </div>
 
           <div class="industry-card">
-            <div class="icon">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2331/2331781.png"
-                alt="IT & Software"
-              />
-            </div>
+            <div class="icon"></div>
             <h3>IT & Software</h3>
             <p>
               Custom software, SaaS workflows, and integrated technology
@@ -2472,137 +2590,164 @@
     </section>
 
     <!-- Partners Section -->
-    <section class="partners" style="padding: 50px 0; background: #f8f8f8">
-      <p class="section-subtitle" data-aos="fade-up">Our Network</p>
-      <h2 class="section-title" data-aos="fade-up">
-        Trusted by Zoho Partners Across the Globe
-      </h2>
-      <p
-        style="
-          text-align: center;
-          color: #666;
-          max-width: 800px;
-          margin: 0 auto 3rem;
-          font-size: 1.1rem;
-        "
-        data-aos="fade-up"
-      >
-        We've collaborated with certified Zoho Partners and consultants to
-        deliver successful implementations in India, UAE, and beyond.
-      </p>
 
-      <!-- Partner Cards -->
+    <!-- Partners Section -->
+    <section
+      class="partners"
+      id="partners"
+      style="
+        padding: 80px 0;
+        background: linear-gradient(135deg, #c2d6ea, #eef2ff);
+      "
+    >
       <div
-        class="partners-grid"
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 20px;
-        "
+        class="container"
+        style="max-width: 1200px; margin: 0 auto; text-align: center"
       >
-        <div class="partner-card" data-aos="zoom-in" data-aos-delay="100">
-          <h3>Enable Solutions</h3>
-        </div>
-        <div class="partner-card" data-aos="zoom-in" data-aos-delay="150">
-          <h3>Microsell</h3>
-        </div>
-        <div class="partner-card" data-aos="zoom-in" data-aos-delay="200">
-          <h3>Global Consultants</h3>
-        </div>
-        <div class="partner-card" data-aos="zoom-in" data-aos-delay="250">
-          <h3>Certified Partners</h3>
-        </div>
-        <div class="partner-card" data-aos="zoom-in" data-aos-delay="300">
-          <h3>Implementation Experts</h3>
-        </div>
-      </div>
+        <p class="section-subtitle" data-aos="fade-up" style="color: #2563eb">
+          Our Network
+        </p>
+        <h2
+          class="section-title"
+          data-aos="fade-up"
+          style="font-size: 2.5rem; font-weight: 700; color: #111"
+        >
+          Trusted by Zoho Partners Across the Globe
+        </h2>
+        <p
+          data-aos="fade-up"
+          style="max-width: 800px; margin: 0 auto 3rem; color: #555"
+        >
+          We proudly collaborate with certified Zoho Partners and consultants to
+          deliver world-class business automation across India, UAE, and beyond.
+        </p>
 
-      <p
-        class="partner-note"
-        data-aos="fade-up"
-        style="text-align: center; margin-top: 40px; color: #888"
-      >
-        Proud implementation partner for multiple Zoho-authorized consultants.
-      </p>
+        <!-- Partner Logos -->
+        <div
+          class="partner-logos"
+          data-aos="zoom-in"
+          style="
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+          "
+        >
+          <div class="partner-logo">
+            <img
+              src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxIQEA4PEg8QEhASDxASEBcRDxUQEA8TFxgYGRgYGBUbIDQgGBonHxYaITIiJSkrLi4uGCAzOT8tNygtLisBCgoKDg0OGxAQGy0lHyYuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tKy0tLS0tLS0tLf/AABEIAMgAyAMBEQACEQEDEQH/xAAbAAEAAgMBAQAAAAAAAAAAAAAAAQYEBQcDAv/EAD8QAAEDAgQCBgcGBQMFAAAAAAEAAgMEEQUGEiExYQcTFEFRoSIycYGRscFCUnJ0stEjMzQ1c2KC8RUkJeHw/8QAGgEBAAIDAQAAAAAAAAAAAAAAAAQFAQIDBv/EACoRAQACAgEDAwMFAQEBAAAAAAABAgMEERIhMQUTQTIzcRQiI1FhNCQV/9oADAMBAAIRAxEAPwCtr17xogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIJQgQE7QCciEBAQEBAQEBAQEBAQEBAQEBAQEBAQSkQPalpZJXBkcb3u8GNLj5dy0vlrTy3pjm3hk12DVEA1S08rG+LmEN+K502MVvEul8GWvmGApHP9OHCFgEBAQEBAQEBAQEBAQEBAQEBAQEBBKc8RyzEczw61FJFguHRv6sOnkDb9xfI4X3Pc0D5KhmL7WaY57L6Jpq4Ynju88q517fKaSohjBka7TpuWusLlpB5A/BZ2NOcMddZ8NdfcjNbotHlQ844SKSsmhb6mz4+TXC9vduFZ6mX3McTKs28XtZZiGkUpFEBAQEBAQEBAQEBAQEBAQEBAQEBBKccxwzE8Ty642njxrDYmh+iaPTc2vokaLEHkQVQTa2rmmfhfRWu1hiPl4ZTySaGXtdRNGTG12jSSGtuLFzieRPxW2xuzmjorHlrr6UYbddp8KLnLFW1dZNM3+XsyPm1otf37n4Kz1MXt44ifKs3Mvu5ZmGjUpFEBAQEBAQEBAQEBAQEBB70lJJM4MjjfI7wY3Uf/S0vkrSObOlMdrzxDLr8BqoG65aeVjfEtu0e8cFzpsYr9olvfWyU7zDXLu4CeBCAgkC558AsTMR3ZiOezrEjv+kYQANqiQe/rX8T/tH6VRRE7Of/ABe8/psH+ub12OVM40y1Er2+Bd6Pw71b49fFTxCovsZb+Za9d/w4flCAgICAgICAgICAgICAgJJDrdO+LBsNjm6sOmlDL9xfI4XsT90AeXNUNurZz9Pwvq9Otg6vl4ZUzy6sm7LUQxjrA4MLb6Ttu1wPJbbGl7Veqssa+7709EwpOdsIbSVksTNoyGyMH3Q7u9lwVY6eWcmKJlW7mL28sw0SlyiIQEFp6O8H7TWNc4XjhtI7wLvsj47+5QN/N0Y+I+U/Qw9eTmfhkdJmM9fV9S0/w4Bp5F59Y/T3FY9Pw9FOuflt6hm6r9MeIU9WHlXCcCEBAQEBAQEBAQEBAQEEp4BYlmHXaSnZjGFxMLiyRmkarerKwWvzBB8+SobWnVzzML+lI2sERLGytkfsUvaqieM9WHFmm4a3axc4nldbbG7OavTWPLTX0ow267SyqyHDcYJtIOvbdocDoksL/ZPrBaUtn1vw6Xrg2Pyp2O5Aqqe7ox18Yvuz+YBzb3+5WGH1Cl+1uyuzaF6fT3VNzSCQQQRsQRYhT62rPygTW0eYe9LQyy36uKR9uOhhdb4LS+StfMt64rW8Q6fg0YwnCZJ3i08g1WPHW7Zjfdxt7VTZZ/UZ+K+Fzij9PrzNvLlT3lxLibkkknxJV5WOIiIUlp6p5l8LLUQEBAQEBAQEBAQEBAQEEpwMigpHzyxwsF3vcGj/AO8FplyRSvLpixze3Dp2ba4YXQwUcDi2V7Q0EbODRu9/Ik/NUutjnYyza3hc7OSNbFFa+XN63GaicaZaiV7fBzyW/DvVvTBjp9MKjJnvfzLCa4ggg2I4EGxC6zXntLnEzHdbMCz9VU9myHr4x3PPpgcn9/vUHNoY7969k7D6hena3dcKafDcY9F0eme17EaJdv8AUPWCrrVz63z2WFbYdr47vjMOb4sMc2kgp2uLGguAIYxl+A4bn91tg1LZ/wB9pYzbddf9kQ+62WPGsOke0FkkZcQ0ndsrRe3MEHzWtazrZuJZvaNrDzDkS9BE8x2UExwhGBAQEBAQEBAQEBAQEBAQSkd4Z8Oj9GGDiNkuIy2DWtc2IngGj13fT4qn383VaMVVt6fh6YnLZTczYwayplnN9JOmMfdYOH7+9WOrh9rHwgbWb3cnLVLvHhHnyhAQb3JWJtpa2GV5sw3Y8/dDha/uUXcxTfFMQl6eWKZYmV0znkmWrn7VTvjPWNbrDnW3AsHAjutb4Ku1dyMVei6w2tOctuujMo6RuDYdOZHtdLJqO3B0hFmtb4jb5rS1p2s0dPh0isauHv5cjJV7HPHCitxM8oWWogICAgICAgICAgICAgIM/BMNdVTxQM4vdufutHE/Bcc+WMdJs7YMU5LxC/8ASNiTaWmhw6Ha7Gh9vsxjgP8AcR5FVejinJectlpvZfbpGOrmSufKlieBbf4IWAQSneJZbjDcz1dO3RFUPDO4EB4HsvwUa+phvPMwk028tI4iWHiWKTVLtc0rpHDhqOzfYO5dMeGmOP2Q55M18k/ulhrr4cUICAgICAgICAgICAgIJT/RYMvZQqa1utgayK9g+QkB3sA4qHm3KYu3ymYdO+Tuv+VMsDC2VNTM5sjww2LAfRjaLmw8TbyVZsbU7ExWPC019WNes3t3ly3GcRdVTyzv4vcSB91vc33BXWDHGOnTClz5fcvNpYK6uIgICAgICAgICAgICAgICAgICAgIPali1yRs4Bz2tPvNlpkniszDfHHN4iXU+kHF5KCnpqem/hhwLdTRu1rANhz38lS6eKM15tdd7macNIrRgdGuZKied9NM90rTGXtLt3NIIFr943XTe16Ur1U7OWjs2vbpt3U3NtG2CtqomABgkJaB3B1jb2bqx1L2tiiZV+1SKZZiGnUhGEBAQEBAQEBAQEBAQEBAQEBAQEBB9NJBuOINwsTHPaWYnieYdVocYosWpmQVTmxzNte7gx2rhqY48b+Co74sutk6qLymXFsY+m71gfh2DxyPjkEkzha3WCSV/gNvVC14zbNuJ8Nqzg1qzMeXLMRrHTyyzP8AWkeXO5X7ld46e3XphSZLze02ljLo5iAgICAgICAgICAgICAgICAgICAglJgEnv5OePAscceGZmfkWZ7MShAQEBAQEBAQEBAQEBAQEEoQLEzEd5ZiJnwJzHBxb+hZ/wAYFjmsS2itpE5jyxxL7bC4i4Y4jxDTZY64+Wemfh8LblqhBKCEBBKQCQCf5DPAAsTPHk4mfCXMI4gj2hY6uWemYQtvy1iBI7gkAkgsRMT8szEx8CzPEERMieWPCEEpHaBcOi2MOrnBzQR2eTiLjixV/qNpjH2WHp1Ytk7usmlhcXN6uO4G40DgVSddo78r2aVnmOHBcZw8wVU1Pbdspa3mCfR8rL0uLLFsXU81lx9OXpdtwfCooIKaEsYXCMN3aCXOAu76rzuXLa9pty9DixVpWIU3pdga1lHpa1t3y3s0C+zVP9MtM2lX+p1isRwzcrZlpYqCCJ73CRsbgQIZHb3P2g2y57GDJbPMx4dNfPirhiJ8uUuO59qvK+FHby9oKKWQXZFI8eLI3OHktZyRHy2jHMvJ7C0kOBBHEEWI9y2raLMWrMJZC527WOI5NJSbRBFJlLad5a54jeWt2c4NOlvtPctfcjnhnol8MaSbAEnuAFytptENYrMy95qCVg1Ohla3xdG5o+JC0jJHPlvbHMR4eDGkkAcSbD2lbzPEdTSsczw7NhOB0uF0pmla0vawOlkLdTrnuby7tl57LsZNjL01eixYMWDF1WMNzXQVz+z6PSdcNbLENL+QTJrZ8VepjHs4Mk9KhdIGDQU0zTTvZpffVG14cYneziAVZ6Oa968WVm9hpS3NVWY0kgAEk8ABclTptFUGKzMvaahlYNT4ZGjxdG5o+JWkZIlvbHMR4eI7vatrfS1r3s7VmqmYMMncI2A9nbuGi/cvP4LTOfjn5ehz0iMHhoOiOBroqrUxrrSMtqaD3FSPUrTFoRvTaxMSqWfGAYhVAAABzdgLD1W9ysNKecMSgbscZphX1KREoLl0Uf15/LyfNqrvUvtLL037i+NxHRi76cnaWjjc38THP+hPwVX7fODq/pae5055r/bUY7l7rMZpJdPoPb1snhqh/wCWBd8OzxrWq4ZtfnZi39ttWYhqxakpgdmQSyO/E4WHkPNcK0/gmzva/wDPWv8ATQdMXqUf45fk1SvS/NkT1XxVYclj/wAXT/4X/NyjbM/+ifyk61Y/TudZCy+2sqX9YLwxDU8ffJPot9n7K03M84acR8qvT1/dyTM/C+5pzXFhpigbAHuLdWlpDGsZw8FW6+rbPzblZ59mmvxXhiZlhpMRoRUAxsl6rrIiXNa8EDdh8R3Lprzkw5eJ8OWxGPNi5jynonH/AGT/AMw/5NWPUZ/lbenVj22PnfFKSnpJ6Bjv4zmg6WtJ9IuDiXO4AlbauPJfLGSfDXavipjmkeWVkfAoqOkFXI0GV8fWucRcsZa4aPDZa7We2TJ0RPZtqYK48fXaHjljPHbag00kDWte1xj31XtvZ1+Szn05xY4vEsYNyMt+iYVrpBwNtFUQ1ELbRyO1aRwY9hBIHgD+6l6Wec1JpZE3cEYbxerpFFV0+IU22mSORoEjSd2nwI7iqq1L4brWl6ZqcK7XdGtM70oZZYXd2+to+O/mpNfUbx9XdGt6bSfp7Oe5ly9NQyBklnNdcsePVf8AsVba+zjyRzVU7GvkxTxZ0nKWBxUFH2p7NU5i615tqcARcMb7vNVGznnNl6Y8LfW164sXVMd3jl3OD6yo7NNR6I5A/QS1xGwvZ1xY7BZzavtV6q2Yw7Xu26bVU/pCwBlHUsdELRTAuaO5jgfSA5bhTtPPOXHMW+EDc1/ayRNfl0XNv9rqPy7foqzX/wCiPzK02PsSr/Q9/Kq/8jP0lSfU/qhG9M+mVPz/AP3Gq/E39IVhpfYhX733pV5S0NKC5dFH9efy8nzaq71L7Sy9N+42OeK/s+MUs19mRwl34dbw7yuuGrTr15q7bd+jYizposbP24bHkVU9/C37cdTl+V8Q7Tjks17giYM/C0ADyHmrfYx9GtFVPr5OvZ6md0xepR/jl+TVp6Z9VnT1TxVYslf2um/wv+blF2vvzH+pWt9iJVfoinGqtj+0dDhzAuD8x8VL9SrPFZRPTZ/daGD0r0j+1xS6SWOhDQQLjUCdvNdPTr16OHL1LHabsNuQZ+zCqdLGwdV1jmvDg5otex5rp+up19EQ5/obxTrmVv6Jv6J/5h/yaoHqH3U/0/7TmmZnl1ZWE7ntEvk4hXGt2wxEf0p9if5ZmXZIj1+GDRvroyG28dFrfFUEx0Z+/wDa/j9+Dt/Tl/RzC52IwWHqh5dyGkj6+aud21fYlT6NZ99c+kyHtBoaRrmNkkmcWl5sBYW3t4kqv0Le3Fr8dlhv19ya05VvEsl1dDEKiGZz3g+mIA5rmt8dt3KXTbxZp6bwiX1MuGOqks7JGYsQlqY4ZNcsRJDy9ljGLHfWB81y29fDSkzDrqZ81rxEtx0tFnY4r219e3R48Df3Lh6dEzeePDv6jMRWOVjdXHsXXwtD3dnD4272d6NwNlG6InL0z27pUX4xdUKPhefa2plbBFSwGR1+OsAW43N9lOvpYqV6psrse7kvbpivdrOkGsq3mnZVQwxkFzmdW/USNr33XfSpjitppPLjvXyTNetfs2/2uo/Lt+irtf8A6I/Kz2f+eZV7oe/lVf8AkZ+kqT6n9UIvpn0yp+f/AO41X4m/pCsNL7EK/e+9KvKWhpSfB8t7kzHGUNQZ3tc5picyzLXuSD3+xRNvDOanEJepmjFfmU50xxldUCZjXNaImss+17gk93tTU15x0mJNrPGW/VCxR9ITRQin6uTrxB1Yftp1WsHcb8+Cif8Az5nJ1c9kuPUI9vpVnKGMNoqptQ9rnNDHts219xzUzZwzkxdMIetnjHl6pbTPWao8QbAI45GdW55Ou29wPA8lx09S2HmZdtzbrm4iG0wDPsNPRxUzoZS5jHNJbp0m5PPmuObQtfJ1u+Herjx9Kl4RislLM2eI2c0nY8HNPFpVhlxVyU6ZV+LNbHfqq6PTdJtM5o62CVr+8NDXtvyJIVTf07JWf2yta+pUmP3Qrubs9uq2GCJhjhPrlx9N48LDgFK1dGMc9VpRdnenLHTWOHpkvOcVDTuhfHI5xkc+7NNrEDxPJY29O2S/MSzq7kYqcSqWKVIlnnlAIEkr3gHiA5xKn4aTWkQgZr9d+VjyfnV9E3qXtMkF7gA2fGe+3iOSh7WlGWeqvlM1d2cUcW8LEekChi1vgpHiV/rfw44tR/1OBJ+aifoM1u1p7Jf6/FHesd1BxrGpaqc1D3Wfto07CMDgGq0w69cdemFZl2LXt1SumB9JmlgZUxOeQLa47Xd7Wnv96r83pkzPNFhh9SiI4s2VR0nUoB6uCZzu4ENYPjcrjX03JM/ul1t6ljiP2w59mTMEtdL1klg0C0bB6rAfrzVpr61cMdlXsbFss926yhnh9GwQyMMsAPo2Nnx3428RyXDZ0Yyz1V8pGrvTiji3hYX9IlFHqfDSv613H0I49XtcCVDjQzT2tPZKnfxR3rHdz/HMYkrJnTync7NA9Vje5oVrhw1xU6YVebNbLfqsuONZ9hno5aZsMoc6IMBOnSDtzUDFo3pk61hm3q2x9DWZGzZFQMmbJHI8yOa4aLbWHMrtt6lssxMOOntxiiYlpMzYk2qqpqhrS1ryCA61xYAfRStbFOPHFZRdnJGTJNoapdnBKAng8idjwIyJxHywLPafALB+RAT4PkT47gnY7icAsx3BYgE7/AJ3BO3yCdmfyIwISJILPgAteY+QWeI+CUICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIP/9k= "
+              alt="Microsell"
+            />
+          </div>
+          <div class="partner-logo">
+            <img
+              src="https://www.sysworks.in/logo%20colo-1.png"
+              alt="Sysworks"
+            />
+          </div>
+          <div class="partner-logo">
+            <img
+              src="https://www.zopreneurs.com/Untitled%20design.png"
+              alt="Zopreneurs"
+            />
+          </div>
+          <div class="partner-logo">
+            <img
+              src="https://www.businessscales.com/Untitled%20design%20-47-.png"
+              alt="Business Scales"
+            />
+          </div>
+          <div class="partner-logo">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Zoho-logo.png"
+              alt="Zoho"
+            />
+          </div>
+        </div>
+
+        <!-- Partner Cards -->
+        <div class="partners-grid" data-aos="fade-up">
+          <div class="partner-card" data-aos="zoom-in" data-aos-delay="100">
+            Enable Solutions
+          </div>
+          <div class="partner-card" data-aos="zoom-in" data-aos-delay="150">
+            Microsell
+          </div>
+          <div class="partner-card" data-aos="zoom-in" data-aos-delay="200">
+            Global Consultants
+          </div>
+          <div class="partner-card" data-aos="zoom-in" data-aos-delay="250">
+            Certified Experts
+          </div>
+          <div class="partner-card" data-aos="zoom-in" data-aos-delay="300">
+            Automation Alliance
+          </div>
+        </div>
+
+        <p
+          class="partner-note"
+          style="margin-top: 40px; color: #777; font-style: italic"
+          data-aos="fade-up"
+        >
+          Proud to collaborate with certified Zoho & cloud automation partners
+          worldwide 🌍
+        </p>
+      </div>
     </section>
 
-    <style>
-      .partner-card {
-        background: #1a73e8; /* Card background color */
-        color: #fff;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        min-width: 200px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        cursor: default;
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
+    <!--Client stories-->
 
-      .partner-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-      }
-    </style>
-
-    <!-- Client Stories -->
     <section class="client-stories" id="case-studies">
-      <p class="section-subtitle" data-aos="fade-up">Success Stories</p>
-      <h2 class="section-title" data-aos="fade-up">Client Success Stories</h2>
+      <p class="section-subtitle">Success Stories</p>
+      <h2 class="section-title">Client Success Stories</h2>
+      <hr
+        style="
+          width: 780px;
+          height: 3px;
+          background-color: rgb(231, 126, 126);
+          border: none;
+          margin: 10px auto 20px;
+          border-radius: 2px;
+        "
+      />
 
-      <div class="story-container">
-        <img
-          src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Analytics dashboard"
-          class="story-image"
-          data-aos="fade-right"
-        />
-        <div class="story-content" data-aos="fade-left">
-          <div class="story-card">
-            <p>
-              "Automated accounting & reporting for a UAE-based trading group
-              with Zoho Books & Analytics, reducing month-end close time by
-              70%."
-            </p>
-          </div>
+      <div class="stories-grid">
+        <div class="story-card slide-left">
+          <span class="quote-icon">"</span>
+          <h3 class="company-name">Global Trading Corp</h3>
+          <p class="industry">Import/Export • UAE</p>
+          <p class="story-text">
+            Automated our entire accounting and reporting process with Zoho
+            Books & Analytics. Month-end close time reduced by 70%, giving our
+            finance team more time for strategic planning instead of manual data
+            entry.
+          </p>
         </div>
-      </div>
 
-      <div class="story-container">
-        <img
-          src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Business growth chart"
-          class="story-image"
-          data-aos="fade-right"
-        />
-        <div class="story-content" data-aos="fade-left">
-          <div class="story-card">
-            <p>
-              "Built a multi-branch setup with unified dashboards for an
-              India–US firm, enabling real-time visibility across 5 locations
-              and 3 time zones."
-            </p>
-          </div>
+        <div class="story-card slide-right">
+          <span class="quote-icon">"</span>
+          <h3 class="company-name">MultiSphere Solutions</h3>
+          <p class="industry">IT Services • India-US</p>
+          <p class="story-text">
+            Built a unified dashboard connecting 5 branches across 3 time zones.
+            Real-time visibility transformed how we manage projects and
+            resources. Our teams now collaborate seamlessly despite being
+            continents apart.
+          </p>
         </div>
-      </div>
 
-      <div class="story-container">
-        <img
-          src="https://images.pexels.com/photos/230544/pexels-photo-230544.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="E-commerce platform"
-          class="story-image"
-          data-aos="fade-right"
-        />
-        <div class="story-content" data-aos="fade-left">
-          <div class="story-card">
-            <p>
-              "Implemented complete CRM and inventory integration for an
-              e-commerce company, improving order processing speed by 85%."
-            </p>
-          </div>
+        <div class="story-card slide-left">
+          <span class="quote-icon">"</span>
+          <h3 class="company-name">EcommerceHub</h3>
+          <p class="industry">Retail • Online</p>
+          <p class="story-text">
+            Complete CRM and inventory integration revolutionized our
+            operations. Order processing speed improved by 85%, and our customer
+            satisfaction scores have never been higher. The system handles
+            50,000+ SKUs effortlessly.
+          </p>
         </div>
       </div>
     </section>
@@ -2722,6 +2867,27 @@
         currentSlide = (currentSlide + 1) % slides.length;
         slides[currentSlide].classList.add("active");
       }, 3000);
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add("visible");
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      // Observe all story cards
+      document.querySelectorAll(".story-card").forEach((card) => {
+        observer.observe(card);
+      });
     </script>
   </body>
 </html>
