@@ -275,54 +275,398 @@
         color: #991b1b;
       }
 
-      /* How We Work */
+      /* ========== Workflow Section ========== */
+      /* ========== Workflow Section ========== */
       .workflow {
-        background: #fef3f2;
+        background: linear-gradient(
+          135deg,
+          #fef3f2 0%,
+          #fff1f0 50%,
+          #fef3f2 100%
+        );
+        background-size: 200% 200%;
+        animation: gradientShift 15s ease infinite;
+        text-align: center;
+        padding: 5rem 2rem;
+        position: relative;
+        overflow: hidden;
       }
 
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Floating background elements */
+      .workflow::before,
+      .workflow::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        opacity: 0.05;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      .workflow::before {
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(circle, #dc2626, transparent);
+        top: -200px;
+        left: -200px;
+        animation-delay: 0s;
+      }
+
+      .workflow::after {
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(circle, #ef4444, transparent);
+        bottom: -250px;
+        right: -250px;
+        animation-delay: 7s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(50px, -50px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-30px, 30px) rotate(240deg);
+        }
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1rem;
+        color: #dc2626;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      /* Scroll Progress Timeline */
+      .workflow-progress {
+        position: relative;
+        width: 80%;
+        max-width: 1200px;
+        height: 4px;
+        background: rgba(220, 38, 38, 0.2);
+        margin: 2rem auto 4rem;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        width: 0%;
+        background: linear-gradient(90deg, #dc2626, #ef4444, #dc2626);
+        background-size: 200% 100%;
+        border-radius: 10px;
+        transition: width 0.3s ease;
+        animation: shimmer 2s linear infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -200% 0;
+        }
+        100% {
+          background-position: 200% 0;
+        }
+      }
+
+      /* UPDATED: 3x3 Grid Layout */
       .workflow-steps {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
         margin-top: 3rem;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 1;
       }
 
       .workflow-step {
-        text-align: center;
-        padding: 2rem;
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .workflow-step-bg {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        border-radius: 20px;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: -1;
+      }
+
+      .workflow-step:hover .workflow-step-bg {
+        opacity: 1;
+      }
+
+      .workflow-step:hover {
+        transform: translateY(-15px) rotateX(5deg);
+        box-shadow: 0 25px 50px rgba(220, 38, 38, 0.3);
+        border-color: #dc2626;
+        color: white;
+      }
+
+      .workflow-step:hover h3,
+      .workflow-step:hover p {
+        color: white;
+      }
+
+      .workflow-step:hover .step-number {
+        background: white;
+        color: #dc2626;
+        transform: scale(1.2) rotate(360deg);
       }
 
       .step-number {
-        width: 60px;
-        height: 60px;
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
         color: white;
+        font-weight: 800;
+        font-size: 1.5rem;
         border-radius: 50%;
+        width: 70px;
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 1rem;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 8px 20px rgba(220, 38, 38, 0.3);
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+      }
+
+      .step-number::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: -5px;
+        right: -5px;
+        bottom: -5px;
+        border: 2px solid #dc2626;
+        border-radius: 50%;
+        opacity: 0;
+        animation: pulse-ring 2s infinite;
+      }
+
+      @keyframes pulse-ring {
+        0% {
+          transform: scale(0.8);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1.3);
+          opacity: 0;
+        }
       }
 
       .workflow-step h3 {
         color: #1a1a1a;
-        margin-bottom: 0.5rem;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
       }
 
       .workflow-step p {
         color: #666;
+        line-height: 1.7;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      /* Expandable detail on click */
+      .workflow-step.expanded {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+      }
+
+      .workflow-step.expanded h3,
+      .workflow-step.expanded p {
+        color: white;
+      }
+
+      .workflow-step .extra-detail {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+        margin-top: 1rem;
+        padding-top: 0;
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .workflow-step.expanded .extra-detail {
+        max-height: 300px;
+        padding-top: 1rem;
+      }
+
+      /* Tooltip on hover */
+      .workflow-step::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        top: -60px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        background: rgba(0, 0, 0, 0.9);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .workflow-step:hover::after {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      /* Tooltip arrow */
+      .workflow-step::before {
+        content: "";
+        position: absolute;
+        top: -12px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-top: 8px solid rgba(0, 0, 0, 0.9);
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 1000;
+      }
+
+      .workflow-step:hover::before {
+        opacity: 1;
       }
 
       .workflow-tagline {
-        text-align: center;
-        font-size: 1.2rem;
+        margin-top: 4rem;
         color: #666;
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+      }
+
+      .workflow-cta {
         margin-top: 3rem;
-        font-style: italic;
+        position: relative;
+        z-index: 1;
+      }
+
+      .workflow-cta h3 {
+        color: #1a1a1a;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        font-weight: 700;
+      }
+
+      .workflow-cta .btn-primary {
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        color: white;
+        border: none;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-block;
+        text-decoration: none;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .workflow-cta .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .workflow-cta .btn-primary:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .workflow-cta .btn-primary:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(220, 38, 38, 0.4);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .workflow-steps {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 2rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .workflow-steps {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .workflow-step {
+          padding: 2rem 1.5rem;
+        }
       }
 
       /* Why Choose with Image */
@@ -1580,36 +1924,204 @@
       }
     </style>
 
-    <!-- How We Work -->
-    <section class="workflow">
-      <p class="section-subtitle" data-aos="fade-up">Our Process</p>
-      <h2 class="section-title" data-aos="fade-up">How We Work</h2>
+    <!-- How We Work Section -->
+    <section class="workflow" id="workflow">
+      <p class="section-subtitle" data-aos="fade-up" data-aos-duration="800">
+        Our Process
+      </p>
+      <h2
+        class="section-title"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="100"
+      >
+        How We Work
+      </h2>
+
+      <!-- Scroll Progress Bar -->
+      <div
+        class="workflow-progress"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="200"
+      >
+        <div class="progress-fill" id="workflowProgress"></div>
+      </div>
+
       <div class="workflow-steps">
-        <div class="workflow-step" data-aos="fade-right" data-aos-delay="100">
+        <!-- First Row -->
+        <div
+          class="workflow-step"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-delay="100"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
           <div class="step-number">1</div>
           <h3>Discovery</h3>
-          <p>Understanding your business needs and challenges</p>
+          <p>
+            Understanding your business needs and challenges to identify goals
+            and gaps.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> 1-2 weeks</p>
+            <p>
+              <strong>Deliverables:</strong> Requirement analysis, gap
+              assessment, strategic roadmap
+            </p>
+          </div>
         </div>
-        <div class="workflow-step" data-aos="fade-right" data-aos-delay="200">
+
+        <div
+          class="workflow-step"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="200"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
           <div class="step-number">2</div>
           <h3>Design</h3>
-          <p>Creating a customized Zoho solution blueprint</p>
+          <p>
+            Creating a customized Zoho solution blueprint with process mapping
+            and automation scope.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> 2-3 weeks</p>
+            <p>
+              <strong>Deliverables:</strong> System architecture, workflow
+              diagrams, integration plan
+            </p>
+          </div>
         </div>
-        <div class="workflow-step" data-aos="fade-right" data-aos-delay="300">
+
+        <div
+          class="workflow-step"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+          data-aos-delay="300"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
           <div class="step-number">3</div>
-          <h3>Implement</h3>
-          <p>Seamless deployment and integration</p>
+          <h3>Implementation</h3>
+          <p>
+            Seamless deployment and Zoho app integration tailored to your
+            workflow.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> 3-6 weeks</p>
+            <p>
+              <strong>Deliverables:</strong> Configured systems, data migration,
+              custom workflows
+            </p>
+          </div>
         </div>
-        <div class="workflow-step" data-aos="fade-right" data-aos-delay="400">
+
+        <!-- Second Row -->
+        <div
+          class="workflow-step"
+          data-aos="fade-right"
+          data-aos-duration="1000"
+          data-aos-delay="400"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
           <div class="step-number">4</div>
-          <h3>Train & Support</h3>
-          <p>Comprehensive training and ongoing assistance</p>
+          <h3>Training</h3>
+          <p>
+            Hands-on training sessions for your team to maximize efficiency and
+            adoption.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> 1-2 weeks</p>
+            <p>
+              <strong>Deliverables:</strong> Training materials, video
+              tutorials, user guides
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="workflow-step"
+          data-aos="fade-up"
+          data-aos-duration="1000"
+          data-aos-delay="500"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
+          <div class="step-number">5</div>
+          <h3>Support</h3>
+          <p>
+            Dedicated technical assistance and real-time troubleshooting
+            whenever needed.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> Ongoing</p>
+            <p>
+              <strong>Deliverables:</strong> 24/7 helpdesk, ticket management,
+              priority support
+            </p>
+          </div>
+        </div>
+
+        <div
+          class="workflow-step"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+          data-aos-delay="600"
+          data-aos-easing="ease-out-back"
+          data-tooltip="Click to learn more"
+          onclick="toggleStep(this)"
+        >
+          <div class="workflow-step-bg"></div>
+          <div class="step-number">6</div>
+          <h3>Optimization</h3>
+          <p>
+            Regular system reviews, upgrades, and performance optimization for
+            long-term success.
+          </p>
+          <div class="extra-detail">
+            <p><strong>Duration:</strong> Quarterly</p>
+            <p>
+              <strong>Deliverables:</strong> Performance reports, system audits,
+              enhancement recommendations
+            </p>
+          </div>
         </div>
       </div>
-      <p class="workflow-tagline" data-aos="fade-up">
-        Our proven 4-step approach ensures successful Zoho implementation, every
-        time.
+
+      <p
+        class="workflow-tagline"
+        data-aos="fade-up"
+        data-aos-duration="800"
+        data-aos-delay="700"
+      >
+        Our proven 6-step methodology ensures every Zoho implementation is
+        efficient, scalable, and future-ready.
       </p>
+
+      <!-- CTA -->
+      <div
+        class="workflow-cta"
+        data-aos="zoom-in"
+        data-aos-duration="800"
+        data-aos-delay="800"
+      >
+        <h3>Ready to Streamline Your Business with Zoho?</h3>
+        <a href="#contact" class="btn-primary">Book a Free Consultation</a>
+      </div>
     </section>
 
     <!-- Why Choose -->
@@ -1870,27 +2382,16 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      AOS.init({
-        duration: 800,
-        once: true,
-        offset: 100,
-      });
-
-      // Smooth scrolling
+      AOS.init({ duration: 800, once: true, offset: 100 }); // Smooth scrolling
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
-      });
-
-      // Header shadow on scroll
+      }); // Header shadow on scroll
       window.addEventListener("scroll", () => {
         const header = document.querySelector("header");
         if (window.scrollY > 100) {
