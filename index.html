@@ -12,6 +12,18 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
       rel="stylesheet"
     />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Font Awesome -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
     <style>
       * {
         margin: 0;
@@ -669,9 +681,12 @@
         }
       }
 
-      /* Why Choose with Image */
+      /* ========== WHY CHOOSE SECTION ========== */
       .why-section {
         background: #fff;
+        padding: 5rem 8%;
+        position: relative;
+        overflow: hidden;
       }
 
       .why-container {
@@ -679,33 +694,26 @@
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
-        margin-top: 3rem;
-      }
-
-      .why-image {
-        width: 100%;
-        height: 500px;
-        border-radius: 20px;
-        object-fit: cover;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       }
 
       .why-content {
         display: flex;
         flex-direction: column;
-        gap: 2rem;
+        gap: 1.5rem;
       }
 
       .why-card {
-        background: #fef3f2;
+        background: #fff6f6;
         padding: 1.5rem;
         border-radius: 15px;
-        transition: all 0.3s;
+        box-shadow: 0 10px 25px rgba(220, 38, 38, 0.08);
+        transition: all 0.3s ease;
+        border-left: 4px solid #dc2626;
       }
 
       .why-card:hover {
         transform: translateX(10px);
-        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.15);
+        box-shadow: 0 12px 30px rgba(220, 38, 38, 0.2);
       }
 
       .why-card h3 {
@@ -716,38 +724,213 @@
 
       .why-card p {
         color: #666;
+        line-height: 1.6;
       }
 
-      /* Industries */
-      .industries {
-        background: #fef3f2;
+      /* SLIDESHOW */
+      .why-slideshow {
+        position: relative;
+        width: 100%;
+        height: 500px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
       }
 
-      .industries-grid {
+      .why-slideshow img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+      }
+
+      .why-slideshow img.active {
+        opacity: 1;
+      }
+
+      /* RESPONSIVE */
+      @media (max-width: 900px) {
+        .why-container {
+          grid-template-columns: 1fr;
+        }
+        .why-slideshow {
+          height: 350px;
+          margin-top: 2rem;
+        }
+      }
+
+      /* ========== INDUSTRIES SECTION ========== */
+
+      /* Section Container */
+      .industries-section {
+        position: relative;
+        background: #eeeaea;
+        padding: 100px 80px;
+        overflow: hidden;
+      }
+
+      .industries-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 60px;
+        flex-wrap: wrap;
+      }
+
+      /* Left Side (Text) */
+      .industries-info {
+        flex: 1;
+        position: relative;
+        max-width: 500px;
+      }
+
+      .background-text {
+        position: absolute;
+        top: -40px;
+        left: 0;
+        font-size: 6rem;
+        font-weight: 800;
+        color: rgba(205, 213, 228, 0.6);
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .subtitle {
+        color: #ef4444;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 10px;
+      }
+
+      .main-title {
+        font-size: 2.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        z-index: 2;
+        position: relative;
+        color: #111827;
+      }
+
+      .description {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: #4b5563;
+        margin-bottom: 30px;
+      }
+
+      .cta-btn {
+        background: linear-gradient(90deg, #dc2626, #ef4444);
+        color: white;
+        padding: 12px 28px;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .cta-btn:hover {
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+        transform: scale(1.05);
+      }
+
+      /* Right Side (Cards Grid) */
+      .industries-cards {
+        flex: 1.2;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        justify-items: center;
+        align-items: center;
       }
 
       .industry-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
+        background: #fff;
+        border-radius: 16px;
+        padding: 30px 25px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
         text-align: center;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
       }
 
       .industry-card:hover {
-        transform: translateY(-5px);
-        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-        color: white;
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .industry-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #ef4444, #f59e0b);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 0;
+      }
+
+      .industry-card:hover::before {
+        opacity: 0.15;
+      }
+
+      .industry-card .icon {
+        margin-bottom: 15px;
+        z-index: 2;
+        position: relative;
+      }
+
+      .industry-card img {
+        width: 60px;
+        height: 60px;
       }
 
       .industry-card h3 {
         font-size: 1.2rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+        color: #111827;
+        z-index: 2;
+        position: relative;
+      }
+
+      .industry-card p {
+        font-size: 0.95rem;
+        color: #4b5563;
+        line-height: 1.6;
+        z-index: 2;
+        position: relative;
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .industries-container {
+          flex-direction: column;
+        }
+        .industries-info {
+          text-align: center;
+          max-width: 700px;
+        }
+        .background-text {
+          font-size: 4rem;
+          top: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .industries-cards {
+          grid-template-columns: 1fr 1fr;
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .industries-cards {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* Partners Section */
@@ -2124,11 +2307,14 @@
       </div>
     </section>
 
-    <!-- Why Choose -->
+    <!-- Why Choose Section -->
+    <!-- Why Choose Zolytics -->
     <section class="why-section">
       <p class="section-subtitle" data-aos="fade-up">Why Us</p>
       <h2 class="section-title" data-aos="fade-up">Why Choose Zolytics</h2>
+
       <div class="why-container">
+        <!-- LEFT SIDE: CONTENT -->
         <div class="why-content" data-aos="fade-right">
           <div class="why-card">
             <h3>Certified Zoho Finance Experts</h3>
@@ -2147,8 +2333,8 @@
           <div class="why-card">
             <h3>End-to-End Automation</h3>
             <p>
-              We connect all your business processes - from accounting to
-              analytics - creating unified, efficient workflows.
+              We connect all your business processes — from accounting to
+              analytics — creating unified, efficient workflows.
             </p>
           </div>
           <div class="why-card">
@@ -2166,37 +2352,125 @@
             </p>
           </div>
         </div>
-        <img
-          src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
-          alt="Professional team meeting"
-          class="why-image"
-          data-aos="fade-left"
-        />
+
+        <!-- RIGHT SIDE: SLIDESHOW IMAGES -->
+        <div class="why-slideshow" data-aos="fade-left">
+          <img
+            src="https://images.pexels.com/photos/3184357/pexels-photo-3184357.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Team collaboration"
+            class="slide active"
+          />
+          <img
+            src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Analytics dashboard"
+            class="slide"
+          />
+          <img
+            src="https://images.pexels.com/photos/3182833/pexels-photo-3182833.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Meeting discussion"
+            class="slide"
+          />
+          <img
+            src="https://images.pexels.com/photos/1181649/pexels-photo-1181649.jpeg?auto=compress&cs=tinysrgb&w=800"
+            alt="Business success"
+            class="slide"
+          />
+        </div>
       </div>
     </section>
 
-    <!-- Industries -->
-    <section class="industries" id="industries">
-      <p class="section-subtitle" data-aos="fade-up">Our Expertise</p>
-      <h2 class="section-title" data-aos="fade-up">Industries We Serve</h2>
-      <div class="industries-grid">
-        <div class="industry-card" data-aos="flip-left" data-aos-delay="100">
-          <h3>Accounting & Finance</h3>
+    <!-- Industries We Serve Section -->
+    <section class="industries-section">
+      <div class="industries-container">
+        <!-- Left side: heading + text + CTA -->
+        <div class="industries-info" data-aos="fade-right">
+          <div class="background-text">Industries</div>
+          <p class="subtitle">Our Expertise</p>
+          <h2 class="main-title">Industries We Serve</h2>
+          <p class="description">
+            We have worked across multiple industry verticals over the years and
+            helped businesses in diverse domains. We serve a wide range of
+            industries like Accounting & Finance, E-commerce, Hospitality & Real
+            Estate, Professional Services, IT & Software, and more.
+          </p>
+          <button class="cta-btn">Let’s Talk →</button>
         </div>
-        <div class="industry-card" data-aos="flip-left" data-aos-delay="150">
-          <h3>E-commerce</h3>
-        </div>
-        <div class="industry-card" data-aos="flip-left" data-aos-delay="200">
-          <h3>Hospitality & Real Estate</h3>
-        </div>
-        <div class="industry-card" data-aos="flip-left" data-aos-delay="250">
-          <h3>Professional Services</h3>
-        </div>
-        <div class="industry-card" data-aos="flip-left" data-aos-delay="300">
-          <h3>IT & Software</h3>
+
+        <!-- Right side: cards -->
+        <div class="industries-cards" data-aos="fade-left">
+          <div class="industry-card">
+            <div class="icon">
+              <img
+                src="https://png.pngtree.com/template/20191014/ourmid/pngtree-colorful-diagram-business-and-accounting-logo-image_318295.jpg"
+                alt="Accounting & Finance"
+              />
+            </div>
+            <h3>Accounting & Finance</h3>
+            <p>
+              Comprehensive financial operations solutions tailored to your
+              business.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2331/2331748.png"
+                alt="E-commerce"
+              />
+            </div>
+            <h3>E-commerce</h3>
+            <p>
+              Scalable e-commerce automation, from order to delivery and
+              analytics.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2331/2331719.png"
+                alt="Hospitality & Real Estate"
+              />
+            </div>
+            <h3>Hospitality & Real Estate</h3>
+            <p>
+              Streamlined operations for hotels, resorts, properties, and
+              real-estate workflows.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2331/2331776.png"
+                alt="Professional Services"
+              />
+            </div>
+            <h3>Professional Services</h3>
+            <p>
+              Automation and CRM solutions for consultants, agencies, and
+              service-based firms.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/2331/2331781.png"
+                alt="IT & Software"
+              />
+            </div>
+            <h3>IT & Software</h3>
+            <p>
+              Custom software, SaaS workflows, and integrated technology
+              solutions.
+            </p>
+          </div>
         </div>
       </div>
     </section>
+
     <!-- Partners Section -->
     <section class="partners" style="padding: 50px 0; background: #f8f8f8">
       <p class="section-subtitle" data-aos="fade-up">Our Network</p>
@@ -2391,7 +2665,45 @@
             target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
-      }); // Header shadow on scroll
+      });
+
+      AOS.init();
+
+      const steps = document.querySelectorAll("#steps [data-step]");
+      const stepImage = document.getElementById("step-image");
+      const stepDesc = document.getElementById("step-description");
+
+      const stepData = {
+        1: {
+          img: "https://cdn.dribbble.com/users/417326/screenshots/15368288/media/7b5ff4067c5224a657e301f7b6a4b0ec.gif",
+          desc: "In the discovery phase, we learn your business processes and challenges to shape the perfect Zoho solution.",
+        },
+        2: {
+          img: "https://cdn.dribbble.com/users/1579322/screenshots/17176256/media/792ea03c8a4eb3b5d9d9e5ad4b3843a2.gif",
+          desc: "In the design phase, we visualize workflows and build user-friendly Zoho dashboards tailored for you.",
+        },
+        3: {
+          img: "https://cdn.dribbble.com/users/1718876/screenshots/11241074/media/f41826a03ad0bfb90d3a6f43dc9e1f91.gif",
+          desc: "Implementation focuses on bringing the design to life, ensuring smooth integration and automation.",
+        },
+        4: {
+          img: "https://cdn.dribbble.com/users/1787323/screenshots/16298432/media/59e3daffcf519c38206b9c2d50d1cb3d.gif",
+          desc: "Our support team trains your staff, ensuring they are confident using Zoho tools daily.",
+        },
+      };
+
+      steps.forEach((step) => {
+        step.addEventListener("mouseenter", () => {
+          const stepNum = step.dataset.step;
+          stepImage.src = stepData[stepNum].img;
+          stepDesc.textContent = stepData[stepNum].desc;
+
+          steps.forEach((s) => s.classList.remove("step-active"));
+          step.classList.add("step-active");
+        });
+      });
+
+      // Header shadow on scroll
       window.addEventListener("scroll", () => {
         const header = document.querySelector("header");
         if (window.scrollY > 100) {
@@ -2400,6 +2712,16 @@
           header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
         }
       });
+
+      // ===== Image Slideshow Script =====
+      let slides = document.querySelectorAll(".why-slideshow .slide");
+      let currentSlide = 0;
+
+      setInterval(() => {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }, 3000);
     </script>
   </body>
 </html>
