@@ -200,6 +200,7 @@
         letter-spacing: 2px;
       }
 
+
       /* About Section with Image */
 
       .about-section {
@@ -1411,11 +1412,12 @@
 
       /* Badges */
 
-      .container {
-        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #e7e9f0;
-      }
-      /* Section Styling */
+   .container {
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #e7e9f0;
+}
+
+/* Section Styling */
 .section {
   margin: 100px auto;
   text-align: center;
@@ -1448,27 +1450,24 @@
 .badge-card {
   background: #faebeb;
   border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
   padding: 25px 20px;
   width: 400px;
   text-align: center;
   transition: all 0.3s ease;
 }
 
-.badge-card:hover .badge-icon {
-  transform: rotateY(360deg);
-}
-/* Badge Icon — rotates on hover */
+/* Rotating Badge Icon */
 .badge-icon {
-  width: 280px;        /* increased size */
+  width: 280px;        
   height: 280px; 
   margin: 0 auto 15px;
-  filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
-  transition: transform 1.5s ease-in-out;
-  transform-style: preserve-3d; /* enables 3D effect */
+  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.35));
+  transform-style: preserve-3d;
+  animation: spin360 6s linear infinite; /* continuous rotation */
 }
 
-
+/* Continuous Vertical Spin */
 @keyframes spin360 {
   from {
     transform: rotateY(0deg);
@@ -1483,7 +1482,7 @@
   width: 100%;
   height: 100%;
   object-fit: contain;
-  backface-visibility: hidden; /* hides image backside during flip */
+  backface-visibility: hidden; /* hides backside during rotation */
 }
 
 /* Text styling */
@@ -1497,6 +1496,7 @@
   font-size: 0.9rem;
   color: #777;
 }
+
 
 
 
@@ -1878,7 +1878,9 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content" data-aos="fade-up">
-        <h1>Transform the Way You Work with Zoho.</h1>
+         <h1>
+      Transform the Way You Work with Zoho.
+    </h1>
         <p>
           We help businesses automate accounting, CRM, HR, and analytics —
           creating connected systems that drive growth.
