@@ -201,36 +201,187 @@
       }
 
       /* About Section with Image */
+
       .about-section {
-        background: #fff;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+        padding: 100px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% center;
+        }
+        50% {
+          background-position: 100% center;
+        }
       }
 
       .about-container {
+        max-width: 1400px;
+        margin: 0 auto;
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 4rem;
+        gap: 80px;
         align-items: center;
-        margin-top: 3rem;
       }
 
-      .about-image {
+      .video-wrapper {
+        position: relative;
         width: 100%;
         height: 500px;
         border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+        transition: all 0.4s ease;
+      }
+
+      .video-wrapper:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 30px 80px rgba(102, 126, 234, 0.3);
+      }
+
+      .about-video {
+        width: 100%;
+        height: 100%;
         object-fit: cover;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.05) 0%,
+          rgba(118, 75, 162, 0.05) 100%
+        );
+        pointer-events: none;
       }
 
       .about-content {
         display: flex;
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 25px;
       }
 
       .about-content p {
-        color: #666;
-        font-size: 1.1rem;
-        line-height: 1.8;
+        color: #4a5568;
+        font-size: 1.08rem;
+        line-height: 1.9;
+        text-align: justify;
+      }
+
+      .stats-inline {
+        display: flex;
+        gap: 40px;
+        margin-top: 30px;
+        flex-wrap: wrap;
+      }
+
+      .stat-item {
+        flex: 1;
+        min-width: 120px;
+      }
+
+      .stat-number {
+        font-size: 2.8rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 5px;
+        display: block;
+      }
+
+      .stat-label {
+        color: #718096;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 968px) {
+        .about-container {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .video-wrapper {
+          height: 400px;
+        }
+
+        .stats-inline {
+          justify-content: space-around;
+        }
+      }
+
+      /* Floating particles background */
+      .floating-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .shape {
+        position: absolute;
+        background: rgba(102, 126, 234, 0.03);
+        border-radius: 50%;
+      }
+
+      .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: 10%;
+        left: 5%;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .shape-2 {
+        width: 200px;
+        height: 200px;
+        bottom: 10%;
+        right: 10%;
+        animation: float 15s infinite ease-in-out reverse;
+      }
+
+      .shape-3 {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        right: 20%;
+        animation: float 18s infinite ease-in-out;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+          transform: translate(-20px, 20px) scale(0.9);
+        }
+      }
+
+      .about-container > * {
+        position: relative;
+        z-index: 1;
       }
 
       /* Expertise Grid */
@@ -807,9 +958,11 @@
 
       .main-title {
         font-size: 2.8rem;
-        font-weight: 700;
         margin-bottom: 20px;
         z-index: 2;
+        font-weight: 600;
+        text-transform: uppercase;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
         position: relative;
         color: #111827;
       }
@@ -1064,9 +1217,13 @@
       }
 
       /*Client Stories */
+
       .client-stories {
         max-width: 1200px;
         margin: 0 auto;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5eeee;
+        padding: 80px 20px;
       }
 
       .section-subtitle {
@@ -1084,8 +1241,18 @@
         color: rgb(17, 17, 17);
         font-size: 3rem;
         font-weight: 700;
-        margin-bottom: 80px;
+        margin-bottom: 20px;
         text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .title-divider {
+        width: 780px;
+        max-width: 90%;
+        height: 3px;
+        background-color: rgb(231, 126, 126);
+        border: none;
+        margin: 10px auto 60px;
+        border-radius: 2px;
       }
 
       .stories-grid {
@@ -1096,7 +1263,7 @@
       }
 
       .story-card {
-        background: rgb(237, 228, 228);
+        background: rgb(226, 221, 228);
         padding: 35px;
         border-radius: 20px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
@@ -1105,6 +1272,7 @@
         overflow: hidden;
         opacity: 0;
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 280px;
       }
 
       .story-card.slide-left {
@@ -1142,6 +1310,33 @@
         box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
       }
 
+      .story-content {
+        position: relative;
+      }
+
+      .story-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s ease, transform 1s ease;
+        pointer-events: none;
+      }
+
+      .story-item.active {
+        position: relative;
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+
+      .story-item.fade-out {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
       .company-name {
         font-size: 1.4rem;
         font-weight: 700;
@@ -1170,6 +1365,28 @@
         font-size: 3rem;
         color: rgba(102, 126, 234, 0.1);
         font-family: Georgia, serif;
+        z-index: 1;
+      }
+
+      .story-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .indicator.active {
+        width: 24px;
+        border-radius: 4px;
+        background: #667eea;
       }
 
       @media (max-width: 768px) {
@@ -1392,20 +1609,40 @@
     </section>
 
     <!-- About Section -->
+
     <section class="about-section" id="about">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+
       <p class="section-subtitle" data-aos="fade-up">Decade of Expertise</p>
-      <h2 class="section-title" data-aos="fade-up">
+      <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">
         About Zolytics & Our Vision
       </h2>
+
       <div class="about-container">
-        <img
-          src="https://media.istockphoto.com/id/1443245439/photo/business-meeting-businesswoman-woman-office-portrait-job-career-happy-businessman-teamwork.jpg?s=612x612&w=0&k=20&c=1ZR02c1UKfGdBCNWzzKlrwrVZuEiOqnAKcKF4V_t038="
-          alt="Team collaboration"
-          class="about-image"
+        <div
+          class="video-wrapper"
           data-aos="fade-right"
-        />
-        <div class="about-content" data-aos="fade-left">
-          <p>
+          data-aos-duration="1000"
+        >
+          <video class="about-video" autoplay muted loop playsinline>
+            <source
+              src="https://www.pexels.com/download/video/7660169/"
+              type="video/mp4"
+            />
+          </video>
+          <div class="video-overlay"></div>
+        </div>
+
+        <div
+          class="about-content"
+          data-aos="fade-left"
+          data-aos-duration="1000"
+        >
+          <p data-aos="fade-left" data-aos-delay="200">
             Zolytics is a Zoho-focused consulting firm helping businesses
             automate operations, reduce manual work, and scale smarter. We
             specialize in Zoho Finance (Books, Inventory, Payroll), CRM,
@@ -1413,7 +1650,7 @@
             customization, and training.
           </p>
 
-          <p>
+          <p data-aos="fade-left" data-aos-delay="300">
             Our team brings together seasoned professionals with deep expertise
             at the crossroads of finance and technology. As certified Zoho
             experts, we have delivered corporate and individual training across
@@ -1422,7 +1659,7 @@
             manufacturing.
           </p>
 
-          <p>
+          <p data-aos="fade-left" data-aos-delay="400">
             Our remote-first team is built on values of integrity,
             problem-solving, commitment, and client satisfaction. With a growing
             portfolio of successful implementations across global markets, we
@@ -1430,11 +1667,26 @@
             solve real-world business challenges and support sustainable growth.
           </p>
 
-          <p>
+          <p data-aos="fade-left" data-aos-delay="500">
             Whether you're starting your automation journey or scaling with
             Zoho, we're here as your trusted ally in transformation — every step
             of the way.
           </p>
+
+          <div class="stats-inline" data-aos="fade-up" data-aos-delay="600">
+            <div class="stat-item">
+              <span class="stat-number" data-count="150">0</span>
+              <div class="stat-label">Projects Delivered</div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="98">0</span>
+              <div class="stat-label">Client Satisfaction</div>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="10">0</span>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1447,9 +1699,7 @@
         color: #333;
       "
     >
-      <p class="section-subtitle" data-aos="fade-up" style="color: #333">
-        Our Solutions
-      </p>
+      <p class="section-subtitle" data-aos="fade-up">Our Solutions</p>
       <h2 class="section-title" data-aos="fade-up" style="color: #111">
         Unified Zoho Solutions for Every Department
       </h2>
@@ -2608,9 +2858,13 @@
           Our Network
         </p>
         <h2
+          style="
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5em;
+            font-weight: 700;
+          "
           class="section-title"
           data-aos="fade-up"
-          style="font-size: 2.5rem; font-weight: 700; color: #111"
         >
           Trusted by Zoho Partners Across the Globe
         </h2>
@@ -2698,56 +2952,128 @@
     </section>
 
     <!--Client stories-->
-
     <section class="client-stories" id="case-studies">
       <p class="section-subtitle">Success Stories</p>
       <h2 class="section-title">Client Success Stories</h2>
-      <hr
-        style="
-          width: 780px;
-          height: 3px;
-          background-color: rgb(231, 126, 126);
-          border: none;
-          margin: 10px auto 20px;
-          border-radius: 2px;
-        "
-      />
+      <hr class="title-divider" />
 
       <div class="stories-grid">
+        <!-- Card 1 -->
         <div class="story-card slide-left">
           <span class="quote-icon">"</span>
-          <h3 class="company-name">Global Trading Corp</h3>
-          <p class="industry">Import/Export • UAE</p>
-          <p class="story-text">
-            Automated our entire accounting and reporting process with Zoho
-            Books & Analytics. Month-end close time reduced by 70%, giving our
-            finance team more time for strategic planning instead of manual data
-            entry.
-          </p>
+          <div class="story-content">
+            <div class="story-item active">
+              <h3 class="company-name">Global Trading Corp</h3>
+              <p class="industry">Import/Export • UAE</p>
+              <p class="story-text">
+                Automated our entire accounting and reporting process with Zoho
+                Books & Analytics. Month-end close time reduced by 70%, giving
+                our finance team more time for strategic planning.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">TechVision Industries</h3>
+              <p class="industry">Manufacturing • Singapore</p>
+              <p class="story-text">
+                Streamlined our supply chain management with real-time tracking.
+                Inventory accuracy improved to 99%, and we reduced waste by 45%.
+                The ROI was visible within 3 months.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">Digital Nexus</h3>
+              <p class="industry">Marketing Agency • USA</p>
+              <p class="story-text">
+                Transformed client reporting with automated dashboards. Our team
+                saves 20 hours weekly, and clients love the transparency.
+                Campaign performance tracking is now effortless.
+              </p>
+            </div>
+          </div>
+          <div class="story-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+          </div>
         </div>
 
+        <!-- Card 2 -->
         <div class="story-card slide-right">
           <span class="quote-icon">"</span>
-          <h3 class="company-name">MultiSphere Solutions</h3>
-          <p class="industry">IT Services • India-US</p>
-          <p class="story-text">
-            Built a unified dashboard connecting 5 branches across 3 time zones.
-            Real-time visibility transformed how we manage projects and
-            resources. Our teams now collaborate seamlessly despite being
-            continents apart.
-          </p>
+          <div class="story-content">
+            <div class="story-item active">
+              <h3 class="company-name">MultiSphere Solutions</h3>
+              <p class="industry">IT Services • India-US</p>
+              <p class="story-text">
+                Built a unified dashboard connecting 5 branches across 3 time
+                zones. Real-time visibility transformed how we manage projects
+                and resources. Our teams now collaborate seamlessly.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">FinanceFlow Ltd</h3>
+              <p class="industry">Financial Services • UK</p>
+              <p class="story-text">
+                Automated compliance reporting across multiple jurisdictions.
+                Audit preparation time decreased by 80%, and we maintain 100%
+                regulatory compliance with ease.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">GreenLeaf Organic</h3>
+              <p class="industry">Agriculture • Australia</p>
+              <p class="story-text">
+                Connected farm operations with distribution centers seamlessly.
+                Track produce from field to market with complete traceability.
+                Customer trust and sales both increased significantly.
+              </p>
+            </div>
+          </div>
+          <div class="story-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+          </div>
         </div>
 
+        <!-- Card 3 -->
         <div class="story-card slide-left">
           <span class="quote-icon">"</span>
-          <h3 class="company-name">EcommerceHub</h3>
-          <p class="industry">Retail • Online</p>
-          <p class="story-text">
-            Complete CRM and inventory integration revolutionized our
-            operations. Order processing speed improved by 85%, and our customer
-            satisfaction scores have never been higher. The system handles
-            50,000+ SKUs effortlessly.
-          </p>
+          <div class="story-content">
+            <div class="story-item active">
+              <h3 class="company-name">EcommerceHub</h3>
+              <p class="industry">Retail • Online</p>
+              <p class="story-text">
+                Complete CRM and inventory integration revolutionized our
+                operations. Order processing speed improved by 85%, and customer
+                satisfaction scores have never been higher. Handles 50,000+ SKUs
+                effortlessly.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">EduTech Academy</h3>
+              <p class="industry">Education • Canada</p>
+              <p class="story-text">
+                Managed student enrollment, schedules, and communications in one
+                platform. Administrative overhead reduced by 60%, allowing us to
+                focus more on teaching quality and student success.
+              </p>
+            </div>
+            <div class="story-item">
+              <h3 class="company-name">FitLife Studios</h3>
+              <p class="industry">Fitness & Wellness • Dubai</p>
+              <p class="story-text">
+                Integrated membership management with class scheduling and
+                billing. Member retention increased by 40%, and our staff can
+                now focus on providing excellent customer experiences.
+              </p>
+            </div>
+          </div>
+          <div class="story-indicators">
+            <span class="indicator active"></span>
+            <span class="indicator"></span>
+            <span class="indicator"></span>
+          </div>
         </div>
       </div>
     </section>
@@ -2887,6 +3213,110 @@
       // Observe all story cards
       document.querySelectorAll(".story-card").forEach((card) => {
         observer.observe(card);
+      });
+
+      // Auto-rotate stories
+      function rotateStories() {
+        const cards = document.querySelectorAll(".story-card");
+
+        cards.forEach((card, cardIndex) => {
+          const stories = card.querySelectorAll(".story-item");
+          const indicators = card.querySelectorAll(".indicator");
+          let currentIndex = 0;
+
+          function showNextStory() {
+            // Fade out current story
+            stories[currentIndex].classList.add("fade-out");
+            indicators[currentIndex].classList.remove("active");
+
+            setTimeout(() => {
+              stories[currentIndex].classList.remove("active", "fade-out");
+
+              // Move to next story
+              currentIndex = (currentIndex + 1) % stories.length;
+
+              // Fade in next story
+              stories[currentIndex].classList.add("active");
+              indicators[currentIndex].classList.add("active");
+            }, 800); // Wait for fade out to complete
+          }
+
+          // Start rotation after initial delay, staggered for each card
+          setTimeout(() => {
+            setInterval(showNextStory, 6000); // Change every 6 seconds
+          }, cardIndex * 2000); // Stagger start by 2 seconds per card
+        });
+      }
+
+      // Start rotation when page loads
+      window.addEventListener("load", () => {
+        setTimeout(rotateStories, 1000); // Start after 1 second
+      });
+
+      // Manual click on indicators
+      document.querySelectorAll(".story-card").forEach((card) => {
+        const indicators = card.querySelectorAll(".indicator");
+        const stories = card.querySelectorAll(".story-item");
+
+        indicators.forEach((indicator, index) => {
+          indicator.addEventListener("click", () => {
+            // Remove active from all
+            stories.forEach((s) => s.classList.remove("active", "fade-out"));
+            indicators.forEach((i) => i.classList.remove("active"));
+
+            // Add active to clicked
+            stories[index].classList.add("active");
+            indicators[index].classList.add("active");
+          });
+        });
+      });
+
+      // Initialize AOS
+      AOS.init({
+        duration: 800,
+        easing: "ease-in-out",
+        once: true,
+        offset: 100,
+      });
+
+      // Animated counter for stats
+      function animateCounter(element) {
+        const target = parseInt(element.getAttribute("data-count"));
+        const duration = 2000;
+        const step = target / (duration / 16);
+        let current = 0;
+
+        const counter = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            element.textContent = target + (target === 98 ? "%" : "+");
+            clearInterval(counter);
+          } else {
+            element.textContent =
+              Math.floor(current) + (target === 98 ? "%" : "+");
+          }
+        }, 16);
+      }
+
+      // Intersection Observer for counter animation
+      const counterObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              !entry.target.classList.contains("counted")
+            ) {
+              animateCounter(entry.target);
+              entry.target.classList.add("counted");
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      // Observe all stat numbers
+      document.querySelectorAll(".stat-number").forEach((stat) => {
+        counterObserver.observe(stat);
       });
     </script>
   </body>
