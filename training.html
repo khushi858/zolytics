@@ -1,0 +1,2714 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zolytics Training - Master Client Management</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+          "Noto Color Emoji";
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      /* Navigation Styles */
+      nav {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        border-bottom: 1px solid rgba(229, 231, 235, 0.8);
+      }
+
+      .nav-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .nav-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 80px;
+      }
+
+      .nav-brand {
+        display: flex;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.1);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .dropdown-parent {
+        position: relative;
+      }
+
+      .nav-item {
+        color: #374151;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        transition: color 0.3s ease;
+      }
+
+      .nav-item:hover {
+        color: #3b82f6;
+      }
+
+      .dropdown-arrow {
+        margin-left: 0.5rem;
+        font-size: 0.875rem;
+        transition: transform 0.3s ease;
+      }
+
+      .dropdown-parent:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      .dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        border-radius: 1rem;
+        padding: 2rem;
+        width: 384px;
+        border: 1px solid rgba(229, 231, 235, 0.8);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+      }
+
+      .dropdown-parent:hover .dropdown {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        border-radius: 0.75rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        transform: scale(1);
+      }
+
+      .dropdown-item:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1),
+          rgba(147, 51, 234, 0.1)
+        );
+        transform: scale(1.05);
+      }
+
+      .dropdown-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 1rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        font-size: 1.5rem;
+      }
+
+      .dropdown-content h3 {
+        font-weight: 700;
+        color: #1f2937;
+        font-size: 1.125rem;
+        margin: 0 0 0.25rem 0;
+      }
+
+      .dropdown-content p {
+        font-size: 0.875rem;
+        color: #6b7280;
+        margin: 0;
+      }
+
+      .nav-link {
+        color: #374151;
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        font-size: 1.125rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link:hover {
+        color: #ef4444;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.75rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+      }
+
+      .cta-button:hover {
+        box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        transform: scale(1.05);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #1e40af 0%,
+          #3b82f6 50%,
+          #60a5fa 100%
+        );
+        color: white;
+        padding: 140px 5% 80px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        background-size: 400% 400%;
+        animation: heroGradient 8s ease infinite;
+      }
+
+      @keyframes heroGradient {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 80%,
+            rgba(120, 119, 198, 0.3) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(255, 119, 198, 0.3) 0%,
+            transparent 50%
+          );
+        animation: colorShift 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes colorShift {
+        0% {
+          opacity: 0.3;
+          transform: rotate(0deg) scale(1);
+        }
+        100% {
+          opacity: 0.6;
+          transform: rotate(360deg) scale(1.1);
+        }
+      }
+
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.3s forwards;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: slideUp 1s ease 0.6s forwards;
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Training Paths Section */
+      .training-paths {
+        padding: 100px 5%;
+        background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .training-paths::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 30% 20%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 80%,
+            rgba(168, 85, 247, 0.1) 0%,
+            transparent 50%
+          );
+        animation: pathsGlow 8s ease-in-out infinite alternate;
+      }
+
+      @keyframes pathsGlow {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1rem;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-title p {
+        font-size: 1.2rem;
+        color: #64748b;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .paths-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .path-card {
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        opacity: 0;
+        transform: translateY(50px) rotateX(10deg);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .path-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.05),
+          transparent
+        );
+        transition: left 0.8s ease;
+      }
+
+      .path-card:hover::before {
+        left: 100%;
+      }
+
+      .path-card.animate {
+        opacity: 1;
+        transform: translateY(0) rotateX(0deg);
+      }
+
+      .path-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        border-color: rgba(37, 99, 235, 0.3);
+      }
+
+      .path-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .path-icon.beginner {
+        background: linear-gradient(135deg, #10b981, #059669);
+      }
+
+      .path-icon.intermediate {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+      }
+
+      .path-icon.advanced {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+      }
+
+      .path-icon.expert {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      }
+
+      .path-card:hover .path-icon {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+      }
+
+      .path-card h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 1rem;
+      }
+
+      .path-card p {
+        color: #64748b;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .path-stats {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .stat {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .path-button {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 12px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .path-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      }
+
+      /* Interactive Learning Section */
+      .interactive-learning {
+        padding: 100px 5%;
+        background: white;
+      }
+
+      .learning-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .learning-content h3 {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .learning-features {
+        list-style: none;
+        padding: 0;
+      }
+
+      .learning-features li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        padding: 1rem;
+        background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+
+      .learning-features li.animate {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .learning-features li:hover {
+        background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+        transform: translateX(10px);
+      }
+
+      .learning-features li::before {
+        content: "🎯";
+        margin-right: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .learning-features li:nth-child(2)::before {
+        content: "🚀";
+      }
+      .learning-features li:nth-child(3)::before {
+        content: "💡";
+      }
+      .learning-features li:nth-child(4)::before {
+        content: "🏆";
+      }
+
+      /* Interactive Demo */
+      .demo-container {
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        border: 1px solid #e2e8f0;
+        position: relative;
+      }
+
+      .demo-header {
+        background: linear-gradient(135deg, #1e293b, #334155);
+        color: white;
+        padding: 1rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .demo-title {
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .demo-controls {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .control-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+      }
+
+      .control-dot.red {
+        background: #ef4444;
+      }
+      .control-dot.yellow {
+        background: #f59e0b;
+      }
+      .control-dot.green {
+        background: #10b981;
+      }
+
+      .demo-content {
+        padding: 2rem;
+      }
+
+      .demo-tabs {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .demo-tab {
+        padding: 0.75rem 1.5rem;
+        background: #f1f5f9;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+
+      .demo-tab.active {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+      }
+
+      .demo-panel {
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      .demo-panel.active {
+        display: block;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .progress-bar {
+        background: #e2e8f0;
+        height: 8px;
+        border-radius: 4px;
+        margin: 1rem 0;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #10b981, #059669);
+        border-radius: 4px;
+        transition: width 2s ease;
+        animation: progressGlow 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes progressGlow {
+        0% {
+          box-shadow: 0 0 5px rgba(16, 185, 129, 0.3);
+        }
+        100% {
+          box-shadow: 0 0 15px rgba(16, 185, 129, 0.6);
+        }
+      }
+
+      /* Course Catalog */
+      .course-catalog {
+        padding: 100px 5%;
+        background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+      }
+
+      .catalog-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .course-card {
+        background: white;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(30px);
+        position: relative;
+      }
+
+      .course-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .course-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+      }
+
+      .course-image {
+        height: 200px;
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .course-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.2) 50%,
+          transparent 70%
+        );
+        transform: translateX(-100%);
+        transition: transform 0.8s ease;
+      }
+
+      .course-card:hover .course-image::before {
+        transform: translateX(100%);
+      }
+
+      .course-content {
+        padding: 2rem;
+      }
+
+      .course-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 1rem;
+      }
+
+      .course-description {
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .course-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .course-duration {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .course-level {
+        background: rgba(16, 185, 129, 0.1);
+        color: #059669;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .course-button {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .course-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      }
+
+      /* Live Sessions */
+      .live-sessions {
+        padding: 100px 5%;
+        background: white;
+      }
+
+      .training-schedule {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .schedule-header {
+        margin-bottom: 3rem;
+      }
+
+      .region-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .region-tab {
+        padding: 0.75rem 1.5rem;
+        background: #f1f5f9;
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 0.9rem;
+        color: #64748b;
+      }
+
+      .region-tab.active {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        border-color: #3b82f6;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+      }
+
+      .region-tab:hover:not(.active) {
+        background: #e2e8f0;
+        border-color: #cbd5e1;
+        transform: translateY(-1px);
+      }
+
+      .schedule-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 4rem;
+      }
+
+      .schedule-item {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        border: 1px solid #e2e8f0;
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .schedule-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      }
+
+      .schedule-item.webinar::before {
+        background: linear-gradient(135deg, #10b981, #059669);
+      }
+
+      .schedule-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        border-color: #cbd5e1;
+      }
+
+      .schedule-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-width: 80px;
+        margin-right: 2rem;
+        text-align: center;
+      }
+
+      .schedule-date .month {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #3b82f6;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .schedule-date .days {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1e293b;
+        line-height: 1;
+        margin: 0.25rem 0;
+      }
+
+      .schedule-date .year {
+        font-size: 0.8rem;
+        color: #64748b;
+        font-weight: 500;
+      }
+
+      .schedule-content {
+        flex: 1;
+      }
+
+      .schedule-content h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 0 0 0.5rem 0;
+        line-height: 1.4;
+      }
+
+      .schedule-content p {
+        color: #64748b;
+        margin: 0;
+        font-size: 0.9rem;
+      }
+
+      .schedule-action {
+        margin-left: 1rem;
+      }
+
+      .book-button {
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9rem;
+      }
+
+      .book-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+        background: linear-gradient(135deg, #1d4ed8, #1e40af);
+      }
+
+      .faq-section {
+        background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+        border-radius: 16px;
+        padding: 3rem;
+        margin-top: 3rem;
+      }
+
+      .faq-section h3 {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #1e293b;
+        margin-bottom: 2rem;
+        text-align: center;
+        background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .faq-item {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .faq-item h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin: 0 0 1rem 0;
+      }
+
+      .faq-item p {
+        color: #64748b;
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* Enhanced Footer */
+      .enhanced-footer {
+        background: #1e293b;
+        color: white;
+        padding: 80px 0 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .enhanced-footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.1) 0%,
+          transparent 50%
+        );
+        pointer-events: none;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 5%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
+
+      .footer-brand {
+        padding-right: 2rem;
+      }
+
+      .footer-logo {
+        font-size: 2.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 2rem;
+      }
+
+      .footer-description {
+        color: #94a3b8;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.5rem;
+      }
+
+      .social-link {
+        width: 48px;
+        height: 48px;
+        background: #334155;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .social-link:hover {
+        transform: scale(1.1);
+      }
+
+      .social-link.facebook:hover {
+        background: #1877f2;
+        color: white;
+      }
+
+      .social-link.twitter:hover {
+        background: #1da1f2;
+        color: white;
+      }
+
+      .social-link.linkedin:hover {
+        background: #0077b5;
+        color: white;
+      }
+
+      .social-link.youtube:hover {
+        background: #ff0000;
+        color: white;
+      }
+
+      .footer-title {
+        font-weight: 900;
+        margin-bottom: 2rem;
+        font-size: 1.25rem;
+        color: white;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 1rem;
+      }
+
+      .footer-link {
+        color: #94a3b8;
+        text-decoration: none;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-link:hover {
+        color: white;
+        text-decoration: underline;
+        transform: translateX(8px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #334155;
+        padding: 2rem 0;
+      }
+
+      .footer-bottom-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .footer-bottom-content p {
+        color: #64748b;
+        margin: 0;
+      }
+
+      .footer-bottom-links {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .footer-bottom-link {
+        color: #64748b;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-bottom-link:hover {
+        color: white;
+      }
+
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 4px;
+        background: linear-gradient(90deg, #2563eb, #7c3aed, #ec4899);
+        z-index: 1001;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+      }
+
+      /* Floating Particles */
+      .floating-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .particle {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: linear-gradient(45deg, #60a5fa, #a78bfa, #f472b6);
+        border-radius: 50%;
+        animation: float-particle 20s infinite linear;
+        opacity: 0.7;
+      }
+
+      @keyframes float-particle {
+        0% {
+          transform: translateY(100vh) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.7;
+        }
+        90% {
+          opacity: 0.7;
+        }
+        100% {
+          transform: translateY(-100px) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .particle:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+        background: linear-gradient(45deg, #ef4444, #dc2626);
+      }
+      .particle:nth-child(2) {
+        left: 20%;
+        animation-delay: 2s;
+        background: linear-gradient(45deg, #f59e0b, #d97706);
+      }
+      .particle:nth-child(3) {
+        left: 30%;
+        animation-delay: 4s;
+        background: linear-gradient(45deg, #10b981, #059669);
+      }
+      .particle:nth-child(4) {
+        left: 40%;
+        animation-delay: 6s;
+        background: linear-gradient(45deg, #3b82f6, #2563eb);
+      }
+      .particle:nth-child(5) {
+        left: 50%;
+        animation-delay: 8s;
+        background: linear-gradient(45deg, #8b5cf6, #7c3aed);
+      }
+      .particle:nth-child(6) {
+        left: 60%;
+        animation-delay: 10s;
+        background: linear-gradient(45deg, #ec4899, #db2777);
+      }
+      .particle:nth-child(7) {
+        left: 70%;
+        animation-delay: 12s;
+        background: linear-gradient(45deg, #06b6d4, #0891b2);
+      }
+      .particle:nth-child(8) {
+        left: 80%;
+        animation-delay: 14s;
+        background: linear-gradient(45deg, #84cc16, #65a30d);
+      }
+      .particle:nth-child(9) {
+        left: 90%;
+        animation-delay: 16s;
+        background: linear-gradient(45deg, #f97316, #ea580c);
+      }
+
+      /* Resources Section Styles */
+      .resources-section {
+        padding: 100px 5%;
+        background: linear-gradient(135deg, #f8fafc, #e0f2fe);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resources-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 25% 25%,
+            rgba(59, 130, 246, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 75% 75%,
+            rgba(168, 85, 247, 0.1) 0%,
+            transparent 50%
+          );
+        animation: resourcesGlow 10s ease-in-out infinite alternate;
+      }
+
+      @keyframes resourcesGlow {
+        0% {
+          opacity: 0.3;
+        }
+        100% {
+          opacity: 0.7;
+        }
+      }
+
+      .resources-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin: 3rem 0;
+        flex-wrap: wrap;
+      }
+
+      .resource-tab {
+        padding: 1rem 2rem;
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 600;
+        font-size: 1.1rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resource-tab::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.1),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .resource-tab:hover::before {
+        left: 100%;
+      }
+
+      .resource-tab.active {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        border-color: #ef4444;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+      }
+
+      .resource-tab:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        border-color: #ef4444;
+      }
+
+      .resources-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .resource-panel {
+        display: none;
+        animation: fadeInUp 0.6s ease;
+      }
+
+      .resource-panel.active {
+        display: block;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .resource-card {
+        background: linear-gradient(135deg, #ffffff, #f8fafc);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid #e2e8f0;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .resource-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .resource-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(37, 99, 235, 0.05),
+          transparent
+        );
+        transition: left 0.8s ease;
+      }
+
+      .resource-card:hover::before {
+        left: 100%;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+        border-color: rgba(37, 99, 235, 0.3);
+      }
+
+      .resource-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .resource-icon.documentation {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+      }
+
+      .resource-icon.api {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      }
+
+      .resource-icon.video {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+      }
+
+      .resource-icon.faq {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+      }
+
+      .resource-icon.template {
+        background: linear-gradient(135deg, #10b981, #059669);
+      }
+
+      .resource-icon.email {
+        background: linear-gradient(135deg, #06b6d4, #0891b2);
+      }
+
+      .resource-icon.report {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      }
+
+      .resource-icon.checklist {
+        background: linear-gradient(135deg, #84cc16, #65a30d);
+      }
+
+      .resource-icon.calculator {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+      }
+
+      .resource-icon.migration {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+      }
+
+      .resource-icon.integration {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      }
+
+      .resource-icon.testing {
+        background: linear-gradient(135deg, #10b981, #059669);
+      }
+
+      .resource-icon.forum {
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+      }
+
+      .resource-icon.slack {
+        background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+      }
+
+      .resource-icon.webinar {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+      }
+
+      .resource-icon.certification {
+        background: linear-gradient(135deg, #f59e0b, #d97706);
+      }
+
+      .resource-card:hover .resource-icon {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+      }
+
+      .resource-card h3 {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #1e293b;
+        margin-bottom: 1rem;
+      }
+
+      .resource-card p {
+        color: #64748b;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .resource-type,
+      .resource-updated,
+      .resource-downloads,
+      .resource-usage,
+      .resource-activity {
+        background: rgba(37, 99, 235, 0.1);
+        color: #2563eb;
+        padding: 0.25rem 0.75rem;
+        border-radius: 12px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      .resource-updated {
+        background: rgba(16, 185, 129, 0.1);
+        color: #059669;
+      }
+
+      .resource-downloads {
+        background: rgba(245, 158, 11, 0.1);
+        color: #d97706;
+      }
+
+      .resource-usage {
+        background: rgba(139, 92, 246, 0.1);
+        color: #7c3aed;
+      }
+
+      .resource-activity {
+        background: rgba(239, 68, 68, 0.1);
+        color: #dc2626;
+      }
+
+      .resource-button {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
+
+      .resource-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(239, 68, 68, 0.3);
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
+      }
+
+      /* Community Stats */
+      .community-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(135deg, #ffffff, #f0f9ff);
+        border: 2px solid #e0f2fe;
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stat-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          #ef4444,
+          #f59e0b,
+          #10b981,
+          #3b82f6,
+          #8b5cf6
+        );
+        background-size: 200% 100%;
+        animation: rainbowSlide 3s ease infinite;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-8px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
+        border-color: #2563eb;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: block;
+        margin-bottom: 0.5rem;
+        animation: numberPulse 2s ease-in-out infinite alternate;
+      }
+
+      @keyframes numberPulse {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+
+      .stat-label {
+        color: #64748b;
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .learning-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .resources-tabs {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .resource-tab {
+          width: 100%;
+          max-width: 300px;
+          text-align: center;
+        }
+
+        .resources-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .community-stats {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-brand {
+          padding-right: 0;
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .footer-bottom-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .schedule-item {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .schedule-date {
+          flex-direction: row;
+          gap: 0.5rem;
+          margin-right: 0;
+          margin-bottom: 1rem;
+        }
+
+        .schedule-date .month,
+        .schedule-date .days,
+        .schedule-date .year {
+          font-size: 1rem;
+        }
+
+        .schedule-action {
+          margin-left: 0;
+          width: 100%;
+        }
+
+        .book-button {
+          width: 100%;
+          text-align: center;
+        }
+
+        .faq-section {
+          padding: 2rem 1rem;
+        }
+
+        .faq-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="scroll-progress"></div>
+
+    <!-- Floating Particles -->
+    <div class="floating-particles">
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+      <div class="particle"></div>
+    </div>
+
+    <!-- Advanced Navigation -->
+    <nav>
+      <div class="nav-container">
+        <div class="nav-content">
+          <div class="nav-brand">
+            <div class="logo">zolytics</div>
+          </div>
+
+          <div class="nav-links">
+            <a href="#" class="cta-button">Start Free Trial</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Master Zolytics Training</h1>
+          <p>
+            Unlock the full potential of client management with our
+            comprehensive training programs. From beginner basics to advanced
+            strategies, we'll help you become a Zolytics expert.
+          </p>
+        </div>
+      </section>
+
+      <section class="interactive-learning">
+        <div class="container">
+          <div class="section-title">
+            <h2>Interactive Learning Experience</h2>
+            <p>
+              Engage with hands-on exercises, real-time simulations, and
+              interactive demos that make learning effective and enjoyable.
+            </p>
+          </div>
+
+          <div class="learning-grid">
+            <div class="learning-content">
+              <h3>Learn by Doing</h3>
+              <ul class="learning-features">
+                <li>Interactive simulations with real Zolytics interface</li>
+                <li>Hands-on exercises with immediate feedback</li>
+                <li>Real-world scenarios and case studies</li>
+                <li>Progress tracking and personalized recommendations</li>
+              </ul>
+            </div>
+
+            <div class="demo-container">
+              <div class="demo-header">
+                <div class="demo-title">Interactive Training Demo</div>
+                <div class="demo-controls">
+                  <div class="control-dot red"></div>
+                  <div class="control-dot yellow"></div>
+                  <div class="control-dot green"></div>
+                </div>
+              </div>
+              <div class="demo-content">
+                <div class="demo-tabs">
+                  <div class="demo-tab active" data-tab="basics">Basics</div>
+                  <div class="demo-tab" data-tab="advanced">Advanced</div>
+                  <div class="demo-tab" data-tab="expert">Expert</div>
+                </div>
+
+                <div class="demo-panel active" id="basics">
+                  <h4>Client Management Basics</h4>
+                  <p>Learn fundamental concepts and navigation</p>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%"></div>
+                  </div>
+                  <p><strong>Progress:</strong> 75% Complete</p>
+                </div>
+
+                <div class="demo-panel" id="advanced">
+                  <h4>Advanced Workflows</h4>
+                  <p>Master automation and complex processes</p>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 45%"></div>
+                  </div>
+                  <p><strong>Progress:</strong> 45% Complete</p>
+                </div>
+
+                <div class="demo-panel" id="expert">
+                  <h4>Expert Strategies</h4>
+                  <p>Advanced integrations and optimization</p>
+                  <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%"></div>
+                  </div>
+                  <p><strong>Progress:</strong> 20% Complete</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="live-sessions" id="live-sessions">
+        <div class="container">
+          <div class="section-title">
+            <h2>Zolytics Online Training</h2>
+            <p>
+              Regularly scheduled — Hosted by expert instructors — Live Q&A.
+              Learn from anywhere in the world.
+            </p>
+          </div>
+
+          <div class="training-schedule">
+            <div class="schedule-header">
+              <div class="region-tabs">
+                <span class="region-tab active">ALL</span>
+                <span class="region-tab">AMERICAS</span>
+                <span class="region-tab">EMEA</span>
+                <span class="region-tab">APAC</span>
+              </div>
+            </div>
+
+            <!-- All Regions Schedule -->
+            <div class="schedule-list" id="all-schedule">
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">15-17</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 1 - Zolytics v6.0 Online Training for Business Users -
+                    Americas
+                  </h3>
+                  <p>Online | 5:00 PM - 9:00 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">22-24</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers -
+                    EMEA
+                  </h3>
+                  <p>Online | 9:00 AM - 01:00 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">29-31</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 1 - Zolytics v6.0 Online Training for Business Users -
+                    APAC
+                  </h3>
+                  <p>Online | 9:00 AM - 01:00 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">05</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Learning Table Series - AMERICAS</h3>
+                  <p>Online | 3:30 PM - 4:30 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">05</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Learning Table Series - EMEA</h3>
+                  <p>Online | 10:30 AM - 11:30 AM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">12-14</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers -
+                    APAC
+                  </h3>
+                  <p>Online | 9:00 AM - 01:00 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">19</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Zolytics Tech Connect Series - APAC</h3>
+                  <p>Online | 5:30 AM - 6:30 AM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">26-28</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers -
+                    Americas
+                  </h3>
+                  <p>Online | 5:00 PM - 9:00 PM Greenwich Mean Time</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Americas Schedule -->
+            <div
+              class="schedule-list"
+              id="americas-schedule"
+              style="display: none"
+            >
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">15-17</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 1 - Zolytics v6.0 Online Training for Business Users
+                  </h3>
+                  <p>Online | 5:00 PM - 9:00 PM EST (Eastern Standard Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">05</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Learning Table Series</h3>
+                  <p>Online | 3:30 PM - 4:30 PM EST (Eastern Standard Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">26-28</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers
+                  </h3>
+                  <p>Online | 5:00 PM - 9:00 PM EST (Eastern Standard Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">12</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Advanced Analytics Workshop</h3>
+                  <p>Online | 2:00 PM - 3:30 PM EST (Eastern Standard Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">19-21</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>Stage 3 - Zolytics v6.0 Advanced Implementation</h3>
+                  <p>Online | 4:00 PM - 8:00 PM EST (Eastern Standard Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- EMEA Schedule -->
+            <div class="schedule-list" id="emea-schedule" style="display: none">
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">22-24</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers
+                  </h3>
+                  <p>Online | 9:00 AM - 1:00 PM CET (Central European Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">05</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Learning Table Series</h3>
+                  <p>
+                    Online | 10:30 AM - 11:30 AM CET (Central European Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">18-20</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 1 - Zolytics v6.0 Online Training for Business Users
+                  </h3>
+                  <p>Online | 9:00 AM - 1:00 PM CET (Central European Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">05</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] GDPR Compliance with Zolytics</h3>
+                  <p>Online | 2:00 PM - 3:00 PM CET (Central European Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">25-27</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>Stage 3 - Zolytics v6.0 Advanced Implementation</h3>
+                  <p>Online | 9:00 AM - 1:00 PM CET (Central European Time)</p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- APAC Schedule -->
+            <div class="schedule-list" id="apac-schedule" style="display: none">
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Jan</div>
+                  <div class="days">29-31</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 1 - Zolytics v6.0 Online Training for Business Users
+                  </h3>
+                  <p>
+                    Online | 9:00 AM - 1:00 PM AEST (Australian Eastern Standard
+                    Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">12-14</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>
+                    Stage 2 - Zolytics v6.0 Online Training for Developers
+                  </h3>
+                  <p>
+                    Online | 9:00 AM - 1:00 PM AEST (Australian Eastern Standard
+                    Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Feb</div>
+                  <div class="days">19</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Zolytics Tech Connect Series</h3>
+                  <p>
+                    Online | 10:00 AM - 11:00 AM AEST (Australian Eastern
+                    Standard Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item webinar">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">08</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>[Free Webinar] Mobile CRM Best Practices</h3>
+                  <p>
+                    Online | 2:00 PM - 3:00 PM AEST (Australian Eastern Standard
+                    Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+
+              <div class="schedule-item">
+                <div class="schedule-date">
+                  <div class="month">Mar</div>
+                  <div class="days">26-28</div>
+                  <div class="year">2025</div>
+                </div>
+                <div class="schedule-content">
+                  <h3>Stage 3 - Zolytics v6.0 Advanced Implementation</h3>
+                  <p>
+                    Online | 9:00 AM - 1:00 PM AEST (Australian Eastern Standard
+                    Time)
+                  </p>
+                </div>
+                <div class="schedule-action">
+                  <a href="#" class="book-button">Book Now</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-section">
+              <h3>Frequently Asked Questions</h3>
+              <div class="faq-grid">
+                <div class="faq-item">
+                  <h4>What is the Zolytics training program?</h4>
+                  <p>
+                    The Zolytics training program aims to train and certify
+                    users in using Zolytics. With sessions covering everything
+                    from basic use to advanced techniques, this training program
+                    is the ideal opportunity to learn new concepts and gain
+                    knowledge to help you build solutions for your business.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h4>What are the programs offered online?</h4>
+                  <p>
+                    We offer Stage 1 training for Business Users and Stage 2
+                    training for Developers, plus free webinar series covering
+                    specialized topics.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h4>What certifications are available?</h4>
+                  <p>
+                    Upon completion, participants receive official Zolytics
+                    certification recognized across the industry.
+                  </p>
+                </div>
+                <div class="faq-item">
+                  <h4>Why should I attend?</h4>
+                  <p>
+                    Gain hands-on experience, learn best practices, get direct
+                    access to experts, and earn valuable certification for your
+                    career.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Enhanced Footer -->
+    <footer class="enhanced-footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="footer-logo">zolytics</div>
+            <p class="footer-description">
+              Making client management software that works for you. Zolytics is
+              part of the comprehensive suite of business applications designed
+              to grow with your company.
+            </p>
+            <div class="social-links">
+              <a href="#" class="social-link facebook">
+                <span>f</span>
+              </a>
+              <a href="#" class="social-link twitter">
+                <span>t</span>
+              </a>
+              <a href="#" class="social-link linkedin">
+                <span>in</span>
+              </a>
+              <a href="#" class="social-link youtube">
+                <span>yt</span>
+              </a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">Products</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Client Management</a></li>
+              <li><a href="#" class="footer-link">CRM</a></li>
+              <li><a href="#" class="footer-link">Analytics</a></li>
+              <li><a href="#" class="footer-link">Automation</a></li>
+              <li><a href="#" class="footer-link">Mobile App</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">Resources</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Help Center</a></li>
+              <li><a href="#" class="footer-link">API Documentation</a></li>
+              <li><a href="#" class="footer-link">Webinars</a></li>
+              <li><a href="#" class="footer-link">Case Studies</a></li>
+              <li><a href="#" class="footer-link">Blog</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">Company</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">About Us</a></li>
+              <li><a href="#" class="footer-link">Careers</a></li>
+              <li><a href="#" class="footer-link">Press Kit</a></li>
+              <li><a href="#" class="footer-link">Contact</a></li>
+              <li><a href="#" class="footer-link">Partners</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h4 class="footer-title">Legal</h4>
+            <ul class="footer-links">
+              <li><a href="#" class="footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="footer-link">Terms of Service</a></li>
+              <li><a href="#" class="footer-link">Security</a></li>
+              <li><a href="#" class="footer-link">GDPR</a></li>
+              <li><a href="#" class="footer-link">Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div class="footer-bottom-content">
+            <p>&copy; 2024 Zolytics. All rights reserved.</p>
+            <div class="footer-bottom-links">
+              <a href="#" class="footer-bottom-link">Privacy</a>
+              <a href="#" class="footer-bottom-link">Terms</a>
+              <a href="#" class="footer-bottom-link">Cookies</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll Progress Bar
+      function updateScrollProgress() {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        document.querySelector(".scroll-progress").style.width =
+          scrollPercent + "%";
+      }
+
+      // Animate elements on scroll with stagger effect
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(
+          ".path-card, .course-card, .session-card, .learning-features li, .resource-card"
+        );
+
+        elements.forEach((element, index) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < window.innerHeight - elementVisible) {
+            setTimeout(() => {
+              element.classList.add("animate");
+            }, index * 100); // Stagger animation
+          }
+        });
+      }
+
+      // Demo tabs functionality
+      function setupDemoTabs() {
+        const tabs = document.querySelectorAll(".demo-tab");
+        const panels = document.querySelectorAll(".demo-panel");
+
+        tabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Remove active class from all tabs and panels
+            tabs.forEach((t) => t.classList.remove("active"));
+            panels.forEach((p) => p.classList.remove("active"));
+
+            // Add active class to clicked tab
+            tab.classList.add("active");
+
+            // Show corresponding panel
+            const targetPanel = document.getElementById(tab.dataset.tab);
+            if (targetPanel) {
+              targetPanel.classList.add("active");
+            }
+          });
+        });
+      }
+
+      // Region tabs functionality
+      function setupRegionTabs() {
+        const regionTabs = document.querySelectorAll(".region-tab");
+        const scheduleLists = document.querySelectorAll(".schedule-list");
+
+        regionTabs.forEach((tab) => {
+          tab.addEventListener("click", () => {
+            // Remove active class from all tabs
+            regionTabs.forEach((t) => t.classList.remove("active"));
+
+            // Add active class to clicked tab
+            tab.classList.add("active");
+
+            // Hide all schedule lists
+            scheduleLists.forEach((list) => {
+              list.style.display = "none";
+            });
+
+            // Show corresponding schedule
+            const region = tab.textContent.toLowerCase();
+            let targetSchedule;
+
+            if (region === "all") {
+              targetSchedule = document.getElementById("all-schedule");
+            } else if (region === "americas") {
+              targetSchedule = document.getElementById("americas-schedule");
+            } else if (region === "emea") {
+              targetSchedule = document.getElementById("emea-schedule");
+            } else if (region === "apac") {
+              targetSchedule = document.getElementById("apac-schedule");
+            }
+
+            if (targetSchedule) {
+              targetSchedule.style.display = "flex";
+              targetSchedule.style.flexDirection = "column";
+              targetSchedule.style.gap = "1rem";
+            }
+          });
+        });
+      }
+
+      // Smooth scrolling for navigation links
+      function setupSmoothScrolling() {
+        const links = document.querySelectorAll('a[href^="#"]');
+
+        links.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              });
+            }
+          });
+        });
+      }
+
+      // Initialize all scroll-based animations
+      function handleScroll() {
+        updateScrollProgress();
+        animateOnScroll();
+      }
+
+      // Event listeners
+      window.addEventListener("scroll", handleScroll);
+      window.addEventListener("load", () => {
+        setupSmoothScrolling();
+        setupDemoTabs();
+        setupRegionTabs();
+        animateOnScroll();
+      });
+
+      // Add staggered animation delays
+      document.addEventListener("DOMContentLoaded", function () {
+        const pathCards = document.querySelectorAll(".path-card");
+        pathCards.forEach((card, index) => {
+          card.style.transitionDelay = `${index * 0.1}s`;
+        });
+
+        const courseCards = document.querySelectorAll(".course-card");
+        courseCards.forEach((card, index) => {
+          card.style.transitionDelay = `${index * 0.15}s`;
+        });
+
+        const learningFeatures = document.querySelectorAll(
+          ".learning-features li"
+        );
+        learningFeatures.forEach((item, index) => {
+          item.style.transitionDelay = `${index * 0.1}s`;
+        });
+      });
+
+      // Add interactive hover effects for buttons
+      document
+        .querySelectorAll(
+          ".cta-button, .path-button, .course-button, .resource-button"
+        )
+        .forEach((button) => {
+          button.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-3px) scale(1.05)";
+          });
+
+          button.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+
+      // Add mouse parallax effect
+      document.addEventListener("mousemove", (e) => {
+        const mouseX = e.clientX / window.innerWidth;
+        const mouseY = e.clientY / window.innerHeight;
+
+        // Move floating particles slightly based on mouse position
+        document.querySelectorAll(".particle").forEach((particle, index) => {
+          const speed = (index + 1) * 0.3;
+          const x = (mouseX - 0.5) * speed;
+          const y = (mouseY - 0.5) * speed;
+          particle.style.transform += ` translate(${x}px, ${y}px)`;
+        });
+
+        // Add subtle parallax to path icons
+        document.querySelectorAll(".path-icon").forEach((icon, index) => {
+          const speed = ((index % 2) + 1) * 1.5;
+          const x = (mouseX - 0.5) * speed;
+          const y = (mouseY - 0.5) * speed;
+          icon.style.transform += ` translate(${x}px, ${y}px)`;
+        });
+      });
+
+      // Add ripple effect to buttons
+      document
+        .querySelectorAll(
+          ".cta-button, .path-button, .course-button, .resource-button"
+        )
+        .forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const ripple = document.createElement("span");
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    background: rgba(255, 255, 255, 0.3);
+                    border-radius: 50%;
+                    transform: scale(0);
+                    animation: ripple 0.6s ease-out;
+                    pointer-events: none;
+                `;
+
+            this.style.position = "relative";
+            this.style.overflow = "hidden";
+            this.appendChild(ripple);
+
+            setTimeout(() => {
+              ripple.remove();
+            }, 600);
+          });
+        });
+
+      // Add ripple animation
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+
+      // Auto-update progress bars
+      setInterval(() => {
+        document.querySelectorAll(".progress-fill").forEach((fill) => {
+          const currentWidth = parseInt(fill.style.width);
+          if (currentWidth < 100) {
+            fill.style.width = currentWidth + Math.random() * 2 + "%";
+          }
+        });
+      }, 3000);
+    </script>
+    <script>
+      (function () {
+        function c() {
+          var b = a.contentDocument || a.contentWindow.document;
+          if (b) {
+            var d = b.createElement("script");
+            d.innerHTML =
+              "window.__CF$cv$params={r:'9939d36d07d03226',t:'MTc2MTMxMjU5Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
+            b.getElementsByTagName("head")[0].appendChild(d);
+          }
+        }
+        if (document.body) {
+          var a = document.createElement("iframe");
+          a.height = 1;
+          a.width = 1;
+          a.style.position = "absolute";
+          a.style.top = 0;
+          a.style.left = 0;
+          a.style.border = "none";
+          a.style.visibility = "hidden";
+          document.body.appendChild(a);
+          if ("loading" !== document.readyState) c();
+          else if (window.addEventListener)
+            document.addEventListener("DOMContentLoaded", c);
+          else {
+            var e = document.onreadystatechange || function () {};
+            document.onreadystatechange = function (b) {
+              e(b);
+              "loading" !== document.readyState &&
+                ((document.onreadystatechange = e), c());
+            };
+          }
+        }
+      })();
+    </script>
+  </body>
+</html>
