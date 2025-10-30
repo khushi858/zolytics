@@ -40,6 +40,7 @@
         z-index: 1000;
         transition: all 0.3s ease;
       }
+
       nav {
         max-width: 1400px;
         margin: 0 auto;
@@ -48,27 +49,66 @@
         align-items: center;
         padding: 1rem 2rem;
       }
+
+      /* ✅ Aligns Zolytics + logos on same line */
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         font-size: 2rem;
         font-weight: 900;
         color: #dc2626;
         letter-spacing: -1px;
       }
+
+      /* ✅ Vertical line between Zolytics & logos */
+      .vertical-line {
+        width: 2px;
+        height: 35px;
+        background-color: #ccc;
+      }
+
+      /* ✅ Logos container */
+      .logos {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      /* ✅ Zoho logo */
+      .zoho-logo {
+        height: 35px;
+        width: auto;
+        display: inline-block;
+      }
+
+      /* ✅ Zoho Partner logo */
+      .zoho-partner-logo {
+        height: 35px;
+        width: auto;
+        display: inline-block;
+      }
+
+      /* ✅ Navigation links */
       .nav-links {
         display: flex;
         list-style: none;
         gap: 2rem;
         align-items: center;
       }
+
       .nav-links a {
         text-decoration: none;
         color: #333;
         font-weight: 500;
         transition: color 0.3s;
       }
+
       .nav-links a:hover {
         color: #dc2626;
       }
+
+      /* ✅ Call-to-action button */
       .cta-btn {
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
         color: white !important;
@@ -77,10 +117,12 @@
         font-weight: 600;
         transition: transform 0.3s, box-shadow 0.3s;
       }
+
       .cta-btn:hover {
         transform: translateY(-2px);
         box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
       }
+
       .hero {
         margin-top: 80px;
         background: linear-gradient(135deg, #fef3f2 0%, #fff 100%);
@@ -1652,7 +1694,22 @@
   <body>
     <header>
       <nav>
-        <div class="logo">Zolytics</div>
+        <div class="logo">
+          <span>Zolytics</span>
+          <div class="vertical-line"></div>
+          <div class="logos">
+            <img
+              src="Zoho_logo-removebg-preview.png"
+              alt="Zoho Logo"
+              class="zoho-logo"
+            />
+            <img
+              src="zoho_Partner-removebg-preview.png"
+              alt="Zoho Partner Logo"
+              class="zoho-partner-logo"
+            />
+          </div>
+        </div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
