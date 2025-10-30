@@ -1553,53 +1553,90 @@
         font-size: 0.95rem;
         line-height: 1.7;
       }
-
+      /* 🌟 Contact Section Styling */
       .contact {
         background: linear-gradient(135deg, #c34141 0%, #ef4444 100%);
         color: white;
         text-align: center;
+        padding: 80px 20px;
       }
+
       .contact h2 {
         color: white;
         margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
       }
+
       .contact p {
         font-size: 1.2rem;
         margin-bottom: 3rem;
+        color: #fff;
+        opacity: 0.9;
       }
-      .contact-form {
+
+      /* 💬 Zoho CRM Webform Styling (matches old form) */
+      .crmWebToEntityForm {
+        background-color: white;
+        color: black;
         max-width: 600px;
         margin: 0 auto;
+        border-radius: 10px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         gap: 1rem;
       }
-      .contact-form input,
-      .contact-form textarea {
+
+      .crmWebToEntityForm input,
+      .crmWebToEntityForm textarea {
+        width: 100%;
         padding: 1rem;
         border: none;
         border-radius: 10px;
         font-family: inherit;
         font-size: 1rem;
+        outline: none;
+        color: #333;
       }
-      .contact-form textarea {
+
+      .crmWebToEntityForm input:focus,
+      .crmWebToEntityForm textarea:focus {
+        box-shadow: 0 0 0 3px rgba(200, 50, 50, 0.3);
+      }
+
+      .crmWebToEntityForm textarea {
         min-height: 150px;
         resize: vertical;
       }
-      .contact-form button {
-        background: white;
-        color: #d81414;
+
+      /* 🚀 Button Styling */
+      .zcwf_button {
+        background: rgb(240, 9, 9);
+        color: #f5f1f1;
         padding: 1rem 2rem;
         border: none;
         border-radius: 50px;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
-      .contact-form button:hover {
+
+      .zcwf_button:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* 📱 Responsive */
+      @media (max-width: 768px) {
+        .contact h2 {
+          font-size: 1.6rem;
+        }
+        .contact p {
+          font-size: 1rem;
+        }
       }
 
       footer {
@@ -2976,8 +3013,6 @@
     </section>
 
     <!-- Partners Section -->
-
-    <!-- Partners Section -->
     <section
       class="partners"
       id="partners"
@@ -3132,13 +3167,69 @@
         Schedule a quick consultation and we'll help you design the right
         solution.
       </p>
-      <form class="contact-form" data-aos="fade-up">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="text" placeholder="Company Name" required />
-        <textarea placeholder="Tell us about your needs"></textarea>
-        <button type="submit">Book Free Consultation</button>
-      </form>
+
+      <!-- Zoho CRM Integrated Form -->
+      <div id="crmWebToEntityForm" class="crmWebToEntityForm">
+        <form
+          id="webform957096000001814003"
+          action="https://crm.zoho.in/crm/WebToLeadForm"
+          name="WebToLeads957096000001814003"
+          method="POST"
+          onsubmit='javascript:document.charset="UTF-8"; return checkMandatory957096000001814003()'
+          accept-charset="UTF-8"
+        >
+          <!-- Hidden fields required by Zoho -->
+          <input
+            type="hidden"
+            name="xnQsjsdp"
+            value="3ea19e57566edf033af50797bde29470f8cba8ae4f2dc44d68766e40cacb5eef"
+          />
+          <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+          <input
+            type="hidden"
+            name="xmIwtLD"
+            value="ec102bca881f047cf43f1a67c1d5d2413eb74e240159014b112690e435fe2d00d3214bcad1c07f0c5a16622a826865d2"
+          />
+          <input type="hidden" name="actionType" value="TGVhZHM=" />
+          <input
+            type="hidden"
+            name="returnURL"
+            value="https://khushi858.github.io/zolytics/"
+          />
+
+          <!-- Visible Fields -->
+          <input
+            type="text"
+            id="Last_Name"
+            name="Last Name"
+            placeholder="Your Name *"
+            required
+          />
+          <input
+            type="text"
+            id="Company"
+            name="Company"
+            placeholder="Company Name *"
+            required
+          />
+          <input
+            type="text"
+            id="Phone"
+            name="Phone"
+            placeholder="Phone Number"
+          />
+          <textarea
+            id="Description"
+            name="Description"
+            placeholder="Tell us about your needs"
+          ></textarea>
+
+          <!-- Submit Button -->
+          <button type="submit" class="formsubmit zcwf_button">
+            Book Free Consultation
+          </button>
+        </form>
+      </div>
     </section>
 
     <footer>
@@ -3393,6 +3484,28 @@
         once: true,
         easing: "ease-out-cubic",
       });
+
+      function checkMandatory957096000001814003() {
+        var mndFileds = ["Company", "Last Name"];
+        var fldLangVal = ["Company", "Last Name"];
+        for (i = 0; i < mndFileds.length; i++) {
+          var fieldObj =
+            document.forms["WebToLeads957096000001814003"][mndFileds[i]];
+          if (fieldObj) {
+            if (fieldObj.value.replace(/^\s+|\s+$/g, "").length == 0) {
+              alert(fldLangVal[i] + " cannot be empty.");
+              fieldObj.focus();
+              return;
+              false;
+            }
+          }
+        }
+        document.querySelector(".formsubmit").setAttribute("disabled", true);
+      }
     </script>
+    <script
+      id="wf_anal"
+      src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=b15f10f580cae4e4ca25267b543a1c7bc94ef34ee135c2243fdef987d70b143869aa2cfbf30e4c5eb4c43bbf5efba941gidd417812708cf47c8b34dd04a81b1dfb019ddc2ec59ec62e7fe44f2b5538ca9aagid6346f09f42dbc6691a30f0f00ec56c112dc0c1ee17eabff1a7434720a42a7eb2gidcb4117b53a7c934f5396c073f46d8f5b3a9facd790dcd061bd8104172247b556&tw=68fc986e8ecd5c8452d13c7193ad4cc657759a538df6663b7d8d2ca72ba68eed"
+    ></script>
   </body>
 </html>
