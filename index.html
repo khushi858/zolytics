@@ -57,7 +57,15 @@
         gap: 1rem;
         font-size: 2rem;
         font-weight: 900;
-        color: #dc2626;
+
+        letter-spacing: -1px;
+      }
+      .zolytics-text {
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, #dc2626, #f97316, #16a34a, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         letter-spacing: -1px;
       }
 
@@ -1664,6 +1672,11 @@
         color: #d81414;
         margin-bottom: 10px;
       }
+      .zoho-popup-content p {
+        color: #d81414;
+        margin-bottom: 10px;
+      }
+
       .zoho-popup-content button {
         background: #d81414;
         color: white;
@@ -1682,6 +1695,63 @@
           opacity: 1;
           transform: scale(1);
         }
+      }
+
+      /* Dropdown multi-select styling */
+      .dropdown-multi {
+        position: relative;
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+
+      .dropdown-btn {
+        width: 100%;
+        background: #fff;
+        color: #333;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .dropdown-btn::after {
+        content: "▼";
+        float: right;
+        font-size: 0.9rem;
+        color: #d81414;
+      }
+
+      .dropdowncontent {
+        display: none;
+        position: absolute;
+        width: 100%;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        margin-top: 5px;
+        z-index: 100;
+        padding: 10px 15px;
+        max-height: 220px;
+        overflow-y: auto;
+      }
+
+      .dropdown-content label {
+        display: block;
+        color: #333;
+        font-size: 0.95rem;
+        padding: 6px 0;
+      }
+
+      .dropdown-content input {
+        margin-right: 8px;
+      }
+
+      /* Show dropdown when active */
+      .dropdown-multi.active .dropdown-content {
+        display: block;
       }
 
       footer {
@@ -1777,7 +1847,7 @@
     <header>
       <nav>
         <div class="logo">
-          <span>Zolytics</span>
+          <span class="zolytics-text">Zolytics</span>
           <div class="vertical-line"></div>
           <div class="logos">
             <img
@@ -3103,16 +3173,43 @@
           "
         >
           <div class="partner-logo">
-            <img src="Buisness.png" alt="Business Scales" />
+            <a
+              href="https://www.businessscales.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="Buisness.png" alt="Business Scales" />
+            </a>
           </div>
+
           <div class="partner-logo">
-            <img src="Microsell-removebg-preview.png" alt="Microsell" />
+            <a
+              href="https://www.microsell.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="Microsell-removebg-preview.png" alt="Microsell" />
+            </a>
           </div>
+
           <div class="partner-logo">
-            <img src="Sysworkss.png" alt="Sysworks" />
+            <a
+              href="https://www.sysworks.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="Sysworkss.png" alt="Sysworks" />
+            </a>
           </div>
+
           <div class="partner-logo">
-            <img src="Zopreneurs.png" alt="Zopreneurs" />
+            <a
+              href="https://www.zopreneurs.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="Zopreneurs.png" alt="Zopreneurs" />
+            </a>
           </div>
         </div>
 
@@ -3260,6 +3357,76 @@
             placeholder="Phone Number"
             maxlength="30"
           />
+
+          <!-- ✅ Dropdown Checkbox Section -->
+          <!-- ✅ Dropdown Select Section -->
+          <div
+            class="dropdown-multi"
+            style="position: relative; margin-bottom: 1.5rem"
+          >
+            <button
+              type="button"
+              id="dropdownToggle"
+              style="
+                width: 100%;
+                padding: 1rem;
+                border: none;
+                border-radius: 10px;
+                background: white;
+                color: #555;
+                font-size: 1rem;
+                text-align: left;
+                cursor: pointer;
+              "
+            >
+              Select Zoho Apps *
+            </button>
+
+            <div
+              id="dropdownContent"
+              style="
+                display: none;
+                position: absolute;
+                background: #fff;
+                width: 100%;
+                max-height: 220px;
+                overflow-y: auto;
+                border-radius: 10px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                padding: 10px;
+              "
+            >
+              <div class="dropdown-item" data-value="Zoho CRM">Zoho CRM</div>
+              <div class="dropdown-item" data-value="Zoho Books">
+                Zoho Books
+              </div>
+              <div class="dropdown-item" data-value="Zoho Inventory">
+                Zoho Inventory
+              </div>
+              <div class="dropdown-item" data-value="Zoho People">
+                Zoho People
+              </div>
+              <div class="dropdown-item" data-value="Zoho Projects">
+                Zoho Projects
+              </div>
+              <div class="dropdown-item" data-value="Zoho Desk">Zoho Desk</div>
+              <div class="dropdown-item" data-value="Zoho Analytics">
+                Zoho Analytics
+              </div>
+              <div class="dropdown-item" data-value="Zoho Flow">Zoho Flow</div>
+              <div class="dropdown-item" data-value="Zoho Campaigns">
+                Zoho Campaigns
+              </div>
+              <div class="dropdown-item" data-value="Zoho Creator">
+                Zoho Creator
+              </div>
+            </div>
+
+            <!-- hidden input for Zoho -->
+            <input type="hidden" id="selectedApps" name="LEADCF1" />
+          </div>
+
           <textarea
             id="Description"
             name="Description"
@@ -3310,7 +3477,15 @@
       </div>
       <div class="footer-bottom">
         <p>
-          © 2025 Zolytics Consulting | All rights reserved | Powered by Zoho
+          © 2025 Zolytics Consulting | All rights reserved | Powered by
+          <a
+            href="https://www.zoho.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #f76239; text-decoration: none; font-weight: 600"
+          >
+            Zoho
+          </a>
         </p>
       </div>
     </footer>
@@ -3572,6 +3747,53 @@
 
         closeBtn.addEventListener("click", function () {
           popup.style.display = "none";
+        });
+      });
+      const toggleBtn = document.getElementById("dropdownToggle");
+      const dropdown = document.getElementById("dropdownContent");
+      const hiddenInput = document.getElementById("selectedApps");
+
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
+          dropdown.style.display = "none";
+        }
+      });
+
+      // Handle item selection
+      dropdown.querySelectorAll(".dropdown-item").forEach((item) => {
+        item.style.padding = "8px 10px";
+        item.style.cursor = "pointer";
+        item.style.borderRadius = "8px";
+        item.addEventListener(
+          "mouseenter",
+          () => (item.style.background = "#f3f3f3")
+        );
+        item.addEventListener("mouseleave", () => {
+          if (!item.classList.contains("selected"))
+            item.style.background = "white";
+        });
+
+        item.addEventListener("click", () => {
+          item.classList.toggle("selected");
+          item.style.background = item.classList.contains("selected")
+            ? "#ffe0e0"
+            : "white";
+
+          const selectedValues = Array.from(
+            dropdown.querySelectorAll(".selected")
+          ).map((el) => el.getAttribute("data-value"));
+
+          hiddenInput.value = selectedValues.join(", ");
+          toggleBtn.innerText =
+            selectedValues.length > 0
+              ? selectedValues.join(", ")
+              : "Select Zoho Apps *";
         });
       });
     </script>
