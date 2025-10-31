@@ -1582,7 +1582,6 @@
         color: black;
         max-width: 600px;
         margin: 0 auto;
-
         border-radius: 10px;
         padding: 30px;
         display: flex;
@@ -1641,9 +1640,8 @@
         }
       }
 
-      /* ===== Popup Modal Styling ===== */
-
       /* Popup styling */
+
       .zoho-popup {
         display: none;
         position: fixed;
@@ -3215,7 +3213,6 @@
         solution.
       </p>
 
-      <
       <div id="crmWebToEntityForm" class="crmWebToEntityForm">
         <form
           id="webform957096000001814003"
@@ -3223,7 +3220,6 @@
           name="WebToLeads957096000001814003"
           method="POST"
           accept-charset="UTF-8"
-          onsubmit="return handleZohoSubmit(event)"
         >
           <!-- Hidden fields required by Zoho -->
           <input
@@ -3238,7 +3234,6 @@
             value="575f7be0ee8960eb2ba5f4760eeeff273c1c1503e553b65e5d68ccaac59d733da4771a555016af2aa6d8fc325904a726"
           />
           <input type="hidden" name="actionType" value="TGVhZHM=" />
-          <!-- IMPORTANT: Empty returnURL to prevent redirect -->
           <input type="hidden" name="returnURL" value="" />
 
           <!-- Visible Fields -->
@@ -3271,10 +3266,9 @@
             placeholder="Tell us about your needs"
           ></textarea>
 
-          <!-- Honeypot field for spam protection -->
+          <!-- Honeypot -->
           <input type="hidden" name="aG9uZXlwb3Q" value="" />
 
-          <!-- Submit Button -->
           <button type="submit" class="zcwf_button">
             Book Free Consultation
           </button>
@@ -3282,7 +3276,7 @@
       </div>
 
       <!-- Success Popup -->
-      <div id="zohoPopup" class="zoho-popup">
+      <div id="zohoPopup" class="zoho-popup" style="display: none">
         <div class="zoho-popup-content">
           <h3>✅ Thank You!</h3>
           <p>Your consultation request has been submitted successfully.</p>
@@ -3554,12 +3548,14 @@
         }
         document.querySelector(".formsubmit").setAttribute("disabled", true);
       }
-      document
-        .getElementById("zohoForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault(); // Stop normal redirect
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("webform957096000001814003");
+        const popup = document.getElementById("zohoPopup");
+        const closeBtn = document.getElementById("closeZohoPopup");
 
-          const form = e.target;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
           const formData = new FormData(form);
 
           fetch(form.action, {
@@ -3568,45 +3564,16 @@
             mode: "no-cors",
           })
             .then(() => {
-              document.getElementById("popup").style.display = "flex";
+              popup.style.display = "flex";
               form.reset();
             })
-            .catch(() => {
-              alert("Something went wrong. Please try again.");
-            });
+            .catch((err) => console.error("Zoho submission failed:", err));
         });
 
-      document
-        .getElementById("closePopup")
-        .addEventListener("click", function () {
-          document.getElementById("popup").style.display = "none";
+        closeBtn.addEventListener("click", function () {
+          popup.style.display = "none";
         });
-
-      function handleZohoSubmit(event) {
-        event.preventDefault();
-
-        const form = event.target;
-        const formData = new FormData(form);
-
-        // Submit silently (no redirect)
-        fetch(form.action, {
-          method: "POST",
-          body: formData,
-          mode: "no-cors",
-        })
-          .then(() => {
-            form.reset();
-            document.getElementById("zohoPopup").style.display = "flex";
-          })
-          .catch(() => alert("Something went wrong. Please try again."));
-        return false;
-      }
-
-      document
-        .getElementById("closeZohoPopup")
-        .addEventListener("click", () => {
-          document.getElementById("zohoPopup").style.display = "none";
-        });
+      });
     </script>
     <script
       id="wf_anal"
