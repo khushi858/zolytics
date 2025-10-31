@@ -1578,10 +1578,11 @@
 
       /* 💬 Zoho CRM Webform Styling (matches old form) */
       .crmWebToEntityForm {
-        background-color: white;
+        background: linear-gradient(135deg, #c34141 0%, #ef4444 100%);
         color: black;
         max-width: 600px;
         margin: 0 auto;
+
         border-radius: 10px;
         padding: 30px;
         display: flex;
@@ -1594,6 +1595,7 @@
         width: 100%;
         padding: 1rem;
         border: none;
+        margin-bottom: 1.5rem;
         border-radius: 10px;
         font-family: inherit;
         font-size: 1rem;
@@ -1613,8 +1615,8 @@
 
       /* 🚀 Button Styling */
       .zcwf_button {
-        background: rgb(240, 9, 9);
-        color: #f5f1f1;
+        background: rgb(252, 251, 251);
+        color: #db0c0c;
         padding: 1rem 2rem;
         border: none;
         border-radius: 50px;
@@ -1636,6 +1638,51 @@
         }
         .contact p {
           font-size: 1rem;
+        }
+      }
+
+      /* ===== Popup Modal Styling ===== */
+
+      /* Popup styling */
+      .zoho-popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .zoho-popup-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        width: 320px;
+        animation: fadeIn 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .zoho-popup-content h3 {
+        color: #d81414;
+        margin-bottom: 10px;
+      }
+      .zoho-popup-content button {
+        background: #d81414;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
         }
       }
 
@@ -3168,34 +3215,31 @@
         solution.
       </p>
 
-      <!-- Zoho CRM Integrated Form -->
+      <
       <div id="crmWebToEntityForm" class="crmWebToEntityForm">
         <form
           id="webform957096000001814003"
           action="https://crm.zoho.in/crm/WebToLeadForm"
           name="WebToLeads957096000001814003"
           method="POST"
-          onsubmit='javascript:document.charset="UTF-8"; return checkMandatory957096000001814003()'
           accept-charset="UTF-8"
+          onsubmit="return handleZohoSubmit(event)"
         >
           <!-- Hidden fields required by Zoho -->
           <input
             type="hidden"
             name="xnQsjsdp"
-            value="3ea19e57566edf033af50797bde29470f8cba8ae4f2dc44d68766e40cacb5eef"
+            value="a218deb5fe1038b848b3256a151767afdae9b5d0782d36a50b328a9f898581b9"
           />
           <input type="hidden" name="zc_gad" id="zc_gad" value="" />
           <input
             type="hidden"
             name="xmIwtLD"
-            value="ec102bca881f047cf43f1a67c1d5d2413eb74e240159014b112690e435fe2d00d3214bcad1c07f0c5a16622a826865d2"
+            value="575f7be0ee8960eb2ba5f4760eeeff273c1c1503e553b65e5d68ccaac59d733da4771a555016af2aa6d8fc325904a726"
           />
           <input type="hidden" name="actionType" value="TGVhZHM=" />
-          <input
-            type="hidden"
-            name="returnURL"
-            value="https://khushi858.github.io/zolytics/"
-          />
+          <!-- IMPORTANT: Empty returnURL to prevent redirect -->
+          <input type="hidden" name="returnURL" value="" />
 
           <!-- Visible Fields -->
           <input
@@ -3203,6 +3247,7 @@
             id="Last_Name"
             name="Last Name"
             placeholder="Your Name *"
+            maxlength="80"
             required
           />
           <input
@@ -3210,6 +3255,7 @@
             id="Company"
             name="Company"
             placeholder="Company Name *"
+            maxlength="200"
             required
           />
           <input
@@ -3217,6 +3263,7 @@
             id="Phone"
             name="Phone"
             placeholder="Phone Number"
+            maxlength="30"
           />
           <textarea
             id="Description"
@@ -3224,11 +3271,24 @@
             placeholder="Tell us about your needs"
           ></textarea>
 
+          <!-- Honeypot field for spam protection -->
+          <input type="hidden" name="aG9uZXlwb3Q" value="" />
+
           <!-- Submit Button -->
-          <button type="submit" class="formsubmit zcwf_button">
+          <button type="submit" class="zcwf_button">
             Book Free Consultation
           </button>
         </form>
+      </div>
+
+      <!-- Success Popup -->
+      <div id="zohoPopup" class="zoho-popup">
+        <div class="zoho-popup-content">
+          <h3>✅ Thank You!</h3>
+          <p>Your consultation request has been submitted successfully.</p>
+          <p>We'll get back to you within 24 hours.</p>
+          <button id="closeZohoPopup">Close</button>
+        </div>
       </div>
     </section>
 
@@ -3432,14 +3492,6 @@
         });
       });
 
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true,
-        offset: 100,
-      });
-
       // Animated counter for stats
       function animateCounter(element) {
         const target = parseInt(element.getAttribute("data-count"));
@@ -3502,6 +3554,59 @@
         }
         document.querySelector(".formsubmit").setAttribute("disabled", true);
       }
+      document
+        .getElementById("zohoForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault(); // Stop normal redirect
+
+          const form = e.target;
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            mode: "no-cors",
+          })
+            .then(() => {
+              document.getElementById("popup").style.display = "flex";
+              form.reset();
+            })
+            .catch(() => {
+              alert("Something went wrong. Please try again.");
+            });
+        });
+
+      document
+        .getElementById("closePopup")
+        .addEventListener("click", function () {
+          document.getElementById("popup").style.display = "none";
+        });
+
+      function handleZohoSubmit(event) {
+        event.preventDefault();
+
+        const form = event.target;
+        const formData = new FormData(form);
+
+        // Submit silently (no redirect)
+        fetch(form.action, {
+          method: "POST",
+          body: formData,
+          mode: "no-cors",
+        })
+          .then(() => {
+            form.reset();
+            document.getElementById("zohoPopup").style.display = "flex";
+          })
+          .catch(() => alert("Something went wrong. Please try again."));
+        return false;
+      }
+
+      document
+        .getElementById("closeZohoPopup")
+        .addEventListener("click", () => {
+          document.getElementById("zohoPopup").style.display = "none";
+        });
     </script>
     <script
       id="wf_anal"
