@@ -12,14 +12,9 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
       rel="stylesheet"
     />
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- AOS (Animate On Scroll) -->
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-
-    <!-- Font Awesome -->
     <script
       src="https://kit.fontawesome.com/a076d05399.js"
       crossorigin="anonymous"
@@ -30,15 +25,12 @@
         padding: 0;
         box-sizing: border-box;
       }
-
       body {
         font-family: "Lato", "Open Sans", sans-serif;
         line-height: 1.6;
         color: #333;
         overflow-x: hidden;
       }
-
-      /* Header */
       header {
         position: fixed;
         top: 0;
@@ -58,13 +50,63 @@
         padding: 1rem 2rem;
       }
 
+      /* ✅ Aligns Zolytics + logos on same line */
       .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
         font-size: 2rem;
         font-weight: 900;
-        color: #dc2626;
+
+        letter-spacing: -1px;
+      }
+      .zolytics-text {
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, #dc2626, #f97316, #16a34a, #2563eb);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
         letter-spacing: -1px;
       }
 
+      /* ✅ Vertical line between Zolytics & logos */
+      .vertical-line {
+        width: 2px;
+        height: 35px;
+        background-color: #ccc;
+      }
+
+      /* ✅ Logos container */
+      .logos {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 50px;
+        width: auto;
+      }
+      .log {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 70px;
+        width: auto;
+      }
+
+      /* ✅ Zoho logo */
+      .zoho-logo {
+        height: 35px;
+        width: auto;
+        display: inline-block;
+      }
+
+      /* ✅ Zoho Partner logo */
+      .zoho-partner-logo {
+        height: 35px;
+        width: auto;
+        display: inline-block;
+      }
+
+      /* ✅ Navigation links */
       .nav-links {
         display: flex;
         list-style: none;
@@ -83,6 +125,7 @@
         color: #dc2626;
       }
 
+      /* ✅ Call-to-action button */
       .cta-btn {
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
         color: white !important;
@@ -97,7 +140,6 @@
         box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
       }
 
-      /* Hero Section */
       .hero {
         margin-top: 80px;
         background: linear-gradient(135deg, #fef3f2 0%, #fff 100%);
@@ -106,14 +148,12 @@
         position: relative;
         overflow: hidden;
       }
-
       .hero-content {
         max-width: 1000px;
         margin: 0 auto;
         position: relative;
         z-index: 1;
       }
-
       .hero h1 {
         font-size: 3.5rem;
         color: #1a1a1a;
@@ -121,21 +161,18 @@
         font-weight: 900;
         line-height: 1.2;
       }
-
       .hero p {
         font-size: 1.3rem;
         color: #666;
         margin-bottom: 2rem;
         line-height: 1.8;
       }
-
       .hero-buttons {
         display: flex;
         gap: 1rem;
         justify-content: center;
         flex-wrap: wrap;
       }
-
       .btn-primary {
         background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
         color: white;
@@ -149,12 +186,10 @@
         text-decoration: none;
         display: inline-block;
       }
-
       .btn-primary:hover {
         transform: translateY(-3px);
         box-shadow: 0 15px 30px rgba(220, 38, 38, 0.3);
       }
-
       .btn-secondary {
         background: white;
         color: #dc2626;
@@ -168,20 +203,16 @@
         text-decoration: none;
         display: inline-block;
       }
-
       .btn-secondary:hover {
         background: #dc2626;
         color: white;
         transform: translateY(-3px);
       }
-
-      /* Section Styling */
       section {
         padding: 5rem 2rem;
         max-width: 1400px;
         margin: 0 auto;
       }
-
       .section-title {
         text-align: center;
         font-size: 2.5rem;
@@ -189,7 +220,6 @@
         margin-bottom: 1rem;
         font-weight: 700;
       }
-
       .section-subtitle {
         text-align: center;
         font-size: 1rem;
@@ -199,7 +229,6 @@
         text-transform: uppercase;
         letter-spacing: 2px;
       }
-
 
       /* About Section with Image */
 
@@ -440,7 +469,6 @@
       }
 
       /* ========== Workflow Section ========== */
-      /* ========== Workflow Section ========== */
       .workflow {
         background: linear-gradient(
           135deg,
@@ -472,8 +500,7 @@
         content: "";
         position: absolute;
         border-radius: 50%;
-        opacity: 0.03;
-        animation: float 20s ease-in-out infinite;
+        opacity: 0.88;
       }
 
       .workflow::before {
@@ -482,7 +509,10 @@
         background: radial-gradient(circle, #dc2626, transparent);
         top: -200px;
         left: -200px;
-        animation-delay: 0s;
+        opacity: 0.88; /* Made more visible for testing */
+        transform: translate(var(--scroll-x, 0), var(--scroll-y, 0))
+          rotate(var(--scroll-rotate, 0deg)) !important;
+        transition: transform 0.1s ease-out;
       }
 
       .workflow::after {
@@ -491,9 +521,14 @@
         background: radial-gradient(circle, #dd2424, transparent);
         bottom: -250px;
         right: -250px;
-        animation-delay: 7s;
+        opacity: 0.88; /* Made more visible for testing */
+        transform: translate(
+            calc(var(--scroll-x, 0) * -1),
+            calc(var(--scroll-y, 0) * -1)
+          )
+          rotate(calc(var(--scroll-rotate, 0deg) * -1)) !important;
+        transition: transform 0.1s ease-out;
       }
-
       @keyframes float {
         0%,
         100% {
@@ -962,7 +997,7 @@
         margin-bottom: 20px;
         z-index: 2;
         font-weight: 600;
-        text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 5px 12px rgba(0, 0, 0, 0.3);
         position: relative;
         color: #111827;
       }
@@ -1088,8 +1123,8 @@
 
       /* Partners Section */
       .partner-logos img {
-        width: 160px;
-        height: 80px;
+        width: 200px;
+        height: 180px;
         object-fit: contain;
         object-position: center;
         filter: grayscale(0%);
@@ -1216,172 +1251,310 @@
         }
       }
 
+      /*Client Stories */
 
-      /* Badges */
-.container { 
-  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; 
-  background: #dce0ee;
-  padding: 0 2rem;
-} 
+      .client-stories {
+        max-width: 1400px;
+        margin: 0 auto;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5eeee;
+        padding: 80px 20px;
+      }
 
-/* Section Styling */
-.section { 
-  margin: 100px auto;
-  text-align: center;
-  max-width: 1400px;
-}
+      .section-subtitle {
+        text-align: center;
+        color: rgba(208, 4, 4, 0.9);
+        font-size: 1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        margin-bottom: 15px;
+      }
 
-.section-header {
-  margin-bottom: 40px;
-}
+      .section-title {
+        text-align: center;
+        color: rgb(17, 17, 17);
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
 
-.section-divider {
-  width: 60px;
-  height: 3px;
-  background: #007bff;
-  margin: 10px auto 0;
-  border-radius: 3px;
-}
+      .title-divider {
+        width: 780px;
+        max-width: 90%;
+        height: 3px;
+        background-color: rgb(231, 126, 126);
+        border: none;
+        margin: 10px auto 60px;
+        border-radius: 2px;
+      }
 
-/* Badges in one row */
-.badges-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 35px;
-  flex-wrap: nowrap;
-  overflow-x: auto;
-  padding: 20px;
-}
-
-/* Badge Card */
-.badge-card {
-  background: #faebeb;
-  border-radius: 16px;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
-  padding: 25px 20px;
-  width: 300px;
-  text-align: center;
-  transition: all 0.3s ease;
-}
-
-/* Rotating Badge Icon */
-.badge-icon {
-  width: 280px;        
-  height: 280px; 
-  margin: 0 auto 15px;
-  filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.35));
-  transform-style: preserve-3d;
-  animation: spin360 6s linear infinite; /* continuous rotation */
-}
-
-/* Continuous Vertical Spin */
-@keyframes spin360 {
-  from {
-    transform: rotateY(0deg);
-  }
-  to {
-    transform: rotateY(360deg);
-  }
-}
-
-/* Image inside icon */
-.badge-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  backface-visibility: hidden; /* hides backside during rotation */
-}
-
-/* Text styling */
-.badge-name {
-  font-size: 1.1rem;
-  font-weight: 600;
-  color: #333;
-}
-
-.badge-level {
-  font-size: 0.9rem;
-  color: #777;
-}
-
-
-
-
-      /* Certificates Grid */
-      .certificates-grid {
+      .stories-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 40px;
         padding: 20px;
       }
 
-      .certificate-card {
-        background: linear-gradient(145deg, #26374f, #49597f);
-        border-radius: 25px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4),
-          inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      .story-card {
+        background: rgb(226, 221, 228);
+        padding: 35px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
         cursor: pointer;
         position: relative;
-        border: 1px solid rgba(129, 140, 248, 0.2);
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        min-height: 280px;
       }
 
-      .certificate-card::after {
+      .story-card.slide-left {
+        transform: translateX(-100px);
+      }
+
+      .story-card.slide-right {
+        transform: translateX(100px);
+      }
+
+      .story-card.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .story-card::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(129, 140, 248, 0.1) 0%,
-          rgba(192, 132, 252, 0.1) 100%
-        );
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
+      }
+
+      .story-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .story-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+      }
+
+      .story-content {
+        position: relative;
+      }
+
+      .story-item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
         opacity: 0;
-        transition: opacity 0.5s;
+        transform: translateY(30px);
+        transition: opacity 1s ease, transform 1s ease;
+        pointer-events: none;
       }
 
-      .certificate-card:hover::after {
+      .story-item.active {
+        position: relative;
         opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
       }
 
+      .story-item.fade-out {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      .company-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      .industry {
+        font-size: 0.85rem;
+        color: #999;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+      }
+
+      .story-text {
+        color: #444;
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      .quote-icon {
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        font-size: 3rem;
+        color: rgba(102, 126, 234, 0.1);
+        font-family: Georgia, serif;
+        z-index: 1;
+      }
+
+      .story-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+
+      .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .indicator.active {
+        width: 24px;
+        border-radius: 4px;
+        background: #667eea;
+      }
+
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .stories-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .story-card.slide-left,
+        .story-card.slide-right {
+          transform: translateY(50px);
+        }
+
+        .story-card.visible {
+          transform: translateY(0);
+        }
+      }
+
+      /* Badges Section Wrapper */
+      .badges-section-wrapper {
+        background: #dce0ee;
+        padding: 80px 0;
+        position: relative;
+      }
+      .badges-content-wrapper {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+      .section-header {
+        margin-bottom: 40px;
+        text-align: center;
+      }
+      .section-divider {
+        width: 60px;
+        height: 3px;
+        background: #007bff;
+        margin: 10px auto 0;
+        border-radius: 3px;
+      }
+      .badges-grid {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 35px;
+        flex-wrap: wrap;
+        padding: 20px 0;
+      }
+      .badge-card {
+        background: #faebeb;
+        border-radius: 16px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+        padding: 25px 20px;
+        width: 300px;
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .badge-icon {
+        width: 200px;
+        height: 200px;
+        margin: 0 auto 15px;
+        filter: drop-shadow(0 18px 22px rgba(0, 0, 0, 0.35));
+        transform-style: preserve-3d;
+        animation: spin360 6s linear infinite;
+      }
+      @keyframes spin360 {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+      .badge-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        backface-visibility: hidden;
+      }
+      .badge-name {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      .certificates-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 40px;
+        padding: 20px 0;
+        margin-top: 60px;
+      }
+      .certificate-card {
+        background: linear-gradient(145deg, #26374f, #49597f);
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        transition: all 0.5s;
+        cursor: pointer;
+        position: relative;
+        border: 1px solid rgba(129, 140, 248, 0.2);
+      }
       .certificate-card:hover {
         transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 30px 80px rgba(129, 140, 248, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        border-color: rgba(129, 140, 248, 0.5);
+        box-shadow: 0 30px 80px rgba(129, 140, 248, 0.3);
       }
-
       .certificate-img {
         width: 100%;
         height: 280px;
         object-fit: cover;
         transition: transform 0.5s;
       }
-
       .certificate-card:hover .certificate-img {
         transform: scale(1.05);
       }
-
       .certificate-info {
         padding: 30px;
         position: relative;
         z-index: 1;
       }
-
       .certificate-title {
-        font-size: 1.4rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        color: #e2e8f0;
+        color: #fbf9f8;
         margin-bottom: 12px;
         display: flex;
         align-items: center;
         gap: 10px;
       }
-
       .certificate-badge {
         width: 30px;
         height: 30px;
@@ -1392,176 +1565,209 @@
         justify-content: center;
         font-size: 0.9rem;
       }
-
       .certificate-description {
         color: #94a3b8;
         font-size: 0.95rem;
         line-height: 1.7;
       }
-
-      .certificate-meta {
-        display: flex;
-        gap: 20px;
-        margin-top: 15px;
-        padding-top: 15px;
-        border-top: 1px solid rgba(148, 163, 184, 0.2);
-      }
-
-      .meta-item {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.85rem;
-        color: #64748b;
-      }
-
-      /* Floating Particles */
-      .particles {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        pointer-events: none;
-        z-index: -1;
-      }
-
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(129, 140, 248, 0.3);
-        border-radius: 50%;
-        animation: float 10s infinite ease-in-out;
-      }
-
-      .particle:nth-child(1) {
-        left: 10%;
-        animation-delay: 0s;
-        animation-duration: 8s;
-      }
-      .particle:nth-child(2) {
-        left: 30%;
-        animation-delay: 2s;
-        animation-duration: 12s;
-      }
-      .particle:nth-child(3) {
-        left: 50%;
-        animation-delay: 4s;
-        animation-duration: 10s;
-      }
-      .particle:nth-child(4) {
-        left: 70%;
-        animation-delay: 1s;
-        animation-duration: 9s;
-      }
-      .particle:nth-child(5) {
-        left: 90%;
-        animation-delay: 3s;
-        animation-duration: 11s;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(100vh) translateX(0);
-          opacity: 0;
-        }
-        10%,
-        90% {
-          opacity: 1;
-        }
-        50% {
-          transform: translateY(0) translateX(50px);
-        }
-      }
-
-      @media (max-width: 768px) {
-        .section-title {
-          font-size: 2.5rem;
-        }
-
-        .badges-grid {
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 30px;
-        }
-
-        .certificates-grid {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .badge-icon {
-          width: 100px;
-          height: 100px;
-          font-size: 2.5rem;
-        }
-      }
-
-      /* Contact Section */
+      /* 🌟 Contact Section Styling */
       .contact {
         background: linear-gradient(135deg, #c34141 0%, #ef4444 100%);
         color: white;
         text-align: center;
+        padding: 80px 20px;
       }
 
       .contact h2 {
         color: white;
         margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        font-size: 2rem;
       }
 
       .contact p {
         font-size: 1.2rem;
         margin-bottom: 3rem;
+        color: #fff;
+        opacity: 0.9;
       }
 
-      .contact-form {
+      /* 💬 Zoho CRM Webform Styling (matches old form) */
+      .crmWebToEntityForm {
+        background: linear-gradient(135deg, #c34141 0%, #ef4444 100%);
+        color: black;
         max-width: 600px;
         margin: 0 auto;
+        border-radius: 10px;
+        padding: 30px;
         display: flex;
         flex-direction: column;
         gap: 1rem;
       }
 
-      .contact-form input,
-      .contact-form textarea {
+      .crmWebToEntityForm input,
+      .crmWebToEntityForm textarea {
+        width: 100%;
         padding: 1rem;
         border: none;
+        margin-bottom: 1.5rem;
         border-radius: 10px;
         font-family: inherit;
         font-size: 1rem;
+        outline: none;
+        color: #333;
       }
 
-      .contact-form textarea {
+      .crmWebToEntityForm input:focus,
+      .crmWebToEntityForm textarea:focus {
+        box-shadow: 0 0 0 3px rgba(200, 50, 50, 0.3);
+      }
+
+      .crmWebToEntityForm textarea {
         min-height: 150px;
         resize: vertical;
       }
 
-      .contact-form button {
-        background: white;
-        color: #d81414;
+      /* 🚀 Button Styling */
+      .zcwf_button {
+        background: rgb(252, 251, 251);
+        color: #db0c0c;
         padding: 1rem 2rem;
         border: none;
         border-radius: 50px;
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.3s ease;
       }
 
-      .contact-form button:hover {
+      .zcwf_button:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
       }
 
-      /* Footer */
+      /* 📱 Responsive */
+      @media (max-width: 768px) {
+        .contact h2 {
+          font-size: 1.6rem;
+        }
+        .contact p {
+          font-size: 1rem;
+        }
+      }
+
+      /* Popup styling */
+
+      .zoho-popup {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .zoho-popup-content {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        width: 320px;
+        animation: fadeIn 0.3s ease;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+      .zoho-popup-content h3 {
+        color: #d81414;
+        margin-bottom: 10px;
+      }
+      .zoho-popup-content p {
+        color: #d81414;
+        margin-bottom: 10px;
+      }
+
+      .zoho-popup-content button {
+        background: #d81414;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        margin-top: 12px;
+        cursor: pointer;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* Dropdown multi-select styling */
+      .dropdown-multi {
+        position: relative;
+        margin-bottom: 1.5rem;
+        text-align: left;
+      }
+
+      .dropdown-btn {
+        width: 100%;
+        background: #fff;
+        color: #333;
+        padding: 1rem;
+        border: none;
+        border-radius: 10px;
+        font-size: 1rem;
+        font-family: inherit;
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .dropdown-btn::after {
+        content: "▼";
+        float: right;
+        font-size: 0.9rem;
+        color: #d81414;
+      }
+
+      .dropdowncontent {
+        display: none;
+        position: absolute;
+        width: 100%;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        margin-top: 5px;
+        z-index: 100;
+        padding: 10px 15px;
+        max-height: 220px;
+        overflow-y: auto;
+      }
+
+      .dropdown-content label {
+        display: block;
+        color: #333;
+        font-size: 0.95rem;
+        padding: 6px 0;
+      }
+
+      .dropdown-content input {
+        margin-right: 8px;
+      }
+
+      /* Show dropdown when active */
+      .dropdown-multi.active .dropdown-content {
+        display: block;
+      }
+
       footer {
         background: #1a1a1a;
         color: white;
         padding: 3rem 2rem 1rem;
       }
-
       .footer-content {
         max-width: 1400px;
         margin: 0 auto;
@@ -1570,21 +1776,17 @@
         gap: 3rem;
         margin-bottom: 2rem;
       }
-
       .footer-section h3 {
         color: #dc2626;
         margin-bottom: 1rem;
       }
-
       .footer-section p {
         color: #999;
         line-height: 1.8;
       }
-
       .footer-links {
         list-style: none;
       }
-
       .footer-links a {
         color: #999;
         text-decoration: none;
@@ -1592,17 +1794,14 @@
         padding: 0.5rem 0;
         transition: color 0.3s;
       }
-
       .footer-links a:hover {
         color: #dc2626;
       }
-
       .social-icons {
         display: flex;
         gap: 1rem;
         margin-top: 1rem;
       }
-
       .social-icons a {
         width: 40px;
         height: 40px;
@@ -1615,12 +1814,10 @@
         text-decoration: none;
         transition: all 0.3s;
       }
-
       .social-icons a:hover {
         background: #dc2626;
         transform: translateY(-3px);
       }
-
       .footer-bottom {
         text-align: center;
         padding-top: 2rem;
@@ -1628,67 +1825,66 @@
         color: #666;
       }
 
-      /* Responsive */
-      @media (max-width: 968px) {
-        .about-container,
-        .why-container,
-        .story-container,
-        .partners-container {
-          grid-template-columns: 1fr;
-        }
-
-        .story-container:nth-child(even) {
-          direction: ltr;
-        }
-      }
-
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2rem;
         }
-
         .hero p {
           font-size: 1.1rem;
         }
-
         .section-title {
           font-size: 2rem;
         }
-
         .nav-links {
           display: none;
         }
-
-        .float-logo {
-          width: 60px;
-          height: 60px;
+        .badge-card {
+          width: 100%;
+          max-width: 300px;
+        }
+        .badge-icon {
+          width: 150px;
+          height: 150px;
+        }
+        .certificates-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <nav>
-        <div class="logo">Zolytics</div>
+        <div class="logo">
+          <img src="./images/logo.png" alt="Zoho Logo" class="log" />
+          <div class="vertical-line"></div>
+          <div class="logos">
+            <img
+              src="./images/Zoho_logo-removebg-preview.png"
+              alt="Zoho Logo"
+              class="zoho-logo"
+            />
+            <div class="vertical-line"></div>
+            <img
+              src="./images/zoho_Partner-removebg-preview.png"
+              alt="Zoho Partner Logo"
+              class="zoho-partner-logo"
+            />
+          </div>
+        </div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#industries">Industries</a></li>
-          <li><a href="#case-studies">Case Studies</a></li>
           <li><a href="#contact">Contact</a></li>
           <li><a href="#contact" class="cta-btn">Book Consultation</a></li>
         </ul>
       </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="hero-content" data-aos="fade-up">
-         <h1>
-      Transform the Way You Work with Zoho.
-    </h1>
+        <h1>Transform the Way You Work with Zoho.</h1>
         <p>
           We help businesses automate accounting, CRM, HR, and analytics —
           creating connected systems that drive growth.
@@ -1851,7 +2047,7 @@
             </div>
             <div class="expertise-card">
               <img
-                src="finance-removebg-preview.png"
+                src="./images/finance-removebg-preview.png"
                 alt="Zoho Finance"
                 class="expertise-icon"
               />
@@ -2013,7 +2209,7 @@
             </div>
             <div class="expertise-card">
               <img
-                src="finance-removebg-preview.png"
+                src="./images/finance-removebg-preview.png"
                 alt="Zoho Finance"
                 class="expertise-icon"
               />
@@ -2871,7 +3067,7 @@
         <!-- Left side: heading + text + CTA -->
         <div class="industries-info" data-aos="fade-right">
           <p class="subtitle">Our Expertise</p>
-          <h2 class="main-title">Industries We Serve</h2>
+          <h2 class="main-title">Industries We Served and Counting</h2>
           <p class="description">
             We have worked across multiple industry verticals over the years and
             helped businesses in diverse domains. We serve a wide range of
@@ -2912,26 +3108,33 @@
 
           <div class="industry-card">
             <div class="icon"></div>
-            <h3>Professional Services</h3>
-            <p>
-              Automation and CRM solutions for consultants, agencies, and
-              service-based firms.
-            </p>
-          </div>
-
-          <div class="industry-card">
-            <div class="icon"></div>
             <h3>IT & Software</h3>
             <p>
               Custom software, SaaS workflows, and integrated technology
               solutions.
             </p>
           </div>
+
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>Logistics & Supply Chain</h3>
+            <p>
+              End-to-end tracking, warehouse automation, fleet management, and
+              vendor coordination.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>Professional Services</h3>
+            <p>
+              Automation and CRM solutions for consultants, agencies, and
+              service-based firms.
+            </p>
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- Partners Section -->
 
     <!-- Partners Section -->
     <section
@@ -2942,10 +3145,7 @@
         background: linear-gradient(135deg, #c2d6ea, #eef2ff);
       "
     >
-      <div
-        
-        style="max-width: 1200px; margin: 0 auto; text-align: center"
-      >
+      <div style="max-width: 1200px; margin: 0 auto; text-align: center">
         <p class="section-subtitle" data-aos="fade-up" style="color: #2563eb">
           Our Network
         </p>
@@ -2982,53 +3182,46 @@
           "
         >
           <div class="partner-logo">
-            <img
-              src="data:image/jpeg;base64,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 "
-              alt="Microsell"
-            />
+            <a
+              href="https://www.businessscales.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/Buisness.png" alt="Business Scales" />
+            </a>
           </div>
-          <div class="partner-logo">
-            <img
-              src="https://www.sysworks.in/logo%20colo-1.png"
-              alt="Sysworks"
-            />
-          </div>
-          <div class="partner-logo">
-            <img
-              src="https://www.zopreneurs.com/Untitled%20design.png"
-              alt="Zopreneurs"
-            />
-          </div>
-          <div class="partner-logo">
-            <img
-              src="https://www.businessscales.com/Untitled%20design%20-47-.png"
-              alt="Business Scales"
-            />
-          </div>
-          <div class="partner-logo">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Zoho-logo.png"
-              alt="Zoho"
-            />
-          </div>
-        </div>
 
-        <!-- Partner Cards -->
-        <div class="partners-grid" data-aos="fade-up">
-          <div class="partner-card" data-aos="zoom-in" data-aos-delay="100">
-            Enable Solutions
+          <div class="partner-logo">
+            <a
+              href="https://www.microsell.com.au/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="./images/Microsell-removebg-preview.png"
+                alt="Microsell"
+              />
+            </a>
           </div>
-          <div class="partner-card" data-aos="zoom-in" data-aos-delay="150">
-            Microsell
+
+          <div class="partner-logo">
+            <a
+              href="https://www.sysworks.in/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/Sysworkss.png" alt="Sysworks" />
+            </a>
           </div>
-          <div class="partner-card" data-aos="zoom-in" data-aos-delay="200">
-            Global Consultants
-          </div>
-          <div class="partner-card" data-aos="zoom-in" data-aos-delay="250">
-            Certified Experts
-          </div>
-          <div class="partner-card" data-aos="zoom-in" data-aos-delay="300">
-            Automation Alliance
+
+          <div class="partner-logo">
+            <a
+              href="https://www.zopreneurs.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="./images/Zopreneurs.png" alt="Zopreneurs" />
+            </a>
           </div>
         </div>
 
@@ -3043,192 +3236,50 @@
       </div>
     </section>
 
-    <!--Client stories-->
-    <section class="client-stories" id="case-studies">
-      <p class="section-subtitle">Success Stories</p>
-      <h2 class="section-title">Client Success Stories</h2>
-      <hr class="title-divider" />
-
-      <div class="stories-grid">
-        <!-- Card 1 -->
-        <div class="story-card slide-left">
-          <span class="quote-icon">"</span>
-          <div class="story-content">
-            <div class="story-item active">
-              <h3 class="company-name">Global Trading Corp</h3>
-              <p class="industry">Import/Export • UAE</p>
-              <p class="story-text">
-                Automated our entire accounting and reporting process with Zoho
-                Books & Analytics. Month-end close time reduced by 70%, giving
-                our finance team more time for strategic planning.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">TechVision Industries</h3>
-              <p class="industry">Manufacturing • Singapore</p>
-              <p class="story-text">
-                Streamlined our supply chain management with real-time tracking.
-                Inventory accuracy improved to 99%, and we reduced waste by 45%.
-                The ROI was visible within 3 months.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">Digital Nexus</h3>
-              <p class="industry">Marketing Agency • USA</p>
-              <p class="story-text">
-                Transformed client reporting with automated dashboards. Our team
-                saves 20 hours weekly, and clients love the transparency.
-                Campaign performance tracking is now effortless.
-              </p>
-            </div>
-          </div>
-          <div class="story-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-          </div>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="story-card slide-right">
-          <span class="quote-icon">"</span>
-          <div class="story-content">
-            <div class="story-item active">
-              <h3 class="company-name">MultiSphere Solutions</h3>
-              <p class="industry">IT Services • India-US</p>
-              <p class="story-text">
-                Built a unified dashboard connecting 5 branches across 3 time
-                zones. Real-time visibility transformed how we manage projects
-                and resources. Our teams now collaborate seamlessly.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">FinanceFlow Ltd</h3>
-              <p class="industry">Financial Services • UK</p>
-              <p class="story-text">
-                Automated compliance reporting across multiple jurisdictions.
-                Audit preparation time decreased by 80%, and we maintain 100%
-                regulatory compliance with ease.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">GreenLeaf Organic</h3>
-              <p class="industry">Agriculture • Australia</p>
-              <p class="story-text">
-                Connected farm operations with distribution centers seamlessly.
-                Track produce from field to market with complete traceability.
-                Customer trust and sales both increased significantly.
-              </p>
-            </div>
-          </div>
-          <div class="story-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-          </div>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="story-card slide-left">
-          <span class="quote-icon">"</span>
-          <div class="story-content">
-            <div class="story-item active">
-              <h3 class="company-name">EcommerceHub</h3>
-              <p class="industry">Retail • Online</p>
-              <p class="story-text">
-                Complete CRM and inventory integration revolutionized our
-                operations. Order processing speed improved by 85%, and customer
-                satisfaction scores have never been higher. Handles 50,000+ SKUs
-                effortlessly.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">EduTech Academy</h3>
-              <p class="industry">Education • Canada</p>
-              <p class="story-text">
-                Managed student enrollment, schedules, and communications in one
-                platform. Administrative overhead reduced by 60%, allowing us to
-                focus more on teaching quality and student success.
-              </p>
-            </div>
-            <div class="story-item">
-              <h3 class="company-name">FitLife Studios</h3>
-              <p class="industry">Fitness & Wellness • Dubai</p>
-              <p class="story-text">
-                Integrated membership management with class scheduling and
-                billing. Member retention increased by 40%, and our staff can
-                now focus on providing excellent customer experiences.
-              </p>
-            </div>
-          </div>
-          <div class="story-indicators">
-            <span class="indicator active"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Badges Section -->
-    <div class="particles">
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-      <div class="particle"></div>
-    </div>
-
-    <div class="container">
-      <!-- Badges Section -->
-<div class="section">
-  <div class="section-header" data-aos="fade-up">
-    <p class="section-subtitle">Professional Recognition</p>
-    <h2 class="section-title">Achievement Badges</h2>
-    <div class="section-divider"></div>
-  </div>
-
-  <div class="badges-grid">
-    <!-- Badge 1 -->
-    <div class="badge-card" data-aos="zoom-in" data-aos-delay="100">
-      <div class="badge-icon">
-        <img src="badges1.png" alt="Zoho Expert" />
-      </div>
-      <div class="badge-name">Zoho Expert</div>
-    </div>
-
-    <!-- Badge 2 -->
-    <div class="badge-card" data-aos="zoom-in" data-aos-delay="200">
-      <div class="badge-icon">
-        <img src="badges2.png" alt="Certified Partner" />
-      </div>
-      <div class="badge-name">Certified Partner</div>
-    </div>
-
-    <!-- Badge 3 -->
-    <div class="badge-card" data-aos="zoom-in" data-aos-delay="300">
-      <div class="badge-icon">
-        <img src="badges3.png" alt="Innovation Award" />
-        </div>
-        <div class="badge-name">Innovation Award</div>
-      </div>
-   
-
-    <!-- Badge 4 -->
-    <div class="badge-card" data-aos="zoom-in" data-aos-delay="400">
-      <div class="badge-icon">
-        <img src="badges3.png" alt="Top Performer" />
-        </div>
-        <div class="badge-name">Top Performer</div>
-    </div>
-  </div>
-  </div>
-</section>
-
-
-      <!-- Certificates Section -->
-      <section class="section">
+    <!-- Badges & Certificates Section -->
+    <section class="badges-section-wrapper">
+      <div class="badges-content-wrapper">
+        <!-- Badges -->
         <div class="section-header" data-aos="fade-up">
+          <p class="section-subtitle">Professional Recognition</p>
+          <h2 class="section-title">Achievement Badges</h2>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="badges-grid">
+          <div class="badge-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="badge-icon">
+              <img
+                src="./images/badges_3-removebg-preview.png"
+                alt="Top Performer"
+              />
+            </div>
+            <div class="badge-name">Certified Analytics Associate</div>
+          </div>
+
+          <div class="badge-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="badge-icon">
+              <img
+                src="./images/badges1-removebg-preview.png"
+                alt="Zoho Expert"
+              />
+            </div>
+            <div class="badge-name">Certified Books Associate</div>
+          </div>
+
+          <div class="badge-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="badge-icon">
+              <img
+                src="./images/badges2-removebg-preview.png"
+                alt="Certified Partner"
+              />
+            </div>
+            <div class="badge-name">Certified CRM Administrator</div>
+          </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="section-header" data-aos="fade-up" style="margin-top: 80px">
           <p class="section-subtitle">Accredited Certifications</p>
           <h2 class="section-title">Our Certificates</h2>
           <div class="section-divider"></div>
@@ -3237,79 +3288,223 @@
         <div class="certificates-grid">
           <div class="certificate-card" data-aos="fade-up" data-aos-delay="100">
             <img
-              src="https://media.licdn.com/dms/image/v2/D4D22AQF3h5WH--YV7g/feedshare-shrink_800/feedshare-shrink_800/0/1718357942850?e=2147483647&v=beta&t=EyPZxQhWhL2Jo7fEwenl1K4d2iinGoPAyMx-z-6-cDE"
+              src="./images/Analytics.jpg"
               alt="Certificate 1"
               class="certificate-img"
             />
             <div class="certificate-info">
               <h3 class="certificate-title">
                 <div class="certificate-badge">✓</div>
-                Zoho Implementation Certificate
+                Certified in data visualization & reporting using Zoho’s BI
+                tools
               </h3>
-              <p class="certificate-description">
-                Recognized for excellence in deploying CRM and automation
-                solutions with precision and performance.
-              </p>
-              </div>
-              </div>
-              
+            </div>
+          </div>
 
           <div class="certificate-card" data-aos="fade-up" data-aos-delay="200">
             <img
-              src="https://www.zoho.com/in/books/zoho-books-certification/certificate-1x.png"
+              src="./images/Book.jpg"
               alt="Certificate 2"
               class="certificate-img"
             />
             <div class="certificate-info">
               <h3 class="certificate-title">
                 <div class="certificate-badge">✓</div>
-                Advanced Integration Certificate
+                Certified in online accounting, billing & automation
               </h3>
-              <p class="certificate-description">
-                Certified for seamless API and workflow integrations across Zoho
-                ecosystem and third-party apps.
-              </p>
             </div>
           </div>
 
           <div class="certificate-card" data-aos="fade-up" data-aos-delay="300">
             <img
-              src="https://www.axithorn.com/Zoho%20Images/CRM%20for%20administrators.png"
+              src="./images/CRM.jpg"
               alt="Certificate 3"
               class="certificate-img"
             />
             <div class="certificate-info">
               <h3 class="certificate-title">
                 <div class="certificate-badge">✓</div>
-                Client Excellence Award
+                Certified in customer management & sales workflow automation
               </h3>
-              <p class="certificate-description">
-                Awarded for exceptional customer satisfaction and project
-                success across global clients.
-              </p>
-              </div>
-              </div>
-              </div>
+            </div>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
 
-    <!-- Contact Section -->
     <section class="contact" id="contact">
       <h2 data-aos="fade-up">Ready to Transform Your Business with Zoho?</h2>
       <p data-aos="fade-up">
         Schedule a quick consultation and we'll help you design the right
         solution.
       </p>
-      <form class="contact-form" data-aos="fade-up">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Email Address" required />
-        <input type="text" placeholder="Company Name" required />
-        <textarea placeholder="Tell us about your needs"></textarea>
-        <button type="submit">Book Free Consultation</button>
-      </form>
+
+      <div id="crmWebToEntityForm" class="crmWebToEntityForm">
+        <form
+          id="webform957096000001814003"
+          action="https://crm.zoho.in/crm/WebToLeadForm"
+          name="WebToLeads957096000001814003"
+          method="POST"
+          accept-charset="UTF-8"
+        >
+          <!-- Hidden fields required by Zoho -->
+          <input
+            type="hidden"
+            name="xnQsjsdp"
+            value="a218deb5fe1038b848b3256a151767afdae9b5d0782d36a50b328a9f898581b9"
+          />
+          <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+          <input
+            type="hidden"
+            name="xmIwtLD"
+            value="575f7be0ee8960eb2ba5f4760eeeff273c1c1503e553b65e5d68ccaac59d733da4771a555016af2aa6d8fc325904a726"
+          />
+          <input type="hidden" name="actionType" value="TGVhZHM=" />
+          <input type="hidden" name="returnURL" value="" />
+
+          <!-- Visible Fields -->
+          <input
+            type="text"
+            id="Last_Name"
+            name="Last Name"
+            placeholder="Your Name *"
+            maxlength="80"
+            required
+          />
+          <input
+            type="text"
+            id="Company"
+            name="Company"
+            placeholder="Company Name *"
+            maxlength="200"
+            required
+          />
+          <input
+            type="text"
+            id="Phone"
+            name="Phone"
+            placeholder="Phone Number"
+            maxlength="30"
+          />
+
+          <!-- ✅ Dropdown Checkbox Section -->
+          <!-- ✅ Dropdown Select Section -->
+          <div
+            class="dropdown-multi"
+            style="position: relative; margin-bottom: 1.5rem"
+          >
+            <button
+              type="button"
+              id="dropdownToggle"
+              style="
+                width: 100%;
+                padding: 1rem;
+                border: none;
+                border-radius: 10px;
+                background: white;
+                color: #555;
+                font-size: 1rem;
+                text-align: left;
+                cursor: pointer;
+              "
+            >
+              Select Zoho Apps *
+            </button>
+
+            <div
+              id="dropdownContent"
+              style="
+                display: none;
+                position: absolute;
+                background: #fff;
+                width: 100%;
+                max-height: 220px;
+                overflow-y: auto;
+                border-radius: 10px;
+                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+                z-index: 1000;
+                padding: 10px;
+              "
+            >
+              <div class="dropdown-item" data-value="Zoho Analytics">
+                Zoho Analytics
+              </div>
+              <div class="dropdown-item" data-value="Zoho Books">
+                Zoho Books
+              </div>
+              <div class="dropdown-item" data-value="Zoho Billing">
+                Zoho Billing
+              </div>
+
+              <div class="dropdown-item" data-value="Zoho Campaigns">
+                Zoho Campaigns
+              </div>
+              <div class="dropdown-item" data-value="Zoho Cliq">Zoho Cliq</div>
+              <div class="dropdown-item" data-value="Zoho Commerce">
+                Zoho Commerce
+              </div>
+              <div class="dropdown-item" data-value="Zoho Creator">
+                Zoho Creator
+              </div>
+              <div class="dropdown-item" data-value="Zoho CRM">Zoho CRM</div>
+              <div class="dropdown-item" data-value="Zoho Desk">Zoho Desk</div>
+              <div class="dropdown-item" data-value="Zoho Expenses">
+                Zoho Expenses
+              </div>
+
+              <div class="dropdown-item" data-value="Zoho Finance">
+                Zoho Finance
+              </div>
+              <div class="dropdown-item" data-value="Zoho Flow">Zoho Flow</div>
+
+              <div class="dropdown-item" data-value="Zoho Inventory">
+                Zoho Inventory
+              </div>
+              <div class="dropdown-item" data-value="Zoho Invoice">
+                Zoho Invoice
+              </div>
+              <div class="dropdown-item" data-value="Zoho Mail">Zoho Mail</div>
+              <div class="dropdown-item" data-value="Zoho People">
+                Zoho People
+              </div>
+              <div class="dropdown-item" data-value="Zoho Practice">
+                Zoho Practice
+              </div>
+              <div class="dropdown-item" data-value="Zoho Projects">
+                Zoho Projects
+              </div>
+            </div>
+
+            <!-- hidden input for Zoho -->
+            <input type="hidden" id="selectedApps" name="LEADCF1" />
+          </div>
+
+          <textarea
+            id="Description"
+            name="Description"
+            placeholder="Tell us about your needs"
+          ></textarea>
+
+          <!-- Honeypot -->
+          <input type="hidden" name="aG9uZXlwb3Q" value="" />
+
+          <button type="submit" class="zcwf_button">
+            Book Free Consultation
+          </button>
+        </form>
+      </div>
+
+      <!-- Success Popup -->
+      <div id="zohoPopup" class="zoho-popup" style="display: none">
+        <div class="zoho-popup-content">
+          <h3>✅ Thank You!</h3>
+          <p>Your consultation request has been submitted successfully.</p>
+          <p>We'll get back to you within 24 hours.</p>
+          <button id="closeZohoPopup">Close</button>
+        </div>
+      </div>
     </section>
-    <!-- Footer -->
+
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -3328,31 +3523,72 @@
           <ul class="footer-links">
             <li><a href="#about">About</a></li>
             <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#industries">Industries</a></li>
-            <li><a href="#case-studies">Case Studies</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          © 2025 Zolytics Consulting | All rights reserved | Powered by Zoho
+          © 2025 Zolytics Consulting | All rights reserved | Powered by
+          <a
+            href="https://www.zoho.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: #f76239; text-decoration: none; font-weight: 600"
+          >
+            Zoho
+          </a>
         </p>
       </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      AOS.init({ duration: 800, once: true, offset: 100 }); // Smooth scrolling
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
+      // Header shadow on scroll
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
+        } else {
+          header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        }
       });
+      // Floating circles that respond to scroll - ADD THIS
+      function updateWorkflowCircles() {
+        const workflow = document.querySelector(".workflow");
+        if (!workflow) return;
+
+        const rect = workflow.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        // Check if workflow section is in viewport
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          // Calculate scroll progress through the section (0 to 1)
+          const scrollProgress = Math.max(
+            0,
+            Math.min(
+              1,
+              (windowHeight - rect.top) / (windowHeight + rect.height)
+            )
+          );
+
+          // Calculate movement based on scroll progress
+          const moveX = scrollProgress * 150;
+          const moveY = scrollProgress * 75;
+          const rotate = scrollProgress * 360;
+
+          // Apply transforms
+          workflow.style.setProperty("--scroll-x", moveX + "px");
+          workflow.style.setProperty("--scroll-y", moveY + "px");
+          workflow.style.setProperty("--scroll-rotate", rotate + "deg");
+        }
+      }
+
+      // Run on scroll
+      window.addEventListener("scroll", updateWorkflowCircles);
+
+      // Run once on page load
+      window.addEventListener("load", updateWorkflowCircles);
 
       AOS.init();
 
@@ -3388,16 +3624,6 @@
           steps.forEach((s) => s.classList.remove("step-active"));
           step.classList.add("step-active");
         });
-      });
-
-      // Header shadow on scroll
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
-        } else {
-          header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
-        }
       });
 
       // ===== Image Slideshow Script =====
@@ -3487,14 +3713,6 @@
         });
       });
 
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true,
-        offset: 100,
-      });
-
       // Animated counter for stats
       function animateCounter(element) {
         const target = parseInt(element.getAttribute("data-count"));
@@ -3539,6 +3757,101 @@
         once: true,
         easing: "ease-out-cubic",
       });
+
+      function checkMandatory957096000001814003() {
+        var mndFileds = ["Company", "Last Name"];
+        var fldLangVal = ["Company", "Last Name"];
+        for (i = 0; i < mndFileds.length; i++) {
+          var fieldObj =
+            document.forms["WebToLeads957096000001814003"][mndFileds[i]];
+          if (fieldObj) {
+            if (fieldObj.value.replace(/^\s+|\s+$/g, "").length == 0) {
+              alert(fldLangVal[i] + " cannot be empty.");
+              fieldObj.focus();
+              return;
+              false;
+            }
+          }
+        }
+        document.querySelector(".formsubmit").setAttribute("disabled", true);
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        const form = document.getElementById("webform957096000001814003");
+        const popup = document.getElementById("zohoPopup");
+        const closeBtn = document.getElementById("closeZohoPopup");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const formData = new FormData(form);
+
+          fetch(form.action, {
+            method: "POST",
+            body: formData,
+            mode: "no-cors",
+          })
+            .then(() => {
+              popup.style.display = "flex";
+              form.reset();
+            })
+            .catch((err) => console.error("Zoho submission failed:", err));
+        });
+
+        closeBtn.addEventListener("click", function () {
+          popup.style.display = "none";
+        });
+      });
+      const toggleBtn = document.getElementById("dropdownToggle");
+      const dropdown = document.getElementById("dropdownContent");
+      const hiddenInput = document.getElementById("selectedApps");
+
+      toggleBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        dropdown.style.display =
+          dropdown.style.display === "block" ? "none" : "block";
+      });
+
+      document.addEventListener("click", (e) => {
+        if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
+          dropdown.style.display = "none";
+        }
+      });
+
+      // Handle item selection
+      dropdown.querySelectorAll(".dropdown-item").forEach((item) => {
+        item.style.padding = "8px 10px";
+        item.style.cursor = "pointer";
+        item.style.borderRadius = "8px";
+        item.addEventListener(
+          "mouseenter",
+          () => (item.style.background = "#f3f3f3")
+        );
+        item.addEventListener("mouseleave", () => {
+          if (!item.classList.contains("selected"))
+            item.style.background = "white";
+        });
+
+        item.addEventListener("click", () => {
+          item.classList.toggle("selected");
+          item.style.background = item.classList.contains("selected")
+            ? "#ffe0e0"
+            : "white";
+
+          const selectedValues = Array.from(
+            dropdown.querySelectorAll(".selected")
+          ).map((el) => el.getAttribute("data-value"));
+
+          hiddenInput.value = selectedValues.join(", ");
+          toggleBtn.innerText =
+            selectedValues.length > 0
+              ? selectedValues.join(", ")
+              : "Select Zoho Apps *";
+        });
+      });
     </script>
+    <script
+      id="wf_anal"
+      src="https://crm.zohopublic.in/crm/WebFormAnalyticsServeServlet?rid=b15f10f580cae4e4ca25267b543a1c7bc94ef34ee135c2243fdef987d70b143869aa2cfbf30e4c5eb4c43bbf5efba941gidd417812708cf47c8b34dd04a81b1dfb019ddc2ec59ec62e7fe44f2b5538ca9aagid6346f09f42dbc6691a30f0f00ec56c112dc0c1ee17eabff1a7434720a42a7eb2gidcb4117b53a7c934f5396c073f46d8f5b3a9facd790dcd061bd8104172247b556&tw=68fc986e8ecd5c8452d13c7193ad4cc657759a538df6663b7d8d2ca72ba68eed"
+    ></script>
   </body>
 </html>
