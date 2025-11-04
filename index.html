@@ -3255,158 +3255,83 @@
       </p>
 
       <div id="crmWebToEntityForm" class="crmWebToEntityForm">
-        <form
-          id="webform957096000001814003"
-          action="https://crm.zoho.in/crm/WebToLeadForm"
-          name="WebToLeads957096000001814003"
-          method="POST"
-          accept-charset="UTF-8"
-        >
-          <!-- Hidden fields required by Zoho -->
-          <input
-            type="hidden"
-            name="xnQsjsdp"
-            value="a218deb5fe1038b848b3256a151767afdae9b5d0782d36a50b328a9f898581b9"
-          />
-          <input type="hidden" name="zc_gad" id="zc_gad" value="" />
-          <input
-            type="hidden"
-            name="xmIwtLD"
-            value="575f7be0ee8960eb2ba5f4760eeeff273c1c1503e553b65e5d68ccaac59d733da4771a555016af2aa6d8fc325904a726"
-          />
-          <input type="hidden" name="actionType" value="TGVhZHM=" />
-          <input type="hidden" name="returnURL" value="" />
+       <form
+  id="webform957096000001814003"
+  action="https://crm.zoho.in/crm/WebToLeadForm"
+  name="WebToLeads957096000001814003"
+  method="POST"
+  accept-charset="UTF-8"
+  onsubmit="return checkMandatory957096000001814003()"
+>
+  <!-- Required Hidden Fields -->
+  <input type="hidden" name="xnQsjsdp" value="7f081d29db731163accd3a36448f5bf6a0f5a60c1a3b214d6c3b85a38a4f47de" />
+  <input type="hidden" name="zc_gad" id="zc_gad" value="" />
+  <input type="hidden" name="xmIwtLD" value="d6c16e8b2d17fdd825880fff6a0341f8cf185dd23d26b54beb779ff2b332b86ec07a6cdd43a7f5c8ab5905bb3b2b8c22" />
+  <input type="hidden" name="actionType" value="TGVhZHM=" />
+  <input type="hidden" name="returnURL" value="" />
 
-          <!-- Visible Fields -->
-          <input
-            type="text"
-            id="Last_Name"
-            name="Last Name"
-            placeholder="Your Name *"
-            maxlength="80"
-            required
-          />
-          <input
-            type="text"
-            id="Company"
-            name="Company"
-            placeholder="Company Name *"
-            maxlength="200"
-            required
-          />
-          <input
-            type="text"
-            id="Phone"
-            name="Phone"
-            placeholder="Phone Number"
-            maxlength="30"
-          />
+  <!-- Visible Fields -->
+  <input type="text" id="Last_Name" name="Last Name" placeholder="Your Name *" maxlength="80" required />
+  <input type="text" id="Company" name="Company" placeholder="Company Name *" maxlength="200" required />
+  <input type="text" id="Phone" name="Phone" placeholder="Phone Number" maxlength="30" />
 
-          <!-- ✅ Dropdown Checkbox Section -->
-          <!-- ✅ Dropdown Select Section -->
-          <div
-            class="dropdown-multi"
-            style="position: relative; margin-bottom: 1.5rem"
-          >
-            <button
-              type="button"
-              id="dropdownToggle"
-              style="
-                width: 100%;
-                padding: 1rem;
-                border: none;
-                border-radius: 10px;
-                background: white;
-                color: #555;
-                font-size: 1rem;
-                text-align: left;
-                cursor: pointer;
-              "
-            >
-              Select Zoho Apps *
-            </button>
+  <!-- ✅ Multi-Select Dropdown for Zoho Apps -->
+  <div class="dropdown-multi" style="position: relative; margin-bottom: 1.5rem">
+    <button
+      type="button"
+      id="dropdownToggle"
+      style="width: 100%; padding: 1rem; border: none; border-radius: 10px; background: white; color: #555; font-size: 1rem; text-align: left; cursor: pointer;"
+    >
+      Select Zoho Apps *
+    </button>
+    <div
+      id="dropdownContent"
+      style="display: none; position: absolute; background: #fff; width: 100%; max-height: 220px; overflow-y: auto; border-radius: 10px; box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); z-index: 1000; padding: 10px;"
+    >
+       <div class="dropdown-item" data-value="Zoho Analytics">Zoho Analytics</div>
+      <div class="dropdown-item" data-value="Zoho Books">Zoho Books</div>
+      <div class="dropdown-item" data-value="Zoho Bigin">Zoho Bigin</div>
+      <div class="dropdown-item" data-value="Zoho Billing">Zoho Billing</div>
+      <div class="dropdown-item" data-value="Zoho Campaigns">Zoho Campaigns</div>
+      <div class="dropdown-item" data-value="Zoho Checkout">Zoho Checkout</div>
+      <div class="dropdown-item" data-value="Zoho Cliq">Zoho Cliq</div>
+      <div class="dropdown-item" data-value="Zoho Commerce">Zoho Commerce</div>
+      <div class="dropdown-item" data-value="Zoho Creator">Zoho Creator</div>
+      <div class="dropdown-item" data-value="Zoho CRM">Zoho CRM</div>
+      <div class="dropdown-item" data-value="Zoho CRM Plus">Zoho CRM Plus</div>
+      <div class="dropdown-item" data-value="Zoho Desk">Zoho Desk</div>
+      <div class="dropdown-item" data-value="Zoho Expenses">Zoho Expenses</div>
+      <div class="dropdown-item" data-value="Zoho Finance">Zoho Finance</div>
+      <div class="dropdown-item" data-value="Zoho Finance Plus">Zoho Finance Plus</div>
+      <div class="dropdown-item" data-value="Zoho Flow">Zoho Flow</div>
+      <div class="dropdown-item" data-value="Zoho Inventory">Zoho Inventory</div>
+      <div class="dropdown-item" data-value="Zoho Invoice">Zoho Invoice</div>
+      <div class="dropdown-item" data-value="Zoho Mail">Zoho Mail</div>
+      <div class="dropdown-item" data-value="Zoho Payment">Zoho Payment</div>
+      <div class="dropdown-item" data-value="Zoho Payroll">Zoho Payroll</div>
+      <div class="dropdown-item" data-value="Zoho People">Zoho People</div>
+      <div class="dropdown-item" data-value="Zoho People Plus">Zoho People Plus</div>
+      <div class="dropdown-item" data-value="Zoho POS">Zoho POS</div>
+      <div class="dropdown-item" data-value="Zoho Practice">Zoho Practice</div>
+      <div class="dropdown-item" data-value="Zoho Projects">Zoho Projects</div>
+      <div class="dropdown-item" data-value="Zoho Recruit">Zoho Recruit</div>
+      <div class="dropdown-item" data-value="Zoho Service Plus">Zoho ervice Plus</div>
+      <div class="dropdown-item" data-value="Zoho Shift">Zoho Shift</div>
+      <div class="dropdown-item" data-value="Zoho Sign">Zoho Sign</div>
+      <div class="dropdown-item" data-value="Zoho WorkDrive">Zoho WorkDrive</div>
+      <div class="dropdown-item" data-value="Zoho Workerly">Zoho Workerly</div>
+      <div class="dropdown-item" data-value="Not mentioned in the list">Not mentioned in the list</div>
+    </div>
 
-            <div
-              id="dropdownContent"
-              style="
-                display: none;
-                position: absolute;
-                background: #fff;
-                width: 100%;
-                max-height: 220px;
-                overflow-y: auto;
-                border-radius: 10px;
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                padding: 10px;
-              "
-            >
-              <div class="dropdown-item" data-value="Zoho Analytics">
-                Zoho Analytics
-              </div>
-              <div class="dropdown-item" data-value="Zoho Books">
-                Zoho Books
-              </div>
-              <div class="dropdown-item" data-value="Zoho Billing">
-                Zoho Billing
-              </div>
+    <input type="hidden" id="selectedApps" name="LEADCF1" required />
+  </div>
 
-              <div class="dropdown-item" data-value="Zoho Campaigns">
-                Zoho Campaigns
-              </div>
-              <div class="dropdown-item" data-value="Zoho Cliq">Zoho Cliq</div>
-              <div class="dropdown-item" data-value="Zoho Commerce">
-                Zoho Commerce
-              </div>
-              <div class="dropdown-item" data-value="Zoho Creator">
-                Zoho Creator
-              </div>
-              <div class="dropdown-item" data-value="Zoho CRM">Zoho CRM</div>
-              <div class="dropdown-item" data-value="Zoho Desk">Zoho Desk</div>
-              <div class="dropdown-item" data-value="Zoho Expenses">
-                Zoho Expenses
-              </div>
+  <textarea id="Description" name="Description" placeholder="Tell us about your needs"></textarea>
+  <input type="hidden" name="aG9uZXlwb3Q" value="" />
 
-              <div class="dropdown-item" data-value="Zoho Finance">
-                Zoho Finance
-              </div>
-              <div class="dropdown-item" data-value="Zoho Flow">Zoho Flow</div>
+  <button type="submit" class="zcwf_button">Book Free Consultation</button>
+</form>
 
-              <div class="dropdown-item" data-value="Zoho Inventory">
-                Zoho Inventory
-              </div>
-              <div class="dropdown-item" data-value="Zoho Invoice">
-                Zoho Invoice
-              </div>
-              <div class="dropdown-item" data-value="Zoho Mail">Zoho Mail</div>
-              <div class="dropdown-item" data-value="Zoho People">
-                Zoho People
-              </div>
-              <div class="dropdown-item" data-value="Zoho Practice">
-                Zoho Practice
-              </div>
-              <div class="dropdown-item" data-value="Zoho Projects">
-                Zoho Projects
-              </div>
-            </div>
-
-            <!-- hidden input for Zoho -->
-            <input type="hidden" id="selectedApps" name="LEADCF1" />
-          </div>
-
-          <textarea
-            id="Description"
-            name="Description"
-            placeholder="Tell us about your needs"
-          ></textarea>
-
-          <!-- Honeypot -->
-          <input type="hidden" name="aG9uZXlwb3Q" value="" />
-
-          <button type="submit" class="zcwf_button">
-            Book Free Consultation
-          </button>
-        </form>
       </div>
 
       <!-- Success Popup -->
@@ -3775,53 +3700,49 @@
           popup.style.display = "none";
         });
       });
-      const toggleBtn = document.getElementById("dropdownToggle");
-      const dropdown = document.getElementById("dropdownContent");
-      const hiddenInput = document.getElementById("selectedApps");
+      const dropdownToggle = document.getElementById("dropdownToggle");
+  const dropdownContent = document.getElementById("dropdownContent");
+  const selectedAppsInput = document.getElementById("selectedApps");
+  let selectedApps = [];
 
-      toggleBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        dropdown.style.display =
-          dropdown.style.display === "block" ? "none" : "block";
-      });
+  dropdownToggle.addEventListener("click", () => {
+    dropdownContent.style.display =
+      dropdownContent.style.display === "block" ? "none" : "block";
+  });
 
-      document.addEventListener("click", (e) => {
-        if (!dropdown.contains(e.target) && e.target !== toggleBtn) {
-          dropdown.style.display = "none";
-        }
-      });
+  dropdownContent.querySelectorAll(".dropdown-item").forEach((item) => {
+    item.addEventListener("click", () => {
+      const value = item.getAttribute("data-value");
+      if (selectedApps.includes(value)) {
+        selectedApps = selectedApps.filter((v) => v !== value);
+        item.style.background = "";
+      } else {
+        selectedApps.push(value);
+        item.style.background = "#e0f3ff";
+      }
+      selectedAppsInput.value = selectedApps.join(", ");
+      dropdownToggle.textContent =
+        selectedApps.length > 0
+          ? selectedApps.join(", ")
+          : "Select Zoho Apps *";
+    });
+  });
 
-      // Handle item selection
-      dropdown.querySelectorAll(".dropdown-item").forEach((item) => {
-        item.style.padding = "8px 10px";
-        item.style.cursor = "pointer";
-        item.style.borderRadius = "8px";
-        item.addEventListener(
-          "mouseenter",
-          () => (item.style.background = "#f3f3f3")
-        );
-        item.addEventListener("mouseleave", () => {
-          if (!item.classList.contains("selected"))
-            item.style.background = "white";
-        });
-
-        item.addEventListener("click", () => {
-          item.classList.toggle("selected");
-          item.style.background = item.classList.contains("selected")
-            ? "#ffe0e0"
-            : "white";
-
-          const selectedValues = Array.from(
-            dropdown.querySelectorAll(".selected")
-          ).map((el) => el.getAttribute("data-value"));
-
-          hiddenInput.value = selectedValues.join(", ");
-          toggleBtn.innerText =
-            selectedValues.length > 0
-              ? selectedValues.join(", ")
-              : "Select Zoho Apps *";
-        });
-      });
+  function checkMandatory957096000001814003() {
+    if (!document.getElementById("Last_Name").value.trim()) {
+      alert("Please enter your name");
+      return false;
+    }
+    if (!document.getElementById("Company").value.trim()) {
+      alert("Please enter your company name");
+      return false;
+    }
+    if (!selectedApps.length) {
+      alert("Please select at least one Zoho App");
+      return false;
+    }
+    return true;
+  }
     </script>
     <script
       id="wf_anal"
