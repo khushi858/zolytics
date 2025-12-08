@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemap Location
+Sitemap: https://khushi858.github.io/zolytics/sitemap.xml
+
+# Crawl Delay
+Crawl-delay: 10
