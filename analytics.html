@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Analytics - Business Intelligence & Analytics</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+          "Oxygen", "Ubuntu", sans-serif;
+        color: #333;
+        background: #fff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      .header {
+        background: #fff;
+        padding: 1rem 5%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        box-shadow: 0 2px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #d93025;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        align-items: center;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #5f6368;
+        font-weight: 500;
+        font-size: 0.95rem;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: #d93025;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: #d93025;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .cta-button {
+        background: #d93025;
+        color: white;
+        padding: 0.7rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 8px rgba(217, 48, 37, 0.2);
+      }
+
+      .cta-button:hover {
+        background: #b8261d;
+        box-shadow: 0 4px 12px rgba(217, 48, 37, 0.3);
+        transform: translateY(-2px);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+        padding: 5rem 5% 4rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.05) 0%,
+          transparent 100%
+        );
+        z-index: 0;
+      }
+
+      .hero-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        color: #202124;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .hero-text p {
+        font-size: 1.2rem;
+        color: #5f6368;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        animation: fadeInUp 0.8s ease 0.4s both;
+      }
+
+      .btn-primary {
+        background: #d93025;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(217, 48, 37, 0.2);
+      }
+
+      .btn-primary:hover {
+        background: #b8261d;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(217, 48, 37, 0.3);
+      }
+
+      .btn-secondary {
+        background: white;
+        color: #d93025;
+        padding: 1rem 2rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        border: 2px solid #d93025;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: #d93025;
+        color: white;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        margin-top: 3rem;
+        animation: fadeInUp 0.8s ease 0.6s both;
+      }
+
+      .stat-card {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .stat-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #d93025;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        color: #5f6368;
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+
+      .hero-visual {
+        position: relative;
+        animation: fadeInRight 0.8s ease 0.4s both;
+      }
+
+      .dashboard-preview {
+        background: white;
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .dashboard-preview:hover {
+        transform: translateY(-8px);
+      }
+
+      .preview-header {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .preview-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: #e8eaed;
+      }
+
+      .preview-content {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+        border-radius: 8px;
+        padding: 2rem;
+        min-height: 300px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .preview-metric {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #d93025;
+      }
+
+      .preview-metric-value {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #d93025;
+        margin-bottom: 0.5rem;
+      }
+
+      .preview-metric-label {
+        color: #5f6368;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+
+      .preview-chart {
+        grid-column: 1 / -1;
+        background: white;
+        padding: 1rem;
+        border-radius: 8px;
+        height: 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .preview-bar {
+        position: absolute;
+        bottom: 0;
+        background: #d93025;
+        border-radius: 4px 4px 0 0;
+        animation: growHeight 2s ease infinite;
+      }
+
+      .preview-bar:nth-child(1) {
+        left: 10%;
+        width: 8%;
+        height: 60%;
+        animation-delay: 0s;
+      }
+      .preview-bar:nth-child(2) {
+        left: 25%;
+        width: 8%;
+        height: 80%;
+        animation-delay: 0.2s;
+      }
+      .preview-bar:nth-child(3) {
+        left: 40%;
+        width: 8%;
+        height: 50%;
+        animation-delay: 0.4s;
+      }
+      .preview-bar:nth-child(4) {
+        left: 55%;
+        width: 8%;
+        height: 90%;
+        animation-delay: 0.6s;
+      }
+      .preview-bar:nth-child(5) {
+        left: 70%;
+        width: 8%;
+        height: 70%;
+        animation-delay: 0.8s;
+      }
+      .preview-bar:nth-child(6) {
+        left: 85%;
+        width: 8%;
+        height: 55%;
+        animation-delay: 1s;
+      }
+
+      /* Features Section */
+      .features-section {
+        padding: 5rem 5%;
+        background: white;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 800px;
+        margin: 0 auto 4rem;
+      }
+
+      .section-subtitle {
+        color: #d93025;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 0.5rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #202124;
+        margin-bottom: 1rem;
+      }
+
+      .section-description {
+        font-size: 1.1rem;
+        color: #5f6368;
+        line-height: 1.6;
+      }
+
+      .features-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+
+      .feature-card {
+        background: white;
+        border-radius: 8px;
+        border: 1px solid #e8eaed;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: #d93025;
+        transform: scaleX(0);
+        transition: transform 0.3s ease;
+      }
+
+      .feature-card:hover {
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        transform: translateY(-8px);
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+
+      .feature-content {
+        padding: 2rem;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #202124;
+        margin-bottom: 1rem;
+      }
+
+      .feature-description {
+        color: #5f6368;
+        line-height: 1.6;
+      }
+
+      /* Dashboard Section */
+      .dashboard-section {
+        padding: 5rem 5%;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e8eaed 100%);
+      }
+
+      .dashboard-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .dashboard-image {
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        margin-top: 3rem;
+      }
+
+      .dashboard-header-bar {
+        background: linear-gradient(135deg, #d93025 0%, #b8261d 100%);
+        padding: 1.5rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .dashboard-title-text {
+        color: white;
+        font-size: 1.3rem;
+        font-weight: 600;
+      }
+
+      .dashboard-tabs {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .tab {
+        background: rgba(255, 255, 255, 0.2);
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 4px;
+        border: none;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .tab:hover,
+      .tab.active {
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .dashboard-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 2rem;
+      }
+
+      .metric-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border-left: 4px solid #d93025;
+        transition: all 0.3s ease;
+      }
+
+      .metric-card:hover {
+        background: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      }
+
+      .metric-label {
+        color: #5f6368;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #202124;
+        margin-bottom: 0.5rem;
+      }
+
+      .metric-change {
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .metric-change.positive {
+        color: #1e8e3e;
+      }
+      .metric-change.negative {
+        color: #d93025;
+      }
+
+      /* Why Section */
+      .why-section {
+        padding: 5rem 5%;
+        background: white;
+      }
+
+      .why-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        margin-top: 3rem;
+      }
+
+      .why-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .why-card {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .why-card:hover {
+        background: white;
+        border-left-color: #d93025;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        transform: translateX(8px);
+      }
+
+      .why-icon {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .why-card h3 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: #202124;
+        margin-bottom: 0.5rem;
+      }
+
+      .why-card p {
+        color: #5f6368;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .why-image-container {
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      }
+
+      .why-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .why-image-container:hover .why-image {
+        transform: scale(1.05);
+      }
+
+      /* Footer */
+      .footer {
+        background: #202124;
+        color: #e8eaed;
+        padding: 3rem 5% 2rem;
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-section h3 {
+        color: #d93025;
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: #9aa0a6;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #d93025;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid #3c4043;
+        padding-top: 2rem;
+        text-align: center;
+        color: #9aa0a6;
+        font-size: 0.9rem;
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes growBar {
+        0%,
+        100% {
+          transform: scaleX(1);
+        }
+        50% {
+          transform: scaleX(1.1);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+        }
+        .hero-content,
+        .why-container {
+          grid-template-columns: 1fr;
+        }
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="header" id="header">
+      <nav class="nav">
+        <div class="logo">
+          <img
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics - Zoho CRM Partner India"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/analytics.svg"
+            style="height: 50px; width: auto"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#why">Why Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#signup" class="cta-button">Start Free Trial</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Transform Data Into Actionable Insights</h1>
+          <p>
+            Powerful business intelligence and analytics platform that helps you
+            make data-driven decisions with confidence.
+          </p>
+          <div class="hero-buttons">
+            <a href="#" class="btn-primary">Get Started Free</a>
+            <a href="#" class="btn-secondary">Watch Demo</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-value">$2.4M</div>
+              <div class="stat-label">Revenue Tracked</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">15K+</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">99.9%</div>
+              <div class="stat-label">Uptime</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">24/7</div>
+              <div class="stat-label">Support</div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="dashboard-preview">
+            <div class="preview-header">
+              <div class="preview-dot"></div>
+              <div class="preview-dot"></div>
+              <div class="preview-dot"></div>
+            </div>
+            <div class="preview-content">
+              <div class="preview-bar"></div>
+              <div class="preview-bar"></div>
+              <div class="preview-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="section-header">
+        <p class="section-subtitle">Features</p>
+        <h2 class="section-title">Everything You Need for Data Analytics</h2>
+        <p class="section-description">
+          Comprehensive tools to collect, analyze, and visualize your business
+          data effectively.
+        </p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h3 class="feature-title">Real-time Dashboards</h3>
+          <p class="feature-description">
+            Create interactive dashboards with live data updates and
+            customizable visualizations.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🤖</div>
+          <h3 class="feature-title">AI-Powered Insights</h3>
+          <p class="feature-description">
+            Leverage machine learning to discover patterns and predict trends
+            automatically.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔗</div>
+          <h3 class="feature-title">Multi-Source Integration</h3>
+          <p class="feature-description">
+            Connect data from databases, APIs, and cloud services seamlessly.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3 class="feature-title">Enterprise Security</h3>
+          <p class="feature-description">
+            Role-based access control and encryption to protect sensitive data.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📋</div>
+          <h3 class="feature-title">Custom Reports</h3>
+          <p class="feature-description">
+            Generate detailed reports with drag-and-drop functionality.
+          </p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3 class="feature-title">Mobile Analytics</h3>
+          <p class="feature-description">
+            Access analytics on-the-go with responsive mobile dashboards.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dashboard Section -->
+    <section class="dashboard-section" id="dashboard">
+      <div class="dashboard-container">
+        <div class="section-header">
+          <p class="section-subtitle">Dashboard</p>
+          <h2 class="section-title">Powerful Analytics at Your Fingertips</h2>
+          <p class="section-description">
+            Monitor your key metrics in real-time with our intuitive dashboard
+            interface.
+          </p>
+        </div>
+        <div class="dashboard-image">
+          <div class="dashboard-header-bar">
+            <div class="dashboard-title-text">Analytics Overview</div>
+            <div class="dashboard-tabs">
+              <button class="tab active">Sales</button>
+              <button class="tab">Marketing</button>
+              <button class="tab">Operations</button>
+            </div>
+          </div>
+          <div class="dashboard-metrics">
+            <div class="metric-card">
+              <div class="metric-label">New Customers</div>
+              <div class="metric-value">1,247</div>
+              <div class="metric-change positive">↗ +12.5%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Conversion Rate</div>
+              <div class="metric-value">94%</div>
+              <div class="metric-change positive">↗ +3.2%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Active Users</div>
+              <div class="metric-value">2,847</div>
+              <div class="metric-change negative">↘ -2.1%</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-label">Avg. Order Value</div>
+              <div class="metric-value">$156</div>
+              <div class="metric-change positive">↗ +8.7%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-container">
+        <div class="footer-grid">
+          <div class="footer-section">
+            <h3>Products</h3>
+            <ul>
+              <li><a href="#">Zoho Analytics</a></li>
+              <li><a href="#">Zoho CRM</a></li>
+              <li><a href="#">Zoho Projects</a></li>
+              <li><a href="#">Zoho Finance</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Company</h3>
+            <ul>
+              <li><a href="#">About Us</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+              <li><a href="#">Contact</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Support</h3>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Community</a></li>
+              <li><a href="#">Training</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Legal</h3>
+            <ul>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Terms of Service</a></li>
+              <li><a href="#">Security</a></li>
+              <li><a href="#">Compliance</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Zoho Corporation. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Tab switching
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", function () {
+          document
+            .querySelectorAll(".tab")
+            .forEach((t) => t.classList.remove("active"));
+          this.classList.add("active");
+        });
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
