@@ -1,0 +1,1432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Finance Plus - All-in-One Financial Solution</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Open+Sans:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Lato", "Open Sans", sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Header Styles */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+      .log {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        height: 60px;
+        width: auto;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 2rem;
+        font-weight: 900;
+      }
+      .logo-text {
+        font-size: 2rem;
+        font-weight: 900;
+        background: linear-gradient(90deg, #16a34a, #22c55e, #10b981);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: -1px;
+      }
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        align-items: center;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+      .nav-links a:hover {
+        color: #16a34a;
+      }
+      .cta-btn {
+        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        color: white !important;
+        padding: 0.7rem 1.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+      .cta-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 80px;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 6rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-content {
+        max-width: 1000px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 900;
+        line-height: 1.2;
+      }
+      .hero p {
+        font-size: 1.3rem;
+        color: #666;
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+      .hero-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        color: white;
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 30px rgba(22, 163, 74, 0.3);
+      }
+      .btn-secondary {
+        background: white;
+        color: #16a34a;
+        padding: 1rem 2.5rem;
+        border: 2px solid #16a34a;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-block;
+      }
+      .btn-secondary:hover {
+        background: #16a34a;
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Section Styles */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: #1a1a1a;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .section-subtitle {
+        text-align: center;
+        font-size: 1rem;
+        color: #16a34a;
+        margin-bottom: 3rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Scrolling Container Styles */
+      .scroll-container {
+        overflow: hidden;
+        padding: 20px 0;
+        position: relative;
+      }
+      .scroll-wrapper {
+        display: flex;
+        animation: scroll-left 20s linear infinite;
+      }
+      .scroll-track {
+        display: flex;
+        gap: 2rem;
+        padding-right: 2rem;
+      }
+      .left-to-right .scroll-wrapper {
+        animation: scroll-left 20s linear infinite;
+      }
+      .right-to-left .scroll-wrapper {
+        animation: scroll-right 20s linear infinite;
+      }
+
+      @keyframes scroll-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+      @keyframes scroll-right {
+        0% {
+          transform: translateX(-50%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .scroll-wrapper:hover {
+        animation-play-state: paused;
+      }
+
+      /* App Card Scroll Styles */
+      .app-card-scroll {
+        background: white;
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        min-width: 420px;
+        max-width: 420px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+      .app-card-scroll::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #16a34a, #22c55e, #10b981);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+      .app-card-scroll:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 25px 60px rgba(22, 163, 74, 0.25);
+        border-color: #16a34a;
+        z-index: 10;
+      }
+      .app-card-scroll:hover::before {
+        transform: scaleX(1);
+      }
+      .app-icon-scroll {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        transition: all 0.4s ease;
+      }
+      .app-card-scroll:hover .app-icon-scroll {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 10px 25px rgba(22, 163, 74, 0.2);
+      }
+      .app-card-scroll h3 {
+        color: #16a34a;
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+      .app-card-scroll:hover h3 {
+        color: #15803d;
+      }
+      .app-card-scroll p {
+        color: #666;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+      .app-card-scroll .features-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .app-card-scroll .features-list li {
+        padding: 0.4rem 0;
+        color: #555;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+      }
+      .app-card-scroll:hover .features-list li {
+        transform: translateX(5px);
+      }
+      .app-card-scroll .features-list li::before {
+        content: "✓";
+        color: #16a34a;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+      }
+      .app-card-scroll:hover .features-list li::before {
+        transform: scale(1.3);
+      }
+
+      /* Ecosystem Cards */
+      .eco-card {
+        background: rgba(255, 255, 255, 0.85);
+        padding: 2.5rem;
+        border-radius: 22px;
+        text-align: center;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(22, 163, 74, 0.15);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+        transition: all 0.35s ease;
+      }
+
+      .eco-card:hover {
+        transform: translateY(-12px) scale(1.04);
+        box-shadow: 0 25px 70px rgba(22, 163, 74, 0.25);
+        border-color: #16a34a;
+        background: white;
+      }
+
+      .eco-img {
+        width: 90px;
+        height: 90px;
+        object-fit: contain;
+        margin: 0 auto 1.2rem;
+        padding: 12px;
+        background: #e8ffef;
+        border-radius: 20px;
+        border: 1px solid #c7f5d6;
+        transition: 0.3s ease;
+      }
+
+      .eco-card:hover .eco-img {
+        transform: scale(1.15);
+        background: #d7ffe5;
+      }
+
+      .eco-card h3 {
+        font-size: 1.35rem;
+        font-weight: 800;
+        color: #16a34a;
+        margin-bottom: 0.6rem;
+        letter-spacing: -0.5px;
+      }
+
+      .eco-card p {
+        font-size: 1rem;
+        color: #4b5563;
+        line-height: 1.65;
+        margin-top: 0.5rem;
+      }
+
+      /* faster auto-scroll fix */
+      .scroll-wrapper {
+        animation: scroll-left 25s linear infinite !important;
+      }
+
+      /* Faster auto-scroll */
+      .scroll-wrapper {
+        animation: scroll-left 25s linear infinite !important;
+      }
+
+      /* Hover Overlay */
+      .hover-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(22, 163, 74, 0.95),
+          rgba(34, 197, 94, 0.95)
+        );
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      .app-card-scroll:hover .hover-overlay {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .overlay-content {
+        color: white;
+      }
+      .overlay-content h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+      .overlay-content p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        color: white;
+      }
+      .stats {
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        margin-top: 1.5rem;
+      }
+      .stat {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .stat strong {
+        font-size: 2rem;
+        font-weight: 800;
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+      .stat span {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+
+      /* Benefits Section */
+      .benefits-section {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 5rem 2rem;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .benefit-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.3s ease;
+      }
+      .benefit-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.15);
+      }
+      .benefit-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+      .benefit-card h3 {
+        color: #16a34a;
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+      }
+
+      /* Integration Section */
+      .integration-section {
+        background: white;
+        text-align: center;
+      }
+      .integration-visual {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+      }
+      .integration-box {
+        background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        padding: 2rem;
+        border-radius: 16px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+      .integration-box:hover {
+        transform: scale(1.05);
+        box-shadow: 0 12px 30px rgba(22, 163, 74, 0.2);
+      }
+
+      /* Contact Section */
+      .contact {
+        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+      }
+      .contact h2 {
+        color: white;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        font-size: 2rem;
+      }
+      .contact p {
+        font-size: 1.2rem;
+        margin-bottom: 3rem;
+        color: #fff;
+        opacity: 0.9;
+      }
+      .contact-form {
+        background: white;
+        color: black;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 10px;
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 2px solid #e5e7eb;
+        margin-bottom: 1.5rem;
+        border-radius: 10px;
+        font-family: inherit;
+        font-size: 1rem;
+        outline: none;
+        color: #333;
+        transition: border-color 0.3s;
+      }
+      .contact-form input:focus,
+      .contact-form textarea:focus {
+        border-color: #16a34a;
+      }
+      .contact-form textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      .submit-btn {
+        background: linear-gradient(135deg, #16a34a 0%, #22c55e 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .submit-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(22, 163, 74, 0.3);
+      }
+
+      /* Footer */
+      footer {
+        background: #080808;
+        color: rgb(247, 243, 243);
+        padding: 3rem 2rem 1rem;
+      }
+      .footer-content {
+        max-width: 1300px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+      .footer-section h3 {
+        color: #16a34a;
+        margin-bottom: 1rem;
+      }
+      .footer-section p {
+        color: #fbf7f7;
+        line-height: 1.8;
+      }
+      .footer-links {
+        list-style: none;
+      }
+      .footer-links a {
+        color: #f7f3f3;
+        text-decoration: none;
+        display: block;
+        padding: 0.5rem 0;
+        transition: color 0.3s;
+      }
+      .footer-links a:hover {
+        color: #16a34a;
+      }
+      .footer-bottom {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #fbf8f8;
+        color: #f4f0f0;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+        .hero p {
+          font-size: 1.1rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .finance-apps-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics - Zoho CRM Partner India"
+          />
+          <img
+            src="./images/finance-removebg-preview.png"
+            alt="Zoho Logo"
+            class="log"
+          />
+        </div>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#apps">All Apps</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-content" data-aos="fade-up">
+        <h1>Zoho Finance Plus: Your Complete Financial Suite</h1>
+        <p>
+          Manage billing, accounting, inventory, expenses, invoicing, and
+          payments — all in one unified platform.
+        </p>
+        <div class="hero-buttons">
+          <a href="#apps" class="btn-secondary">Explore Apps</a>
+        </div>
+      </div>
+    </section>
+
+    <section
+      id="apps"
+      style="
+        overflow: hidden;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 5rem 0;
+      "
+    >
+      <p class="section-subtitle" data-aos="fade-up">ALL-IN-ONE SOLUTION</p>
+      <h2 class="section-title" data-aos="fade-up">
+        Finance Plus Applications
+      </h2>
+      <p
+        style="
+          text-align: center;
+          max-width: 900px;
+          margin: 0 auto 4rem;
+          color: #666;
+          font-size: 1.1rem;
+        "
+        data-aos="fade-up"
+      >
+        Discover our comprehensive suite of integrated financial applications
+        designed to streamline every aspect of your business operations.
+      </p>
+
+      <!-- Scrolling Row 1: Left to Right -->
+      <div class="scroll-container left-to-right">
+        <div class="scroll-wrapper">
+          <div class="scroll-track">
+            <!-- Zoho Books -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📚</div>
+              <h3>Zoho Books</h3>
+              <p>
+                Complete online accounting software for small businesses to
+                manage finances, automate workflows, and stay tax-compliant.
+              </p>
+              <ul class="features-list">
+                <li>Automated invoicing & billing</li>
+                <li>Expense tracking & management</li>
+                <li>Bank reconciliation</li>
+                <li>GST & tax compliance</li>
+                <li>Financial reporting & analytics</li>
+                <li>Multi-currency support</li>
+                <li>Project-based accounting</li>
+                <li>Client & vendor portals</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Small to medium businesses, accountants, and financial
+                    consultants
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>10M+</strong>
+                      <span>Users Worldwide</span>
+                    </div>
+                    <div class="stat">
+                      <strong>150+</strong>
+                      <span>Countries</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zoho Billing -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">💳</div>
+              <h3>Zoho Billing</h3>
+              <p>
+                Subscription billing and revenue management platform for
+                recurring revenue businesses and SaaS companies.
+              </p>
+              <ul class="features-list">
+                <li>Subscription management</li>
+                <li>Recurring billing automation</li>
+                <li>Multiple payment gateways</li>
+                <li>Dunning management</li>
+                <li>Revenue recognition</li>
+                <li>Usage-based billing</li>
+                <li>Custom billing cycles</li>
+                <li>Advanced analytics</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    SaaS companies, subscription businesses, and service
+                    providers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>$50B+</strong>
+                      <span>Processed</span>
+                    </div>
+                    <div class="stat">
+                      <strong>99.9%</strong>
+                      <span>Uptime</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zoho Inventory -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📦</div>
+              <h3>Zoho Inventory</h3>
+              <p>
+                Powerful inventory management software to track stock levels,
+                manage warehouses, and streamline order fulfillment.
+              </p>
+              <ul class="features-list">
+                <li>Multi-warehouse management</li>
+                <li>Real-time stock tracking</li>
+                <li>Order management & fulfillment</li>
+                <li>Barcode scanning</li>
+                <li>Shipping integration</li>
+                <li>Dead stock reports</li>
+                <li>Serial number tracking</li>
+                <li>Batch tracking</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    E-commerce businesses, retailers, wholesalers, and
+                    manufacturers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>5M+</strong>
+                      <span>Orders/Day</span>
+                    </div>
+                    <div class="stat">
+                      <strong>50+</strong>
+                      <span>Integrations</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="scroll-track">
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📚</div>
+              <h3>Zoho Books</h3>
+              <p>
+                Complete online accounting software for small businesses to
+                manage finances, automate workflows, and stay tax-compliant.
+              </p>
+              <ul class="features-list">
+                <li>Automated invoicing & billing</li>
+                <li>Expense tracking & management</li>
+                <li>Bank reconciliation</li>
+                <li>GST & tax compliance</li>
+                <li>Financial reporting & analytics</li>
+                <li>Multi-currency support</li>
+                <li>Project-based accounting</li>
+                <li>Client & vendor portals</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Small to medium businesses, accountants, and financial
+                    consultants
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>10M+</strong>
+                      <span>Users Worldwide</span>
+                    </div>
+                    <div class="stat">
+                      <strong>150+</strong>
+                      <span>Countries</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">💳</div>
+              <h3>Zoho Billing</h3>
+              <p>
+                Subscription billing and revenue management platform for
+                recurring revenue businesses and SaaS companies.
+              </p>
+              <ul class="features-list">
+                <li>Subscription management</li>
+                <li>Recurring billing automation</li>
+                <li>Multiple payment gateways</li>
+                <li>Dunning management</li>
+                <li>Revenue recognition</li>
+                <li>Usage-based billing</li>
+                <li>Custom billing cycles</li>
+                <li>Advanced analytics</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    SaaS companies, subscription businesses, and service
+                    providers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>$50B+</strong>
+                      <span>Processed</span>
+                    </div>
+                    <div class="stat">
+                      <strong>99.9%</strong>
+                      <span>Uptime</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📦</div>
+              <h3>Zoho Inventory</h3>
+              <p>
+                Powerful inventory management software to track stock levels,
+                manage warehouses, and streamline order fulfillment.
+              </p>
+              <ul class="features-list">
+                <li>Multi-warehouse management</li>
+                <li>Real-time stock tracking</li>
+                <li>Order management & fulfillment</li>
+                <li>Barcode scanning</li>
+                <li>Shipping integration</li>
+                <li>Dead stock reports</li>
+                <li>Serial number tracking</li>
+                <li>Batch tracking</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    E-commerce businesses, retailers, wholesalers, and
+                    manufacturers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>5M+</strong>
+                      <span>Orders/Day</span>
+                    </div>
+                    <div class="stat">
+                      <strong>50+</strong>
+                      <span>Integrations</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scrolling Row 2: Right to Left -->
+      <div class="scroll-container right-to-left" style="margin-top: 3rem">
+        <div class="scroll-wrapper">
+          <div class="scroll-track">
+            <!-- Zoho Expense -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">💰</div>
+              <h3>Zoho Expense</h3>
+              <p>
+                Automate expense reporting and reimbursement with receipt
+                scanning, policy enforcement, and approval workflows.
+              </p>
+              <ul class="features-list">
+                <li>Automated expense reports</li>
+                <li>Receipt scanning & OCR</li>
+                <li>Mileage tracking</li>
+                <li>Multi-level approvals</li>
+                <li>Corporate card integration</li>
+                <li>Per diem calculations</li>
+                <li>Policy compliance checks</li>
+                <li>Real-time notifications</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Businesses with mobile workforce, travel-heavy teams, and
+                    enterprises
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>80%</strong>
+                      <span>Time Saved</span>
+                    </div>
+                    <div class="stat">
+                      <strong>100%</strong>
+                      <span>Accuracy</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zoho Invoice -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📄</div>
+              <h3>Zoho Invoice</h3>
+              <p>
+                100% free invoicing software for freelancers and small
+                businesses to create professional invoices and get paid faster.
+              </p>
+              <ul class="features-list">
+                <li>Customizable invoice templates</li>
+                <li>Online payment acceptance</li>
+                <li>Time tracking & billing</li>
+                <li>Client portal access</li>
+                <li>Payment reminders</li>
+                <li>Expense management</li>
+                <li>Project tracking</li>
+                <li>Mobile app access</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>Freelancers, consultants, and small business owners</p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>FREE</strong>
+                      <span>Forever</span>
+                    </div>
+                    <div class="stat">
+                      <strong>3X</strong>
+                      <span>Faster Payments</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Zoho Checkout -->
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">🛒</div>
+              <h3>Zoho Checkout</h3>
+              <p>
+                Create custom branded payment pages to collect one-time and
+                recurring payments without writing code.
+              </p>
+              <ul class="features-list">
+                <li>Hosted payment pages</li>
+                <li>Buy now buttons</li>
+                <li>Subscription payments</li>
+                <li>Discount codes & coupons</li>
+                <li>Payment analytics</li>
+                <li>Multi-currency support</li>
+                <li>Custom branding</li>
+                <li>Secure checkout</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Content creators, coaches, digital product sellers, and
+                    service providers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>5 Min</strong>
+                      <span>Setup Time</span>
+                    </div>
+                    <div class="stat">
+                      <strong>PCI-DSS</strong>
+                      <span>Compliant</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Duplicate for seamless loop -->
+          <div class="scroll-track">
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">💰</div>
+              <h3>Zoho Expense</h3>
+              <p>
+                Automate expense reporting and reimbursement with receipt
+                scanning, policy enforcement, and approval workflows.
+              </p>
+              <ul class="features-list">
+                <li>Automated expense reports</li>
+                <li>Receipt scanning & OCR</li>
+                <li>Mileage tracking</li>
+                <li>Multi-level approvals</li>
+                <li>Corporate card integration</li>
+                <li>Per diem calculations</li>
+                <li>Policy compliance checks</li>
+                <li>Real-time notifications</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Businesses with mobile workforce, travel-heavy teams, and
+                    enterprises
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>80%</strong>
+                      <span>Time Saved</span>
+                    </div>
+                    <div class="stat">
+                      <strong>100%</strong>
+                      <span>Accuracy</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">📄</div>
+              <h3>Zoho Invoice</h3>
+              <p>
+                100% free invoicing software for freelancers and small
+                businesses to create professional invoices and get paid faster.
+              </p>
+              <ul class="features-list">
+                <li>Customizable invoice templates</li>
+                <li>Online payment acceptance</li>
+                <li>Time tracking & billing</li>
+                <li>Client portal access</li>
+                <li>Payment reminders</li>
+                <li>Expense management</li>
+                <li>Project tracking</li>
+                <li>Mobile app access</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>Freelancers, consultants, and small business owners</p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>FREE</strong>
+                      <span>Forever</span>
+                    </div>
+                    <div class="stat">
+                      <strong>3X</strong>
+                      <span>Faster Payments</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="app-card-scroll">
+              <div class="app-icon-scroll">🛒</div>
+              <h3>Zoho Checkout</h3>
+              <p>
+                Create custom branded payment pages to collect one-time and
+                recurring payments without writing code.
+              </p>
+              <ul class="features-list">
+                <li>Hosted payment pages</li>
+                <li>Buy now buttons</li>
+                <li>Subscription payments</li>
+                <li>Discount codes & coupons</li>
+                <li>Payment analytics</li>
+                <li>Multi-currency support</li>
+                <li>Custom branding</li>
+                <li>Secure checkout</li>
+              </ul>
+              <div class="hover-overlay">
+                <div class="overlay-content">
+                  <h4>Perfect For:</h4>
+                  <p>
+                    Content creators, coaches, digital product sellers, and
+                    service providers
+                  </p>
+                  <div class="stats">
+                    <div class="stat">
+                      <strong>5 Min</strong>
+                      <span>Setup Time</span>
+                    </div>
+                    <div class="stat">
+                      <strong>PCI-DSS</strong>
+                      <span>Compliant</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-24 bg-[#f5fff7]">
+      <h2
+        class="text-center text-4xl font-extrabold text-gray-900 tracking-tight"
+      >
+        COMPLETE ECOSYSTEM
+      </h2>
+      <p
+        class="text-center text-green-600 text-sm font-semibold tracking-widest uppercase mt-2"
+      >
+        Seamless Integration & Collaboration
+      </p>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-16 max-w-7xl mx-auto px-6"
+      >
+        <!-- CARD 1 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/841/841558.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Unified Finance Suite</h3>
+          <p>
+            All financial modules interconnected for perfect workflow and
+            visibility.
+          </p>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1048/1048953.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Cross-App Sync</h3>
+          <p>
+            Automatic syncing between Books, Payroll, Expense, Inventory & more.
+          </p>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3242/3242257.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Workflow Automation</h3>
+          <p>
+            Trigger workflows across systems to reduce manual work
+            significantly.
+          </p>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/942/942748.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Centralized Security</h3>
+          <p>
+            Advanced IAM, roles, encryption, and secure identity management.
+          </p>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/942/942748.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Team Collaboration</h3>
+          <p>
+            Real-time updates, approvals, conversations & notifications across
+            apps.
+          </p>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/3408/3408630.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Connected Ecosystem</h3>
+          <p>Integrations with CRM, Analytics, People, Projects & more.</p>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/2620/2620669.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Inventory Sync</h3>
+          <p>Orders, invoices, stock & fulfillment synced automatically.</p>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/1828/1828911.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Advanced Analytics</h3>
+          <p>Unified dashboards & multi-app business performance insights.</p>
+        </div>
+
+        <!-- CARD 9 -->
+        <div class="eco-card">
+          <img
+            src="https://cdn-icons-png.flaticon.com/512/547/547413.png"
+            class="eco-img"
+            alt=""
+          />
+          <h3>Lightning Performance</h3>
+          <p>
+            Fast, stable & scalable experience across all Zoho applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="integration-section">
+      <p class="section-subtitle" data-aos="fade-up">UNIFIED PLATFORM</p>
+      <h2 class="section-title" data-aos="fade-up">
+        Everything Works Together
+      </h2>
+      <p
+        style="
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 3rem;
+          color: #666;
+        "
+        data-aos="fade-up"
+      >
+        Finance Plus connects all your financial tools into one powerful
+        ecosystem. Data flows automatically between apps, giving you a complete
+        view of your business finances.
+      </p>
+
+      <div class="integration-visual">
+        <div class="integration-box" data-aos="fade-right">
+          <strong>Billing</strong>
+        </div>
+        <span style="font-size: 2rem; color: #16a34a">→</span>
+        <div class="integration-box" data-aos="fade-up">
+          <strong>Books</strong>
+        </div>
+        <span style="font-size: 2rem; color: #16a34a">→</span>
+        <div class="integration-box" data-aos="fade-left">
+          <strong>Inventory</strong>
+        </div>
+      </div>
+
+      <div class="integration-visual" style="margin-top: 2rem">
+        <div class="integration-box" data-aos="fade-right" data-aos-delay="100">
+          <strong>Expense</strong>
+        </div>
+        <span style="font-size: 2rem; color: #16a34a">→</span>
+        <div class="integration-box" data-aos="fade-up" data-aos-delay="100">
+          <strong>Invoice</strong>
+        </div>
+        <span style="font-size: 2rem; color: #16a34a">→</span>
+        <div class="integration-box" data-aos="fade-left" data-aos-delay="100">
+          <strong>Checkout</strong>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Finance Plus</h3>
+          <p>
+            Your trusted partner for complete financial management solutions
+            powered by Zoho.
+          </p>
+          <p>
+            📧 Email: info@financeplus.com<br />🕒 Hours: Mon - Fri (9 AM – 6
+            PM)
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <hr style="width: 20%; border: 1px solid #ccc" />
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#apps">All Apps</a></li>
+            <li><a href="#benefits">Benefits</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Finance Apps</h3>
+          <hr style="width: 20%; border: 1px solid #ccc" />
+          <ul class="footer-links">
+            <li><a href="#apps">Zoho Books</a></li>
+            <li><a href="#apps">Zoho Billing</a></li>
+            <li><a href="#apps">Zoho Inventory</a></li>
+            <li><a href="#apps">Zoho Expense</a></li>
+            <li><a href="#apps">Zoho Invoice</a></li>
+            <li><a href="#apps">Zoho Checkout</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <hr style="width: 20%; border: 1px solid #ccc" />
+          <ul class="footer-links">
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Video Tutorials</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Support Center</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2025 Finance Plus | All rights reserved | Powered by
+          <a
+            href="https://www.zoho.com/"
+            target="_blank"
+            style="color: #16a34a; text-decoration: none; font-weight: 600"
+            >Zoho</a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+        easing: "ease-out-cubic",
+      });
+
+      window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        if (window.scrollY > 100) {
+          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
+        } else {
+          header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+        }
+      });
+    </script>
+  </body>
+</html>
