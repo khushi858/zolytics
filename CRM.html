@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zoho CRM Implementation & Consulting | Zolytics India</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+    <title>
+      Zoho CRM Implementation & Consulting Services India | Zolytics
+    </title>
+    <meta
+      name="description"
+      content="Expert Zoho CRM implementation, customization, and consulting services in India. Certified Zoho Partner helping businesses increase sales by 35%. Get free consultation today."
     />
     <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
     <style>
       * {
         margin: 0;
@@ -20,26 +23,28 @@
       }
 
       :root {
-        --primary: #4f9cf9;
-        --secondary: #3b82f6;
-        --accent: #8b5cf6;
-        --text-dark: #1e293b;
-        --text-light: #64748b;
-        --bg-light: #f5f8ff;
-        --bg-card: #ffffff;
-        --border: #e0e7ff;
-        --success: #10b981;
-        --light-green: #f0fdf4;
-        --light-blue: #eff6ff;
-        --hover-green: #dcfce7;
-        --hover-blue: #dbeafe;
+        --primary-color: #1890ff;
+        --primary-dark: #096dd9;
+        --secondary-color: #52c41a;
+        --text-primary: #1a1a1a;
+        --text-secondary: #4a4a4a;
+        --text-light: #6b6b6b;
+        --border-color: #2a2a2a;
+        --border-light: #e0e0e0;
+        --bg-light: #f8f9fa;
+        --white: #ffffff;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.15);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
       }
 
       body {
-        font-family: "Inter", sans-serif;
-        line-height: 1.7;
-        color: var(--text-dark);
-        background: white;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
+        line-height: 1.6;
+        color: var(--text-primary);
+        background: var(--white);
+        -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
 
@@ -47,20 +52,99 @@
         scroll-behavior: smooth;
       }
 
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-15px);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
       /* Header */
       header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        border-bottom: 1px solid var(--border);
+        background: var(--white);
+        border-bottom: 2px solid var(--border-color);
         padding: 1rem 0;
         position: sticky;
         top: 0;
-        z-index: 100;
-        transition: all 0.3s ease;
-      }
-
-      header.scrolled {
-        box-shadow: 0 4px 20px rgba(79, 156, 249, 0.1);
+        z-index: 1000;
+        box-shadow: var(--shadow-md);
+        animation: fadeIn 0.5s ease-out;
       }
 
       nav {
@@ -76,36 +160,37 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        transition: transform 0.3s ease;
-      }
-
-      .logo:hover {
-        transform: scale(1.05);
+        animation: slideInLeft 0.6s ease-out;
       }
 
       .logo img {
         height: 50px;
-        transition: transform 0.3s ease;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
       }
 
-      .cta-btn {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
-        );
-        color: white;
-        padding: 0.75rem 1.5rem;
-        border-radius: 8px;
+      .logo img:hover {
+        transform: scale(1.08) rotate(2deg);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      }
+
+      .cta-header {
+        background: linear-gradient(135deg, #000 0%, #2a2a2a 100%);
+        color: var(--white);
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
         text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(79, 156, 249, 0.3);
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        animation: slideInRight 0.6s ease-out;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        border: 2px solid var(--border-color);
       }
 
-      .cta-btn::before {
+      .cta-header::before {
         content: "";
         position: absolute;
         top: 0;
@@ -118,265 +203,319 @@
           rgba(255, 255, 255, 0.3),
           transparent
         );
-        transition: left 0.5s;
+        transition: left 0.6s ease;
       }
 
-      .cta-btn:hover::before {
+      .cta-header:hover::before {
         left: 100%;
       }
 
-      .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 25px rgba(79, 156, 249, 0.4);
+      .cta-header:hover {
+        background: linear-gradient(135deg, #2a2a2a 0%, #000 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
       }
 
-      /* Hero */
+      /* Hero Section */
       .hero {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 5rem 2rem 4rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 7rem 2rem 6rem;
         text-align: center;
-        background: var(--light-blue);
         position: relative;
         overflow: hidden;
+        border-bottom: 3px solid var(--border-color);
       }
 
       .hero::before {
         content: "";
         position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 600px;
-        height: 600px;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         background: radial-gradient(
-          circle,
-          rgba(79, 156, 249, 0.1) 0%,
-          transparent 70%
-        );
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 50%
+          );
         animation: float 8s ease-in-out infinite;
       }
 
-      .hero::after {
-        content: "";
-        position: absolute;
-        bottom: -30%;
-        left: -5%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(139, 92, 246, 0.1) 0%,
-          transparent 70%
-        );
-        animation: float 10s ease-in-out infinite reverse;
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translate(0, 0);
-        }
-        50% {
-          transform: translate(30px, -30px);
-        }
-      }
-
       .hero-content {
+        max-width: 950px;
+        margin: 0 auto;
         position: relative;
         z-index: 1;
       }
 
       .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        color: var(--text-dark);
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
+        font-size: 3.8rem;
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 1.8rem;
+        line-height: 1.15;
+        letter-spacing: -0.03em;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 0.8s ease-out;
       }
 
       .hero .highlight {
+        color: #fff;
         background: linear-gradient(
           135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
+          rgba(255, 255, 255, 0.25) 0%,
+          rgba(255, 255, 255, 0.1) 100%
         );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        padding: 0 20px;
+        border-radius: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        display: inline-block;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .hero .highlight:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 28px rgba(0, 0, 0, 0.3);
       }
 
       .hero p {
-        font-size: 1.3rem;
-        color: var(--text-light);
-        max-width: 700px;
-        margin: 0 auto 2.5rem;
+        font-size: 1.35rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 3rem;
+        line-height: 1.8;
+        font-weight: 500;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
       }
 
       .hero-buttons {
         display: flex;
-        gap: 1rem;
+        gap: 1.2rem;
         justify-content: center;
         flex-wrap: wrap;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        padding: 1.3rem 3rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        display: inline-block;
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
       }
 
       .btn-primary {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--secondary) 100%
-        );
-        color: white;
-        padding: 1.1rem 2.5rem;
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(79, 156, 249, 0.3);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.5s;
-      }
-
-      .btn-primary:hover::before {
-        left: 100%;
+        background: linear-gradient(135deg, #000 0%, #2a2a2a 100%);
+        color: var(--white);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border-color: var(--border-color);
       }
 
       .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(79, 156, 249, 0.4);
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
+        background: linear-gradient(135deg, #2a2a2a 0%, #000 100%);
       }
 
       .btn-secondary {
-        background: white;
-        color: var(--primary);
-        padding: 1.1rem 2.5rem;
-        border: 2px solid var(--primary);
-        border-radius: 8px;
-        text-decoration: none;
-        font-weight: 600;
-        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.95);
+        color: #000;
+        border: 2px solid var(--border-color);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
       }
 
       .btn-secondary:hover {
-        background: var(--primary);
-        color: white;
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(79, 156, 249, 0.3);
+        background: #fff;
+        transform: translateY(-4px) scale(1.03);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
       }
 
-      /* Content Sections */
-      section {
-        max-width: 1200px;
+      /* Section Styles */
+      .section {
+        padding: 6rem 2rem;
+        position: relative;
+      }
+
+      .section-light {
+        background: var(--white);
+      }
+
+      .section-gray {
+        background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+        border-top: 2px solid var(--border-color);
+        border-bottom: 2px solid var(--border-color);
+      }
+
+      .container {
+        max-width: 1150px;
         margin: 0 auto;
-        padding: 5rem 2rem;
       }
 
-      section h2 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
+      .section-title {
+        font-size: 3rem;
+        font-weight: 900;
         text-align: center;
-      }
-
-      section > p {
-        color: var(--text-light);
-        margin-bottom: 2rem;
-        text-align: center;
-        font-size: 1.1rem;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      /* What is Zoho CRM */
-      .intro-section {
-        background: rgb(249, 249, 252);
-      }
-
-      .intro-content {
-        background: rgb(247, 247, 247);
-        padding: 3rem;
-        border-radius: 16px;
-        box-shadow: 0 10px 40px rgba(79, 156, 249, 0.1);
-        transition: all 0.3s ease;
-        border: 1px solid var(--border);
-      }
-
-      .intro-content:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 50px rgba(79, 156, 249, 0.15);
-        background: var(--hover-green);
-      }
-
-      .intro-content p {
-        color: var(--text-light);
+        color: var(--text-primary);
         margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
+        position: relative;
+        display: block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        border-radius: 3px;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-secondary);
+        text-align: center;
+        max-width: 800px;
+        margin: 3rem auto 4.5rem;
         line-height: 1.8;
-        text-align: left;
+        font-weight: 500;
       }
 
-      .intro-content p:last-child {
-        margin-bottom: 0;
-      }
-
-      /* Features Grid - Auto Scrolling */
-      .features-section {
+      /* USP Section */
+      .usp-section {
+        background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+        padding: 6rem 2rem;
+        border-top: 3px solid var(--border-color);
+        border-bottom: 3px solid var(--border-color);
+        position: relative;
         overflow: hidden;
-        padding: 5rem 0;
-        background: var(--light-blue);
       }
 
-      .features-wrapper {
-        display: flex;
-        width: fit-content;
-        animation: scroll 30s linear infinite;
+      .usp-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at 30% 50%,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 50%
+        );
       }
 
-      .features-wrapper:hover {
-        animation-play-state: paused;
+      .usp-content {
+        max-width: 1150px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+        position: relative;
+        z-index: 1;
       }
 
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
+      .usp-text h2 {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 2rem;
+        line-height: 1.2;
       }
 
-      .features-grid {
-        display: flex;
+      .usp-text p {
+        font-size: 1.15rem;
+        color: rgba(255, 255, 255, 0.9);
+        line-height: 1.9;
+        margin-bottom: 1.5rem;
+      }
+
+      .usp-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.1);
         padding: 2rem;
-        border: 1px solid var(--border);
+        border-radius: 16px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.4s ease;
+      }
+
+      .stat-box:hover {
+        transform: translateY(-8px);
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(255, 255, 255, 0.4);
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: #fff;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+      }
+
+      .usp-image {
+        position: relative;
+      }
+
+      .usp-image img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        transition: all 0.4s ease;
+      }
+
+      .usp-image img:hover {
+        transform: scale(1.05) rotate(2deg);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Features Grid */
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
+        margin-top: 4rem;
       }
 
       .feature-card {
-        background: rgb(255, 255, 255);
-        padding: 2.5rem;
-        border-radius: 16px;
-        border: 1px solid var(--border);
-        transition: all 0.4s ease;
+        background: var(--white);
+        padding: 3rem;
+        border-radius: 20px;
+        border: 2px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
-        min-width: 320px;
-        flex-shrink: 0;
+        box-shadow: var(--shadow-md);
       }
 
       .feature-card::before {
@@ -385,9 +524,10 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), var(--accent));
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         transform: scaleX(0);
+        transform-origin: left;
         transition: transform 0.4s ease;
       }
 
@@ -396,112 +536,217 @@
       }
 
       .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(79, 156, 249, 0.2);
-        border-color: var(--primary);
-        background: var(--hover-blue);
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-lg);
+        border-color: #667eea;
+      }
+
+      .feature-icon {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 1.5rem;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 2px solid var(--border-light);
+      }
+
+      .feature-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .feature-card:hover .feature-icon img {
+        transform: scale(1.1);
       }
 
       .feature-card h3 {
-        font-size: 1.3rem;
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--text-dark);
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+      }
+
+      .feature-card:hover h3 {
+        color: #667eea;
       }
 
       .feature-card p {
-        color: var(--text-light);
-        font-size: 0.95rem;
-        margin: 0;
-        line-height: 1.7;
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
       }
 
-      /* Benefits List */
-      .benefits-section {
-        background: rgb(244, 244, 244);
-      }
-
-      .benefits-list {
+      /* Benefits Grid */
+      .benefits-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
       }
 
-      .benefit-item {
-        padding: 2rem;
-        background: white;
+      .benefit-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        padding: 3.5rem;
+        border-radius: 24px;
+        border: 2px solid var(--border-color);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .benefit-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .benefit-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: var(--shadow-lg);
+        border-color: #667eea;
+        background: linear-gradient(135deg, #ffffff 0%, #e8eef9 100%);
+      }
+
+      .benefit-icon {
+        width: 100%;
+        height: 220px;
+        margin-bottom: 1.5rem;
         border-radius: 16px;
-        transition: all 0.3s ease;
-        border: 1px solid var(--border);
+        overflow: hidden;
+        border: 2px solid var(--border-light);
       }
 
-      .benefit-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(79, 156, 249, 0.15);
-        border-color: var(--primary);
-        background: var(--hover-blue);
+      .benefit-icon img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: all 0.5s ease;
       }
 
-      .benefit-content h4 {
-        font-size: 1.15rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--text-dark);
+      .benefit-card:hover .benefit-icon img {
+        transform: scale(1.12) rotate(2deg);
       }
 
-      .benefit-content p {
-        font-size: 0.95rem;
-        color: var(--text-light);
-        margin: 0;
-        line-height: 1.7;
+      .benefit-card h4 {
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
       }
 
-      /* Services */
-      .services-list {
+      .benefit-card:hover h4 {
+        color: #667eea;
+      }
+
+      .benefit-card p {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        line-height: 1.9;
+      }
+
+      /* Services Grid */
+      .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 1.5rem;
-        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        gap: 2.5rem;
       }
 
-      .service-item {
-        padding: 1.5rem;
-        background: rgb(216, 219, 236);
-        border: 1px solid var(--border);
-        border-radius: 8px;
+      .service-card {
+        background: var(--white);
+        border-radius: 20px;
+        border: 2px solid var(--border-color);
+        overflow: hidden;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: var(--shadow-md);
       }
 
-      .service-item h4 {
-        font-size: 1.1rem;
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: var(--text-dark);
+      .service-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s ease;
       }
 
-      .service-item p {
-        font-size: 0.9rem;
-        color: var(--text-light);
-        margin: 0;
+      .service-card:hover::after {
+        transform: scaleX(1);
       }
-      .service-item:hover {
-        background: rgb(185, 190, 228);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+
+      .service-card:hover {
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-lg);
+        border-color: #667eea;
+      }
+
+      .service-image {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        border-bottom: 2px solid var(--border-light);
+      }
+
+      .service-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card:hover .service-image img {
+        transform: scale(1.15);
+      }
+
+      .service-content {
+        padding: 2.5rem;
+      }
+
+      .service-card h4 {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        transition: color 0.3s ease;
+      }
+
+      .service-card:hover h4 {
+        color: #667eea;
+      }
+
+      .service-card p {
+        font-size: 1.05rem;
+        color: var(--text-secondary);
+        line-height: 1.8;
       }
 
       /* CTA Section */
       .cta-section {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary) 100%
-        );
-        color: white;
+        background: linear-gradient(135deg, #000 0%, #2a2a2a 100%);
+        padding: 6rem 2rem;
         text-align: center;
-        padding: 5rem 2rem;
         position: relative;
         overflow: hidden;
+        border-top: 3px solid #444;
       }
 
       .cta-section::before {
@@ -512,42 +757,64 @@
         right: 0;
         bottom: 0;
         background: radial-gradient(
-          circle at 80% 20%,
-          rgba(255, 255, 255, 0.1) 0%,
+          circle at 20% 50%,
+          rgba(102, 126, 234, 0.1) 0%,
           transparent 50%
         );
       }
 
       .cta-section h2 {
-        color: white;
-        margin-bottom: 1rem;
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--white);
+        margin-bottom: 1.5rem;
+        letter-spacing: -0.02em;
         position: relative;
+        z-index: 1;
+        animation: fadeInUp 0.8s ease-out;
       }
 
       .cta-section p {
-        color: rgba(255, 255, 255, 0.95);
         font-size: 1.2rem;
-        margin-bottom: 2.5rem;
+        color: rgba(255, 255, 255, 0.9);
+        margin-bottom: 3rem;
         position: relative;
+        z-index: 1;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
       }
 
       .btn-white {
-        background: white;
-        color: var(--primary);
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        background: var(--white);
+        color: #000;
+        padding: 1.3rem 3rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05rem;
+        display: inline-block;
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+        border: 2px solid transparent;
+        animation: scaleIn 0.8s ease-out 0.4s backwards;
       }
 
       .btn-white:hover {
-        background: var(--bg-light);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 32px rgba(255, 255, 255, 0.4);
+        background: #f0f0f0;
       }
 
       /* Footer */
       footer {
-        background: var(--text-dark);
-        color: white;
-        padding: 3rem 2rem 2rem;
+        background: #1a1a1a;
+        color: #999;
+        padding: 4rem 2rem 2rem;
+        border-top: 3px solid #000;
       }
 
       .footer-content {
@@ -555,346 +822,417 @@
         margin: 0 auto;
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 2rem;
+        gap: 3rem;
+        margin-bottom: 2.5rem;
       }
 
       .footer-section h4 {
-        color: var(--primary);
-        margin-bottom: 1rem;
+        color: var(--white);
+        margin-bottom: 1.2rem;
         font-size: 1.1rem;
+        font-weight: 700;
       }
 
       .footer-section p {
-        color: #94a3b8;
-        font-size: 0.9rem;
-        line-height: 1.8;
+        font-size: 0.95rem;
+        line-height: 1.9;
+        color: #999;
       }
 
       .footer-bottom {
         max-width: 1200px;
         margin: 0 auto;
         text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid #334155;
-        color: #94a3b8;
+        padding-top: 2.5rem;
+        border-top: 2px solid #333;
+        color: #666;
         font-size: 0.9rem;
       }
 
+      /* Scroll Animation */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .scroll-reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* Responsive */
-      @media (max-width: 768px) {
+      @media (max-width: 968px) {
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.8rem;
         }
-
-        .hero p {
-          font-size: 1.1rem;
+        .section-title {
+          font-size: 2.4rem;
         }
+        .usp-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .usp-text h2 {
+          font-size: 2.4rem;
+        }
+      }
 
-        section h2 {
+      @media (max-width: 640px) {
+        .hero {
+          padding: 4rem 1rem 3rem;
+        }
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+        .section {
+          padding: 4rem 1rem;
+        }
+        .section-title {
           font-size: 2rem;
         }
-
-        .benefits-list {
+        .cta-section h2 {
+          font-size: 2.2rem;
+        }
+        .features-grid,
+        .benefits-grid,
+        .services-grid {
           grid-template-columns: 1fr;
         }
-
-        .logo img {
-          height: 40px;
+        .usp-stats {
+          grid-template-columns: 1fr;
         }
-
-        .feature-card,
-        .service-item {
-          min-width: 280px;
+        .btn-primary,
+        .btn-secondary {
+          padding: 1.1rem 2.2rem;
         }
       }
     </style>
   </head>
   <body>
-    <header id="header">
+    <header>
       <nav>
         <div class="logo">
           <img
             src="images/logo.png"
             style="height: 80px; width: auto"
-            alt="Zolytics Logo"
+            alt="Zolytics"
           />
           <img
             src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
-            alt="Zoho CRM Logo"
+            alt="Zolytics Logo"
+            style="height: 60px; width: auto; object-fit: contain"
           />
         </div>
-        <a href="#contact" class="cta-btn">Book Free Consultation</a>
+        <a href="#contact" class="cta-header">Book Free Consultation</a>
       </nav>
     </header>
 
-    <!-- Hero -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 data-aos="fade-up">
-          Transform Your Business with <span class="highlight">Zoho CRM</span>
-        </h1>
-        <p data-aos="fade-up" data-aos-delay="100">
-          Professional CRM implementation and consulting services to streamline
-          your sales, improve customer relationships, and accelerate business
-          growth.
-        </p>
-        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-          <a href="#contact" class="btn-primary">Get Started Today</a>
-          <a href="#what-is-zoho" class="btn-secondary">Learn More</a>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>
+            Transform Your Business with <span class="highlight">Zoho CRM</span>
+          </h1>
+          <p>
+            Professional CRM implementation and consulting services to
+            streamline your sales, improve customer relationships, and
+            accelerate business growth in India.
+          </p>
+          <div class="hero-buttons">
+            <a href="#contact" class="btn-primary">Get Started Today</a>
+            <a href="#what-is-zoho" class="btn-secondary">Learn More</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- What is Zoho CRM -->
-    <section class="intro-section" id="what-is-zoho">
-      <h2 data-aos="fade-up">What is Zoho CRM?</h2>
-      <div class="intro-content" data-aos="fade-up" data-aos-delay="100">
+      <!-- USP Section -->
+      <section class="usp-section">
+        <div class="usp-content">
+          <div class="usp-text">
+            <h2>Your Trusted Zoho CRM Consultant</h2>
+            <p>
+              As a certified Zoho Partner with years of experience, we
+              specialize in transforming businesses through intelligent CRM
+              implementation. We don't just set up software – we build systems
+              that drive growth.
+            </p>
+            <p>
+              Our proven methodology combines deep technical expertise with
+              business acumen to deliver CRM solutions that actually work for
+              your team. From startups to enterprises, we've helped hundreds of
+              companies increase productivity and revenue.
+            </p>
+            <div class="usp-stats">
+              <div class="stat-box">
+                <div class="stat-number">35%</div>
+                <div class="stat-label">Sales Productivity Increase</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">200+</div>
+                <div class="stat-label">Successful Implementations</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction Rate</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Hour Support</div>
+              </div>
+            </div>
+          </div>
+          <div class="usp-image">
+            <img
+              src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=600&h=600&fit=crop"
+              alt="Professional CRM Consulting"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section id="what-is-zoho" class="section section-light">
+        <div class="container">
+          <h2 class="section-title scroll-reveal">What is Zoho CRM?</h2>
+          <p class="section-subtitle scroll-reveal">
+            Zoho CRM is a comprehensive cloud-based customer relationship
+            management platform designed to help businesses of all sizes manage
+            their sales, marketing, and customer support operations efficiently.
+            It provides a unified system to track customer interactions,
+            automate workflows, and gain actionable insights into your business
+            performance.
+          </p>
+          <div style="max-width: 900px; margin: 0 auto">
+            <img
+              src="https://help.zoho.com/DocsDisplay?zgId=60041003425&mode=inline&blockId=9crcv01842da5082842a9a48272aaba5445bf"
+              alt="Zoho CRM Dashboard"
+              style="
+                width: 100%;
+                border-radius: 20px;
+                border: 2px solid var(--border-color);
+                box-shadow: var(--shadow-lg);
+              "
+              class="scroll-reveal"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-light">
+        <div class="container">
+          <h2 class="section-title scroll-reveal">
+            How Zoho CRM Helps Your Business
+          </h2>
+          <div class="benefits-grid">
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://blog.zoho.com/sites/zblogs/images/crm/5-easy-ways-to-automate7-2-2017-02.jpg"
+                  alt="Increase Sales Productivity"
+                />
+              </div>
+              <h4>Increase Sales Productivity</h4>
+              <p>
+                Automate routine tasks and free up your sales team to focus on
+                closing deals. Our clients see an average 35% increase in sales
+                productivity within the first quarter.
+              </p>
+            </article>
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=400&h=300&fit=crop"
+                  alt="Improve Customer Relationships"
+                />
+              </div>
+              <h4>Improve Customer Relationships</h4>
+              <p>
+                Maintain a complete 360-degree view of every customer
+                interaction, enabling personalized communication and better
+                service that builds lasting loyalty.
+              </p>
+            </article>
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/crm/crm-express/files/ai_in_sales_analytics.jpg"
+                  alt="Make Data-Driven Decisions"
+                />
+              </div>
+              <h4>Make Data-Driven Decisions</h4>
+              <p>
+                Access real-time analytics and AI-powered insights to forecast
+                revenue, identify trends, and optimize your sales strategy with
+                precision.
+              </p>
+            </article>
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=400&h=300&fit=crop"
+                  alt="Scale Effortlessly"
+                />
+              </div>
+              <h4>Scale Effortlessly</h4>
+              <p>
+                Start with the features you need and expand as your business
+                grows. Zoho CRM scales seamlessly from startups to enterprises
+                without complexity.
+              </p>
+            </article>
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/flow/articles/files/16.png"
+                  alt="Streamline Team Collaboration"
+                />
+              </div>
+              <h4>Streamline Team Collaboration</h4>
+              <p>
+                Keep sales, marketing, and support teams aligned with shared
+                data, automated workflows, and seamless communication tools that
+                eliminate silos.
+              </p>
+            </article>
+            <article class="benefit-card scroll-reveal">
+              <div class="benefit-icon">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/creator/decode/files/bakery_setup_-_800x350_1.png"
+                  alt="Reduce Manual Work"
+                />
+              </div>
+              <h4>Reduce Manual Work</h4>
+              <p>
+                Eliminate spreadsheets and manual data entry with intelligent
+                automation that reduces errors and saves hours each week for
+                every team member.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-gray">
+        <div class="container">
+          <h2 class="section-title scroll-reveal">Our Zoho CRM Services</h2>
+          <p class="section-subtitle scroll-reveal">
+            As a certified Zoho Partner, Zolytics provides end-to-end CRM
+            implementation and consulting services tailored to your business
+            needs.
+          </p>
+          <div class="services-grid">
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://active-campaign.transforms.svdcdn.com/production/general/wp/2021_03_How-to-implement-CRM-in-8-steps.png?w=1600&q=80&auto=format&fit=clip&dm=1732062137&s=c9cf3bafa377761abe1acb4aaac6d7d4"
+                  alt="CRM Implementation"
+                />
+              </div>
+              <div class="service-content">
+                <h4>CRM Implementation</h4>
+                <p>
+                  Complete setup and configuration aligned with your business
+                  processes and industry requirements. We ensure a smooth
+                  transition and rapid adoption.
+                </p>
+              </div>
+            </article>
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://boostedcrm.com/wp-content/uploads/2023/10/zoho_customization.png"
+                  alt="Customization"
+                />
+              </div>
+              <div class="service-content">
+                <h4>Customization</h4>
+                <p>
+                  Custom workflows, fields, modules, and automation rules
+                  designed specifically for your business needs and unique
+                  processes.
+                </p>
+              </div>
+            </article>
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://www.zohowebstatic.com/sites/zweb/images/dataprep/solutions/dataprep-for-business-process.png"
+                  alt="Data Migration"
+                />
+              </div>
+              <div class="service-content">
+                <h4>Data Migration</h4>
+                <p>
+                  Safe and accurate migration of your existing data from
+                  spreadsheets or other CRM systems with zero data loss and
+                  minimal downtime.
+                </p>
+              </div>
+            </article>
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://satvasolutions.com/wp-content/uploads/2025/04/Zoho-CRM-Hero-Image.webp"
+                  alt="Integration Services"
+                />
+              </div>
+              <div class="service-content">
+                <h4>Integration Services</h4>
+                <p>
+                  Connect Zoho CRM with your existing tools including email,
+                  accounting software, marketing platforms, and custom
+                  applications.
+                </p>
+              </div>
+            </article>
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/people/hrknowledgehive/files/overcoming_training_challenges.jpg"
+                  alt="Training & Support"
+                />
+              </div>
+              <div class="service-content">
+                <h4>Training & Support</h4>
+                <p>
+                  Comprehensive training for your team and ongoing support to
+                  ensure successful adoption and maximum ROI from your CRM
+                  investment.
+                </p>
+              </div>
+            </article>
+            <article class="service-card scroll-reveal">
+              <div class="service-image">
+                <img
+                  src="https://www.monread.com/images/Zoho%20Optimisation%20with%20Monread%20CRM.webp"
+                  alt="Optimization"
+                />
+              </div>
+              <div class="service-content">
+                <h4>Optimization</h4>
+                <p>
+                  Regular audits and optimization to improve performance, user
+                  adoption, and ROI. We continuously refine your CRM for peak
+                  efficiency.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="cta-section">
+        <h2>Ready to Transform Your Sales Process?</h2>
         <p>
-          Zoho CRM is a comprehensive cloud-based customer relationship
-          management platform designed to help businesses of all sizes manage
-          their sales, marketing, and customer support operations efficiently.
-          It provides a unified system to track customer interactions, automate
-          workflows, and gain actionable insights into your business
-          performance.
+          Schedule a free consultation with our Zoho CRM experts and discover
+          how we can help your business grow.
         </p>
-        <p>
-          With Zoho CRM, you can centralize all customer data, streamline
-          communication across teams, and create personalized experiences that
-          drive customer satisfaction and loyalty. The platform offers powerful
-          features including lead management, deal tracking, sales automation,
-          analytics, and multi-channel communication—all accessible from
-          anywhere, on any device.
-        </p>
-      </div>
-    </section>
-
-    <!-- Key Features - Auto Scrolling -->
-    <section class="features-section">
-      <h2 data-aos="fade-up">Key Features That Drive Results</h2>
-      <div class="features-wrapper">
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>Lead Management</h3>
-            <p>
-              Capture, score, and nurture leads from multiple sources with
-              automated workflows and intelligent lead assignment.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Sales Pipeline</h3>
-            <p>
-              Visual pipeline management to track deals through every stage with
-              drag-and-drop simplicity and real-time updates.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Automation</h3>
-            <p>
-              Automate repetitive tasks, email sequences, and follow-ups to save
-              time and increase team productivity.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Analytics & Reports</h3>
-            <p>
-              Gain actionable insights with customizable dashboards, detailed
-              reports, and AI-powered sales forecasting.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Multi-Channel Communication</h3>
-            <p>
-              Engage customers via email, phone, WhatsApp, and social media from
-              a single unified platform.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Mobile Access</h3>
-            <p>
-              Access your CRM data on-the-go with native mobile apps for iOS and
-              Android devices.
-            </p>
-          </div>
-        </div>
-        <!-- Duplicate for seamless loop -->
-        <div class="features-grid">
-          <div class="feature-card">
-            <h3>Lead Management</h3>
-            <p>
-              Capture, score, and nurture leads from multiple sources with
-              automated workflows and intelligent lead assignment.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Sales Pipeline</h3>
-            <p>
-              Visual pipeline management to track deals through every stage with
-              drag-and-drop simplicity and real-time updates.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Automation</h3>
-            <p>
-              Automate repetitive tasks, email sequences, and follow-ups to save
-              time and increase team productivity.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Analytics & Reports</h3>
-            <p>
-              Gain actionable insights with customizable dashboards, detailed
-              reports, and AI-powered sales forecasting.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Multi-Channel Communication</h3>
-            <p>
-              Engage customers via email, phone, WhatsApp, and social media from
-              a single unified platform.
-            </p>
-          </div>
-          <div class="feature-card">
-            <h3>Mobile Access</h3>
-            <p>
-              Access your CRM data on-the-go with native mobile apps for iOS and
-              Android devices.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Helps -->
-    <section class="benefits-section">
-      <h2 data-aos="fade-up">How Zoho CRM Helps Your Business</h2>
-      <div class="benefits-list">
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="100">
-          <div class="benefit-content">
-            <h4>Increase Sales Productivity</h4>
-            <p>
-              Automate routine tasks and free up your sales team to focus on
-              closing deals. Our clients see an average 35% increase in sales
-              productivity.
-            </p>
-          </div>
-        </div>
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="150">
-          <div class="benefit-content">
-            <h4>Improve Customer Relationships</h4>
-            <p>
-              Maintain a complete 360-degree view of every customer interaction,
-              enabling personalized communication and better service.
-            </p>
-          </div>
-        </div>
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="200">
-          <div class="benefit-content">
-            <h4>Make Data-Driven Decisions</h4>
-            <p>
-              Access real-time analytics and AI-powered insights to forecast
-              revenue, identify trends, and optimize your sales strategy.
-            </p>
-          </div>
-        </div>
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="250">
-          <div class="benefit-content">
-            <h4>Scale Effortlessly</h4>
-            <p>
-              Start with the features you need and expand as your business
-              grows. Zoho CRM scales from startups to enterprises.
-            </p>
-          </div>
-        </div>
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="300">
-          <div class="benefit-content">
-            <h4>Streamline Team Collaboration</h4>
-            <p>
-              Keep sales, marketing, and support teams aligned with shared data,
-              automated workflows, and seamless communication.
-            </p>
-          </div>
-        </div>
-        <div class="benefit-item" data-aos="fade-up" data-aos-delay="350">
-          <div class="benefit-content">
-            <h4>Reduce Manual Work</h4>
-            <p>
-              Eliminate spreadsheets and manual data entry with intelligent
-              automation that reduces errors and saves hours each week.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Our Services -->
-    <section>
-      <h2>Our Zoho CRM Services</h2>
-      <p>
-        As a certified Zoho Partner, Zolytics provides end-to-end CRM
-        implementation and consulting services tailored to your business needs.
-      </p>
-      <div class="services-list">
-        <div class="service-item">
-          <h4>CRM Implementation</h4>
-          <p>
-            Complete setup and configuration aligned with your business
-            processes and industry requirements.
-          </p>
-        </div>
-        <div class="service-item">
-          <h4>Customization</h4>
-          <p>
-            Custom workflows, fields, modules, and automation rules designed
-            specifically for your business.
-          </p>
-        </div>
-        <div class="service-item">
-          <h4>Data Migration</h4>
-          <p>
-            Safe and accurate migration of your existing data from spreadsheets
-            or other CRM systems.
-          </p>
-        </div>
-        <div class="service-item">
-          <h4>Integration Services</h4>
-          <p>
-            Connect Zoho CRM with your existing tools including email,
-            accounting software, marketing platforms, and more.
-          </p>
-        </div>
-        <div class="service-item">
-          <h4>Training & Support</h4>
-          <p>
-            Comprehensive training for your team and ongoing support to ensure
-            successful adoption.
-          </p>
-        </div>
-        <div class="service-item">
-          <h4>Optimization</h4>
-          <p>
-            Regular audits and optimization to improve performance, user
-            adoption, and ROI.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section" id="contact">
-      <h2 data-aos="fade-up">Ready to Transform Your Sales Process?</h2>
-      <p data-aos="fade-up" data-aos-delay="100">
-        Schedule a free consultation with our Zoho CRM experts and discover how
-        we can help your business grow.
-      </p>
-      <div data-aos="zoom-in" data-aos-delay="200">
-        <a href="mailto:info@zolytics.in" class="btn-primary btn-white"
+        <a href="mailto:info@zolytics.in" class="btn-white"
           >Book Free Consultation</a
         >
-      </div>
-    </section>
+      </section>
+    </main>
 
-    <!-- Footer -->
     <footer>
       <div class="footer-content">
         <div class="footer-section">
@@ -911,13 +1249,20 @@
         <div class="footer-section">
           <h4>Services</h4>
           <p>
-            CRM Implementation<br />Customization<br />Integration<br />Training
-            & Support
+            CRM Implementation<br />
+            Customization<br />
+            Integration<br />
+            Training & Support
           </p>
         </div>
         <div class="footer-section">
           <h4>Company</h4>
-          <p>About Us<br />Case Studies<br />Blog<br />Contact</p>
+          <p>
+            About Us<br />
+            Case Studies<br />
+            Blog<br />
+            Contact
+          </p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -925,39 +1270,45 @@
       </div>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      // Initialize AOS
-      AOS.init({
-        duration: 800,
-        once: true,
-        easing: "ease-out-cubic",
-        offset: 100,
+      // Scroll reveal animation
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-reveal").forEach((el) => {
+        observer.observe(el);
       });
 
-      // Header scroll effect
-      window.addEventListener("scroll", () => {
-        const header = document.getElementById("header");
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // Smooth scroll for anchor links
+      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
       });
+
+      // Add stagger delay to grid items
+      document
+        .querySelectorAll(".features-grid, .benefits-grid, .services-grid")
+        .forEach((grid) => {
+          const items = grid.querySelectorAll(".scroll-reveal");
+          items.forEach((item, index) => {
+            item.style.transitionDelay = `${index * 0.1}s`;
+          });
+        });
     </script>
   </body>
 </html>
