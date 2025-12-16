@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Expense - Smart Expense Management for Consulting Firms</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 20px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: all 0.4s ease;
+        border-bottom: 2px solid rgba(0, 102, 204, 0.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .navbar.scrolled {
+        padding: 15px 0;
+        background: rgba(26, 26, 46, 0.98);
+        border-bottom: 2px solid rgba(0, 102, 204, 0.3);
+      }
+
+      .navbar-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        height: 50px;
+        transition: transform 0.4s ease;
+        filter: drop-shadow(0 2px 8px rgba(0, 102, 204, 0.3));
+      }
+
+      .logo:hover {
+        transform: scale(1.08) translateY(-3px);
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: #1f2937;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        position: relative;
+      }
+
+      .navbar.scrolled .nav-links a {
+        color: rgba(255, 255, 255, 0.9);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: #0066cc;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+        color: white;
+        padding: 180px 20px 100px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.08) 0%,
+            transparent 50%
+          );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 25px;
+        font-weight: 800;
+        animation: fadeInUp 0.8s ease;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.4em;
+        margin-bottom: 40px;
+        opacity: 0.95;
+        animation: fadeInUp 1s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .cta-button {
+        background: white;
+        color: #0066cc;
+        padding: 18px 45px;
+        font-size: 1.1em;
+        border: 3px solid transparent;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        border-color: white;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 100px 60px;
+      }
+
+      .section-white {
+        background: white;
+        position: relative;
+      }
+
+      .section-blue {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3em;
+        margin-bottom: 25px;
+        color: #1f2937;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: #0066cc;
+        border-radius: 2px;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.3em;
+        color: #6b7280;
+        margin-bottom: 70px;
+        font-weight: 400;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .feature-card {
+        background: white;
+        padding: 45px 35px;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #0066cc, #004c99);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        border-color: #0066cc;
+        box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 15px;
+        margin-bottom: 25px;
+        transition: transform 0.4s ease;
+      }
+
+      .feature-card:hover .feature-image {
+        transform: scale(1.05);
+      }
+
+      .feature-card h3 {
+        color: #0066cc;
+        font-size: 1.6em;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .feature-card p {
+        color: #4b5563;
+        font-size: 1.05em;
+        line-height: 1.7;
+        margin-bottom: 15px;
+      }
+
+      .feature-card ul {
+        list-style: none;
+        margin-top: 20px;
+      }
+
+      .feature-card li {
+        padding: 12px 0;
+        padding-left: 35px;
+        position: relative;
+        color: #374151;
+        font-size: 1.05em;
+      }
+
+      .feature-card li:before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #0066cc;
+        font-weight: bold;
+        font-size: 1.3em;
+      }
+
+      .consulting-benefits {
+        background: white;
+        padding: 100px 20px;
+      }
+
+      .benefit-item {
+        display: flex;
+        align-items: start;
+        margin-bottom: 35px;
+        padding: 40px;
+        background: white;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .benefit-item:hover {
+        border-color: #0066cc;
+        transform: translateX(10px);
+        box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+      }
+
+      .benefit-icon {
+        width: 80px;
+        height: 80px;
+        margin-right: 30px;
+        font-size: 3em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+        color: white;
+        border-radius: 15px;
+        transition: transform 0.4s ease;
+      }
+
+      .benefit-item:hover .benefit-icon {
+        transform: rotate(10deg) scale(1.1);
+      }
+
+      .benefit-content h4 {
+        color: #0066cc;
+        font-size: 1.6em;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .benefit-content p {
+        color: #4b5563;
+        font-size: 1.1em;
+        line-height: 1.7;
+      }
+
+      /* Auto-scrolling showcase */
+      .showcase-section {
+        background: #1f2937;
+        padding: 80px 0;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .showcase-title {
+        text-align: center;
+        color: white;
+        font-size: 2.5em;
+        margin-bottom: 60px;
+        font-weight: 700;
+      }
+
+      .scroll-container {
+        display: flex;
+        gap: 30px;
+        animation: scroll 30s linear infinite;
+      }
+
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      .scroll-item {
+        min-width: 350px;
+        background: white;
+        padding: 30px;
+        border-radius: 15px;
+        border: 3px solid #0066cc;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .scroll-item-icon {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .scroll-item h4 {
+        color: #0066cc;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+      }
+
+      .scroll-item p {
+        color: #4b5563;
+        font-size: 1em;
+      }
+
+      .stats-section {
+        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        padding: 100px 20px;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-top: 60px;
+      }
+
+      .stat-item {
+        padding: 40px 30px;
+        background: white;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-item:hover {
+        border-color: #0066cc;
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
+      }
+
+      .stat-number {
+        font-size: 4em;
+        color: #0066cc;
+        font-weight: 800;
+        margin-bottom: 15px;
+        animation: countUp 2s ease;
+      }
+
+      .stat-label {
+        font-size: 1.2em;
+        color: #1f2937;
+        font-weight: 600;
+      }
+
+      footer {
+        background: #000;
+        color: white;
+        padding: 70px 20px 40px;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 50px;
+        margin-bottom: 40px;
+        padding: 0 60px;
+      }
+
+      .footer-section h3 {
+        color: #0066cc;
+        margin-bottom: 25px;
+        font-size: 1.4em;
+        font-weight: 700;
+      }
+
+      .footer-section p {
+        color: #d1d5db;
+        line-height: 1.8;
+        font-size: 1.05em;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section li {
+        margin-bottom: 15px;
+      }
+
+      .footer-section a {
+        color: #d1d5db;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 1.05em;
+        display: inline-block;
+      }
+
+      .footer-section a:hover {
+        color: #0066cc;
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 2px solid #374151;
+        color: #9ca3af;
+        font-size: 1em;
+      }
+
+      @media (max-width: 768px) {
+        .navbar-content {
+          padding: 0 30px;
+        }
+
+        .hero {
+          padding: 140px 20px 80px;
+        }
+
+        .hero h1 {
+          font-size: 2.2em;
+        }
+
+        .section-title {
+          font-size: 2em;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .container {
+          padding: 60px 30px;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .benefit-item {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .benefit-icon {
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" id="navbar">
+      <div class="navbar-content">
+        <div class="logo-container">
+          <img
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/expense.svg"
+            alt="Zoho Expense Logo"
+            class="logo"
+          />
+        </div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#benefits">Benefits</a>
+          <a href="#stats">Impact</a>
+          <button
+            class="cta-button"
+            style="
+              padding: 12px 30px;
+              font-size: 0.95rem;
+              border: 2px solid #0066cc;
+            "
+          >
+            Get Started
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="hero-content">
+        <h1>Zoho Expense for Consulting Firms</h1>
+        <p>Automate expense management. Focus on client delivery.</p>
+        <button class="cta-button">Start Free Trial</button>
+      </div>
+    </div>
+
+    <div class="section-white" id="features">
+      <div class="container">
+        <h2 class="section-title">Why Consulting Firms Choose Zoho Expense</h2>
+        <p class="section-subtitle">
+          Built for teams that work across projects, clients, and locations
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&h=400&fit=crop&q=80"
+              alt="Receipt scanning automation"
+              class="feature-image"
+            />
+            <h3>End-to-End Expense Automation</h3>
+            <p>
+              From receipt scanning to reimbursement, Zoho Expense automates the
+              entire expense lifecycle, reducing manual work and errors.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop&q=80"
+              alt="Mobile receipt scanning"
+              class="feature-image"
+            />
+            <h3>Smart Receipt Scanning (OCR)</h3>
+            <p>
+              Employees can scan receipts via mobile. Zoho Expense automatically
+              extracts:
+            </p>
+            <ul>
+              <li>Amount</li>
+              <li>Date</li>
+              <li>Merchant</li>
+              <li>Tax details</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600">
+              No manual entry required.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop&q=80"
+              alt="Policy management dashboard"
+              class="feature-image"
+            />
+            <h3>Policy-Based Expense Control</h3>
+            <p>Set custom expense policies:</p>
+            <ul>
+              <li>Category limits</li>
+              <li>Daily/monthly caps</li>
+              <li>Approval rules</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600">
+              🚫 Prevent overspending before it happens.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-blue">
+      <div class="container">
+        <h2 class="section-title">Streamlined Workflows</h2>
+        <p class="section-subtitle">
+          Designed for multi-project consulting environments
+        </p>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop&q=80"
+              alt="Team approval workflow"
+              class="feature-image"
+            />
+            <h3>Multi-Level Approval Workflow</h3>
+            <p>Create role-based approvals:</p>
+            <ul>
+              <li>Manager</li>
+              <li>Finance</li>
+              <li>Admin</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600">
+              Ensures compliance and faster approvals.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop&q=80"
+              alt="Financial analytics dashboard"
+              class="feature-image"
+            />
+            <h3>Real-Time Spend Visibility</h3>
+            <p>Finance teams get live dashboards showing:</p>
+            <ul>
+              <li>Department-wise spend</li>
+              <li>Project-wise expenses</li>
+              <li>Reimbursement status</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600">
+              Better financial control.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop&q=80"
+              alt="Software integration"
+              class="feature-image"
+            />
+            <h3>Seamless Zoho Ecosystem Integration</h3>
+            <p>Native integration with:</p>
+            <ul>
+              <li>Zoho Books</li>
+              <li>Zoho People</li>
+              <li>Zoho Projects</li>
+              <li>Zoho Analytics</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600">
+              Zero data duplication.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="consulting-benefits section-white" id="benefits">
+      <div class="container">
+        <h2 class="section-title">Perfect for Global Consulting Teams</h2>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">📋</div>
+          <div class="benefit-content">
+            <h4>GST & Tax Compliance</h4>
+            <p>
+              Supports GST-ready invoices, tax categorization, and audit-ready
+              reports. Perfect for Indian businesses with complete compliance
+              management.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🌍</div>
+          <div class="benefit-content">
+            <h4>Multi-Currency & Global Ready</h4>
+            <p>
+              Ideal for global consulting teams with multi-currency expenses,
+              automatic exchange rate handling, and international compliance
+              support.
+            </p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">💳</div>
+          <div class="benefit-content">
+            <h4>Corporate Card Reconciliation</h4>
+            <p>
+              Auto-sync corporate card transactions and match them with
+              expenses. No missing entries, complete visibility.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="showcase-section">
+      <h2 class="showcase-title">Trusted by Leading Consulting Firms</h2>
+      <div class="scroll-container">
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📊</div>
+          <h4>Project-Based Tracking</h4>
+          <p>
+            Track expenses by client, project, and team member effortlessly.
+          </p>
+        </div>
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📈</div>
+          <h4>Advanced Analytics</h4>
+          <p>
+            Get insights into spending patterns and cost optimization
+            opportunities.
+          </p>
+        </div>
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📱</div>
+          <h4>Mobile-First Design</h4>
+          <p>Submit and approve expenses from anywhere, anytime.</p>
+        </div>
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📑</div>
+          <h4>Custom Reports</h4>
+          <p>Generate detailed expense reports for clients and stakeholders.</p>
+        </div>
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📊</div>
+          <h4>Project-Based Tracking</h4>
+          <p>
+            Track expenses by client, project, and team member effortlessly.
+          </p>
+        </div>
+        <div class="scroll-item">
+          <div class="scroll-item-icon">📈</div>
+          <h4>Advanced Analytics</h4>
+          <p>
+            Get insights into spending patterns and cost optimization
+            opportunities.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="stats-section" id="stats">
+      <div class="container">
+        <h2 class="section-title">The Impact on Your Consulting Business</h2>
+        <div class="stats-grid">
+          <div class="stat-item">
+            <div class="stat-number">85%</div>
+            <div class="stat-label">Faster Approvals</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">60%</div>
+            <div class="stat-label">Time Saved</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Compliance</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">0</div>
+            <div class="stat-label">Manual Errors</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Zoho Expense</h3>
+          <p>
+            The complete expense management solution for modern consulting
+            firms. Automate, control, and scale your expense processes.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Mobile App</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Blog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Training</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Zoho Corporation. All rights reserved. | Privacy Policy |
+          Terms of Service
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Pause scroll animation on hover
+      const scrollContainer = document.querySelector(".scroll-container");
+      scrollContainer.addEventListener("mouseenter", function () {
+        this.style.animationPlayState = "paused";
+      });
+      scrollContainer.addEventListener("mouseleave", function () {
+        this.style.animationPlayState = "running";
+      });
+    </script>
+  </body>
+</html>
