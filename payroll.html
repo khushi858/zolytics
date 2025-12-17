@@ -1,0 +1,1467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Payroll Consultant | Compliance-First Payroll Automation</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+        background: #ffffff;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      /* Header */
+      header {
+        background: white;
+        border-bottom: 3px solid #e0e0e0;
+        padding: 1.2rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        animation: slideInLeft 0.6s ease-out;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .logo img {
+        height: 55px;
+        transition: all 0.3s ease;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo img:hover {
+        transform: scale(1.05);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+      }
+
+      .partner-badge {
+        background: linear-gradient(135deg, #000 0%, #2c3e50 100%);
+        color: white;
+        padding: 0.9rem 2.2rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 0.95rem;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        animation: slideInRight 0.6s ease-out;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .partner-badge::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .partner-badge:hover::before {
+        left: 100%;
+      }
+
+      .partner-badge:hover {
+        background: linear-gradient(135deg, #2c3e50 0%, #000 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        color: white;
+        padding: 150px 20px 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          );
+        animation: pulse 8s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.5;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        animation: fadeInUp 1s ease;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero .subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+      }
+
+      .trust-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 15px 35px;
+        border-radius: 50px;
+        backdrop-filter: blur(10px);
+        margin-top: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        padding: 80px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stats-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(231, 76, 60, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        margin-top: 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        border: 2px solid rgba(231, 76, 60, 0.3);
+        transition: all 0.4s ease;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        background: rgba(231, 76, 60, 0.1);
+        border-color: #e74c3c;
+        box-shadow: 0 20px 40px rgba(231, 76, 60, 0.3);
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: #e74c3c;
+        display: block;
+        margin-bottom: 10px;
+        text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #ffffff;
+        opacity: 0.9;
+      }
+
+      /* Section Styles */
+      section {
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 3rem;
+        margin-bottom: 25px;
+        color: #1a1a2e;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 140px;
+        height: 6px;
+        background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+        border-radius: 3px;
+        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+      }
+
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.35rem;
+        color: #666;
+        margin-bottom: 70px;
+        font-weight: 400;
+        line-height: 1.6;
+      }
+
+      /* Workflows Section - Enhanced Grid */
+      .workflows {
+        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .workflows::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 300px;
+        background: radial-gradient(
+          ellipse at top,
+          rgba(231, 76, 60, 0.08) 0%,
+          transparent 70%
+        );
+      }
+
+      .workflows::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(231, 76, 60, 0.05) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .workflow-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .workflow-card {
+        background: white;
+        border-radius: 24px;
+        padding: 50px 35px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid rgba(231, 76, 60, 0.1);
+        position: relative;
+        overflow: hidden;
+        min-height: 280px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .workflow-card:nth-child(1),
+      .workflow-card:nth-child(4) {
+        grid-column: span 2;
+        background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
+        min-height: 240px;
+      }
+
+      .workflow-card:nth-child(2) {
+        grid-row: span 2;
+        background: linear-gradient(135deg, #fff 0%, #ffebee 100%);
+        min-height: auto;
+      }
+
+      .workflow-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.08) 0%,
+          rgba(192, 57, 43, 0.08) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .workflow-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .workflow-card:hover::before {
+        opacity: 1;
+      }
+
+      .workflow-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .workflow-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 60px rgba(231, 76, 60, 0.15);
+        border-color: rgba(231, 76, 60, 0.3);
+      }
+
+      .workflow-number {
+        font-size: 5rem;
+        font-weight: 800;
+        color: rgba(231, 76, 60, 0.15);
+        position: absolute;
+        top: 15px;
+        right: 25px;
+        line-height: 1;
+        transition: all 0.4s ease;
+      }
+
+      .workflow-card:hover .workflow-number {
+        color: rgba(231, 76, 60, 0.25);
+        transform: scale(1.1);
+      }
+
+      .workflow-title {
+        font-size: 1.7rem;
+        margin-bottom: 18px;
+        color: #1a1a2e;
+        position: relative;
+        z-index: 1;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+      }
+
+      .workflow-description {
+        color: #555;
+        line-height: 1.9;
+        position: relative;
+        z-index: 1;
+        font-size: 1.08rem;
+        flex-grow: 1;
+      }
+
+      /* Video Section - Diagonal Split */
+      .video-section {
+        background: linear-gradient(135deg, #1a1a2e 50%, #e74c3c 50%);
+        padding: 100px 20px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .video-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .video-text {
+        color: white;
+      }
+
+      .video-text h2 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .video-text p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        line-height: 1.8;
+      }
+
+      .video-container {
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s ease;
+      }
+
+      .video-container:hover {
+        transform: scale(1.05) rotate(-2deg);
+      }
+
+      .video-placeholder {
+        width: 100%;
+        aspect-ratio: 16/9;
+        background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        position: relative;
+      }
+
+      .play-button {
+        width: 80px;
+        height: 80px;
+        background: #e74c3c;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        animation: playPulse 2s ease-in-out infinite;
+        cursor: pointer;
+      }
+
+      @keyframes playPulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
+        }
+        50% {
+          transform: scale(1.1);
+          box-shadow: 0 0 0 20px rgba(231, 76, 60, 0);
+        }
+      }
+
+      /* Differentiation Section - Card Carousel Style */
+      .differentiation {
+        background: white;
+        position: relative;
+      }
+
+      .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        margin-top: 50px;
+      }
+
+      .diff-card {
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: white;
+        padding: 50px 40px;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .diff-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .diff-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .diff-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 25px 60px rgba(231, 76, 60, 0.3);
+      }
+
+      .diff-number {
+        font-size: 5rem;
+        font-weight: 700;
+        color: rgba(231, 76, 60, 0.3);
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        line-height: 1;
+      }
+
+      .diff-title {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        position: relative;
+        z-index: 1;
+        font-weight: 600;
+      }
+
+      .diff-description {
+        opacity: 0.9;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+        font-size: 1.1rem;
+      }
+
+      /* Implementations Section - Enhanced Cards */
+      .implementations {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f8f9fa 50%,
+          #ffffff 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .implementations::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(231, 76, 60, 0.04) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .implementations::after {
+        content: "";
+        position: absolute;
+        bottom: -100px;
+        right: -200px;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(231, 76, 60, 0.04) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .impl-container {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 60px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .impl-card {
+        background: white;
+        border-radius: 28px;
+        padding: 50px 45px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 3px solid transparent;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 40px;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .impl-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 100%;
+        background: linear-gradient(180deg, #e74c3c, #c0392b);
+        transition: width 0.5s ease;
+      }
+
+      .impl-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.03) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        pointer-events: none;
+      }
+
+      .impl-card:hover {
+        transform: translateX(15px) scale(1.02);
+        box-shadow: 0 30px 70px rgba(231, 76, 60, 0.18);
+        border-color: rgba(231, 76, 60, 0.2);
+      }
+
+      .impl-card:hover::before {
+        width: 100%;
+        opacity: 0.1;
+      }
+
+      .impl-card:hover::after {
+        opacity: 1;
+      }
+
+      .impl-icon {
+        width: 100px;
+        height: 100px;
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: white;
+        transition: all 0.5s ease;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        position: relative;
+        z-index: 1;
+      }
+
+      .impl-card:hover .impl-icon {
+        transform: rotate(10deg) scale(1.1);
+        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+      }
+
+      .impl-content {
+        flex: 1;
+        position: relative;
+        z-index: 1;
+      }
+
+      .impl-title {
+        font-size: 2rem;
+        margin-bottom: 18px;
+        color: #1a1a2e;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        transition: color 0.3s ease;
+      }
+
+      .impl-card:hover .impl-title {
+        color: #e74c3c;
+      }
+
+      .impl-description {
+        font-size: 1.12rem;
+        line-height: 2;
+        color: #555;
+        transition: color 0.3s ease;
+      }
+
+      .impl-card:hover .impl-description {
+        color: #333;
+      }
+
+      .impl-tag {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        color: white;
+        padding: 16px 32px;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 700;
+        white-space: nowrap;
+        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
+        transition: all 0.5s ease;
+        position: relative;
+        z-index: 1;
+        letter-spacing: 0.5px;
+      }
+
+      .impl-card:hover .impl-tag {
+        transform: scale(1.08);
+        box-shadow: 0 12px 35px rgba(231, 76, 60, 0.4);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        color: white;
+        padding: 100px 20px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.1) 1px,
+            transparent 1px
+          ),
+          radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+        background-size: 50px 50px;
+        background-position: 0 0, 25px 25px;
+        animation: movePattern 20s linear infinite;
+      }
+
+      @keyframes movePattern {
+        0% {
+          transform: translate(0, 0);
+        }
+        100% {
+          transform: translate(50px, 50px);
+        }
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .cta-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .cta-subtitle {
+        font-size: 1.4rem;
+        margin-bottom: 50px;
+        opacity: 0.95;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        padding: 20px 45px;
+        font-size: 1.1rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .btn:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .btn span {
+        position: relative;
+        z-index: 1;
+      }
+
+      .btn-primary {
+        background: white;
+        color: #e74c3c;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: white;
+        border: 3px solid white;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: #e74c3c;
+        transform: translateY(-5px);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+        color: white;
+        padding: 60px 20px 30px;
+        border-top: 5px solid #e74c3c;
+      }
+
+      .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        color: #e74c3c;
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+        font-weight: 600;
+      }
+
+      .footer-section p,
+      .footer-section ul {
+        color: rgba(255, 255, 255, 0.8);
+        line-height: 1.8;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .footer-section ul li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: #e74c3c;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Scroll Animation */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .scroll-reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        nav {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .logo {
+          flex-direction: column;
+          gap: 15px;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .workflow-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .workflow-card {
+          min-height: auto;
+          padding: 40px 30px;
+        }
+
+        .workflow-card:nth-child(1),
+        .workflow-card:nth-child(4) {
+          grid-column: span 1;
+        }
+
+        .workflow-card:nth-child(2) {
+          grid-row: span 1;
+        }
+
+        .workflow-number {
+          font-size: 3.5rem;
+        }
+
+        .video-content {
+          grid-template-columns: 1fr;
+        }
+
+        .diff-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .impl-card {
+          grid-template-columns: 1fr;
+          text-align: center;
+          gap: 25px;
+          padding: 40px 30px;
+        }
+
+        .impl-icon {
+          width: 85px;
+          height: 85px;
+          margin: 0 auto;
+        }
+
+        .impl-card:hover {
+          transform: translateY(-10px) scale(1.02);
+        }
+
+        .impl-tag {
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <div class="logo">
+          <img
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/payroll.svg"
+            alt="Zoho PAYROLL"
+            style="height: 50px"
+          />
+        </div>
+        <a href="#contact" class="partner-badge">Certified Zoho Partner</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Compliance-First Payroll Automation for Indian Businesses</h1>
+          <p class="subtitle">
+            Error-free payroll processing with deep Indian compliance expertise
+          </p>
+          <div class="trust-badge">
+            PF • ESI • PT • TDS Compliant | 100% Accurate Calculations
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="stats-grid">
+          <div class="stat-card scroll-reveal">
+            <span class="stat-number">500+</span>
+            <span class="stat-label">Payrolls Processed</span>
+          </div>
+          <div class="stat-card scroll-reveal">
+            <span class="stat-number">100%</span>
+            <span class="stat-label">Compliance Rate</span>
+          </div>
+          <div class="stat-card scroll-reveal">
+            <span class="stat-number">50+</span>
+            <span class="stat-label">Happy Clients</span>
+          </div>
+          <div class="stat-card scroll-reveal">
+            <span class="stat-number">24/7</span>
+            <span class="stat-label">Support Available</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Workflows Section -->
+    <section class="workflows">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Payroll Workflows We Implement
+        </h2>
+        <p class="section-subtitle scroll-reveal">
+          Comprehensive payroll solutions tailored for Indian compliance
+        </p>
+
+        <div class="workflow-grid">
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">01</span>
+            <h3 class="workflow-title">Monthly Salary Processing</h3>
+            <p class="workflow-description">
+              Complete CTC to Net Pay calculations with detailed breakdowns
+              including basic, HRA, special allowances, and deductions
+            </p>
+          </div>
+
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">02</span>
+            <h3 class="workflow-title">Statutory Compliance</h3>
+            <p class="workflow-description">
+              Automated PF, ESI, PT, and TDS calculations ensuring 100%
+              compliance with latest government regulations
+            </p>
+          </div>
+
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">03</span>
+            <h3 class="workflow-title">Bonus & Incentives</h3>
+            <p class="workflow-description">
+              Flexible bonus structures, performance incentives, and arrears
+              processing with tax optimization
+            </p>
+          </div>
+
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">04</span>
+            <h3 class="workflow-title">Attendance-Based Payroll</h3>
+            <p class="workflow-description">
+              Seamless integration with leave and attendance systems for
+              accurate salary calculations based on actual working days
+            </p>
+          </div>
+
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">05</span>
+            <h3 class="workflow-title">Payslip Automation</h3>
+            <p class="workflow-description">
+              Automated generation and distribution of detailed payslips with
+              password protection and email delivery
+            </p>
+          </div>
+
+          <div class="workflow-card scroll-reveal">
+            <span class="workflow-number">06</span>
+            <h3 class="workflow-title">Form 16 Generation</h3>
+            <p class="workflow-description">
+              Year-end Form 16 automation with accurate tax calculations and
+              timely distribution to employees
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+      <div class="video-content scroll-reveal">
+        <div class="video-text">
+          <h2>See Zoho Payroll in Action</h2>
+          <p>
+            Watch how we transform payroll processing for businesses like yours.
+            From complex salary structures to seamless compliance, discover the
+            power of automated payroll management.
+          </p>
+        </div>
+        <div class="video-container">
+          <div class="video-placeholder">
+            <div class="play-button">▶</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Differentiation Section -->
+    <section class="differentiation">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">Why Choose Us</h2>
+        <p class="section-subtitle scroll-reveal">
+          Our competitive edge in payroll consulting
+        </p>
+
+        <div class="diff-grid">
+          <div class="diff-card scroll-reveal">
+            <span class="diff-number">01</span>
+            <h3 class="diff-title">Deep Indian Compliance Expertise</h3>
+            <p class="diff-description">
+              Specialized knowledge in PF, ESI, PT, and Income Tax regulations
+              with up-to-date compliance for all Indian states
+            </p>
+          </div>
+
+          <div class="diff-card scroll-reveal">
+            <span class="diff-number">02</span>
+            <h3 class="diff-title">Seamless Zoho Integrations</h3>
+            <p class="diff-description">
+              Expert integration of Zoho Payroll with Zoho People and Zoho Books
+              for end-to-end business automation
+            </p>
+          </div>
+
+          <div class="diff-card scroll-reveal">
+            <span class="diff-number">03</span>
+            <h3 class="diff-title">Error-Free Migration</h3>
+            <p class="diff-description">
+              Smooth migration from Excel or Tally with zero data loss and
+              complete historical data preservation
+            </p>
+          </div>
+
+          <div class="diff-card scroll-reveal">
+            <span class="diff-number">04</span>
+            <h3 class="diff-title">Custom Salary Structures</h3>
+            <p class="diff-description">
+              Flexible salary templates supporting fixed, variable, and
+              performance-based compensation models tailored to your needs
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementations Section -->
+    <section class="implementations">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">
+          Real Implementation Success Stories
+        </h2>
+        <p class="section-subtitle scroll-reveal">
+          Proven solutions for real business challenges
+        </p>
+
+        <div class="impl-container">
+          <div class="impl-card scroll-reveal">
+            <div class="impl-icon">🔗</div>
+            <div class="impl-content">
+              <h3 class="impl-title">Zoho Payroll + Zoho People</h3>
+              <p class="impl-description">
+                Implemented automated attendance-linked salary processing for a
+                200+ employee organization, reducing payroll processing time by
+                75% and eliminating manual calculation errors
+              </p>
+            </div>
+            <span class="impl-tag">Attendance Integration</span>
+          </div>
+
+          <div class="impl-card scroll-reveal">
+            <div class="impl-icon">📊</div>
+            <div class="impl-content">
+              <h3 class="impl-title">Zoho Payroll + Zoho Books</h3>
+              <p class="impl-description">
+                Automated salary accounting entries and journal postings for
+                seamless financial reporting, saving 40+ hours monthly on
+                accounting reconciliation
+              </p>
+            </div>
+            <span class="impl-tag">Accounting Automation</span>
+          </div>
+
+          <div class="impl-card scroll-reveal">
+            <div class="impl-icon">⚡</div>
+            <div class="impl-content">
+              <h3 class="impl-title">Complete Payroll Ecosystem</h3>
+              <p class="impl-description">
+                End-to-end implementation covering attendance tracking, leave
+                management, payroll processing, and financial accounting for a
+                multi-location business
+              </p>
+            </div>
+            <span class="impl-tag">Full Stack Solution</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Transform Your Payroll?</h2>
+          <p class="cta-subtitle">
+            Get started with compliant, automated payroll processing today
+          </p>
+
+          <div class="cta-buttons">
+            <button class="btn btn-primary">
+              <span>Get Payroll Compliance Check</span>
+            </button>
+            <button class="btn btn-secondary">
+              <span>Request Payroll Demo</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About Zolytics</h3>
+          <p>
+            Certified Zoho Partner providing expert CRM implementation,
+            customization, and consulting services across India. We help
+            businesses leverage technology to drive growth.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li>CRM Implementation</li>
+            <li>Customization & Development</li>
+            <li>Strategic Consulting</li>
+            <li>Training & Support</li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p><strong>Email:</strong> contact@zolytics.com</p>
+          <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
+          <p><strong>Location:</strong> India</p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2024 Zolytics. All rights reserved. | Certified Zoho Partner</p>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll reveal animation
+      const scrollReveal = () => {
+        const reveals = document.querySelectorAll(".scroll-reveal");
+
+        reveals.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add("active");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", scrollReveal);
+      scrollReveal(); // Initial check
+
+      // Counter animation for stats
+      const animateCounters = () => {
+        const counters = document.querySelectorAll(".stat-number");
+
+        counters.forEach((counter) => {
+          const target = counter.textContent;
+          const isPercentage = target.includes("%");
+          const isTime = target.includes("/");
+
+          if (!isPercentage && !isTime) {
+            const numericValue = parseInt(target);
+            let current = 0;
+            const increment = numericValue / 50;
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= numericValue) {
+                counter.textContent = target;
+                clearInterval(timer);
+              } else {
+                counter.textContent = Math.floor(current) + "+";
+              }
+            }, 30);
+          }
+        });
+      };
+
+      // Trigger counter animation when stats section is visible
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounters();
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const statsSection = document.querySelector(".stats-section");
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+
+      // Button click handlers
+      document.querySelectorAll(".btn").forEach((button) => {
+        button.addEventListener("click", function (e) {
+          const ripple = document.createElement("span");
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+
+          ripple.style.width = ripple.style.height = size + "px";
+          ripple.style.left = x + "px";
+          ripple.style.top = y + "px";
+          ripple.classList.add("ripple");
+
+          this.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
