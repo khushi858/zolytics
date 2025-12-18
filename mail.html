@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Mail Consultant | Zolytics</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        overflow-x: hidden;
+        background: linear-gradient(135deg, #f8f9ff 0%, #fff9e6 100%);
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        padding: 20px 5%;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 15px 5%;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .logo-container img {
+        height: 50px;
+        transition: transform 0.3s ease;
+      }
+
+      .logo-container img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Hero Section */
+      .hero {
+        margin-top: 90px;
+        padding: 100px 5%;
+        background: linear-gradient(135deg, #fffbeb 0%, #fff9e6 100%);
+        position: relative;
+        overflow: hidden;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(66, 133, 244, 0.08) 0%,
+          transparent 70%
+        );
+        top: -250px;
+        right: -250px;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(251, 188, 4, 0.06) 0%,
+          transparent 70%
+        );
+        bottom: -150px;
+        left: -150px;
+        animation: float 10s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-30px, 30px) rotate(5deg);
+        }
+      }
+
+      .hero-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-text h1 {
+        font-size: 3.8em;
+        color: #1a1a1a;
+        margin-bottom: 30px;
+        line-height: 1.3;
+        font-weight: 700;
+        animation: slideInUp 0.8s ease-out;
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-text p {
+        font-size: 1.3em;
+        color: #5f6368;
+        line-height: 1.8;
+        margin-bottom: 45px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        animation: slideInUp 0.8s ease-out 0.2s backwards;
+      }
+
+      .hero-image {
+        display: none;
+      }
+
+      /* CTA Buttons */
+      .cta-container {
+        display: flex;
+        gap: 25px;
+        margin-top: 45px;
+        animation: slideInUp 0.8s ease-out 0.4s backwards;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .cta-button {
+        padding: 20px 45px;
+        font-size: 1.15em;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        text-decoration: none;
+        display: inline-block;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .cta-button:hover::before {
+        width: 400px;
+        height: 400px;
+      }
+
+      .cta-primary {
+        background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+        color: white;
+      }
+
+      .cta-primary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(26, 115, 232, 0.4);
+      }
+
+      .cta-secondary {
+        background: linear-gradient(135deg, #fbbc04 0%, #fdd663 100%);
+        color: #1a1a1a;
+      }
+
+      .cta-secondary:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(251, 188, 4, 0.4);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 80px 5%;
+        max-width: 1400px;
+        margin: 0 auto;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
+      }
+
+      .section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-title {
+        text-align: center;
+        font-size: 2.8em;
+        color: #1a73e8;
+        margin-bottom: 60px;
+        position: relative;
+        padding-bottom: 20px;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #fbbc04 0%, #1a73e8 100%);
+        border-radius: 2px;
+      }
+
+      /* Services Grid */
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-bottom: 60px;
+      }
+
+      .service-card {
+        background: white;
+        padding: 50px 35px;
+        border-radius: 25px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(90deg, #1a73e8 0%, #fbbc04 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .service-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(26, 115, 232, 0.03) 0%,
+          rgba(251, 188, 4, 0.03) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .service-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        border-color: #1a73e8;
+      }
+
+      .service-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .service-card:hover::after {
+        opacity: 1;
+      }
+
+      .service-card h3 {
+        color: #1a73e8;
+        font-size: 1.6em;
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
+        font-weight: 700;
+      }
+
+      .service-card p {
+        color: #5f6368;
+        line-height: 1.9;
+        font-size: 1.08em;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Differentiation Section */
+      .differentiation {
+        background: linear-gradient(135deg, #e8f0fe 0%, #ebf4ff 100%);
+        padding: 100px 5%;
+        margin: 80px 0;
+        position: relative;
+      }
+
+      .differentiation::before {
+        content: "";
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(251, 188, 4, 0.08) 0%,
+          transparent 70%
+        );
+        bottom: -200px;
+        right: -200px;
+        animation: float 12s ease-in-out infinite;
+      }
+
+      .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 45px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .diff-card {
+        background: white;
+        padding: 50px 45px;
+        border-radius: 25px;
+        border-left: 8px solid #fbbc04;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .diff-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 115, 232, 0.05) 0%,
+          transparent 70%
+        );
+        transition: all 0.5s ease;
+      }
+
+      .diff-card:hover {
+        transform: translateX(15px) scale(1.03);
+        border-left-color: #1a73e8;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.18);
+      }
+
+      .diff-card:hover::before {
+        width: 250px;
+        height: 250px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 115, 232, 0.08) 0%,
+          transparent 70%
+        );
+      }
+
+      .diff-card h3 {
+        color: #1a73e8;
+        font-size: 1.8em;
+        margin-bottom: 18px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .diff-card p {
+        color: #5f6368;
+        line-height: 1.9;
+        font-size: 1.1em;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Implementation Section */
+      .implementation-cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+      }
+
+      .impl-card {
+        background: white;
+        border-radius: 25px;
+        overflow: hidden;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+      }
+
+      .impl-card:hover {
+        transform: translateY(-20px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+        border-color: #1a73e8;
+      }
+
+      .impl-header {
+        background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+        color: white;
+        padding: 40px 35px;
+        font-size: 1.7em;
+        font-weight: 700;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .impl-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .impl-body {
+        padding: 40px 35px;
+        position: relative;
+      }
+
+      .impl-body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #fbbc04 0%, #fdd663 100%);
+      }
+
+      .impl-body h4 {
+        color: #fbbc04;
+        font-size: 1.5em;
+        margin-bottom: 18px;
+        font-weight: 700;
+      }
+
+      .impl-body p {
+        color: #5f6368;
+        line-height: 1.9;
+        font-size: 1.1em;
+      }
+
+      /* Final CTA Section */
+      .final-cta {
+        background: linear-gradient(135deg, #1a73e8 0%, #4285f4 100%);
+        padding: 80px 5%;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-cta::before {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        top: -200px;
+        left: -200px;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .final-cta h2 {
+        font-size: 3em;
+        margin-bottom: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .final-cta p {
+        font-size: 1.3em;
+        margin-bottom: 40px;
+        opacity: 0.95;
+        position: relative;
+        z-index: 1;
+      }
+
+      .final-cta-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .final-cta-button {
+        padding: 20px 50px;
+        font-size: 1.2em;
+        border: 2px solid white;
+        background: white;
+        color: #1a73e8;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .final-cta-button:hover {
+        background: transparent;
+        color: white;
+        transform: scale(1.05);
+      }
+
+      /* Footer */
+      footer {
+        background: #1a1a1a;
+        color: #ffffff;
+        padding: 60px 5% 30px;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-bottom: 40px;
+      }
+
+      .footer-section h3 {
+        color: #c23a2b;
+        font-size: 1.4em;
+        margin-bottom: 20px;
+      }
+
+      .footer-section p,
+      .footer-section li {
+        color: #b0b0b0;
+        line-height: 1.8;
+        margin-bottom: 12px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 30px;
+        border-top: 1px solid #333;
+        color: #888;
+      }
+
+      .footer-bottom a {
+        color: #1a73e8;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-bottom a:hover {
+        color: #fbbc04;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .services-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .diff-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .implementation-cards {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 968px) {
+        .hero-content {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-text h1 {
+          font-size: 2.5em;
+        }
+
+        .section-title {
+          font-size: 2.2em;
+        }
+
+        .cta-container {
+          flex-direction: column;
+        }
+
+        .final-cta h2 {
+          font-size: 2.2em;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-text h1 {
+          font-size: 2em;
+        }
+
+        .hero-text p {
+          font-size: 1.1em;
+        }
+
+        .cta-button {
+          padding: 16px 35px;
+          font-size: 1em;
+        }
+
+        .service-card {
+          padding: 35px 25px;
+        }
+
+        .diff-card {
+          padding: 35px 30px;
+        }
+      }
+
+      /* Scroll Progress Bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #1a73e8 0%, #fbbc04 100%);
+        z-index: 9999;
+        transition: width 0.1s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header id="header">
+      <div class="header-content">
+        <div class="logo-container">
+          <img
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics Logo"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/mail.svg"
+            alt="Zoho Mail"
+          />
+        </div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>Secure Business Email with Zero Spam & Full Control</h1>
+          <p>
+            Transform your business communication with enterprise-grade email
+            solutions. We help you migrate, secure, and optimize your email
+            infrastructure with Zoho Mail's privacy-first approach.
+          </p>
+          <div class="cta-container">
+            <a href="#contact" class="cta-button cta-primary"
+              >Migrate Your Email Securely</a
+            >
+            <a href="#setup" class="cta-button cta-secondary"
+              >Get Domain Email Setup Plan</a
+            >
+          </div>
+        </div>
+        <div class="hero-image">
+          <img
+            src="https://via.placeholder.com/600x400/e8f0fe/1a73e8?text=Professional+Email+Solution"
+            alt="Zoho Mail Dashboard"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="setup">
+      <h2 class="section-title">What We Set Up For You</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Domain-Based Business Email</h3>
+          <p>
+            Professional email addresses using your company domain. Build trust
+            and credibility with branded email communications.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>User & Group Mailboxes</h3>
+          <p>
+            Organized team communication with department-specific mailboxes.
+            Streamline collaboration and email management.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>SPF, DKIM, DMARC Setup</h3>
+          <p>
+            Military-grade email authentication protocols. Protect your domain
+            from spoofing and ensure deliverability.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Email Migration Services</h3>
+          <p>
+            Seamless migration from Gmail or Outlook without losing a single
+            email. Zero downtime, complete data integrity.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Archiving & Retention</h3>
+          <p>
+            Automated email archiving and compliance-ready retention policies.
+            Never lose important business communications.
+          </p>
+        </div>
+        <div class="service-card">
+          <h3>Admin Security Hardening</h3>
+          <p>
+            Multi-factor authentication, IP restrictions, and advanced security
+            policies to protect your business data.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="differentiation">
+      <div class="section">
+        <h2 class="section-title">Why Choose Zolytics for Zoho Mail?</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <h3>Zero-Data-Selling Privacy Promise</h3>
+            <p>
+              Unlike Gmail, Zoho Mail never scans your emails for ads or sells
+              your data. Your business communications remain completely private
+              and secure.
+            </p>
+          </div>
+          <div class="diff-card">
+            <h3>Migration Without Mail Loss</h3>
+            <p>
+              Our proven migration process ensures 100% data integrity. We've
+              successfully migrated thousands of mailboxes without a single
+              email lost.
+            </p>
+          </div>
+          <div class="diff-card">
+            <h3>Admin-Level Security Hardening</h3>
+            <p>
+              Enterprise-grade security configuration from day one. We implement
+              best practices that protect against modern email threats.
+            </p>
+          </div>
+          <div class="diff-card">
+            <h3>Seamless Zoho Ecosystem Integration</h3>
+            <p>
+              Connect Mail with CRM, Desk, and other Zoho apps. Create powerful
+              workflows that automate your business processes.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="section">
+      <h2 class="section-title">Real Implementation Examples</h2>
+      <div class="implementation-cards">
+        <div class="impl-card">
+          <div class="impl-header">Zoho Mail + Zoho CRM</div>
+          <div class="impl-body">
+            <h4>Email-to-Lead Tracking</h4>
+            <p>
+              Automatically convert incoming emails into CRM leads. Track all
+              customer communications in one place, never miss a follow-up, and
+              boost conversion rates with intelligent lead scoring.
+            </p>
+          </div>
+        </div>
+        <div class="impl-card">
+          <div class="impl-header">Zoho Mail + Zoho Desk</div>
+          <div class="impl-body">
+            <h4>Support Mailbox Integration</h4>
+            <p>
+              Transform support emails into trackable tickets instantly. Provide
+              faster resolution times, maintain comprehensive customer history,
+              and deliver exceptional support experiences.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta" id="contact">
+      <h2>Ready to Upgrade Your Business Email?</h2>
+      <p>
+        Join hundreds of businesses who trust Zolytics for secure, reliable
+        email solutions
+      </p>
+      <div class="final-cta-buttons">
+        <a href="mailto:contact@zolytics.com" class="final-cta-button"
+          >Schedule Free Consultation</a
+        >
+        <a href="tel:+91-XXXXXXXXXX" class="final-cta-button">Call Us Now</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>About Zolytics</h3>
+          <p>
+            Certified Zoho Partner providing expert CRM implementation,
+            customization, and consulting services across India. We help
+            businesses leverage technology to drive growth.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Services</h3>
+          <ul>
+            <li>CRM Implementation</li>
+            <li>Customization & Development</li>
+            <li>Strategic Consulting</li>
+            <li>Training & Support</li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: contact@zolytics.com</p>
+          <p>Phone: +91-XXXXXXXXXX</p>
+          <p>Location: India</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Zolytics. All rights reserved. |
+          <a href="#">Certified Zoho Partner</a>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll Progress Bar
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      // Header Scroll Effect
+      window.addEventListener("scroll", () => {
+        const header = document.getElementById("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Intersection Observer for Sections
+      const sections = document.querySelectorAll(".section");
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        observer.observe(section);
+      });
+
+      // Smooth Scroll for Anchor Links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Parallax Effect on Hero
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector(".hero");
+        if (hero) {
+          hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+      });
+    </script>
+  </body>
+</html>
