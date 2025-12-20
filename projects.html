@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Projects – Deliver Projects Faster, Smarter, On Time</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Animated Background */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e8f0f7 100%);
+      }
+
+      .floating-shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        opacity: 0.15;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .shape1 {
+        width: 400px;
+        height: 400px;
+        background: #d1453b;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .shape2 {
+        width: 300px;
+        height: 300px;
+        background: #ff6b6b;
+        bottom: 20%;
+        right: 10%;
+        animation-delay: 3s;
+      }
+
+      .shape3 {
+        width: 350px;
+        height: 350px;
+        background: #e74c3c;
+        top: 50%;
+        left: 50%;
+        animation-delay: 6s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        25% {
+          transform: translate(50px, -50px) scale(1.1);
+        }
+        50% {
+          transform: translate(-30px, 50px) scale(0.9);
+        }
+        75% {
+          transform: translate(40px, 30px) scale(1.05);
+        }
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.98);
+        padding: 20px 60px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(209, 69, 59, 0.1);
+        animation: slideDown 0.6s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          transform: translateY(-100%);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .logo-container {
+        display: flex;
+        align-items: center;
+        gap: 40px;
+      }
+
+      .logo-container img {
+        height: 45px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-container img:hover {
+        transform: scale(1.08) translateY(-2px);
+        filter: drop-shadow(0 8px 16px rgba(209, 69, 59, 0.4));
+      }
+
+      .nav-menu {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+      }
+
+      .nav-menu a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 15px;
+        position: relative;
+        padding: 8px 0;
+        transition: color 0.3s ease;
+      }
+
+      .nav-menu a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #d1453b, #ff6b6b);
+        transition: width 0.4s ease;
+        border-radius: 2px;
+      }
+
+      .nav-menu a:hover {
+        color: #d1453b;
+      }
+
+      .nav-menu a:hover::after {
+        width: 100%;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #d1453b 0%, #e74c3c 100%);
+        color: white;
+        padding: 12px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(209, 69, 59, 0.3);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 30px rgba(209, 69, 59, 0.5);
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 120px 60px 100px;
+        max-width: 1400px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 72px;
+        color: #2c3e50;
+        margin-bottom: 25px;
+        line-height: 1.2;
+        font-weight: 800;
+        background: linear-gradient(135deg, #2c3e50 0%, #d1453b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero .usp {
+        font-size: 28px;
+        color: #d1453b;
+        margin-bottom: 40px;
+        font-weight: 600;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      }
+
+      .hero-description {
+        font-size: 19px;
+        color: #5a6c7d;
+        max-width: 850px;
+        margin: 0 auto 50px;
+        line-height: 1.8;
+        animation: fadeInUp 0.8s ease-out 0.3s backwards;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      }
+
+      .primary-btn,
+      .secondary-btn {
+        padding: 18px 45px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 17px;
+        text-decoration: none;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .primary-btn {
+        background: linear-gradient(135deg, #d1453b 0%, #e74c3c 100%);
+        color: white;
+        box-shadow: 0 10px 30px rgba(209, 69, 59, 0.4);
+      }
+
+      .secondary-btn {
+        background: white;
+        color: #d1453b;
+        border: 2px solid #d1453b;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .primary-btn:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 40px rgba(209, 69, 59, 0.5);
+      }
+
+      .secondary-btn:hover {
+        background: #d1453b;
+        color: white;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 10px 30px rgba(209, 69, 59, 0.3);
+      }
+
+      /* Horizontal Scroll Section */
+      .scroll-section {
+        padding: 80px 0;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .section-header {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 60px;
+        padding: 0 60px;
+      }
+
+      .section-tag {
+        display: inline-block;
+        background: linear-gradient(
+          135deg,
+          rgba(209, 69, 59, 0.1) 0%,
+          rgba(231, 76, 60, 0.1) 100%
+        );
+        color: #d1453b;
+        padding: 10px 28px;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+      }
+
+      .section-header h2 {
+        font-size: 52px;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        font-weight: 800;
+      }
+
+      .section-header p {
+        font-size: 20px;
+        color: #5a6c7d;
+        line-height: 1.7;
+      }
+
+      .scroll-container {
+        display: flex;
+        gap: 30px;
+        padding: 20px 60px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .scroll-container::-webkit-scrollbar {
+        display: none;
+      }
+
+      .scroll-card {
+        min-width: 420px;
+        background: white;
+        border-radius: 30px;
+        padding: 0;
+        box-shadow: 0 15px 60px rgba(0, 0, 0, 0.12);
+        scroll-snap-align: start;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        overflow: hidden;
+        position: relative;
+      }
+
+      .scroll-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 80px rgba(209, 69, 59, 0.25);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 280px;
+        background: linear-gradient(135deg, #d1453b 0%, #e74c3c 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .card-image::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.2) 0%,
+          transparent 70%
+        );
+        animation: rotateGradient 15s linear infinite;
+      }
+
+      @keyframes rotateGradient {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .card-icon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 90px;
+        opacity: 0.9;
+        transition: all 0.5s ease;
+      }
+
+      .scroll-card:hover .card-icon {
+        transform: translate(-50%, -50%) scale(1.2) rotate(10deg);
+      }
+
+      .card-content {
+        padding: 35px 30px;
+      }
+
+      .card-content h3 {
+        font-size: 26px;
+        color: #2c3e50;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .card-content p {
+        font-size: 16px;
+        color: #5a6c7d;
+        line-height: 1.7;
+        margin-bottom: 20px;
+      }
+
+      .card-features {
+        list-style: none;
+      }
+
+      .card-features li {
+        font-size: 14px;
+        color: #5a6c7d;
+        margin-bottom: 10px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .card-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #d1453b;
+        font-weight: bold;
+        font-size: 16px;
+      }
+
+      /* Features Grid - 3 Cards */
+      .features-section {
+        padding: 100px 60px;
+        background: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 1400px;
+        margin: 60px auto 0;
+      }
+
+      .feature-card {
+        background: linear-gradient(135deg, #ffffff 0%, #f8fbff 100%);
+        border-radius: 30px;
+        padding: 50px 40px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #d1453b, #ff6b6b);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-card:hover {
+        transform: translateY(-20px);
+        box-shadow: 0 30px 70px rgba(209, 69, 59, 0.25);
+        border-color: rgba(209, 69, 59, 0.2);
+      }
+
+      .feature-emoji {
+        font-size: 70px;
+        margin-bottom: 25px;
+        display: inline-block;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .feature-card:hover .feature-emoji {
+        transform: scale(1.2) rotate(-10deg);
+      }
+
+      .feature-card h3 {
+        font-size: 26px;
+        color: #2c3e50;
+        margin-bottom: 18px;
+        font-weight: 700;
+      }
+
+      .feature-card p {
+        font-size: 16px;
+        color: #5a6c7d;
+        line-height: 1.8;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        padding: 100px 60px;
+        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .stats-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(209, 69, 59, 0.15) 0%,
+          transparent 70%
+        );
+        animation: pulse 20s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          transform: scale(1.2) rotate(180deg);
+        }
+      }
+
+      .stats-section .section-header h2,
+      .stats-section .section-header p {
+        color: white;
+      }
+
+      .stats-section .section-tag {
+        background: rgba(255, 255, 255, 0.15);
+        color: #ff6b6b;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .stat-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 50px 30px;
+        border-radius: 25px;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-15px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+
+      .stat-number {
+        font-size: 60px;
+        font-weight: 800;
+        background: linear-gradient(135deg, #ff6b6b 0%, #fff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+      }
+
+      .stat-label {
+        font-size: 18px;
+        color: rgba(255, 255, 255, 0.9);
+        font-weight: 600;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        padding: 120px 60px;
+        background: linear-gradient(135deg, #d1453b 0%, #e74c3c 100%);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 30s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 52px;
+        color: white;
+        margin-bottom: 25px;
+        font-weight: 800;
+      }
+
+      .cta-content p {
+        font-size: 22px;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 45px;
+        line-height: 1.7;
+      }
+
+      .cta-content .primary-btn {
+        background: white;
+        color: #d1453b;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta-content .primary-btn:hover {
+        transform: translateY(-5px) scale(1.08);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
+        color: white;
+        padding: 80px 60px 30px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .footer-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 50px;
+      }
+
+      .footer-section h4 {
+        font-size: 20px;
+        margin-bottom: 25px;
+        color: #ff6b6b;
+        font-weight: 700;
+      }
+
+      .footer-section p {
+        color: #bdc3c7;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 14px;
+      }
+
+      .footer-section ul li a {
+        color: #ecf0f1;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .footer-section ul li a:hover {
+        color: #ff6b6b;
+        transform: translateX(8px);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 15px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        font-size: 22px;
+      }
+
+      .social-links a:hover {
+        background: #d1453b;
+        transform: translateY(-8px) scale(1.15);
+        box-shadow: 0 10px 30px rgba(209, 69, 59, 0.5);
+      }
+
+      .footer-bottom {
+        text-align: center;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        color: #bdc3c7;
+      }
+
+      /* Progress Bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 5px;
+        background: linear-gradient(90deg, #d1453b, #ff6b6b, #d1453b);
+        background-size: 200% 100%;
+        z-index: 9999;
+        transition: width 0.1s ease;
+        animation: shimmer 3s linear infinite;
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: 200% 0;
+        }
+        100% {
+          background-position: -200% 0;
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .stats-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .footer-content {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 42px;
+        }
+
+        .header-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .nav-menu {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .features-grid,
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .scroll-card {
+          min-width: 320px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .section-header h2 {
+          font-size: 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="animated-bg">
+      <div class="floating-shape shape1"></div>
+      <div class="floating-shape shape2"></div>
+      <div class="floating-shape shape3"></div>
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header>
+      <div class="header-container">
+        <div class="logo-container">
+          <img src="images/logo.png" alt="Zolytics" style="height: 90px" />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
+            alt="Zoho Projects"
+          />
+        </div>
+        <nav class="nav-menu">
+          <a href="#services">Services</a>
+          <a href="#features">Features</a>
+          <a href="#results">Results</a>
+          <a href="#contact">Contact</a>
+          <a href="#" class="cta-button">Get Started</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <h1>Deliver Projects Faster, Smarter, On Time</h1>
+      <p class="usp">Complete project control from planning to delivery</p>
+      <p class="hero-description">
+        As a leading Zoho consulting firm, we transform your project management
+        with cutting-edge solutions that drive efficiency, eliminate delays, and
+        maximize success rates. Experience the power of enterprise-grade tools
+        with expert guidance.
+      </p>
+      <div class="hero-buttons">
+        <a href="#" class="primary-btn">Start Free Consultation</a>
+        <a href="#services" class="secondary-btn">Explore Our Services</a>
+      </div>
+    </section>
+
+    <section class="features-section" id="features">
+      <div class="section-header">
+        <span class="section-tag">Core Features</span>
+        <h2>Powerful Tools for Project Excellence</h2>
+        <p>
+          Everything you need to manage projects efficiently and deliver
+          exceptional results
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-emoji">📋</div>
+          <h3>Task Management</h3>
+          <p>
+            Organize work with powerful task management, milestone tracking, and
+            dependency mapping for seamless workflow orchestration across your
+            entire organization.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-emoji">📈</div>
+          <h3>Gantt Charts</h3>
+          <p>
+            Get crystal-clear project visibility with interactive Gantt charts
+            that reveal timelines, dependencies, and critical paths instantly
+            with drag-and-drop simplicity.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-emoji">⏱️</div>
+          <h3>Time Tracking</h3>
+          <p>
+            Track every minute with precision time logging and generate
+            billing-ready reports that streamline invoicing, budgeting, and
+            resource allocation across all projects.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-section" id="results">
+      <div class="section-header">
+        <span class="section-tag">Results That Matter</span>
+        <h2>Proven Impact on Business Success</h2>
+        <p>
+          Real data from our client partnerships showing measurable improvements
+        </p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">95%</div>
+          <div class="stat-label">On-Time Delivery</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">40%</div>
+          <div class="stat-label">Time Savings</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">85%</div>
+          <div class="stat-label">Cost Reduction</div>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-number">99%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="cta-content">
+        <h2>Ready to Transform Your Project Management?</h2>
+        <p>
+          Join leading organizations who trust us to optimize their Zoho
+          Projects implementation. Let's discuss how we can accelerate your
+          success.
+        </p>
+        <a href="#" class="primary-btn">Schedule Free Consultation</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Zolytics</h4>
+          <p>
+            Your trusted partner for Zoho Projects implementation, optimization,
+            and ongoing support. Transforming businesses through intelligent
+            project management solutions.
+          </p>
+          <div class="social-links">
+            <a href="#">📘</a>
+            <a href="#">🐦</a>
+            <a href="#">💼</a>
+            <a href="#">📸</a>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="#">Implementation</a></li>
+            <li><a href="#">Optimization</a></li>
+            <li><a href="#">Training</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Case Studies</a></li>
+            <li><a href="#">Webinars</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Documentation</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Partners</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">GDPR</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2025 Zolytics Consulting. All rights reserved. | Zoho Certified
+          Partner
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll Progress Bar
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Auto-scroll animation for horizontal scroll
+      const scrollContainer = document.querySelector(".scroll-container");
+      let isScrolling;
+
+      scrollContainer.addEventListener("scroll", () => {
+        window.clearTimeout(isScrolling);
+        isScrolling = setTimeout(() => {
+          const scrollLeft = scrollContainer.scrollLeft;
+          const cardWidth =
+            scrollContainer.querySelector(".scroll-card").offsetWidth + 30;
+          const index = Math.round(scrollLeft / cardWidth);
+          scrollContainer.scrollTo({
+            left: index * cardWidth,
+            behavior: "smooth",
+          });
+        }, 150);
+      });
+
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      document
+        .querySelectorAll(".feature-card, .stat-card, .scroll-card")
+        .forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          card.style.transition = "all 0.6s ease-out";
+          observer.observe(card);
+        });
+
+      // Counter animation for stats
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target + "%";
+            clearInterval(timer);
+          } else {
+            element.textContent = Math.floor(current) + "%";
+          }
+        }, 16);
+      }
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const numberElement = entry.target.querySelector(".stat-number");
+              const targetValue = parseInt(numberElement.textContent);
+              animateCounter(numberElement, targetValue);
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll(".stat-card").forEach((box) => {
+        statsObserver.observe(box);
+      });
+
+      // Parallax effect on hero
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector(".hero");
+        if (hero && scrolled < window.innerHeight) {
+          hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+          hero.style.opacity = 1 - (scrolled / window.innerHeight) * 0.5;
+        }
+      });
+    </script>
+  </body>
+</html>
