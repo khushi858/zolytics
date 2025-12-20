@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoho Shift – Smarter Scheduling for Modern Teams</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f5f9ff 100%);
+            color: #2c3e50;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background Particles */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float-particle 20s infinite ease-in-out;
+        }
+
+        .particle:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 3s; }
+        .particle:nth-child(3) { width: 80px; height: 80px; top: 80%; left: 20%; animation-delay: 6s; }
+        .particle:nth-child(4) { width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 9s; }
+        .particle:nth-child(5) { width: 90px; height: 90px; top: 50%; left: 50%; animation-delay: 12s; }
+
+        @keyframes float-particle {
+            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+            25% { transform: translate(50px, -50px) scale(1.2); opacity: 0.5; }
+            50% { transform: translate(-30px, -80px) scale(0.9); opacity: 0.4; }
+            75% { transform: translate(70px, -30px) scale(1.1); opacity: 0.6; }
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 25px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.12);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 102, 204, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 15px 60px;
+            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.18);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .logo {
+            height: 55px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: drop-shadow(0 4px 8px rgba(0, 102, 204, 0.2));
+        }
+
+        .logo:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 8px 16px rgba(0, 102, 204, 0.3));
+        }
+
+        .divider {
+            width: 2px;
+            height: 50px;
+            background: linear-gradient(to bottom, transparent, #0066cc, transparent);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .divider::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 60px 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: radial-gradient(circle at 20% 50%, #0066cc 0%, transparent 50%),
+                        radial-gradient(circle at 80% 50%, #0099ff 0%, transparent 50%);
+            animation: pulse-bg 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse-bg {
+            0%, 100% { opacity: 0.1; transform: scale(1); }
+            50% { opacity: 0.2; transform: scale(1.05); }
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            color: #0066cc;
+            margin-bottom: 25px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 50%, #0066cc 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-shift 3s ease infinite, slideDown 1s ease-out;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -2px;
+            line-height: 1.2;
+        }
+
+        @keyframes gradient-shift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .usp {
+            font-size: 1.8rem;
+            color: #555;
+            margin-bottom: 50px;
+            font-weight: 400;
+            animation: fadeIn 1.2s ease-out 0.4s both;
+            position: relative;
+            z-index: 2;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 30px 40px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 102, 204, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .stat-item:hover::before {
+            left: 100%;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.4);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #0066cc;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        /* Features Grid */
+        .features-section {
+            padding: 100px 60px;
+            background: linear-gradient(180deg, transparent 0%, rgba(230, 243, 255, 0.3) 50%, transparent 100%);
+            position: relative;
+            z-index: 1;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: #0066cc;
+            margin-bottom: 20px;
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #0066cc, transparent);
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #666;
+            max-width: 700px;
+            margin: 30px auto 0;
+            line-height: 1.8;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(0, 102, 204, 0.1);
+            cursor: pointer;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.2), transparent);
+            transition: left 0.6s ease;
+            z-index: 1;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #0066cc, #0099ff, #00ccff);
+            background-size: 200% auto;
+            transform: scaleX(0);
+            transition: transform 0.5s ease;
+            animation: gradient-shift 3s ease infinite;
+        }
+
+        .feature-card:hover::after {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-20px) scale(1.03);
+            box-shadow: 0 30px 80px rgba(0, 102, 204, 0.3);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+
+        .feature-image-container {
+            width: 100%;
+            height: 280px;
+            overflow: hidden;
+            position: relative;
+            background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
+        }
+
+        .feature-image-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
+            z-index: 1;
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            filter: brightness(1.05) saturate(1.1);
+        }
+
+        .feature-card:hover .feature-image {
+            transform: scale(1.2) rotate(3deg);
+            filter: brightness(1.15) saturate(1.3);
+        }
+
+        .feature-content {
+            padding: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-number {
+            position: absolute;
+            top: -140px;
+            right: 30px;
+            font-size: 8rem;
+            font-weight: 900;
+            color: rgba(0, 102, 204, 0.08);
+            z-index: 0;
+            transition: all 0.6s ease;
+        }
+
+        .feature-card:hover .feature-number {
+            color: rgba(0, 102, 204, 0.15);
+            transform: scale(1.2);
+        }
+
+        .feature-card h3 {
+            color: #0066cc;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .feature-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #0066cc, #0099ff);
+            transition: width 0.4s ease;
+            border-radius: 2px;
+        }
+
+        .feature-card:hover h3::after {
+            width: 100%;
+        }
+
+        .feature-card:hover h3 {
+            transform: translateX(8px);
+            color: #0099ff;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .feature-card:hover p {
+            color: #555;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            padding: 100px 60px;
+            background: rgba(255, 255, 255, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 50px 30px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.9) 100%);
+            border-radius: 25px;
+            border: 2px solid rgba(0, 102, 204, 0.15);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.6s ease;
+        }
+
+        .benefit-item:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .benefit-item:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
+            border-color: rgba(0, 102, 204, 0.3);
+        }
+
+        .benefit-icon {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            display: inline-block;
+            transition: all 0.5s ease;
+            filter: drop-shadow(0 5px 15px rgba(0, 102, 204, 0.3));
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .benefit-item h4 {
+            font-size: 1.5rem;
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .benefit-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Testimonial Section */
+        .testimonial-section {
+            padding: 100px 60px;
+            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonial-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 153, 255, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(0, 204, 255, 0.3) 0%, transparent 50%);
+            animation: pulse-radial 8s ease-in-out infinite;
+        }
+
+        .testimonial-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .testimonial-quote {
+            font-size: 2rem;
+            color: white;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 40px;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .author-info h5 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .author-info p {
+            color: #b3d9ff;
+            font-size: 1rem;
+        }
+
+        /* Result Section */
+        .result-section {
+            padding: 100px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+        }
+
+        .result-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .result-section h2 {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .result-section p {
+            color: #555;
+            font-size: 1.5rem;
+            position: relative;
+            line-height: 1.8;
+            margin-bottom: 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 25px 70px;
+            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.4);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+
+        .cta-button:hover::before {
+            width: 400px;
+            height: 400px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-8px) scale(1.08);
+            box-shadow: 0 25px 60px rgba(0, 102, 204, 0.5);
+        }
+
+        .cta-button span {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #001a33 0%, #002a4d 50%, #003366 100%);
+            color: white;
+            padding: 80px 60px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, rgba(0, 102, 204, 0.05) 25%, transparent 25%),
+                linear-gradient(-45deg, rgba(0, 102, 204, 0.05) 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, rgba(0, 102, 204, 0.05) 75%),
+                linear-gradient(-45deg, transparent 75%, rgba(0, 102, 204, 0.05) 75%);
+            background-size: 80px 80px;
+            opacity: 0.3;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-section {
+            transition: transform 0.4s ease;
+        }
+
+        .footer-section:hover {
+            transform: translateY(-8px);
+        }
+
+        .footer-section h3 {
+            color: #66b3ff;
+            margin-bottom: 30px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #66b3ff, transparent);
+            border-radius: 2px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(12px);
+        }
+
+        .footer-section a {
+            color: #b3d9ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            display: inline-block;
+            font-size: 1.05rem;
+        }
+
+        .footer-section a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #66b3ff;
+            transition: width 0.3s ease;
+        }
+
+        .footer-section a:hover::after {
+            width: 100%;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 55px;
+            height: 55px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-size: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: #0066cc;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+
+        .social-icon:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-10px) scale(1.15) rotate(360deg);
+            box-shadow: 0 12px 30px rgba(0, 102, 204, 0.5);
+            border-color: #0066cc;
+        }
+
+        .social-icon span {
+            position: relative;
+            z-index: 2;
+        }
+
+        .copyright {
+            margin-top: 60px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: #99ccff;
+            position: relative;
+            z-index: 2;
+            font-size: 1rem;
+        }
+
+        /* Scroll Progress Bar */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 5px;
+            background: linear-gradient(90deg, #0066cc, #0099ff, #00ccff);
+            z-index: 9999;
+            transition: width 0.1s ease;
+            box-shadow: 0 2px 10px rgba(0, 102, 204, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; letter-spacing: -1px; }
+            .usp { font-size: 1.3rem; }
+            .section-title { font-size: 2.2rem; }
+            .section-subtitle { font-size: 1.1rem; }
+            header { padding: 20px; flex-direction: column; gap: 20px; }
+            .hero { padding: 80px 20px 50px; }
+            .hero-stats { gap: 30px; }
+            .stat-item { padding: 20px 30px; }
+            .features-section { padding: 60px 20px; }
+            .features { gap: 35px; grid-template-columns: 1fr; }
+            .benefits-section { padding: 60px 20px; }
+            .benefits-grid { gap: 30px; }
+            .testimonial-section { padding: 60px 20px; }
+            .testimonial-quote { font-size: 1.5rem; }
+            .result-section { padding: 60px 20px; }
+            .result-section h2 { font-size: 2.5rem; }
+            .result-section p { font-size: 1.2rem; }
+            .cta-button { padding: 20px 50px; font-size: 1.2rem; }
+            footer { padding: 60px 20px 30px; }
+            .footer-content { gap: 40px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="bg-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <header id="header">
+        <div class="logo-container">
+            <img src="images/logo.png" alt="Zolytics Logo" class="logo" style="height: 90px;">
+            <div class="divider"></div>
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/shifts.svg" alt="Zoho Shift Logo" class="logo">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-background"></div>
+        <h1>Zoho Shift – Smarter Scheduling for Modern Teams</h1>
+        <p class="usp">Plan shifts easily, reduce conflicts & improve productivity</p>
+        
+        <div class="hero-stats">
+            <div class="stat-item">
+                <span class="stat-number">10K+</span>
+                <span class="stat-label">Happy Companies</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">500K+</span>
+                <span class="stat-label">Shifts Scheduled</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number">95%</span>
+                <span class="stat-label">Time Saved</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="section-header">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to manage your team's schedule efficiently and keep everyone on the same page</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-image-container">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=500&fit=crop" alt="Drag-and-drop Scheduling" class="feature-image">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-number">01</span>
+                    <h3>Drag-and-drop Shift Scheduling</h3>
+                    <p>Intuitive interface lets you create and modify schedules in seconds. Visual calendar makes planning effortless for managers and teams alike. Simply drag employees to time slots and watch your schedule come together.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-image-container">
+                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&h=500&fit=crop" alt="Real-time Sync" class="feature-image">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-number">02</span>
+                    <h3>Real-time Availability & Attendance</h3>
+                    <p>Know who's available instantly. Automated attendance tracking eliminates confusion and ensures accurate shift coverage every time. Get real-time updates on employee availability and time-off requests.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-image-container">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop" alt="Integrations" class="feature-image">
+                </div>
+                <div class="feature-content">
+                    <span class="feature-number">03</span>
+                    <h3>Seamless Integration with Zoho Suite</h3>
+                    <p>Integrates perfectly with Zoho People & Payroll. Shift data flows directly to HR and payroll systems automatically. No manual data entry, no errors. Everything syncs in real-time across your entire organization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section">
+        <div class="section-header">
+            <h2 class="section-title">Why Teams Love Zoho Shift</h2>
+            <p class="section-subtitle">Experience the benefits that make Zoho Shift the preferred choice for modern teams</p>
+        </div>
+        
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <div class="benefit-icon">🚀</div>
+                <h4>Boost Productivity</h4>
+                <p>Reduce scheduling time by 75% and focus on what matters most - growing your business</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">💰</div>
+                <h4>Cut Labor Costs</h4>
+                <p>Optimize staffing levels and eliminate overtime with smart scheduling algorithms</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">😊</div>
+                <h4>Happier Employees</h4>
+                <p>Give your team flexibility and transparency with self-service shift management</p>
+            </div>
+            
+            <div class="benefit-item">
+                <div class="benefit-icon">📱</div>
+                <h4>Mobile Access</h4>
+                <p>Manage schedules on-the-go with our intuitive mobile app for iOS and Android</p>
+            </div>
+            
+           
+        </div>
+    </section>
+
+    <section class="testimonial-section">
+        <div class="testimonial-content">
+            <p class="testimonial-quote">"Zoho Shift transformed how we manage our team. Scheduling used to take hours, now it takes minutes. Our employees love the transparency and flexibility it provides."</p>
+            <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop" alt="Sarah Johnson" class="author-avatar">
+                <div class="author-info">
+                    <h5>Sarah Johnson</h5>
+                    <p>Operations Manager, TechCorp Inc.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="result-section">
+        <div class="result-content">
+            <h2>Ready to Transform Your Scheduling?</h2>
+            <p>Less scheduling stress, happier workforce. Empower your team with tools that work as hard as they do. Join thousands of companies already saving time with Zoho Shift.</p>
+            <a href="#" class="cta-button"><span>Start Your Free Trial</span></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Product</h3>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">Integrations</a></li>
+                    <li><a href="#">Mobile App</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Video Tutorials</a></li>
+                    <li><a href="#">API Reference</a></li>
+                    <li><a href="#">Webinars</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press Kit</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon"><span>📘</span></a>
+                    <a href="#" class="social-icon"><span>🐦</span></a>
+                    <a href="#" class="social-icon"><span>💼</span></a>
+                    <a href="#" class="social-icon"><span>📸</span></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright">
+            <p>&copy; 2024 Zoho Corporation Pvt. Ltd. All Rights Reserved. | Privacy Policy | Terms of Service</p>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrolled = (window.pageYOffset / scrollHeight) * 100;
+            scrollProgress.style.width = scrolled + '%';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for CTA button
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) scale(1)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // Observe benefit items
+        document.querySelectorAll('.benefit-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Parallax effect on scroll
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero');
+                    const heroBackground = document.querySelector('.hero-background');
+                    
+                    if (hero && scrolled < window.innerHeight) {
+                        hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+                    }
+                    
+                    if (heroBackground) {
+                        heroBackground.style.transform = `translateY(${scrolled * 0.2}px) scale(${1 + scrolled * 0.0005})`;
+                    }
+                    
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // Add magnetic effect to CTA button
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            ctaButton.addEventListener('mousemove', (e) => {
+                const rect = ctaButton.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                ctaButton.style.transform = `translateY(-8px) scale(1.08) translate(${x * 0.15}px, ${y * 0.15}px)`;
+            });
+            
+            ctaButton.addEventListener('mouseleave', () => {
+                ctaButton.style.transform = '';
+            });
+        }
+
+        // Add ripple effect on feature cards click
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                const ripple = document.createElement('div');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    border-radius: 50%;
+                    background: rgba(0, 102, 204, 0.4);
+                    left: ${x}px;
+                    top: ${y}px;
+                    pointer-events: none;
+                    animation: rippleEffect 0.8s ease-out;
+                    z-index: 1;
+                `;
+                
+                this.appendChild(ripple);
+                setTimeout(() => ripple.remove(), 800);
+            });
+        });
+
+        // Add 3D tilt effect to feature cards
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 15;
+                const rotateY = (centerX - x) / 15;
+                
+                card.style.transform = `translateY(-20px) scale(1.03) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+
+        // Smooth reveal for footer sections
+        const footerObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry, index) => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, index * 100);
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.footer-section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease-out';
+            footerObserver.observe(section);
+        });
+
+        // Add CSS for ripple animation dynamically
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes rippleEffect {
+                to {
+                    transform: scale(2.5);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes pulse-radial {
+                0%, 100% { opacity: 0.5; transform: scale(1); }
+                50% { opacity: 0.8; transform: scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Logo rotation on hover
+        document.querySelectorAll('.logo').forEach(logo => {
+            logo.addEventListener('mouseenter', function() {
+                this.style.animation = 'logoSpin 0.6s ease-in-out';
+            });
+            
+            logo.addEventListener('animationend', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add logo spin animation
+        const logoStyle = document.createElement('style');
+        logoStyle.textContent = `
+            @keyframes logoSpin {
+                0% { transform: scale(1) rotate(0deg); }
+                50% { transform: scale(1.15) rotate(180deg); }
+                100% { transform: scale(1.1) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(logoStyle);
+
+        // Counter animation for stats
+        const animateCounter = (element, target) => {
+            let current = 0;
+            const increment = target / 100;
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    element.textContent = target + (element.textContent.includes('%') ? '%' : element.textContent.includes('+') ? '+' : '');
+                    clearInterval(timer);
+                } else {
+                    const displayValue = Math.floor(current);
+                    element.textContent = displayValue + (element.textContent.includes('K') ? 'K' : '') + (element.textContent.includes('%') ? '%' : '+');
+                }
+            }, 20);
+        };
+
+        // Trigger counter animation when stats are in view
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const number = entry.target.querySelector('.stat-number');
+                    const text = number.textContent;
+                    const value = parseInt(text.replace(/\D/g, ''));
+                    
+                    number.textContent = '0';
+                    animateCounter(number, value);
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.stat-item').forEach(item => {
+            statsObserver.observe(item);
+        });
+
+        // Performance optimization: Reduce animations on low-end devices
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('*').forEach(el => {
+                el.style.animation = 'none';
+                el.style.transition = 'none';
+            });
+        }
+
+        // Mouse trail effect (subtle)
+        let mouseTrailActive = true;
+        document.addEventListener('mousemove', (e) => {
+            if (mouseTrailActive && Math.random() > 0.92) {
+                const trail = document.createElement('div');
+                trail.style.cssText = `
+                    position: fixed;
+                    width: 8px;
+                    height: 8px;
+                    background: radial-gradient(circle, rgba(0, 102, 204, 0.5), transparent);
+                    border-radius: 50%;
+                    pointer-events: none;
+                    left: ${e.clientX - 4}px;
+                    top: ${e.clientY - 4}px;
+                    z-index: 9998;
+                    animation: fadeOutTrail 1.2s ease-out forwards;
+                `;
+                document.body.appendChild(trail);
+                
+                setTimeout(() => trail.remove(), 1200);
+            }
+        });
+
+        const trailStyle = document.createElement('style');
+        trailStyle.textContent = `
+            @keyframes fadeOutTrail {
+                to {
+                    opacity: 0;
+                    transform: scale(2.5);
+                }
+            }
+        `;
+        document.head.appendChild(trailStyle);
+    </script>
+</body>
+</html
