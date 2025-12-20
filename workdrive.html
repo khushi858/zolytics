@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho WorkDrive – Your Secure Digital Workspace</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #f5f9fc 0%, #e8f4f8 100%);
+        color: #2c3e50;
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Animated Background Particles */
+      .bg-particles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        background: radial-gradient(
+          circle,
+          rgba(0, 123, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-particle 20s infinite ease-in-out;
+      }
+
+      @keyframes float-particle {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        33% {
+          transform: translate(100px, -100px) scale(1.2);
+        }
+        66% {
+          transform: translate(-50px, 50px) scale(0.8);
+        }
+      }
+
+      /* Header Styles */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 20px 0;
+        box-shadow: 0 8px 32px rgba(0, 123, 255, 0.12);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        padding: 12px 0;
+        box-shadow: 0 12px 48px rgba(0, 123, 255, 0.2);
+      }
+
+      .header-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+      }
+
+      .logo-img {
+        height: 50px;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 8px rgba(0, 123, 255, 0.2));
+      }
+
+      .logo-img:hover {
+        transform: scale(1.1) rotate(2deg);
+        filter: drop-shadow(0 8px 16px rgba(0, 123, 255, 0.3));
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 35px;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: #2c3e50;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        position: relative;
+        padding: 8px 0;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #007bff, #00d4ff);
+        transition: all 0.3s ease;
+        transform: translateX(-50%);
+        border-radius: 2px;
+      }
+
+      .nav-links a:hover {
+        color: #007bff;
+        transform: translateY(-2px);
+      }
+
+      .nav-links a:hover::before {
+        width: 100%;
+      }
+
+      /* Hero Section */
+      .hero {
+        max-width: 1400px;
+        margin: 100px auto;
+        padding: 0 40px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content h1 {
+        font-size: 3.8rem;
+        background: linear-gradient(135deg, #1a365d 0%, #007bff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 20px;
+        line-height: 1.2;
+        font-weight: 800;
+        animation: fadeInUp 0.8s ease;
+      }
+
+      .hero-content .usp {
+        font-size: 1.6rem;
+        color: #007bff;
+        margin-bottom: 30px;
+        font-weight: 600;
+        animation: fadeInUp 0.8s ease 0.2s backwards;
+        position: relative;
+        display: inline-block;
+      }
+
+      .hero-content .usp::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, #007bff, transparent);
+        animation: shimmer 2s infinite;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero-content p {
+        font-size: 1.15rem;
+        color: #5a6c7d;
+        line-height: 1.9;
+        margin-bottom: 40px;
+        animation: fadeInUp 0.8s ease 0.4s backwards;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        padding: 20px 50px;
+        border-radius: 60px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.15rem;
+        box-shadow: 0 15px 40px rgba(0, 123, 255, 0.4);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        animation: fadeInUp 0.8s ease 0.6s backwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .cta-button:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.5);
+      }
+
+      /* Hero Visual with 3D Cards */
+      .hero-visual {
+        position: relative;
+        animation: fadeIn 1s ease;
+        perspective: 1000px;
+      }
+
+      .floating-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 40px;
+        box-shadow: 0 30px 80px rgba(0, 123, 255, 0.2);
+        animation: float3D 4s ease-in-out infinite;
+        transform-style: preserve-3d;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        transition: all 0.3s ease;
+      }
+
+      .floating-card:hover {
+        transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        box-shadow: 0 40px 100px rgba(0, 123, 255, 0.3);
+      }
+
+      .floating-card h3 {
+        color: #1a365d;
+        margin-bottom: 25px;
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .floating-card ul {
+        list-style: none;
+      }
+
+      .floating-card li {
+        padding: 15px 0;
+        color: #5a6c7d;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(0, 123, 255, 0.1);
+      }
+
+      .floating-card li:last-child {
+        border-bottom: none;
+      }
+
+      .floating-card li:hover {
+        transform: translateX(10px);
+        color: #007bff;
+      }
+
+      .floating-card li::before {
+        content: "✓";
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 28px;
+        height: 28px;
+        background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+        color: white;
+        border-radius: 50%;
+        font-weight: bold;
+        font-size: 0.9rem;
+        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .floating-card li:hover::before {
+        transform: scale(1.2) rotate(360deg);
+      }
+
+      /* Features Section */
+      .features {
+        max-width: 1400px;
+        margin: 120px auto;
+        padding: 0 40px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .features h2 {
+        text-align: center;
+        font-size: 3rem;
+        background: linear-gradient(135deg, #1a365d 0%, #007bff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 70px;
+        font-weight: 800;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 30px;
+        padding: 45px;
+        box-shadow: 0 15px 50px rgba(0, 123, 255, 0.12);
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: linear-gradient(90deg, #007bff 0%, #00d4ff 100%);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.5s ease;
+      }
+
+      .feature-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(0, 123, 255, 0.1) 0%,
+          transparent 70%
+        );
+        transform: scale(0);
+        transition: transform 0.6s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(0, 123, 255, 0.25);
+      }
+
+      .feature-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .feature-card:hover::after {
+        transform: scale(1);
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        transition: all 0.5s ease;
+        box-shadow: 0 10px 30px rgba(0, 123, 255, 0.15);
+      }
+
+      .feature-card:hover .feature-image {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(0, 123, 255, 0.25);
+      }
+
+      .feature-card h3 {
+        color: #1a365d;
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        transition: color 0.3s ease;
+      }
+
+      .feature-card:hover h3 {
+        color: #007bff;
+      }
+
+      .feature-card p {
+        color: #5a6c7d;
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        max-width: 1400px;
+        margin: 100px auto;
+        padding: 60px 40px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(240, 248, 255, 0.95) 100%
+        );
+        border-radius: 40px;
+        box-shadow: 0 20px 60px rgba(0, 123, 255, 0.15);
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 40px;
+        position: relative;
+        z-index: 1;
+        backdrop-filter: blur(10px);
+      }
+
+      .stat-item {
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-10px);
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .stat-label {
+        color: #5a6c7d;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      /* Result Section */
+      .result-section {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+        color: white;
+        padding: 100px 40px;
+        text-align: center;
+        margin: 120px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .result-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .result-section h2 {
+        font-size: 3rem;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+        font-weight: 800;
+      }
+
+      .result-section p {
+        font-size: 1.4rem;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.9;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #1a365d 0%, #2c3e50 100%);
+        color: white;
+        padding: 80px 40px 30px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #007bff, transparent);
+      }
+
+      .footer-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+        gap: 50px;
+        margin-bottom: 50px;
+      }
+
+      .footer-section h3 {
+        margin-bottom: 25px;
+        font-size: 1.4rem;
+        font-weight: 700;
+        position: relative;
+        padding-bottom: 15px;
+      }
+
+      .footer-section h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, #007bff, #00d4ff);
+        border-radius: 2px;
+      }
+
+      .footer-section p {
+        color: #b0c4de;
+        line-height: 1.9;
+        font-size: 1.05rem;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 15px;
+      }
+
+      .footer-section ul li a {
+        color: #b0c4de;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        position: relative;
+      }
+
+      .footer-section ul li a::before {
+        content: "→";
+        position: absolute;
+        left: -20px;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .footer-section ul li a:hover {
+        color: #ffffff;
+        transform: translateX(20px);
+      }
+
+      .footer-section ul li a:hover::before {
+        opacity: 1;
+        left: -15px;
+      }
+
+      .footer-bottom {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .social-links a {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .social-links a::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: all 0.4s ease;
+      }
+
+      .social-links a:hover::before {
+        width: 100%;
+        height: 100%;
+      }
+
+      .social-links a:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 10px 25px rgba(0, 123, 255, 0.4);
+      }
+
+      .social-links a span {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #007bff, #00d4ff);
+        z-index: 9999;
+        transform-origin: left;
+        transition: transform 0.1s ease;
+        box-shadow: 0 2px 10px rgba(0, 123, 255, 0.5);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes float3D {
+        0%,
+        100% {
+          transform: translateY(0) rotateX(0) rotateY(0);
+        }
+        50% {
+          transform: translateY(-20px) rotateX(2deg) rotateY(2deg);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 968px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 50px;
+        }
+
+        .hero-content h1 {
+          font-size: 2.8rem;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .header-container {
+          flex-direction: column;
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-content h1 {
+          font-size: 2.2rem;
+        }
+
+        .footer-container {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 25px;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Background Particles -->
+    <div class="bg-particles" id="particles"></div>
+
+    <!-- Header -->
+    <header id="header">
+      <div class="header-container">
+        <div class="logo-section">
+          <img
+            src="images/logo.png"
+            alt="Zolytics"
+            class="logo-img"
+            style="height: 100px"
+          />
+          <span style="color: #ccc; font-size: 1.5rem">|</span>
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/workdrive.svg"
+            alt="Zoho WorkDrive"
+            class="logo-img"
+          />
+        </div>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#resources">Resources</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Zoho WorkDrive – Your Secure Digital Workspace</h1>
+        <p class="usp">
+          One place for files, collaboration & complete data control
+        </p>
+        <p>
+          Empower your team with centralized cloud storage, real-time
+          collaboration, and enterprise-grade security. WorkDrive integrates
+          seamlessly with your existing Zoho ecosystem.
+        </p>
+        <a href="#" class="cta-button">Start Free Trial</a>
+      </div>
+      <div class="hero-visual">
+        <div class="floating-card">
+          <h3>Why WorkDrive?</h3>
+          <ul>
+            <li>Centralized cloud storage for teams</li>
+            <li>Real-time collaboration with shared folders</li>
+            <li>Strong admin control & enterprise security</li>
+            <li>Seamless Zoho CRM, Projects & Mail integration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stat-item">
+        <span class="stat-number">10M+</span>
+        <span class="stat-label">Active Users</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">99.9%</span>
+        <span class="stat-label">Uptime</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">256-bit</span>
+        <span class="stat-label">Encryption</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number">24/7</span>
+        <span class="stat-label">Support</span>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+      <h2>Powerful Features for Modern Teams</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&q=80"
+            alt="Cloud Storage"
+            class="feature-image"
+          />
+          <h3>Centralized Storage</h3>
+          <p>
+            Keep all your team files in one secure location. Access from
+            anywhere, anytime, on any device.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+            alt="Collaboration"
+            class="feature-image"
+          />
+          <h3>Real-Time Collaboration</h3>
+          <p>
+            Work together seamlessly with shared folders, comments, and version
+            control for perfect teamwork.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80"
+            alt="Security"
+            class="feature-image"
+          />
+          <h3>Enterprise Security</h3>
+          <p>
+            Bank-level encryption, admin controls, and compliance certifications
+            keep your data protected.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"
+            alt="Integration"
+            class="feature-image"
+          />
+          <h3>Zoho Integration</h3>
+          <p>
+            Connect with CRM, Projects, Mail and more. Your entire workflow in
+            perfect harmony.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80"
+            alt="Analytics"
+            class="feature-image"
+          />
+          <h3>Advanced Analytics</h3>
+          <p>
+            Track usage, monitor activity, and gain insights into team
+            collaboration patterns.
+          </p>
+        </div>
+        <div class="feature-card">
+          <img
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80"
+            alt="Performance"
+            class="feature-image"
+          />
+          <h3>Lightning Fast</h3>
+          <p>
+            Optimized performance ensures quick uploads, downloads, and seamless
+            file synchronization.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Result Section -->
+    <section class="result-section">
+      <h2>The Result?</h2>
+      <p>
+        Teams work faster, files stay secure, no data chaos. Experience the
+        difference with WorkDrive's comprehensive solution that brings order to
+        your digital workspace.
+      </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-container">
+        <div class="footer-section">
+          <h3>About WorkDrive</h3>
+          <p>
+            Zoho WorkDrive is a secure cloud storage and file management
+            solution designed for teams. Part of the Zoho ecosystem, trusted by
+            millions worldwide.
+          </p>
+        </div>
+        <div class="footer-section">
+          <h3>Product</h3>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Resources</h3>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Webinars</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Company</h3>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Partners</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>
+          &copy; 2024 Zoho Corporation. All rights reserved. | Powered by
+          Zolytics
+        </p>
+        <div class="social-links">
+          <a href="#"><span>f</span></a>
+          <a href="#"><span>𝕏</span></a>
+          <a href="#"><span>in</span></a>
+          <a href="#"><span>▶</span></a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Scroll Progress Bar
+      window.addEventListener("scroll", () => {
+        const scrollProgress = document.getElementById("scrollProgress");
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / scrollHeight) * 100;
+        scrollProgress.style.transform = `scaleX(${scrolled / 100})`;
+      });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Create animated background particles
+      const particlesContainer = document.getElementById("particles");
+      for (let i = 0; i < 15; i++) {
+        const particle = document.createElement("div");
+        particle.className = "particle";
+        const size = Math.random() * 200 + 100;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${Math.random() * 100}%`;
+        particle.style.top = `${Math.random() * 100}%`;
+        particle.style.animationDelay = `${Math.random() * 10}s`;
+        particle.style.animationDuration = `${Math.random() * 10 + 15}s`;
+        particlesContainer.appendChild(particle);
+      }
+
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.animation = "fadeInUp 0.8s ease forwards";
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.style.opacity = "0";
+        observer.observe(card);
+      });
+
+      // Parallax effect for hero visual
+      let ticking = false;
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector(".hero-visual");
+            if (hero) {
+              hero.style.transform = `translateY(${scrolled * 0.2}px)`;
+            }
+            ticking = false;
+          });
+          ticking = true;
+        }
+      });
+
+      // 3D tilt effect on feature cards
+      document.querySelectorAll(".feature-card").forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-15px) scale(1.02)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)";
+        });
+      });
+
+      // Animate stats on scroll
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const statNumbers = entry.target.querySelectorAll(".stat-number");
+              statNumbers.forEach((stat) => {
+                const text = stat.textContent;
+                if (text.includes("M")) {
+                  animateNumber(stat, 0, 10, 2000, "M+");
+                } else if (text.includes("%")) {
+                  animateNumber(stat, 0, 99.9, 2000, "%");
+                } else if (text.includes("bit")) {
+                  animateNumber(stat, 0, 256, 2000, "-bit");
+                } else if (text.includes("/")) {
+                  stat.textContent = "24/7";
+                }
+              });
+              statsObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      const statsSection = document.querySelector(".stats-section");
+      if (statsSection) {
+        statsObserver.observe(statsSection);
+      }
+
+      function animateNumber(element, start, end, duration, suffix = "") {
+        const range = end - start;
+        const increment = range / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= end) {
+            current = end;
+            clearInterval(timer);
+          }
+          element.textContent =
+            current.toFixed(suffix === "%" ? 1 : 0) + suffix;
+        }, 16);
+      }
+
+      // Add ripple effect to CTA button
+      const ctaButton = document.querySelector(".cta-button");
+      if (ctaButton) {
+        ctaButton.addEventListener("click", function (e) {
+          const ripple = document.createElement("span");
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          const x = e.clientX - rect.left - size / 2;
+          const y = e.clientY - rect.top - size / 2;
+
+          ripple.style.width = ripple.style.height = size + "px";
+          ripple.style.left = x + "px";
+          ripple.style.top = y + "px";
+          ripple.classList.add("ripple");
+
+          this.appendChild(ripple);
+
+          setTimeout(() => ripple.remove(), 600);
+        });
+      }
+
+      // Floating card interactive hover
+      const floatingCard = document.querySelector(".floating-card");
+      if (floatingCard) {
+        floatingCard.addEventListener("mousemove", (e) => {
+          const rect = floatingCard.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+
+          const rotateX = (y - centerY) / 15;
+          const rotateY = (centerX - x) / 15;
+
+          floatingCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+
+        floatingCard.addEventListener("mouseleave", () => {
+          floatingCard.style.transform =
+            "perspective(1000px) rotateX(0) rotateY(0) translateY(0)";
+        });
+      }
+    </script>
+  </body>
+</html>
