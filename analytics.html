@@ -69,16 +69,6 @@
         }
       }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0) rotate(0deg);
-        }
-        50% {
-          transform: translateY(-25px) rotate(5deg);
-        }
-      }
-
       @keyframes gradientShift {
         0%,
         100% {
@@ -100,11 +90,20 @@
       }
 
       @keyframes rotateGradient {
-        from {
+        0% {
           transform: rotate(0deg);
         }
-        to {
+        100% {
           transform: rotate(360deg);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
         }
       }
 
@@ -363,6 +362,7 @@
         height: 14px;
         border-radius: 50%;
         background: #e8eaed;
+        transition: background 0.3s;
       }
 
       .dashboard-preview:hover .preview-dot:nth-child(1) {
@@ -440,6 +440,23 @@
       .integration-section {
         padding: 140px 5%;
         background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
+        position: relative;
+      }
+
+      .integration-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(217, 48, 37, 0.05),
+          transparent 70%
+        );
+        pointer-events: none;
       }
 
       .section-header {
@@ -469,7 +486,6 @@
         background: linear-gradient(135deg, var(--primary), var(--secondary));
         opacity: 0.4;
         z-index: -1;
-        animation: rotateGradient 3s linear infinite;
       }
 
       .section-title {
@@ -491,19 +507,19 @@
 
       .integration-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 2rem;
         max-width: 1400px;
         margin: 0 auto;
       }
 
       .integration-card {
         background: linear-gradient(145deg, #ffffff, #fafbfc);
-        padding: 3rem 2.5rem;
-        border-radius: 28px;
-        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 2.5rem 2rem;
+        border-radius: 24px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         border: 2px solid transparent;
         text-align: center;
         position: relative;
@@ -514,12 +530,12 @@
         content: "";
         position: absolute;
         inset: 0;
-        border-radius: 28px;
+        border-radius: 24px;
         padding: 2px;
         background: linear-gradient(
           135deg,
           transparent,
-          rgba(217, 48, 37, 0.3),
+          rgba(217, 48, 37, 0.4),
           transparent
         );
         -webkit-mask: linear-gradient(#fff 0 0) content-box,
@@ -527,32 +543,52 @@
         -webkit-mask-composite: xor;
         mask-composite: exclude;
         opacity: 0;
-        transition: opacity 0.7s;
+        transition: opacity 0.6s;
+      }
+
+      .integration-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.8),
+          transparent
+        );
+        transition: left 0.8s;
       }
 
       .integration-card:hover::before {
         opacity: 1;
       }
 
+      .integration-card:hover::after {
+        left: 100%;
+      }
+
       .integration-card:hover {
-        transform: translateY(-15px) scale(1.06);
-        box-shadow: 0 30px 70px rgba(217, 48, 37, 0.25),
-          0 0 60px rgba(217, 48, 37, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
-        border-color: rgba(217, 48, 37, 0.2);
+        transform: translateY(-12px) scale(1.04);
+        box-shadow: 0 25px 60px rgba(217, 48, 37, 0.2),
+          0 0 40px rgba(217, 48, 37, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(217, 48, 37, 0.15);
       }
 
       .integration-logo {
-        width: 110px;
-        height: 110px;
-        margin: 0 auto 2rem;
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
         background: linear-gradient(135deg, #fafbfc, #f8f9fa);
-        border-radius: 24px;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 20px;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
       }
 
       .integration-logo::after {
@@ -560,42 +596,44 @@
         position: absolute;
         inset: -2px;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
-        border-radius: 24px;
+        border-radius: 20px;
         opacity: 0;
         z-index: -1;
-        transition: opacity 0.6s;
+        transition: opacity 0.5s;
       }
 
       .integration-card:hover .integration-logo::after {
-        opacity: 0.2;
+        opacity: 0.15;
       }
 
       .integration-card:hover .integration-logo {
         background: linear-gradient(
           135deg,
-          rgba(217, 48, 37, 0.08),
-          rgba(255, 107, 107, 0.08)
+          rgba(217, 48, 37, 0.06),
+          rgba(255, 107, 107, 0.06)
         );
-        transform: scale(1.2) rotate(10deg);
-        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.2);
+        transform: scale(1.15) rotate(8deg);
+        box-shadow: 0 6px 20px rgba(217, 48, 37, 0.15);
       }
 
       .integration-logo img {
-        max-width: 70px;
-        max-height: 70px;
-        filter: grayscale(0.2);
-        transition: filter 0.6s;
+        max-width: 55px;
+        max-height: 55px;
+        filter: grayscale(0.3);
+        transition: filter 0.5s, transform 0.5s;
       }
 
       .integration-card:hover .integration-logo img {
         filter: grayscale(0);
+        transform: scale(1.1);
       }
 
       .integration-name {
-        font-weight: 900;
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
+        font-weight: 800;
+        font-size: 1.1rem;
+        margin-bottom: 0.7rem;
         transition: color 0.4s;
+        color: #1a1a1a;
       }
 
       .integration-card:hover .integration-name {
@@ -604,8 +642,9 @@
 
       .integration-desc {
         color: var(--gray);
-        font-size: 0.95rem;
+        font-size: 0.88rem;
         transition: color 0.4s;
+        line-height: 1.5;
       }
 
       .integration-card:hover .integration-desc {
@@ -628,20 +667,23 @@
       }
 
       .report-image-wrapper {
-        height: 320px;
+        height: 280px;
         overflow: hidden;
         position: relative;
+        background: #f8f9fa;
       }
 
       .report-image {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+        object-position: center;
         transition: transform 1s;
+        padding: 20px;
       }
 
       .report-card:hover .report-image {
-        transform: scale(1.25) rotate(5deg);
+        transform: scale(1.08);
       }
 
       .report-badge {
@@ -657,23 +699,25 @@
         padding: 0.7rem 1.6rem;
         border-radius: 40px;
         font-weight: 800;
+        font-size: 0.85rem;
         animation: glowPulse 2s infinite;
       }
 
       .report-content {
-        padding: 3.5rem 3rem;
+        padding: 3rem 2.5rem;
       }
 
       .report-title {
-        font-size: 1.9rem;
+        font-size: 1.7rem;
         font-weight: 900;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.3rem;
       }
 
       .report-description {
         color: var(--gray);
-        line-height: 2;
-        margin-bottom: 2.5rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
       }
 
       .report-features {
@@ -682,16 +726,19 @@
       }
 
       .report-features li {
-        padding: 1rem 0 1rem 3rem;
+        padding: 0.8rem 0 0.8rem 2.8rem;
         position: relative;
+        font-size: 0.95rem;
       }
 
       .report-features li::before {
         content: "✓";
         position: absolute;
         left: 0;
-        width: 32px;
-        height: 32px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 28px;
+        height: 28px;
         background: rgba(217, 48, 37, 0.12);
         color: var(--primary);
         border-radius: 50%;
@@ -699,6 +746,7 @@
         align-items: center;
         justify-content: center;
         font-weight: 900;
+        font-size: 0.9rem;
       }
 
       .cfo-reports-section {
@@ -765,6 +813,7 @@
           0 10px 30px rgba(0, 0, 0, 0.1);
         transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
+        background: #f8f9fa;
       }
 
       .feature-image-wrapper::before {
@@ -794,13 +843,15 @@
 
       .feature-image {
         width: 100%;
-        height: 550px;
-        object-fit: cover;
+        height: 500px;
+        object-fit: contain;
+        object-position: center;
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 30px;
       }
 
       .feature-image-wrapper:hover .feature-image {
-        transform: scale(1.12);
+        transform: scale(1.05);
       }
 
       .feature-number {
@@ -937,126 +988,134 @@
         font-weight: 800;
         margin-bottom: 1rem;
       }
+    .diff-description {
+    color: var(--gray);
+    line-height: 1.8;
+  }
 
-      .client-win-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s;
-        margin-bottom: 2.5rem;
-      }
+  .client-win-card {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.5s;
+    margin-bottom: 2.5rem;
+  }
 
-      .client-win-card:hover {
-        transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.25);
-      }
+  .client-win-card:hover {
+    transform: translateY(-12px) scale(1.03);
+    box-shadow: 0 20px 50px rgba(217, 48, 37, 0.25);
+  }
 
-      .win-company {
-        font-weight: 800;
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-      }
+  .win-company {
+    font-weight: 800;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
 
-      .cta-section {
-        background: linear-gradient(
-          135deg,
-          var(--primary),
-          var(--primary-dark)
-        );
-        padding: 100px 5%;
-        color: white;
-        text-align: center;
-      }
+  .win-result {
+    color: var(--gray);
+    line-height: 1.8;
+  }
 
-      .cta-title {
-        font-size: 3.5rem;
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-      }
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    padding: 100px 5%;
+    color: white;
+    text-align: center;
+  }
 
-      .cta-subtitle {
-        font-size: 1.4rem;
-        margin-bottom: 3rem;
-        opacity: 0.95;
-      }
+  .cta-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin-bottom: 1.5rem;
+  }
 
-      .btn-white-custom {
-        background: white;
-        color: var(--primary);
-        padding: 1.3rem 3rem;
-        border-radius: 12px;
-        font-weight: 700;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-        transition: all 0.4s;
-      }
+  .cta-subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+  }
 
-      .btn-white-custom:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
-      }
+  .btn-white-custom {
+    background: white;
+    color: var(--primary);
+    padding: 1.3rem 3rem;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    transition: all 0.4s;
+  }
 
-      .footer {
-        background: var(--dark);
-        color: #e8eaed;
-        padding: 80px 5% 40px;
-      }
+  .btn-white-custom:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+  }
 
-      .footer h5 {
-        color: var(--primary);
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-      }
+  .footer {
+    background: var(--dark);
+    color: #e8eaed;
+    padding: 80px 5% 40px;
+  }
 
-      .footer a {
-        color: #9aa0a6;
-        text-decoration: none;
-        transition: all 0.3s;
-        display: block;
-        margin-bottom: 1rem;
-      }
+  .footer h5 {
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
 
-      .footer a:hover {
-        color: var(--primary);
-        padding-left: 10px;
-      }
+  .footer a {
+    color: #9aa0a6;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: block;
+    margin-bottom: 1rem;
+  }
 
-      .footer-bottom {
-        border-top: 1px solid #3c4043;
-        padding-top: 2.5rem;
-        margin-top: 4rem;
-        text-align: center;
-        color: #9aa0a6;
-      }
+  .footer a:hover {
+    color: var(--primary);
+    padding-left: 10px;
+  }
 
-      .scroll-fade {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s;
-      }
+  .footer-bottom {
+    border-top: 1px solid #3c4043;
+    padding-top: 2.5rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: #9aa0a6;
+  }
 
-      .scroll-fade.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+  .scroll-fade {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s;
+  }
 
-      @media (max-width: 768px) {
-        .hero-text h1 {
-          font-size: 2.5rem;
-        }
-        .section-title {
-          font-size: 2.2rem;
-        }
-        .hero-content {
-          grid-template-columns: 1fr;
-          gap: 3rem;
-        }
-        .nav-links {
-          display: none;
-        }
-      }
-    </style>
-  </head>
+  .scroll-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    .hero-text h1 {
+      font-size: 2.5rem;
+    }
+    .section-title {
+      font-size: 2.2rem;
+    }
+    .hero-content {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .nav-links {
+      display: none;
+    }
+    .feature-image {
+      height: 350px;
+    }
+  }
+</style>
+</head>
   <body>
     <header class="header" id="header">
       <nav class="nav">
@@ -1077,7 +1136,6 @@
         <a href="#sample" class="cta-button">Get Sample Dashboard</a>
       </nav>
     </header>
-
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
@@ -1145,26 +1203,6 @@
         <div class="integration-card scroll-fade">
           <div class="integration-logo">
             <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
-              alt="Zoho Inventory"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Inventory</h4>
-          <p class="integration-desc">Stock levels & order tracking</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
-              alt="Zoho Projects"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Projects</h4>
-          <p class="integration-desc">Project profitability analysis</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
               src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
               alt="Zoho Books"
             />
@@ -1181,6 +1219,26 @@
           </div>
           <h4 class="integration-name">Zoho CRM</h4>
           <p class="integration-desc">Sales pipeline & customer insights</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
+              alt="Zoho Inventory"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Inventory</h4>
+          <p class="integration-desc">Stock levels & order tracking</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
+              alt="Zoho Projects"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Projects</h4>
+          <p class="integration-desc">Project profitability analysis</p>
         </div>
         <div class="integration-card scroll-fade">
           <div class="integration-logo">
@@ -1222,6 +1280,77 @@
           <h4 class="integration-name">Zoho Campaigns</h4>
           <p class="integration-desc">Marketing ROI & engagement</p>
         </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
+              alt="Zoho Commerce"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Commerce</h4>
+          <p class="integration-desc">E-commerce analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/subscriptions.svg"
+              alt="Zoho Subscriptions"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Subscriptions</h4>
+          <p class="integration-desc">Recurring revenue tracking</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/invoice.svg"
+              alt="Zoho Invoice"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Invoice</h4>
+          <p class="integration-desc">Invoicing & payments</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/recruit.svg"
+              alt="Zoho Recruit"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Recruit</h4>
+          <p class="integration-desc">Recruitment analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/forms.svg"
+              alt="Zoho Forms"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Forms</h4>
+          <p class="integration-desc">Form submission tracking</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/survey.svg"
+              alt="Zoho Survey"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Survey</h4>
+          <p class="integration-desc">Survey response analysis</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
+              alt="Bigin"
+            />
+          </div>
+          <h4 class="integration-name">Bigin</h4>
+          <p class="integration-desc">Small business CRM</p>
+        </div>
+        
       </div>
     </section>
 
@@ -1584,6 +1713,5 @@
         observer.observe(el);
       });
     </script>
-  </body>
+  </head>
 </html>
-
