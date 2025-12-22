@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zoho Analytics Consultant - CFO-Grade Dashboards | Zolytics</title>
+    <title>Zoho Analytics Consultant - AI-Powered Dashboards | Zolytics</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -86,24 +86,6 @@
         }
         50% {
           box-shadow: 0 0 40px rgba(217, 48, 37, 0.8);
-        }
-      }
-
-      @keyframes rotateGradient {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
-        }
-        100% {
-          background-position: 1000px 0;
         }
       }
 
@@ -306,7 +288,7 @@
 
       .hero-stats {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 1.5rem;
         margin-top: 4rem;
         animation: fadeInUp 1s 0.6s both;
@@ -335,6 +317,12 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         animation: gradientShift 4s infinite;
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--gray);
+        margin-top: 0.5rem;
       }
 
       .dashboard-preview {
@@ -437,28 +425,6 @@
         height: 58%;
       }
 
-      .integration-section {
-        padding: 140px 5%;
-        background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
-        position: relative;
-      }
-
-      .integration-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(
-          circle,
-          rgba(217, 48, 37, 0.05),
-          transparent 70%
-        );
-        pointer-events: none;
-      }
-
       .section-header {
         text-align: center;
         margin-bottom: 100px;
@@ -467,7 +433,7 @@
       .section-subtitle {
         color: var(--primary);
         font-weight: 900;
-        font-size: 1rem;
+        font-size: 0.95rem;
         text-transform: uppercase;
         letter-spacing: 5px;
         margin-bottom: 1.5rem;
@@ -489,7 +455,7 @@
       }
 
       .section-title {
-        font-size: 4rem;
+        font-size: 3.5rem;
         font-weight: 900;
         margin-bottom: 2rem;
         background: linear-gradient(135deg, #1a1a1a 0%, #3c4043 100%);
@@ -498,52 +464,409 @@
       }
 
       .section-description {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         color: var(--gray);
         max-width: 950px;
         margin: 0 auto;
         line-height: 2;
       }
 
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes shimmer {
+        to {
+          left: 100%;
+        }
+      }
+      @keyframes gradientText {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      @keyframes floatLeft {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(50px, -30px) scale(1.05);
+        }
+      }
+      @keyframes floatRight {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-50px, 30px) scale(1.05);
+        }
+      }
+      @keyframes gradientSlide {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+      @keyframes lineExpand {
+        0%,
+        100% {
+          transform: translateY(-50%) scaleX(0.8);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-50%) scaleX(1);
+          opacity: 1;
+        }
+      }
+
+      .capabilities-section {
+        padding: 140px 5% 120px;
+        background: linear-gradient(180deg, #fff 0%, #f8f9fa 50%, #fff 100%);
+        position: relative;
+        overflow: hidden;
+      }
+      .capabilities-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -20%;
+        width: 60%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(217, 48, 37, 0.04),
+          transparent 70%
+        );
+        animation: floatLeft 20s ease-in-out infinite;
+      }
+      .capabilities-section::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: -20%;
+        width: 60%;
+        height: 100%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 107, 107, 0.04),
+          transparent 70%
+        );
+        animation: floatRight 25s ease-in-out infinite;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        padding: 0 20px;
+      }
+      .section-header {
+        text-align: center;
+        margin-bottom: 100px;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeInUp 1s forwards;
+      }
+      .section-subtitle {
+        color: var(--primary);
+        font-weight: 700;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        padding: 0.8rem 2.5rem;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.08),
+          rgba(255, 107, 107, 0.08)
+        );
+        border-radius: 50px;
+        position: relative;
+        overflow: hidden;
+      }
+      .section-subtitle::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+      .section-title {
+        font-size: 3.8rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+        line-height: 1.2;
+        background: linear-gradient(
+          135deg,
+          #1a1a1a 0%,
+          #3c4043 50%,
+          #1a1a1a 100%
+        );
+        background-size: 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientText 6s ease infinite;
+      }
+      .section-description {
+        font-size: 1.25rem;
+        color: var(--gray);
+        max-width: 850px;
+        margin: 0 auto;
+        line-height: 1.9;
+        font-weight: 400;
+      }
+
+      .capabilities-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+      }
+      .capability-card {
+        background: linear-gradient(135deg, #fff, #fafbfc);
+        border-radius: 20px;
+        padding: 3rem 2.5rem;
+        position: relative;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid rgba(0, 0, 0, 0.15);
+        overflow: hidden;
+        cursor: pointer;
+      }
+      .capability-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.02),
+          rgba(255, 107, 107, 0.02)
+        );
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .capability-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary),
+          var(--secondary),
+          var(--primary)
+        );
+        background-size: 200%;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .capability-card:hover::before {
+        opacity: 1;
+      }
+      .capability-card:hover::after {
+        transform: scaleX(1);
+        animation: gradientSlide 2s infinite;
+      }
+      .capability-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 60px rgba(217, 48, 37, 0.15);
+        border-color: rgba(217, 48, 37, 0.1);
+      }
+
+      .capability-number {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        font-size: 4rem;
+        font-weight: 900;
+        color: rgba(217, 48, 37, 0.05);
+        transition: all 0.5s;
+        line-height: 1;
+      }
+      .capability-card:hover .capability-number {
+        color: rgba(217, 48, 37, 0.12);
+        transform: scale(1.2) rotate(-5deg);
+      }
+      .capability-title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+        color: var(--dark);
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s;
+      }
+      .capability-card:hover .capability-title {
+        color: var(--primary);
+      }
+      .capability-description {
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        font-size: 0.95rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .capability-features {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        z-index: 1;
+      }
+      .capability-features li {
+        padding: 0.7rem 0 0.7rem 1.8rem;
+        position: relative;
+        font-size: 0.9rem;
+        color: #3c4043;
+        font-weight: 500;
+        transition: all 0.3s;
+        border-left: 2px solid transparent;
+        margin-left: 0.5rem;
+      }
+      .capability-features li::before {
+        content: "";
+        position: absolute;
+        left: -0.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 8px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 50%;
+        transition: all 0.3s;
+      }
+      .capability-card:hover .capability-features li {
+        border-left-color: rgba(217, 48, 37, 0.1);
+      }
+      .capability-card:hover .capability-features li::before {
+        transform: translateY(-50%) scale(1.5);
+        box-shadow: 0 0 15px rgba(217, 48, 37, 0.4);
+      }
+      .capability-features li:hover {
+        padding-left: 2.2rem;
+        color: var(--primary);
+      }
+
+      .decorative-line {
+        position: absolute;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(217, 48, 37, 0.2),
+          transparent
+        );
+        width: 100%;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+      .capability-card:hover .decorative-line {
+        opacity: 1;
+        animation: lineExpand 1.5s ease-in-out infinite;
+      }
+
+      .scroll-indicator {
+        position: fixed;
+        left: 3%;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        z-index: 10;
+      }
+      .scroll-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(217, 48, 37, 0.2);
+        transition: all 0.4s;
+        cursor: pointer;
+      }
+      .scroll-dot.active {
+        background: var(--primary);
+        transform: scale(1.5);
+        box-shadow: 0 0 15px rgba(217, 48, 37, 0.5);
+      }
+      .scroll-dot:hover {
+        background: var(--primary);
+        transform: scale(1.3);
+      }
+
+      @media (max-width: 1200px) {
+        .capabilities-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (max-width: 768px) {
+        .section-title {
+          font-size: 2.5rem;
+        }
+        .capabilities-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .scroll-indicator {
+          display: none;
+        }
+      }
+
+      .integration-section {
+        padding: 120px 5%;
+        background: #fafbfc;
+      }
+
       .integration-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 2rem;
         max-width: 1400px;
         margin: 0 auto;
       }
 
       .integration-card {
-        background: linear-gradient(145deg, #ffffff, #fafbfc);
-        padding: 2.5rem 2rem;
-        border-radius: 24px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background: white;
+        padding: 2rem 1.5rem;
+        border: 20px solid rgba(0, 0, 0, 0.15);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        transition: all 0.5s;
         border: 2px solid transparent;
         text-align: center;
         position: relative;
         overflow: hidden;
-      }
-
-      .integration-card::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 24px;
-        padding: 2px;
-        background: linear-gradient(
-          135deg,
-          transparent,
-          rgba(217, 48, 37, 0.4),
-          transparent
-        );
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.6s;
       }
 
       .integration-card::after {
@@ -562,560 +885,222 @@
         transition: left 0.8s;
       }
 
-      .integration-card:hover::before {
-        opacity: 1;
-      }
-
       .integration-card:hover::after {
         left: 100%;
       }
 
       .integration-card:hover {
-        transform: translateY(-12px) scale(1.04);
-        box-shadow: 0 25px 60px rgba(217, 48, 37, 0.2),
-          0 0 40px rgba(217, 48, 37, 0.08), inset 0 1px 0 rgba(255, 255, 255, 1);
-        border-color: rgba(217, 48, 37, 0.15);
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.15);
+        border-color: 20px rgba(217, 48, 37, 0.15);
       }
 
       .integration-logo {
-        width: 90px;
-        height: 90px;
-        margin: 0 auto 1.5rem;
+        width: 70px;
+        height: 70px;
+        margin: 0 auto 1rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #fafbfc, #f8f9fa);
-        border-radius: 20px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.04);
-      }
-
-      .integration-logo::after {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        border-radius: 20px;
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.5s;
-      }
-
-      .integration-card:hover .integration-logo::after {
-        opacity: 0.15;
+        background: #f8f9fa;
+        border-radius: 16px;
+        transition: all 0.5s;
       }
 
       .integration-card:hover .integration-logo {
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.06),
-          rgba(255, 107, 107, 0.06)
-        );
-        transform: scale(1.15) rotate(8deg);
-        box-shadow: 0 6px 20px rgba(217, 48, 37, 0.15);
+        background: rgba(217, 48, 37, 0.06);
+        transform: scale(1.1);
       }
 
       .integration-logo img {
-        max-width: 55px;
-        max-height: 55px;
+        max-width: 45px;
+        max-height: 45px;
         filter: grayscale(0.3);
-        transition: filter 0.5s, transform 0.5s;
+        transition: filter 0.5s;
       }
 
       .integration-card:hover .integration-logo img {
         filter: grayscale(0);
-        transform: scale(1.1);
       }
 
       .integration-name {
-        font-weight: 800;
-        font-size: 1.1rem;
-        margin-bottom: 0.7rem;
-        transition: color 0.4s;
+        font-weight: 700;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
         color: #1a1a1a;
-      }
-
-      .integration-card:hover .integration-name {
-        color: var(--primary);
       }
 
       .integration-desc {
         color: var(--gray);
-        font-size: 0.88rem;
-        transition: color 0.4s;
+        font-size: 0.85rem;
         line-height: 1.5;
       }
 
-      .integration-card:hover .integration-desc {
-        color: #3c4043;
-      }
-
-      .report-card {
+      .use-cases-section {
+        padding: 120px 5%;
         background: white;
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        transition: all 0.8s;
-        border: 2px solid #f5f5f5;
+      }
+
+      .use-case-card {
+        background: linear-gradient(135deg, #ffffff, #fafbfc);
+        border-radius: 24px;
+        padding: 3rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s;
+        border-left: 6px solid var(--primary);
         height: 100%;
       }
 
-      .report-card:hover {
-        transform: translateY(-22px) scale(1.05);
-        box-shadow: 0 40px 90px rgba(217, 48, 37, 0.3);
+      .use-case-card:hover {
+        transform: translateX(15px) scale(1.02);
+        box-shadow: 0 20px 60px rgba(217, 48, 37, 0.25);
       }
 
-      .report-image-wrapper {
-        height: 280px;
-        overflow: hidden;
-        position: relative;
-        background: #f8f9fa;
+      .use-case-title {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        color: var(--dark);
       }
 
-      .report-image {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        transition: transform 1s;
-        padding: 20px;
+      .use-case-description {
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
       }
 
-      .report-card:hover .report-image {
-        transform: scale(1.08);
+      .use-case-metrics {
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
       }
 
-      .report-badge {
-        position: absolute;
-        top: 28px;
-        right: 28px;
+      .metric {
+        flex: 1;
+        min-width: 120px;
+      }
+
+      .metric-value {
+        font-size: 2rem;
+        font-weight: 900;
+        color: var(--primary);
+        margin-bottom: 0.3rem;
+      }
+
+      .metric-label {
+        font-size: 0.85rem;
+        color: var(--gray);
+        font-weight: 600;
+      }
+
+      .cta-section {
         background: linear-gradient(
           135deg,
           var(--primary),
           var(--primary-dark)
         );
+        padding: 100px 5%;
         color: white;
-        padding: 0.7rem 1.6rem;
-        border-radius: 40px;
-        font-weight: 800;
-        font-size: 0.85rem;
-        animation: glowPulse 2s infinite;
+        text-align: center;
       }
 
-      .report-content {
-        padding: 3rem 2.5rem;
-      }
-
-      .report-title {
-        font-size: 1.7rem;
+      .cta-title {
+        font-size: 3rem;
         font-weight: 900;
-        margin-bottom: 1.3rem;
+        margin-bottom: 1.5rem;
       }
 
-      .report-description {
-        color: var(--gray);
-        line-height: 1.8;
-        margin-bottom: 2rem;
-        font-size: 0.95rem;
+      .cta-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 3rem;
+        opacity: 0.95;
       }
 
-      .report-features {
-        list-style: none;
-        padding: 0;
-      }
-
-      .report-features li {
-        padding: 0.8rem 0 0.8rem 2.8rem;
-        position: relative;
-        font-size: 0.95rem;
-      }
-
-      .report-features li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 28px;
-        height: 28px;
-        background: rgba(217, 48, 37, 0.12);
-        color: var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        font-size: 0.9rem;
-      }
-
-      .cfo-reports-section {
-        padding: 140px 5%;
-        background: #fafbfc;
-      }
-
-      .feature-section {
-        padding: 140px 5%;
-        background: linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #fafbfc 50%,
-          #ffffff 100%
-        );
-        position: relative;
-      }
-
-      .feature-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(217, 48, 37, 0.2),
-          transparent
-        );
-      }
-
-      .feature-row {
-        margin-bottom: 120px;
-        position: relative;
-      }
-
-      .feature-row::after {
-        content: "";
-        position: absolute;
-        bottom: -60px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--primary),
-          transparent
-        );
-        opacity: 0.3;
-      }
-
-      .feature-row:last-child::after {
-        display: none;
-      }
-
-      .feature-image-wrapper {
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15),
-          0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        background: #f8f9fa;
-      }
-
-      .feature-image-wrapper::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.1),
-          transparent 60%
-        );
-        opacity: 0;
-        transition: opacity 0.7s;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .feature-image-wrapper:hover::before {
-        opacity: 1;
-      }
-
-      .feature-image-wrapper:hover {
-        transform: translateY(-15px) rotate(-2deg) scale(1.02);
-        box-shadow: 0 35px 90px rgba(217, 48, 37, 0.3),
-          0 15px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(217, 48, 37, 0.1);
-      }
-
-      .feature-image {
-        width: 100%;
-        height: 500px;
-        object-fit: contain;
-        object-position: center;
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 30px;
-      }
-
-      .feature-image-wrapper:hover .feature-image {
-        transform: scale(1.05);
-      }
-
-      .feature-number {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        border-radius: 18px;
-        font-size: 1.7rem;
-        font-weight: 900;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 2rem;
-        animation: pulse 2.5s infinite;
-        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.4),
-          inset 0 2px 0 rgba(255, 255, 255, 0.3);
-        position: relative;
-      }
-
-      .feature-number::after {
-        content: "";
-        position: absolute;
-        inset: -4px;
-        border-radius: 18px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        opacity: 0.3;
-        z-index: -1;
-        filter: blur(8px);
-      }
-
-      .feature-title {
-        font-size: 2.8rem;
-        font-weight: 900;
-        margin-bottom: 1.8rem;
-        line-height: 1.2;
-        background: linear-gradient(135deg, #1a1a1a 0%, #3c4043 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        position: relative;
-        padding-bottom: 1.5rem;
-      }
-
-      .feature-title::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(90deg, var(--primary), transparent);
-        border-radius: 2px;
-      }
-
-      .feature-description {
-        color: var(--gray);
-        line-height: 2;
-        font-size: 1.2rem;
-        margin-bottom: 2.5rem;
-      }
-
-      .feature-list {
-        list-style: none;
-        padding: 0;
-      }
-
-      .feature-list li {
-        padding: 1.2rem 0 1.2rem 3.5rem;
-        position: relative;
-        font-size: 1.05rem;
-        color: #3c4043;
-        transition: all 0.3s;
-        border-radius: 8px;
-      }
-
-      .feature-list li:hover {
-        padding-left: 4rem;
-        background: rgba(217, 48, 37, 0.03);
-      }
-
-      .feature-list li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.12),
-          rgba(255, 107, 107, 0.12)
-        );
-        color: var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-        font-size: 1.1rem;
-        box-shadow: 0 3px 10px rgba(217, 48, 37, 0.2);
-        transition: all 0.3s;
-      }
-
-      .feature-list li:hover::before {
-        transform: translateY(-50%) scale(1.15);
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-        box-shadow: 0 5px 15px rgba(217, 48, 37, 0.4);
-      }
-
-      .diff-section {
-        padding: 140px 5%;
-        background: #f8f9fa;
-      }
-
-      .diff-card {
+      .btn-white-custom {
         background: white;
-        padding: 3rem;
-        border-radius: 20px;
-        border-left: 6px solid var(--primary);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s;
-        margin-bottom: 2.5rem;
+        color: var(--primary);
+        padding: 1.3rem 3rem;
+        border-radius: 12px;
+        font-weight: 700;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        transition: all 0.4s;
+        text-decoration: none;
+        display: inline-block;
       }
 
-      .diff-card:hover {
-        transform: translateX(20px) scale(1.02);
-        box-shadow: 0 15px 50px rgba(217, 48, 37, 0.25);
+      .btn-white-custom:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        color: var(--primary);
       }
 
-      .diff-title {
-        font-size: 1.7rem;
-        font-weight: 800;
+      .footer {
+        background: var(--dark);
+        color: #e8eaed;
+        padding: 80px 5% 40px;
+      }
+
+      .footer h5 {
+        color: var(--primary);
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer a {
+        color: #9aa0a6;
+        text-decoration: none;
+        transition: all 0.3s;
+        display: block;
         margin-bottom: 1rem;
       }
-    .diff-description {
-    color: var(--gray);
-    line-height: 1.8;
-  }
 
-  .client-win-card {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    transition: all 0.5s;
-    margin-bottom: 2.5rem;
-  }
+      .footer a:hover {
+        color: var(--primary);
+        padding-left: 10px;
+      }
 
-  .client-win-card:hover {
-    transform: translateY(-12px) scale(1.03);
-    box-shadow: 0 20px 50px rgba(217, 48, 37, 0.25);
-  }
+      .footer-bottom {
+        border-top: 1px solid #3c4043;
+        padding-top: 2.5rem;
+        margin-top: 4rem;
+        text-align: center;
+        color: #9aa0a6;
+      }
 
-  .win-company {
-    font-weight: 800;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-  }
+      .scroll-fade {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s;
+      }
 
-  .win-result {
-    color: var(--gray);
-    line-height: 1.8;
-  }
+      .scroll-fade.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
 
-  .cta-section {
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    padding: 100px 5%;
-    color: white;
-    text-align: center;
-  }
-
-  .cta-title {
-    font-size: 3.5rem;
-    font-weight: 900;
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-subtitle {
-    font-size: 1.4rem;
-    margin-bottom: 3rem;
-    opacity: 0.95;
-  }
-
-  .btn-white-custom {
-    background: white;
-    color: var(--primary);
-    padding: 1.3rem 3rem;
-    border-radius: 12px;
-    font-weight: 700;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
-    transition: all 0.4s;
-  }
-
-  .btn-white-custom:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
-  }
-
-  .footer {
-    background: var(--dark);
-    color: #e8eaed;
-    padding: 80px 5% 40px;
-  }
-
-  .footer h5 {
-    color: var(--primary);
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-
-  .footer a {
-    color: #9aa0a6;
-    text-decoration: none;
-    transition: all 0.3s;
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .footer a:hover {
-    color: var(--primary);
-    padding-left: 10px;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid #3c4043;
-    padding-top: 2.5rem;
-    margin-top: 4rem;
-    text-align: center;
-    color: #9aa0a6;
-  }
-
-  .scroll-fade {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s;
-  }
-
-  .scroll-fade.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  @media (max-width: 768px) {
-    .hero-text h1 {
-      font-size: 2.5rem;
-    }
-    .section-title {
-      font-size: 2.2rem;
-    }
-    .hero-content {
-      grid-template-columns: 1fr;
-      gap: 3rem;
-    }
-    .nav-links {
-      display: none;
-    }
-    .feature-image {
-      height: 350px;
-    }
-  }
-</style>
-</head>
+      @media (max-width: 768px) {
+        .hero-text h1 {
+          font-size: 2.2rem;
+        }
+        .section-title {
+          font-size: 2rem;
+        }
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 3rem;
+        }
+        .nav-links {
+          display: none;
+        }
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+        .integration-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+      }
+    </style>
+  </head>
   <body>
     <header class="header" id="header">
       <nav class="nav">
@@ -1128,43 +1113,41 @@
           />
         </div>
         <ul class="nav-links">
-          <li><a href="#dashboards">Dashboards</a></li>
-          <li><a href="#why-different">Why Us</a></li>
-          <li><a href="#wins">Client Wins</a></li>
+          <li><a href="#capabilities">Capabilities</a></li>
+          <li><a href="#integrations">Integrations</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#sample" class="cta-button">Get Sample Dashboard</a>
+        <a href="#contact" class="cta-button">Get Started</a>
       </nav>
     </header>
+
     <section class="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>CFO-Grade Analytics Without the CFO Budget</h1>
+          <h1>AI-Powered Analytics That Actually Answer Your Questions</h1>
           <p>
-            We build custom Zoho Analytics dashboards that connect your Books,
-            CRM, and Inventory—giving you real-time visibility into
-            profitability, not just revenue. Finance meets analytics.
+            Transform your business data into actionable insights with Zoho
+            Analytics. We build custom dashboards, ETL pipelines, and AI-powered
+            reports that connect 500+ data sources—from Zoho apps to databases,
+            cloud storage, and marketing platforms.
           </p>
           <div class="hero-buttons">
-            <a href="#sample" class="btn-primary">Get a Sample Dashboard</a>
-            <a href="#contact" class="btn-secondary">Discuss Your Problem</a>
+            <a href="#contact" class="btn-primary">Schedule Consultation</a>
+            <a href="#use-cases" class="btn-secondary">See Examples</a>
           </div>
           <div class="hero-stats">
             <div class="stat-card">
-              <div class="stat-value">SQL</div>
-              <div class="stat-label">Custom Queries</div>
+              <div class="stat-value">500+</div>
+              <div class="stat-label">Data Connectors</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">Books+CRM</div>
-              <div class="stat-label">Unified View</div>
+              <div class="stat-value">AI-Powered</div>
+              <div class="stat-label">Ask Zia Agent</div>
             </div>
             <div class="stat-card">
-              <div class="stat-value">Finance</div>
-              <div class="stat-label">+ Analytics Expert</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">Real-time</div>
-              <div class="stat-label">Profit Tracking</div>
+              <div class="stat-value">AutoML</div>
+              <div class="stat-label">Predictive Models</div>
             </div>
           </div>
         </div>
@@ -1190,480 +1173,749 @@
       </div>
     </section>
 
-    <section class="integration-section" id="integrations">
-      <div class="section-header scroll-fade">
-        <p class="section-subtitle">Powerful Integrations</p>
-        <h2 class="section-title">Connect Your Entire Business Ecosystem</h2>
-        <p class="section-description">
-          We integrate with 24+ Zoho apps, external platforms, and databases to
-          give you a unified view of your business.
-        </p>
-      </div>
-      <div class="integration-grid">
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
-              alt="Zoho Books"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Books</h4>
-          <p class="integration-desc">Financial accounting & reporting</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
-              alt="Zoho CRM"
-            />
-          </div>
-          <h4 class="integration-name">Zoho CRM</h4>
-          <p class="integration-desc">Sales pipeline & customer insights</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
-              alt="Zoho Inventory"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Inventory</h4>
-          <p class="integration-desc">Stock levels & order tracking</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
-              alt="Zoho Projects"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Projects</h4>
-          <p class="integration-desc">Project profitability analysis</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg"
-              alt="Zoho Desk"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Desk</h4>
-          <p class="integration-desc">Support ticket analytics</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg"
-              alt="Zoho People"
-            />
-          </div>
-          <h4 class="integration-name">Zoho People</h4>
-          <p class="integration-desc">HR metrics & workforce analytics</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/expense.svg"
-              alt="Zoho Expense"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Expense</h4>
-          <p class="integration-desc">Expense tracking & budgets</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg"
-              alt="Zoho Campaigns"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Campaigns</h4>
-          <p class="integration-desc">Marketing ROI & engagement</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
-              alt="Zoho Commerce"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Commerce</h4>
-          <p class="integration-desc">E-commerce analytics</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/subscriptions.svg"
-              alt="Zoho Subscriptions"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Subscriptions</h4>
-          <p class="integration-desc">Recurring revenue tracking</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/invoice.svg"
-              alt="Zoho Invoice"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Invoice</h4>
-          <p class="integration-desc">Invoicing & payments</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/recruit.svg"
-              alt="Zoho Recruit"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Recruit</h4>
-          <p class="integration-desc">Recruitment analytics</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/forms.svg"
-              alt="Zoho Forms"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Forms</h4>
-          <p class="integration-desc">Form submission tracking</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/survey.svg"
-              alt="Zoho Survey"
-            />
-          </div>
-          <h4 class="integration-name">Zoho Survey</h4>
-          <p class="integration-desc">Survey response analysis</p>
-        </div>
-        <div class="integration-card scroll-fade">
-          <div class="integration-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
-              alt="Bigin"
-            />
-          </div>
-          <h4 class="integration-name">Bigin</h4>
-          <p class="integration-desc">Small business CRM</p>
-        </div>
-        
-      </div>
-    </section>
-
-    <section class="cfo-reports-section" id="reports">
+    <section class="capabilities-section" id="capabilities">
       <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">CFO-Level Reports</p>
-          <h2 class="section-title">
-            Executive Dashboards That Drive Decisions
-          </h2>
+        <div class="section-header">
+          <p class="section-subtitle">Platform Capabilities</p>
+          <h2 class="section-title">Enterprise-Grade Analytics, Simplified</h2>
           <p class="section-description">
-            From cash flow forecasting to customer profitability analysis, our
-            CFO-grade dashboards give you the insights you need.
+            Zoho Analytics combines AI, machine learning, and visual data
+            pipelines with enterprise security—all in one unified platform. We
+            customize it to solve your specific business problems.
           </p>
         </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://zdblogs.zohowebstatic.com/sites/books/academy/files/importance-of-cash-flow-forecast.png"
-                  alt="Cash Flow"
-                  class="report-image"
-                />
-                <div class="report-badge">CFO Essential</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Cash Flow Forecast Dashboard</h3>
-                <p class="report-description">
-                  Predict cash crunches before they happen with ML-powered
-                  forecasting.
-                </p>
-                <ul class="report-features">
-                  <li>30/60/90 day cash projection</li>
-                  <li>Aging analysis by customer</li>
-                  <li>DSO/DPO tracking & alerts</li>
-                  <li>Working capital monitoring</li>
-                </ul>
-              </div>
-            </div>
+
+        <div class="capabilities-grid">
+          <div class="capability-card">
+            <span class="capability-number">01</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Conversational AI Agent</h3>
+            <p class="capability-description">
+              Ask Zia understands natural language. Build reports, create
+              metrics, and get insights by simply chatting with your AI copilot.
+            </p>
+            <ul class="capability-features">
+              <li>Natural language queries</li>
+              <li>Automated report generation</li>
+              <li>Diagnostic insights & recommendations</li>
+              <li>Embedded in Microsoft Teams</li>
+            </ul>
           </div>
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://blog.zohowebstatic.com/sites/zblogs/images/salesiq/blog/customer_success_metrics_kpis.png"
-                  alt="Profitability"
-                  class="report-image"
-                />
-                <div class="report-badge">Most Popular</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Customer Profitability Analysis</h3>
-                <p class="report-description">
-                  Know which customers are truly profitable after all costs.
-                </p>
-                <ul class="report-features">
-                  <li>Customer lifetime value</li>
-                  <li>Cost-to-serve breakdown</li>
-                  <li>Support ticket allocation</li>
-                  <li>Pareto analysis (80/20)</li>
-                </ul>
-              </div>
-            </div>
+
+          <div class="capability-card">
+            <span class="capability-number">02</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Visual ETL Pipelines</h3>
+            <p class="capability-description">
+              Build end-to-end data pipelines with drag-and-drop. Transform,
+              clean, and blend data from multiple sources without writing code.
+            </p>
+            <ul class="capability-features">
+              <li>250+ transformation functions</li>
+              <li>Custom Python transformations</li>
+              <li>Scheduled & real-time syncs</li>
+              <li>Data profiling & quality checks</li>
+            </ul>
           </div>
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://zdblogs.zohowebstatic.com/sites/analytics/insightshq/files/data_visualization_dashboard.jpg"
-                  alt="P&L Dashboard"
-                  class="report-image"
-                />
-                <div class="report-badge">Executive</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Dynamic P&L Dashboard</h3>
-                <p class="report-description">
-                  Drill down by product, region, or team with one click.
-                </p>
-                <ul class="report-features">
-                  <li>Budget vs actual alerts</li>
-                  <li>Multi-dimensional drill-downs</li>
-                  <li>Gross margin by segment</li>
-                  <li>YoY/MoM/QoQ comparisons</li>
-                </ul>
-              </div>
-            </div>
+
+          <div class="capability-card">
+            <span class="capability-number">03</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Embedded Analytics</h3>
+            <p class="capability-description">
+              White-label dashboards in your app or portal. Embed interactive
+              reports with SSO, custom branding, and user-level data filtering.
+            </p>
+            <ul class="capability-features">
+              <li>iFrame & JavaScript embedding</li>
+              <li>Custom domain & branding</li>
+              <li>Row-level security</li>
+              <li>API-driven customization</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">04</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">AutoML & Predictions</h3>
+            <p class="capability-description">
+              Build machine learning models with zero code. Forecast revenue,
+              predict churn, classify data, and detect anomalies automatically.
+            </p>
+            <ul class="capability-features">
+              <li>Automated model selection</li>
+              <li>Time-series forecasting</li>
+              <li>Anomaly detection</li>
+              <li>What-if scenario analysis</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">05</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Universal Data Connector</h3>
+            <p class="capability-description">
+              Connect to 500+ data sources including databases, cloud apps,
+              files, APIs, and real-time streams. One unified view of all your
+              data.
+            </p>
+            <ul class="capability-features">
+              <li>SQL databases (MySQL, PostgreSQL, etc.)</li>
+              <li>Cloud warehouses (BigQuery, Snowflake)</li>
+              <li>REST APIs & webhooks</li>
+              <li>Excel, CSV, Google Sheets</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">06</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">50+ Visualization Types</h3>
+            <p class="capability-description">
+              From basic charts to advanced Sankey diagrams, funnel analysis,
+              cohort grids, and geographic heat maps with multiple data layers.
+            </p>
+            <ul class="capability-features">
+              <li>Interactive dashboards</li>
+              <li>Drill-down & drill-through</li>
+              <li>Custom KPI widgets</li>
+              <li>Mobile-optimized views</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">07</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Enterprise Security</h3>
+            <p class="capability-description">
+              Role-based access control, row-level security, data encryption,
+              audit logs, and compliance with GDPR, HIPAA, SOC 2.
+            </p>
+            <ul class="capability-features">
+              <li>Fine-grained permissions</li>
+              <li>Row & column-level security</li>
+              <li>SSO & MFA authentication</li>
+              <li>Complete audit trails</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">08</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Real-Time Analytics</h3>
+            <p class="capability-description">
+              Live data streaming from webhooks, APIs, and message queues.
+              Monitor KPIs as they happen with auto-refresh dashboards.
+            </p>
+            <ul class="capability-features">
+              <li>Streaming data ingestion</li>
+              <li>Event-driven triggers</li>
+              <li>Alert notifications (email, SMS, Slack)</li>
+              <li>Live KPI monitoring</li>
+            </ul>
+          </div>
+
+          <div class="capability-card">
+            <span class="capability-number">09</span>
+            <div class="decorative-line"></div>
+            <h3 class="capability-title">Advanced SQL Studio</h3>
+            <p class="capability-description">
+              Write custom SQL queries with autocomplete, syntax highlighting,
+              and performance optimization. Join data across multiple sources.
+            </p>
+            <ul class="capability-features">
+              <li>Cross-database joins</li>
+              <li>Query performance analyzer</li>
+              <li>Parameterized queries</li>
+              <li>Version control & collaboration</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="feature-section">
+    <div class="scroll-indicator">
+      <div class="scroll-dot active"></div>
+      <div class="scroll-dot"></div>
+      <div class="scroll-dot"></div>
+    </div>
+
+    <section class="integration-section" id="integrations">
+      <div class="container-fluid">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Data Integration</p>
+          <h2 class="section-title">Connect Every Part of Your Business</h2>
+          <p class="section-description">
+            Integrate with Zoho apps, external platforms, databases, cloud
+            storage, marketing tools, and more. We handle the complex data
+            engineering.
+          </p>
+        </div>
+
+        <div class="integration-grid">
+          <!-- Zoho Ecosystem -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
+                alt="Zoho Books"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Books</h4>
+            <p class="integration-desc">Financial P&L & accounting</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
+                alt="Zoho CRM"
+              />
+            </div>
+            <h4 class="integration-name">Zoho CRM</h4>
+            <p class="integration-desc">Sales pipeline analytics</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
+                alt="Zoho Inventory"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Inventory</h4>
+            <p class="integration-desc">Stock tracking</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
+                alt="Zoho Projects"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Projects</h4>
+            <p class="integration-desc">Project profitability</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg"
+                alt="Zoho Desk"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Desk</h4>
+            <p class="integration-desc">Support metrics</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg"
+                alt="Zoho People"
+              />
+            </div>
+            <h4 class="integration-name">Zoho People</h4>
+            <p class="integration-desc">HR analytics</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg"
+                alt="Zoho Campaigns"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Campaigns</h4>
+            <p class="integration-desc">Email marketing ROI</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
+                alt="Zoho Commerce"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Commerce</h4>
+            <p class="integration-desc">E-commerce sales</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/subscriptions.svg"
+                alt="Zoho Subscriptions"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Subscriptions</h4>
+            <p class="integration-desc">Recurring revenue tracking</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
+                alt="Bigin"
+              />
+            </div>
+            <h4 class="integration-name">Bigin</h4>
+            <p class="integration-desc">Small business CRM</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sprints.svg"
+                alt="Zoho Sprints"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Sprints</h4>
+            <p class="integration-desc">Agile project analytics</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/social.svg"
+                alt="Zoho Social"
+              />
+            </div>
+            <h4 class="integration-name">Zoho Social</h4>
+            <p class="integration-desc">Social media analytics</p>
+          </div>
+
+          <!-- External CRMs & Sales -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path
+                  fill="#00A1E0"
+                  d="M25 2C12 2 2 12 2 25s10 23 23 23 23-10 23-23S38 2 25 2zm0 8c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15 6.7-15 15-15z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">Salesforce</h4>
+            <p class="integration-desc">Enterprise CRM</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path fill="#FF7A59" d="M25 5L10 15v20l15 10 15-10V15z" />
+                <circle fill="white" cx="25" cy="25" r="8" />
+              </svg>
+            </div>
+            <h4 class="integration-name">HubSpot</h4>
+            <p class="integration-desc">Marketing automation</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <rect fill="#1F3B93" width="50" height="50" rx="8" />
+                <path fill="white" d="M15 20h20v3H15zm0 6h15v3H15z" />
+              </svg>
+            </div>
+            <h4 class="integration-name">Microsoft Dynamics</h4>
+            <p class="integration-desc">ERP & CRM data</p>
+          </div>
+
+          <!-- E-commerce -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path fill="#95BF47" d="M10 15l15-8 15 8v20l-15 8-15-8z" />
+                <path
+                  fill="white"
+                  d="M25 20c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">Shopify</h4>
+            <p class="integration-desc">Online store data</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <rect fill="#96588A" width="50" height="50" rx="8" />
+                <text
+                  x="25"
+                  y="35"
+                  font-size="24"
+                  fill="white"
+                  text-anchor="middle"
+                  font-weight="bold"
+                >
+                  Woo
+                </text>
+              </svg>
+            </div>
+            <h4 class="integration-name">WooCommerce</h4>
+            <p class="integration-desc">WordPress e-commerce</p>
+          </div>
+
+          <!-- Accounting -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <circle fill="#2CA01C" cx="25" cy="25" r="23" />
+                <text
+                  x="25"
+                  y="32"
+                  font-size="18"
+                  fill="white"
+                  text-anchor="middle"
+                  font-weight="bold"
+                >
+                  QB
+                </text>
+              </svg>
+            </div>
+            <h4 class="integration-name">QuickBooks</h4>
+            <p class="integration-desc">Accounting sync</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <circle fill="#13B5EA" cx="25" cy="25" r="23" />
+                <text
+                  x="25"
+                  y="35"
+                  font-size="28"
+                  fill="white"
+                  text-anchor="middle"
+                  font-weight="bold"
+                >
+                  X
+                </text>
+              </svg>
+            </div>
+            <h4 class="integration-name">Xero</h4>
+            <p class="integration-desc">Cloud accounting</p>
+          </div>
+
+          <!-- Advertising -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path fill="#4285F4" d="M10 10h14l-8 14z" />
+                <path fill="#34A853" d="M24 24l14 8-14-14z" />
+                <path fill="#FBBC04" d="M38 32l-8 8-14-8z" />
+                <path fill="#EA4335" d="M16 32l8-8-8-14z" />
+              </svg>
+            </div>
+            <h4 class="integration-name">Google Ads</h4>
+            <p class="integration-desc">PPC campaigns</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <rect fill="#1877F2" width="50" height="50" rx="8" />
+                <path
+                  fill="white"
+                  d="M28 40V27h5l1-6h-6v-3c0-2 1-3 3-3h3v-6h-5c-5 0-8 3-8 8v4h-5v6h5v13h7z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">Facebook Ads</h4>
+            <p class="integration-desc">Social advertising</p>
+          </div>
+
+          <!-- Analytics -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path fill="#F9AB00" d="M35 12H15L8 25l7 13h20l7-13z" />
+              </svg>
+            </div>
+            <h4 class="integration-name">Google Analytics 4</h4>
+            <p class="integration-desc">Web analytics</p>
+          </div>
+
+          <!-- Databases -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path
+                  fill="#00758F"
+                  d="M25 8c-9 0-17 2-17 5v24c0 3 8 5 17 5s17-2 17-5V13c0-3-8-5-17-5z"
+                />
+                <ellipse
+                  fill="rgba(255,255,255,0.3)"
+                  cx="25"
+                  cy="13"
+                  rx="17"
+                  ry="5"
+                />
+                <ellipse
+                  fill="rgba(255,255,255,0.2)"
+                  cx="25"
+                  cy="25"
+                  rx="17"
+                  ry="5"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">MySQL</h4>
+            <p class="integration-desc">SQL database</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path
+                  fill="#336791"
+                  d="M25 8c-9 0-17 2-17 5v24c0 3 8 5 17 5s17-2 17-5V13c0-3-8-5-17-5z"
+                />
+                <ellipse
+                  fill="rgba(255,255,255,0.3)"
+                  cx="25"
+                  cy="13"
+                  rx="17"
+                  ry="5"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">PostgreSQL</h4>
+            <p class="integration-desc">Advanced SQL</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <rect
+                  fill="#4285F4"
+                  x="10"
+                  y="10"
+                  width="30"
+                  height="30"
+                  rx="4"
+                />
+                <path
+                  fill="white"
+                  d="M16 16h6v6h-6zm0 10h6v6h-6zm10-10h6v6h-6zm0 10h6v6h-6z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">BigQuery</h4>
+            <p class="integration-desc">Data warehouse</p>
+          </div>
+
+          <!-- Additional Tools -->
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path fill="#1F8C4E" d="M12 8h26v34H12z" />
+                <path
+                  fill="white"
+                  d="M18 16h14v2H18zm0 5h14v2H18zm0 5h10v2H18z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">Excel/CSV</h4>
+            <p class="integration-desc">File imports</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <path
+                  fill="#5865F2"
+                  d="M40 10c-3 8-8 15-15 20-7-5-12-12-15-20 3-3 8-5 15-5s12 2 15 5z"
+                />
+              </svg>
+            </div>
+            <h4 class="integration-name">Stripe</h4>
+            <p class="integration-desc">Payment data</p>
+          </div>
+
+          <div class="integration-card scroll-fade">
+            <div class="integration-logo">
+              <svg viewBox="0 0 50 50" width="45" height="45">
+                <circle fill="#03363D" cx="25" cy="25" r="23" />
+                <path fill="white" d="M15 20h20l-5 10-5-5-5 5z" />
+              </svg>
+            </div>
+            <h4 class="integration-name">Zendesk</h4>
+            <p class="integration-desc">Customer support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="use-cases-section" id="use-cases">
       <div class="container">
         <div class="section-header scroll-fade">
-          <p class="section-subtitle">Powerful Features</p>
-          <h2 class="section-title">
-            Dashboards That Actually Answer Your Questions
-          </h2>
+          <p class="section-subtitle">Real Results</p>
+          <h2 class="section-title">Built for Finance, Ops & Leadership</h2>
+          <p class="section-description">
+            From cash flow forecasting to customer profitability analysis, we
+            build dashboards that answer the questions that matter to your
+            business.
+          </p>
         </div>
 
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6">
-            <div class="feature-number">01</div>
-            <h3 class="feature-title">MIS Dashboards for Decision-Makers</h3>
-            <p class="feature-description">
-              Get the complete picture in one screen. We integrate Zoho Books,
-              CRM, Inventory, and Projects to show you what's actually
-              happening.
-            </p>
-            <ul class="feature-list">
-              <li>Real-time P&L tracking</li>
-              <li>Outstanding payments analysis</li>
-              <li>Revenue leakage identification</li>
-              <li>Custom KPIs for your industry</li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <div class="feature-image-wrapper">
-              <img
-                src="images/MIS Dashboard.png"
-                alt="MIS Dashboard"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6 order-lg-2">
-            <div class="feature-number">02</div>
-            <h3 class="feature-title">Inventory Intelligence & Optimization</h3>
-            <p class="feature-description">
-              Stop guessing on stock levels. Our dashboards analyze historical
-              trends, seasonal patterns, and lead times to optimize your
-              inventory investment.
-            </p>
-            <ul class="feature-list">
-              <li>Dead stock identification & aging analysis</li>
-              <li>ABC classification with profitability overlay</li>
-              <li>Reorder point calculations & alerts</li>
-              <li>Inventory turnover by product/category</li>
-              <li>Warehouse-wise stock valuation</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://www.zoho.com/us/inventory/mb-mobile.png"
-                alt="Inventory Dashboard"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6">
-            <div class="feature-number">03</div>
-            <h3 class="feature-title">
-              Sales Performance & Pipeline Analytics
-            </h3>
-            <p class="feature-description">
-              Connect CRM activity to actual revenue. See which sales activities
-              drive conversions and which deals are at risk.
-            </p>
-            <ul class="feature-list">
-              <li>Win rate analysis by rep, region & product</li>
-              <li>Sales cycle length & bottleneck identification</li>
-              <li>Lead source ROI with revenue attribution</li>
-              <li>Forecast accuracy tracking & variance analysis</li>
-              <li>Activity-to-revenue correlation insights</li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/analytics/illustration.png"
-                alt="Sales Analytics"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6 order-lg-2">
-            <div class="feature-number">04</div>
-            <h3 class="feature-title">
-              Project Profitability & Resource Tracking
-            </h3>
-            <p class="feature-description">
-              Know if projects are profitable while they're running, not after.
-              Track actual costs vs budgets with real-time expense integration.
-            </p>
-            <ul class="feature-list">
-              <li>Project-level P&L with cost allocation</li>
-              <li>Resource utilization & billability rates</li>
-              <li>Budget burn rate & variance alerts</li>
-              <li>Time tracking vs revenue analysis</li>
-              <li>Project margin trends & forecasting</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://blog.zoho.com/sites/zblogs/images/analytics/project-analytics-blog-2022-09.png"
-                alt="Project Analytics"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="diff-section" id="why-us">
-      <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">Why Choose Us</p>
-          <h2 class="section-title">
-            Finance Expert + Analytics Geek = Your Advantage
-          </h2>
-        </div>
         <div class="row">
-          <div class="col-lg-6">
-            <div class="diff-card scroll-fade">
-              <h4 class="diff-title">🎯 Finance + Analytics Combo</h4>
-              <p class="diff-description">
-                CA background meets data science. We understand both your P&L
-                and your database schema.
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">Manufacturing Company</h3>
+              <p class="use-case-description">
+                Built multi-branch P&L dashboard integrating Books, Inventory,
+                and Projects. Identified one branch losing ₹80K/month due to
+                material wastage and inefficient resource allocation.
               </p>
-            </div>
-            <div class="diff-card scroll-fade">
-              <h4 class="diff-title">💻 SQL-Level Customization</h4>
-              <p class="diff-description">
-                We write custom SQL queries to answer YOUR unique questions. No
-                limitations.
-              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">₹80K</div>
+                  <div class="metric-label">Monthly savings</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">2 months</div>
+                  <div class="metric-label">To profitability</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">6 branches</div>
+                  <div class="metric-label">Unified view</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-lg-6" id="wins">
-            <div class="client-win-card scroll-fade">
-              <p class="win-company">Manufacturing Company</p>
-              <p class="win-result">
-                Built branch-wise P&L dashboard. Found one branch losing
-                ₹80K/month due to wastage. Turned it profitable within 2 months.
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">SaaS Business</h3>
+              <p class="use-case-description">
+                Created cohort analysis and customer profitability dashboard
+                combining CRM, Subscriptions, and Desk data. Discovered 20% of
+                customers generated 75% of support costs but only 15% of
+                revenue.
               </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">18%</div>
+                  <div class="metric-label">Margin improvement</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">32%</div>
+                  <div class="metric-label">Support cost reduction</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">$125K</div>
+                  <div class="metric-label">Annual savings</div>
+                </div>
+              </div>
             </div>
-            <div class="client-win-card scroll-fade">
-              <p class="win-company">Service Business</p>
-              <p class="win-result">
-                Created customer profitability dashboard. Discovered 20% of
-                clients generated 80% of support costs. Improved margins by 15%.
+          </div>
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">E-commerce Retailer</h3>
+              <p class="use-case-description">
+                Built inventory optimization dashboard with ABC classification,
+                dead stock analysis, and reorder point calculations. Integrated
+                Commerce, Inventory, and Books for complete visibility.
               </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">42%</div>
+                  <div class="metric-label">Inventory reduction</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">₹2.4M</div>
+                  <div class="metric-label">Capital freed</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">89%</div>
+                  <div class="metric-label">Stock availability</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">Professional Services Firm</h3>
+              <p class="use-case-description">
+                Created project profitability tracking with real-time budget
+                burn rate, resource utilization, and time-to-revenue analysis.
+                Integrated Projects, People, and Books for complete project P&L.
+              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">27%</div>
+                  <div class="metric-label">Margin increase</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">94%</div>
+                  <div class="metric-label">Billability rate</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">Real-time</div>
+                  <div class="metric-label">Project tracking</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="cta-section" id="cta">
+    <section class="cta-section" id="contact">
       <div class="container">
-        <h2 class="cta-title">Stop Guessing. Start Knowing.</h2>
+        <h2 class="cta-title">Ready to Transform Your Data Into Decisions?</h2>
         <p class="cta-subtitle">
-          Get a sample dashboard built with YOUR Zoho data. See what's possible
-          in 30 minutes.
+          Schedule a free 30-minute consultation. We'll analyze your data
+          landscape and show you what's possible.
         </p>
         <div class="mb-4">
-          <a href="#contact" class="btn btn-white-custom btn-lg me-3"
-            >Get Sample Dashboard</a
-          >
-          <a href="#contact" class="btn btn-outline-light btn-lg"
-            >Discuss Your Problem</a
+          <a href="mailto:contact@zolytics.com" class="btn-white-custom"
+            >Schedule Free Consultation</a
           >
         </div>
-        <p style="font-size: 1.1rem">
-          📧 Email: <strong>contact@zolytics.com</strong>
+        <p style="font-size: 1.1rem; margin-top: 2rem">
+          📧 contact@zolytics.com
         </p>
       </div>
     </section>
 
-    <footer class="footer" id="contact">
+    <footer class="footer">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Services</h5>
-            <a href="#">Zoho Analytics</a>
-            <a href="#">Custom Dashboards</a>
-            <a href="#">SQL Query Development</a>
+            <a href="#">Dashboard Development</a>
+            <a href="#">ETL Pipeline Design</a>
+            <a href="#">AI & ML Analytics</a>
+            <a href="#">Custom SQL Development</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Industries</h5>
             <a href="#">Manufacturing</a>
-            <a href="#">Service Business</a>
-            <a href="#">Trading & Distribution</a>
+            <a href="#">SaaS & Technology</a>
+            <a href="#">E-commerce & Retail</a>
+            <a href="#">Professional Services</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
-            <h5>Resources</h5>
-            <a href="#">Case Studies</a>
-            <a href="#">Sample Dashboards</a>
-            <a href="#">Free Consultation</a>
+            <h5>Platform</h5>
+            <a href="#">Zoho Analytics</a>
+            <a href="#">Data Integration</a>
+            <a href="#">Ask Zia AI Agent</a>
+            <a href="#">AutoML Models</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Contact</h5>
             <a href="mailto:contact@zolytics.com">contact@zolytics.com</a>
-            <a href="#">Schedule Call</a>
-            <a href="#">LinkedIn</a>
+            <a href="#">Schedule Consultation</a>
+            <a href="#">Case Studies</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2024 Zolytics. All rights reserved.</p>
+          <p>© 2024 Zolytics. Built with Zoho Analytics.</p>
         </div>
       </div>
     </footer>
@@ -1698,20 +1950,76 @@
         });
       });
 
-      const observer = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("visible");
-            }
-          });
-        },
-        { threshold: 0.1 }
-      );
+      const observerOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -100px 0px",
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
+            }, index * 100);
+          }
+        });
+      }, observerOptions);
 
-      document.querySelectorAll(".scroll-fade").forEach((el) => {
-        observer.observe(el);
+      document.querySelectorAll(".capability-card").forEach((card, index) => {
+        card.style.opacity = "0";
+        card.style.transform = "translateY(40px)";
+        card.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
+        observer.observe(card);
+      });
+
+      const cards = document.querySelectorAll(".capability-card");
+      const dots = document.querySelectorAll(".scroll-dot");
+
+      const updateScrollIndicator = () => {
+        const scrollPercentage =
+          (window.scrollY /
+            (document.documentElement.scrollHeight - window.innerHeight)) *
+          100;
+        dots.forEach((dot, index) => {
+          if (
+            scrollPercentage > index * 33 &&
+            scrollPercentage < (index + 1) * 33
+          ) {
+            dot.classList.add("active");
+          } else {
+            dot.classList.remove("active");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", updateScrollIndicator);
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+          const scrollTarget =
+            (document.documentElement.scrollHeight - window.innerHeight) *
+            ((index * 33) / 100);
+          window.scrollTo({ top: scrollTarget, behavior: "smooth" });
+        });
+      });
+
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 20;
+          const rotateY = (centerX - x) / 20;
+          card.style.transform = `translateY(-12px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform =
+            "translateY(0) perspective(1000px) rotateX(0) rotateY(0)";
+        });
       });
     </script>
-  </head>
+  </body>
 </html>
