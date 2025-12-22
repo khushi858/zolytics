@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zoho Analytics Consultant - AI-Powered Dashboards | Zolytics</title>
+    <title>Zoho Analytics Consultant - CFO-Grade Dashboards | Zolytics</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
@@ -66,6 +66,16 @@
         }
         50% {
           transform: scale(1.08);
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-25px) rotate(5deg);
         }
       }
 
@@ -288,7 +298,7 @@
 
       .hero-stats {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
         margin-top: 4rem;
         animation: fadeInUp 1s 0.6s both;
@@ -319,12 +329,6 @@
         animation: gradientShift 4s infinite;
       }
 
-      .stat-label {
-        font-size: 0.9rem;
-        color: var(--gray);
-        margin-top: 0.5rem;
-      }
-
       .dashboard-preview {
         background: white;
         border-radius: 20px;
@@ -332,6 +336,8 @@
         box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
         transition: all 0.6s;
         animation: slideInRight 1s 0.4s both;
+        position: relative;
+        overflow: hidden;
       }
 
       .dashboard-preview:hover {
@@ -350,7 +356,6 @@
         height: 14px;
         border-radius: 50%;
         background: #e8eaed;
-        transition: background 0.3s;
       }
 
       .dashboard-preview:hover .preview-dot:nth-child(1) {
@@ -368,61 +373,71 @@
       .preview-content {
         background: linear-gradient(135deg, #fafbfc, #f8f9fa);
         border-radius: 14px;
-        padding: 3rem;
-        min-height: 350px;
-      }
-
-      .preview-chart {
-        background: white;
         padding: 2rem;
-        border-radius: 12px;
-        height: 240px;
-        position: relative;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        min-height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
-      .preview-bar {
-        position: absolute;
-        bottom: 30px;
-        background: linear-gradient(180deg, #d93025, #ff6b6b);
-        border-radius: 8px 8px 0 0;
-        box-shadow: 0 -4px 15px rgba(217, 48, 37, 0.3);
+      .analytics-visual {
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+
+      .chart-card {
+        background: white;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
         transition: transform 0.3s;
       }
 
-      .preview-bar:hover {
-        transform: scaleY(1.1);
+      .chart-card:hover {
+        transform: scale(1.05);
       }
 
-      .preview-bar:nth-child(1) {
-        left: 8%;
-        width: 10%;
-        height: 55%;
+      .chart-header {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--gray);
+        margin-bottom: 0.5rem;
       }
-      .preview-bar:nth-child(2) {
-        left: 22%;
-        width: 10%;
-        height: 75%;
+
+      .chart-value {
+        font-size: 1.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #d93025, #ff6b6b);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
-      .preview-bar:nth-child(3) {
-        left: 36%;
-        width: 10%;
-        height: 48%;
+
+      .mini-chart {
+        width: 100%;
+        height: 40px;
+        margin-top: 0.5rem;
+        display: flex;
+        align-items: flex-end;
+        gap: 3px;
       }
-      .preview-bar:nth-child(4) {
-        left: 50%;
-        width: 10%;
-        height: 88%;
+
+      .mini-bar {
+        flex: 1;
+        background: linear-gradient(180deg, #d93025, #ff6b6b);
+        border-radius: 2px;
+        transition: transform 0.3s;
       }
-      .preview-bar:nth-child(5) {
-        left: 64%;
-        width: 10%;
-        height: 68%;
+
+      .chart-card:hover .mini-bar {
+        transform: scaleY(1.2);
       }
-      .preview-bar:nth-child(6) {
-        left: 78%;
-        width: 10%;
-        height: 58%;
+
+      .integration-section {
+        padding: 140px 5%;
+        background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
       }
 
       .section-header {
@@ -433,7 +448,7 @@
       .section-subtitle {
         color: var(--primary);
         font-weight: 900;
-        font-size: 0.95rem;
+        font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 5px;
         margin-bottom: 1.5rem;
@@ -444,18 +459,8 @@
         position: relative;
       }
 
-      .section-subtitle::before {
-        content: "";
-        position: absolute;
-        inset: -2px;
-        border-radius: 50px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        opacity: 0.4;
-        z-index: -1;
-      }
-
       .section-title {
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 900;
         margin-bottom: 2rem;
         background: linear-gradient(135deg, #1a1a1a 0%, #3c4043 100%);
@@ -464,74 +469,231 @@
       }
 
       .section-description {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         color: var(--gray);
         max-width: 950px;
         margin: 0 auto;
         line-height: 2;
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(60px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      .integration-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
       }
-      @keyframes shimmer {
-        to {
-          left: 100%;
-        }
+
+      .integration-card {
+        background: linear-gradient(145deg, #ffffff, #fafbfc);
+        padding: 2rem 1.5rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 30px rgba(0, 0, 0, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
       }
-      @keyframes gradientText {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+
+      .integration-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 20px;
+        padding: 2px;
+        background: linear-gradient(
+          135deg,
+          transparent,
+          rgba(217, 48, 37, 0.3),
+          transparent
+        );
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.7s;
       }
-      @keyframes floatLeft {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(50px, -30px) scale(1.05);
-        }
+
+      .integration-card:hover::before {
+        opacity: 1;
       }
-      @keyframes floatRight {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-        50% {
-          transform: translate(-50px, 30px) scale(1.05);
-        }
+
+      .integration-card:hover {
+        transform: translateY(-15px) scale(1.06);
+        box-shadow: 0 30px 70px rgba(217, 48, 37, 0.25),
+          0 0 60px rgba(217, 48, 37, 0.1), inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(217, 48, 37, 0.2);
       }
-      @keyframes gradientSlide {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+
+      .integration-logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #fafbfc, #f8f9fa);
+        border-radius: 20px;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       }
-      @keyframes lineExpand {
-        0%,
-        100% {
-          transform: translateY(-50%) scaleX(0.8);
-          opacity: 0.3;
-        }
-        50% {
-          transform: translateY(-50%) scaleX(1);
-          opacity: 1;
-        }
+
+      .integration-logo::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        border-radius: 20px;
+        opacity: 0;
+        z-index: -1;
+        transition: opacity 0.6s;
+      }
+
+      .integration-card:hover .integration-logo::after {
+        opacity: 0.2;
+      }
+
+      .integration-card:hover .integration-logo {
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.08),
+          rgba(255, 107, 107, 0.08)
+        );
+        transform: scale(1.15);
+        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.2);
+      }
+
+      .integration-logo img {
+        max-width: 105px;
+        max-height: 105px;
+        filter: grayscale(0.2);
+        transition: filter 0.6s;
+      }
+
+      .integration-card:hover .integration-logo img {
+        filter: grayscale(0);
+      }
+
+      .integration-name {
+        font-weight: 900;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        transition: color 0.4s;
+      }
+
+      .integration-card:hover .integration-name {
+        color: var(--primary);
+      }
+
+      .integration-desc {
+        color: var(--gray);
+        font-size: 0.85rem;
+        transition: color 0.4s;
+      }
+
+      .integration-card:hover .integration-desc {
+        color: #3c4043;
+      }
+
+      .report-card {
+        background: white;
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.8s;
+        border: 2px solid #f5f5f5;
+        height: 100%;
+      }
+
+      .report-card:hover {
+        transform: translateY(-22px) scale(1.05);
+        box-shadow: 0 40px 90px rgba(217, 48, 37, 0.3);
+      }
+
+      .report-image-wrapper {
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+        background: #f8f9fa;
+      }
+
+      .report-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        transition: transform 1s;
+        padding: 20px;
+      }
+
+      .report-card:hover .report-image {
+        transform: scale(1.15);
+      }
+
+      .report-badge {
+        position: absolute;
+        top: 28px;
+        right: 28px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        padding: 0.7rem 1.6rem;
+        border-radius: 40px;
+        font-weight: 800;
+        animation: glowPulse 2s infinite;
+      }
+
+      .report-content {
+        padding: 3.5rem 3rem;
+      }
+
+      .report-title {
+        font-size: 1.9rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+      }
+
+      .report-description {
+        color: var(--gray);
+        line-height: 2;
+        margin-bottom: 2.5rem;
+      }
+
+      .report-features {
+        list-style: none;
+        padding: 0;
+      }
+
+      .report-features li {
+        padding: 1rem 0 1rem 3rem;
+        position: relative;
+      }
+
+      .report-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        width: 32px;
+        height: 32px;
+        background: rgba(217, 48, 37, 0.12);
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+      }
+
+      .cfo-reports-section {
+        padding: 140px 5%;
+        background: #fafbfc;
       }
 
       .capabilities-section {
@@ -798,142 +960,259 @@
         animation: lineExpand 1.5s ease-in-out infinite;
       }
 
-      .scroll-indicator {
-        position: fixed;
-        left: 3%;
-        top: 50%;
-        transform: translateY(-50%);
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        z-index: 10;
-      }
-      .scroll-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: rgba(217, 48, 37, 0.2);
-        transition: all 0.4s;
-        cursor: pointer;
-      }
-      .scroll-dot.active {
-        background: var(--primary);
-        transform: scale(1.5);
-        box-shadow: 0 0 15px rgba(217, 48, 37, 0.5);
-      }
-      .scroll-dot:hover {
-        background: var(--primary);
-        transform: scale(1.3);
-      }
-
-      @media (max-width: 1200px) {
-        .capabilities-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-      @media (max-width: 768px) {
-        .section-title {
-          font-size: 2.5rem;
-        }
-        .capabilities-grid {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-        }
-        .scroll-indicator {
-          display: none;
-        }
-      }
-
-      .integration-section {
-        padding: 120px 5%;
-        background: #fafbfc;
-      }
-
-      .integration-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .integration-card {
-        background: white;
-        padding: 2rem 1.5rem;
-        border: 20px solid rgba(0, 0, 0, 0.15);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-        transition: all 0.5s;
-        border: 2px solid transparent;
-        text-align: center;
+      .feature-section {
+        padding: 140px 5%;
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafbfc 50%,
+          #ffffff 100%
+        );
         position: relative;
-        overflow: hidden;
       }
 
-      .integration-card::after {
+      .feature-section::before {
         content: "";
         position: absolute;
         top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
+        left: 0;
+        right: 0;
+        height: 1px;
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.8),
+          rgba(217, 48, 37, 0.2),
           transparent
         );
-        transition: left 0.8s;
       }
 
-      .integration-card:hover::after {
-        left: 100%;
+      .feature-row {
+        margin-bottom: 120px;
+        position: relative;
       }
 
-      .integration-card:hover {
-        transform: translateY(-10px) scale(1.03);
-        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.15);
-        border-color: 20px rgba(217, 48, 37, 0.15);
+      .feature-row::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--primary),
+          transparent
+        );
+        opacity: 0.3;
       }
 
-      .integration-logo {
-        width: 70px;
-        height: 70px;
-        margin: 0 auto 1rem;
+      .feature-row:last-child::after {
+        display: none;
+      }
+
+      .feature-image-wrapper {
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15),
+          0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        background: #f8f9fa;
+      }
+
+      .feature-image-wrapper::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.1),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.7s;
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      .feature-image-wrapper:hover::before {
+        opacity: 1;
+      }
+
+      .feature-image-wrapper:hover {
+        transform: scale(1.03);
+        box-shadow: 0 35px 90px rgba(217, 48, 37, 0.3),
+          0 15px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(217, 48, 37, 0.1);
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 500px;
+        object-fit: contain;
+        object-position: center;
+        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 30px;
+      }
+
+      .feature-image-wrapper:hover .feature-image {
+        transform: scale(1.05);
+      }
+
+      .feature-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        border-radius: 18px;
+        font-size: 1.7rem;
+        font-weight: 900;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: #f8f9fa;
-        border-radius: 16px;
-        transition: all 0.5s;
+        margin-bottom: 2rem;
+        animation: pulse 2.5s infinite;
+        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.4),
+          inset 0 2px 0 rgba(255, 255, 255, 0.3);
+        position: relative;
       }
 
-      .integration-card:hover .integration-logo {
-        background: rgba(217, 48, 37, 0.06);
-        transform: scale(1.1);
+      .feature-number::after {
+        content: "";
+        position: absolute;
+        inset: -4px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        opacity: 0.3;
+        z-index: -1;
+        filter: blur(8px);
       }
 
-      .integration-logo img {
-        max-width: 45px;
-        max-height: 45px;
-        filter: grayscale(0.3);
-        transition: filter 0.5s;
+      .feature-title {
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 1.8rem;
+        line-height: 1.2;
+        background: linear-gradient(135deg, #1a1a1a 0%, #3c4043 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        position: relative;
+        padding-bottom: 1.5rem;
       }
 
-      .integration-card:hover .integration-logo img {
-        filter: grayscale(0);
+      .feature-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), transparent);
+        border-radius: 2px;
       }
 
-      .integration-name {
-        font-weight: 700;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-        color: #1a1a1a;
-      }
-
-      .integration-desc {
+      .feature-description {
         color: var(--gray);
-        font-size: 0.85rem;
-        line-height: 1.5;
+        line-height: 2;
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .feature-list li {
+        padding: 1.2rem 0 1.2rem 3.5rem;
+        position: relative;
+        font-size: 1.05rem;
+        color: #3c4043;
+        transition: all 0.3s;
+        border-radius: 8px;
+      }
+
+      .feature-list li:hover {
+        padding-left: 4rem;
+        background: rgba(217, 48, 37, 0.03);
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.12),
+          rgba(255, 107, 107, 0.12)
+        );
+        color: var(--primary);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1.1rem;
+        box-shadow: 0 3px 10px rgba(217, 48, 37, 0.2);
+        transition: all 0.3s;
+      }
+
+      .feature-list li:hover::before {
+        transform: translateY(-50%) scale(1.15);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        box-shadow: 0 5px 15px rgba(217, 48, 37, 0.4);
+      }
+
+      .diff-section {
+        padding: 140px 5%;
+        background: #f8f9fa;
+      }
+
+      .diff-card {
+        background: white;
+        padding: 3rem;
+        border-radius: 20px;
+        border-left: 6px solid var(--primary);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s;
+        margin-bottom: 2.5rem;
+      }
+
+      .diff-card:hover {
+        transform: translateX(20px) scale(1.02);
+        box-shadow: 0 15px 50px rgba(217, 48, 37, 0.25);
+      }
+
+      .diff-title {
+        font-size: 1.7rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+      }
+
+      .client-win-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s;
+        margin-bottom: 2.5rem;
+      }
+
+      .client-win-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.25);
+      }
+
+      .win-company {
+        font-weight: 800;
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
       }
 
       .use-cases-section {
@@ -1005,13 +1284,13 @@
       }
 
       .cta-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
         font-weight: 900;
         margin-bottom: 1.5rem;
       }
 
       .cta-subtitle {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin-bottom: 3rem;
         opacity: 0.95;
       }
@@ -1024,14 +1303,11 @@
         font-weight: 700;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
         transition: all 0.4s;
-        text-decoration: none;
-        display: inline-block;
       }
 
       .btn-white-custom:hover {
         transform: translateY(-5px) scale(1.05);
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
-        color: var(--primary);
       }
 
       .footer {
@@ -1080,10 +1356,10 @@
 
       @media (max-width: 768px) {
         .hero-text h1 {
-          font-size: 2.2rem;
+          font-size: 2.5rem;
         }
         .section-title {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
         .hero-content {
           grid-template-columns: 1fr;
@@ -1092,11 +1368,8 @@
         .nav-links {
           display: none;
         }
-        .hero-stats {
+        .analytics-visual {
           grid-template-columns: 1fr;
-        }
-        .integration-grid {
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         }
       }
     </style>
@@ -1113,62 +1386,341 @@
           />
         </div>
         <ul class="nav-links">
-          <li><a href="#capabilities">Capabilities</a></li>
-          <li><a href="#integrations">Integrations</a></li>
-          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="#dashboards">Dashboards</a></li>
+          <li><a href="#why-different">Why Us</a></li>
+          <li><a href="#wins">Client Wins</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#contact" class="cta-button">Get Started</a>
+        <a href="#sample" class="cta-button">Get Sample Dashboard</a>
       </nav>
     </header>
 
-    <section class="hero">
+    <div class="hero">
       <div class="hero-content">
         <div class="hero-text">
-          <h1>AI-Powered Analytics That Actually Answer Your Questions</h1>
+          <h1>CFO-Grade Analytics Without the CFO Budget</h1>
           <p>
-            Transform your business data into actionable insights with Zoho
-            Analytics. We build custom dashboards, ETL pipelines, and AI-powered
-            reports that connect 500+ data sources—from Zoho apps to databases,
-            cloud storage, and marketing platforms.
+            We build custom Zoho Analytics dashboards that connect your Books,
+            CRM, and Inventory—giving you real-time visibility into
+            profitability, not just revenue. Finance meets analytics.
           </p>
           <div class="hero-buttons">
-            <a href="#contact" class="btn-primary">Schedule Consultation</a>
-            <a href="#use-cases" class="btn-secondary">See Examples</a>
-          </div>
-          <div class="hero-stats">
-            <div class="stat-card">
-              <div class="stat-value">500+</div>
-              <div class="stat-label">Data Connectors</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">AI-Powered</div>
-              <div class="stat-label">Ask Zia Agent</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-value">AutoML</div>
-              <div class="stat-label">Predictive Models</div>
-            </div>
+            <a href="#sample" class="btn-primary">Get a Sample Dashboard</a>
+            <a href="#contact" class="btn-secondary">Discuss Your Problem</a>
           </div>
         </div>
         <div class="hero-visual">
           <div class="dashboard-preview">
-            <div class="preview-header">
-              <div class="preview-dot"></div>
-              <div class="preview-dot"></div>
-              <div class="preview-dot"></div>
-            </div>
-            <div class="preview-content">
-              <div class="preview-chart">
-                <div class="preview-bar"></div>
-                <div class="preview-bar"></div>
-                <div class="preview-bar"></div>
-                <div class="preview-bar"></div>
-                <div class="preview-bar"></div>
-                <div class="preview-bar"></div>
-              </div>
-            </div>
           </div>
+         <img
+              src="images/Analytics-Dashboard.png"
+              alt="Analytics Dashboard"
+              style="height: 390px; width:800px ;"
+            />
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="integration-section" id="integrations">
+      <div class="section-header scroll-fade">
+        <p class="section-subtitle">Powerful Integrations</p>
+        <h2 class="section-title">Connect Your Entire Business Ecosystem</h2>
+        <p class="section-description">
+          We integrate with 24+ Zoho apps, external platforms, and databases to
+          give you a unified view of your business.
+        </p>
+      </div>
+      <div class="integration-grid">
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
+              alt="Zoho Inventory"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Inventory</h4>
+          <p class="integration-desc">Stock levels & order tracking</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
+              alt="Zoho Projects"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Projects</h4>
+          <p class="integration-desc">Project profitability analysis</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
+              alt="Zoho Books"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Books</h4>
+          <p class="integration-desc">Financial accounting & reporting</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
+              alt="Zoho CRM"
+            />
+          </div>
+          <h4 class="integration-name">Zoho CRM</h4>
+          <p class="integration-desc">Sales pipeline & customer insights</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg"
+              alt="Zoho Desk"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Desk</h4>
+          <p class="integration-desc">Support ticket analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg"
+              alt="Zoho People"
+            />
+          </div>
+          <h4 class="integration-name">Zoho People</h4>
+          <p class="integration-desc">HR metrics & workforce analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/expense.svg"
+              alt="Zoho Expense"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Expense</h4>
+          <p class="integration-desc">Expense tracking & budgets</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg"
+              alt="Zoho Campaigns"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Campaigns</h4>
+          <p class="integration-desc">Marketing ROI & engagement</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
+              alt="Zoho Commerce"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Commerce</h4>
+          <p class="integration-desc">E-commerce sales</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/subscriptions.svg"
+              alt="Zoho Subscriptions"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Subscriptions</h4>
+          <p class="integration-desc">Recurring revenue tracking</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
+              alt="Bigin"
+            />
+          </div>
+          <h4 class="integration-name">Bigin</h4>
+          <p class="integration-desc">Small business CRM</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sprints.svg"
+              alt="Zoho Sprints"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Sprints</h4>
+          <p class="integration-desc">Agile project analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/social.svg"
+              alt="Zoho Social"
+            />
+          </div>
+          <h4 class="integration-name">Zoho Social</h4>
+          <p class="integration-desc">Social media analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://login.salesforce.com/img/logo214.svg"
+              alt="Saleforce"
+            />
+          </div>
+          <h4 class="integration-name">Salesforce</h4>
+          <p class="integration-desc">Enterprise CRM</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjU1LjgyIDM1NS45OSI+CiAgPGRlZnM+CiAgICA8c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogI2ZmNDgwMDsKICAgICAgfQogICAgPC9zdHlsZT4KICA8L2RlZnM+CiAgPGcgaWQ9Ikh1YlNwb3RfTG9nbyIgZGF0YS1uYW1lPSJIdWJTcG90IExvZ28iPgogICAgPGc+CiAgICAgIDxwb2x5Z29uIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIxMzYuMDEgMjAxLjQ4IDQzLjc5IDIwMS40OCA0My43OSAyOTguNjIgMCAyOTguNjIgMCA1OC45MyA0My43OSA1OC45MyA0My43OSAxNTkuMzUgMTM2LjAxIDE1OS4zNSAxMzYuMDEgNTguOTMgMTc5Ljc5IDU4LjkzIDE3OS43OSAyOTguNjIgMTM2LjAxIDI5OC42MiAxMzYuMDEgMjAxLjQ4Ii8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxOS45MSwyMjEuMTRjMCwxOS45Ni0xNi4yNiwzNi4yMS0zNi4yMiwzNi4yMXMtMzYuMjEtMTYuMjQtMzYuMjEtMzYuMjF2LTEwMi42NmgtNDEuNDd2MTAyLjY2YzAsNDIuODMsMzQuODUsNzcuNjcsNzcuNjgsNzcuNjdzNzcuNjctMzQuODQsNzcuNjctNzcuNjd2LTEwMi42NmgtNDEuNDV2MTAyLjY2WiIvPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik02MjcuNiwxMjkuMDVjMC0yMS4wNSwxMy45My0yNy43MiwyOS4xOC0yNy43MiwxMi4yOCwwLDI4LjUzLDkuMzUsMzkuMTQsMjAuNzFsMjcuMTktMzIuMDZjLTEzLjU5LTE4LjM2LTQxLjEyLTMxLjA1LTYzLjY3LTMxLjA1LTQ1LjEyLDAtNzcuNjMsMjYuMzgtNzcuNjMsNzAuMTMsMCw4MS4xNCw5OS4xOSw1NS40Miw5OS4xOSwxMDAuODQsMCwxNC4wMS0xMy42LDI2LjM3LTI5LjE4LDI2LjM3LTI0LjU1LDAtMzIuNTItMTIuMDItNDMuNzktMjQuNzFsLTMwLjE5LDMxLjM4YzE5LjI1LDIzLjcxLDQzLjEzLDM1Ljc0LDcxLjY2LDM1Ljc0LDQyLjc5LDAsNzcuMjktMjYuNzEsNzcuMjktNjguNDYsMC05MC4xNS05OS4xOC02Mi4xLTk5LjE4LTEwMS4xNloiLz4KICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTI0MS4yMSwyNjAuMzNjLTI0LjU0LDAtMzEuNS0xMC42MS0zMS41LTI2Ljg3di03MS45OGgzOC4xNHYtMzYuNDhoLTM4LjE0di00OC4xbC00Mi4xMiwxOC45MXYxNDYuNjJjMCwzNy40OSwyNS44Niw1Ni40LDYxLjM0LDU2LjQsNS4zMSwwLDEyLjYxLS4zNCwxNi42LTEuMzNsMTAuMjktMzcuODFjLTQuNjQuMzItOS45NS42NS0xNC42MS42NVoiLz4KICAgICAgPHBhdGggY2xhc3M9ImNscy0xIiBkPSJNNDc3Ljk2LDExOS42OGMtMjAuNTcsMC0zNC45Miw1Ljk3LTQ4Ljc5LDE5LjU4VjYwLjM2aC00MS42djE0Ni4yM2MwLDU0LjczLDM5LjU3LDkyLjIyLDg0LjA0LDkyLjIyLDQ5LjQzLDAsOTIuNzMtMzguMTUsOTIuNzMtODkuNTZzLTM5LjkzLTg5LjU3LTg2LjM4LTg5LjU3Wk00NzcuNywyNTYuOTVjLTI2LjA2LDAtNDcuMTgtMjEuMTItNDcuMTgtNDcuMThzMjEuMTItNDcuMTgsNDcuMTgtNDcuMTgsNDcuMTgsMjEuMTIsNDcuMTgsNDcuMTgtMjEuMTIsNDcuMTgtNDcuMTgsNDcuMThaIi8+CiAgICAgIDxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTkyOS41OSwyMDcuMDljMC01MS40MS00My4zMS04OS41Ni05Mi43My04OS41Ni00NC40NiwwLTg0LjA0LDM3LjQ5LTg0LjA0LDkyLjIydjE0Ni4yM2g0MS42di03OC45MWMxMy44NywxMy42MSwyOC4yMiwxOS41OCw0OC43OSwxOS41OCw0Ni40NSwwLDg2LjM4LTM4LjgxLDg2LjM4LTg5LjU3Wk04OTAuMTMsMjA2LjU4YzAsMjYuMDYtMjEuMTIsNDcuMTgtNDcuMTgsNDcuMThzLTQ3LjE4LTIxLjEyLTQ3LjE4LTQ3LjE4LDIxLjEyLTQ3LjE4LDQ3LjE4LTQ3LjE4LDQ3LjE4LDIxLjEyLDQ3LjE4LDQ3LjE4WiIvPgogICAgICA8cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0xMDY0LjAxLDExNS41MnYtNDEuNzljMTAuOTEtNS4xNSwxOC41NS0xNi4xOSwxOC41NS0yOC45OXYtLjk3YzAtMTcuNjctMTQuNDYtMzIuMTMtMzIuMTMtMzIuMTNoLS45NmMtMTcuNjcsMC0zMi4xMywxNC40Ni0zMi4xMywzMi4xM3YuOTdjMCwxMi44MSw3LjY0LDIzLjg0LDE4LjU1LDI4Ljk5djQxLjc5Yy0xNi4yNCwyLjUxLTMxLjA4LDkuMjEtNDMuMzIsMTkuMDZsLTExNC43My04OS4yNWMuNzUtMi45MSwxLjI4LTUuOSwxLjI5LTkuMDRDODc5LjE0LDE2LjI3LDg2Mi45NC4wMyw4NDIuOTIsMGMtMjAuMDItLjAzLTM2LjI2LDE2LjE4LTM2LjI5LDM2LjItLjAyLDIwLjAyLDE2LjE4LDM2LjI2LDM2LjIsMzYuMjksNi41MiwwLDEyLjU2LTEuODQsMTcuODUtNC44NWwxMTIuODYsODcuNzljLTkuNiwxNC40OS0xNS4yMiwzMS44NC0xNS4yMiw1MC41MnM2LjE4LDM3LjY1LDE2LjYyLDUyLjUzbC0zNC4zMiwzNC4zMmMtMi43MS0uODEtNS41My0xLjM4LTguNTEtMS4zOC0xNi40NSwwLTI5Ljc4LDEzLjMzLTI5Ljc4LDI5Ljc4czEzLjM0LDI5Ljc4LDI5Ljc4LDI5Ljc4LDI5Ljc4LTEzLjMzLDI5Ljc4LTI5Ljc4YzAtMi45OC0uNTctNS44LTEuMzgtOC41MWwzMy45NS0zMy45NWMxNS40MSwxMS43NiwzNC42LDE4LjgzLDU1LjQ5LDE4LjgzLDUwLjYsMCw5MS42Mi00MS4wMiw5MS42Mi05MS42MiwwLTQ1LjgxLTMzLjY1LTgzLjY1LTc3LjU2LTkwLjQzWk0xMDQ5Ljk0LDI1Mi45MmMtMjUuOTQsMC00Ni45OC0yMS4wMy00Ni45OC00Ni45N3MyMS4wMy00Ni45Nyw0Ni45OC00Ni45Nyw0Ni45NywyMS4wMyw0Ni45Nyw0Ni45Ny0yMS4wMyw0Ni45Ny00Ni45Nyw0Ni45N1oiLz4KICAgIDwvZz4KICA8L2c+Cjwvc3ZnPg=="
+              alt="HubSpot"
+            />
+          </div>
+          <h4 class="integration-name">HubSpot</h4>
+          <p class="integration-desc">Marketing automation</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGqrE-RAidPznFrsOlTokHWxaXHl2Lo44DlQ&s"
+              alt="Microsoft Dynamics"
+            />
+          </div>
+          <h4 class="integration-name">Microsoft Dynamics</h4>
+          <p class="integration-desc">ERP & CRM data</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADEAAAA4CAMAAABjTeDmAAAAllBMVEX///+Vv0Zejj6PvDeRvTyNuzKXwUaSvT9cjD6Mui6KuSiXwEre6sv6/PdcjTvx9urM36/a6MXp8d2jx2RXijROhSWpynC5042dxFi/15nF26Oz0IPJ3amtzHdUiC6Er0PS47mzx6jB0bjU387k7tXu8uyKq3eWsoamvpmOuEWeuJB+omh7qELm7OJ0okFvnEBvmVWiw3OaFauyAAAC+ElEQVRIiY2W2XajMAyGMd5iswZIWJPSNtN1usz7v9yYeGdJqwtOTuwPSb8kmyBYWpb3x75YWdiymjPOEN8nv9yfRTgak6QBkEX73wAJZXUQFAhB0CDe/YJocCsADk8XVgYlj38EOnwUTwCFn4gFCQQ/ARmHIt8WluL3iWdBx/dBcVOBE85FKljsnSQrggw3gB3+3HDBqHjmuJcBDj0CBJC02kZaPIhnyUT1srEBiAJhZHcDoVzEnPAoGxoGgbZdmKZPzy/3j0vgwk7iOUKCEXBsF4ZhWlXndC2oMe4pBJ6R14mY7LwARGdQSAHYImaaZXnJ55vnPpxEkq5haPF2RdwZ4t4SNV7f7RPVmyWOG+/3ifTdEhFxtlAEMcZQC0z+GmJnCSdnxI5DXGRF3DVzIjxYnWwarE1m/5JPS3yYWuui0Shz6onmhJV31ETkjgIgc6Iy8nYqS+x4CAoVKvkKDfGsF3spLvLOARWUS1h5S0lglfHQduKsImRBhJUmZBr0OnlBzJE4erApKkktcVB5JjJilLsOTRcQC4TnDy9HGK92jEc8SCKWUcGLTGM2Ii6h5R2R60MMljezYOcQz56OVtyabRDpt9xwkmGQyNRidJDIIXQvqiYFcFhB7NBeCTnqJlNsT/IarRKyFxMbAhsNopvTjqCVt3CGfLptlBO6RlQv09rePdKgRvQEzIinaW1QIcuX8sIr64yQ8ir/jawCVKloz86YXxOxjYTaII4wpdpHjlaJq7yyHHjqqrjutcC9zvzT9zHJq3o98M3UY0Y86HLQ2gfMYUG+PGI6SYvrGi09IDGKu0MbylFXotDI+XRJIrpF7KwogJnPndG5GWbE1L21WaU46rt88O8192BQ8p6cISVUnCPbQ6vkjRhElIAtWxBC3izuTldsndj5hOzeSZ1L3jccLzmfSKvzu1eGYmzL6XpyozQ3VFodDt9vDx/BwrK9iFJ7k0MrXn1In+4fb303XaNkgnsVmw/vL483vpi8KPftv0Uc/wGvdDJ4nMO84wAAAABJRU5ErkJggg=="
+              alt="Shopify"
+            />
+          </div>
+          <h4 class="integration-name">Shopify</h4>
+          <p class="integration-desc">Online store data</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAAeCAMAAABOrS0HAAAAk1BMVEVQB6r///8sBF1JAKiVf8dDAKXMxONRB60AAAArBFtPAKoqBFgpBFZ9X7ySe8aeicvc1uyPj489BYFBBotMB6IvBGM3BXW8vLzd3d2jdP/DqP+fbP+qf/9UFquLccKGhoaEab9ZIq3o6OhFBpJIBpklBE4hISEVFRU4ODibm5vez/+MSf+uhf93Df/Ir/+xsbFJSUkXnYfbAAABbklEQVQ4jZ2U7VaDMAyGC7MLpd1XadE5N92Gijqd9391NgVGga5y9v7oOSR9mqSkISwHMhAcRdyVs01aH+FDDMmMd0GhWl/BmQGlJyB6c9YJqJ1toMypXsp6tUt2C4JCBMCiKpOheiAB6a+wTZbxOM9zLXjvCkFfBwlWwo6AUpL1wML9mrRKq3xiAiS1BmpXfwQ6u2s0p0iSV2U4Or+YZ9THTRZRqyVugczkR5eOeeGLSafOjsiejXVR1zr1hfSApAYP96jxYJrW4Nt7WZbJx1gw3e/TCkwezPK8ug5+rr9O683j5smC291u24Cr5BACo+/16ecCkpcX0oDnMgyOTxUCYHs5vwnqXIO2CeWo3xEdUPXvAJllUvNxoNsAkAluHloLDluuAgctBzE+cfd2Bk2OGjY5yB7Yf1YN6ZgrixJxYOYEZMfRTaC8ESRFaDzWUl7r/yBo37wGvJzMP8kbCZ8ftAG9R16kBPckiyP3D7yLFeYSRJNAAAAAAElFTkSuQmCC"
+              alt="WooCommerce"
+            />
+          </div>
+          <h4 class="integration-name">WooCommerce</h4>
+          <p class="integration-desc">WordPress e-commerce</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="QuickBooks"
+            />
+          </div>
+          <h4 class="integration-name">QuickBooks</h4>
+          <p class="integration-desc">Accounting sync</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="Cloud accounting"
+            />
+          </div>
+          <h4 class="integration-name">Xero</h4>
+          <p class="integration-desc">Cloud accounting</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="Google Ads"
+            />
+          </div>
+          <h4 class="integration-name">Google Ads</h4>
+          <p class="integration-desc">PPC campaigns</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="Facebook Ads"
+            />
+          </div>
+          <h4 class="integration-name">Facebook Ads</h4>
+          <p class="integration-desc">Social advertising</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="https://www.gstatic.com/analytics-suite/header/suite/v2/ic_analytics.svg"
+              alt="Google Analytics"
+            />
+          </div>
+          <h4 class="integration-name">Google Analytics 4</h4>
+          <p class="integration-desc">Web analytics</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="MySql"
+            />
+          </div>
+          <h4 class="integration-name">MySQL</h4>
+          <p class="integration-desc">SQL database</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="PostgreSQL"
+            />
+          </div>
+          <h4 class="integration-name">PostgreSQL</h4>
+          <p class="integration-desc">Advanced SQL</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="BigQuery"
+            />
+          </div>
+          <h4 class="integration-name">BigQuery</h4>
+          <p class="integration-desc">Data warehouse</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/jpeg;base64,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"
+              alt="Excel"
+            />
+          </div>
+          <h4 class="integration-name">Excel/CSV</h4>
+          <p class="integration-desc">File imports</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="Stripe"
+            />
+          </div>
+          <h4 class="integration-name">Stripe</h4>
+          <p class="integration-desc">Payment data</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
+              src="data:image/png;base64,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"
+              alt="Zendesk"
+            />
+          </div>
+          <h4 class="integration-name">Zendesk</h4>
+          <p class="integration-desc">Customer support</p>
         </div>
       </div>
     </section>
@@ -1334,415 +1886,260 @@
       </div>
     </section>
 
-    <div class="scroll-indicator">
-      <div class="scroll-dot active"></div>
-      <div class="scroll-dot"></div>
-      <div class="scroll-dot"></div>
-    </div>
-
-    <section class="integration-section" id="integrations">
-      <div class="container-fluid">
+    <section class="cfo-reports-section" id="reports">
+      <div class="container">
         <div class="section-header scroll-fade">
-          <p class="section-subtitle">Data Integration</p>
-          <h2 class="section-title">Connect Every Part of Your Business</h2>
+          <p class="section-subtitle">CFO-Level Reports</p>
+          <h2 class="section-title">
+            Executive Dashboards That Drive Decisions
+          </h2>
           <p class="section-description">
-            Integrate with Zoho apps, external platforms, databases, cloud
-            storage, marketing tools, and more. We handle the complex data
-            engineering.
+            From cash flow forecasting to customer profitability analysis, our
+            CFO-grade dashboards give you the insights you need.
           </p>
         </div>
+        <div class="row">
+          <div class="col-lg-4 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/books/academy/files/importance-of-cash-flow-forecast.png"
+                  alt="Cash Flow"
+                  class="report-image"
+                />
+                <div class="report-badge">CFO Essential</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Cash Flow Forecast Dashboard</h3>
+                <p class="report-description">
+                  Predict cash crunches before they happen with ML-powered
+                  forecasting.
+                </p>
+                <ul class="report-features">
+                  <li>30/60/90 day cash projection</li>
+                  <li>Aging analysis by customer</li>
+                  <li>DSO/DPO tracking & alerts</li>
+                  <li>Working capital monitoring</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://blog.zohowebstatic.com/sites/zblogs/images/salesiq/blog/customer_success_metrics_kpis.png"
+                  alt="Profitability"
+                  class="report-image"
+                />
+                <div class="report-badge">Most Popular</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Customer Profitability Analysis</h3>
+                <p class="report-description">
+                  Know which customers are truly profitable after all costs.
+                </p>
+                <ul class="report-features">
+                  <li>Customer lifetime value</li>
+                  <li>Cost-to-serve breakdown</li>
+                  <li>Support ticket allocation</li>
+                  <li>Pareto analysis (80/20)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://zdblogs.zohowebstatic.com/sites/analytics/insightshq/files/data_visualization_dashboard.jpg"
+                  alt="P&L Dashboard"
+                  class="report-image"
+                />
+                <div class="report-badge">Executive</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Dynamic P&L Dashboard</h3>
+                <p class="report-description">
+                  Drill down by product, region, or team with one click.
+                </p>
+                <ul class="report-features">
+                  <li>Budget vs actual alerts</li>
+                  <li>Multi-dimensional drill-downs</li>
+                  <li>Gross margin by segment</li>
+                  <li>YoY/MoM/QoQ comparisons</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <div class="integration-grid">
-          <!-- Zoho Ecosystem -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
+    <section class="feature-section">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Powerful Features</p>
+          <h2 class="section-title">
+            Dashboards That Actually Answer Your Questions
+          </h2>
+        </div>
+
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6">
+            <div class="feature-number">01</div>
+            <h3 class="feature-title">MIS Dashboards for Decision-Makers</h3>
+            <p class="feature-description">
+              Get the complete picture in one screen. We integrate Zoho Books,
+              CRM, Inventory, and Projects to show you what's actually
+              happening.
+            </p>
+            <ul class="feature-list">
+              <li>Real-time P&L tracking</li>
+              <li>Outstanding payments analysis</li>
+              <li>Revenue leakage identification</li>
+              <li>Custom KPIs for your industry</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="feature-image-wrapper">
               <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
-                alt="Zoho Books"
+                src="images/MIS Dashboard.png"
+                alt="MIS Dashboard"
+                class="feature-image"
               />
             </div>
-            <h4 class="integration-name">Zoho Books</h4>
-            <p class="integration-desc">Financial P&L & accounting</p>
           </div>
+        </div>
 
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6 order-lg-2">
+            <div class="feature-number">02</div>
+            <h3 class="feature-title">Inventory Intelligence & Optimization</h3>
+            <p class="feature-description">
+              Stop guessing on stock levels. Our dashboards analyze historical
+              trends, seasonal patterns, and lead times to optimize your
+              inventory investment.
+            </p>
+            <ul class="feature-list">
+              <li>Dead stock identification & aging analysis</li>
+              <li>ABC classification with profitability overlay</li>
+              <li>Reorder point calculations & alerts</li>
+              <li>Inventory turnover by product/category</li>
+              <li>Warehouse-wise stock valuation</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="feature-image-wrapper">
               <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
-                alt="Zoho CRM"
+                src="https://www.zoho.com/us/inventory/mb-mobile.png"
+                alt="Inventory Dashboard"
+                class="feature-image"
               />
             </div>
-            <h4 class="integration-name">Zoho CRM</h4>
-            <p class="integration-desc">Sales pipeline analytics</p>
           </div>
+        </div>
 
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6">
+            <div class="feature-number">03</div>
+            <h3 class="feature-title">
+              Sales Performance & Pipeline Analytics
+            </h3>
+            <p class="feature-description">
+              Connect CRM activity to actual revenue. See which sales activities
+              drive conversions and which deals are at risk.
+            </p>
+            <ul class="feature-list">
+              <li>Win rate analysis by rep, region & product</li>
+              <li>Sales cycle length & bottleneck identification</li>
+              <li>Lead source ROI with revenue attribution</li>
+              <li>Forecast accuracy tracking & variance analysis</li>
+              <li>Activity-to-revenue correlation insights</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="feature-image-wrapper">
               <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg"
-                alt="Zoho Inventory"
+                src="https://www.zohowebstatic.com/sites/zweb/images/analytics/illustration.png"
+                alt="Sales Analytics"
+                class="feature-image"
               />
             </div>
-            <h4 class="integration-name">Zoho Inventory</h4>
-            <p class="integration-desc">Stock tracking</p>
           </div>
+        </div>
 
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6 order-lg-2">
+            <div class="feature-number">04</div>
+            <h3 class="feature-title">
+              Project Profitability & Resource Tracking
+            </h3>
+            <p class="feature-description">
+              Know if projects are profitable while they're running, not after.
+              Track actual costs vs budgets with real-time expense integration.
+            </p>
+            <ul class="feature-list">
+              <li>Project-level P&L with cost allocation</li>
+              <li>Resource utilization & billability rates</li>
+              <li>Budget burn rate & variance alerts</li>
+              <li>Time tracking vs revenue analysis</li>
+              <li>Project margin trends & forecasting</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="feature-image-wrapper">
               <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg"
-                alt="Zoho Projects"
+                src="https://blog.zoho.com/sites/zblogs/images/analytics/project-analytics-blog-2022-09.png"
+                alt="Project Analytics"
+                class="feature-image"
               />
             </div>
-            <h4 class="integration-name">Zoho Projects</h4>
-            <p class="integration-desc">Project profitability</p>
           </div>
+        </div>
+      </div>
+    </section>
 
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg"
-                alt="Zoho Desk"
-              />
+    <section class="diff-section" id="why-us">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Why Choose Us</p>
+          <h2 class="section-title">
+            Finance Expert + Analytics Geek = Your Advantage
+          </h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">🎯 Finance + Analytics Combo</h4>
+              <p class="diff-description">
+                CA background meets data science. We understand both your P&L
+                and your database schema.
+              </p>
             </div>
-            <h4 class="integration-name">Zoho Desk</h4>
-            <p class="integration-desc">Support metrics</p>
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">💻 SQL-Level Customization</h4>
+              <p class="diff-description">
+                We write custom SQL queries to answer YOUR unique questions. No
+                limitations.
+              </p>
+            </div>
           </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg"
-                alt="Zoho People"
-              />
+          <div class="col-lg-6" id="wins">
+            <div class="client-win-card scroll-fade">
+              <p class="win-company">Manufacturing Company</p>
+              <p class="win-result">
+                Built branch-wise P&L dashboard. Found one branch losing
+                ₹80K/month due to wastage. Turned it profitable within 2 months.
+              </p>
             </div>
-            <h4 class="integration-name">Zoho People</h4>
-            <p class="integration-desc">HR analytics</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg"
-                alt="Zoho Campaigns"
-              />
+            <div class="client-win-card scroll-fade">
+              <p class="win-company">Service Business</p>
+              <p class="win-result">
+                Created customer profitability dashboard. Discovered 20% of
+                clients generated 80% of support costs. Improved margins by 15%.
+              </p>
             </div>
-            <h4 class="integration-name">Zoho Campaigns</h4>
-            <p class="integration-desc">Email marketing ROI</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
-                alt="Zoho Commerce"
-              />
-            </div>
-            <h4 class="integration-name">Zoho Commerce</h4>
-            <p class="integration-desc">E-commerce sales</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/subscriptions.svg"
-                alt="Zoho Subscriptions"
-              />
-            </div>
-            <h4 class="integration-name">Zoho Subscriptions</h4>
-            <p class="integration-desc">Recurring revenue tracking</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
-                alt="Bigin"
-              />
-            </div>
-            <h4 class="integration-name">Bigin</h4>
-            <p class="integration-desc">Small business CRM</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sprints.svg"
-                alt="Zoho Sprints"
-              />
-            </div>
-            <h4 class="integration-name">Zoho Sprints</h4>
-            <p class="integration-desc">Agile project analytics</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/social.svg"
-                alt="Zoho Social"
-              />
-            </div>
-            <h4 class="integration-name">Zoho Social</h4>
-            <p class="integration-desc">Social media analytics</p>
-          </div>
-
-          <!-- External CRMs & Sales -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path
-                  fill="#00A1E0"
-                  d="M25 2C12 2 2 12 2 25s10 23 23 23 23-10 23-23S38 2 25 2zm0 8c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15 6.7-15 15-15z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">Salesforce</h4>
-            <p class="integration-desc">Enterprise CRM</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path fill="#FF7A59" d="M25 5L10 15v20l15 10 15-10V15z" />
-                <circle fill="white" cx="25" cy="25" r="8" />
-              </svg>
-            </div>
-            <h4 class="integration-name">HubSpot</h4>
-            <p class="integration-desc">Marketing automation</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <rect fill="#1F3B93" width="50" height="50" rx="8" />
-                <path fill="white" d="M15 20h20v3H15zm0 6h15v3H15z" />
-              </svg>
-            </div>
-            <h4 class="integration-name">Microsoft Dynamics</h4>
-            <p class="integration-desc">ERP & CRM data</p>
-          </div>
-
-          <!-- E-commerce -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path fill="#95BF47" d="M10 15l15-8 15 8v20l-15 8-15-8z" />
-                <path
-                  fill="white"
-                  d="M25 20c-3 0-5 2-5 5s2 5 5 5 5-2 5-5-2-5-5-5z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">Shopify</h4>
-            <p class="integration-desc">Online store data</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <rect fill="#96588A" width="50" height="50" rx="8" />
-                <text
-                  x="25"
-                  y="35"
-                  font-size="24"
-                  fill="white"
-                  text-anchor="middle"
-                  font-weight="bold"
-                >
-                  Woo
-                </text>
-              </svg>
-            </div>
-            <h4 class="integration-name">WooCommerce</h4>
-            <p class="integration-desc">WordPress e-commerce</p>
-          </div>
-
-          <!-- Accounting -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <circle fill="#2CA01C" cx="25" cy="25" r="23" />
-                <text
-                  x="25"
-                  y="32"
-                  font-size="18"
-                  fill="white"
-                  text-anchor="middle"
-                  font-weight="bold"
-                >
-                  QB
-                </text>
-              </svg>
-            </div>
-            <h4 class="integration-name">QuickBooks</h4>
-            <p class="integration-desc">Accounting sync</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <circle fill="#13B5EA" cx="25" cy="25" r="23" />
-                <text
-                  x="25"
-                  y="35"
-                  font-size="28"
-                  fill="white"
-                  text-anchor="middle"
-                  font-weight="bold"
-                >
-                  X
-                </text>
-              </svg>
-            </div>
-            <h4 class="integration-name">Xero</h4>
-            <p class="integration-desc">Cloud accounting</p>
-          </div>
-
-          <!-- Advertising -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path fill="#4285F4" d="M10 10h14l-8 14z" />
-                <path fill="#34A853" d="M24 24l14 8-14-14z" />
-                <path fill="#FBBC04" d="M38 32l-8 8-14-8z" />
-                <path fill="#EA4335" d="M16 32l8-8-8-14z" />
-              </svg>
-            </div>
-            <h4 class="integration-name">Google Ads</h4>
-            <p class="integration-desc">PPC campaigns</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <rect fill="#1877F2" width="50" height="50" rx="8" />
-                <path
-                  fill="white"
-                  d="M28 40V27h5l1-6h-6v-3c0-2 1-3 3-3h3v-6h-5c-5 0-8 3-8 8v4h-5v6h5v13h7z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">Facebook Ads</h4>
-            <p class="integration-desc">Social advertising</p>
-          </div>
-
-          <!-- Analytics -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path fill="#F9AB00" d="M35 12H15L8 25l7 13h20l7-13z" />
-              </svg>
-            </div>
-            <h4 class="integration-name">Google Analytics 4</h4>
-            <p class="integration-desc">Web analytics</p>
-          </div>
-
-          <!-- Databases -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path
-                  fill="#00758F"
-                  d="M25 8c-9 0-17 2-17 5v24c0 3 8 5 17 5s17-2 17-5V13c0-3-8-5-17-5z"
-                />
-                <ellipse
-                  fill="rgba(255,255,255,0.3)"
-                  cx="25"
-                  cy="13"
-                  rx="17"
-                  ry="5"
-                />
-                <ellipse
-                  fill="rgba(255,255,255,0.2)"
-                  cx="25"
-                  cy="25"
-                  rx="17"
-                  ry="5"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">MySQL</h4>
-            <p class="integration-desc">SQL database</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path
-                  fill="#336791"
-                  d="M25 8c-9 0-17 2-17 5v24c0 3 8 5 17 5s17-2 17-5V13c0-3-8-5-17-5z"
-                />
-                <ellipse
-                  fill="rgba(255,255,255,0.3)"
-                  cx="25"
-                  cy="13"
-                  rx="17"
-                  ry="5"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">PostgreSQL</h4>
-            <p class="integration-desc">Advanced SQL</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <rect
-                  fill="#4285F4"
-                  x="10"
-                  y="10"
-                  width="30"
-                  height="30"
-                  rx="4"
-                />
-                <path
-                  fill="white"
-                  d="M16 16h6v6h-6zm0 10h6v6h-6zm10-10h6v6h-6zm0 10h6v6h-6z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">BigQuery</h4>
-            <p class="integration-desc">Data warehouse</p>
-          </div>
-
-          <!-- Additional Tools -->
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path fill="#1F8C4E" d="M12 8h26v34H12z" />
-                <path
-                  fill="white"
-                  d="M18 16h14v2H18zm0 5h14v2H18zm0 5h10v2H18z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">Excel/CSV</h4>
-            <p class="integration-desc">File imports</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <path
-                  fill="#5865F2"
-                  d="M40 10c-3 8-8 15-15 20-7-5-12-12-15-20 3-3 8-5 15-5s12 2 15 5z"
-                />
-              </svg>
-            </div>
-            <h4 class="integration-name">Stripe</h4>
-            <p class="integration-desc">Payment data</p>
-          </div>
-
-          <div class="integration-card scroll-fade">
-            <div class="integration-logo">
-              <svg viewBox="0 0 50 50" width="45" height="45">
-                <circle fill="#03363D" cx="25" cy="25" r="23" />
-                <path fill="white" d="M15 20h20l-5 10-5-5-5 5z" />
-              </svg>
-            </div>
-            <h4 class="integration-name">Zendesk</h4>
-            <p class="integration-desc">Customer support</p>
           </div>
         </div>
       </div>
@@ -1865,57 +2262,57 @@
       </div>
     </section>
 
-    <section class="cta-section" id="contact">
+    <section class="cta-section" id="cta">
       <div class="container">
-        <h2 class="cta-title">Ready to Transform Your Data Into Decisions?</h2>
+        <h2 class="cta-title">Stop Guessing. Start Knowing.</h2>
         <p class="cta-subtitle">
-          Schedule a free 30-minute consultation. We'll analyze your data
-          landscape and show you what's possible.
+          Get a sample dashboard built with YOUR Zoho data. See what's possible
+          in 30 minutes.
         </p>
         <div class="mb-4">
-          <a href="mailto:contact@zolytics.com" class="btn-white-custom"
-            >Schedule Free Consultation</a
+          <a href="#contact" class="btn btn-white-custom btn-lg me-3"
+            >Get Sample Dashboard</a
+          >
+          <a href="#contact" class="btn btn-outline-light btn-lg"
+            >Discuss Your Problem</a
           >
         </div>
-        <p style="font-size: 1.1rem; margin-top: 2rem">
-          📧 contact@zolytics.com
+        <p style="font-size: 1.1rem">
+          📧 Email: <strong>contact@zolytics.com</strong>
         </p>
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer" id="contact">
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Services</h5>
-            <a href="#">Dashboard Development</a>
-            <a href="#">ETL Pipeline Design</a>
-            <a href="#">AI & ML Analytics</a>
-            <a href="#">Custom SQL Development</a>
+            <a href="#">Zoho Analytics</a>
+            <a href="#">Custom Dashboards</a>
+            <a href="#">SQL Query Development</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Industries</h5>
             <a href="#">Manufacturing</a>
-            <a href="#">SaaS & Technology</a>
-            <a href="#">E-commerce & Retail</a>
-            <a href="#">Professional Services</a>
+            <a href="#">Service Business</a>
+            <a href="#">Trading & Distribution</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
-            <h5>Platform</h5>
-            <a href="#">Zoho Analytics</a>
-            <a href="#">Data Integration</a>
-            <a href="#">Ask Zia AI Agent</a>
-            <a href="#">AutoML Models</a>
+            <h5>Resources</h5>
+            <a href="#">Case Studies</a>
+            <a href="#">Sample Dashboards</a>
+            <a href="#">Free Consultation</a>
           </div>
           <div class="col-lg-3 col-md-6 mb-4">
             <h5>Contact</h5>
             <a href="mailto:contact@zolytics.com">contact@zolytics.com</a>
-            <a href="#">Schedule Consultation</a>
-            <a href="#">Case Studies</a>
+            <a href="#">Schedule Call</a>
+            <a href="#">LinkedIn</a>
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2024 Zolytics. Built with Zoho Analytics.</p>
+          <p>© 2024 Zolytics. All rights reserved.</p>
         </div>
       </div>
     </footer>
@@ -1950,75 +2347,19 @@
         });
       });
 
-      const observerOptions = {
-        threshold: 0.2,
-        rootMargin: "0px 0px -100px 0px",
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.style.opacity = "1";
-              entry.target.style.transform = "translateY(0)";
-            }, index * 100);
-          }
-        });
-      }, observerOptions);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        },
+        { threshold: 0.1 }
+      );
 
-      document.querySelectorAll(".capability-card").forEach((card, index) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(40px)";
-        card.style.transition = "all 0.6s cubic-bezier(0.4, 0, 0.2, 1)";
-        observer.observe(card);
-      });
-
-      const cards = document.querySelectorAll(".capability-card");
-      const dots = document.querySelectorAll(".scroll-dot");
-
-      const updateScrollIndicator = () => {
-        const scrollPercentage =
-          (window.scrollY /
-            (document.documentElement.scrollHeight - window.innerHeight)) *
-          100;
-        dots.forEach((dot, index) => {
-          if (
-            scrollPercentage > index * 33 &&
-            scrollPercentage < (index + 1) * 33
-          ) {
-            dot.classList.add("active");
-          } else {
-            dot.classList.remove("active");
-          }
-        });
-      };
-
-      window.addEventListener("scroll", updateScrollIndicator);
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener("click", () => {
-          const scrollTarget =
-            (document.documentElement.scrollHeight - window.innerHeight) *
-            ((index * 33) / 100);
-          window.scrollTo({ top: scrollTarget, behavior: "smooth" });
-        });
-      });
-
-      cards.forEach((card) => {
-        card.addEventListener("mousemove", (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = (y - centerY) / 20;
-          const rotateY = (centerX - x) / 20;
-          card.style.transform = `translateY(-12px) perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-        });
-
-        card.addEventListener("mouseleave", () => {
-          card.style.transform =
-            "translateY(0) perspective(1000px) rotateX(0) rotateY(0)";
-        });
+      document.querySelectorAll(".scroll-fade").forEach((el) => {
+        observer.observe(el);
       });
     </script>
   </body>
