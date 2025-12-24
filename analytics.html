@@ -4,23 +4,35 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoho Analytics Consultant - CFO-Grade Dashboards | Zolytics</title>
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <style>
+      /* ============================================
+         ROOT VARIABLES - Global Color Scheme
+         ============================================ */
       :root {
         --primary: #d93025;
         --primary-dark: #b8261d;
         --secondary: #ff6b6b;
         --dark: #1a1a1a;
         --gray: #5f6368;
+        --light-bg: #fafbfc;
       }
 
+      /* ============================================
+         GLOBAL RESET & BASE STYLES
+         ============================================ */
       * {
         margin: 0;
         padding: 0;
@@ -31,11 +43,16 @@
         font-family: "Inter", sans-serif;
         color: var(--dark);
         overflow-x: hidden;
+        line-height: 1.6;
       }
 
       html {
         scroll-behavior: smooth;
       }
+
+      /* ============================================
+         KEYFRAME ANIMATIONS
+         ============================================ */
 
       @keyframes fadeInUp {
         from {
@@ -99,6 +116,9 @@
         }
       }
 
+      /* ============================================
+         HEADER / NAVIGATION BAR
+         ============================================ */
       .header {
         background: rgba(255, 255, 255, 0.95);
         padding: 1.2rem 5%;
@@ -204,9 +224,12 @@
         box-shadow: 0 10px 30px rgba(217, 48, 37, 0.5);
       }
 
+      /* ============================================
+         HERO SECTION
+         ============================================ */
       .hero {
         background: linear-gradient(135deg, #fff 0%, #fef5f5 50%, #fff 100%);
-        padding: 8rem 5% 6rem;
+        padding: 8rem 5% 10rem;
         position: relative;
         overflow: hidden;
       }
@@ -260,6 +283,7 @@
         display: flex;
         gap: 1.5rem;
         animation: fadeInUp 1s 0.4s both;
+        flex-wrap: wrap;
       }
 
       .btn-primary,
@@ -271,6 +295,7 @@
         transition: all 0.5s;
         position: relative;
         overflow: hidden;
+        display: inline-block;
       }
 
       .btn-primary {
@@ -282,6 +307,7 @@
       .btn-primary:hover {
         transform: translateY(-5px) scale(1.05);
         box-shadow: 0 15px 40px rgba(217, 48, 37, 0.5);
+        color: white;
       }
 
       .btn-secondary {
@@ -294,152 +320,145 @@
         background: #fff5f5;
         border-color: #d93025;
         transform: translateY(-4px);
+        color: #d93025;
       }
 
-      .hero-stats {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-        margin-top: 4rem;
-        animation: fadeInUp 1s 0.6s both;
-      }
-
-      .stat-card {
-        background: white;
-        padding: 2rem 1.8rem;
-        border-radius: 16px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s;
-        border: 2px solid #f5f5f5;
-      }
-
-      .stat-card:hover {
-        transform: translateY(-12px) scale(1.05);
-        box-shadow: 0 25px 50px rgba(217, 48, 37, 0.2);
-        border-color: rgba(217, 48, 37, 0.4);
-      }
-
-      .stat-value {
-        font-size: 1.8rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #d93025, #ff6b6b);
-        background-size: 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientShift 4s infinite;
-      }
-
+      /* Dashboard Preview - ENHANCED MIRROR EFFECT */
       .dashboard-preview {
-        background: white;
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
-        transition: all 0.6s;
-        animation: slideInRight 1s 0.4s both;
         position: relative;
-        overflow: hidden;
+        margin-bottom: 200px;
+        animation: slideInRight 1s 0.4s both;
       }
 
-      .dashboard-preview:hover {
-        transform: translateY(-20px) scale(1.04);
-        box-shadow: 0 45px 100px rgba(217, 48, 37, 0.3);
-      }
-
-      .preview-header {
-        display: flex;
-        gap: 0.7rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .preview-dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: #e8eaed;
-      }
-
-      .dashboard-preview:hover .preview-dot:nth-child(1) {
-        background: #ff605c;
-      }
-
-      .dashboard-preview:hover .preview-dot:nth-child(2) {
-        background: #ffbd44;
-      }
-
-      .dashboard-preview:hover .preview-dot:nth-child(3) {
-        background: #00ca4e;
+      .dashboard-preview:hover .dashboard-image {
+        transform: translateY(-10px) scale(1.02);
       }
 
       .preview-content {
-        background: linear-gradient(135deg, #fafbfc, #f8f9fa);
-        border-radius: 14px;
-        padding: 2rem;
-        min-height: 400px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        position: relative;
+        overflow: visible;
       }
 
-      .analytics-visual {
+      .dashboard-image {
         width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 20px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .mirror-effect {
+        position: absolute;
+        bottom: -180px;
+        left: 0;
+        right: 0;
+        height: 180px;
+        background: linear-gradient(
+          to bottom,
+          rgba(240, 240, 245, 0.95) 0%,
+          rgba(245, 245, 250, 0.85) 15%,
+          rgba(250, 250, 252, 0.7) 30%,
+          rgba(252, 252, 254, 0.5) 50%,
+          rgba(255, 255, 255, 0.3) 70%,
+          rgba(255, 255, 255, 0.1) 85%,
+          transparent 100%
+        );
+        border-radius: 0 0 20px 20px;
+        -webkit-mask-image: linear-gradient(
+          to bottom,
+          black 0%,
+          rgba(0, 0, 0, 0.9) 20%,
+          rgba(0, 0, 0, 0.7) 40%,
+          rgba(0, 0, 0, 0.4) 60%,
+          rgba(0, 0, 0, 0.2) 80%,
+          transparent 100%
+        );
+        mask-image: linear-gradient(
+          to bottom,
+          black 0%,
+          rgba(0, 0, 0, 0.9) 20%,
+          rgba(0, 0, 0, 0.7) 40%,
+          rgba(0, 0, 0, 0.4) 60%,
+          rgba(0, 0, 0, 0.2) 80%,
+          transparent 100%
+        );
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .mirror-effect::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 500px;
+        background-image: url("https://iongroup.com/wp-content/uploads/2024/04/T12089_Treasury-blog-Publish-Finance-Feeds-op-ed_Web-01.png");
+        background-size: cover;
+        background-position: center top;
+        background-repeat: no-repeat;
+        transform: scaleY(-1);
+        opacity: 0.7;
+        filter: blur(2px) brightness(1.1);
+        border-radius: 20px;
+      }
+
+      /* Add subtle fade overlay for more depth */
+      .mirror-effect::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
         height: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        background: linear-gradient(
+          to bottom,
+          transparent 0%,
+          rgba(255, 255, 255, 0.3) 50%,
+          rgba(255, 255, 255, 0.8) 100%
+        );
+        pointer-events: none;
       }
 
-      .chart-card {
-        background: white;
-        padding: 1rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-        transition: transform 0.3s;
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .dashboard-preview {
+          margin-bottom: 150px;
+        }
+
+        .mirror-effect {
+          height: 140px;
+          bottom: -140px;
+        }
+
+        .mirror-effect::before {
+          height: 400px;
+        }
+
+        .dashboard-image {
+          border-radius: 15px;
+        }
       }
 
-      .chart-card:hover {
-        transform: scale(1.05);
+      @media (max-width: 576px) {
+        .dashboard-preview {
+          margin-bottom: 120px;
+        }
+
+        .mirror-effect {
+          height: 100px;
+          bottom: -100px;
+        }
+
+        .mirror-effect::before {
+          height: 300px;
+        }
       }
 
-      .chart-header {
-        font-size: 0.7rem;
-        font-weight: 600;
-        color: var(--gray);
-        margin-bottom: 0.5rem;
-      }
-
-      .chart-value {
-        font-size: 1.5rem;
-        font-weight: 900;
-        background: linear-gradient(135deg, #d93025, #ff6b6b);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .mini-chart {
-        width: 100%;
-        height: 40px;
-        margin-top: 0.5rem;
-        display: flex;
-        align-items: flex-end;
-        gap: 3px;
-      }
-
-      .mini-bar {
-        flex: 1;
-        background: linear-gradient(180deg, #d93025, #ff6b6b);
-        border-radius: 2px;
-        transition: transform 0.3s;
-      }
-
-      .chart-card:hover .mini-bar {
-        transform: scaleY(1.2);
-      }
-
-      .integration-section {
-        padding: 140px 5%;
-        background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
-      }
-
+      /* ============================================
+         SECTION HEADER STYLES
+         ============================================ */
       .section-header {
         text-align: center;
         margin-bottom: 100px;
@@ -456,29 +475,37 @@
         padding: 0.7rem 2rem;
         background: rgba(217, 48, 37, 0.1);
         border-radius: 50px;
-        position: relative;
       }
 
       .section-title {
-        font-size: 4rem;
+        font-size: 3.5rem;
         font-weight: 900;
         margin-bottom: 2rem;
         background: linear-gradient(135deg, #1a1a1a 0%, #3c4043 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+        line-height: 1.2;
       }
 
       .section-description {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         color: var(--gray);
-        max-width: 950px;
+        max-width: 900px;
         margin: 0 auto;
-        line-height: 2;
+        line-height: 1.8;
+      }
+
+      /* ============================================
+         INTEGRATION SECTION
+         ============================================ */
+      .integration-section {
+        padding: 120px 5%;
+        background: linear-gradient(180deg, #fff 0%, #fafbfc 100%);
       }
 
       .integration-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 2rem;
         max-width: 1400px;
         margin: 0 auto;
@@ -563,277 +590,201 @@
           rgba(217, 48, 37, 0.08),
           rgba(255, 107, 107, 0.08)
         );
-        transform: scale(1.15);
-        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.2);
+        transform: scale(1.15) rotate(8deg);
+        box-shadow: 0 8px 25px rgba(217, 48, 37, 0.15);
       }
 
       .integration-logo img {
-        max-width: 105px;
-        max-height: 105px;
-        filter: grayscale(0.2);
-        transition: filter 0.6s;
+        max-width: 65px;
+        max-height: 65px;
+        transition: transform 0.4s;
       }
 
       .integration-card:hover .integration-logo img {
-        filter: grayscale(0);
+        transform: scale(1.1);
       }
 
       .integration-name {
-        font-weight: 900;
-        font-size: 1.1rem;
+        font-weight: 800;
+        font-size: 1.15rem;
+        color: var(--dark);
         margin-bottom: 0.8rem;
-        transition: color 0.4s;
-      }
-
-      .integration-card:hover .integration-name {
-        color: var(--primary);
+        letter-spacing: -0.02em;
       }
 
       .integration-desc {
+        font-size: 0.95rem;
         color: var(--gray);
-        font-size: 0.85rem;
-        transition: color 0.4s;
+        line-height: 1.7;
+        font-weight: 500;
       }
 
-      .integration-card:hover .integration-desc {
-        color: #3c4043;
-      }
-
-      .report-card {
-        background: white;
-        border-radius: 28px;
-        overflow: hidden;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        transition: all 0.8s;
-        border: 2px solid #f5f5f5;
-        height: 100%;
-      }
-
-      .report-card:hover {
-        transform: translateY(-22px) scale(1.05);
-        box-shadow: 0 40px 90px rgba(217, 48, 37, 0.3);
-      }
-
-      .report-image-wrapper {
-        height: 280px;
-        overflow: hidden;
-        position: relative;
-        background: #f8f9fa;
-      }
-
-      .report-image {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        object-position: center;
-        transition: transform 1s;
-        padding: 20px;
-      }
-
-      .report-card:hover .report-image {
-        transform: scale(1.15);
-      }
-
-      .report-badge {
-        position: absolute;
-        top: 28px;
-        right: 28px;
-        background: linear-gradient(
-          135deg,
-          var(--primary),
-          var(--primary-dark)
-        );
-        color: white;
-        padding: 0.7rem 1.6rem;
-        border-radius: 40px;
-        font-weight: 800;
-        animation: glowPulse 2s infinite;
-      }
-
-      .report-content {
-        padding: 3.5rem 3rem;
-      }
-
-      .report-title {
-        font-size: 1.9rem;
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-      }
-
-      .report-description {
-        color: var(--gray);
-        line-height: 2;
-        margin-bottom: 2.5rem;
-      }
-
-      .report-features {
-        list-style: none;
-        padding: 0;
-      }
-
-      .report-features li {
-        padding: 1rem 0 1rem 3rem;
-        position: relative;
-      }
-
-      .report-features li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        width: 32px;
-        height: 32px;
-        background: rgba(217, 48, 37, 0.12);
-        color: var(--primary);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 900;
-      }
-
-      .cfo-reports-section {
-        padding: 140px 5%;
-        background: #fafbfc;
-      }
-
+      /* ============================================
+         CAPABILITIES SECTION
+         ============================================ */
       .capabilities-section {
-        padding: 140px 5% 120px;
-        background: linear-gradient(180deg, #fff 0%, #f8f9fa 50%, #fff 100%);
-        position: relative;
-        overflow: hidden;
-      }
-      .capabilities-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -20%;
-        width: 60%;
-        height: 100%;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(217, 48, 37, 0.04),
-          transparent 70%
-        );
-        animation: floatLeft 20s ease-in-out infinite;
-      }
-      .capabilities-section::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: -20%;
-        width: 60%;
-        height: 100%;
-        background: radial-gradient(
-          ellipse at center,
-          rgba(255, 107, 107, 0.04),
-          transparent 70%
-        );
-        animation: floatRight 25s ease-in-out infinite;
-      }
-
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-        padding: 0 20px;
-      }
-      .section-header {
-        text-align: center;
-        margin-bottom: 100px;
-        opacity: 0;
-        transform: translateY(40px);
-        animation: fadeInUp 1s forwards;
-      }
-      .section-subtitle {
-        color: var(--primary);
-        font-weight: 700;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 4px;
-        margin-bottom: 1.5rem;
-        display: inline-block;
-        padding: 0.8rem 2.5rem;
+        padding: 120px 5%;
         background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.08),
-          rgba(255, 107, 107, 0.08)
+          180deg,
+          #fafbfc 0%,
+          #ffffff 50%,
+          #f8f9fa 100%
         );
-        border-radius: 50px;
         position: relative;
-        overflow: hidden;
-      }
-      .section-subtitle::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.6),
-          transparent
-        );
-        animation: shimmer 3s infinite;
-      }
-      .section-title {
-        font-size: 3.8rem;
-        font-weight: 900;
-        margin-bottom: 2rem;
-        line-height: 1.2;
-        background: linear-gradient(
-          135deg,
-          #1a1a1a 0%,
-          #3c4043 50%,
-          #1a1a1a 100%
-        );
-        background-size: 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        animation: gradientText 6s ease infinite;
-      }
-      .section-description {
-        font-size: 1.25rem;
-        color: var(--gray);
-        max-width: 850px;
-        margin: 0 auto;
-        line-height: 1.9;
-        font-weight: 400;
       }
 
       .capabilities-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 1400px;
+        margin: 0 auto;
       }
+
       .capability-card {
-        background: linear-gradient(135deg, #fff, #fafbfc);
-        border-radius: 20px;
+        background: white;
         padding: 3rem 2.5rem;
+        border-radius: 24px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s;
+        border-left: 4px solid var(--primary);
         position: relative;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid rgba(0, 0, 0, 0.15);
-        overflow: hidden;
-        cursor: pointer;
       }
-      .capability-card::before {
+
+      .capability-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.2);
+      }
+
+      .capability-number {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: rgba(217, 48, 37, 0.15);
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+      }
+
+      .decorative-line {
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), transparent);
+        margin-bottom: 1.5rem;
+      }
+
+      .capability-title {
+        font-size: 1.7rem;
+        font-weight: 800;
+        margin-bottom: 1.2rem;
+        color: var(--dark);
+      }
+
+      .capability-description {
+        color: var(--gray);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+      }
+
+      .capability-features {
+        list-style: none;
+        padding: 0;
+      }
+
+      .capability-features li {
+        padding: 0.8rem 0 0.8rem 2.5rem;
+        position: relative;
+        color: #3c4043;
+        font-size: 0.95rem;
+      }
+
+      .capability-features li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+        font-weight: 700;
+      }
+
+      /* ============================================
+         CFO REPORTS SECTION
+         ============================================ */
+      .cfo-reports-section {
+        padding: 120px 5%;
+        background: linear-gradient(
+          180deg,
+          #fafbfc 0%,
+          #ffffff 50%,
+          #f8f9fa 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cfo-reports-section::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.02),
-          rgba(255, 107, 107, 0.02)
+        top: -10%;
+        left: -10%;
+        width: 40%;
+        height: 120%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(217, 48, 37, 0.03),
+          transparent 70%
         );
-        opacity: 0;
-        transition: opacity 0.5s;
+        animation: floatLeft 25s ease-in-out infinite;
       }
-      .capability-card::after {
+
+      .cfo-reports-section::after {
+        content: "";
+        position: absolute;
+        bottom: -10%;
+        right: -10%;
+        width: 40%;
+        height: 120%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(255, 107, 107, 0.03),
+          transparent 70%
+        );
+        animation: floatRight 30s ease-in-out infinite;
+      }
+
+      @keyframes floatLeft {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, -30px) scale(1.05);
+        }
+      }
+
+      @keyframes floatRight {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(-30px, 30px) scale(1.05);
+        }
+      }
+
+      .report-card {
+        background: linear-gradient(145deg, #ffffff, #fefefe);
+        border-radius: 28px;
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08),
+          0 2px 8px rgba(0, 0, 0, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid rgba(217, 48, 37, 0.05);
+        height: 100%;
+        position: relative;
+        transform-style: preserve-3d;
+      }
+
+      .report-card::before {
         content: "";
         position: absolute;
         top: 0;
@@ -842,126 +793,228 @@
         height: 4px;
         background: linear-gradient(
           90deg,
+          transparent,
           var(--primary),
           var(--secondary),
-          var(--primary)
+          transparent
         );
-        background-size: 200%;
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .capability-card:hover::before {
-        opacity: 1;
-      }
-      .capability-card:hover::after {
-        transform: scaleX(1);
-        animation: gradientSlide 2s infinite;
-      }
-      .capability-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 25px 60px rgba(217, 48, 37, 0.15);
-        border-color: rgba(217, 48, 37, 0.1);
+        opacity: 0;
+        transition: opacity 0.6s;
       }
 
-      .capability-number {
+      .report-card:hover::before {
+        opacity: 1;
+        animation: shimmerSlide 2s infinite;
+      }
+
+      @keyframes shimmerSlide {
+        0%,
+        100% {
+          transform: translateX(-100%);
+        }
+        50% {
+          transform: translateX(100%);
+        }
+      }
+
+      .report-card:hover {
+        transform: translateY(-18px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(217, 48, 37, 0.2),
+          0 12px 32px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(217, 48, 37, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(217, 48, 37, 0.15);
+      }
+
+      .report-image-wrapper {
+        height: 280px;
+        overflow: hidden;
+        position: relative;
+        background: linear-gradient(135deg, #f8f9fa, #fafbfc);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .report-image-wrapper::before {
+        content: "";
         position: absolute;
-        top: 2rem;
-        right: 2rem;
-        font-size: 4rem;
-        font-weight: 900;
-        color: rgba(217, 48, 37, 0.05);
-        transition: all 0.5s;
-        line-height: 1;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.08),
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.6s;
+        z-index: 2;
       }
-      .capability-card:hover .capability-number {
-        color: rgba(217, 48, 37, 0.12);
-        transform: scale(1.2) rotate(-5deg);
+
+      .report-card:hover .report-image-wrapper::before {
+        opacity: 1;
       }
-      .capability-title {
-        font-size: 1.4rem;
+
+      .report-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 20px;
+        transform: scale(1);
+      }
+
+      .report-card:hover .report-image {
+        transform: scale(1.12);
+        filter: brightness(1.05);
+      }
+
+      .report-badge {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        background: linear-gradient(
+          135deg,
+          var(--primary),
+          var(--primary-dark)
+        );
+        color: white;
+        padding: 0.75rem 1.8rem;
+        border-radius: 50px;
         font-weight: 800;
-        margin-bottom: 1.2rem;
-        color: var(--dark);
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 8px 24px rgba(217, 48, 37, 0.35),
+          inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        z-index: 3;
+        animation: badgePulse 3s ease-in-out infinite;
+      }
+
+      @keyframes badgePulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 8px 24px rgba(217, 48, 37, 0.35),
+            0 0 0 0 rgba(217, 48, 37, 0.4);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 12px 32px rgba(217, 48, 37, 0.45),
+            0 0 0 8px rgba(217, 48, 37, 0);
+        }
+      }
+
+      .report-content {
+        padding: 3rem 2.5rem;
         position: relative;
         z-index: 1;
-        transition: color 0.3s;
       }
-      .capability-card:hover .capability-title {
+
+      .report-title {
+        font-size: 1.75rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        color: var(--dark);
+        line-height: 1.3;
+        transition: color 0.4s;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .report-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), transparent);
+        transition: width 0.4s;
+      }
+
+      .report-card:hover .report-title {
         color: var(--primary);
       }
-      .capability-description {
+
+      .report-card:hover .report-title::after {
+        width: 100px;
+      }
+
+      .report-description {
         color: var(--gray);
         line-height: 1.8;
         margin-bottom: 2rem;
-        font-size: 0.95rem;
-        position: relative;
-        z-index: 1;
+        font-size: 1.05rem;
+        transition: color 0.3s;
       }
 
-      .capability-features {
+      .report-card:hover .report-description {
+        color: #3c4043;
+      }
+
+      .report-features {
         list-style: none;
         padding: 0;
-        position: relative;
-        z-index: 1;
+        margin: 0;
       }
-      .capability-features li {
-        padding: 0.7rem 0 0.7rem 1.8rem;
+
+      .report-features li {
+        padding: 1rem 0 1rem 3rem;
         position: relative;
-        font-size: 0.9rem;
+        font-size: 0.95rem;
         color: #3c4043;
         font-weight: 500;
         transition: all 0.3s;
-        border-left: 2px solid transparent;
+        border-left: none;
         margin-left: 0.5rem;
       }
-      .capability-features li::before {
-        content: "";
+
+      .report-features li::before {
+        content: "✓";
         position: absolute;
-        left: -0.5rem;
+        left: 0;
         top: 50%;
         transform: translateY(-50%);
-        width: 8px;
-        height: 8px;
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        width: 32px;
+        height: 32px;
+        background: linear-gradient(
+          135deg,
+          rgba(217, 48, 37, 0.1),
+          rgba(255, 107, 107, 0.1)
+        );
+        color: var(--primary);
         border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(217, 48, 37, 0.15);
         transition: all 0.3s;
       }
-      .capability-card:hover .capability-features li {
-        border-left-color: rgba(217, 48, 37, 0.1);
+
+      .report-card:hover .report-features li {
+        border-left-color: none;
       }
-      .capability-card:hover .capability-features li::before {
-        transform: translateY(-50%) scale(1.5);
-        box-shadow: 0 0 15px rgba(217, 48, 37, 0.4);
-      }
-      .capability-features li:hover {
-        padding-left: 2.2rem;
+
+      .report-features li:hover {
+        padding-left: 3.5rem;
         color: var(--primary);
+        background: rgba(217, 48, 37, 0.02);
+        border-radius: 8px;
       }
 
-      .decorative-line {
-        position: absolute;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(217, 48, 37, 0.2),
-          transparent
-        );
-        width: 100%;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-      .capability-card:hover .decorative-line {
-        opacity: 1;
-        animation: lineExpand 1.5s ease-in-out infinite;
+      .report-features li:hover::before {
+        transform: translateY(-50%) scale(1.15);
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        box-shadow: 0 4px 16px rgba(217, 48, 37, 0.3),
+          0 0 20px rgba(217, 48, 37, 0.15);
       }
 
+      /* ============================================
+         FEATURE SECTION
+         ============================================ */
       .feature-section {
-        padding: 140px 5%;
+        padding: 120px 5%;
         background: linear-gradient(
           180deg,
           #ffffff 0%,
@@ -985,16 +1038,16 @@
           transparent
         );
       }
-
       .feature-row {
-        margin-bottom: 120px;
+        margin-bottom: 100px;
         position: relative;
+        align-items: center;
       }
 
       .feature-row::after {
         content: "";
         position: absolute;
-        bottom: -60px;
+        bottom: -50px;
         left: 50%;
         transform: translateX(-50%);
         width: 80px;
@@ -1049,7 +1102,7 @@
 
       .feature-image {
         width: 100%;
-        height: 500px;
+        height: 450px;
         object-fit: contain;
         object-position: center;
         transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1090,7 +1143,7 @@
       }
 
       .feature-title {
-        font-size: 2.8rem;
+        font-size: 2.5rem;
         font-weight: 900;
         margin-bottom: 1.8rem;
         line-height: 1.2;
@@ -1114,8 +1167,8 @@
 
       .feature-description {
         color: var(--gray);
-        line-height: 2;
-        font-size: 1.2rem;
+        line-height: 1.9;
+        font-size: 1.15rem;
         margin-bottom: 2.5rem;
       }
 
@@ -1169,19 +1222,22 @@
         box-shadow: 0 5px 15px rgba(217, 48, 37, 0.4);
       }
 
+      /* ============================================
+     DIFFERENTIATOR SECTION
+     ============================================ */
       .diff-section {
-        padding: 140px 5%;
+        padding: 120px 5%;
         background: #f8f9fa;
       }
 
       .diff-card {
         background: white;
-        padding: 3rem;
+        padding: 2.5rem;
         border-radius: 20px;
         border-left: 6px solid var(--primary);
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         transition: all 0.5s;
-        margin-bottom: 2.5rem;
+        margin-bottom: 2rem;
       }
 
       .diff-card:hover {
@@ -1190,31 +1246,20 @@
       }
 
       .diff-title {
-        font-size: 1.7rem;
+        font-size: 1.6rem;
         font-weight: 800;
         margin-bottom: 1rem;
       }
 
-      .client-win-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s;
-        margin-bottom: 2.5rem;
+      .diff-description {
+        color: var(--gray);
+        line-height: 1.8;
+        font-size: 1.1rem;
       }
 
-      .client-win-card:hover {
-        transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 20px 50px rgba(217, 48, 37, 0.25);
-      }
-
-      .win-company {
-        font-weight: 800;
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-      }
-
+      /* ============================================
+     USE CASES SECTION
+     ============================================ */
       .use-cases-section {
         padding: 120px 5%;
         background: white;
@@ -1245,7 +1290,7 @@
       .use-case-description {
         color: var(--gray);
         line-height: 1.8;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2rem;
       }
 
       .use-case-metrics {
@@ -1272,6 +1317,9 @@
         font-weight: 600;
       }
 
+      /* ============================================
+     CALL-TO-ACTION SECTION
+     ============================================ */
       .cta-section {
         background: linear-gradient(
           135deg,
@@ -1303,13 +1351,38 @@
         font-weight: 700;
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
         transition: all 0.4s;
+        border: none;
+        text-decoration: none;
+        display: inline-block;
       }
 
       .btn-white-custom:hover {
         transform: translateY(-5px) scale(1.05);
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+        color: var(--primary);
       }
 
+      .btn-outline-light {
+        background: transparent;
+        color: white;
+        padding: 1.3rem 3rem;
+        border-radius: 12px;
+        font-weight: 700;
+        border: 2px solid white;
+        transition: all 0.4s;
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .btn-outline-light:hover {
+        background: white;
+        color: var(--primary);
+        transform: translateY(-5px);
+      }
+
+      /* ============================================
+     FOOTER
+     ============================================ */
       .footer {
         background: var(--dark);
         color: #e8eaed;
@@ -1343,6 +1416,9 @@
         color: #9aa0a6;
       }
 
+      /* ============================================
+     SCROLL FADE ANIMATIONS
+     ============================================ */
       .scroll-fade {
         opacity: 0;
         transform: translateY(40px);
@@ -1354,22 +1430,139 @@
         transform: translateY(0);
       }
 
+      /* ============================================
+     RESPONSIVE STYLES
+     ============================================ */
+      @media (max-width: 992px) {
+        .hero-text h1 {
+          font-size: 3rem;
+        }
+
+        .section-title {
+          font-size: 2.8rem;
+        }
+
+        .hero-content {
+          grid-template-columns: 1fr;
+          gap: 4rem;
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .feature-row {
+          margin-bottom: 80px;
+        }
+
+        .feature-title {
+          font-size: 2rem;
+        }
+      }
+
       @media (max-width: 768px) {
         .hero-text h1 {
           font-size: 2.5rem;
         }
+
         .section-title {
           font-size: 2.2rem;
         }
+
         .hero-content {
           grid-template-columns: 1fr;
           gap: 3rem;
+          padding: 0 1rem;
         }
+
         .nav-links {
           display: none;
         }
-        .analytics-visual {
+
+        .capability-card {
+          min-width: auto;
+        }
+
+        .report-image-wrapper {
+          height: 240px;
+        }
+
+        .report-content {
+          padding: 2.5rem 2rem;
+        }
+
+        .report-title {
+          font-size: 1.5rem;
+        }
+
+        .report-badge {
+          padding: 0.6rem 1.4rem;
+          font-size: 0.75rem;
+        }
+
+        .dashboard-preview {
+          margin-bottom: 80px;
+        }
+
+        .mirror-effect {
+          height: 80px;
+          bottom: -80px;
+        }
+
+        .preview-content {
+          min-height: 300px;
+        }
+
+        .feature-image {
+          height: 350px;
+        }
+
+        .cta-title {
+          font-size: 2.5rem;
+        }
+
+        .hero-buttons {
+          flex-direction: column;
+        }
+
+        .btn-primary,
+        .btn-secondary {
+          width: 100%;
+          text-align: center;
+        }
+
+        .integration-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        }
+
+        .capabilities-grid {
           grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .hero {
+          padding: 5rem 5% 8rem;
+        }
+
+        .hero-text h1 {
+          font-size: 2rem;
+        }
+
+        .section-title {
+          font-size: 1.8rem;
+        }
+
+        .section-description {
+          font-size: 1.1rem;
+        }
+
+        .cta-title {
+          font-size: 2rem;
+        }
+
+        .cta-subtitle {
+          font-size: 1.1rem;
         }
       }
     </style>
@@ -1387,11 +1580,11 @@
         </div>
         <ul class="nav-links">
           <li><a href="#dashboards">Dashboards</a></li>
-          <li><a href="#why-different">Why Us</a></li>
-          <li><a href="#wins">Client Wins</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#use-cases">Client Wins</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <a href="#sample" class="cta-button">Get Sample Dashboard</a>
+        <a href="#cta" class="cta-button">Get Sample Dashboard</a>
       </nav>
     </header>
 
@@ -1405,22 +1598,24 @@
             profitability, not just revenue. Finance meets analytics.
           </p>
           <div class="hero-buttons">
-            <a href="#sample" class="btn-primary">Get a Sample Dashboard</a>
+            <a href="#cta" class="btn-primary">Get a Sample Dashboard</a>
             <a href="#contact" class="btn-secondary">Discuss Your Problem</a>
           </div>
         </div>
         <div class="hero-visual">
           <div class="dashboard-preview">
+            <div class="preview-content">
+              <img
+                src="https://iongroup.com/wp-content/uploads/2024/04/T12089_Treasury-blog-Publish-Finance-Feeds-op-ed_Web-01.png"
+                alt="Analytics Dashboard"
+                class="dashboard-image"
+              />
+            </div>
+            <div class="mirror-effect"></div>
           </div>
-         <img
-              src="images/Analytics-Dashboard.png"
-              alt="Analytics Dashboard"
-              style="height: 390px; width:800px ;"
-            />
         </div>
       </div>
-      </div>
-    </section>
+    </div>
 
     <section class="integration-section" id="integrations">
       <div class="section-header scroll-fade">
@@ -1715,12 +1910,539 @@
         <div class="integration-card scroll-fade">
           <div class="integration-logo">
             <img
+              src="data:image/png;base64,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"
+              alt="YouTube"
+            />
+          </div>
+          <h4 class="integration-name">YouTube Ads</h4>
+          <p class="integration-desc">Connect and Analyze yourData</p>
+        </div>
+        <div class="integration-card scroll-fade">
+          <div class="integration-logo">
+            <img
               src="data:image/png;base64,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"
               alt="Zendesk"
             />
           </div>
           <h4 class="integration-name">Zendesk</h4>
           <p class="integration-desc">Customer support</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cfo-reports-section" id="reports">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">CFO-Level Reports</p>
+          <h2 class="section-title">
+            Executive Dashboards That Drive Decisions
+          </h2>
+          <p class="section-description">
+            From cash flow forecasting to customer profitability analysis, our
+            CFO-grade dashboards give you the insights you need to make
+            data-driven financial decisions with confidence.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&h=400&fit=crop"
+                  alt="Cash Flow Dashboard"
+                  class="report-image"
+                />
+                <div class="report-badge">CFO Essential</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Cash Flow Forecast Dashboard</h3>
+                <p class="report-description">
+                  Predict cash crunches before they happen. Track receivables,
+                  payables, and bank balances in real-time with ML-powered
+                  forecasting.
+                </p>
+                <ul class="report-features">
+                  <li>30/60/90 day cash projection with AI forecasting</li>
+                  <li>Aging analysis by customer & vendor</li>
+                  <li>DSO/DPO tracking & optimization alerts</li>
+                  <li>Working capital ratio monitoring</li>
+                  <li>Cash runway calculator for startups</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+                  alt="Profitability Dashboard"
+                  class="report-image"
+                />
+                <div class="report-badge">Most Popular</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Customer Profitability Analysis</h3>
+                <p class="report-description">
+                  Know which customers are truly profitable. Revenue minus
+                  actual cost to serve, support costs, and payment delays.
+                </p>
+                <ul class="report-features">
+                  <li>Customer lifetime value (CLV)</li>
+                  <li>Cost-to-serve breakdown</li>
+                  <li>Support ticket cost allocation</li>
+                  <li>Pareto analysis (80/20 rule)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+                  alt="P&L Dashboard"
+                  class="report-image"
+                />
+                <div class="report-badge">Executive</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Dynamic P&L Dashboard</h3>
+                <p class="report-description">
+                  Go beyond static P&L statements. Drill down by product,
+                  region, team, or time period with one click.
+                </p>
+                <ul class="report-features">
+                  <li>Budget vs actual with variance alerts</li>
+                  <li>Multi-dimensional drill-downs (product/region/team)</li>
+                  <li>Gross margin & contribution margin by segment</li>
+                  <li>EBITDA tracking with custom adjustments</li>
+                  <li>YoY/MoM/QoQ comparison views</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&h=400&fit=crop"
+                  alt="Branch Performance"
+                  class="report-image"
+                />
+                <div class="report-badge">Multi-Location</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Branch/Location Performance</h3>
+                <p class="report-description">
+                  Compare branch profitability with proper overhead allocation
+                  to identify top and bottom performers.
+                </p>
+                <ul class="report-features">
+                  <li>Branch-wise P&L with full cost allocation</li>
+                  <li>Revenue per square foot analysis</li>
+                  <li>Inter-branch comparison benchmarking</li>
+                  <li>Resource utilization & efficiency metrics</li>
+                  <li>Location-based inventory turnover</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&h=400&fit=crop"
+                  alt="Product Profitability"
+                  class="report-image"
+                />
+                <div class="report-badge">Product Teams</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Product/Service Margin Analysis</h3>
+                <p class="report-description">
+                  Stop selling products that lose money. See true margins after
+                  ALL costs—COGS, shipping, returns, support, and CAC.
+                </p>
+                <ul class="report-features">
+                  <li>True unit economics with full cost absorption</li>
+                  <li>Product-level contribution margin tracking</li>
+                  <li>Price elasticity & optimization insights</li>
+                  <li>Customer acquisition cost by product</li>
+                  <li>Cross-sell & upsell opportunity matrix</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&h=400&fit=crop"
+                  alt="Working Capital Dashboard"
+                  class="report-image"
+                />
+                <div class="report-badge">Finance Operations</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Working Capital Management</h3>
+                <p class="report-description">
+                  Optimize your cash conversion cycle. Track every rupee from
+                  purchase to collection with detailed efficiency metrics.
+                </p>
+                <ul class="report-features">
+                  <li>Cash Conversion Cycle (CCC) tracking</li>
+                  <li>Days Sales Outstanding (DSO) trend analysis</li>
+                  <li>Days Payable Outstanding (DPO) optimization</li>
+                  <li>Inventory turnover & days on hand</li>
+                  <li>Working capital requirement forecasting</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&h=400&fit=crop"
+                  alt="Sales Analytics"
+                  class="report-image"
+                />
+                <div class="report-badge">Revenue Intelligence</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">
+                  Sales Performance & Pipeline Analytics
+                </h3>
+                <p class="report-description">
+                  Connect CRM data with actual revenue realization. See which
+                  sales efforts translate to profitable business.
+                </p>
+                <ul class="report-features">
+                  <li>Pipeline velocity & conversion metrics</li>
+                  <li>Sales team performance vs quota</li>
+                  <li>Win/loss analysis by deal characteristics</li>
+                  <li>Revenue realization vs bookings gap</li>
+                  <li>Customer acquisition cost by channel</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1590650153855-d9e808231d41?w=600&h=400&fit=crop"
+                  alt="Inventory Management"
+                  class="report-image"
+                />
+                <div class="report-badge">Inventory Control</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Inventory & Stock Optimization</h3>
+                <p class="report-description">
+                  Reduce dead stock and stockouts simultaneously. Get AI-powered
+                  reorder recommendations based on sales velocity.
+                </p>
+                <ul class="report-features">
+                  <li>ABC analysis with automated classification</li>
+                  <li>Stock aging & obsolescence tracking</li>
+                  <li>Reorder point optimization by location</li>
+                  <li>Carrying cost calculation per SKU</li>
+                  <li>Inventory turnover ratio by category</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6 mb-4 scroll-fade">
+            <div class="report-card">
+              <div class="report-image-wrapper">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
+                  alt="Budget Tracking"
+                  class="report-image"
+                />
+                <div class="report-badge">Budget Control</div>
+              </div>
+              <div class="report-content">
+                <h3 class="report-title">Budget vs Actual Tracker</h3>
+                <p class="report-description">
+                  Stop budget overruns before they happen. Real-time alerts when
+                  departments approach spending limits.
+                </p>
+                <ul class="report-features">
+                  <li>Department-wise budget utilization</li>
+                  <li>Variance analysis with explanatory notes</li>
+                  <li>Forecast vs budget comparison</li>
+                  <li>Automatic overspend alerts</li>
+                  <li>Zero-based budgeting support</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-section" id="features">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Powerful Features</p>
+          <h2 class="section-title">
+            Dashboards That Actually Answer Your Questions
+          </h2>
+        </div>
+
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6">
+            <div class="feature-number">01</div>
+            <h3 class="feature-title">MIS Dashboards for Decision-Makers</h3>
+            <p class="feature-description">
+              Get the complete picture in one screen. We integrate Zoho Books,
+              CRM, Inventory, and Projects to show you what's actually happening
+              in your business—not just data, but actionable insights.
+            </p>
+            <ul class="feature-list">
+              <li>Real-time P&L tracking across all departments</li>
+              <li>Outstanding payments & receivables aging analysis</li>
+              <li>Revenue leakage identification & prevention</li>
+              <li>Custom KPIs tailored to your industry vertical</li>
+              <li>Executive summary reports with drill-down capability</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="feature-image-wrapper">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/analytics/activity-dashboard.png"
+                alt="MIS Dashboard"
+                class="feature-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6 order-lg-2">
+            <div class="feature-number">02</div>
+            <h3 class="feature-title">SQL-Level Custom Queries</h3>
+            <p class="feature-description">
+              Standard reports can't answer your unique questions. We write
+              custom SQL queries and use Zoho Analytics' query tables to extract
+              exactly what you need—no limitations.
+            </p>
+            <ul class="feature-list">
+              <li>Complex multi-table joins across Zoho apps & databases</li>
+              <li>Custom calculated metrics unique to your business model</li>
+              <li>Automated data transformation & aggregations</li>
+              <li>Historical trend analysis with custom time periods</li>
+              <li>Advanced filtering & segmentation logic</li>
+            </ul>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="feature-image-wrapper">
+              <img
+                src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&h=600&fit=crop"
+                alt="SQL Queries"
+                class="feature-image"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="feature-row row scroll-fade">
+          <div class="col-lg-6">
+            <div class="feature-number">03</div>
+            <h3 class="feature-title">Real-Time Data Sync & Automation</h3>
+            <p class="feature-description">
+              Stop looking at yesterday's data. Our dashboards sync
+              automatically with scheduled refreshes so you're always making
+              decisions based on current, accurate information.
+            </p>
+            <ul class="feature-list">
+              <li>Automatic data refresh every 1-24 hours (configurable)</li>
+              <li>Instant updates from all connected apps via API</li>
+              <li>Live cash position & inventory levels</li>
+              <li>Automated email reports sent to stakeholders</li>
+              <li>Threshold-based alerts for critical metrics</li>
+            </ul>
+          </div>
+          <div class="col-lg-6">
+            <div class="feature-image-wrapper">
+              <img
+                src="https://www.zohowebstatic.com/sites/zweb/images/sprints/integration/analytics-reports-dashboard.jpg"
+                alt="Real-Time Sync"
+                class="feature-image"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="diff-section" id="why-us">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Why Choose Us</p>
+          <h2 class="section-title">
+            Finance Expert + Analytics Geek = Your Advantage
+          </h2>
+        </div>
+
+        <div class="row">
+          <!-- LEFT COLUMN -->
+          <div class="col-lg-6">
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">🎯 Finance + Analytics Combo</h4>
+              <p class="diff-description">
+                CA background meets data science. We understand both your P&L
+                and your database schema.
+              </p>
+            </div>
+
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">💻 SQL-Level Customization</h4>
+              <p class="diff-description">
+                We write custom SQL queries to answer YOUR unique questions. No
+                limitations.
+              </p>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-lg-6">
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">🔗 Multi-App Integration</h4>
+              <p class="diff-description">
+                Connect Books, CRM, Inventory, Projects, Desk—see your whole
+                business, not just fragments.
+              </p>
+            </div>
+
+            <div class="diff-card scroll-fade">
+              <h4 class="diff-title">💰 Focus on Profitability</h4>
+              <p class="diff-description">
+                We track what matters: profit, cash flow, and unit economics—not
+                vanity metrics.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="use-cases-section" id="use-cases">
+      <div class="container">
+        <div class="section-header scroll-fade">
+          <p class="section-subtitle">Real Results</p>
+          <h2 class="section-title">Built for Finance, Ops & Leadership</h2>
+          <p class="section-description">
+            From cash flow forecasting to customer profitability analysis, we
+            build dashboards that answer the questions that matter to your
+            business.
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">Manufacturing Company</h3>
+              <p class="use-case-description">
+                Built multi-branch P&L dashboard integrating Books, Inventory,
+                and Projects. Identified one branch losing ₹80K/month due to
+                material wastage and inefficient resource allocation.
+              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">₹80K</div>
+                  <div class="metric-label">Monthly savings</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">2 months</div>
+                  <div class="metric-label">To profitability</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">6 branches</div>
+                  <div class="metric-label">Unified view</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">SaaS Business</h3>
+              <p class="use-case-description">
+                Created cohort analysis and customer profitability dashboard
+                combining CRM, Subscriptions, and Desk data. Discovered 20% of
+                customers generated 75% of support costs but only 15% of
+                revenue.
+              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">18%</div>
+                  <div class="metric-label">Margin improvement</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">32%</div>
+                  <div class="metric-label">Support cost reduction</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">$125K</div>
+                  <div class="metric-label">Annual savings</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">E-commerce Retailer</h3>
+              <p class="use-case-description">
+                Built inventory optimization dashboard with ABC classification,
+                dead stock analysis, and reorder point calculations. Integrated
+                Commerce, Inventory, and Books for complete visibility.
+              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">42%</div>
+                  <div class="metric-label">Inventory reduction</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">₹2.4M</div>
+                  <div class="metric-label">Capital freed</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">89%</div>
+                  <div class="metric-label">Stock availability</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 mb-4 scroll-fade">
+            <div class="use-case-card">
+              <h3 class="use-case-title">Professional Services Firm</h3>
+              <p class="use-case-description">
+                Created project profitability tracking with real-time budget
+                burn rate, resource utilization, and time-to-revenue analysis.
+                Integrated Projects, People, and Books for complete project P&L.
+              </p>
+              <div class="use-case-metrics">
+                <div class="metric">
+                  <div class="metric-value">27%</div>
+                  <div class="metric-label">Margin increase</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">94%</div>
+                  <div class="metric-label">Billability rate</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-value">Real-time</div>
+                  <div class="metric-label">Project tracking</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1886,515 +2608,6 @@
       </div>
     </section>
 
-    <section class="cfo-reports-section" id="reports">
-      <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">CFO-Level Reports</p>
-          <h2 class="section-title">
-            Executive Dashboards That Drive Decisions
-          </h2>
-          <p class="section-description">
-            From cash flow forecasting to customer profitability analysis, our
-            CFO-grade dashboards give you the insights you need.
-          </p>
-        </div>
-        <div class="row">
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://zdblogs.zohowebstatic.com/sites/books/academy/files/importance-of-cash-flow-forecast.png"
-                  alt="Cash Flow"
-                  class="report-image"
-                />
-                <div class="report-badge">CFO Essential</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Cash Flow Forecast Dashboard</h3>
-                <p class="report-description">
-                  Predict cash crunches before they happen with ML-powered
-                  forecasting.
-                </p>
-                <ul class="report-features">
-                  <li>30/60/90 day cash projection</li>
-                  <li>Aging analysis by customer</li>
-                  <li>DSO/DPO tracking & alerts</li>
-                  <li>Working capital monitoring</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://fluentsupport.com/wp-content/uploads/2022/08/Customer_Profitability_Analysis_Definition_Formula_Benefits_01-1.png"
-                  alt="Profitability"
-                  class="report-image"
-                />
-                <div class="report-badge">Most Popular</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Customer Profitability Analysis</h3>
-                <p class="report-description">
-                  Know which customers are truly profitable after all costs.
-                </p>
-                <ul class="report-features">
-                  <li>Customer lifetime value</li>
-                  <li>Cost-to-serve breakdown</li>
-                  <li>Support ticket allocation</li>
-                  <li>Pareto analysis (80/20)</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 mb-4 scroll-fade">
-            <div class="report-card">
-              <div class="report-image-wrapper">
-                <img
-                  src="https://zdblogs.zohowebstatic.com/sites/analytics/insightshq/files/data_visualization_dashboard.jpg"
-                  alt="P&L Dashboard"
-                  class="report-image"
-                />
-                <div class="report-badge">Executive</div>
-              </div>
-              <div class="report-content">
-                <h3 class="report-title">Dynamic P&L Dashboard</h3>
-                <p class="report-description">
-                  Drill down by product, region, or team with one click.
-                </p>
-                <ul class="report-features">
-                  <li>Budget vs actual alerts</li>
-                  <li>Multi-dimensional drill-downs</li>
-                  <li>Gross margin by segment</li>
-                  <li>YoY/MoM/QoQ comparisons</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-
-
- <div class="row">
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://framerusercontent.com/images/E27sCVNEavoIPomXA5v2EEUsZ0c.png?width=1890&height=1890" alt="Sales Performance" class="report-image" />
-                        <div class="report-badge">Revenue Intelligence</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Sales Performance & Pipeline Analytics</h3>
-                        <p class="report-description">
-                            Connect CRM data with actual revenue realization. See which sales efforts translate to profitable business.
-                        </p>
-                        <ul class="report-features">
-                            <li>Pipeline velocity tracking</li>
-                            <li>Win/loss analysis by segment</li>
-                            <li>Revenue attribution modeling</li>
-                            <li>Sales team performance metrics</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://www.eturns.com/media/vu2flz5c/solutions-for-inventory-optimization.jpg?width=1400&height=700&v=1da6e607c0c0810" alt="Inventory Control" class="report-image" />
-                        <div class="report-badge">Inventory Control</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Inventory & Stock Optimization</h3>
-                        <p class="report-description">
-                            Reduce dead stock and stockouts simultaneously. Get AI-powered reorder recommendations based on sales velocity.
-                        </p>
-                        <ul class="report-features">
-                            <li>Real-time inventory tracking</li>
-                            <li>Turnover ratio analysis</li>
-                            <li>Smart reorder point alerts</li>
-                            <li>Stock aging reports</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://www.venasolutions.com/hubfs/vena-free-budgetvsactual-excel-template-meta-image.webp" alt="Budget Control" class="report-image" />
-                        <div class="report-badge">Budget Control</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Budget vs Actual Tracker</h3>
-                        <p class="report-description">
-                            Stop budget overruns before they happen. Real-time alerts when departments approach spending limits.
-                        </p>
-                        <ul class="report-features">
-                            <li>Department-wise budget utilization</li>
-                            <li>Variance analysis & forecasting</li>
-                            <li>Automated threshold alerts</li>
-                            <li>Monthly comparison reports</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Row 2 -->
-        <div class="row">
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://www.stratadecision.com/sites/default/files/images/2020-07/succeeding_in_a_disruptive_environment-01.png" alt="Branch Performance" class="report-image" />
-                        <div class="report-badge">Multi-Location</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Branch/Location Performance</h3>
-                        <p class="report-description">
-                            Compare branch profitability with proper overhead allocation to identify top and bottom performers.
-                        </p>
-                        <ul class="report-features">
-                            <li>Branch-wise P&L with full cost</li>
-                            <li>Cross-location benchmarking</li>
-                            <li>Resource utilization metrics</li>
-                            <li>Performance ranking dashboard</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://www.vendavo.com/wp-content/uploads/2023/03/Margin-Impact-Analysis_header.png" alt="Product Margin" class="report-image" />
-                        <div class="report-badge">Product Teams</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Product/Service Margin Analysis</h3>
-                        <p class="report-description">
-                            Stop selling products that lose money. See true margins after ALL costs—COGS, shipping, returns, support, and CAC.
-                        </p>
-                        <ul class="report-features">
-                            <li>True unit economics with full cost</li>
-                            <li>Product profitability ranking</li>
-                            <li>Cost allocation by activity</li>
-                            <li>Margin trend analysis</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 mb-4">
-                <div class="report-card">
-                    <div class="report-image-wrapper">
-                        <img src="https://omnicard.in/_next/image?url=https%3A%2F%2Fimg.omnicard.in%2Fblog_images%2F2024072215345121676627-WORKING-CAPITAL-EXPLAINED.png&w=2048&q=75" alt="Working Capital" class="report-image" />
-                        <div class="report-badge">Finance Operations</div>
-                    </div>
-                    <div class="report-content">
-                        <h3 class="report-title">Working Capital Management</h3>
-                        <p class="report-description">
-                            Optimize your cash conversion cycle. Track every rupee from purchase to collection with detailed efficiency metrics.
-                        </p>
-                        <ul class="report-features">
-                            <li>Cash Conversion Cycle (CCC) tracking</li>
-                            <li>Receivables & payables aging</li>
-                            <li>Working capital turnover</li>
-                            <li>Liquidity ratio monitoring</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>     
-    </div>
-      </div>
-    </section>
-
-    <section class="feature-section">
-      <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">Powerful Features</p>
-          <h2 class="section-title">
-            Dashboards That Actually Answer Your Questions
-          </h2>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6">
-            <div class="feature-number">01</div>
-            <h3 class="feature-title">MIS Dashboards for Decision-Makers</h3>
-            <p class="feature-description">
-              Get the complete picture in one screen. We integrate Zoho Books,
-              CRM, Inventory, and Projects to show you what's actually
-              happening.
-            </p>
-            <ul class="feature-list">
-              <li>Real-time P&L tracking</li>
-              <li>Outstanding payments analysis</li>
-              <li>Revenue leakage identification</li>
-              <li>Custom KPIs for your industry</li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <div class="feature-image-wrapper">
-              <img
-                src="images/MIS Dashboard.png"
-                alt="MIS Dashboard"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6 order-lg-2">
-            <div class="feature-number">02</div>
-            <h3 class="feature-title">Inventory Intelligence & Optimization</h3>
-            <p class="feature-description">
-              Stop guessing on stock levels. Our dashboards analyze historical
-              trends, seasonal patterns, and lead times to optimize your
-              inventory investment.
-            </p>
-            <ul class="feature-list">
-              <li>Dead stock identification & aging analysis</li>
-              <li>ABC classification with profitability overlay</li>
-              <li>Reorder point calculations & alerts</li>
-              <li>Inventory turnover by product/category</li>
-              <li>Warehouse-wise stock valuation</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://www.zoho.com/us/inventory/mb-mobile.png"
-                alt="Inventory Dashboard"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6">
-            <div class="feature-number">03</div>
-            <h3 class="feature-title">
-              Sales Performance & Pipeline Analytics
-            </h3>
-            <p class="feature-description">
-              Connect CRM activity to actual revenue. See which sales activities
-              drive conversions and which deals are at risk.
-            </p>
-            <ul class="feature-list">
-              <li>Win rate analysis by rep, region & product</li>
-              <li>Sales cycle length & bottleneck identification</li>
-              <li>Lead source ROI with revenue attribution</li>
-              <li>Forecast accuracy tracking & variance analysis</li>
-              <li>Activity-to-revenue correlation insights</li>
-            </ul>
-          </div>
-          <div class="col-lg-6">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/analytics/illustration.png"
-                alt="Sales Analytics"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="feature-row row scroll-fade">
-          <div class="col-lg-6 order-lg-2">
-            <div class="feature-number">04</div>
-            <h3 class="feature-title">
-              Project Profitability & Resource Tracking
-            </h3>
-            <p class="feature-description">
-              Know if projects are profitable while they're running, not after.
-              Track actual costs vs budgets with real-time expense integration.
-            </p>
-            <ul class="feature-list">
-              <li>Project-level P&L with cost allocation</li>
-              <li>Resource utilization & billability rates</li>
-              <li>Budget burn rate & variance alerts</li>
-              <li>Time tracking vs revenue analysis</li>
-              <li>Project margin trends & forecasting</li>
-            </ul>
-          </div>
-          <div class="col-lg-6 order-lg-1">
-            <div class="feature-image-wrapper">
-              <img
-                src="https://blog.zoho.com/sites/zblogs/images/analytics/project-analytics-blog-2022-09.png"
-                alt="Project Analytics"
-                class="feature-image"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="diff-section" id="why-us">
-      <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">Why Choose Us</p>
-          <h2 class="section-title">
-            Finance Expert + Analytics Geek = Your Advantage
-          </h2>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="diff-card scroll-fade">
-              <h4 class="diff-title">🎯 Finance + Analytics Combo</h4>
-              <p class="diff-description">
-                CA background meets data science. We understand both your P&L
-                and your database schema.
-              </p>
-            </div>
-            <div class="diff-card scroll-fade">
-              <h4 class="diff-title">💻 SQL-Level Customization</h4>
-              <p class="diff-description">
-                We write custom SQL queries to answer YOUR unique questions. No
-                limitations.
-              </p>
-            </div>
-          </div>
-          <div class="col-lg-6" id="wins">
-            <div class="client-win-card scroll-fade">
-              <p class="win-company">Manufacturing Company</p>
-              <p class="win-result">
-                Built branch-wise P&L dashboard. Found one branch losing
-                ₹80K/month due to wastage. Turned it profitable within 2 months.
-              </p>
-            </div>
-            <div class="client-win-card scroll-fade">
-              <p class="win-company">Service Business</p>
-              <p class="win-result">
-                Created customer profitability dashboard. Discovered 20% of
-                clients generated 80% of support costs. Improved margins by 15%.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="use-cases-section" id="use-cases">
-      <div class="container">
-        <div class="section-header scroll-fade">
-          <p class="section-subtitle">Real Results</p>
-          <h2 class="section-title">Built for Finance, Ops & Leadership</h2>
-          <p class="section-description">
-            From cash flow forecasting to customer profitability analysis, we
-            build dashboards that answer the questions that matter to your
-            business.
-          </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6 mb-4 scroll-fade">
-            <div class="use-case-card">
-              <h3 class="use-case-title">Manufacturing Company</h3>
-              <p class="use-case-description">
-                Built multi-branch P&L dashboard integrating Books, Inventory,
-                and Projects. Identified one branch losing ₹80K/month due to
-                material wastage and inefficient resource allocation.
-              </p>
-              <div class="use-case-metrics">
-                <div class="metric">
-                  <div class="metric-value">₹80K</div>
-                  <div class="metric-label">Monthly savings</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">2 months</div>
-                  <div class="metric-label">To profitability</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">6 branches</div>
-                  <div class="metric-label">Unified view</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mb-4 scroll-fade">
-            <div class="use-case-card">
-              <h3 class="use-case-title">SaaS Business</h3>
-              <p class="use-case-description">
-                Created cohort analysis and customer profitability dashboard
-                combining CRM, Subscriptions, and Desk data. Discovered 20% of
-                customers generated 75% of support costs but only 15% of
-                revenue.
-              </p>
-              <div class="use-case-metrics">
-                <div class="metric">
-                  <div class="metric-value">18%</div>
-                  <div class="metric-label">Margin improvement</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">32%</div>
-                  <div class="metric-label">Support cost reduction</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">$125K</div>
-                  <div class="metric-label">Annual savings</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mb-4 scroll-fade">
-            <div class="use-case-card">
-              <h3 class="use-case-title">E-commerce Retailer</h3>
-              <p class="use-case-description">
-                Built inventory optimization dashboard with ABC classification,
-                dead stock analysis, and reorder point calculations. Integrated
-                Commerce, Inventory, and Books for complete visibility.
-              </p>
-              <div class="use-case-metrics">
-                <div class="metric">
-                  <div class="metric-value">42%</div>
-                  <div class="metric-label">Inventory reduction</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">₹2.4M</div>
-                  <div class="metric-label">Capital freed</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">89%</div>
-                  <div class="metric-label">Stock availability</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-6 mb-4 scroll-fade">
-            <div class="use-case-card">
-              <h3 class="use-case-title">Professional Services Firm</h3>
-              <p class="use-case-description">
-                Created project profitability tracking with real-time budget
-                burn rate, resource utilization, and time-to-revenue analysis.
-                Integrated Projects, People, and Books for complete project P&L.
-              </p>
-              <div class="use-case-metrics">
-                <div class="metric">
-                  <div class="metric-value">27%</div>
-                  <div class="metric-label">Margin increase</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">94%</div>
-                  <div class="metric-label">Billability rate</div>
-                </div>
-                <div class="metric">
-                  <div class="metric-value">Real-time</div>
-                  <div class="metric-label">Project tracking</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="cta-section" id="cta">
       <div class="container">
         <h2 class="cta-title">Stop Guessing. Start Knowing.</h2>
@@ -2403,12 +2616,10 @@
           in 30 minutes.
         </p>
         <div class="mb-4">
-          <a href="#contact" class="btn btn-white-custom btn-lg me-3"
+          <a href="#contact" class="btn-white-custom me-3"
             >Get Sample Dashboard</a
           >
-          <a href="#contact" class="btn btn-outline-light btn-lg"
-            >Discuss Your Problem</a
-          >
+          <a href="#contact" class="btn-outline-light">Discuss Your Problem</a>
         </div>
         <p style="font-size: 1.1rem">
           📧 Email: <strong>contact@zolytics.com</strong>
