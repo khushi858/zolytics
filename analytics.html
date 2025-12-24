@@ -522,6 +522,8 @@
         text-align: center;
         position: relative;
         overflow: hidden;
+        transform-style: flat;
+        perspective: none;
       }
 
       .integration-card::before {
@@ -590,8 +592,9 @@
           rgba(217, 48, 37, 0.08),
           rgba(255, 107, 107, 0.08)
         );
-        transform: scale(1.15) rotate(8deg);
+
         box-shadow: 0 8px 25px rgba(217, 48, 37, 0.15);
+        transform: scale(1.12);
       }
 
       .integration-logo img {
@@ -770,6 +773,11 @@
           transform: translate(-30px, 30px) scale(1.05);
         }
       }
+      .cfo-reports-section::before,
+      .cfo-reports-section::after {
+        pointer-events: none;
+        z-index: 0;
+      }
 
       .report-card {
         background: linear-gradient(145deg, #ffffff, #fefefe);
@@ -782,6 +790,7 @@
         height: 100%;
         position: relative;
         transform-style: preserve-3d;
+        z-index: 1;
       }
 
       .report-card::before {
@@ -825,45 +834,39 @@
         border-color: rgba(217, 48, 37, 0.15);
       }
 
+      /* ===== CFO REPORT: Remove image card look ===== */
+
       .report-image-wrapper {
-        height: 280px;
-        overflow: hidden;
-        position: relative;
-        background: linear-gradient(135deg, #f8f9fa, #fafbfc);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        height: auto !important;
+        background: transparent;
+        border-bottom: none;
+        overflow: visible;
       }
 
+      /* Kill all overlay / effects */
       .report-image-wrapper::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.08),
-          transparent 60%
-        );
-        opacity: 0;
-        transition: opacity 0.6s;
-        z-index: 2;
+        display: none !important;
+      }
+
+      /* Make image fully visible */
+      .report-image {
+        width: 100%;
+        height: auto !important; /* KEY FIX */
+        max-height: none !important;
+        object-fit: contain;
+        padding: 0;
+        transform: none !important;
+        transition: none !important;
+      }
+
+      /* Prevent hover from affecting image */
+      .report-card:hover .report-image {
+        transform: none !important;
+        filter: none !important;
       }
 
       .report-card:hover .report-image-wrapper::before {
         opacity: 1;
-      }
-
-      .report-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        padding: 20px;
-        transform: scale(1);
-      }
-
-      .report-card:hover .report-image {
-        transform: scale(1.12);
-        filter: brightness(1.05);
       }
 
       .report-badge {
@@ -1066,38 +1069,21 @@
       }
 
       .feature-image-wrapper {
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15),
-          0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        background: #f8f9fa;
-      }
-
-      .feature-image-wrapper::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(217, 48, 37, 0.1),
-          transparent 60%
-        );
-        opacity: 0;
-        transition: opacity 0.7s;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .feature-image-wrapper:hover::before {
-        opacity: 1;
+        background: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        overflow: visible;
+        padding: 0;
+        transform: none;
       }
 
       .feature-image-wrapper:hover {
-        transform: scale(1.03);
-        box-shadow: 0 35px 90px rgba(217, 48, 37, 0.3),
-          0 15px 40px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(217, 48, 37, 0.1);
+        transform: none;
+        box-shadow: none;
+      }
+
+      .feature-image-wrapper::before {
+        display: none;
       }
 
       .feature-image {
