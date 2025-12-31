@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoho Finance Plus - Transform Your Financial Operations</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -16,10 +16,11 @@
       :root {
         --primary-green: #16a34a;
         --secondary-green: #22c55e;
-        --light-green: #f0fdf4;
+        --dark-green: #15803d;
         --dark-gray: #0f172a;
         --medium-gray: #475569;
         --light-gray: #cbd5e1;
+        --bg-light: #f8fafc;
       }
 
       * {
@@ -32,14 +33,1125 @@
         font-family: "Inter", sans-serif;
         color: var(--dark-gray);
         overflow-x: hidden;
-        background: #fff;
+        background: #ffffff;
       }
 
       html {
         scroll-behavior: smooth;
       }
 
-      /* Fade-in animation */
+      .progress-bar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+        background: rgba(22, 163, 74, 0.08);
+        z-index: 10002;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-green),
+          var(--secondary-green),
+          #34d399,
+          var(--secondary-green),
+          var(--primary-green)
+        );
+        background-size: 300% 100%;
+        width: 0%;
+        transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+        animation: shimmer 3s ease-in-out infinite;
+        box-shadow: 0 0 25px rgba(22, 163, 74, 0.7),
+          0 0 50px rgba(34, 197, 94, 0.4);
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          background-position: 0% 0;
+        }
+        50% {
+          background-position: 100% 0;
+        }
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(25px) saturate(200%);
+        -webkit-backdrop-filter: blur(25px) saturate(200%);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.03);
+        z-index: 10000;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid rgba(22, 163, 74, 0.15);
+      }
+
+      header.scrolled {
+        box-shadow: 0 10px 50px rgba(0, 0, 0, 0.12);
+        background: rgba(255, 255, 255, 0.95);
+      }
+
+      .nav-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+      }
+
+      .nav {
+        background: rgba(242, 242, 244, 0.98);
+        backdrop-filter: blur(20px);
+        padding: 18px 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-bottom: 1px solid rgba(233, 69, 96, 0.1);
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .logo {
+        margin-left: 50px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-shrink: 0;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .logo:hover {
+        transform: scale(1.05) translateY(-2px);
+      }
+
+      .logo img {
+        display: block;
+        filter: drop-shadow(0 4px 12px rgba(22, 163, 74, 0.2));
+      }
+
+      .hero {
+        margin-top: 80px;
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #1a2942 20%,
+          #2d4a6f 40%,
+          #1e3a5f 60%,
+          #1a2942 80%,
+          #0a0e1a 100%
+        );
+        padding: 10rem 0 8rem;
+        position: relative;
+        overflow: hidden;
+      }
+      /* Add to your CSS */
+      .hero-tagline {
+        font-size: 1.8rem;
+        color: #cbd5e1;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+
+      .tagline-highlight {
+        color: var(--secondary-green);
+        font-weight: 800;
+        text-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+            circle at 30% 40%,
+            rgba(34, 197, 94, 0.2) 0%,
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 70% 60%,
+            rgba(22, 163, 74, 0.25) 0%,
+            transparent 35%
+          );
+        animation: rotate 35s linear infinite;
+        pointer-events: none;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .hero .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 4.5rem;
+        font-weight: 900;
+        line-height: 1.1;
+        letter-spacing: -3px;
+        margin-bottom: 2rem;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #e0f2e9 50%,
+          #ffffff 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero p.lead {
+        font-size: 1.4rem;
+        color: #e2e8f0;
+        line-height: 1.8;
+        margin-bottom: 3rem;
+        font-weight: 400;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 0 3px 25px rgba(0, 0, 0, 0.4);
+      }
+
+      .btn-hero {
+        padding: 1.4rem 3.5rem;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: none;
+        position: relative;
+        overflow: hidden;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .btn-hero span {
+        position: relative;
+        z-index: 1;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .btn-hero span::after {
+        content: "→";
+        font-size: 1.3rem;
+        transition: transform 0.4s;
+      }
+
+      .btn-hero:hover span::after {
+        transform: translateX(8px);
+      }
+
+      .btn-hero-primary {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        color: white;
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.4);
+      }
+
+      .btn-hero-primary:hover {
+        transform: translateY(-5px) scale(1.05);
+        color: white;
+        box-shadow: 0 25px 60px rgba(22, 163, 74, 0.6);
+      }
+
+      .btn-hero-secondary {
+        background: rgba(255, 255, 255, 0.12);
+        color: white;
+        border: 2px solid rgba(255, 255, 255, 0.35);
+        backdrop-filter: blur(15px);
+      }
+
+      .btn-hero-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        border-color: rgba(255, 255, 255, 0.7);
+        color: white;
+        transform: translateY(-5px) scale(1.05);
+      }
+
+      section {
+        padding: 6rem 0;
+        position: relative;
+        clear: both;
+      }
+
+      .section-subtitle {
+        font-size: 0.85rem;
+        color: var(--primary-green);
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: linear-gradient(
+          135deg,
+          rgba(22, 163, 74, 0.1),
+          rgba(34, 197, 94, 0.1)
+        );
+        border-radius: 50px;
+        border: 1px solid rgba(22, 163, 74, 0.2);
+      }
+
+      .section-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 3.2rem;
+        font-weight: 900;
+        letter-spacing: -2px;
+        margin-bottom: 2rem;
+        color: var(--dark-gray);
+      }
+
+      .feature-number-box {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.3);
+        transition: all 0.4s;
+      }
+
+      .feature-item:hover .feature-number-box {
+        transform: scale(1.1) rotate(5deg);
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.5);
+      }
+
+      .problem-box {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 3.5rem;
+        border-radius: 30px;
+        box-shadow: 0 25px 60px rgba(22, 163, 74, 0.15);
+        border: 2px solid rgba(22, 163, 74, 0.2);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-box::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -30%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(34, 197, 94, 0.12),
+          transparent
+        );
+        border-radius: 50%;
+      }
+
+      .consulting-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(34, 197, 94, 0.2);
+        border-radius: 25px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        height: 100%;
+      }
+
+      .consulting-card:hover {
+        transform: translateY(-15px) scale(1.05);
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(34, 197, 94, 0.5);
+        box-shadow: 0 25px 60px rgba(22, 163, 74, 0.3);
+      }
+
+      .consulting-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.4);
+        transition: all 0.5s;
+        font-size: 2.5rem;
+      }
+
+      .consulting-card:hover .consulting-icon {
+        transform: scale(1.15) rotate(5deg);
+        box-shadow: 0 20px 50px rgba(22, 163, 74, 0.6);
+      }
+
+      .methodology-box {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(15px);
+        border: 2px solid rgba(34, 197, 94, 0.3);
+        border-radius: 30px;
+        padding: 3rem;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .phase-badge {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        color: white;
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        font-weight: 700;
+        font-size: 0.95rem;
+        display: inline-block;
+        margin: 0.5rem;
+        transition: all 0.3s;
+      }
+
+      .phase-badge:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(22, 163, 74, 0.4);
+      }
+
+      .filter-tabs {
+        display: flex;
+        justify-content: center;
+        gap: 1rem;
+        margin-bottom: 4rem;
+        flex-wrap: wrap;
+      }
+
+      .filter-tab {
+        padding: 1rem 2.5rem;
+        border: 2px solid rgba(22, 163, 74, 0.2);
+        background: white;
+        color: var(--medium-gray);
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.4s;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .filter-tab:hover {
+        border-color: var(--primary-green);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.15);
+      }
+
+      .filter-tab.active {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        color: white;
+        border-color: transparent;
+        box-shadow: 0 10px 40px rgba(22, 163, 74, 0.4);
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .finance-card {
+        background: white;
+        border-radius: 30px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+        position: relative;
+      }
+
+      .finance-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 35px 70px rgba(22, 163, 74, 0.25);
+        border-color: rgba(22, 163, 74, 0.3);
+      }
+
+      .card-image-container {
+        width: 100%;
+        height: 260px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .card-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        z-index: 2;
+        box-shadow: 0 5px 20px rgba(22, 163, 74, 0.4);
+      }
+
+      .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .finance-card:hover .card-image {
+        transform: scale(1.15);
+      }
+
+      .card-content {
+        padding: 2.5rem;
+      }
+
+      .finance-card h3 {
+        color: var(--primary-green);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.7rem;
+        margin-bottom: 1rem;
+        font-weight: 800;
+      }
+
+      .finance-card p {
+        color: var(--medium-gray);
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+      }
+
+      .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+      }
+
+      .features-list li {
+        padding: 0.9rem 0;
+        color: var(--medium-gray);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .features-list li:last-child {
+        border-bottom: none;
+      }
+
+      .features-list li::before {
+        content: "✓";
+        color: white;
+        font-weight: bold;
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        flex-shrink: 0;
+        box-shadow: 0 5px 15px rgba(22, 163, 74, 0.3);
+      }
+
+      .btn-learn-more {
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        color: white;
+        border: none;
+        padding: 0.9rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s;
+        width: 100%;
+        margin-top: 1rem;
+        font-size: 0.95rem;
+        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.3);
+      }
+
+      .btn-learn-more:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.5);
+      }
+
+      .app-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(10px);
+        z-index: 10003;
+        overflow-y: auto;
+        padding: 2rem;
+      }
+
+      .app-modal.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .modal-content {
+        background: white;
+        border-radius: 30px;
+        max-width: 900px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        position: relative;
+        animation: slideUp 0.4s ease;
+      }
+
+      @keyframes slideUp {
+        from {
+          transform: translateY(50px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        border: none;
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        z-index: 10;
+        box-shadow: 0 5px 20px rgba(22, 163, 74, 0.4);
+        transition: all 0.3s;
+      }
+
+      .modal-close:hover {
+        transform: scale(1.1) rotate(90deg);
+      }
+
+      .modal-header {
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #1a2942 50%,
+          #0a0e1a 100%
+        );
+        padding: 4rem 3rem 3rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .modal-header h2 {
+        color: white;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 1rem;
+      }
+
+      .modal-header p {
+        color: #cbd5e1;
+        font-size: 1.2rem;
+        margin: 0;
+      }
+
+      .modal-body {
+        padding: 3rem;
+      }
+
+      .modal-section {
+        margin-bottom: 3rem;
+      }
+
+      .modal-section h3 {
+        color: var(--primary-green);
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      .modal-section p {
+        color: var(--medium-gray);
+        line-height: 1.9;
+        font-size: 1.05rem;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+
+      .feature-box {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 2rem;
+        border-radius: 20px;
+        border: 2px solid rgba(22, 163, 74, 0.2);
+        transition: all 0.3s;
+      }
+
+      .feature-box:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-box h4 {
+        color: var(--dark-gray);
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      .feature-box p {
+        color: var(--medium-gray);
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .use-case-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .use-case-list li {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        background: white;
+        border-left: 4px solid var(--primary-green);
+        border-radius: 10px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        color: var(--medium-gray);
+        font-size: 1.05rem;
+      }
+
+      .use-case-list li strong {
+        color: var(--dark-gray);
+        display: block;
+        margin-bottom: 0.3rem;
+      }
+
+      .video-container {
+        max-width: 1100px;
+        margin: 3rem auto 0;
+        border-radius: 30px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+        border: 3px solid rgba(22, 163, 74, 0.2);
+      }
+
+      .video-container video {
+        width: 100%;
+        display: block;
+      }
+
+      .benefit-card {
+        background: white;
+        padding: 3rem 2.5rem;
+        border-radius: 30px;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        height: 100%;
+        border: 2px solid transparent;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 30px 70px rgba(22, 163, 74, 0.2);
+        border-color: rgba(22, 163, 74, 0.3);
+      }
+
+      .benefit-img {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 2rem;
+        filter: drop-shadow(0 10px 25px rgba(22, 163, 74, 0.2));
+        transition: all 0.5s;
+      }
+
+      .benefit-card:hover .benefit-img {
+        transform: scale(1.15) translateY(-10px);
+        filter: drop-shadow(0 20px 40px rgba(22, 163, 74, 0.35));
+      }
+
+      .benefit-card h3 {
+        color: var(--primary-green);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        font-weight: 800;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .benefit-card p {
+        color: var(--medium-gray);
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .integration-box {
+        background: white;
+        padding: 2.5rem 3rem;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+        border: 2px solid rgba(22, 163, 74, 0.1);
+        min-width: 200px;
+        text-align: center;
+      }
+
+      .integration-box:hover {
+        transform: scale(1.1) translateY(-8px);
+        box-shadow: 0 25px 60px rgba(22, 163, 74, 0.3);
+        border-color: var(--primary-green);
+      }
+
+      .integration-box strong {
+        font-size: 1.2rem;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 800;
+        color: var(--dark-gray);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .integration-box small {
+        font-size: 0.9rem;
+        color: var(--medium-gray);
+      }
+
+      .integration-arrow {
+        font-size: 3rem;
+        color: var(--primary-green);
+        font-weight: bold;
+        animation: pulse 2s ease-in-out infinite;
+        filter: drop-shadow(0 5px 15px rgba(22, 163, 74, 0.3));
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+      }
+
+      .stats-box {
+        background: linear-gradient(
+          135deg,
+          #f0fdf4 0%,
+          #dcfce7 50%,
+          #ffffff 100%
+        );
+        padding: 4rem 3rem;
+        border-radius: 40px;
+        box-shadow: 0 25px 70px rgba(22, 163, 74, 0.15);
+        max-width: 1100px;
+        margin: 3rem auto 0;
+        border: 2px solid rgba(22, 163, 74, 0.2);
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: var(--primary-green);
+        font-family: "Space Grotesk", sans-serif;
+        text-shadow: 0 5px 20px rgba(22, 163, 74, 0.2);
+      }
+      /* Add to your CSS */
+      .comparison-box {
+        padding: 3rem;
+        border-radius: 30px;
+        height: 100%;
+        backdrop-filter: blur(10px);
+        border: 2px solid;
+        transition: all 0.5s;
+      }
+
+      .before-box {
+        background: rgba(220, 38, 38, 0.1);
+        border-color: rgba(220, 38, 38, 0.3);
+      }
+
+      .before-box:hover {
+        transform: translateX(-10px);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.3);
+      }
+
+      .after-box {
+        background: rgba(34, 197, 94, 0.1);
+        border-color: rgba(34, 197, 94, 0.3);
+      }
+
+      .after-box:hover {
+        transform: translateX(10px);
+        box-shadow: 0 20px 50px rgba(34, 197, 94, 0.3);
+      }
+
+      .comparison-box h3 {
+        color: white;
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 2rem;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .comparison-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .comparison-list li {
+        color: #e2e8f0;
+        font-size: 1.1rem;
+        line-height: 2;
+        padding: 1rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-left: 2rem;
+        position: relative;
+      }
+
+      .comparison-list li:last-child {
+        border-bottom: none;
+      }
+
+      .before-box .comparison-list li::before {
+        content: "✗";
+        position: absolute;
+        left: 0;
+        color: #ef4444;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      .after-box .comparison-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--secondary-green);
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      /* Add to your CSS */
+      .features-timeline {
+        max-width: 900px;
+        margin: 3rem auto 0;
+        position: relative;
+      }
+
+      .features-timeline::before {
+        content: "";
+        position: absolute;
+        left: 40px;
+        top: 0;
+        bottom: 0;
+        width: 4px;
+        background: linear-gradient(
+          180deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        border-radius: 2px;
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        position: relative;
+      }
+
+      .timeline-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        flex-shrink: 0;
+        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.4);
+        transition: all 0.5s;
+        position: relative;
+        z-index: 2;
+      }
+
+      .timeline-item:hover .timeline-icon {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.6);
+      }
+
+      .timeline-content {
+        flex: 1;
+        background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        padding: 2rem 2.5rem;
+        border-radius: 20px;
+        border: 2px solid rgba(22, 163, 74, 0.2);
+        transition: all 0.4s;
+      }
+
+      .timeline-item:hover .timeline-content {
+        transform: translateX(10px);
+        border-color: var(--primary-green);
+        box-shadow: 0 10px 40px rgba(22, 163, 74, 0.2);
+      }
+
+      .timeline-content h3 {
+        color: var(--primary-green);
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+        font-family: "Space Grotesk", sans-serif;
+      }
+
+      .timeline-content p {
+        color: var(--medium-gray);
+        line-height: 1.8;
+        font-size: 1.05rem;
+        margin: 0;
+      }
+
+      @media (max-width: 768px) {
+        .features-timeline::before {
+          left: 30px;
+        }
+
+        .timeline-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 2rem;
+        }
+
+        .timeline-item {
+          gap: 1rem;
+        }
+      }
+
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.6;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+      }
+
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+        text-align: center;
+        color: #94a3b8;
+      }
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
@@ -51,603 +1163,622 @@
         transform: translateY(0);
       }
 
-      /* Header with glassmorphism */
-      header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        z-index: 1000;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      .hidden {
+        display: none !important;
       }
 
-      header.scrolled {
-        background: rgba(250, 248, 248, 0.95);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
-      }
-
-      .navbar-brand {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-      }
-
-      .logo-img {
-        height: 50px;
-        width: auto;
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-        transition: transform 0.3s ease;
-      }
-
-      .logo-img:hover {
-        transform: scale(1.05);
-      }
-
-      .nav-link {
-        color: var(--medium-gray) !important;
-        font-weight: 500;
-        position: relative;
-        transition: color 0.3s ease;
-        padding: 0.5rem 1rem !important;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 50%;
-        background: linear-gradient(
-          90deg,
-          var(--primary-green),
-          var(--secondary-green)
-        );
-        transition: all 0.3s ease;
-        transform: translateX(-50%);
-      }
-
-      .nav-link:hover {
-        color: var(--primary-green) !important;
-      }
-
-      .nav-link:hover::after {
-        width: 100%;
-      }
-
-      .btn-primary-custom {
-        background: linear-gradient(
-          135deg,
-          var(--primary-green) 0%,
-          var(--secondary-green) 100%
-        );
-        color: rgb(9, 9, 9) !important;
-        padding: 0.8rem 1.8rem;
-        border-radius: 50px;
-        font-weight: 600;
-        border: none;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 4px 15px rgba(22, 163, 74, 0.3);
-      }
-
-      .btn-primary-custom:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.4);
-      }
-
-      /* Hero Section */
-      .hero {
-        margin-top: 76px;
-        background: linear-gradient(
-          135deg,
-          #f0fdf4 0%,
-          #dcfce7 50%,
-          #bbf7d0 100%
-        );
-        background-size: 200% 200%;
-        animation: gradientShift 15s ease infinite;
-        padding: 8rem 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      @keyframes gradientShift {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-            circle at 20% 50%,
-            rgba(22, 163, 74, 0.08) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 80%,
-            rgba(34, 197, 94, 0.08) 0%,
-            transparent 50%
-          );
-        animation: pulse 8s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-        }
-        50% {
-          opacity: 0.5;
-        }
-      }
-
-      .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 900;
-        line-height: 1.2;
-        letter-spacing: -2px;
-        margin-bottom: 1.5rem;
-      }
-
-      .hero p {
-        font-size: 1.25rem;
-        color: var(--medium-gray);
-        line-height: 1.8;
-        margin-bottom: 2rem;
-      }
-
-      .btn-hero {
-        padding: 1.2rem 3rem;
-        border-radius: 50px;
-        font-size: 1.1rem;
-        font-weight: 600;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        text-decoration: none;
-        display: inline-block;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-hero-primary {
-        background: linear-gradient(
-          135deg,
-          var(--primary-green) 0%,
-          var(--secondary-green) 100%
-        );
-        color: white;
-        box-shadow: 0 8px 25px rgba(22, 163, 74, 0.3);
-      }
-
-      .btn-hero-primary:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.4);
-        color: white;
-      }
-
-      .btn-hero-secondary {
-        background: white;
-        color: var(--primary-green);
-        border: 2px solid var(--primary-green);
-      }
-
-      .btn-hero-secondary:hover {
-        background: var(--primary-green);
-        color: white;
-        transform: translateY(-4px);
-      }
-
-      /* Section Styling */
-      .section-title {
-        font-size: 2.8rem;
-        font-weight: 800;
-        letter-spacing: -1px;
-        margin-bottom: 1rem;
-      }
-
-      .section-subtitle {
-        font-size: 0.9rem;
-        color: var(--primary-green);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 3px;
-        margin-bottom: 2rem;
-      }
-
-      /* Professional Carousel */
-      .carousel-container {
-        position: relative;
-        padding: 4rem 0;
-        overflow: hidden;
-      }
-
-      .carousel-track {
-        display: flex;
-        gap: 2rem;
-        animation: scroll 10s linear infinite;
-        width: max-content;
-      }
-
-      .carousel-track:hover {
-        animation-play-state: paused;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      .carousel-track-reverse {
-        animation: scrollReverse 10s linear infinite;
-      }
-
-      @keyframes scrollReverse {
-        0% {
-          transform: translateX(-50%);
-        }
-        100% {
-          transform: translateX(0);
-        }
-      }
-
-      /* Enhanced Card Design */
-      .finance-card {
-        background: white;
-        border-radius: 24px;
-        padding: 2.5rem;
-        min-width: 420px;
-        max-width: 420px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border: 1px solid rgba(22, 163, 74, 0.1);
-        position: relative;
-        overflow: hidden;
-        flex-shrink: 0;
-      }
-
-      .finance-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-green),
-          var(--secondary-green)
-        );
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.5s ease;
-      }
-
-      .finance-card:hover {
-        transform: translateY(-20px) scale(1.03);
-        box-shadow: 0 30px 70px rgba(22, 163, 74, 0.2);
-        border-color: var(--primary-green);
-      }
-
-      .finance-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .card-image-container {
-        width: 100%;
-        height: 200px;
-        margin-bottom: 1.5rem;
-        border-radius: 16px;
-        overflow: hidden;
-        position: relative;
-      }
-
-      .card-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .finance-card:hover .card-image {
-        transform: scale(1.1);
-      }
-
-      .finance-card h3 {
-        color: var(--primary-green);
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-        font-weight: 800;
-        transition: all 0.3s ease;
-      }
-
-      .finance-card:hover h3 {
-        color: #15803d;
-        letter-spacing: 0.5px;
-      }
-
-      .finance-card p {
-        color: var(--medium-gray);
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-      }
-
-      .features-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .features-list li {
-        padding: 0.6rem 0;
-        color: var(--medium-gray);
-        display: flex;
-        align-items: center;
-        gap: 0.7rem;
-        font-size: 0.95rem;
-        transition: all 0.3s ease;
-      }
-
-      .finance-card:hover .features-list li {
-        transform: translateX(8px);
-      }
-
-      .features-list li::before {
-        content: "✓";
-        color: white;
-        font-weight: bold;
-        width: 22px;
-        height: 22px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        background: var(--primary-green);
-        flex-shrink: 0;
-        transition: all 0.3s ease;
-      }
-
-      .finance-card:hover .features-list li::before {
-        background: var(--secondary-green);
-        transform: scale(1.2);
-      }
-
-      /* Benefits Section */
-      .benefit-card {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-        text-align: center;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(22, 163, 74, 0.1);
-        position: relative;
-        overflow: hidden;
-        height: 100%;
-      }
-
-      .benefit-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          var(--primary-green),
-          var(--secondary-green)
-        );
-        transform: scaleX(0);
-        transition: transform 0.4s ease;
-      }
-
-      .benefit-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 20px 50px rgba(22, 163, 74, 0.15);
-      }
-
-      .benefit-card:hover::before {
-        transform: scaleX(1);
-      }
-
-      .benefit-img {
-        width: 120px;
-        height: 120px;
-        object-fit: contain;
-        margin: 0 auto 1.5rem;
-        transition: transform 0.4s ease;
-      }
-
-      .benefit-card:hover .benefit-img {
-        transform: scale(1.15) rotate(5deg);
-      }
-
-      .benefit-card h3 {
-        color: var(--primary-green);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-        font-weight: 700;
-      }
-
-      /* Video Section */
-      .video-container {
-        position: relative;
-        width: 100%;
-        max-width: 900px;
-        margin: 3rem auto;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-      }
-
-      .video-container video {
-        width: 100%;
-        height: auto;
-        display: block;
-      }
-
-      /* Integration Section */
-      .integration-box {
-        background: white;
-        padding: 2rem 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-      }
-
-      .integration-box:hover {
-        transform: scale(1.08) translateY(-5px);
-        box-shadow: 0 20px 50px rgba(22, 163, 74, 0.2);
-        border-color: var(--primary-green);
-        background: linear-gradient(135deg, #dcfce7, #bbf7d0);
-      }
-
-      /* Footer */
-      footer {
-        background: linear-gradient(135deg, var(--dark-gray) 0%, #1e293b 100%);
-        color: var(--light-gray);
-        padding: 4rem 0 2rem;
-      }
-
-      .footer-section h3 {
-        color: var(--primary-green);
-        margin-bottom: 1.5rem;
-        font-size: 1.3rem;
-        font-weight: 700;
-      }
-
-      .footer-links {
-        list-style: none;
-        padding: 0;
-      }
-
-      .footer-links a {
-        color: var(--light-gray);
-        text-decoration: none;
-        display: block;
-        padding: 0.5rem 0;
-        transition: all 0.3s ease;
-      }
-
-      .footer-links a:hover {
-        color: var(--primary-green);
-        padding-left: 10px;
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
+      @media (max-width: 1200px) {
         .hero h1 {
-          font-size: 2.2rem;
-        }
-        .hero p {
-          font-size: 1.1rem;
+          font-size: 3.8rem;
         }
         .section-title {
+          font-size: 2.8rem;
+        }
+        .solutions-grid {
+          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hero h1 {
+          font-size: 3.2rem;
+        }
+        section {
+          padding: 4rem 0;
+        }
+        .solutions-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding: 6rem 0 4rem;
+          margin-top: 80px;
+        }
+        .hero h1 {
+          font-size: 2.5rem;
+          letter-spacing: -1px;
+        }
+        .hero p.lead {
+          font-size: 1.2rem;
+        }
+        .section-title {
+          font-size: 2.2rem;
+        }
+        .stat-number {
+          font-size: 2.8rem;
+        }
+        .btn-hero {
+          padding: 1.2rem 2.5rem;
+          font-size: 1rem;
+        }
+        section {
+          padding: 3rem 0;
+        }
+        .integration-arrow {
           font-size: 2rem;
         }
-        .finance-card {
-          min-width: 320px;
-          max-width: 320px;
+      }
+
+      @media (max-width: 480px) {
+        .hero h1 {
+          font-size: 2rem;
         }
-        .navbar-nav {
-          background: white;
-          padding: 1rem;
-          border-radius: 10px;
+        .section-title {
+          font-size: 1.8rem;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
+    <div class="progress-bar-container">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
 
-    <header class="header" id="header">
-      <nav class="nav">
-        <div class="logo">
-          <img
-            src="images/logo.png"
-            style="height: 80px; width: auto"
-            alt="Zolytics"
-          />
-          <img
-            src="images/finance-removebg-preview.png"
-            style="height: 50px; width: auto"
-          />
-        </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-center">
-            <li class="nav-item">
-              <a class="nav-link" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#solutions">Solutions</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#benefits">Benefits</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item ms-3">
-              <a href="#contact" class="btn btn-primary-custom">Get Started</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+    <header id="header">
+      <div class="nav-container">
+        <nav class="nav">
+          <div class="logo">
+            <img src="images/logo.png" style="height: 85px" alt="Zoho" />
+            <img
+              src="images/finance-removebg-preview.png"
+              style="height: 50px"
+              alt="Finance Plus"
+            />
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="home">
       <div class="container">
-        <div class="row align-items-center">
-          <div class="col-lg-12 text-center fade-in">
-            <h1>Transform Your Financial Operations with Zoho Finance Plus</h1>
-            <p class="lead mb-4">
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1 class="fade-in">
+              End-to-End Financial Transformation Powered by Zoho Finance Plus
+            </h1>
+            <!-- Add this right after the h1 in hero section -->
+            <div class="hero-tagline fade-in" style="margin-bottom: 2rem">
+              <span class="tagline-highlight">Simple</span> to use.
+              <span class="tagline-highlight">Smart</span> by design.
+              <span class="tagline-highlight">Powerful</span> for growth.
+            </div>
+            <p class="lead fade-in">
               We help organizations achieve complete financial visibility and
-              control through seamlessly integrated Zoho applications. From
-              real-time accounting to automated compliance, streamline every
-              financial process under one unified ecosystem.
+              control through seamlessly integrated Zoho applications.
             </p>
-            <div class="d-flex gap-3 justify-content-center flex-wrap">
-              <a href="#contact" class="btn-hero btn-hero-primary"
-                >Book Free Consultation</a
-              >
-              <a href="#solutions" class="btn-hero btn-hero-secondary"
-                >Explore Solutions</a
-              >
+            <div class="d-flex gap-4 justify-content-center flex-wrap fade-in">
+              <a href="index.html#contact" class="btn-hero btn-hero-primary">
+                <span>Book Free Consultation</span>
+              </a>
+              <a href="index.html#contact" class="btn-hero btn-hero-secondary">
+                <span>Explore Solutions</span>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Solutions Section with Professional Carousel -->
+    <section style="background: #ffffff" id="why-finance">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6 fade-in">
+            <p class="section-subtitle">UNDERSTANDING FINANCE PLUS</p>
+            <h2 class="section-title" style="text-align: left">
+              What is Zoho Finance Plus?
+            </h2>
+            <p
+              class="lead text-muted mb-4"
+              style="font-size: 1.15rem; line-height: 1.9"
+            >
+              Zoho Finance Plus is an all-in-one financial platform that unifies
+              your accounting, billing, inventory, expenses, and payments into a
+              single cohesive system.
+            </p>
+
+            <div class="mb-3 feature-item">
+              <div class="d-flex align-items-start gap-3 mb-4">
+                <div class="feature-number-box">
+                  <span
+                    style="color: white; font-size: 1.5rem; font-weight: bold"
+                    >01</span
+                  >
+                </div>
+                <div>
+                  <h4
+                    style="
+                      color: var(--dark-gray);
+                      margin-bottom: 0.5rem;
+                      font-weight: 700;
+                    "
+                  >
+                    Unified Financial Platform
+                  </h4>
+                  <p style="color: var(--medium-gray); margin: 0">
+                    All your financial operations in one integrated
+                    ecosystem—from invoicing to reporting.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mb-3 feature-item">
+              <div class="d-flex align-items-start gap-3 mb-4">
+                <div class="feature-number-box">
+                  <span
+                    style="color: white; font-size: 1.5rem; font-weight: bold"
+                    >02</span
+                  >
+                </div>
+                <div>
+                  <h4
+                    style="
+                      color: var(--dark-gray);
+                      margin-bottom: 0.5rem;
+                      font-weight: 700;
+                    "
+                  >
+                    End-to-End Workflow Automation
+                  </h4>
+                  <p style="color: var(--medium-gray); margin: 0">
+                    Automate financial workflows across billing, expenses,
+                    accounting, approvals, and reporting for complete
+                    operational efficiency.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="feature-item">
+              <div class="d-flex align-items-start gap-3">
+                <div class="feature-number-box">
+                  <span
+                    style="color: white; font-size: 1.5rem; font-weight: bold"
+                    >03</span
+                  >
+                </div>
+                <div>
+                  <h4
+                    style="
+                      color: var(--dark-gray);
+                      margin-bottom: 0.5rem;
+                      font-weight: 700;
+                    "
+                  >
+                    Compliance & Control
+                  </h4>
+                  <p style="color: var(--medium-gray); margin: 0">
+                    Stay compliant with GST regulations while maintaining
+                    complete audit trails.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-6 fade-in">
+            <div class="problem-box">
+              <h3
+                style="
+                  color: var(--primary-green);
+                  font-size: 2rem;
+                  font-weight: 900;
+                  margin-bottom: 2rem;
+                  font-family: 'Space Grotesk', sans-serif;
+                  position: relative;
+                "
+              >
+                The Problem We Solve
+              </h3>
+              <p
+                style="
+                  color: var(--medium-gray);
+                  font-size: 1.1rem;
+                  line-height: 1.9;
+                  margin-bottom: 1.5rem;
+                  position: relative;
+                "
+              >
+                Most businesses struggle with disconnected financial systems.
+                Your accounting software doesn't talk to your billing platform.
+                Your expense management is separate from your books.
+              </p>
+              <p
+                style="
+                  color: var(--dark-gray);
+                  font-size: 1.15rem;
+                  font-weight: 600;
+                  line-height: 1.9;
+                  margin-bottom: 2rem;
+                  position: relative;
+                "
+              >
+                This fragmentation leads to:
+              </p>
+              <ul style="list-style: none; padding: 0; position: relative">
+                <li
+                  style="
+                    color: var(--medium-gray);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: #dc2626; font-size: 1.5rem">✗</span>
+                  <span
+                    >Hours wasted on manual data entry and reconciliation</span
+                  >
+                </li>
+                <li
+                  style="
+                    color: var(--medium-gray);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: #dc2626; font-size: 1.5rem">✗</span>
+                  <span
+                    >Delayed financial reports and poor decision-making</span
+                  >
+                </li>
+                <li
+                  style="
+                    color: var(--medium-gray);
+                    margin-bottom: 1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: #dc2626; font-size: 1.5rem">✗</span>
+                  <span>Compliance risks and audit nightmares</span>
+                </li>
+                <li
+                  style="
+                    color: var(--medium-gray);
+                    margin-bottom: 0;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                  "
+                >
+                  <span style="color: #dc2626; font-size: 1.5rem">✗</span>
+                  <span
+                    >Limited visibility into cash flow and profitability</span
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Add after capabilities section -->
     <section
-      class="py-5"
-      style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)"
+      style="
+        background: linear-gradient(135deg, #0a0e1a 0%, #1a2942 100%);
+        padding: 6rem 0;
+      "
+    >
+      <div class="container">
+        <div class="text-center mb-5 fade-in">
+          <p
+            class="section-subtitle"
+            style="
+              background: rgba(34, 197, 94, 0.15);
+              border-color: rgba(34, 197, 94, 0.3);
+            "
+          >
+            TRANSFORMATION
+          </p>
+          <h2 class="section-title" style="color: white">
+            Before & After Finance Plus
+          </h2>
+        </div>
+
+        <div class="row g-5">
+          <div class="col-lg-6 fade-in">
+            <div class="comparison-box before-box">
+              <h3>❌ Without Finance Plus</h3>
+              <ul class="comparison-list">
+                <li>Multiple disconnected software tools</li>
+                <li>Manual data entry between systems</li>
+                <li>Hours spent on month-end reconciliation</li>
+                <li>Delayed financial reports (7-10 days)</li>
+                <li>No real-time cash flow visibility</li>
+                <li>Compliance risks and audit issues</li>
+                <li>Team working with outdated data</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 fade-in">
+            <div class="comparison-box after-box">
+              <h3>✅ With Finance Plus</h3>
+              <ul class="comparison-list">
+                <li>Single integrated financial platform</li>
+                <li>Automated data sync across modules</li>
+                <li>Real-time reconciliation (5 minutes)</li>
+                <li>Instant financial dashboards</li>
+                <li>Live cash flow tracking</li>
+                <li>Built-in GST compliance</li>
+                <li>Everyone works with real-time data</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Add after solutions section -->
+    <section style="background: white; padding: 6rem 0">
+      <div class="container">
+        <div class="text-center mb-5 fade-in">
+          <p class="section-subtitle">POWERFUL FEATURES</p>
+          <h2 class="section-title">Core Features That Drive Results</h2>
+        </div>
+
+        <div class="features-timeline">
+          <div class="timeline-item fade-in">
+            <div class="timeline-icon">⚡</div>
+            <div class="timeline-content">
+              <h3>Automated Workflows</h3>
+              <p>
+                Invoice generation → Payment collection → Accounting entries
+                happen automatically without manual intervention
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-icon">🔄</div>
+            <div class="timeline-content">
+              <h3>Real-Time Sync</h3>
+              <p>
+                Data flows instantly between billing, inventory, expenses, and
+                accounting—no delays, no duplicates
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-icon">📱</div>
+            <div class="timeline-content">
+              <h3>Mobile Access</h3>
+              <p>
+                Approve expenses, create invoices, check inventory—all from your
+                phone with dedicated mobile apps
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-icon">🔐</div>
+            <div class="timeline-content">
+              <h3>Role-Based Security</h3>
+              <p>
+                Granular permissions ensure team members see only what they
+                need—complete audit trails included
+              </p>
+            </div>
+          </div>
+
+          <div class="timeline-item fade-in">
+            <div class="timeline-icon">📊</div>
+            <div class="timeline-content">
+              <h3>Smart Reporting</h3>
+              <p>
+                Pre-built dashboards show cash flow, profitability, expenses by
+                category—updated in real-time
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      style="
+        background: linear-gradient(
+          135deg,
+          #0a0e1a 0%,
+          #1a2942 50%,
+          #0a0e1a 100%
+        );
+        position: relative;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%2316a34a&quot; fill-opacity=&quot;0.05&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');
+          opacity: 0.4;
+        "
+      ></div>
+      <div class="container" style="position: relative; z-index: 1">
+        <div class="text-center mb-5 fade-in">
+          <p
+            class="section-subtitle"
+            style="
+              background: rgba(34, 197, 94, 0.15);
+              border-color: rgba(34, 197, 94, 0.3);
+            "
+          >
+            OUR VALUE PROPOSITION
+          </p>
+          <h2 class="section-title" style="color: white">
+            Why Partner With Our Consulting Firm?
+          </h2>
+          <p
+            class="lead"
+            style="
+              max-width: 950px;
+              margin: 0 auto;
+              color: #e2e8f0;
+              font-size: 1.25rem;
+            "
+          >
+            Implementation isn't just about technical setup—it's about
+            transformation. We bring expertise, methodology, and proven success.
+          </p>
+        </div>
+
+        <div class="row g-4 mb-5">
+          <div class="col-md-6 col-lg-3 fade-in">
+            <div class="consulting-card">
+              <div class="consulting-icon">
+                <span style="color: white">💼</span>
+              </div>
+              <h4
+                style="
+                  color: var(--secondary-green);
+                  margin-bottom: 1rem;
+                  font-weight: 800;
+                  font-size: 1.3rem;
+                "
+              >
+                150+ Implementations
+              </h4>
+              <p style="color: #cbd5e1; line-height: 1.8; margin: 0">
+                Proven track record across industries from startups to
+                enterprises.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 fade-in">
+            <div class="consulting-card">
+              <div class="consulting-icon">
+                <span style="color: white">🎓</span>
+              </div>
+              <h4
+                style="
+                  color: var(--secondary-green);
+                  margin-bottom: 1rem;
+                  font-weight: 800;
+                  font-size: 1.3rem;
+                "
+              >
+                Certified Experts
+              </h4>
+              <p style="color: #cbd5e1; line-height: 1.8; margin: 0">
+                Zoho-certified consultants with deep Finance Plus expertise.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 fade-in">
+            <div class="consulting-card">
+              <div class="consulting-icon">
+                <span style="color: white">⚡</span>
+              </div>
+              <h4
+                style="
+                  color: var(--secondary-green);
+                  margin-bottom: 1rem;
+                  font-weight: 800;
+                  font-size: 1.3rem;
+                "
+              >
+                2-Week Deployment
+              </h4>
+              <p style="color: #cbd5e1; line-height: 1.8; margin: 0">
+                Rapid implementation framework gets you live fast.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3 fade-in">
+            <div class="consulting-card">
+              <div class="consulting-icon">
+                <span style="color: white">🛡️</span>
+              </div>
+              <h4
+                style="
+                  color: var(--secondary-green);
+                  margin-bottom: 1rem;
+                  font-weight: 800;
+                  font-size: 1.3rem;
+                "
+              >
+                Success Guarantee
+              </h4>
+              <p style="color: #cbd5e1; line-height: 1.8; margin: 0">
+                We don't stop until your system delivers measurable results.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center fade-in">
+          <div class="methodology-box">
+            <h3
+              style="
+                color: var(--secondary-green);
+                font-size: 2.2rem;
+                font-weight: 900;
+                margin-bottom: 1.5rem;
+                font-family: 'Space Grotesk', sans-serif;
+              "
+            >
+              Our Consulting Methodology
+            </h3>
+            <p
+              style="
+                color: #e2e8f0;
+                font-size: 1.15rem;
+                line-height: 1.9;
+                margin-bottom: 2rem;
+              "
+            >
+              We don't just install software—we transform your financial
+              operations. Our proprietary 5-phase methodology ensures your
+              Finance Plus implementation delivers immediate value.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+              <div class="phase-badge">Discovery & Planning</div>
+              <div class="phase-badge">Configuration & Setup</div>
+              <div class="phase-badge">Data Migration</div>
+              <div class="phase-badge">Training & Go-Live</div>
+              <div class="phase-badge">Optimization & Support</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      style="background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%)"
       id="solutions"
     >
       <div class="container">
@@ -656,339 +1787,179 @@
           <h2 class="section-title">Zoho Finance Solutions We Implement</h2>
           <p
             class="lead text-muted mb-5"
-            style="max-width: 900px; margin: 0 auto"
+            style="max-width: 800px; margin: 0 auto 3rem"
           >
-            As certified Zoho consultants, we specialize in implementing and
-            optimizing Finance Plus applications tailored to your organization's
-            unique needs.
+            As certified Zoho consultants, we specialize in implementing Finance
+            Plus applications tailored to your business needs.
           </p>
         </div>
-      </div>
 
-      <!-- First Row: Left to Right -->
-      <div class="carousel-container">
-        <div class="carousel-track">
-          <!-- Card 1 -->
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://www.zoho.com/books/images/quickbooks-alternative/qb-dashboard-2x.png"
-                class="card-image"
-                alt="Accounting"
-              />
-            </div>
-            <h3>Zoho Books Implementation</h3>
-            <p>
-              We deploy Zoho Books to centralize your accounting operations,
-              ensuring GST compliance and real-time financial visibility.
-            </p>
-            <ul class="features-list">
-              <li>Custom chart of accounts setup</li>
-              <li>Automated GST filing & compliance</li>
-              <li>Multi-entity consolidation</li>
-              <li>Bank feed integration</li>
-              <li>Custom financial dashboards</li>
-            </ul>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop"
-                class="card-image"
-                alt="Billing"
-              />
-            </div>
-            <h3>Zoho Billing Setup</h3>
-            <p>
-              Transform your subscription revenue management with automated
-              billing cycles and payment gateway integration.
-            </p>
-            <ul class="features-list">
-              <li>Subscription plan architecture</li>
-              <li>Payment gateway integration</li>
-              <li>Automated dunning management</li>
-              <li>Revenue recognition automation</li>
-              <li>Customer self-service portal</li>
-            </ul>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=250&fit=crop"
-                class="card-image"
-                alt="Inventory"
-              />
-            </div>
-            <h3>Zoho Inventory Deployment</h3>
-            <p>
-              Implement real-time inventory control with barcode integration and
-              order fulfillment automation.
-            </p>
-            <ul class="features-list">
-              <li>Multi-location warehouse setup</li>
-              <li>Barcode scanning implementation</li>
-              <li>E-commerce platform integration</li>
-              <li>Automated reorder points</li>
-              <li>Serial number tracking</li>
-            </ul>
-          </div>
-
-          <!-- Duplicates for seamless loop -->
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=250&fit=crop"
-                class="card-image"
-                alt="Accounting"
-              />
-            </div>
-            <h3>Zoho Books Implementation</h3>
-            <p>
-              We deploy Zoho Books to centralize your accounting operations,
-              ensuring GST compliance and real-time financial visibility.
-            </p>
-            <ul class="features-list">
-              <li>Custom chart of accounts setup</li>
-              <li>Automated GST filing & compliance</li>
-              <li>Multi-entity consolidation</li>
-              <li>Bank feed integration</li>
-              <li>Custom financial dashboards</li>
-            </ul>
-          </div>
-
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop"
-                class="card-image"
-                alt="Billing"
-              />
-            </div>
-            <h3>Zoho Billing Setup</h3>
-            <p>
-              Transform your subscription revenue management with automated
-              billing cycles and payment gateway integration.
-            </p>
-            <ul class="features-list">
-              <li>Subscription plan architecture</li>
-              <li>Payment gateway integration</li>
-              <li>Automated dunning management</li>
-              <li>Revenue recognition automation</li>
-              <li>Customer self-service portal</li>
-            </ul>
-          </div>
-
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=400&h=250&fit=crop"
-                class="card-image"
-                alt="Inventory"
-              />
-            </div>
-            <h3>Zoho Inventory Deployment</h3>
-            <p>
-              Implement real-time inventory control with barcode integration and
-              order fulfillment automation.
-            </p>
-            <ul class="features-list">
-              <li>Multi-location warehouse setup</li>
-              <li>Barcode scanning implementation</li>
-              <li>E-commerce platform integration</li>
-              <li>Automated reorder points</li>
-              <li>Serial number tracking</li>
-            </ul>
-          </div>
+        <div class="filter-tabs fade-in">
+          <div class="filter-tab active" data-filter="all">All Solutions</div>
+          <div class="filter-tab" data-filter="accounting">Accounting</div>
+          <div class="filter-tab" data-filter="billing">Billing & Payments</div>
+          <div class="filter-tab" data-filter="management">Management</div>
         </div>
-      </div>
 
-      <!-- Second Row: Right to Left -->
-      <div class="carousel-container">
-        <div class="carousel-track carousel-track-reverse">
-          <!-- Card 4 -->
-          <div class="finance-card">
+        <div class="solutions-grid">
+          <div class="finance-card fade-in" data-category="accounting">
             <div class="card-image-container">
+              <span class="card-badge">Most Popular</span>
               <img
-                src="https://blog.zoho.com/sites/zblogs/images/expense/mileage_tracking_blog_1.png"
+                src="https://srisattvagroup.com/wp-content/uploads/2024/09/zoho_service_1.webp"
+                class="card-image"
+                alt="Books"
+              />
+            </div>
+            <div class="card-content">
+              <h3>Zoho Books Implementation</h3>
+              <p>
+                Centralize your accounting operations with GST compliance and
+                real-time visibility.
+              </p>
+              <ul class="features-list">
+                <li>Custom chart of accounts setup</li>
+                <li>Automated GST filing</li>
+                <li>Multi-entity consolidation</li>
+                <li>Bank feed integration</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="finance-card fade-in" data-category="billing">
+            <div class="card-image-container">
+              <span class="card-badge">Revenue Focus</span>
+              <img
+                src="https://media.trustradius.com/product-screenshots/2W/LA/JFW9RLIWNKCJ.png"
+                class="card-image"
+                alt="Billing"
+              />
+            </div>
+            <div class="card-content">
+              <h3>Zoho Billing Setup</h3>
+              <p>
+                Transform subscription revenue with automated billing and
+                payment integration.
+              </p>
+              <ul class="features-list">
+                <li>Subscription plan architecture</li>
+                <li>Payment gateway integration</li>
+                <li>Automated dunning</li>
+                <li>Revenue recognition</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="finance-card fade-in" data-category="management">
+            <div class="card-image-container">
+              <span class="card-badge">Stock Control</span>
+              <img
+                src="https://zdblogs.zohowebstatic.com/sites/inventory/academy/files/simplifyordermanagement-blog.png"
+                class="card-image"
+                alt="Inventory"
+              />
+            </div>
+            <div class="card-content">
+              <h3>Zoho Inventory Deployment</h3>
+              <p>
+                Real-time inventory control with barcode integration and
+                automation.
+              </p>
+              <ul class="features-list">
+                <li>Multi-location warehouse setup</li>
+                <li>Barcode scanning</li>
+                <li>E-commerce integration</li>
+                <li>Automated reorder points</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="finance-card fade-in" data-category="management">
+            <div class="card-image-container">
+              <span class="card-badge">AI Powered</span>
+              <img
+                src="https://blog.zohowebstatic.com/sites/zblogs/images/expense/mileage_tracking_blog_1.png"
                 class="card-image"
                 alt="Expense"
               />
             </div>
-            <h3>Zoho Expense Automation</h3>
-            <p>
-              Eliminate manual expense reporting with AI-powered receipt
-              scanning and policy-based approvals.
-            </p>
-            <ul class="features-list">
-              <li>Corporate policy configuration</li>
-              <li>Multi-level approval workflows</li>
-              <li>Corporate card reconciliation</li>
-              <li>Mileage tracking with GPS</li>
-              <li>Real-time violation alerts</li>
-            </ul>
+            <div class="card-content">
+              <h3>Zoho Expense Automation</h3>
+              <p>
+                Eliminate manual expense reporting with AI-powered scanning.
+              </p>
+              <ul class="features-list">
+                <li>Corporate policy configuration</li>
+                <li>Multi-level approvals</li>
+                <li>Card reconciliation</li>
+                <li>Mileage tracking</li>
+              </ul>
+            </div>
           </div>
 
-          <!-- Card 5 -->
-          <div class="finance-card">
+          <div class="finance-card fade-in" data-category="billing">
             <div class="card-image-container">
+              <span class="card-badge">Fast Setup</span>
               <img
-                src="https://www.zoho.com/invoice/help/images/settings/item-level-discount.png"
+                src="https://i.ytimg.com/vi/gr9PZ9b2xTo/maxresdefault.jpg"
                 class="card-image"
                 alt="Invoice"
               />
             </div>
-            <h3>Zoho Invoice Configuration</h3>
-            <p>
-              Create professional, branded invoicing systems with automated
-              payment reminders and online payments.
-            </p>
-            <ul class="features-list">
-              <li>Custom invoice templates</li>
-              <li>Payment gateway integration</li>
-              <li>Automated reminder scheduling</li>
-              <li>Time tracking integration</li>
-              <li>Client portal customization</li>
-            </ul>
+            <div class="card-content">
+              <h3>Zoho Invoice Configuration</h3>
+              <p>Professional branded invoicing with automated payments.</p>
+              <ul class="features-list">
+                <li>Custom invoice templates</li>
+                <li>Payment gateway integration</li>
+                <li>Automated reminders</li>
+                <li>Time tracking integration</li>
+              </ul>
+            </div>
           </div>
 
-          <!-- Card 6 -->
-          <div class="finance-card">
+          <div class="finance-card fade-in" data-category="billing">
             <div class="card-image-container">
+              <span class="card-badge">Secure</span>
               <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkoqrIYhUz9oaem72d5xSZmHm9nDTWhZcKhQ&s"
+                src="https://www.zoho.com/checkout/integrations/zohobooks/images/payment-page-1x.png"
                 class="card-image"
                 alt="Checkout"
               />
             </div>
-            <h3>Zoho Checkout Integration</h3>
-            <p>
-              Deploy secure, branded payment pages with no coding required,
-              integrated with your website.
-            </p>
-            <ul class="features-list">
-              <li>Custom payment page design</li>
-              <li>Buy button embed setup</li>
-              <li>Subscription payment config</li>
-              <li>Multi-currency pricing</li>
-              <li>PCI-DSS compliance</li>
-            </ul>
-          </div>
-
-          <!-- Duplicates -->
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://blog.zoho.com/sites/zblogs/images/expense/mileage_tracking_blog_1.png"
-                class="card-image"
-                alt="Expense"
-              />
+            <div class="card-content">
+              <h3>Zoho Checkout Integration</h3>
+              <p>Secure branded payment pages integrated with your website.</p>
+              <ul class="features-list">
+                <li>Custom payment pages</li>
+                <li>Buy button embed</li>
+                <li>Subscription payments</li>
+                <li>Multi-currency pricing</li>
+              </ul>
             </div>
-            <h3>Zoho Expense Automation</h3>
-            <p>
-              Eliminate manual expense reporting with AI-powered receipt
-              scanning and policy-based approvals.
-            </p>
-            <ul class="features-list">
-              <li>Corporate policy configuration</li>
-              <li>Multi-level approval workflows</li>
-              <li>Corporate card reconciliation</li>
-              <li>Mileage tracking with GPS</li>
-              <li>Real-time violation alerts</li>
-            </ul>
-          </div>
-
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://www.zoho.com/invoice/help/images/settings/item-level-discount.png"
-                class="card-image"
-                alt="Invoice"
-              />
-            </div>
-            <h3>Zoho Invoice Configuration</h3>
-            <p>
-              Create professional, branded invoicing systems with automated
-              payment reminders and online payments.
-            </p>
-            <ul class="features-list">
-              <li>Custom invoice templates</li>
-              <li>Payment gateway integration</li>
-              <li>Automated reminder scheduling</li>
-              <li>Time tracking integration</li>
-              <li>Client portal customization</li>
-            </ul>
-          </div>
-
-          <div class="finance-card">
-            <div class="card-image-container">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkoqrIYhUz9oaem72d5xSZmHm9nDTWhZcKhQ&s"
-                class="card-image"
-                alt="Checkout"
-              />
-            </div>
-            <h3>Zoho Checkout Integration</h3>
-            <p>
-              Deploy secure, branded payment pages with no coding required,
-              integrated with your website.
-            </p>
-            <ul class="features-list">
-              <li>Custom payment page design</li>
-              <li>Buy button embed setup</li>
-              <li>Subscription payment config</li>
-              <li>Multi-currency pricing</li>
-              <li>PCI-DSS compliance</li>
-            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Video Demo Section -->
-    <section class="py-5 bg-white">
-      <div class="container">
-        <div class="text-center fade-in mb-5">
-          <p class="section-subtitle">SEE IT IN ACTION</p>
-          <h2 class="section-title">Finance Plus in Action</h2>
-          <p class="lead text-muted">
-            Watch how we transform financial operations for businesses like
-            yours
-          </p>
-        </div>
-        <div class="video-container fade-in">
-          <video
-            controls
-            poster="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=500&fit=crop"
-          >
-            <source
-              src="https://www.w3schools.com/html/mov_bbb.mp4"
-              type="video/mp4"
-            />
-            Your browser does not support the video tag.
-          </video>
-        </div>
+    <div id="appModal" class="app-modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div id="modalContentArea"></div>
       </div>
-    </section>
+    </div>
 
-    <!-- Benefits Section -->
     <section
-      class="py-5"
       style="background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)"
       id="benefits"
     >
       <div class="container">
-        <div class="text-center fade-in mb-5">
+        <div class="text-center mb-5 fade-in">
           <p class="section-subtitle">WHY CHOOSE US</p>
-          <h2 class="section-title">
-            Our Zoho Finance Plus Consulting Advantage
-          </h2>
-          <p class="lead text-muted" style="max-width: 900px; margin: 0 auto">
-            We don't just implement software—we transform your financial
-            operations with proven methodologies and dedicated support.
+          <h2 class="section-title">Our Consulting Advantage</h2>
+          <p class="lead text-muted" style="max-width: 800px; margin: 0 auto">
+            We transform your financial operations with proven methodologies and
+            expert guidance.
           </p>
         </div>
 
@@ -996,15 +1967,14 @@
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=150&h=150&fit=crop"
+                src="https://tailoredimplementation.org/wp-content/uploads/2025/02/TailoredImplementation.jpg"
                 class="benefit-img"
                 alt="Tailored"
               />
               <h3>Tailored Implementation</h3>
               <p>
-                Custom configuration aligned to your specific workflows, not
-                generic templates. We map your existing processes and optimize
-                them.
+                Custom configuration aligned to your specific workflows and
+                processes.
               </p>
             </div>
           </div>
@@ -1012,29 +1982,25 @@
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=150&h=150&fit=crop"
+                src="https://kissflow.com/hs-fs/hubfs/rapid_application_development_rad_.webp"
                 class="benefit-img"
                 alt="Rapid"
               />
               <h3>Rapid Deployment</h3>
-              <p>
-                Go live in weeks, not months. Our accelerated methodology gets
-                you running 60% faster than traditional approaches.
-              </p>
+              <p>Go live in weeks with our accelerated methodology.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=150&h=150&fit=crop"
+                src="https://www.square-9.com/wp-content/uploads/2025/04/Blog-Header-Seamless-Integration.png"
                 class="benefit-img"
                 alt="Integration"
               />
               <h3>Seamless Integration</h3>
               <p>
-                Connect Finance Plus with your existing systems—CRM, e-commerce,
-                banking. Data flows automatically across platforms.
+                Connect with your existing systems—CRM, e-commerce, banking.
               </p>
             </div>
           </div>
@@ -1042,211 +2008,163 @@
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=150&h=150&fit=crop"
+                src="https://dezyre.gumlet.io/images/blog/what-is-data-migration/Image_for_data_migration_blog.webp?w=376&dpr=2.6"
                 class="benefit-img"
                 alt="Data"
               />
               <h3>Data Migration Expertise</h3>
-              <p>
-                Zero data loss guarantee. We migrate historical financial data
-                with complete accuracy and audit trails.
-              </p>
+              <p>Zero data loss guarantee with complete accuracy.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=150&h=150&fit=crop"
+                src="https://www.cmocares.org/sites/default/files/styles/large/public/2020-10/comprehensive-training-for-organizations.png?itok=8UfwmK3D"
                 class="benefit-img"
                 alt="Training"
               />
               <h3>Comprehensive Training</h3>
-              <p>
-                Role-based training programs ensuring every team member
-                maximizes productivity from day one.
-              </p>
+              <p>Role-based training programs for maximum productivity.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=150&h=150&fit=crop"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSKU6Hx9_9uQsOzrKjitcY-nFMftcSwgBeELg&s"
                 class="benefit-img"
                 alt="Support"
               />
               <h3>Ongoing Support</h3>
-              <p>
-                24/7 support doesn't end at go-live. We continuously optimize
-                and ensure maximum value delivery.
-              </p>
+              <p>24/7 support with continuous optimization.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=150&h=150&fit=crop"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrsJVPiAwwyxqT5zZ645zTIGITZPm2icFIig&s"
                 class="benefit-img"
                 alt="Compliance"
               />
               <h3>Compliance Assurance</h3>
-              <p>
-                Stay compliant with GST, income tax, and regulations. Automated
-                compliance checks for peace of mind.
-              </p>
+              <p>Stay compliant with GST and tax regulations.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=150&h=150&fit=crop"
+                src="https://media.licdn.com/dms/image/v2/C4D12AQF3FRVT8WydsQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1520102661476?e=2147483647&v=beta&t=uv0wIvSCYIZMMbSRPmZXgIsfvVtthRptIHZ_pi-tkFg"
                 class="benefit-img"
-                alt="Best Practices"
+                alt="Best"
               />
               <h3>Best Practices</h3>
-              <p>
-                Leverage our experience across 100+ implementations with proven
-                strategies avoiding common pitfalls.
-              </p>
+              <p>Leverage our experience across 100+ implementations.</p>
             </div>
           </div>
 
           <div class="col-md-6 col-lg-4 fade-in">
             <div class="benefit-card">
               <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=150&h=150&fit=crop"
+                src="https://canalix.com/wp-content/uploads/case-study-graphic2.png"
                 class="benefit-img"
                 alt="ROI"
               />
               <h3>Measurable ROI</h3>
-              <p>
-                Track results: 70% reduction in close time, 85% fewer errors,
-                complete cash flow visibility in 90 days.
-              </p>
+              <p>70% reduction in close time, 85% fewer errors.</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Integration Section -->
-    <section class="py-5 bg-white">
+    <section style="background: white">
       <div class="container">
-        <div class="text-center fade-in mb-5">
+        <div class="text-center mb-5 fade-in">
           <p class="section-subtitle">OUR METHODOLOGY</p>
           <h2 class="section-title">
             How We Integrate Your Financial Ecosystem
           </h2>
           <p class="lead text-muted" style="max-width: 900px; margin: 0 auto">
             We create a unified financial command center where data flows
-            automatically between applications, eliminating duplicate entry and
-            reducing errors.
+            automatically between applications.
           </p>
         </div>
 
         <div
-          class="d-flex justify-content-center align-items-center flex-wrap gap-3 mb-4 fade-in"
+          class="d-flex justify-content-center align-items-center flex-wrap gap-4 mb-5 fade-in"
         >
           <div class="integration-box">
-            <strong>Subscription Billing</strong><br />
+            <strong>Subscription Billing</strong>
             <small class="text-muted">Automated Revenue</small>
           </div>
-          <span style="font-size: 2rem; color: var(--primary-green)">→</span>
+          <span class="integration-arrow">→</span>
           <div class="integration-box">
-            <strong>Accounting</strong><br />
+            <strong>Accounting</strong>
             <small class="text-muted">Real-Time Books</small>
           </div>
-          <span style="font-size: 2rem; color: var(--primary-green)">→</span>
+          <span class="integration-arrow">→</span>
           <div class="integration-box">
-            <strong>Inventory</strong><br />
+            <strong>Inventory</strong>
             <small class="text-muted">Stock Control</small>
           </div>
         </div>
 
         <div
-          class="d-flex justify-content-center align-items-center flex-wrap gap-3 fade-in"
+          class="d-flex justify-content-center align-items-center flex-wrap gap-4 fade-in"
         >
           <div class="integration-box">
-            <strong>Expense Management</strong><br />
+            <strong>Expense Management</strong>
             <small class="text-muted">Instant Approvals</small>
           </div>
-          <span style="font-size: 2rem; color: var(--primary-green)">→</span>
+          <span class="integration-arrow">→</span>
           <div class="integration-box">
-            <strong>Invoicing</strong><br />
+            <strong>Invoicing</strong>
             <small class="text-muted">Fast Payments</small>
           </div>
-          <span style="font-size: 2rem; color: var(--primary-green)">→</span>
+          <span class="integration-arrow">→</span>
           <div class="integration-box">
-            <strong>Payment Gateway</strong><br />
+            <strong>Payment Gateway</strong>
             <small class="text-muted">Secure Collections</small>
           </div>
         </div>
 
-        <div class="text-center mt-5 fade-in">
-          <div
-            class="p-5 rounded-4"
-            style="
-              background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-              box-shadow: 0 15px 50px rgba(22, 163, 74, 0.15);
-              max-width: 900px;
-              margin: 0 auto;
-              border: 2px solid rgba(22, 163, 74, 0.1);
-            "
-          >
+        <div class="text-center fade-in">
+          <div class="stats-box">
             <h3
-              class="mb-4"
               style="
                 color: var(--primary-green);
-                font-size: 2rem;
-                font-weight: 800;
+                font-size: 2.5rem;
+                font-weight: 900;
+                margin-bottom: 1.5rem;
               "
             >
               The Result: A Single Source of Truth
             </h3>
             <p class="lead text-muted mb-4">
               With our Finance Plus integration, your team accesses the same
-              real-time data across all departments. No manual reconciliation,
-              no data discrepancies—just one unified financial system.
+              real-time data across all departments.
             </p>
             <div class="row g-4 mt-4">
               <div class="col-md-4">
-                <div
-                  style="
-                    font-size: 3rem;
-                    font-weight: 900;
-                    color: var(--primary-green);
-                  "
-                >
-                  100%
+                <div class="stat-item">
+                  <div class="stat-number" data-target="100">100%</div>
+                  <div class="text-muted fw-bold fs-5">Data Accuracy</div>
                 </div>
-                <div class="text-muted fw-semibold">Data Accuracy</div>
               </div>
               <div class="col-md-4">
-                <div
-                  style="
-                    font-size: 3rem;
-                    font-weight: 900;
-                    color: var(--primary-green);
-                  "
-                >
-                  5 Min
+                <div class="stat-item">
+                  <div class="stat-number">5 Min</div>
+                  <div class="text-muted fw-bold fs-5">Financial Close</div>
                 </div>
-                <div class="text-muted fw-semibold">Financial Close</div>
               </div>
               <div class="col-md-4">
-                <div
-                  style="
-                    font-size: 3rem;
-                    font-weight: 900;
-                    color: var(--primary-green);
-                  "
-                >
-                  Zero
+                <div class="stat-item">
+                  <div class="stat-number">Zero</div>
+                  <div class="text-muted fw-bold fs-5">Manual Entry</div>
                 </div>
-                <div class="text-muted fw-semibold">Manual Entry</div>
               </div>
             </div>
           </div>
@@ -1254,76 +2172,54 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-      <div class="container">
-        <div class="row g-4 mb-5">
-          <div class="col-md-6 col-lg-3 footer-section">
-            <h3>Zoho Finance Plus Consulting</h3>
-            <p>
-              Certified Zoho partners specializing in Finance Plus
-              implementation, integration, and optimization.
-            </p>
-            <p class="mb-0">
-              📧 finance@zolytics.in<br />
-              📞 +91-90731-39613<br />
-              🕒 Mon - Fri (10 AM – 6 PM IST)
-            </p>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-section">
-            <h3>Quick Links</h3>
-            <ul class="footer-links">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#solutions">Solutions</a></li>
-              <li><a href="#benefits">Benefits</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-section">
-            <h3>Finance Apps</h3>
-            <ul class="footer-links">
-              <li><a href="#solutions">Zoho Books</a></li>
-              <li><a href="#solutions">Zoho Billing</a></li>
-              <li><a href="#solutions">Zoho Inventory</a></li>
-              <li><a href="#solutions">Zoho Expense</a></li>
-              <li><a href="#solutions">Zoho Invoice</a></li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-3 footer-section">
-            <h3>Resources</h3>
-            <ul class="footer-links">
-              <li>
-                <a href="https://www.zoho.com/in/books/">Documentation</a>
-              </li>
-              <li>
-                <a href="https://www.zoho.com/finance-plus/">Finance Plus</a>
-              </li>
-              <li><a href="https://www.zoho.com/">Zoho Website</a></li>
-              <li><a href="#contact">Support Center</a></li>
-            </ul>
-          </div>
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p>
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
+          </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
         </div>
-        <div
-          class="text-center pt-4"
-          style="border-top: 1px solid rgba(226, 232, 240, 0.1)"
-        >
-          <p class="mb-0">
-            © 2025 Zolytics Finance Consulting | All rights reserved | Powered
-            by
-            <a
-              href="https://www.zoho.com/"
-              target="_blank"
-              style="color: var(--primary-green); text-decoration: none"
-              >Zoho</a
-            >
+
+        <!-- Solutions (With Links) -->
+        <div class="footer-section">
+          <h3>Zoho Solutions</h3>
+          <ul>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
           </p>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
+        </p>
       </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Header scroll effect
       const header = document.querySelector("header");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
@@ -1333,18 +2229,25 @@
         }
       });
 
-      // Fade-in animation on scroll
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
       const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("visible");
-            }, index * 100);
+            entry.target.classList.add("visible");
           }
         });
       }, observerOptions);
@@ -1353,16 +2256,458 @@
         observer.observe(el);
       });
 
-      // Smooth scroll
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
+            const headerOffset = 80;
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition =
+              elementPosition + window.pageYOffset - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
               behavior: "smooth",
-              block: "start",
             });
+          }
+        });
+      });
+
+      const filterTabs = document.querySelectorAll(".filter-tab");
+      const financeCards = document.querySelectorAll(".finance-card");
+
+      filterTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          filterTabs.forEach((t) => t.classList.remove("active"));
+          tab.classList.add("active");
+
+          const filter = tab.getAttribute("data-filter");
+
+          financeCards.forEach((card) => {
+            const category = card.getAttribute("data-category");
+            if (filter === "all" || category === filter) {
+              card.classList.remove("hidden");
+            } else {
+              card.classList.add("hidden");
+            }
+          });
+        });
+      });
+
+      const animateCounter = (element, target, duration = 2000) => {
+        let current = 0;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = target + (element.dataset.suffix || "");
+            clearInterval(timer);
+          } else {
+            element.textContent =
+              Math.floor(current) + (element.dataset.suffix || "");
+          }
+        }, 16);
+      };
+
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (
+              entry.isIntersecting &&
+              !entry.target.classList.contains("counted")
+            ) {
+              entry.target.classList.add("counted");
+              const target = parseInt(entry.target.dataset.target);
+              if (target) animateCounter(entry.target, target);
+            }
+          });
+        },
+        { threshold: 0.5 }
+      );
+
+      document.querySelectorAll(".stat-number").forEach((stat) => {
+        if (stat.textContent.includes("%")) {
+          stat.dataset.target = "100";
+          stat.dataset.suffix = "%";
+          stat.textContent = "0%";
+        }
+        statsObserver.observe(stat);
+      });
+
+      const appData = {
+        books: {
+          title: "Zoho Books",
+          subtitle: "Complete Accounting & Financial Management",
+          description:
+            "Zoho Books is a comprehensive cloud-based accounting software designed to manage your finances, automate business workflows, and help you collaborate across departments. It's perfect for small to medium businesses looking for GST-compliant accounting with real-time reporting.",
+          features: [
+            {
+              title: "GST Compliance",
+              desc: "Automated GST calculations, filing, and complete audit trails for hassle-free compliance",
+            },
+            {
+              title: "Bank Reconciliation",
+              desc: "Auto-match bank transactions with invoices and bills to save hours of manual work",
+            },
+            {
+              title: "Financial Reports",
+              desc: "Real-time P&L, balance sheets, cash flow statements, and 50+ customizable reports",
+            },
+            {
+              title: "Multi-Currency",
+              desc: "Handle international transactions with automatic exchange rate updates",
+            },
+            {
+              title: "Project Accounting",
+              desc: "Track profitability by project with time tracking and expense allocation",
+            },
+            {
+              title: "Vendor Portal",
+              desc: "Let vendors view bills, make payments, and update information directly",
+            },
+          ],
+          useCases: [
+            {
+              title: "Small Businesses",
+              desc: "Track income, expenses, and maintain GST compliance effortlessly without hiring a full-time accountant",
+            },
+            {
+              title: "Growing Companies",
+              desc: "Multi-entity management with consolidated reporting across subsidiaries and locations",
+            },
+            {
+              title: "Accountants & Bookkeepers",
+              desc: "Manage multiple client books from a single dashboard with role-based access",
+            },
+            {
+              title: "E-commerce Sellers",
+              desc: "Integrate with Shopify, Amazon, and payment gateways for automated order-to-cash",
+            },
+          ],
+        },
+        billing: {
+          title: "Zoho Billing",
+          subtitle: "Subscription & Recurring Billing Automation",
+          description:
+            "Zoho Billing handles subscription billing end-to-end—from pricing experiments to automated invoicing, payment collection, and revenue recognition. Built for SaaS companies, membership sites, and any business with recurring revenue models.",
+          features: [
+            {
+              title: "Flexible Plans",
+              desc: "Create unlimited pricing plans with free trials, usage-based billing, and add-ons",
+            },
+            {
+              title: "Auto Billing",
+              desc: "Automated recurring invoices and payment collection on scheduled dates",
+            },
+            {
+              title: "Dunning Management",
+              desc: "Smart retry logic for failed payments with customizable email sequences",
+            },
+            {
+              title: "Revenue Recognition",
+              desc: "Automate revenue recognition according to ASC 606 and IFRS 15 standards",
+            },
+            {
+              title: "Self-Service Portal",
+              desc: "Customer portal for managing subscriptions, updating payment methods, and viewing invoices",
+            },
+            {
+              title: "Proration & Upgrades",
+              desc: "Automatic proration when customers upgrade, downgrade, or cancel mid-cycle",
+            },
+          ],
+          useCases: [
+            {
+              title: "SaaS Companies",
+              desc: "Manage subscription tiers, trials, usage-based billing, and MRR tracking",
+            },
+            {
+              title: "Membership Sites",
+              desc: "Handle recurring memberships with automated renewals and member portals",
+            },
+            {
+              title: "Service Providers",
+              desc: "Bill retainer clients with flexible billing cycles and automatic invoicing",
+            },
+            {
+              title: "Online Platforms",
+              desc: "Monetize your platform with marketplace billing and commission management",
+            },
+          ],
+        },
+        inventory: {
+          title: "Zoho Inventory",
+          subtitle: "Multi-Channel Inventory & Order Management",
+          description:
+            "Zoho Inventory helps you manage stock across warehouses, track items with serial/batch numbers, and sync inventory with your sales channels in real-time. Perfect for retailers, distributors, and manufacturers who need accurate stock visibility.",
+          features: [
+            {
+              title: "Multi-Warehouse",
+              desc: "Manage stock across multiple locations with inter-warehouse transfers and optimization",
+            },
+            {
+              title: "Barcode Scanning",
+              desc: "Mobile app for scanning barcodes and updating inventory on the go",
+            },
+            {
+              title: "Sales Orders",
+              desc: "Convert quotes to sales orders, create packages, and track fulfillment status",
+            },
+            {
+              title: "E-commerce Sync",
+              desc: "Real-time integration with Shopify, Amazon, eBay, Etsy, and WooCommerce",
+            },
+            {
+              title: "Purchase Orders",
+              desc: "Automated purchase orders based on reorder levels with vendor management",
+            },
+            {
+              title: "Batch & Serial Tracking",
+              desc: "Track products by batch numbers or serial numbers for complete traceability",
+            },
+          ],
+          useCases: [
+            {
+              title: "Retailers",
+              desc: "Track inventory across physical stores and online channels with unified stock visibility",
+            },
+            {
+              title: "Distributors & Wholesalers",
+              desc: "Manage stock levels, automate reorders, and maintain supplier relationships",
+            },
+            {
+              title: "Manufacturers",
+              desc: "Track raw materials and finished goods with bill of materials (BOM) management",
+            },
+            {
+              title: "Multi-Channel Sellers",
+              desc: "Sync inventory across Amazon, Shopify, eBay to prevent overselling",
+            },
+          ],
+        },
+        expense: {
+          title: "Zoho Expense",
+          subtitle: "AI-Powered Expense Management & Reporting",
+          description:
+            "Zoho Expense automates expense reporting with AI-powered receipt scanning, policy enforcement, and approval workflows—saving hours of manual work each month. Perfect for companies with employees who travel or make business purchases.",
+          features: [
+            {
+              title: "Receipt Scanning",
+              desc: "AI extracts merchant, amount, date, and category from receipts automatically via mobile app",
+            },
+            {
+              title: "Policy Rules",
+              desc: "Set spending limits, category restrictions, and flag violations automatically",
+            },
+            {
+              title: "Approval Workflows",
+              desc: "Multi-level approvals with email notifications and mobile app access",
+            },
+            {
+              title: "Corporate Cards",
+              desc: "Sync with Visa/Mastercard feeds for automatic expense matching and reconciliation",
+            },
+            {
+              title: "Mileage Tracking",
+              desc: "GPS-based mileage tracking with IRS-compliant reimbursement rates",
+            },
+            {
+              title: "Per Diem Management",
+              desc: "Location-based per diem rates with automatic calculations",
+            },
+          ],
+          useCases: [
+            {
+              title: "Sales Teams",
+              desc: "Track travel expenses, client dinners, mileage, and per diems with mobile submission",
+            },
+            {
+              title: "Remote Teams",
+              desc: "Submit expenses from anywhere via mobile app with receipt photo capture",
+            },
+            {
+              title: "Finance Teams",
+              desc: "Enforce company policies, detect violations, and get real-time spending visibility",
+            },
+            {
+              title: "Project-Based Companies",
+              desc: "Allocate expenses to projects and clients for accurate profitability tracking",
+            },
+          ],
+        },
+        invoice: {
+          title: "Zoho Invoice",
+          subtitle: "Professional Invoicing & Time Tracking",
+          description:
+            "Zoho Invoice lets you create beautiful branded invoices, track billable time, get paid faster with online payments, and manage your freelance or small business efficiently. It's completely free for businesses with up to 5 customers.",
+          features: [
+            {
+              title: "Custom Templates",
+              desc: "Design professional invoices with your logo, colors, and branding",
+            },
+            {
+              title: "Time Tracking",
+              desc: "Track billable hours with timer, convert timesheets to invoices automatically",
+            },
+            {
+              title: "Payment Gateway",
+              desc: "Accept credit cards, PayPal, Stripe, and bank transfers directly through invoices",
+            },
+            {
+              title: "Auto Reminders",
+              desc: "Send payment reminders automatically before and after due dates",
+            },
+            {
+              title: "Recurring Invoices",
+              desc: "Set up recurring invoices for retainer clients with automatic generation",
+            },
+            {
+              title: "Expense Tracking",
+              desc: "Log expenses and attach receipts, then bill back to clients with markup",
+            },
+          ],
+          useCases: [
+            {
+              title: "Freelancers",
+              desc: "Invoice clients, track project time, and get paid online without transaction fees",
+            },
+            {
+              title: "Consultants",
+              desc: "Manage multiple projects with retainer billing and hourly rate tracking",
+            },
+            {
+              title: "Small Agencies",
+              desc: "Bill clients for team hours worked with detailed time logs and project tracking",
+            },
+            {
+              title: "Service Professionals",
+              desc: "Send professional estimates, convert to invoices, and accept online payments",
+            },
+          ],
+        },
+        checkout: {
+          title: "Zoho Checkout",
+          subtitle: "Secure Payment Pages & Buy Buttons",
+          description:
+            "Zoho Checkout creates secure, PCI-compliant payment pages for one-time and recurring payments—no coding or technical knowledge required. Perfect for selling products, services, or accepting donations without building a full e-commerce website.",
+          features: [
+            {
+              title: "Custom Pages",
+              desc: "Design mobile-responsive payment pages that match your brand with drag-and-drop builder",
+            },
+            {
+              title: "Buy Buttons",
+              desc: "Embed payment buttons anywhere on your website, blog, or social media",
+            },
+            {
+              title: "Subscriptions",
+              desc: "Set up recurring payments with flexible billing cycles and trial periods",
+            },
+            {
+              title: "Multi-Currency",
+              desc: "Accept payments in 100+ currencies with automatic conversion",
+            },
+            {
+              title: "Coupon Codes",
+              desc: "Create discount codes with percentage or fixed amount discounts",
+            },
+            {
+              title: "Tax Automation",
+              desc: "Automatically calculate and collect taxes based on customer location",
+            },
+          ],
+          useCases: [
+            {
+              title: "Online Sellers",
+              desc: "Accept payments for products without building a full e-commerce site",
+            },
+            {
+              title: "Course Creators",
+              desc: "Sell digital products, online courses, and ebooks with one-click checkout",
+            },
+            {
+              title: "Coaches & Trainers",
+              desc: "Accept session payments with recurring subscription options",
+            },
+            {
+              title: "Non-Profits",
+              desc: "Create donation pages with recurring giving options and donor management",
+            },
+          ],
+        },
+      };
+
+      function openModal(app) {
+        const data = appData[app];
+        if (!data) return;
+
+        const featuresHTML = data.features
+          .map(
+            (f) => `
+          <div class="feature-box">
+            <h4>${f.title}</h4>
+            <p>${f.desc}</p>
+          </div>
+        `
+          )
+          .join("");
+
+        const useCasesHTML = data.useCases
+          .map(
+            (u) => `
+          <li><strong>${u.title}:</strong> ${u.desc}</li>
+        `
+          )
+          .join("");
+
+        const modalHTML = `
+          <div class="modal-header">
+            <h2>${data.title}</h2>
+            <p>${data.subtitle}</p>
+          </div>
+          <div class="modal-body">
+            <div class="modal-section">
+              <h3>What is ${data.title}?</h3>
+              <p>${data.description}</p>
+            </div>
+            <div class="modal-section">
+              <h3>Key Features</h3>
+              <div class="feature-grid">${featuresHTML}</div>
+            </div>
+            <div class="modal-section">
+              <h3>Perfect For</h3>
+              <ul class="use-case-list">${useCasesHTML}</ul>
+            </div>
+          </div>
+        `;
+
+        document.getElementById("modalContentArea").innerHTML = modalHTML;
+        document.getElementById("appModal").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        document.getElementById("appModal").classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".btn-learn-more").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const app = e.target.dataset.app;
+            openModal(app);
+          });
+        });
+
+        document.getElementById("appModal").addEventListener("click", (e) => {
+          if (e.target.id === "appModal") {
+            closeModal();
+          }
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            closeModal();
           }
         });
       });
