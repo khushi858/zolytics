@@ -1356,129 +1356,6 @@
       }
 
       /* ============================================
-           FOOTER
-           ============================================ */
-      .footer {
-        background: var(--dark);
-        color: #e8eaed;
-        padding: 80px 5% 40px;
-      }
-
-      .footer h5 {
-        color: var(--primary);
-        font-weight: 700;
-        margin-bottom: 1.5rem;
-      }
-
-      .footer a {
-        color: #9aa0a6;
-        text-decoration: none;
-        transition: all 0.3s;
-        display: block;
-        margin-bottom: 1rem;
-      }
-
-      .footer a:hover {
-        color: var(--primary);
-        padding-left: 10px;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid #3c4043;
-        padding-top: 2.5rem;
-        margin-top: 4rem;
-        text-align: center;
-        color: #9aa0a6;
-      }
-
-      /* ============================================
-           SCROLL FADE ANIMATIONS
-           ============================================ */
-      .scroll-fade {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 0.8s;
-      }
-
-      .scroll-fade.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .site-footer {
-        background: #0a1f44;
-        color: #e5e7eb;
-        padding: 70px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 45px;
-        margin-bottom: 35px;
-      }
-
-      .footer-section h3 {
-        font-size: 16px;
-        margin-bottom: 16px;
-        color: #ffffff;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      .footer-section ul {
-        list-style: none;
-        padding: 0;
-      }
-
-      .footer-section ul li {
-        margin-bottom: 10px;
-      }
-
-      /* CLEAN LINK COLORS */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease, padding-left 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-        padding-left: 4px;
-      }
-
-      /* Zoho Badge */
-      .footer-badge {
-        margin-top: 12px;
-        font-weight: 600;
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 15px;
-      }
-
-      .zoho-logo img {
-        max-width: 130px;
-        opacity: 0.9;
-      }
-
-      /* Bottom Bar */
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* ============================================
            RESPONSIVE STYLES
            ============================================ */
       @media (max-width: 992px) {
@@ -2678,25 +2555,36 @@
         <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
           <p>
-            A certified Zoho consulting partner helping businesses streamline
-            operations through expert implementation, customization, and
-            automation of Zoho applications.
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
           </p>
-          <p class="footer-badge">Certified Zoho Partner</p>
         </div>
 
-        <!-- Solutions (With Links) -->
-        <div class="footer-section">
-          <h3>Zoho Solutions</h3>
-          <ul>
-            <li><a href="books.html">Zoho Books</a></li>
-            <li><a href="crm.html">Zoho CRM</a></li>
-            <li><a href="inventory.html">Zoho Inventory</a></li>
-            <li><a href="expense.html">Zoho Expense</a></li>
-            <li><a href="payroll.html">Zoho Payroll</a></li>
-            <li><a href="analytics.html">Zoho Analytics</a></li>
-          </ul>
+        <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics.html">Zoho Analytics</a></li>
+              <li><a href="bigin.html">Zoho Bigin</a></li>
+              <li><a href="billing.html">Zoho Billing</a></li>
+              <li><a href="books.html">Zoho Books</a></li>
+              <li><a href="commerce.html">Zoho Commerce</a></li>
+              <li><a href="/zoho-crm.html">Zoho CRM</a></li>
+              <li><a href="expense.html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory.html">Zoho Inventory</a></li>
+
+              <li><a href="payroll.html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus.html">Zoho People Plus</a></li>
+
+              <li><a href="recruit.html">Zoho Recruit</a></li>
+            </ul>
+          </div>
         </div>
 
         <!-- Contact -->
@@ -2707,12 +2595,10 @@
             Phone: +91 90 7313 9613<br />
             Location: India
           </p>
-
-          <!-- Zoho Logo -->
           <div class="zoho-logo">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
-              alt="Zoho Partner Logo"
+              alt="Zoho Premium Partner"
             />
           </div>
         </div>
@@ -2725,6 +2611,136 @@
         </p>
       </div>
     </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script>
