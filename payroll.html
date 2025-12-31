@@ -12,44 +12,48 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
         line-height: 1.6;
-        color: #333;
+        color: #1a1a2e;
         overflow-x: hidden;
         background: #ffffff;
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 40px;
       }
 
-      /* Header */
+      /* Advanced Header */
       header {
-        background: white;
-        border-bottom: 3px solid #e0e0e0;
-        padding: 1.2rem 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        padding: 1.5rem 0;
         position: sticky;
         top: 0;
         z-index: 1000;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        animation: fadeIn 0.5s ease-out;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      @keyframes fadeIn {
+      @keyframes slideDown {
         from {
           opacity: 0;
+          transform: translateY(-100%);
         }
         to {
           opacity: 1;
+          transform: translateY(0);
         }
       }
 
       nav {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 2rem;
+        padding: 0 40px;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -58,14 +62,14 @@
       .logo {
         display: flex;
         align-items: center;
-        gap: 1.5rem;
-        animation: slideInLeft 0.6s ease-out;
+        gap: 2rem;
+        animation: fadeInLeft 1s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      @keyframes slideInLeft {
+      @keyframes fadeInLeft {
         from {
           opacity: 0;
-          transform: translateX(-30px);
+          transform: translateX(-50px);
         }
         to {
           opacity: 1;
@@ -74,35 +78,36 @@
       }
 
       .logo img {
-        height: 55px;
-        transition: all 0.3s ease;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        height: 60px;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
       }
 
       .logo img:hover {
-        transform: scale(1.05);
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+        transform: scale(1.08) rotate(-2deg);
+        filter: drop-shadow(0 8px 20px rgba(231, 76, 60, 0.3));
       }
 
       .partner-badge {
-        background: linear-gradient(135deg, #000 0%, #2c3e50 100%);
+        background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
         color: white;
-        padding: 0.9rem 2.2rem;
-        border-radius: 50px;
+        padding: 1rem 2.5rem;
+        border-radius: 60px;
         text-decoration: none;
         font-weight: 700;
-        font-size: 0.95rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         overflow: hidden;
-        animation: slideInRight 0.6s ease-out;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        animation: fadeInRight 1s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
       }
 
-      @keyframes slideInRight {
+      @keyframes fadeInRight {
         from {
           opacity: 0;
-          transform: translateX(30px);
+          transform: translateX(50px);
         }
         to {
           opacity: 1;
@@ -113,34 +118,32 @@
       .partner-badge::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.6s ease;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(231, 76, 60, 0.4);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
       }
 
       .partner-badge:hover::before {
-        left: 100%;
+        width: 400px;
+        height: 400px;
       }
 
       .partner-badge:hover {
-        background: linear-gradient(135deg, #2c3e50 0%, #000 100%);
-        transform: translateY(-3px);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 45px rgba(231, 76, 60, 0.4);
+        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
       }
 
-      /* Hero Section */
+      /* Hero Section - Premium Design */
       .hero {
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        background: linear-gradient(135deg, #6c1919 0%, #6c5c19 100%);
         color: white;
-        padding: 150px 20px 100px;
+        padding: 180px 40px 120px;
         position: relative;
         overflow: hidden;
       }
@@ -153,39 +156,48 @@
         right: 0;
         bottom: 0;
         background: radial-gradient(
-            circle at 20% 50%,
-            rgba(255, 255, 255, 0.1) 0%,
+            circle at 20% 30%,
+            rgba(231, 76, 60, 0.15) 0%,
             transparent 50%
           ),
           radial-gradient(
-            circle at 80% 80%,
-            rgba(255, 255, 255, 0.1) 0%,
+            circle at 80% 70%,
+            rgba(231, 76, 60, 0.1) 0%,
             transparent 50%
           );
-        animation: pulse 8s ease-in-out infinite;
+        animation: heroGlow 10s ease-in-out infinite alternate;
       }
 
-      @keyframes pulse {
-        0%,
+      @keyframes heroGlow {
+        0% {
+          opacity: 0.5;
+        }
         100% {
           opacity: 1;
         }
-        50% {
-          opacity: 0.5;
-        }
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        right: 0;
+        height: 100px;
+        background: linear-gradient(to bottom, transparent, white);
       }
 
       .hero-content {
         position: relative;
         z-index: 2;
         text-align: center;
-        animation: fadeInUp 1s ease;
+        animation: heroFadeIn 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
-      @keyframes fadeInUp {
+      @keyframes heroFadeIn {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(60px);
         }
         to {
           opacity: 1;
@@ -194,137 +206,208 @@
       }
 
       .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 20px;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        font-size: 4.5rem;
+        margin-bottom: 30px;
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -2px;
+        background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: titleShine 3s ease-in-out infinite;
+      }
+
+      @keyframes titleShine {
+        0%,
+        100% {
+          filter: brightness(1);
+        }
+        50% {
+          filter: brightness(1.2);
+        }
       }
 
       .hero .subtitle {
-        font-size: 1.5rem;
-        margin-bottom: 40px;
-        opacity: 0.95;
+        font-size: 1.6rem;
+        margin-bottom: 50px;
+        opacity: 0.9;
+        font-weight: 300;
+        animation: subtitleFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s
+          backwards;
       }
 
-      .trust-badge {
-        display: inline-block;
-        background: rgba(255, 255, 255, 0.2);
-        padding: 15px 35px;
-        border-radius: 50px;
-        backdrop-filter: blur(10px);
-        margin-top: 20px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        font-size: 1.1rem;
-        font-weight: 600;
+      @keyframes subtitleFade {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 0.9;
+          transform: translateY(0);
+        }
       }
 
-      /* Stats Section */
-      .stats-section {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        padding: 80px 20px;
+      .compliance-badges {
+        display: flex;
+        justify-content: center;
+        gap: 25px;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        animation: badgesFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.6s backwards;
+      }
+
+      @keyframes badgesFade {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .compliance-badge {
+        background: white;
+        padding: 30px 40px;
+        border-radius: 20px;
+        border: 3px solid #ffd700;
+        box-shadow: 0 10px 40px rgba(255, 215, 0, 0.3);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         overflow: hidden;
       }
 
-      .stats-section::before {
+      .compliance-badge::before {
         content: "";
         position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(231, 76, 60, 0.1) 0%,
-          transparent 70%
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 215, 0, 0.2),
+          transparent
         );
-        border-radius: 50%;
+        transition: left 0.6s ease;
       }
 
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        margin-top: 40px;
-        position: relative;
-        z-index: 1;
+      .compliance-badge:hover::before {
+        left: 100%;
       }
 
-      .stat-card {
-        text-align: center;
-        padding: 40px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        border: 2px solid rgba(231, 76, 60, 0.3);
-        transition: all 0.4s ease;
-        backdrop-filter: blur(10px);
-      }
-
-      .stat-card:hover {
-        transform: translateY(-10px) scale(1.05);
-        background: rgba(231, 76, 60, 0.1);
+      .compliance-badge:hover {
+        transform: translateY(-8px) scale(1.05);
         border-color: #e74c3c;
-        box-shadow: 0 20px 40px rgba(231, 76, 60, 0.3);
+        box-shadow: 0 20px 60px rgba(231, 76, 60, 0.4);
       }
 
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 700;
-        color: #e74c3c;
-        display: block;
-        margin-bottom: 10px;
-        text-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
+      .badge-title {
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #1a1a2e;
+        margin-bottom: 8px;
+        letter-spacing: 1px;
       }
 
-      .stat-label {
-        font-size: 1.1rem;
-        color: #ffffff;
-        opacity: 0.9;
+      .badge-subtitle {
+        font-size: 1rem;
+        color: #666;
+        font-weight: 600;
       }
 
-      /* Section Styles */
+      .accuracy-banner {
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+        padding: 25px 50px;
+        border-radius: 60px;
+        border: 3px solid #1a1a2e;
+        box-shadow: 0 15px 50px rgba(255, 215, 0, 0.4);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .accuracy-banner:hover {
+        transform: translateY(-8px) rotate(-1deg);
+        box-shadow: 0 25px 70px rgba(231, 76, 60, 0.5);
+      }
+
+      .accuracy-text {
+        font-size: 1.6rem;
+        font-weight: 900;
+        color: #1a1a2e;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      /* Section Base Styles */
       section {
-        padding: 100px 20px;
+        padding: 140px 40px;
         position: relative;
       }
 
       .section-title {
         text-align: center;
-        font-size: 3rem;
-        margin-bottom: 25px;
+        font-size: 3.5rem;
+        margin-bottom: 30px;
         color: #1a1a2e;
         position: relative;
         display: inline-block;
         width: 100%;
-        font-weight: 800;
-        letter-spacing: -1px;
+        font-weight: 900;
+        letter-spacing: -2px;
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .section-title.active {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .section-title::after {
         content: "";
         position: absolute;
-        bottom: -18px;
+        bottom: -20px;
         left: 50%;
-        transform: translateX(-50%);
-        width: 140px;
+        transform: translateX(-50%) scaleX(0);
+        width: 160px;
         height: 6px;
         background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
         border-radius: 3px;
-        box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+        box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+        transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
+      }
+
+      .section-title.active::after {
+        transform: translateX(-50%) scaleX(1);
       }
 
       .section-subtitle {
         text-align: center;
-        font-size: 1.35rem;
+        font-size: 1.4rem;
         color: #666;
-        margin-bottom: 70px;
-        font-weight: 400;
-        line-height: 1.6;
+        margin-bottom: 90px;
+        font-weight: 300;
+        line-height: 1.7;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s;
       }
 
-      /* Workflows Section - Enhanced Grid */
+      .section-subtitle.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Workflows Section */
       .workflows {
-        background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
         position: relative;
         overflow: hidden;
       }
@@ -332,66 +415,83 @@
       .workflows::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 300px;
-        background: radial-gradient(
-          ellipse at top,
-          rgba(231, 76, 60, 0.08) 0%,
-          transparent 70%
-        );
-      }
-
-      .workflows::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 500px;
-        height: 500px;
+        top: -300px;
+        right: -300px;
+        width: 800px;
+        height: 800px;
         background: radial-gradient(
           circle,
           rgba(231, 76, 60, 0.05) 0%,
           transparent 70%
         );
         border-radius: 50%;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(50px, -50px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-50px, 50px) rotate(240deg);
+        }
       }
 
       .workflow-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 35px;
-        margin-top: 60px;
+        gap: 40px;
+        margin-top: 80px;
         position: relative;
         z-index: 1;
       }
 
       .workflow-card {
         background: white;
-        border-radius: 24px;
-        padding: 50px 35px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
-        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        border: 2px solid rgba(231, 76, 60, 0.1);
+        border-radius: 30px;
+        padding: 55px 45px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 3px solid #ffd700;
         position: relative;
         overflow: hidden;
-        min-height: 280px;
-        display: flex;
-        flex-direction: column;
+        min-height: 320px;
+        opacity: 0;
+        transform: translateY(60px);
       }
 
-      .workflow-card:nth-child(1),
-      .workflow-card:nth-child(4) {
-        grid-column: span 2;
-        background: linear-gradient(135deg, #fff 0%, #fff5f5 100%);
-        min-height: 240px;
+      .workflow-card.active {
+        opacity: 1;
+        transform: translateY(0);
       }
 
+      .workflow-card:nth-child(1) {
+        transition-delay: 0.1s;
+        border-color: #ffd700;
+      }
       .workflow-card:nth-child(2) {
-        grid-row: span 2;
-        background: linear-gradient(135deg, #fff 0%, #ffebee 100%);
-        min-height: auto;
+        transition-delay: 0.2s;
+        border-color: #e74c3c;
+      }
+      .workflow-card:nth-child(3) {
+        transition-delay: 0.3s;
+        border-color: #ffd700;
+      }
+      .workflow-card:nth-child(4) {
+        transition-delay: 0.4s;
+        border-color: #e74c3c;
+      }
+      .workflow-card:nth-child(5) {
+        transition-delay: 0.5s;
+        border-color: #ffd700;
+      }
+      .workflow-card:nth-child(6) {
+        transition-delay: 0.6s;
+        border-color: #e74c3c;
       }
 
       .workflow-card::before {
@@ -403,11 +503,11 @@
         height: 100%;
         background: linear-gradient(
           135deg,
-          rgba(231, 76, 60, 0.08) 0%,
-          rgba(192, 57, 43, 0.08) 100%
+          rgba(255, 215, 0, 0.05) 0%,
+          transparent 100%
         );
         opacity: 0;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.6s ease;
       }
 
       .workflow-card::after {
@@ -416,11 +516,11 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 6px;
-        background: linear-gradient(90deg, #e74c3c, #c0392b);
+        height: 8px;
+        background: linear-gradient(90deg, #ffd700, #e74c3c);
         transform: scaleX(0);
         transform-origin: left;
-        transition: transform 0.5s ease;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       .workflow-card:hover::before {
@@ -432,149 +532,303 @@
       }
 
       .workflow-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 25px 60px rgba(231, 76, 60, 0.15);
-        border-color: rgba(231, 76, 60, 0.3);
+        transform: translateY(-20px);
+        box-shadow: 0 35px 80px rgba(255, 215, 0, 0.3);
+        border-color: #e74c3c;
+        border-width: 4px;
       }
 
       .workflow-number {
-        font-size: 5rem;
-        font-weight: 800;
-        color: rgba(231, 76, 60, 0.15);
+        font-size: 6rem;
+        font-weight: 900;
+        color: rgba(231, 76, 60, 0.12);
         position: absolute;
-        top: 15px;
-        right: 25px;
+        top: 20px;
+        right: 30px;
         line-height: 1;
-        transition: all 0.4s ease;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
       .workflow-card:hover .workflow-number {
         color: rgba(231, 76, 60, 0.25);
-        transform: scale(1.1);
+        transform: scale(1.15) rotate(5deg);
       }
 
       .workflow-title {
-        font-size: 1.7rem;
-        margin-bottom: 18px;
+        font-size: 1.8rem;
+        margin-bottom: 20px;
         color: #1a1a2e;
         position: relative;
         z-index: 1;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: -0.5px;
+        transition: color 0.4s ease;
+      }
+
+      .workflow-card:hover .workflow-title {
+        color: #e74c3c;
       }
 
       .workflow-description {
-        color: #555;
-        line-height: 1.9;
+        color: #666;
+        line-height: 2;
         position: relative;
         z-index: 1;
-        font-size: 1.08rem;
-        flex-grow: 1;
+        font-size: 1.1rem;
+        transition: color 0.4s ease;
       }
 
-      /* Video Section - Diagonal Split */
-      .video-section {
-        background: linear-gradient(135deg, #1a1a2e 50%, #e74c3c 50%);
-        padding: 100px 20px;
+      .workflow-card:hover .workflow-description {
+        color: #333;
+      }
+
+      /* Payroll Problems Section */
+      .payroll-problems {
+        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+      }
+
+      .problem-solution-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        margin-top: 80px;
+      }
+
+      .ps-card {
+        background: white;
+        border-radius: 35px;
+        padding: 55px 50px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 4px solid #ffd700;
         position: relative;
         overflow: hidden;
+        opacity: 0;
+        transform: translateY(60px) scale(0.95);
       }
 
-      .video-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
-        align-items: center;
-        max-width: 1200px;
-        margin: 0 auto;
+      .ps-card.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
       }
 
-      .video-text {
-        color: white;
+      .ps-card:nth-child(1) {
+        transition-delay: 0.1s;
+        border-color: #ffd700;
+      }
+      .ps-card:nth-child(2) {
+        transition-delay: 0.2s;
+        border-color: #e74c3c;
+      }
+      .ps-card:nth-child(3) {
+        transition-delay: 0.3s;
+        border-color: #ffd700;
+      }
+      .ps-card:nth-child(4) {
+        transition-delay: 0.4s;
+        border-color: #e74c3c;
       }
 
-      .video-text h2 {
-        font-size: 2.5rem;
-        margin-bottom: 20px;
-        font-weight: 700;
+      .ps-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 215, 0, 0.06),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
       }
 
-      .video-text p {
-        font-size: 1.2rem;
-        opacity: 0.9;
-        line-height: 1.8;
+      .ps-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #e74c3c, #ffd700);
+        transform: scaleX(0);
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
-      .video-container {
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      .ps-card:hover::before {
+        opacity: 1;
+      }
+
+      .ps-card:hover::after {
+        transform: scaleX(1);
+      }
+
+      .ps-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 40px 90px rgba(255, 215, 0, 0.3);
+        border-color: #e74c3c;
+        border-width: 5px;
+      }
+
+      .ps-problem {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid rgba(231, 76, 60, 0.1);
+        position: relative;
+      }
+
+      .ps-problem::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+        transition: width 0.6s ease;
+      }
+
+      .ps-card:hover .ps-problem::after {
+        width: 100%;
+      }
+
+      .ps-problem h3 {
+        color: #c0392b;
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
         transition: transform 0.4s ease;
       }
 
-      .video-container:hover {
-        transform: scale(1.05) rotate(-2deg);
+      .ps-card:hover .ps-problem h3 {
+        transform: translateX(10px);
       }
 
-      .video-placeholder {
-        width: 100%;
-        aspect-ratio: 16/9;
-        background: linear-gradient(135deg, #16213e 0%, #1a1a2e 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        position: relative;
+      .ps-solution h3 {
+        color: #1a1a2e;
+        font-size: 1.6rem;
+        margin-bottom: 15px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        transition: transform 0.4s ease;
       }
 
-      .play-button {
-        width: 80px;
-        height: 80px;
-        background: #e74c3c;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2rem;
-        animation: playPulse 2s ease-in-out infinite;
-        cursor: pointer;
+      .ps-card:hover .ps-solution h3 {
+        transform: translateX(10px);
       }
 
-      @keyframes playPulse {
-        0%,
-        100% {
-          transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.7);
-        }
-        50% {
-          transform: scale(1.1);
-          box-shadow: 0 0 0 20px rgba(231, 76, 60, 0);
-        }
+      .ps-card p {
+        font-size: 1.12rem;
+        line-height: 1.9;
+        color: #555;
+        transition: color 0.4s ease;
       }
 
-      /* Differentiation Section - Card Carousel Style */
+      .ps-card:hover p {
+        color: #333;
+      }
+
+      /* Differentiation Section */
       .differentiation {
-        background: white;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: white;
         position: relative;
+        overflow: hidden;
+      }
+
+      .differentiation::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 30% 40%,
+            rgba(231, 76, 60, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 60%,
+            rgba(231, 76, 60, 0.1) 0%,
+            transparent 50%
+          );
+        animation: diffGlow 15s ease-in-out infinite alternate;
+      }
+
+      @keyframes diffGlow {
+        0% {
+          opacity: 0.5;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .differentiation .section-title,
+      .differentiation .section-subtitle {
+        color: white;
+      }
+
+      .differentiation .section-subtitle {
+        color: rgba(255, 255, 255, 0.8);
       }
 
       .diff-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 40px;
-        margin-top: 50px;
+        gap: 45px;
+        margin-top: 80px;
+        position: relative;
+        z-index: 1;
       }
 
       .diff-card {
-        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-        color: white;
-        padding: 50px 40px;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        transition: all 0.4s ease;
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(20px);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 55px 50px;
+        border-radius: 35px;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         overflow: hidden;
+        opacity: 0;
+        transform: translateY(60px);
+      }
+
+      .diff-card.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .diff-card:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .diff-card:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .diff-card:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .diff-card:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      .diff-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.15) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
       }
 
       .diff-card::after {
@@ -583,10 +837,14 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        height: 5px;
+        height: 6px;
         background: linear-gradient(90deg, #e74c3c, #c0392b);
         transform: scaleX(0);
-        transition: transform 0.4s ease;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .diff-card:hover::before {
+        opacity: 1;
       }
 
       .diff-card:hover::after {
@@ -594,44 +852,57 @@
       }
 
       .diff-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 25px 60px rgba(231, 76, 60, 0.3);
+        transform: translateY(-20px);
+        border-color: rgba(231, 76, 60, 0.5);
+        background: rgba(231, 76, 60, 0.15);
       }
 
       .diff-number {
-        font-size: 5rem;
-        font-weight: 700;
-        color: rgba(231, 76, 60, 0.3);
+        font-size: 6rem;
+        font-weight: 900;
+        color: rgba(231, 76, 60, 0.25);
         position: absolute;
-        top: 20px;
-        right: 30px;
+        top: 25px;
+        right: 35px;
         line-height: 1;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .diff-card:hover .diff-number {
+        transform: scale(1.15) rotate(-5deg);
+        color: rgba(231, 76, 60, 0.4);
       }
 
       .diff-title {
-        font-size: 1.8rem;
-        margin-bottom: 20px;
+        font-size: 1.9rem;
+        margin-bottom: 22px;
         position: relative;
         z-index: 1;
-        font-weight: 600;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        transition: transform 0.4s ease;
+      }
+
+      .diff-card:hover .diff-title {
+        transform: translateX(10px);
       }
 
       .diff-description {
         opacity: 0.9;
-        line-height: 1.8;
+        line-height: 1.9;
         position: relative;
         z-index: 1;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
+        transition: opacity 0.4s ease;
       }
 
-      /* Implementations Section - Enhanced Cards */
+      .diff-card:hover .diff-description {
+        opacity: 1;
+      }
+
+      /* Implementations Section */
       .implementations {
-        background: linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #f8f9fa 50%,
-          #ffffff 100%
-        );
+        background: linear-gradient(180deg, #ffffff 0%, #f8f9fa 100%);
         position: relative;
         overflow: hidden;
       }
@@ -639,55 +910,58 @@
       .implementations::before {
         content: "";
         position: absolute;
-        top: 50%;
-        left: -200px;
-        width: 600px;
-        height: 600px;
+        top: -400px;
+        left: -400px;
+        width: 900px;
+        height: 900px;
         background: radial-gradient(
           circle,
           rgba(231, 76, 60, 0.04) 0%,
           transparent 70%
         );
         border-radius: 50%;
-      }
-
-      .implementations::after {
-        content: "";
-        position: absolute;
-        bottom: -100px;
-        right: -200px;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(
-          circle,
-          rgba(231, 76, 60, 0.04) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
+        animation: float 25s ease-in-out infinite;
       }
 
       .impl-container {
         display: flex;
         flex-direction: column;
-        gap: 40px;
-        margin-top: 60px;
+        gap: 50px;
+        margin-top: 80px;
         position: relative;
         z-index: 1;
       }
 
       .impl-card {
         background: white;
-        border-radius: 28px;
-        padding: 50px 45px;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border-radius: 35px;
+        padding: 60px 55px;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.08);
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         border: 3px solid transparent;
         display: grid;
         grid-template-columns: auto 1fr auto;
-        gap: 40px;
+        gap: 50px;
         align-items: center;
         position: relative;
         overflow: hidden;
+        opacity: 0;
+        transform: translateX(-60px);
+      }
+
+      .impl-card.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .impl-card:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .impl-card:nth-child(2) {
+        transition-delay: 0.3s;
+      }
+      .impl-card:nth-child(3) {
+        transition-delay: 0.5s;
       }
 
       .impl-card::before {
@@ -695,10 +969,10 @@
         position: absolute;
         top: 0;
         left: 0;
-        width: 8px;
+        width: 10px;
         height: 100%;
         background: linear-gradient(180deg, #e74c3c, #c0392b);
-        transition: width 0.5s ease;
+        transition: width 0.6s ease;
       }
 
       .impl-card::after {
@@ -710,48 +984,48 @@
         height: 100%;
         background: linear-gradient(
           135deg,
-          rgba(231, 76, 60, 0.03) 0%,
+          rgba(231, 76, 60, 0.04) 0%,
           transparent 100%
         );
         opacity: 0;
-        transition: opacity 0.5s ease;
-        pointer-events: none;
+        transition: opacity 0.6s ease;
       }
 
       .impl-card:hover {
-        transform: translateX(15px) scale(1.02);
-        box-shadow: 0 30px 70px rgba(231, 76, 60, 0.18);
-        border-color: rgba(231, 76, 60, 0.2);
+        transform: translateX(20px) scale(1.02);
+        box-shadow: 0 40px 100px rgba(231, 76, 60, 0.2);
+        border-color: rgba(231, 76, 60, 0.25);
       }
 
       .impl-card:hover::before {
         width: 100%;
-        opacity: 0.1;
+        opacity: 0.12;
       }
 
       .impl-card:hover::after {
         opacity: 1;
       }
 
-      .impl-icon {
-        width: 100px;
-        height: 100px;
+      .impl-number {
+        width: 120px;
+        height: 120px;
         background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
-        border-radius: 24px;
+        border-radius: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.5rem;
+        font-size: 3rem;
+        font-weight: 900;
         color: white;
-        transition: all 0.5s ease;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.35);
         position: relative;
         z-index: 1;
       }
 
-      .impl-card:hover .impl-icon {
-        transform: rotate(10deg) scale(1.1);
-        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.4);
+      .impl-card:hover .impl-number {
+        transform: rotate(15deg) scale(1.12);
+        box-shadow: 0 20px 50px rgba(231, 76, 60, 0.5);
       }
 
       .impl-content {
@@ -761,23 +1035,24 @@
       }
 
       .impl-title {
-        font-size: 2rem;
-        margin-bottom: 18px;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
         color: #1a1a2e;
-        font-weight: 700;
+        font-weight: 800;
         letter-spacing: -0.5px;
-        transition: color 0.3s ease;
+        transition: color 0.4s ease, transform 0.4s ease;
       }
 
       .impl-card:hover .impl-title {
         color: #e74c3c;
+        transform: translateX(10px);
       }
 
       .impl-description {
-        font-size: 1.12rem;
+        font-size: 1.15rem;
         line-height: 2;
         color: #555;
-        transition: color 0.3s ease;
+        transition: color 0.4s ease;
       }
 
       .impl-card:hover .impl-description {
@@ -787,28 +1062,173 @@
       .impl-tag {
         background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         color: white;
-        padding: 16px 32px;
-        border-radius: 50px;
-        font-size: 1rem;
-        font-weight: 700;
+        padding: 18px 38px;
+        border-radius: 60px;
+        font-size: 1.05rem;
+        font-weight: 800;
         white-space: nowrap;
-        box-shadow: 0 8px 25px rgba(231, 76, 60, 0.3);
-        transition: all 0.5s ease;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.35);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         z-index: 1;
         letter-spacing: 0.5px;
       }
 
       .impl-card:hover .impl-tag {
-        transform: scale(1.08);
-        box-shadow: 0 12px 35px rgba(231, 76, 60, 0.4);
+        transform: scale(1.1);
+        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.5);
+      }
+
+      /* Industries Section */
+      .industries {
+        background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+        position: relative;
+      }
+
+      .industry-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 50px;
+        margin-top: 80px;
+      }
+
+      .industry-card {
+        background: white;
+        border-radius: 35px;
+        padding: 55px 50px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 3px solid transparent;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(60px);
+      }
+
+      .industry-card.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .industry-card:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+      .industry-card:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+      .industry-card:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+      .industry-card:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      .industry-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.06),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+
+      .industry-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 6px;
+        height: 100%;
+        background: linear-gradient(180deg, #e74c3c, #c0392b);
+        transform: scaleY(0);
+        transform-origin: top;
+        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .industry-card:hover::before {
+        opacity: 1;
+      }
+
+      .industry-card:hover::after {
+        transform: scaleY(1);
+      }
+
+      .industry-card:hover {
+        transform: translateY(-18px);
+        box-shadow: 0 40px 90px rgba(231, 76, 60, 0.22);
+        border-color: rgba(231, 76, 60, 0.35);
+      }
+
+      .industry-card h3 {
+        font-size: 1.9rem;
+        margin-bottom: 18px;
+        color: #1a1a2e;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        transition: color 0.4s ease, transform 0.4s ease;
+      }
+
+      .industry-card:hover h3 {
+        color: #e74c3c;
+        transform: translateX(10px);
+      }
+
+      .industry-desc {
+        font-size: 1.12rem;
+        line-height: 1.9;
+        color: #555;
+        margin-bottom: 25px;
+        transition: color 0.4s ease;
+      }
+
+      .industry-card:hover .industry-desc {
+        color: #333;
+      }
+
+      .industry-points {
+        list-style: none;
+        padding: 0;
+      }
+
+      .industry-points li {
+        position: relative;
+        padding-left: 30px;
+        margin-bottom: 14px;
+        font-size: 1.08rem;
+        color: #444;
+        transition: all 0.4s ease;
+      }
+
+      .industry-points li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 8px;
+        width: 12px;
+        height: 12px;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
+        border-radius: 50%;
+        transition: transform 0.4s ease;
+      }
+
+      .industry-card:hover .industry-points li::before {
+        transform: scale(1.3);
+      }
+
+      .industry-card:hover .industry-points li {
+        color: #222;
+        padding-left: 35px;
       }
 
       /* CTA Section */
       .cta-section {
         background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
         color: white;
-        padding: 100px 20px;
+        padding: 120px 40px;
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -823,13 +1243,17 @@
         height: 200%;
         background: radial-gradient(
             circle,
-            rgba(255, 255, 255, 0.1) 1px,
-            transparent 1px
+            rgba(255, 255, 255, 0.08) 2px,
+            transparent 2px
           ),
-          radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
-        background-size: 50px 50px;
-        background-position: 0 0, 25px 25px;
-        animation: movePattern 20s linear infinite;
+          radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.08) 2px,
+            transparent 2px
+          );
+        background-size: 60px 60px;
+        background-position: 0 0, 30px 30px;
+        animation: movePattern 30s linear infinite;
       }
 
       @keyframes movePattern {
@@ -837,7 +1261,7 @@
           transform: translate(0, 0);
         }
         100% {
-          transform: translate(50px, 50px);
+          transform: translate(60px, 60px);
         }
       }
 
@@ -847,34 +1271,49 @@
       }
 
       .cta-title {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        font-weight: 700;
+        font-size: 3.5rem;
+        margin-bottom: 25px;
+        font-weight: 900;
+        letter-spacing: -1px;
+        animation: ctaFadeIn 1s ease;
+      }
+
+      @keyframes ctaFadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .cta-subtitle {
-        font-size: 1.4rem;
-        margin-bottom: 50px;
+        font-size: 1.5rem;
+        margin-bottom: 60px;
         opacity: 0.95;
+        animation: ctaFadeIn 1s ease 0.2s backwards;
       }
 
       .cta-buttons {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         justify-content: center;
         flex-wrap: wrap;
+        animation: ctaFadeIn 1s ease 0.4s backwards;
       }
 
       .btn {
-        padding: 20px 45px;
-        font-size: 1.1rem;
+        padding: 22px 50px;
+        font-size: 1.15rem;
         border: none;
-        border-radius: 50px;
+        border-radius: 60px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        letter-spacing: 1.5px;
         position: relative;
         overflow: hidden;
       }
@@ -887,14 +1326,14 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.4);
         transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
+        transition: width 0.7s, height 0.7s;
       }
 
       .btn:hover::before {
-        width: 300px;
-        height: 300px;
+        width: 350px;
+        height: 350px;
       }
 
       .btn span {
@@ -905,12 +1344,12 @@
       .btn-primary {
         background: white;
         color: #e74c3c;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
       }
 
       .btn-primary:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        transform: translateY(-8px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
       }
 
       .btn-secondary {
@@ -922,68 +1361,62 @@
       .btn-secondary:hover {
         background: white;
         color: #e74c3c;
-        transform: translateY(-5px);
+        transform: translateY(-8px);
       }
 
-      /* Footer */
-      footer {
-        background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
-        color: white;
-        padding: 60px 20px 30px;
-        border-top: 5px solid #e74c3c;
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
       }
 
-      .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
+      .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 50px;
-        margin-bottom: 40px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
       }
 
       .footer-section h3 {
-        color: #e74c3c;
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
       }
 
-      .footer-section p,
-      .footer-section ul {
-        color: rgba(255, 255, 255, 0.8);
-        line-height: 1.8;
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.6;
       }
 
       .footer-section ul {
         list-style: none;
+        padding: 0;
       }
 
       .footer-section ul li {
-        margin-bottom: 10px;
-        padding-left: 20px;
-        position: relative;
+        margin-bottom: 8px;
+        color: #cbd5e1;
       }
 
-      .footer-section ul li::before {
-        content: "▹";
-        position: absolute;
-        left: 0;
-        color: #e74c3c;
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
       }
 
       .footer-bottom {
-        text-align: center;
-        padding-top: 30px;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.6);
+        padding-top: 15px;
+        text-align: center;
+        color: #94a3b8;
       }
 
-      /* Scroll Animation */
+      /* Scroll Reveal */
       .scroll-reveal {
         opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
+        transform: translateY(60px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .scroll-reveal.active {
@@ -992,10 +1425,24 @@
       }
 
       /* Responsive */
+      @media (max-width: 1200px) {
+        .container {
+          padding: 0 30px;
+        }
+
+        .hero h1 {
+          font-size: 3.5rem;
+        }
+
+        .section-title {
+          font-size: 3rem;
+        }
+      }
+
       @media (max-width: 968px) {
         nav {
           flex-direction: column;
-          gap: 15px;
+          gap: 20px;
         }
 
         .logo {
@@ -1003,37 +1450,31 @@
           gap: 15px;
         }
 
+        .hero {
+          padding: 140px 30px 100px;
+        }
+
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.8rem;
+        }
+
+        .hero .subtitle {
+          font-size: 1.3rem;
+        }
+
+        section {
+          padding: 100px 30px;
         }
 
         .section-title {
-          font-size: 2rem;
+          font-size: 2.5rem;
         }
 
         .workflow-grid {
           grid-template-columns: 1fr;
         }
 
-        .workflow-card {
-          min-height: auto;
-          padding: 40px 30px;
-        }
-
-        .workflow-card:nth-child(1),
-        .workflow-card:nth-child(4) {
-          grid-column: span 1;
-        }
-
-        .workflow-card:nth-child(2) {
-          grid-row: span 1;
-        }
-
-        .workflow-number {
-          font-size: 3.5rem;
-        }
-
-        .video-content {
+        .problem-solution-grid {
           grid-template-columns: 1fr;
         }
 
@@ -1044,28 +1485,40 @@
         .impl-card {
           grid-template-columns: 1fr;
           text-align: center;
-          gap: 25px;
-          padding: 40px 30px;
+          gap: 30px;
+          padding: 45px 35px;
         }
 
-        .impl-icon {
-          width: 85px;
-          height: 85px;
+        .impl-number {
+          width: 100px;
+          height: 100px;
           margin: 0 auto;
+          font-size: 2.5rem;
         }
 
         .impl-card:hover {
-          transform: translateY(-10px) scale(1.02);
+          transform: translateY(-12px) scale(1.02);
         }
 
         .impl-tag {
           margin: 0 auto;
         }
+
+        .industry-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .cta-title {
+          font-size: 2.5rem;
+        }
+
+        .cta-subtitle {
+          font-size: 1.2rem;
+        }
       }
     </style>
   </head>
   <body>
-    <!-- Header -->
     <header>
       <nav>
         <div class="logo">
@@ -1080,11 +1533,9 @@
             style="height: 50px"
           />
         </div>
-        <a href="#contact" class="partner-badge">Certified Zoho Partner</a>
       </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
       <div class="container">
         <div class="hero-content">
@@ -1092,38 +1543,10 @@
           <p class="subtitle">
             Error-free payroll processing with deep Indian compliance expertise
           </p>
-          <div class="trust-badge">
-            PF • ESI • PT • TDS Compliant | 100% Accurate Calculations
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="stats-grid">
-          <div class="stat-card scroll-reveal">
-            <span class="stat-number">500+</span>
-            <span class="stat-label">Payrolls Processed</span>
-          </div>
-          <div class="stat-card scroll-reveal">
-            <span class="stat-number">100%</span>
-            <span class="stat-label">Compliance Rate</span>
-          </div>
-          <div class="stat-card scroll-reveal">
-            <span class="stat-number">50+</span>
-            <span class="stat-label">Happy Clients</span>
-          </div>
-          <div class="stat-card scroll-reveal">
-            <span class="stat-number">24/7</span>
-            <span class="stat-label">Support Available</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Workflows Section -->
     <section class="workflows">
       <div class="container">
         <h2 class="section-title scroll-reveal">
@@ -1191,26 +1614,86 @@
       </div>
     </section>
 
-    <!-- Video Section -->
-    <section class="video-section">
-      <div class="video-content scroll-reveal">
-        <div class="video-text">
-          <h2>See Zoho Payroll in Action</h2>
-          <p>
-            Watch how we transform payroll processing for businesses like yours.
-            From complex salary structures to seamless compliance, discover the
-            power of automated payroll management.
-          </p>
-        </div>
-        <div class="video-container">
-          <div class="video-placeholder">
-            <div class="play-button">▶</div>
+    <section class="payroll-problems">
+      <div class="container">
+        <h2 class="section-title scroll-reveal">Payroll Challenges We Solve</h2>
+        <p class="section-subtitle scroll-reveal">
+          Real payroll problems Indian businesses face — and how we fix them
+          using Zoho Payroll
+        </p>
+
+        <div class="problem-solution-grid">
+          <div class="ps-card scroll-reveal">
+            <div class="ps-problem">
+              <h3>Manual Payroll Errors</h3>
+              <p>
+                Salary miscalculations, wrong deductions, Excel mistakes, and
+                last-minute corrections every month.
+              </p>
+            </div>
+            <div class="ps-solution">
+              <h3>Automated Salary Engine</h3>
+              <p>
+                Rule-based payroll automation with accurate CTC breakup, auto
+                deductions, and zero manual dependency.
+              </p>
+            </div>
+          </div>
+
+          <div class="ps-card scroll-reveal">
+            <div class="ps-problem">
+              <h3>PF, ESI & TDS Confusion</h3>
+              <p>
+                Changing rules, incorrect calculations, penalties, and fear of
+                non-compliance notices.
+              </p>
+            </div>
+            <div class="ps-solution">
+              <h3>Compliance-First Setup</h3>
+              <p>
+                Statutory rules configured correctly for PF, ESI, PT & TDS with
+                auto updates as per government norms.
+              </p>
+            </div>
+          </div>
+
+          <div class="ps-card scroll-reveal">
+            <div class="ps-problem">
+              <h3>Attendance & Payroll Mismatch</h3>
+              <p>
+                Leaves, LOP, overtime not reflected correctly leading to
+                employee disputes.
+              </p>
+            </div>
+            <div class="ps-solution">
+              <h3>Attendance-Linked Payroll</h3>
+              <p>
+                Seamless integration with Zoho People ensuring accurate salary
+                based on real attendance data.
+              </p>
+            </div>
+          </div>
+
+          <div class="ps-card scroll-reveal">
+            <div class="ps-problem">
+              <h3>No Accounting Sync</h3>
+              <p>
+                Payroll processed separately, manual journal entries, and
+                accounting mismatches every month.
+              </p>
+            </div>
+            <div class="ps-solution">
+              <h3>Payroll-to-Books Automation</h3>
+              <p>
+                Auto posting of salary journals into Zoho Books for clean
+                accounting and accurate reports.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Differentiation Section -->
     <section class="differentiation">
       <div class="container">
         <h2 class="section-title scroll-reveal">Why Choose Us</h2>
@@ -1258,7 +1741,6 @@
       </div>
     </section>
 
-    <!-- Implementations Section -->
     <section class="implementations">
       <div class="container">
         <h2 class="section-title scroll-reveal">
@@ -1270,7 +1752,7 @@
 
         <div class="impl-container">
           <div class="impl-card scroll-reveal">
-            <div class="impl-icon">🔗</div>
+            <div class="impl-number">01</div>
             <div class="impl-content">
               <h3 class="impl-title">Zoho Payroll + Zoho People</h3>
               <p class="impl-description">
@@ -1283,7 +1765,7 @@
           </div>
 
           <div class="impl-card scroll-reveal">
-            <div class="impl-icon">📊</div>
+            <div class="impl-number">02</div>
             <div class="impl-content">
               <h3 class="impl-title">Zoho Payroll + Zoho Books</h3>
               <p class="impl-description">
@@ -1296,7 +1778,7 @@
           </div>
 
           <div class="impl-card scroll-reveal">
-            <div class="impl-icon">⚡</div>
+            <div class="impl-number">03</div>
             <div class="impl-content">
               <h3 class="impl-title">Complete Payroll Ecosystem</h3>
               <p class="impl-description">
@@ -1311,70 +1793,127 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
+    <section class="industries">
       <div class="container">
-        <div class="cta-content">
-          <h2 class="cta-title">Ready to Transform Your Payroll?</h2>
-          <p class="cta-subtitle">
-            Get started with compliant, automated payroll processing today
-          </p>
+        <h2 class="section-title scroll-reveal">Industries We Handle</h2>
+        <p class="section-subtitle scroll-reveal">
+          Payroll implementations tailored for different business models and
+          workforce structures
+        </p>
 
-          <div class="cta-buttons">
-            <button class="btn btn-primary">
-              <span>Get Payroll Compliance Check</span>
-            </button>
-            <button class="btn btn-secondary">
-              <span>Request Payroll Demo</span>
-            </button>
+        <div class="industry-grid">
+          <div class="industry-card scroll-reveal">
+            <h3>Manufacturing & Industrial Units</h3>
+            <p class="industry-desc">
+              Designed for factories with shift-based workers, wage structures,
+              statutory compliance, and contractor payroll complexity.
+            </p>
+            <ul class="industry-points">
+              <li>Shift & overtime-based payroll</li>
+              <li>PF, ESI & wage compliance</li>
+              <li>Contract & daily wage workers</li>
+              <li>Plant-wise payroll control</li>
+            </ul>
+          </div>
+
+          <div class="industry-card scroll-reveal">
+            <h3>IT, SaaS & Service Companies</h3>
+            <p class="industry-desc">
+              Ideal for knowledge-driven teams with variable pay, incentives,
+              and flexible attendance policies.
+            </p>
+            <ul class="industry-points">
+              <li>Flexible salary components</li>
+              <li>Remote & hybrid attendance</li>
+              <li>Performance incentives</li>
+              <li>Auto Form-16 & TDS handling</li>
+            </ul>
+          </div>
+
+          <div class="industry-card scroll-reveal">
+            <h3>Startups & Growing Businesses</h3>
+            <p class="industry-desc">
+              Payroll systems that scale with your growth while staying
+              compliant from day one.
+            </p>
+            <ul class="industry-points">
+              <li>Quick payroll setup</li>
+              <li>Cost-optimized salary structures</li>
+              <li>Easy onboarding & exits</li>
+              <li>Founder-friendly dashboards</li>
+            </ul>
+          </div>
+
+          <div class="industry-card scroll-reveal">
+            <h3>Multi-Location & PAN-India Businesses</h3>
+            <p class="industry-desc">
+              Centralized payroll with state-wise compliance for organizations
+              operating across India.
+            </p>
+            <ul class="industry-points">
+              <li>State-wise PT & labor laws</li>
+              <li>Branch-level payroll views</li>
+              <li>Central HR & finance control</li>
+              <li>Scalable employee management</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
         <div class="footer-section">
-          <h3>About Zolytics</h3>
+          <h3>Zolytics</h3>
           <p>
-            Certified Zoho Partner providing expert CRM implementation,
-            customization, and consulting services across India. We help
-            businesses leverage technology to drive growth.
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
           </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
         </div>
 
+        <!-- Solutions (With Links) -->
         <div class="footer-section">
-          <h3>Services</h3>
+          <h3>Zoho Solutions</h3>
           <ul>
-            <li>CRM Implementation</li>
-            <li>Customization & Development</li>
-            <li>Strategic Consulting</li>
-            <li>Training & Support</li>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
           </ul>
         </div>
 
+        <!-- Contact -->
         <div class="footer-section">
-          <h3>Contact</h3>
-          <p><strong>Email:</strong> contact@zolytics.com</p>
-          <p><strong>Phone:</strong> +91-XXXXXXXXXX</p>
-          <p><strong>Location:</strong> India</p>
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
         </div>
       </div>
 
       <div class="footer-bottom">
-        <p>© 2024 Zolytics. All rights reserved. | Certified Zoho Partner</p>
+        <p>
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
+        </p>
       </div>
     </footer>
 
     <script>
-      // Scroll reveal animation
       const scrollReveal = () => {
         const reveals = document.querySelectorAll(".scroll-reveal");
 
         reveals.forEach((element) => {
           const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 150;
+          const elementVisible = 100;
 
           if (elementTop < window.innerHeight - elementVisible) {
             element.classList.add("active");
@@ -1383,53 +1922,8 @@
       };
 
       window.addEventListener("scroll", scrollReveal);
-      scrollReveal(); // Initial check
+      scrollReveal();
 
-      // Counter animation for stats
-      const animateCounters = () => {
-        const counters = document.querySelectorAll(".stat-number");
-
-        counters.forEach((counter) => {
-          const target = counter.textContent;
-          const isPercentage = target.includes("%");
-          const isTime = target.includes("/");
-
-          if (!isPercentage && !isTime) {
-            const numericValue = parseInt(target);
-            let current = 0;
-            const increment = numericValue / 50;
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= numericValue) {
-                counter.textContent = target;
-                clearInterval(timer);
-              } else {
-                counter.textContent = Math.floor(current) + "+";
-              }
-            }, 30);
-          }
-        });
-      };
-
-      // Trigger counter animation when stats section is visible
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateCounters();
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      const statsSection = document.querySelector(".stats-section");
-      if (statsSection) {
-        statsObserver.observe(statsSection);
-      }
-
-      // Button click handlers
       document.querySelectorAll(".btn").forEach((button) => {
         button.addEventListener("click", function (e) {
           const ripple = document.createElement("span");
@@ -1441,7 +1935,11 @@
           ripple.style.width = ripple.style.height = size + "px";
           ripple.style.left = x + "px";
           ripple.style.top = y + "px";
-          ripple.classList.add("ripple");
+          ripple.style.position = "absolute";
+          ripple.style.borderRadius = "50%";
+          ripple.style.background = "rgba(255, 255, 255, 0.6)";
+          ripple.style.transform = "scale(0)";
+          ripple.style.animation = "ripple 0.6s ease-out";
 
           this.appendChild(ripple);
 
@@ -1449,7 +1947,17 @@
         });
       });
 
-      // Smooth scroll
+      const style = document.createElement("style");
+      style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+      document.head.appendChild(style);
+
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
