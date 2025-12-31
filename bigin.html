@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zoho Bigin - Simple CRM for Small Business | Zolytics</title>
+    <title>Zoho Bigin - Pipeline-Centric CRM | Zolytics</title>
     <style>
       * {
         margin: 0;
@@ -11,34 +11,47 @@
         box-sizing: border-box;
       }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        overflow-x: hidden;
+      :root {
+        --primary-dark: #2d5016;
+        --primary: #5cb85c;
+        --primary-light: #8fd88f;
+        --accent: #ffc107;
+        --dark: #1a1a1a;
+        --gray: #5a5a5a;
+        --light-bg: #f8fdf9;
       }
 
-      /* Smooth Scroll */
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        overflow-x: hidden;
+        background: #ffffff;
+      }
+
       html {
         scroll-behavior: smooth;
       }
 
       .container {
-        max-width: 1200px;
+        max-width: 1400px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 40px;
       }
 
-      /* Header with Glass Effect */
+      /* Advanced Header with Glassmorphism */
       header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(30px) saturate(200%);
         padding: 20px 0;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08),
+          0 0 0 1px rgba(255, 255, 255, 0.3);
         position: sticky;
         top: 0;
         z-index: 1000;
-        animation: slideDown 0.5s ease-out;
+        animation: slideDown 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        border-bottom: 1px solid rgba(45, 80, 22, 0.1);
       }
 
       @keyframes slideDown {
@@ -61,81 +74,180 @@
       .logo {
         display: flex;
         align-items: center;
-        gap: 15px;
-        font-size: 28px;
-        font-weight: bold;
-        color: #2d5016;
+        gap: 20px;
+        position: relative;
+        z-index: 2;
       }
 
       .logo img {
-        height: 45px;
-        transition: transform 0.3s ease;
+        height: 50px;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: drop-shadow(0 4px 12px rgba(45, 80, 22, 0.15));
       }
 
-      .logo:hover img {
-        transform: rotate(5deg) scale(1.1);
+      .logo:hover img:first-child {
+        transform: translateY(-5px) scale(1.08) rotate(-2deg);
+        filter: drop-shadow(0 12px 24px rgba(45, 80, 22, 0.3));
+      }
+
+      .logo:hover img:last-child {
+        transform: translateY(-5px) scale(1.08) rotate(2deg);
+        filter: drop-shadow(0 12px 24px rgba(92, 184, 92, 0.3));
       }
 
       .nav-links {
         display: flex;
-        gap: 30px;
+        gap: 50px;
         list-style: none;
         align-items: center;
       }
 
       .nav-links a {
         text-decoration: none;
-        color: #333;
-        font-weight: 500;
-        transition: all 0.3s;
+        color: var(--dark);
+        font-weight: 600;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         position: relative;
+        padding: 10px 0;
+      }
+
+      .nav-links a::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-dark),
+          var(--primary),
+          var(--primary-light)
+        );
+        border-radius: 3px;
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      .nav-links a:hover::before {
+        transform: translateX(-50%) scaleX(1);
       }
 
       .nav-links a::after {
         content: "";
         position: absolute;
-        bottom: -5px;
-        left: 0;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         width: 0;
-        height: 2px;
-        background: #2d5016;
-        transition: width 0.3s ease;
+        height: 0;
+        background: radial-gradient(
+          circle,
+          rgba(92, 184, 92, 0.2),
+          transparent
+        );
+        border-radius: 50%;
+        transition: all 0.5s ease;
+        z-index: -1;
       }
 
       .nav-links a:hover::after {
-        width: 100%;
+        width: 120%;
+        height: 200%;
       }
 
       .nav-links a:hover {
-        color: #2d5016;
+        color: var(--primary-dark);
+        transform: translateY(-3px);
       }
 
-      /* Hero Section with Video Background */
+      /* Hero Section with Advanced Animations */
       .hero {
-        background: white;
-        min-height: 90vh;
+        background: linear-gradient(
+          165deg,
+          #ffffff 0%,
+          #f0fdf4 30%,
+          #dcfce7 60%,
+          #f0fdf4 100%
+        );
+        min-height: 95vh;
         display: flex;
         align-items: center;
         position: relative;
         overflow: hidden;
+        padding: 120px 0 80px;
+      }
+
+      .hero::before,
+      .hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        animation: floatBlob 25s ease-in-out infinite;
+      }
+
+      .hero::before {
+        top: -20%;
+        right: -15%;
+        width: 1200px;
+        height: 1200px;
+        background: radial-gradient(
+          circle,
+          rgba(92, 184, 92, 0.15),
+          transparent 70%
+        );
+      }
+
+      .hero::after {
+        bottom: -25%;
+        left: -20%;
+        width: 1000px;
+        height: 1000px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 80, 22, 0.1),
+          transparent 70%
+        );
+        animation-delay: 5s;
+        animation-direction: reverse;
+      }
+
+      @keyframes floatBlob {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1) rotate(0deg);
+        }
+        25% {
+          transform: translate(100px, -100px) scale(1.2) rotate(90deg);
+        }
+        50% {
+          transform: translate(-50px, 50px) scale(0.9) rotate(180deg);
+        }
+        75% {
+          transform: translate(80px, 80px) scale(1.1) rotate(270deg);
+        }
       }
 
       .hero-content {
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 100px;
         align-items: center;
         z-index: 2;
+        position: relative;
       }
 
       .hero-text {
-        animation: fadeInLeft 1s ease-out;
+        animation: fadeInLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       @keyframes fadeInLeft {
         from {
           opacity: 0;
-          transform: translateX(-50px);
+          transform: translateX(-100px);
         }
         to {
           opacity: 1;
@@ -144,34 +256,86 @@
       }
 
       .hero h1 {
-        font-size: 52px;
-        color: #2d5016;
-        margin-bottom: 20px;
-        line-height: 1.2;
+        font-size: 72px;
+        color: var(--dark);
+        margin-bottom: 32px;
+        line-height: 1.1;
+        font-weight: 900;
+        letter-spacing: -3px;
       }
 
       .hero h1 .highlight {
-        background: linear-gradient(135deg, #2d5016, #5cb85c);
+        background: linear-gradient(
+          135deg,
+          #2d5016 0%,
+          #5cb85c 50%,
+          #8fd88f 100%
+        );
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        position: relative;
+        display: inline-block;
+        animation: gradientShift 5s ease infinite;
+        background-size: 200% auto;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .hero h1 .highlight::after {
+        content: "";
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-dark),
+          var(--primary),
+          var(--primary-light)
+        );
+        border-radius: 3px;
+        animation: expandWidth 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both;
+        box-shadow: 0 4px 12px rgba(92, 184, 92, 0.4);
+      }
+
+      @keyframes expandWidth {
+        from {
+          width: 0;
+          opacity: 0;
+        }
+        to {
+          width: 100%;
+          opacity: 1;
+        }
       }
 
       .hero p {
-        font-size: 20px;
-        color: #666;
-        margin-bottom: 30px;
+        font-size: 24px;
+        color: #4a4a4a;
+        margin-bottom: 48px;
+        line-height: 1.75;
+        font-weight: 400;
       }
 
       .hero-image {
         position: relative;
-        animation: fadeInRight 1s ease-out;
+        animation: fadeInRight 1.2s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       @keyframes fadeInRight {
         from {
           opacity: 0;
-          transform: translateX(50px);
+          transform: translateX(100px);
         }
         to {
           opacity: 1;
@@ -179,90 +343,209 @@
         }
       }
 
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(92, 184, 92, 0.2),
+          rgba(45, 80, 22, 0.1)
+        );
+        border-radius: 30px;
+        z-index: -1;
+        animation: morphing 8s ease-in-out infinite;
+      }
+
+      @keyframes morphing {
+        0%,
+        100% {
+          border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+          transform: rotate(0deg);
+        }
+        50% {
+          border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+          transform: rotate(5deg);
+        }
+      }
+
       .hero-image img {
         width: 100%;
-        border-radius: 20px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        transition: transform 0.5s ease;
+        border-radius: 28px;
+        box-shadow: 0 50px 100px rgba(0, 0, 0, 0.15),
+          0 25px 50px rgba(45, 80, 22, 0.1);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid rgba(255, 255, 255, 0.5);
       }
 
       .hero-image:hover img {
-        transform: scale(1.05) rotate(2deg);
-      }
-
-      .floating {
-        animation: floating 3s ease-in-out infinite;
-      }
-
-      @keyframes floating {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
+        transform: translateY(-20px) scale(1.03) rotateY(5deg);
+        box-shadow: 0 60px 120px rgba(0, 0, 0, 0.2),
+          0 35px 70px rgba(45, 80, 22, 0.15);
       }
 
       .cta-buttons {
         display: flex;
-        gap: 20px;
+        gap: 28px;
         flex-wrap: wrap;
+        margin-top: 20px;
       }
 
       .btn {
-        padding: 15px 35px;
+        padding: 20px 48px;
         border: none;
-        border-radius: 8px;
+        border-radius: 16px;
         font-size: 18px;
         cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        font-weight: 700;
         text-decoration: none;
         display: inline-block;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.4);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .btn:hover::before {
+        width: 300px;
+        height: 300px;
       }
 
       .btn-primary {
-        background: linear-gradient(135deg, #2d5016, #5cb85c);
+        background: linear-gradient(
+          135deg,
+          #2d5016 0%,
+          #5cb85c 50%,
+          #8fd88f 100%
+        );
+        background-size: 200% auto;
         color: white;
-        box-shadow: 0 5px 15px rgba(45, 80, 22, 0.3);
+        box-shadow: 0 15px 35px rgba(45, 80, 22, 0.3),
+          0 5px 15px rgba(0, 0, 0, 0.1);
+        animation: gradientAnimation 3s ease infinite;
+      }
+
+      @keyframes gradientAnimation {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 25px rgba(45, 80, 22, 0.4);
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 25px 50px rgba(45, 80, 22, 0.4),
+          0 10px 25px rgba(0, 0, 0, 0.15);
       }
 
       .btn-secondary {
         background: white;
-        color: #2d5016;
-        border: 2px solid #2d5016;
+        color: var(--primary-dark);
+        border: 3px solid var(--primary-dark);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
       }
 
       .btn-secondary:hover {
-        background: #2d5016;
+        background: var(--primary-dark);
         color: white;
+        transform: translateY(-6px) scale(1.05);
+        box-shadow: 0 20px 40px rgba(45, 80, 22, 0.3);
       }
 
-      /* Features Section - Green Background */
-      .features {
-        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-        padding: 100px 0;
+      /* Context Section with Advanced Parallax */
+      .context-section {
+        background: linear-gradient(
+          180deg,
+          #f0fdf4 0%,
+          #dcfce7 50%,
+          #f0fdf4 100%
+        );
+        padding: 160px 0;
         position: relative;
+        overflow: hidden;
+      }
+
+      .context-section::before,
+      .context-section::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(100px);
+        animation: pulse 15s ease-in-out infinite;
+      }
+
+      .context-section::before {
+        top: -20%;
+        right: -10%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(92, 184, 92, 0.2),
+          transparent 70%
+        );
+      }
+
+      .context-section::after {
+        bottom: -25%;
+        left: -15%;
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 80, 22, 0.15),
+          transparent 70%
+        );
+        animation-delay: 3s;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 0.4;
+        }
+        50% {
+          transform: scale(1.3) rotate(10deg);
+          opacity: 0.6;
+        }
       }
 
       .section-title {
         text-align: center;
-        font-size: 42px;
-        margin-bottom: 20px;
-        color: #2d5016;
-        animation: fadeInUp 0.8s ease-out;
+        font-size: 58px;
+        margin-bottom: 28px;
+        color: var(--dark);
+        font-weight: 900;
+        letter-spacing: -2px;
+        animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+        z-index: 2;
       }
 
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(50px);
         }
         to {
           opacity: 1;
@@ -272,29 +555,498 @@
 
       .section-subtitle {
         text-align: center;
-        font-size: 18px;
-        color: #666;
-        margin-bottom: 60px;
-        max-width: 700px;
+        font-size: 22px;
+        color: var(--gray);
+        margin-bottom: 90px;
+        max-width: 850px;
         margin-left: auto;
         margin-right: auto;
+        font-weight: 400;
+        line-height: 1.7;
+        position: relative;
+        z-index: 2;
+      }
+
+      .context-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .context-text p {
+        font-size: 20px;
+        color: #3a3a3a;
+        line-height: 1.9;
+        margin-bottom: 28px;
+        font-weight: 400;
+      }
+
+      .comparison-box {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        margin-top: 50px;
+      }
+
+      .comparison-item {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        padding: 48px;
+        border-radius: 24px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .comparison-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 8px;
+        height: 100%;
+        background: linear-gradient(180deg, #ff6b6b, #ee5a6f);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .comparison-item.good::before {
+        background: linear-gradient(180deg, #2d5016, #5cb85c, #8fd88f);
+      }
+
+      .comparison-item::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -150px;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 107, 107, 0.15),
+          transparent 70%
+        );
+        border-radius: 50%;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .comparison-item.good::after {
+        background: radial-gradient(
+          circle,
+          rgba(92, 184, 92, 0.15),
+          transparent 70%
+        );
+      }
+
+      .comparison-item:hover {
+        transform: translateY(-12px) scale(1.03) rotateY(3deg);
+        box-shadow: 0 35px 80px rgba(0, 0, 0, 0.18);
+      }
+
+      .comparison-item:hover::before {
+        width: 100%;
+      }
+
+      .comparison-item:hover::after {
+        right: -50px;
+        transform: scale(1.4);
+      }
+
+      .comparison-item h4 {
+        font-size: 26px;
+        margin-bottom: 20px;
+        color: var(--dark);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .comparison-item.bad h4 {
+        color: #dc3545;
+      }
+
+      .comparison-item.good h4 {
+        color: var(--primary-dark);
+      }
+
+      .comparison-item p {
+        font-size: 17px;
+        color: var(--gray);
+        line-height: 1.8;
+        font-weight: 400;
+      }
+
+      /* Capabilities Section */
+      .capabilities-section {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafafa 50%,
+          #ffffff 100%
+        );
+        padding: 160px 0;
+        position: relative;
+      }
+
+      .capability-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+        margin-top: 80px;
+      }
+
+      .capability-card {
+        background: linear-gradient(145deg, #ffffff 0%, #f9f9f9 100%);
+        padding: 56px;
+        border-radius: 32px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .capability-card::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          rgba(92, 184, 92, 0.1) 180deg,
+          transparent 360deg
+        );
+        transition: all 0.8s ease;
+        animation: rotate 8s linear infinite;
+      }
+
+      @keyframes rotate {
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .capability-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0;
+        height: 8px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-dark),
+          var(--primary),
+          var(--primary-light)
+        );
+        transition: width 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 0 20px rgba(92, 184, 92, 0.5);
+      }
+
+      .capability-card:hover {
+        transform: translateY(-20px) scale(1.02);
+        box-shadow: 0 45px 100px rgba(0, 0, 0, 0.15);
+      }
+
+      .capability-card:hover::after {
+        width: 100%;
+      }
+
+      .capability-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 36px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .capability-header h3 {
+        font-size: 32px;
+        color: var(--dark);
+        flex: 1;
+        font-weight: 800;
+        letter-spacing: -1px;
+        padding-right: 20px;
+      }
+
+      .capability-number {
+        width: 72px;
+        height: 72px;
+        background: linear-gradient(
+          135deg,
+          #2d5016 0%,
+          #5cb85c 50%,
+          #8fd88f 100%
+        );
+        background-size: 200% auto;
+        color: white;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 900;
+        flex-shrink: 0;
+        box-shadow: 0 15px 40px rgba(45, 80, 22, 0.3);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: gradientAnimation 3s ease infinite;
+        order: -1;
+        margin-right: 24px;
+      }
+
+      .capability-card:hover .capability-number {
+        transform: scale(1.2) rotate(10deg);
+        box-shadow: 0 20px 50px rgba(45, 80, 22, 0.4);
+      }
+
+      .capability-features {
+        list-style: none;
+        margin: 36px 0;
+        position: relative;
+        z-index: 2;
+      }
+
+      .capability-features li {
+        padding: 18px 0;
+        padding-left: 42px;
+        position: relative;
+        color: #4a4a4a;
+        font-size: 18px;
+        line-height: 1.8;
+        font-weight: 400;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .capability-features li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 24px;
+        height: 24px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        border-radius: 50%;
+        box-shadow: 0 5px 15px rgba(45, 80, 22, 0.3);
+        transition: all 0.4s ease;
+      }
+
+      .capability-features li::after {
+        content: "✓";
+        position: absolute;
+        left: 6px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .capability-features li:hover {
+        padding-left: 48px;
+        color: var(--primary-dark);
+      }
+
+      .capability-features li:hover::before {
+        transform: translateY(-50%) scale(1.2) rotate(360deg);
+      }
+
+      .consulting-value {
+        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+        padding: 32px;
+        border-radius: 20px;
+        margin-top: 32px;
+        position: relative;
+        z-index: 2;
+        border: 1px solid rgba(45, 80, 22, 0.15);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        overflow: hidden;
+      }
+
+      .consulting-value::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.3),
+          transparent 50%
+        );
+        transform: scale(0);
+        transition: transform 0.6s ease;
+      }
+
+      .consulting-value:hover::before {
+        transform: scale(1);
+      }
+
+      .consulting-value:hover {
+        transform: translateX(8px) scale(1.02);
+        box-shadow: 0 12px 30px rgba(45, 80, 22, 0.15);
+      }
+
+      .consulting-value h4 {
+        color: var(--primary-dark);
+        font-size: 20px;
+        margin-bottom: 14px;
+        font-weight: 800;
+        letter-spacing: -0.3px;
+      }
+
+      .consulting-value p {
+        color: #3a3a3a;
+        font-size: 17px;
+        line-height: 1.8;
+        font-weight: 400;
+      }
+
+      /* Benefits Section */
+      .benefits {
+        background: linear-gradient(
+          180deg,
+          #f0fdf4 0%,
+          #dcfce7 50%,
+          #f0fdf4 100%
+        );
+        padding: 160px 0;
+        position: relative;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+        margin-top: 80px;
+      }
+
+      .benefit-item {
+        display: flex;
+        gap: 36px;
+        padding: 52px;
+        border-radius: 28px;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        position: relative;
+        overflow: hidden;
+        counter-increment: benefit-counter;
+      }
+
+      .benefits-grid {
+        counter-reset: benefit-counter;
+      }
+
+      .benefit-item::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(92, 184, 92, 0.1),
+          transparent
+        );
+        transition: left 0.7s ease;
+      }
+
+      .benefit-item:hover::before {
+        left: 100%;
+      }
+
+      .benefit-item:hover {
+        transform: translateX(16px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+      }
+
+      .benefit-number {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #2d5016, #5cb85c, #8fd88f);
+        background-size: 200% auto;
+        color: white;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        font-weight: 900;
+        flex-shrink: 0;
+        box-shadow: 0 15px 40px rgba(45, 80, 22, 0.3);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: gradientAnimation 3s ease infinite;
+      }
+
+      .benefit-number::before {
+        content: counter(benefit-counter);
+      }
+
+      .benefit-item:hover .benefit-number {
+        transform: scale(1.2) rotate(-10deg);
+        box-shadow: 0 20px 50px rgba(45, 80, 22, 0.4);
+      }
+
+      .benefit-content h3 {
+        color: var(--primary-dark);
+        margin-bottom: 14px;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .benefit-content p {
+        color: var(--gray);
+        line-height: 1.85;
+        font-size: 18px;
+        font-weight: 400;
+      }
+
+      /* Features/Integration Section */
+      .features {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafafa 50%,
+          #ffffff 100%
+        );
+        padding: 160px 0;
+        position: relative;
       }
 
       .features-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+        gap: 40px;
+        margin-top: 80px;
       }
 
       .feature-card {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s ease;
+        background: linear-gradient(145deg, #ffffff, #f9f9f9);
+        padding: 56px 44px;
+        border-radius: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
         overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.05);
       }
 
       .feature-card::before {
@@ -303,397 +1055,513 @@
         top: 0;
         left: 0;
         width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, #2d5016, #5cb85c);
+        height: 8px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-dark),
+          var(--primary),
+          var(--primary-light),
+          var(--accent)
+        );
         transform: scaleX(0);
-        transition: transform 0.3s ease;
+        transform-origin: left;
+        transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .feature-card::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -200px;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(92, 184, 92, 0.1),
+          transparent 70%
+        );
+        border-radius: 50%;
+        transition: all 0.7s ease;
       }
 
       .feature-card:hover::before {
         transform: scaleX(1);
       }
 
+      .feature-card:hover::after {
+        right: -100px;
+        transform: scale(1.3);
+      }
+
       .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-      }
-
-      .feature-icon {
-        font-size: 48px;
-        margin-bottom: 20px;
-        display: inline-block;
-        transition: transform 0.3s ease;
-      }
-
-      .feature-card:hover .feature-icon {
-        transform: scale(1.2) rotate(5deg);
+        transform: translateY(-20px) scale(1.03);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
       }
 
       .feature-card h3 {
-        color: #2d5016;
-        margin-bottom: 15px;
-        font-size: 22px;
+        color: var(--primary-dark);
+        margin-bottom: 20px;
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 2;
       }
 
       .feature-card p {
-        color: #666;
-        line-height: 1.8;
+        color: var(--gray);
+        line-height: 1.85;
+        font-size: 17px;
+        font-weight: 400;
+        position: relative;
+        z-index: 2;
       }
 
-      /* Video Demo Section - Yellow */
-      .video-demo {
-        background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
-        padding: 100px 0;
+      .feature-card img,
+      .feature-icon {
+        margin-bottom: 24px;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        z-index: 2;
       }
 
-      .video-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 60px;
+      .feature-card:hover img,
+      .feature-card:hover .feature-icon {
+        transform: scale(1.15) rotate(8deg);
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        border-radius: 16px;
+        display: flex;
         align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 28px;
+        font-weight: 700;
+        box-shadow: 0 8px 20px rgba(45, 80, 22, 0.3);
       }
 
-      .video-wrapper {
+      /* Use Cases Section - 2x2 Grid */
+      .use-cases-detailed {
+        background: linear-gradient(
+          180deg,
+          #fffef7 0%,
+          #fff9e6 50%,
+          #fffef7 100%
+        );
+        padding: 160px 0;
         position: relative;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease;
       }
 
-      .video-wrapper:hover {
-        transform: scale(1.02);
-      }
-
-      .video-wrapper video {
-        width: 100%;
-        display: block;
-      }
-
-      .video-info h2 {
-        font-size: 38px;
-        color: #2d5016;
-        margin-bottom: 25px;
-      }
-
-      .video-info ul {
-        list-style: none;
-        margin-top: 30px;
-      }
-
-      .video-info ul li {
-        padding: 15px 0;
-        padding-left: 35px;
-        position: relative;
-        color: #666;
-        font-size: 18px;
-      }
-
-      .video-info ul li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: #2d5016;
-        font-weight: bold;
-        font-size: 22px;
-      }
-
-      /* Benefits Section - White */
-      .benefits {
-        background: white;
-        padding: 100px 0;
-      }
-
-      .benefits-grid {
+      .use-case-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 40px;
-        margin-top: 50px;
+        margin-top: 80px;
       }
 
-      .benefit-item {
-        display: flex;
-        gap: 25px;
-        padding: 30px;
-        border-radius: 15px;
-        transition: all 0.3s ease;
-        background: #f9f9f9;
-      }
-
-      .benefit-item:hover {
-        background: #e8f5e9;
-        transform: translateX(10px);
-      }
-
-      .benefit-number {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #2d5016, #5cb85c);
-        color: white;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        font-weight: bold;
-        flex-shrink: 0;
-      }
-
-      .benefit-content h3 {
-        color: #2d5016;
-        margin-bottom: 10px;
-        font-size: 22px;
-      }
-
-      .benefit-content p {
-        color: #666;
-        line-height: 1.8;
-      }
-
-      /* Pricing Section - Green */
-      .pricing {
-        background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-        padding: 100px 0;
-      }
-
-      .pricing-cards {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
-      }
-
-      .pricing-card {
-        background: white;
-        padding: 40px;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: all 0.4s ease;
+      .use-case-item {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 52px 40px;
+        border-radius: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
         position: relative;
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.6);
       }
 
-      .pricing-card:hover {
-        transform: translateY(-15px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
-      }
-
-      .pricing-card.featured {
-        border: 3px solid #2d5016;
-        transform: scale(1.05);
-      }
-
-      .pricing-badge {
-        background: #2d5016;
-        color: white;
-        padding: 8px 20px;
-        border-radius: 20px;
-        display: inline-block;
-        margin-bottom: 20px;
-        font-size: 14px;
-        font-weight: bold;
-      }
-
-      .pricing-card h3 {
-        font-size: 28px;
-        color: #2d5016;
-        margin-bottom: 15px;
-      }
-
-      .price {
-        font-size: 48px;
-        font-weight: bold;
-        color: #2d5016;
-        margin: 20px 0;
-      }
-
-      .price span {
-        font-size: 18px;
-        color: #666;
-      }
-
-      .pricing-features {
-        list-style: none;
-        margin: 30px 0;
-      }
-
-      .pricing-features li {
-        padding: 12px 0;
-        padding-left: 30px;
-        position: relative;
-        color: #666;
-      }
-
-      .pricing-features li::before {
-        content: "✓";
+      .use-case-item::before {
+        content: "";
         position: absolute;
+        top: 0;
         left: 0;
-        color: #2d5016;
-        font-weight: bold;
+        width: 100%;
+        height: 8px;
+        background: linear-gradient(90deg, #ffc107, #ff9800);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
       }
 
-      /* Use Cases Section - Yellow */
-      .use-cases {
-        background: linear-gradient(135deg, #fff9e6 0%, #fff3cd 100%);
-        padding: 100px 0;
+      .use-case-item::after {
+        content: "";
+        position: absolute;
+        bottom: -150px;
+        right: -150px;
+        width: 350px;
+        height: 350px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 193, 7, 0.12),
+          transparent 70%
+        );
+        border-radius: 50%;
+        transition: all 0.7s ease;
       }
 
-      .use-cases-grid {
+      .use-case-item:hover::before {
+        transform: scaleX(1);
+      }
+
+      .use-case-item:hover::after {
+        bottom: -50px;
+        right: -50px;
+        transform: scale(1.4);
+      }
+
+      .use-case-item:hover {
+        transform: translateY(-16px) scale(1.03);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
+      }
+
+      .use-case-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+        color: #856404;
+        padding: 12px 24px;
+        border-radius: 28px;
+        font-size: 14px;
+        font-weight: 800;
+        margin-bottom: 28px;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+      }
+
+      .use-case-item h3 {
+        color: var(--primary-dark);
+        font-size: 28px;
+        margin-bottom: 18px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .use-case-item p {
+        color: var(--gray);
+        font-size: 17px;
+        line-height: 1.85;
+        font-weight: 400;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Implementation Process */
+      .implementation-section {
+        background: linear-gradient(
+          180deg,
+          #f0fdf4 0%,
+          #dcfce7 50%,
+          #f0fdf4 100%
+        );
+        padding: 160px 0;
+        position: relative;
+      }
+
+      .process-timeline {
+        position: relative;
+        margin-top: 100px;
+      }
+
+      .process-timeline::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        background: linear-gradient(
+          180deg,
+          var(--primary-dark),
+          var(--primary),
+          var(--primary-light)
+        );
+        transform: translateX(-50%);
+        border-radius: 3px;
+        box-shadow: 0 0 20px rgba(92, 184, 92, 0.3);
+      }
+
+      .process-step {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 30px;
-        margin-top: 50px;
+        grid-template-columns: 1fr 1fr;
+        gap: 100px;
+        margin-bottom: 100px;
+        position: relative;
       }
 
-      .use-case-card {
-        background: white;
-        padding: 40px 30px;
-        border-radius: 15px;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-        text-align: center;
+      .process-step:nth-child(even) .process-content {
+        order: 2;
       }
 
-      .use-case-card:hover {
+      .process-step:nth-child(even) .process-visual {
+        order: 1;
+      }
+
+      .process-content {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 56px;
+        border-radius: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1);
+        position: relative;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+
+      .process-content:hover {
         transform: scale(1.05);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.18);
       }
 
-      .use-case-icon {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+      .process-number {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 84px;
+        height: 84px;
+        background: white;
+        border: 6px solid var(--primary-dark);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin: 0 auto 25px;
         font-size: 36px;
+        font-weight: 900;
+        color: var(--primary-dark);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        animation: numberPulse 3s ease-in-out infinite;
       }
 
-      .use-case-card h3 {
-        color: #2d5016;
-        margin-bottom: 15px;
-        font-size: 22px;
+      @keyframes numberPulse {
+        0%,
+        100% {
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+        }
+        50% {
+          box-shadow: 0 20px 50px rgba(45, 80, 22, 0.4);
+        }
       }
 
-      /* CTA Section - White */
-      .cta-section {
-        background: white;
-        padding: 100px 0;
-        text-align: center;
+      .process-step:hover .process-number {
+        transform: translate(-50%, -50%) scale(1.2) rotate(15deg);
+        box-shadow: 0 20px 50px rgba(45, 80, 22, 0.4);
       }
 
-      .cta-content {
-        background: linear-gradient(135deg, #2d5016, #5cb85c);
-        padding: 80px 60px;
-        border-radius: 30px;
-        color: white;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-      }
-
-      .cta-content h2 {
-        font-size: 42px;
+      .process-content h3 {
+        color: var(--primary-dark);
+        font-size: 32px;
         margin-bottom: 20px;
+        font-weight: 800;
+        letter-spacing: -0.8px;
       }
 
-      .cta-content p {
+      .process-content p {
+        color: var(--gray);
+        font-size: 18px;
+        line-height: 1.9;
+        font-weight: 400;
+      }
+
+      .process-visual {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .process-placeholder {
+        width: 100%;
+        height: auto;
+        background: none;
+        border-radius: 0;
+        box-shadow: none;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        color: #777;
         font-size: 20px;
-        margin-bottom: 40px;
-        opacity: 0.9;
+        font-weight: 600;
+        padding: 0;
       }
 
-      /* Footer - Black */
-      footer {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
-        color: white;
-        padding: 60px 0 30px;
+      /* Why Choose Section */
+      .why-choose-section {
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #fafafa 50%,
+          #ffffff 100%
+        );
+        padding: 160px 0;
+        position: relative;
+      }
+
+      .differentiators-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 48px;
+        margin-top: 80px;
+      }
+
+      .differentiator-card {
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        padding: 56px;
+        border-radius: 28px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.08);
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
+      }
+
+      .differentiator-card::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: conic-gradient(
+          from 0deg,
+          transparent 0deg,
+          rgba(92, 184, 92, 0.12) 180deg,
+          transparent 360deg
+        );
+        opacity: 0;
+        transition: opacity 0.7s ease;
+        animation: rotate 10s linear infinite;
+      }
+
+      .differentiator-card:hover {
+        transform: translateY(-16px) scale(1.03);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.16);
+        border-color: var(--primary);
+      }
+
+      .differentiator-card:hover::before {
+        opacity: 1;
+      }
+
+      .differentiator-card h3 {
+        color: var(--primary-dark);
+        font-size: 28px;
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 2;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .differentiator-card p {
+        color: var(--gray);
+        font-size: 18px;
+        line-height: 1.85;
+        position: relative;
+        z-index: 2;
+        font-weight: 400;
+      }
+
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
       }
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 40px;
-        margin-bottom: 40px;
+        margin-bottom: 30px;
       }
 
       .footer-section h3 {
-        color: #5cb85c;
-        margin-bottom: 25px;
-        font-size: 20px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
       }
 
-      .footer-section p,
-      .footer-section a {
-        color: #ccc;
-        text-decoration: none;
-        line-height: 2;
-        transition: color 0.3s ease;
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.6;
       }
 
-      .footer-section a:hover {
-        color: #5cb85c;
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
       }
 
-      .social-links {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
+      .footer-section ul li {
+        margin-bottom: 8px;
+        color: #cbd5e1;
       }
 
-      .social-links a {
-        width: 40px;
-        height: 40px;
-        background: rgba(92, 184, 92, 0.2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-      }
-
-      .social-links a:hover {
-        background: #5cb85c;
-        transform: translateY(-3px);
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
       }
 
       .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
         text-align: center;
-        padding-top: 30px;
-        border-top: 1px solid #333;
-        color: #999;
+        color: #94a3b8;
       }
-
       /* Scroll to Top Button */
       .scroll-top {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 50px;
-        height: 50px;
-        background: linear-gradient(135deg, #2d5016, #5cb85c);
+        bottom: 50px;
+        right: 50px;
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-dark),
+          var(--primary)
+        );
+        background-size: 200% auto;
         color: white;
         border: none;
         border-radius: 50%;
         cursor: pointer;
-        font-size: 24px;
+        font-size: 32px;
         display: none;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        transition: all 0.3s ease;
+        box-shadow: 0 15px 40px rgba(45, 80, 22, 0.35);
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         z-index: 999;
+        animation: gradientAnimation 3s ease infinite;
       }
 
       .scroll-top:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        transform: translateY(-12px) scale(1.15);
+        box-shadow: 0 25px 60px rgba(45, 80, 22, 0.5);
       }
 
       /* Animations on Scroll */
       .animate-on-scroll {
         opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s ease-out;
+        transform: translateY(60px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
       }
 
       .animate-on-scroll.animated {
@@ -702,26 +1570,63 @@
       }
 
       /* Responsive */
-      @media (max-width: 768px) {
+      @media (max-width: 968px) {
+        .container {
+          padding: 0 24px;
+        }
+
         .hero-content,
-        .video-content {
+        .context-content,
+        .capability-grid,
+        .process-step,
+        .differentiators-grid,
+        .benefits-grid,
+        .use-case-grid {
           grid-template-columns: 1fr;
+        }
+
+        .process-step:nth-child(even) .process-content,
+        .process-step:nth-child(even) .process-visual {
+          order: initial;
+        }
+
+        .process-timeline::before {
+          left: 30px;
+        }
+
+        .process-number {
+          left: 30px;
+          transform: translate(-50%, -50%);
         }
 
         .hero h1 {
-          font-size: 36px;
+          font-size: 48px;
         }
 
         .section-title {
-          font-size: 32px;
-        }
-
-        .benefits-grid {
-          grid-template-columns: 1fr;
+          font-size: 42px;
         }
 
         .nav-links {
           display: none;
+        }
+
+        .comparison-box {
+          grid-template-columns: 1fr;
+        }
+
+        .features-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .capability-number {
+          order: 0;
+          margin-right: 0;
+          margin-bottom: 20px;
+        }
+
+        .capability-header {
+          flex-direction: column;
         }
       }
     </style>
@@ -741,6 +1646,12 @@
             alt="Zoho Bigin Logo"
           />
         </div>
+        <ul class="nav-links">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#use-cases">Use Cases</a></li>
+          <li><a href="#implementation">Process</a></li>
+        </ul>
       </nav>
     </header>
 
@@ -757,50 +1668,187 @@
               Zoho Bigin helps small businesses manage customers, track deals,
               and close more sales - all in one simple, affordable platform.
             </p>
-            <div class="cta-buttons">
-              <a href="#contact" class="btn btn-primary">Start Free Trial</a>
-              <a href="#demo" class="btn btn-secondary">Watch Demo</a>
-            </div>
           </div>
-          <div class="hero-image floating">
+          <div class="hero-image">
             <img src="images/bigin_dashboard.png" alt="CRM Dashboard" />
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Video Demo Section -->
-    <section class="video-demo" id="demo">
+    <!-- Context Section -->
+    <section class="context-section">
       <div class="container">
-        <div class="video-content">
-          <div class="video-wrapper animate-on-scroll">
-            <video
-              controls
-              poster="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-            >
-              <source
-                src="https://www.pexels.com/download/video/7661635/"
-                type="video/mp4"
-              />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-info animate-on-scroll">
-            <h2>See Zoho Bigin in Action</h2>
+        <h2 class="section-title animate-on-scroll">
+          CRM That Fits Growing Businesses—Not the Other Way Around
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Built for teams that need clarity without complexity
+        </p>
+        <div class="context-content">
+          <div class="context-text animate-on-scroll">
             <p>
-              Watch how Bigin simplifies customer relationship management for
-              small businesses. Learn how you can manage leads, close deals
-              faster, and grow your revenue.
+              Many teams outgrow spreadsheets but struggle with complex CRMs.
+              Bigin is designed for businesses that need clarity, structure, and
+              control without heavy customization or long learning curves.
             </p>
-            <ul>
-              <li>Set up your CRM in minutes, not days</li>
-              <li>Track every customer interaction effortlessly</li>
-              <li>Visualize your sales pipeline at a glance</li>
-              <li>Automate follow-ups and never miss opportunities</li>
-              <li>Get insights with powerful analytics</li>
+            <p>
+              As a consulting firm, we configure Bigin to match how your sales
+              actually works, not how software expects it to work.
+            </p>
+          </div>
+          <div class="context-visual animate-on-scroll">
+            <div class="comparison-box">
+              <div class="comparison-item bad">
+                <h4>Spreadsheet Chaos</h4>
+                <p>
+                  Lost deals, missed follow-ups, no visibility into pipeline
+                  health or team activity.
+                </p>
+              </div>
+              <div class="comparison-item good">
+                <h4>Bigin Clarity</h4>
+                <p>
+                  Structured pipeline, automated reminders, complete visibility
+                  across all deals and activities.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Capabilities Section -->
+    <section class="capabilities-section" id="features">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">
+          Core Capabilities That Drive Results
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          Everything you need to manage sales effectively
+        </p>
+        <div class="capability-grid">
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">1</div>
+              <h3>Visual Sales Pipelines</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Custom deal stages tailored to your process</li>
+              <li>Drag-and-drop deal movement</li>
+              <li>Value-based forecasting and reporting</li>
+              <li>Stage-wise conversion tracking</li>
             </ul>
-            <div class="cta-buttons" style="margin-top: 30px">
-              <a href="#contact" class="btn btn-primary">Request Demo</a>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We design pipelines that match your real sales journey—enquiry,
+                qualification, proposal, negotiation, closure—so no deal gets
+                lost or stuck.
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">2</div>
+              <h3>Centralized Contact Hub</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Complete contact and company database</li>
+              <li>Automatic activity timelines</li>
+              <li>Notes, emails, calls in one place</li>
+              <li>Smart duplicate prevention</li>
+            </ul>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We structure your contact database with the right fields, tags,
+                and views so your team always knows who to contact, when, and
+                why.
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">3</div>
+              <h3>Never Miss Follow-Ups</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Tasks, calls, and meeting scheduling</li>
+              <li>Smart reminder notifications</li>
+              <li>Activity-based deal progress</li>
+              <li>Daily agenda view for sales reps</li>
+            </ul>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We build follow-up discipline into the system, ensuring your
+                sales team works from priority-driven task lists, not memory.
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">4</div>
+              <h3>Communication Tracking</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Email integration with Gmail & Outlook</li>
+              <li>Call logging and recording</li>
+              <li>Meeting notes and summaries</li>
+              <li>Complete communication history</li>
+            </ul>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We connect Bigin with your email and define communication
+                standards so management always has full visibility into deal
+                progress.
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">5</div>
+              <h3>Smart Automation</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Auto-create tasks on stage changes</li>
+              <li>Intelligent follow-up reminders</li>
+              <li>Deal aging alerts</li>
+              <li>Status-based automated actions</li>
+            </ul>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We automate repetitive actions so your team focuses on
+                selling—not updating CRM.
+              </p>
+            </div>
+          </div>
+
+          <div class="capability-card animate-on-scroll">
+            <div class="capability-header">
+              <div class="capability-number">6</div>
+              <h3>Clear Sales Insights</h3>
+            </div>
+            <ul class="capability-features">
+              <li>Pipeline value reports</li>
+              <li>Deal closure trend analysis</li>
+              <li>Activity performance metrics</li>
+              <li>Sales velocity tracking</li>
+            </ul>
+            <div class="consulting-value">
+              <h4>Our Consulting Approach</h4>
+              <p>
+                We customize views and reports so founders and managers can
+                review sales health in minutes, not hours.
+              </p>
             </div>
           </div>
         </div>
@@ -808,7 +1856,7 @@
     </section>
 
     <!-- Benefits Section -->
-    <section class="benefits">
+    <section class="benefits" id="benefits">
       <div class="container">
         <h2 class="section-title animate-on-scroll">
           Why Small Businesses Love Bigin
@@ -816,10 +1864,9 @@
         <p class="section-subtitle animate-on-scroll">
           Built specifically for teams that need simplicity and power
         </p>
-
         <div class="benefits-grid">
           <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">1</div>
+            <div class="benefit-number"></div>
             <div class="benefit-content">
               <h3>Easy to Use</h3>
               <p>
@@ -828,9 +1875,8 @@
               </p>
             </div>
           </div>
-
           <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">2</div>
+            <div class="benefit-number"></div>
             <div class="benefit-content">
               <h3>Affordable Pricing</h3>
               <p>
@@ -839,9 +1885,8 @@
               </p>
             </div>
           </div>
-
           <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">3</div>
+            <div class="benefit-number"></div>
             <div class="benefit-content">
               <h3>Scalable Solution</h3>
               <p>
@@ -850,9 +1895,8 @@
               </p>
             </div>
           </div>
-
           <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">4</div>
+            <div class="benefit-number"></div>
             <div class="benefit-content">
               <h3>No Commitment</h3>
               <p>
@@ -865,82 +1909,148 @@
       </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="benefits">
+    <!-- Use Cases Section - 2x2 Grid -->
+    <section class="use-cases-detailed" id="use-cases">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">What Our Clients Say</h2>
+        <h2 class="section-title animate-on-scroll">
+          How Teams Use Bigin Every Day
+        </h2>
         <p class="section-subtitle animate-on-scroll">
-          Join thousands of happy businesses using Zoho Bigin
+          Real-world scenarios where Bigin delivers immediate value
         </p>
-
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll">
-            <div style="color: #ffc107; font-size: 24px; margin-bottom: 15px">
-              ★★★★★
-            </div>
-            <p style="font-style: italic; margin-bottom: 20px">
-              "Bigin transformed how we manage our sales pipeline. Setup took
-              less than an hour, and our team was productive immediately. Best
-              CRM for small businesses!"
+        <div class="use-case-grid">
+          <div class="use-case-item animate-on-scroll">
+            <span class="use-case-badge">Sales Teams</span>
+            <h3>Track Every Lead to Close</h3>
+            <p>
+              Sales teams use Bigin to capture leads from multiple sources,
+              assign them to reps, track all touchpoints, and move deals through
+              stages until closure. No lead gets lost, no follow-up gets missed.
             </p>
-            <strong style="color: #2d5016"
-              >- Rajesh Kumar, Founder at TechStart Solutions</strong
-            >
           </div>
-
-          <div class="feature-card animate-on-scroll">
-            <div style="color: #ffc107; font-size: 24px; margin-bottom: 15px">
-              ★★★★★
-            </div>
-            <p style="font-style: italic; margin-bottom: 20px">
-              "We tried several CRMs before finding Bigin. It's simple yet
-              powerful, and the mobile app is fantastic. Our sales have
-              increased 40% since implementation!"
+          <div class="use-case-item animate-on-scroll">
+            <span class="use-case-badge">Service Providers</span>
+            <h3>Client Project Management</h3>
+            <p>
+              Consultants, agencies, and freelancers use Bigin to manage client
+              relationships, track project status, schedule deliverables, and
+              ensure timely invoicing—all in one place.
             </p>
-            <strong style="color: #2d5016"
-              >- Sarah Mitchell, Sales Manager at GreenLeaf Consulting</strong
-            >
           </div>
-
-          <div class="feature-card animate-on-scroll">
-            <div style="color: #ffc107; font-size: 24px; margin-bottom: 15px">
-              ★★★★★
-            </div>
-            <p style="font-style: italic; margin-bottom: 20px">
-              "The integration with Zoho Books makes our accounting seamless.
-              Everything syncs automatically. Zolytics helped us customize it
-              perfectly for our needs."
+          <div class="use-case-item animate-on-scroll">
+            <span class="use-case-badge">Distributors</span>
+            <h3>Dealer & Partner Network</h3>
+            <p>
+              Distributors use Bigin to manage their dealer network, track
+              orders, monitor payment cycles, and maintain complete visibility
+              into partner performance across regions.
             </p>
-            <strong style="color: #2d5016"
-              >- Ahmed Al-Farsi, CEO at Dubai Trading Co.</strong
-            >
+          </div>
+          <div class="use-case-item animate-on-scroll">
+            <span class="use-case-badge">Startups</span>
+            <h3>From First Contact to First Sale</h3>
+            <p>
+              Early-stage startups use Bigin to organize their first customers,
+              build repeatable sales processes, and establish data-driven sales
+              habits from day one.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" id="contact">
+    <!-- Implementation Process Section -->
+    <section class="implementation-section" id="implementation">
       <div class="container">
-        <div class="cta-content animate-on-scroll">
-          <h2>Ready to Transform Your Sales Process?</h2>
-          <p>
-            Start your 15-day free trial today. No credit card required. Setup
-            in minutes.
-          </p>
-          <div class="cta-buttons" style="justify-content: center">
-            <a
-              href="https://bigin.zoho.in/bigin/Home"
-              class="btn"
-              style="background: white; color: #2d5016"
-              >Start Free Trial</a
-            >
-            <a
-              href="https://wa.me/919073139613"
-              class="btn btn-secondary"
-              style="border-color: white; color: white"
-              >Talk to Expert</a
-            >
+        <h2 class="section-title animate-on-scroll">
+          Our Implementation Process
+        </h2>
+        <p class="section-subtitle animate-on-scroll">
+          From setup to success in 4 structured steps
+        </p>
+        <div class="process-timeline">
+          <div class="process-step animate-on-scroll">
+            <div class="process-content">
+              <h3>Discovery & Planning</h3>
+              <p>
+                We start by understanding your current sales process, pain
+                points, and goals. We map out your ideal workflow, define
+                stages, and identify automation opportunities.
+              </p>
+            </div>
+            <div class="process-visual">
+              <div class="process-placeholder">
+                <img
+                  src="https://computools.com/wp-content/uploads/2021/05/1920x1008-Why-Discovery-Phase-Team-and-Plan-Are-Crucial-for-Your-Project.jpg"
+                  alt="Discovery & Planning"
+                  style="width: 460px; height: 270px"
+                />
+              </div>
+            </div>
+            <div class="process-number">1</div>
+          </div>
+
+          <div class="process-step animate-on-scroll">
+            <div class="process-content">
+              <h3>Configuration & Setup</h3>
+              <p>
+                We configure Bigin with your pipelines, fields, templates, and
+                integrations. We import existing data, set up email sync, and
+                build custom views for different team roles.
+              </p>
+            </div>
+            <div class="process-visual">
+              <div class="process-placeholder">
+                <img
+                  src="https://cdn.ttgtmedia.com/rms/onlineimages/folder-files13.jpg"
+                  alt="Configuration & Setup"
+                  style="width: 460px; height: 270px"
+                />
+              </div>
+            </div>
+            <div class="process-number">2</div>
+          </div>
+
+          <div class="process-step animate-on-scroll">
+            <div class="process-content">
+              <h3>Training & Adoption</h3>
+              <p>
+                We train your team on daily workflows, best practices, and how
+                to use Bigin effectively. We provide documentation, video
+                guides, and hands-on practice sessions.
+              </p>
+            </div>
+            <div class="process-visual">
+              <div class="process-placeholder">
+                <img
+                  src="https://drmcnatty.com/wp-content/uploads/2021/02/1-3-1.png"
+                  alt="Training & Adoption"
+                  style="width: 460px; height: 270px"
+                />
+              </div>
+            </div>
+            <div class="process-number">3</div>
+          </div>
+
+          <div class="process-step animate-on-scroll">
+            <div class="process-content">
+              <h3>Optimization & Support</h3>
+              <p>
+                After go-live, we monitor adoption, gather feedback, and
+                fine-tune the system. We provide ongoing support to ensure your
+                team gets maximum value from Bigin.
+              </p>
+            </div>
+            <div class="process-visual">
+              <div class="process-placeholder">
+                <img
+                  src="https://www.igtsolutions.com/wp-content/uploads/2023/05/gofin-2.jpg"
+                  alt="Optimization and Support"
+                  style="width: 460px; height: 270px"
+                />
+              </div>
+            </div>
+            <div class="process-number">4</div>
           </div>
         </div>
       </div>
@@ -955,7 +2065,6 @@
         <p class="section-subtitle animate-on-scroll">
           Connect Bigin with the apps you already use
         </p>
-
         <div class="features-grid">
           <div class="feature-card animate-on-scroll">
             <img
@@ -969,7 +2078,6 @@
               and Books.
             </p>
           </div>
-
           <div class="feature-card animate-on-scroll">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/mail.svg"
@@ -982,16 +2090,18 @@
               communications in one place.
             </p>
           </div>
-
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon">📧</div>
+            <img
+              src="https://ssl.gstatic.com/ui/v1/icons/mail/rfr/logo_gmail_lockup_default_2x_r5.png"
+              alt="Gmail & Outlook"
+              style="width: 60px; margin-bottom: 20px"
+            />
             <h3>Gmail & Outlook</h3>
             <p>
               Connect your existing email accounts and manage conversations
               seamlessly.
             </p>
           </div>
-
           <div class="feature-card animate-on-scroll">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/forms.svg"
@@ -1004,16 +2114,19 @@
               pipeline.
             </p>
           </div>
-
           <div class="feature-card animate-on-scroll">
-            <div class="feature-icon">📞</div>
+            <img
+              src="data:image/png;base64,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"
+              alt="Telephony"
+              style="width: 60px; margin-bottom: 20px"
+            />
             <h3>Telephony</h3>
+
             <p>
               Make and receive calls directly from Bigin with telephony
               integrations.
             </p>
           </div>
-
           <div class="feature-card animate-on-scroll">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/analytics.svg"
@@ -1030,161 +2143,111 @@
       </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="benefits">
+    <!-- Why Choose Section -->
+    <section class="why-choose-section">
       <div class="container">
         <h2 class="section-title animate-on-scroll">
-          Frequently Asked Questions
+          Why Choose Zolytics for Bigin Implementation
         </h2>
-        <div class="benefits-grid">
-          <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">?</div>
-            <div class="benefit-content">
-              <h3>What is Zoho Bigin?</h3>
-              <p>
-                Zoho Bigin is a pipeline-centric CRM designed specifically for
-                small businesses. It helps you manage customers, track deals,
-                and grow your sales without the complexity of traditional CRMs.
-              </p>
-            </div>
+        <p class="section-subtitle animate-on-scroll">
+          Expert consulting that ensures your CRM investment pays off
+        </p>
+        <div class="differentiators-grid">
+          <div class="differentiator-card animate-on-scroll">
+            <h3>Deep Product Expertise</h3>
+            <p>
+              We're certified Zoho partners with years of Bigin implementation
+              experience. We know the platform inside-out and can unlock
+              capabilities most teams never discover.
+            </p>
           </div>
-
-          <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">?</div>
-            <div class="benefit-content">
-              <h3>How is Bigin different from Zoho CRM?</h3>
-              <p>
-                Bigin is simplified and focused on pipeline management, making
-                it perfect for small businesses. Zoho CRM is more comprehensive
-                and suited for larger enterprises with complex sales processes.
-              </p>
-            </div>
+          <div class="differentiator-card animate-on-scroll">
+            <h3>Business-First Approach</h3>
+            <p>
+              We don't just configure software—we design systems that match how
+              your business actually works. Your processes drive our setup, not
+              generic templates.
+            </p>
           </div>
-
-          <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">?</div>
-            <div class="benefit-content">
-              <h3>Can I migrate from another CRM?</h3>
-              <p>
-                Yes! Zolytics provides expert migration services to help you
-                move your data from any CRM to Bigin seamlessly with zero data
-                loss.
-              </p>
-            </div>
+          <div class="differentiator-card animate-on-scroll">
+            <h3>Fast Implementation</h3>
+            <p>
+              Most implementations complete in 2-4 weeks. We work efficiently to
+              get you up and running quickly without compromising quality or
+              thoroughness.
+            </p>
           </div>
-
-          <div class="benefit-item animate-on-scroll">
-            <div class="benefit-number">?</div>
-            <div class="benefit-content">
-              <h3>Do you provide training and support?</h3>
-              <p>
-                Absolutely! Zolytics offers comprehensive training,
-                implementation support, and ongoing technical assistance to
-                ensure your team gets maximum value from Bigin.
-              </p>
-            </div>
+          <div class="differentiator-card animate-on-scroll">
+            <h3>Ongoing Support</h3>
+            <p>
+              Implementation is just the beginning. We provide continued
+              support, optimization, and training to ensure long-term success
+              and maximum ROI.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-section">
-            <h3>Zolytics</h3>
-            <p>
-              Your trusted Zoho Partner for CRM, Finance, Analytics, and
-              Business Automation.
-            </p>
-            <div class="social-links">
-              <a href="#" title="LinkedIn">in</a>
-              <a href="#" title="Twitter">𝕏</a>
-              <a href="https://wa.me/919073139613" title="WhatsApp">📱</a>
-            </div>
-          </div>
-
-          <div class="footer-section">
-            <h3>Quick Links</h3>
-            <p><a href="https://khushi858.github.io/zolytics/">Home</a></p>
-            <p>
-              <a href="https://khushi858.github.io/zolytics/#about">About Us</a>
-            </p>
-            <p>
-              <a href="https://khushi858.github.io/zolytics/#solutions"
-                >All Solutions</a
-              >
-            </p>
-            <p>
-              <a href="https://khushi858.github.io/zolytics/#contact"
-                >Contact</a
-              >
-            </p>
-          </div>
-
-          <div class="footer-section">
-            <h3>Zoho Solutions</h3>
-            <p><a href="#">Zoho CRM</a></p>
-            <p><a href="#">Zoho Books</a></p>
-            <p><a href="#">Zoho Analytics</a></p>
-            <p><a href="#">Zoho Finance</a></p>
-            <p><a href="#">Zoho Bigin</a></p>
-          </div>
-
-          <div class="footer-section">
-            <h3>Contact Info</h3>
-            <p>
-              📧 Email: <a href="mailto:info@zolytics.in">info@zolytics.in</a>
-            </p>
-            <p>📱 Phone: <a href="tel:+919073139613">+91 90731 39613</a></p>
-            <p>🕒 Office Hours: Mon - Fri (10 AM – 6 PM)</p>
-            <p>🌍 Serving: India, UAE, USA</p>
-          </div>
-        </div>
-        <div class="footer-bottom">
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
           <p>
-            &copy; 2025 Zolytics Consulting | All rights reserved | Powered by
-            <a href="https://www.zoho.com/" style="color: #5cb85c">Zoho</a>
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
+          </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
+        </div>
+
+        <!-- Solutions (With Links) -->
+        <div class="footer-section">
+          <h3>Zoho Solutions</h3>
+          <ul>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
           </p>
         </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
+        </p>
       </div>
     </footer>
 
     <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop">↑</button>
+    <button
+      class="scroll-top"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      ↑
+    </button>
 
     <script>
-      // Scroll to Top Button
-      const scrollTopBtn = document.getElementById("scrollTop");
-
-      window.addEventListener("scroll", () => {
-        if (window.pageYOffset > 300) {
-          scrollTopBtn.style.display = "flex";
-        } else {
-          scrollTopBtn.style.display = "none";
-        }
-      });
-
-      scrollTopBtn.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-
-      // Smooth Scroll for Links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        });
-      });
-
-      // Animate on Scroll
+      // Scroll animations
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
+        rootMargin: "0px 0px -100px 0px",
       };
 
       const observer = new IntersectionObserver((entries) => {
@@ -1195,51 +2258,32 @@
         });
       }, observerOptions);
 
-      document.querySelectorAll(".animate-on-scroll").forEach((element) => {
-        observer.observe(element);
-      });
-
-      // Parallax Effect for Hero Image
-      window.addEventListener("scroll", () => {
-        const scrolled = window.pageYOffset;
-        const parallaxElements = document.querySelectorAll(".floating");
-        parallaxElements.forEach((element) => {
-          const speed = 0.5;
-          element.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-      });
-
-      // Card Tilt Effect
       document
-        .querySelectorAll(".feature-card, .pricing-card")
-        .forEach((card) => {
-          card.addEventListener("mousemove", (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+        .querySelectorAll(".animate-on-scroll")
+        .forEach((el) => observer.observe(el));
 
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
+      // Scroll to top button
+      const scrollTopBtn = document.querySelector(".scroll-top");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 500) {
+          scrollTopBtn.style.display = "flex";
+        } else {
+          scrollTopBtn.style.display = "none";
+        }
+      });
 
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-          });
-
-          card.addEventListener("mouseleave", () => {
-            card.style.transform =
-              "perspective(1000px) rotateX(0) rotateY(0) scale(1)";
-          });
+      // Smooth scroll for navigation
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
         });
-
-      // Loading Animation
-      window.addEventListener("load", () => {
-        document.body.style.opacity = "0";
-        setTimeout(() => {
-          document.body.style.transition = "opacity 0.5s ease";
-          document.body.style.opacity = "1";
-        }, 100);
       });
     </script>
   </body>
