@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zolytics - Zoho Billing Consulting Services</title>
+    <title>Advanced Billing Platform - Professional</title>
     <style>
       * {
         margin: 0;
@@ -11,206 +11,180 @@
         box-sizing: border-box;
       }
 
+      :root {
+        --primary-green: #2d5f3f;
+        --light-green: #e8f5e9;
+        --accent-green: #4caf50;
+        --dark-text: #1a1a1a;
+        --light-gray: #f8f9fa;
+        --white: #ffffff;
+        --border-color: #e0e0e0;
+        --gradient-1: linear-gradient(135deg, #2d5f3f 0%, #1a4028 100%);
+        --gradient-2: linear-gradient(135deg, #4caf50 0%, #2d5f3f 100%);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --shadow-xl: 0 30px 90px rgba(0, 0, 0, 0.2);
+      }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          "Helvetica Neue", Arial, sans-serif;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          Roboto, sans-serif;
         line-height: 1.6;
-        color: #333;
+        color: var(--dark-text);
         overflow-x: hidden;
+        background: var(--white);
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(30px) saturate(180%);
+        -webkit-backdrop-filter: blur(30px) saturate(180%);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        padding: 1.5rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      header::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-green),
+          transparent
+        );
+        transform: scaleX(0);
+        transition: transform 0.6s ease;
       }
 
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      header.scrolled {
+        padding: 1rem 0;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      header.scrolled::before {
+        transform: scaleX(1);
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 3rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .logo::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: var(--gradient-2);
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 3px;
+      }
+
+      .logo:hover::after {
+        width: 100%;
+      }
+
+      .logo:hover {
+        transform: translateY(-3px);
+      }
+
+      .logo img {
+        height: 55px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo:hover img {
+        filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.3));
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          #f0f7f4 0%,
+          #ffffff 50%,
+          #f8fdf9 100%
+        );
+        padding: 200px 40px 140px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 1000px;
+        height: 1000px;
+        background: radial-gradient(
+          circle,
+          rgba(76, 175, 80, 0.15) 0%,
+          transparent 70%
+        );
+        animation: float 25s ease-in-out infinite;
+        filter: blur(60px);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: -40%;
+        left: -20%;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(
+          circle,
+          rgba(45, 95, 63, 0.12) 0%,
+          transparent 70%
+        );
+        animation: float 20s ease-in-out infinite reverse;
+        filter: blur(50px);
       }
 
       @keyframes float {
         0%,
         100% {
-          transform: translateY(0px);
+          transform: translate(0, 0) rotate(0deg) scale(1);
+        }
+        25% {
+          transform: translate(40px, -40px) rotate(90deg) scale(1.1);
         }
         50% {
-          transform: translateY(-10px);
+          transform: translate(-30px, 30px) rotate(180deg) scale(0.95);
         }
-      }
-
-      .animate-on-scroll {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-
-      .animate-on-scroll.animated {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Top Bar */
-      .top-bar {
-        background: white;
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .top-bar-content {
-        max-width: 1400px;
-        margin: 0 auto;
-
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .zoho-logo {
-        height: 35px;
-      }
-
-      .top-nav {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-      }
-
-      .top-nav a {
-        text-decoration: none;
-        color: #333;
-        font-size: 14px;
-        font-weight: 500;
-        transition: color 0.3s;
-      }
-
-      .top-nav a:hover {
-        color: #228b22;
-      }
-
-      .auth-buttons {
-        display: flex;
-        gap: 15px;
-      }
-
-      .sign-in {
-        color: #dc143c;
-        text-decoration: none;
-        font-weight: 600;
-        padding: 8px 20px;
-        transition: all 0.3s;
-      }
-
-      .sign-up {
-        background: #dc143c;
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
-        padding: 8px 25px;
-        border-radius: 4px;
-        transition: all 0.3s;
-      }
-
-      .sign-up:hover {
-        background: #b01030;
-        transform: translateY(-2px);
-      }
-
-      /* Main Header */
-      header {
-        background: #1a3d2e;
-        padding: 15px 0;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      }
-
-      .header-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 40px;
-      }
-
-      .billing-logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        color: white;
-        font-size: 24px;
-        font-weight: 600;
-      }
-
-      .billing-logo img {
-        height: 30px;
-      }
-
-      nav ul {
-        display: flex;
-        list-style: none;
-        gap: 35px;
-        align-items: center;
-      }
-
-      nav a {
-        text-decoration: none;
-        color: rgb(11, 10, 10);
-        font-weight: 500;
-        font-size: 15px;
-        transition: all 0.3s;
-        position: relative;
-      }
-
-      nav a:hover {
-        color: #00ff88;
-      }
-
-      /* Hero Section */
-      .hero {
-        background: linear-gradient(135deg, #0d2818 0%, #1a3d2e 100%);
-        padding: 80px 40px 120px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero:before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -10%;
-        width: 600px;
-        height: 600px;
-        background: radial-gradient(
-          circle,
-          rgba(0, 255, 136, 0.1) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
+        75% {
+          transform: translate(30px, -20px) rotate(270deg) scale(1.05);
+        }
       }
 
       .hero-content {
@@ -223,465 +197,1777 @@
       .badge {
         display: inline-flex;
         align-items: center;
-        gap: 8px;
-        background: rgba(0, 255, 136, 0.15);
-        color: #00ff88;
-        padding: 8px 20px;
-        border-radius: 30px;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        color: var(--primary-green);
+        padding: 14px 32px;
+        border-radius: 50px;
         font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 30px;
+        font-weight: 700;
+        margin-bottom: 35px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(76, 175, 80, 0.2);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .badge:before {
-        content: "✓";
-        background: #00ff88;
-        color: #0d2818;
-        width: 20px;
-        height: 20px;
+      .badge:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 12px 40px rgba(76, 175, 80, 0.25);
+        border-color: rgba(76, 175, 80, 0.4);
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .badge span {
+        width: 10px;
+        height: 10px;
+        background: var(--accent-green);
         border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
+        animation: pulse 2.5s ease-in-out infinite;
+        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+        }
+        50% {
+          transform: scale(1.2);
+          box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+        }
       }
 
       .hero-text {
         text-align: center;
+        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .hero-text h1 {
-        font-size: 56px;
-        color: white;
-        margin-bottom: 25px;
-        line-height: 1.2;
-        font-weight: 700;
+        font-size: 68px;
+        color: var(--dark-text);
+        margin-bottom: 28px;
+        line-height: 1.15;
+        font-weight: 800;
+        letter-spacing: -1px;
+        background: linear-gradient(
+          135deg,
+          var(--dark-text) 0%,
+          var(--primary-green) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
       }
 
       .hero-text p {
-        font-size: 20px;
-        color: rgba(255, 255, 255, 0.85);
-        margin-bottom: 40px;
-        max-width: 900px;
+        font-size: 22px;
+        color: #555;
+        margin-bottom: 45px;
+        max-width: 950px;
         margin-left: auto;
         margin-right: auto;
-        line-height: 1.6;
+        line-height: 1.8;
+        font-weight: 400;
       }
 
       .hero-buttons {
         display: flex;
-        gap: 20px;
+        gap: 25px;
         justify-content: center;
-        margin-bottom: 60px;
+        margin-bottom: 90px;
+        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
       }
 
       .btn-primary {
-        background: #00ff88;
-        color: #0d2818;
-        padding: 16px 40px;
+        background: var(--gradient-1);
+        color: white;
+        padding: 20px 50px;
         border: none;
-        border-radius: 6px;
-        font-size: 16px;
+        border-radius: 14px;
+        font-size: 17px;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.35);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .btn-primary:hover::before {
+        left: 100%;
       }
 
       .btn-primary:hover {
-        background: #00dd77;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        transform: translateY(-4px);
+        box-shadow: 0 15px 40px rgba(45, 95, 63, 0.45);
       }
 
       .btn-secondary {
-        background: transparent;
-        color: white;
-        padding: 16px 40px;
-        border: 2px solid white;
-        border-radius: 6px;
-        font-size: 16px;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--primary-green);
+        padding: 20px 50px;
+        border: 2px solid var(--primary-green);
+        border-radius: 14px;
+        font-size: 17px;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.3s;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(10px);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn-secondary::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        background: var(--light-green);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s ease, height 0.6s ease;
+      }
+
+      .btn-secondary:hover::before {
+        width: 400px;
+        height: 400px;
       }
 
       .btn-secondary:hover {
-        background: white;
-        color: #0d2818;
-        transform: translateY(-3px);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(45, 95, 63, 0.25);
       }
 
       .hero-image {
         max-width: 1200px;
         margin: 0 auto;
-        border-radius: 12px;
+        border-radius: 24px;
         overflow: hidden;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-        animation: float 6s ease-in-out infinite;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+
+      .hero-image::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 24px;
+        padding: 2px;
+        background: linear-gradient(135deg, var(--accent-green), transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .hero-image:hover::before {
+        opacity: 1;
+      }
+
+      .hero-image:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 50px 120px rgba(76, 175, 80, 0.3);
       }
 
       .hero-image img {
         width: 100%;
         height: auto;
         display: block;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      /* Trust Section */
-      .trust-section {
-        background: white;
-        padding: 50px 40px;
-        border-bottom: 1px solid #e5e5e5;
-      }
-
-      .trust-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 50px;
-      }
-
-      .trust-text {
-        font-size: 18px;
-        font-weight: 600;
-        color: #333;
-        white-space: nowrap;
-      }
-
-      .trust-logos {
-        display: flex;
-        gap: 50px;
-        align-items: center;
-        flex-wrap: wrap;
-        overflow-x: auto;
-      }
-
-      .trust-logos img {
-        height: 40px;
-        opacity: 0.6;
-        transition: opacity 0.3s;
-      }
-
-      .trust-logos img:hover {
-        opacity: 1;
-      }
-
-      /* Features Section */
-      .features-section {
-        padding: 100px 40px;
-        background: white;
-      }
-
-      .section-header {
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto 80px;
-      }
-
-      .section-header h2 {
-        font-size: 48px;
-        color: #1a1a1a;
-        margin-bottom: 20px;
-        font-weight: 700;
-        line-height: 1.2;
-      }
-
-      .section-header p {
-        font-size: 18px;
-        color: #666;
-      }
-
-      .features-content {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 50px;
-        margin-bottom: 100px;
-      }
-
-      .feature-card {
-        background: #f8f9fa;
-        padding: 50px;
-        border-radius: 16px;
-        transition: all 0.4s ease;
-      }
-
-      .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-      }
-
-      .feature-card h3 {
-        font-size: 28px;
-        color: #1a1a1a;
-        margin-bottom: 20px;
-        font-weight: 700;
-      }
-
-      .feature-card p {
-        font-size: 16px;
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 30px;
-      }
-
-      .feature-image {
-        width: 100%;
-        border-radius: 12px;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      }
-
-      .feature-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.5s;
-      }
-
-      .feature-card:hover .feature-image img {
+      .hero-image:hover img {
         transform: scale(1.05);
       }
 
-      /* CTA Banner */
-      .cta-banner {
-        background: linear-gradient(135deg, #0d2818 0%, #1a3d2e 100%);
-        padding: 80px 40px;
-        margin: 100px 40px;
-        border-radius: 20px;
+      /* Billing Challenges Section */
+      .billing-challenges {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
+        position: relative;
+      }
+
+      .billing-challenges::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--border-color),
+          transparent
+        );
+      }
+
+      .challenges-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .challenges-header {
+        text-align: center;
+        margin-bottom: 90px;
+        position: relative;
+      }
+
+      .challenges-header::before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: var(--gradient-2);
+        border-radius: 2px;
+      }
+
+      .challenges-header h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+        position: relative;
+        display: inline-block;
+      }
+
+      .challenges-header h2::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--accent-green),
+          transparent
+        );
+        opacity: 0.3;
+      }
+
+      .challenges-header p {
+        font-size: 21px;
+        color: #666;
+        max-width: 950px;
+        margin: 0 auto 25px;
+        line-height: 1.8;
+        font-weight: 400;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 70px;
+        margin-top: 70px;
+      }
+
+      .comparison-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(248, 250, 252, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 70px;
+        border-radius: 28px;
+        border: 2px solid transparent;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .comparison-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(76, 175, 80, 0.05),
+          transparent
+        );
+        transition: left 0.8s ease;
+      }
+
+      .comparison-card:hover::before {
+        left: 100%;
+      }
+
+      .comparison-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 28px;
+        padding: 2px;
+        background: linear-gradient(135deg, var(--accent-green), transparent);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .comparison-card:hover::after {
+        opacity: 1;
+      }
+
+      .comparison-card:hover {
+        transform: translateY(-15px) scale(1.02);
+        border-color: var(--accent-green);
+        box-shadow: 0 30px 80px rgba(76, 175, 80, 0.25);
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      .comparison-label {
+        display: inline-block;
+        padding: 12px 28px;
+        border-radius: 30px;
+        font-size: 13px;
+        font-weight: 800;
+        margin-bottom: 35px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
         position: relative;
         overflow: hidden;
       }
 
-      .cta-banner:before {
+      .comparison-label::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.6s ease;
+      }
+
+      .comparison-card:hover .comparison-label::before {
+        left: 100%;
+      }
+
+      .before-label {
+        background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+        color: #c62828;
+        box-shadow: 0 4px 15px rgba(198, 40, 40, 0.2);
+      }
+
+      .after-label {
+        background: linear-gradient(
+          135deg,
+          var(--light-green) 0%,
+          #c8e6c9 100%
+        );
+        color: var(--primary-green);
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.25);
+      }
+
+      .comparison-card h3 {
+        font-size: 36px;
+        color: var(--dark-text);
+        margin-bottom: 35px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .comparison-list {
+        list-style: none;
+      }
+
+      .comparison-list li {
+        color: #555;
+        font-size: 18px;
+        margin-bottom: 22px;
+        padding-left: 40px;
+        position: relative;
+        line-height: 1.7;
+        transition: all 0.3s ease;
+      }
+
+      .comparison-list li:hover {
+        transform: translateX(8px);
+        color: var(--dark-text);
+      }
+
+      .comparison-list.before li::before {
+        content: "×";
+        position: absolute;
+        left: 0;
+        color: #c62828;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 1;
+      }
+
+      .comparison-list.after li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      /* Audience Section */
+      .audience-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
+        position: relative;
+      }
+
+      .use-cases-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .use-cases-header {
+        text-align: center;
+        margin-bottom: 90px;
+      }
+
+      .use-cases-header h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .use-cases-header p {
+        font-size: 21px;
+        color: #666;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .use-cases-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 45px;
+      }
+
+      .use-case-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px);
+        padding: 55px 45px;
+        border-radius: 28px;
+        border: 2px solid transparent;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .use-case-card::before {
         content: "";
         position: absolute;
         top: -50%;
-        left: -10%;
-        width: 500px;
-        height: 500px;
+        left: -50%;
+        width: 200%;
+        height: 200%;
         background: radial-gradient(
           circle,
-          rgba(0, 255, 136, 0.1) 0%,
+          rgba(76, 175, 80, 0.1) 0%,
           transparent 70%
         );
-        border-radius: 50%;
+        transform: scale(0);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .cta-banner-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 80px;
-        align-items: center;
+      .use-case-card:hover::before {
+        transform: scale(1);
+      }
+
+      .use-case-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 28px;
+        padding: 2px;
+        background: var(--gradient-2);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .use-case-card:hover::after {
+        opacity: 1;
+      }
+
+      .use-case-card:hover {
+        border-color: var(--accent-green);
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.3);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .use-case-badge {
+        display: inline-block;
+        background: var(--gradient-1);
+        color: white;
+        padding: 10px 24px;
+        border-radius: 25px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 28px;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 4px 15px rgba(45, 95, 63, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .use-case-card:hover .use-case-badge {
+        transform: scale(1.08);
+        box-shadow: 0 6px 20px rgba(45, 95, 63, 0.4);
+      }
+
+      .use-case-card h3 {
+        font-size: 28px;
+        color: var(--dark-text);
+        margin-bottom: 22px;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+        letter-spacing: -0.5px;
+      }
+
+      .use-case-card p {
+        font-size: 17px;
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 28px;
         position: relative;
         z-index: 1;
       }
 
-      .cta-banner h2 {
-        font-size: 42px;
-        color: white;
-        margin-bottom: 30px;
-        font-weight: 700;
-        line-height: 1.2;
-      }
-
-      .cta-banner .btn-primary {
-        display: inline-block;
-      }
-
-      .cta-features {
-        color: white;
-      }
-
-      .cta-features h3 {
-        font-size: 32px;
-        margin-bottom: 30px;
-        font-weight: 700;
-      }
-
-      .cta-features ul {
+      .use-case-features {
         list-style: none;
-      }
-
-      .cta-features li {
-        font-size: 18px;
-        margin-bottom: 15px;
-        padding-left: 30px;
         position: relative;
+        z-index: 1;
       }
 
-      .cta-features li:before {
+      .use-case-features li {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 14px;
+        padding-left: 32px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .use-case-features li:hover {
+        transform: translateX(6px);
+        color: var(--dark-text);
+      }
+
+      .use-case-features li::before {
         content: "✓";
         position: absolute;
         left: 0;
-        color: #00ff88;
+        color: var(--accent-green);
         font-weight: bold;
         font-size: 20px;
       }
 
-      /* Services Section */
-      .services-section {
-        padding: 100px 40px;
-        background: #f8f9fa;
+      /* Subscription Section */
+      .subscription-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
+        position: relative;
       }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
+      .subscription-container {
         max-width: 1400px;
         margin: 0 auto;
       }
 
-      .service-card {
-        background: white;
+      .subscription-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 120px;
+        align-items: center;
+      }
+
+      .subscription-content h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 35px;
+        font-weight: 800;
+        line-height: 1.15;
+        letter-spacing: -1px;
+      }
+
+      .subscription-content p {
+        font-size: 19px;
+        color: #666;
+        margin-bottom: 55px;
+        line-height: 1.8;
+      }
+
+      .capability-cards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .capability-card {
+        background: linear-gradient(
+          135deg,
+          rgba(248, 250, 252, 0.9) 0%,
+          rgba(255, 255, 255, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
         padding: 40px;
-        border-radius: 12px;
-        transition: all 0.4s ease;
-        border: 1px solid #e5e5e5;
+        border-radius: 20px;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 2px solid transparent;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
       }
 
-      .service-card:hover {
+      .capability-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 0;
+        background: var(--gradient-2);
+        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .capability-card:hover::before {
+        height: 100%;
+      }
+
+      .capability-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(76, 175, 80, 0.08),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .capability-card:hover::after {
+        opacity: 1;
+      }
+
+      .capability-card:hover {
+        border-color: var(--accent-green);
+        transform: translateX(10px) scale(1.03);
+        background: rgba(255, 255, 255, 1);
+        box-shadow: 0 15px 45px rgba(76, 175, 80, 0.2);
+      }
+
+      .capability-card h4 {
+        font-size: 22px;
+        color: var(--dark-text);
+        margin-bottom: 14px;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+      }
+
+      .capability-card p {
+        font-size: 16px;
+        color: #666;
+        margin: 0;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .subscription-visual {
+        position: relative;
+      }
+
+      .timeline-visual {
+        background: var(--gradient-1);
+        padding: 70px;
+        border-radius: 28px;
+        box-shadow: 0 40px 100px rgba(45, 95, 63, 0.4);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .timeline-visual::before {
+        content: "";
+        position: absolute;
+        top: -60%;
+        right: -60%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.15) 0%,
+          transparent 70%
+        );
+        animation: rotate 30s linear infinite;
+        filter: blur(40px);
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .timeline-visual::after {
+        content: "";
+        position: absolute;
+        bottom: -40%;
+        left: -40%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        animation: rotate 25s linear infinite reverse;
+        filter: blur(35px);
+      }
+
+      .timeline-item {
+        display: flex;
+        gap: 35px;
+        margin-bottom: 50px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .timeline-item:hover {
+        transform: translateX(10px);
+      }
+
+      .timeline-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: 29px;
+        top: 58px;
+        width: 3px;
+        height: calc(100% + 50px);
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.4),
+          rgba(255, 255, 255, 0.1)
+        );
+        border-radius: 2px;
+      }
+
+      .timeline-item:last-child::before {
+        display: none;
+      }
+
+      .timeline-dot {
+        width: 58px;
+        height: 58px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary-green);
+        font-weight: 800;
+        font-size: 24px;
+        flex-shrink: 0;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
+          inset 0 2px 4px rgba(255, 255, 255, 0.5);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 3px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .timeline-item:hover .timeline-dot {
+        transform: scale(1.15) rotate(360deg);
+        box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
+      }
+
+      .timeline-content h5 {
+        color: white;
+        font-size: 24px;
+        margin-bottom: 14px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .timeline-content p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 17px;
+        margin: 0;
+        line-height: 1.7;
+      }
+
+      /* Tax Compliance Section */
+      .tax-compliance-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
+        position: relative;
+      }
+
+      .compliance-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .compliance-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 120px;
+        align-items: center;
+      }
+
+      .compliance-visual {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 70px;
+        border-radius: 28px;
+        position: relative;
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
+        border: 2px solid rgba(76, 175, 80, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .compliance-visual:hover {
         transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        border-color: #228b22;
+        box-shadow: 0 50px 120px rgba(76, 175, 80, 0.2);
       }
 
-      .service-icon {
-        width: 60px;
-        height: 60px;
-        background: linear-gradient(135deg, #228b22 0%, #00ff88 100%);
-        border-radius: 12px;
+      .invoice-mockup {
+        background: linear-gradient(135deg, #fafbfc 0%, #ffffff 100%);
+        padding: 55px;
+        border-radius: 20px;
+        border: 2px solid var(--border-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .invoice-mockup::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: var(--gradient-2);
+      }
+
+      .invoice-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid var(--border-color);
+        position: relative;
+      }
+
+      .invoice-header::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100px;
+        height: 2px;
+        background: var(--accent-green);
+      }
+
+      .invoice-title {
+        font-size: 32px;
+        font-weight: 800;
+        color: var(--dark-text);
+        letter-spacing: -0.5px;
+      }
+
+      .invoice-number {
+        font-size: 16px;
+        color: #666;
+        font-weight: 700;
+      }
+
+      .invoice-row {
+        display: flex;
+        justify-content: space-between;
+        padding: 18px 0;
+        border-bottom: 1px solid #e8e8e8;
+        transition: all 0.3s ease;
+      }
+
+      .invoice-row:hover {
+        background: rgba(76, 175, 80, 0.03);
+        padding-left: 15px;
+        padding-right: 15px;
+        margin-left: -15px;
+        margin-right: -15px;
+      }
+
+      .invoice-label {
+        color: #666;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .invoice-value {
+        color: var(--dark-text);
+        font-weight: 700;
+        font-size: 16px;
+      }
+
+      .tax-breakdown {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.8) 0%,
+          rgba(248, 253, 249, 0.6) 100%
+        );
+        padding: 30px;
+        border-radius: 16px;
+        margin-top: 30px;
+        border: 1px solid rgba(76, 175, 80, 0.15);
+      }
+
+      .tax-breakdown .invoice-row {
+        border: none;
+      }
+
+      .invoice-total {
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 0;
+        margin-top: 30px;
+        border-top: 3px solid var(--primary-green);
+        font-size: 24px;
+        font-weight: 800;
+        position: relative;
+      }
+
+      .invoice-total::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: 0;
+        width: 150px;
+        height: 3px;
+        background: var(--accent-green);
+      }
+
+      .compliance-content h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 35px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .compliance-content p {
+        font-size: 19px;
+        color: #666;
+        margin-bottom: 55px;
+        line-height: 1.8;
+      }
+
+      .compliance-features {
+        display: grid;
+        gap: 28px;
+      }
+
+      .compliance-feature {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 40px;
+        border-radius: 20px;
+        border-left: 5px solid var(--accent-green);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: var(--shadow-sm);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .compliance-feature::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(76, 175, 80, 0.08),
+          transparent
+        );
+        transition: width 0.4s ease;
+      }
+
+      .compliance-feature:hover::before {
+        width: 100%;
+      }
+
+      .compliance-feature:hover {
+        transform: translateX(15px) scale(1.02);
+        box-shadow: 0 15px 45px rgba(76, 175, 80, 0.2);
+        border-left-width: 8px;
+      }
+
+      .compliance-feature h4 {
+        font-size: 22px;
+        color: var(--dark-text);
+        margin-bottom: 14px;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+      }
+
+      .compliance-feature p {
+        font-size: 16px;
+        color: #666;
+        margin: 0;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Payment Portal Section */
+      .payment-portal-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
+        position: relative;
+      }
+
+      .portal-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .portal-header {
+        text-align: center;
+        margin-bottom: 90px;
+      }
+
+      .portal-header h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .portal-header p {
+        font-size: 21px;
+        color: #666;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .portal-features-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 45px;
+      }
+
+      .portal-feature-card {
+        background: linear-gradient(
+          135deg,
+          rgba(248, 250, 252, 0.9) 0%,
+          rgba(255, 255, 255, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 60px;
+        border-radius: 28px;
+        border: 2px solid transparent;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .portal-feature-card::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(
+          circle,
+          rgba(76, 175, 80, 0.12) 0%,
+          transparent 50%
+        );
+        transform: scale(0);
+        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .portal-feature-card:hover::before {
+        transform: scale(1);
+      }
+
+      .portal-feature-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 28px;
+        padding: 2px;
+        background: var(--gradient-2);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .portal-feature-card:hover::after {
+        opacity: 1;
+      }
+
+      .portal-feature-card:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-15px) scale(1.02);
+        border-color: var(--accent-green);
+        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.25);
+      }
+
+      .feature-number {
+        width: 80px;
+        height: 80px;
+        background: var(--gradient-1);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 38px;
+        font-weight: 900;
+        margin-bottom: 35px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.3);
+      }
+
+      .portal-feature-card:hover .feature-number {
+        transform: rotate(360deg) scale(1.1);
+        box-shadow: 0 12px 35px rgba(45, 95, 63, 0.4);
+      }
+
+      .portal-feature-card h3 {
+        font-size: 30px;
+        color: var(--dark-text);
+        margin-bottom: 20px;
+        font-weight: 800;
+        position: relative;
+        z-index: 1;
+        letter-spacing: -0.5px;
+      }
+
+      .portal-feature-card p {
+        font-size: 17px;
+        color: #666;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Analytics Section */
+      .analytics-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
+        position: relative;
+      }
+
+      .analytics-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .analytics-header {
+        text-align: center;
+        margin-bottom: 90px;
+      }
+
+      .analytics-header h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .analytics-header p {
+        font-size: 21px;
+        color: #666;
+        line-height: 1.8;
+      }
+
+      .metrics-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 35px;
+        margin-bottom: 70px;
+      }
+
+      .metric-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 50px 40px;
+        border-radius: 24px;
+        border: 2px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .metric-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 0%;
+        background: var(--gradient-2);
+        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .metric-card:hover::before {
+        height: 100%;
+      }
+
+      .metric-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(76, 175, 80, 0.08),
+          transparent
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .metric-card:hover::after {
+        opacity: 1;
+      }
+
+      .metric-card:hover {
+        border-color: var(--accent-green);
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 25px 60px rgba(76, 175, 80, 0.2);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .metric-label {
+        font-size: 13px;
+        color: #666;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .metric-value {
+        font-size: 48px;
+        color: var(--dark-text);
+        font-weight: 900;
+        margin-bottom: 14px;
+        position: relative;
+        z-index: 1;
+        letter-spacing: -1px;
+      }
+
+      .metric-change {
+        font-size: 15px;
+        color: var(--accent-green);
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .metric-change.negative {
+        color: #c62828;
+      }
+
+      .chart-placeholder {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 70px;
+        border-radius: 28px;
+        box-shadow: var(--shadow-md);
+        border: 2px solid var(--border-color);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .chart-placeholder:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
+        border-color: var(--accent-green);
+      }
+
+      .chart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+      }
+
+      .chart-title {
+        font-size: 32px;
+        color: var(--dark-text);
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+
+      .chart-period {
+        font-size: 15px;
+        color: #666;
+        background: linear-gradient(
+          135deg,
+          var(--light-green) 0%,
+          #c8e6c9 100%
+        );
+        padding: 12px 28px;
+        border-radius: 30px;
+        font-weight: 700;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+      }
+
+      .chart-bars {
+        display: flex;
+        gap: 25px;
+        align-items: flex-end;
+        height: 350px;
+      }
+
+      .chart-bar {
+        flex: 1;
+        background: var(--gradient-2);
+        border-radius: 16px 16px 0 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        box-shadow: 0 -4px 20px rgba(76, 175, 80, 0.2);
+      }
+
+      .chart-bar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        border-radius: 16px 16px 0 0;
+        transition: height 0.4s ease;
+      }
+
+      .chart-bar:hover::before {
+        height: 100%;
+      }
+
+      .chart-bar:hover {
+        transform: translateY(-12px) scale(1.05);
+        box-shadow: 0 -8px 35px rgba(76, 175, 80, 0.4);
+      }
+
+      .chart-bar:nth-child(1) {
+        height: 60%;
+        animation: growBar 0.8s ease-out 0.1s both;
+      }
+      .chart-bar:nth-child(2) {
+        height: 80%;
+        animation: growBar 0.8s ease-out 0.2s both;
+      }
+      .chart-bar:nth-child(3) {
+        height: 45%;
+        animation: growBar 0.8s ease-out 0.3s both;
+      }
+      .chart-bar:nth-child(4) {
+        height: 90%;
+        animation: growBar 0.8s ease-out 0.4s both;
+      }
+      .chart-bar:nth-child(5) {
+        height: 70%;
+        animation: growBar 0.8s ease-out 0.5s both;
+      }
+      .chart-bar:nth-child(6) {
+        height: 85%;
+        animation: growBar 0.8s ease-out 0.6s both;
+      }
+      .chart-bar:nth-child(7) {
+        height: 95%;
+        animation: growBar 0.8s ease-out 0.7s both;
+      }
+      .chart-bar:nth-child(8) {
+        height: 75%;
+        animation: growBar 0.8s ease-out 0.8s both;
+      }
+      .chart-bar:nth-child(9) {
+        height: 100%;
+        animation: growBar 0.8s ease-out 0.9s both;
+      }
+      .chart-bar:nth-child(10) {
+        height: 88%;
+        animation: growBar 0.8s ease-out 1s both;
+      }
+      .chart-bar:nth-child(11) {
+        height: 92%;
+        animation: growBar 0.8s ease-out 1.1s both;
+      }
+      .chart-bar:nth-child(12) {
+        height: 98%;
+        animation: growBar 0.8s ease-out 1.2s both;
+      }
+
+      @keyframes growBar {
+        from {
+          height: 0;
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* Service Providers Section */
+      .service-providers-section {
+        padding: 140px 40px;
+        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
+        position: relative;
+      }
+
+      .providers-container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .providers-header {
+        text-align: center;
+        margin-bottom: 90px;
+      }
+
+      .providers-header h2 {
+        font-size: 56px;
+        color: var(--dark-text);
+        margin-bottom: 25px;
+        font-weight: 800;
+        letter-spacing: -1px;
+      }
+
+      .providers-header p {
+        font-size: 21px;
+        color: #666;
+        max-width: 900px;
+        margin: 0 auto;
+        line-height: 1.8;
+      }
+
+      .providers-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+      }
+
+      .provider-card {
+        background: linear-gradient(
+          135deg,
+          rgba(248, 250, 252, 0.9) 0%,
+          rgba(255, 255, 255, 0.95) 100%
+        );
+        backdrop-filter: blur(20px);
+        padding: 55px 45px;
+        border-radius: 28px;
+        border: 2px solid transparent;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .provider-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(76, 175, 80, 0.08) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .provider-card:hover::before {
+        opacity: 1;
+      }
+
+      .provider-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 28px;
+        padding: 2px;
+        background: var(--gradient-2);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .provider-card:hover::after {
+        opacity: 1;
+      }
+
+      .provider-card:hover {
+        border-color: var(--accent-green);
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.3);
+        background: rgba(255, 255, 255, 1);
+      }
+
+      .provider-number {
+        width: 70px;
+        height: 70px;
+        background: var(--gradient-1);
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: white;
         font-size: 28px;
-        margin-bottom: 25px;
-        transition: all 0.3s;
+        font-weight: 900;
+        margin-bottom: 30px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.3);
       }
 
-      .service-card:hover .service-icon {
-        transform: rotate(360deg) scale(1.1);
+      .provider-card:hover .provider-number {
+        background: var(--gradient-2);
+        transform: scale(1.15) rotate(360deg);
+        box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
       }
 
-      .service-card h3 {
-        font-size: 22px;
-        color: #1a1a1a;
-        margin-bottom: 15px;
-        font-weight: 700;
-      }
-
-      .service-card p {
-        font-size: 15px;
-        color: #666;
-        line-height: 1.7;
-      }
-
-      /* Stats Section */
-      .stats-section {
-        padding: 80px 40px;
-        background: white;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 50px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .stat-card {
-        text-align: center;
-      }
-
-      .stat-number {
-        font-size: 56px;
+      .provider-card h3 {
+        font-size: 26px;
+        color: var(--dark-text);
+        margin-bottom: 20px;
         font-weight: 800;
-        color: #228b22;
-        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+        letter-spacing: -0.5px;
       }
 
-      .stat-label {
-        font-size: 18px;
+      .provider-card p {
+        font-size: 16px;
         color: #666;
-        font-weight: 600;
+        line-height: 1.8;
+        margin-bottom: 28px;
+        position: relative;
+        z-index: 1;
       }
 
-      /* Footer */
-      footer {
-        background: #1a1a1a;
-        color: white;
-        padding: 80px 40px 40px;
+      .provider-features {
+        list-style: none;
+        position: relative;
+        z-index: 1;
+      }
+
+      .provider-features li {
+        font-size: 15px;
+        color: #555;
+        margin-bottom: 12px;
+        padding-left: 28px;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .provider-features li:hover {
+        transform: translateX(6px);
+        color: var(--dark-text);
+      }
+
+      .provider-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent-green);
+        font-weight: bold;
+        font-size: 18px;
+      }
+
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
       }
 
       .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
         display: grid;
-        grid-template-columns: 2fr 1fr 1fr 1fr;
-        gap: 80px;
-        margin-bottom: 50px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
       }
 
       .footer-section h3 {
-        color: #dc143c;
-        margin-bottom: 25px;
-        font-size: 20px;
-        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
       }
 
       .footer-section p {
-        color: #aaa;
-        margin-bottom: 15px;
-        line-height: 1.8;
-        font-size: 15px;
+        color: #cbd5e1;
+        line-height: 1.6;
       }
 
       .footer-section ul {
         list-style: none;
+        padding: 0;
       }
 
-      .footer-section li {
-        margin-bottom: 12px;
+      .footer-section ul li {
+        margin-bottom: 8px;
+        color: #cbd5e1;
       }
 
-      .footer-section a {
-        color: #aaa;
-        text-decoration: none;
-        transition: all 0.3s;
-        font-size: 15px;
-      }
-
-      .footer-section a:hover {
-        color: #00ff88;
-        padding-left: 5px;
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
       }
 
       .footer-bottom {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding-top: 40px;
-        border-top: 1px solid #333;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
         text-align: center;
-        color: #777;
+        color: #94a3b8;
       }
 
       .scroll-to-top {
         position: fixed;
-        bottom: 30px;
-        right: 30px;
-        background: #dc143c;
+        bottom: 45px;
+        right: 45px;
+        background: var(--gradient-1);
         color: white;
-        width: 55px;
-        height: 55px;
+        width: 65px;
+        height: 65px;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -689,10 +1975,31 @@
         cursor: pointer;
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 999;
-        font-size: 24px;
-        box-shadow: 0 5px 20px rgba(220, 20, 60, 0.3);
+        font-size: 28px;
+        font-weight: bold;
+        box-shadow: 0 10px 35px rgba(45, 95, 63, 0.5);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .scroll-to-top::before {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        border-radius: 50%;
+        padding: 3px;
+        background: var(--gradient-2);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box,
+          linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .scroll-to-top:hover::before {
+        opacity: 1;
       }
 
       .scroll-to-top.visible {
@@ -701,434 +2008,640 @@
       }
 
       .scroll-to-top:hover {
-        background: #228b22;
-        transform: translateY(-5px);
+        background: var(--gradient-2);
+        transform: translateY(-8px) scale(1.1);
+        box-shadow: 0 15px 50px rgba(76, 175, 80, 0.6);
       }
 
-      .request-callback {
-        position: fixed;
-        bottom: 30px;
-        right: 100px;
-        background: white;
-        color: #1a1a1a;
-        padding: 12px 25px;
-        border-radius: 30px;
-        font-weight: 600;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-        cursor: pointer;
-        transition: all 0.3s;
-        z-index: 999;
-      }
-
-      .request-callback:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      @media (max-width: 1024px) {
-        .hero-text h1 {
-          font-size: 42px;
-        }
-
-        .features-grid,
-        .cta-banner-content {
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .comparison-grid,
+        .subscription-grid,
+        .compliance-grid {
           grid-template-columns: 1fr;
+          gap: 70px;
         }
 
-        .services-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .footer-content {
+        .providers-grid,
+        .use-cases-grid {
           grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 768px) {
-        .top-nav,
-        .auth-buttons {
-          display: none;
-        }
-
-        nav ul {
-          flex-wrap: wrap;
-          gap: 15px;
-        }
-
         .hero-text h1 {
-          font-size: 32px;
+          font-size: 44px;
         }
 
-        .hero-buttons {
-          flex-direction: column;
+        .challenges-header h2,
+        .subscription-content h2,
+        .compliance-content h2,
+        .portal-header h2,
+        .analytics-header h2,
+        .use-cases-header h2,
+        .providers-header h2 {
+          font-size: 38px;
         }
 
-        .services-grid,
-        .stats-grid,
-        .footer-content {
+        .providers-grid,
+        .portal-features-grid,
+        .metrics-grid,
+        .use-cases-grid {
           grid-template-columns: 1fr;
         }
 
-        .section-header h2 {
-          font-size: 32px;
+        .capability-cards {
+          grid-template-columns: 1fr;
         }
 
-        .request-callback {
-          right: 30px;
-          bottom: 100px;
+        nav {
+          padding: 0 1.5rem;
+        }
+
+        .hero {
+          padding: 160px 20px 90px;
+        }
+
+        .billing-challenges,
+        .audience-section,
+        .subscription-section,
+        .tax-compliance-section,
+        .payment-portal-section,
+        .analytics-section,
+        .service-providers-section {
+          padding: 90px 20px;
+        }
+      }
+
+      /* Scroll Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Loading Animation */
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
         }
       }
     </style>
   </head>
   <body>
-    <div class="scroll-to-top" id="scrollToTop">↑</div>
-    <div class="request-callback">Request Callback</div>
-
-    <!-- Top Bar -->
-    <div class="top-bar">
-      <div class="top-bar-content">
-        <img
-          src="images/logo.png"
-          alt="Zoho"
-          class="zoho-logo"
-          style="height: 70px"
-        />
-        <img
-          src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg"
-          alt="Zoho Billing"
-          style="height: 70px"
-        />
-
-        <nav>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#customers">Customers</a></li>
-            <li><a href="#integrations">Integrations</a></li>
-            <li><a href="#solutions">Solutions</a></li>
-            <li><a href="#resources">Resources</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-text animate-on-scroll">
-          <div class="badge">Certified Zoho Consulting Partner</div>
-          <h1>
-            End-to-End Billing Software<br />Built for Educational Institutions
-          </h1>
-          <p>
-            Accelerate billing with GST compliant invoicing, automated recurring
-            billing, and seamless subscription management with the easiest
-            billing software, built for Indian businesses.
-          </p>
-          <div class="hero-buttons">
-            <button class="btn-primary">Start your free trial</button>
-            <button class="btn-secondary">Request Demo</button>
-          </div>
-        </div>
-        <div class="hero-image animate-on-scroll">
+    <header id="header">
+      <nav>
+        <div class="logo">
           <img
-            src="images/Billing_Dashboard.png"
-            alt="Zoho Billing Dashboard"
+            src="images/logo.png"
+            style="height: 80px; width: auto"
+            alt="Zolytics"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg"
+            alt="Zoho Billing"
+            style="height: 70px"
           />
         </div>
-      </div>
-    </section>
+      </nav>
+    </header>
 
-    <!-- Features Intro -->
-    <section class="features-section">
-      <div class="section-header animate-on-scroll">
-        <h2>Master your billing processes.<br />Optimize your finances.</h2>
-      </div>
-      <div class="features-content">
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll">
-            <h3>Easy product management</h3>
-            <p>
-              Effortlessly manage your products or services and pricing with a
-              comprehensive product catalog. Make sales a breeze by optimizing
-              sales strategies with flexible pricing models and the pricing
-              table widget.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop"
-                alt="Product Management"
-              />
-            </div>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <h3>Efficient billing processes</h3>
-            <p>
-              Unleash seamless quotation, invoicing, and expense tracking.
-              Handle projects and timesheets effortlessly, and generate
-              e-invoices for swift and smooth transactions that comply with
-              regional regulations.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&h=500&fit=crop"
-                alt="Billing Process"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll">
-            <h3>Manage customer lifecycle</h3>
-            <p>
-              Take control of customer accounts, overseeing easy trials,
-              upgrades, cancellations, and reactivations, all while actively
-              managing customer acquisition and ensuring smooth transactions
-              through dunning management.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&h=500&fit=crop"
-                alt="Customer Lifecycle"
-              />
-            </div>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <h3>Powerful business insights</h3>
-            <p>
-              Make informed decisions with powerful metrics, including sales,
-              receivables, revenue, and churn insights. Stay one step ahead with
-              comprehensive business analytics that fuel your growth.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
-                alt="Business Insights"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA Banner -->
-    <section class="cta-banner animate-on-scroll">
-      <div class="cta-banner-content">
-        <div>
-          <h2>Revolutionize the way you bill with e-invoice</h2>
-          <button class="btn-primary">Access Zoho Billing</button>
-        </div>
-        <div class="cta-features">
-          <h3>
-            Go digital! Streamline your invoicing process while staying GST
-            compliant around the clock!
-          </h3>
-          <ul>
-            <li>GST-compliant invoices</li>
-            <li>Easy integration with IRP portal</li>
-            <li>Real-time GST norm validation</li>
-            <li>Easy access to reporting analytics</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- Why Choose Section -->
-    <section class="features-section" style="background: #f8f9fa">
-      <div class="section-header animate-on-scroll">
-        <h2>Why Choose Zolytics?</h2>
-        <p>Your trusted Zoho Billing implementation partner</p>
-      </div>
-      <div class="features-content">
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll">
-            <h3>Certified Experts</h3>
-            <p>
-              Our team consists of certified Zoho Billing consultants with years
-              of hands-on experience in implementing complex billing systems
-              across various industries.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop"
-                alt="Expert Team"
-              />
-            </div>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <h3>End-to-End Support</h3>
-            <p>
-              From initial planning to post-implementation optimization, we
-              provide comprehensive support at every stage of your Zoho Billing
-              journey.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop"
-                alt="Support Team"
-              />
-            </div>
-          </div>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-card animate-on-scroll">
-            <h3>Industry-Specific Solutions</h3>
-            <p>
-              Custom solutions tailored to your specific industry needs, whether
-              you're in SaaS, education, healthcare, or any other sector
-              requiring sophisticated billing.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop"
-                alt="Industry Solutions"
-              />
-            </div>
-          </div>
-          <div class="feature-card animate-on-scroll">
-            <h3>Fast Deployment</h3>
-            <p>
-              Our proven implementation methodology ensures rapid deployment
-              with minimal business disruption, getting you up and running
-              quickly.
-            </p>
-            <div class="feature-image">
-              <img
-                src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=500&fit=crop"
-                alt="Fast Deployment"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="features-section">
-      <div class="section-header animate-on-scroll">
-        <h2>See Zoho Billing in Action</h2>
-        <p>Discover how Zoho Billing can transform your business operations</p>
-      </div>
-      <div style="max-width: 1000px; margin: 0 auto">
-        <div
-          style="
-            position: relative;
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
-          "
-          class="animate-on-scroll"
-        >
-          <iframe
-            width="100%"
-            height="600"
-            src="https://www.youtube.com/embed/kPRA0W1kECg"
-            title="Zoho Billing Overview"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
-    </section>
-
-    <!-- Final CTA -->
-    <section class="cta-banner animate-on-scroll" style="margin: 100px 40px 0">
-      <div
-        style="
-          max-width: 1000px;
-          margin: 0 auto;
-          text-align: center;
-          position: relative;
-          z-index: 1;
-        "
-      >
-        <h2 style="margin-bottom: 20px">
-          Ready to Optimize Your Billing Operations?
-        </h2>
-        <p
-          style="
-            font-size: 20px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 40px;
-          "
-        >
-          Let's discuss how Zoho Billing can transform your subscription
-          management and revenue operations.
-        </p>
-        <button class="btn-primary" style="font-size: 18px; padding: 18px 50px">
-          Get Started Today
-        </button>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>About Zolytics</h3>
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-text">
+          <h1>
+            Revenue & Billing Systems<br />Designed for Growing Institutions
+          </h1>
           <p>
-            Certified Zoho Partner providing expert CRM implementation,
-            customization, and consulting services across India. We help
-            businesses leverage technology to drive growth.
+            Our team builds billing systems that bring structure to fee
+            collection, automate recurring payments, and keep your finances
+            compliant and predictable.
           </p>
         </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <ul>
-            <li><a href="#services">CRM Implementation</a></li>
-            <li><a href="#services">Customization & Development</a></li>
-            <li><a href="#services">Strategic Consulting</a></li>
-            <li><a href="#services">Training & Support</a></li>
-          </ul>
+      </div>
+    </section>
+
+    <section class="billing-challenges">
+      <div class="challenges-container">
+        <div class="challenges-header fade-in">
+          <h2>Why Billing Breaks as Businesses Grow</h2>
+          <p>
+            Manual invoices, missed renewals, incorrect taxes, delayed payments,
+            and reconciliation issues slow down cash flow. Billing is no longer
+            just invoice creation—it's revenue operations.
+          </p>
+          <p style="margin-top: 20px; font-size: 18px; color: #555">
+            We design billing systems that run automatically, scale with your
+            business, and stay compliant.
+          </p>
         </div>
-        <div class="footer-section">
-          <h3>Quick Links</h3>
-          <ul>
-            <li><a href="#features">Features</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#customers">Customers</a></li>
-            <li><a href="#integrations">Integrations</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <p>Email: contact@zolytics.com</p>
-          <p>Phone: +91-XXXXXXXXXX</p>
-          <p>Location: India</p>
+
+        <div class="comparison-grid">
+          <div class="comparison-card fade-in">
+            <span class="comparison-label before-label">Before Automation</span>
+            <h3>Manual Billing Chaos</h3>
+            <ul class="comparison-list before">
+              <li>Spreadsheet-based invoice tracking</li>
+              <li>Manual payment follow-ups</li>
+              <li>Tax calculation errors</li>
+              <li>Missed renewal opportunities</li>
+              <li>Time-consuming reconciliation</li>
+              <li>Revenue leakage from human errors</li>
+            </ul>
+          </div>
+          <div class="comparison-card fade-in">
+            <span class="comparison-label after-label">After Automation</span>
+            <h3>Automated Billing Excellence</h3>
+            <ul class="comparison-list after">
+              <li>Automated invoice generation</li>
+              <li>Smart payment reminders</li>
+              <li>Accurate tax calculations</li>
+              <li>Auto-renewal management</li>
+              <li>Real-time reconciliation</li>
+              <li>Zero revenue leakage</li>
+            </ul>
+          </div>
         </div>
       </div>
+    </section>
+
+    <section class="audience-section">
+      <div class="use-cases-container">
+        <div class="use-cases-header fade-in">
+          <h2>Who Is This Billing System Built For?</h2>
+          <p>
+            Designed for organizations that need accuracy, automation, and
+            compliance — not manual billing chaos.
+          </p>
+        </div>
+
+        <div class="use-cases-grid">
+          <div class="use-case-card fade-in">
+            <span class="use-case-badge">Education</span>
+            <h3>Schools, Colleges & EdTech</h3>
+            <p>
+              Handle admissions, recurring fees, installments, and GST-ready
+              invoicing with ease.
+            </p>
+            <ul class="use-case-features">
+              <li>Installment & recurring fees</li>
+              <li>Student payment portals</li>
+              <li>Fee-wise reporting</li>
+              <li>Audit-ready invoices</li>
+            </ul>
+          </div>
+
+          <div class="use-case-card fade-in">
+            <span class="use-case-badge">Subscription</span>
+            <h3>SaaS & Subscription Businesses</h3>
+            <p>
+              Automate recurring revenue, upgrades, renewals, and proration
+              without manual work.
+            </p>
+            <ul class="use-case-features">
+              <li>Auto-renewals</li>
+              <li>Plan upgrades/downgrades</li>
+              <li>MRR & churn tracking</li>
+              <li>Customer self-service</li>
+            </ul>
+          </div>
+
+          <div class="use-case-card fade-in">
+            <span class="use-case-badge">Multi-Branch</span>
+            <h3>Growing & Multi-Location Businesses</h3>
+            <p>
+              Centralized billing with branch-wise control, reporting, and tax
+              compliance.
+            </p>
+            <ul class="use-case-features">
+              <li>Branch-wise billing</li>
+              <li>Location-based taxes</li>
+              <li>Central finance control</li>
+              <li>Scalable operations</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="subscription-section">
+      <div class="subscription-container">
+        <div class="subscription-grid">
+          <div class="subscription-content fade-in">
+            <h2>Predictable Revenue Through Subscription Billing</h2>
+            <p>
+              Automate recurring revenue streams with intelligent subscription
+              management that handles upgrades, downgrades, and renewals without
+              manual intervention.
+            </p>
+
+            <div class="capability-cards">
+              <div class="capability-card">
+                <h4>Flexible Plans</h4>
+                <p>
+                  Monthly, quarterly, and annual billing cycles with custom
+                  durations
+                </p>
+              </div>
+              <div class="capability-card">
+                <h4>Auto-Renewals</h4>
+                <p>Set it and forget it - subscriptions renew automatically</p>
+              </div>
+              <div class="capability-card">
+                <h4>Plan Changes</h4>
+                <p>Seamless upgrades and downgrades with proration</p>
+              </div>
+              <div class="capability-card">
+                <h4>Smart Proration</h4>
+                <p>Fair billing adjustments for mid-cycle changes</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="subscription-visual fade-in">
+            <div class="timeline-visual">
+              <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                  <h5>Subscription Start</h5>
+                  <p>
+                    Customer subscribes to your service with automated
+                    onboarding
+                  </p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                  <h5>Recurring Billing</h5>
+                  <p>Automatic invoice generation and payment collection</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                  <h5>Plan Upgrade</h5>
+                  <p>Seamless transition with prorated billing adjustments</p>
+                </div>
+              </div>
+              <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                  <h5>Auto Renewal</h5>
+                  <p>Continuous service with zero manual intervention</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tax-compliance-section">
+      <div class="compliance-container">
+        <div class="compliance-grid">
+          <div class="compliance-visual fade-in">
+            <div class="invoice-mockup">
+              <div class="invoice-header">
+                <div class="invoice-title">TAX INVOICE</div>
+                <div class="invoice-number">INV-2024-001</div>
+              </div>
+              <div class="invoice-row">
+                <span class="invoice-label">Subscription Plan</span>
+                <span class="invoice-value">₹50,000.00</span>
+              </div>
+              <div class="invoice-row">
+                <span class="invoice-label">Additional Services</span>
+                <span class="invoice-value">₹15,000.00</span>
+              </div>
+              <div class="invoice-row">
+                <span class="invoice-label">Subtotal</span>
+                <span class="invoice-value">₹65,000.00</span>
+              </div>
+              <div class="tax-breakdown">
+                <div class="invoice-row">
+                  <span class="invoice-label">CGST @ 9%</span>
+                  <span class="invoice-value">₹5,850.00</span>
+                </div>
+                <div class="invoice-row">
+                  <span class="invoice-label">SGST @ 9%</span>
+                  <span class="invoice-value">₹5,850.00</span>
+                </div>
+              </div>
+              <div class="invoice-total">
+                <span>Total Amount</span>
+                <span>₹76,700.00</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="compliance-content fade-in">
+            <h2>Compliant Billing Without Complexity</h2>
+            <p>
+              Configure tax rules once and every invoice remains compliant
+              without manual checks. Stay audit-ready with automated tax
+              calculations.
+            </p>
+
+            <div class="compliance-features">
+              <div class="compliance-feature">
+                <h4>GST / VAT Configuration</h4>
+                <p>
+                  Automated GST calculation with CGST, SGST, and IGST support
+                  based on customer location
+                </p>
+              </div>
+              <div class="compliance-feature">
+                <h4>Location-Based Tax Rules</h4>
+                <p>
+                  Intelligent tax application based on customer geography and
+                  tax jurisdiction
+                </p>
+              </div>
+              <div class="compliance-feature">
+                <h4>Reverse Charge Handling</h4>
+                <p>
+                  Automatic reverse charge mechanism for B2B transactions where
+                  applicable
+                </p>
+              </div>
+              <div class="compliance-feature">
+                <h4>Tax-Ready Formats</h4>
+                <p>
+                  Generate invoices in formats that meet all statutory
+                  requirements and audit standards
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="payment-portal-section">
+      <div class="portal-container">
+        <div class="portal-header fade-in">
+          <h2>Faster Payments, Less Follow-Ups</h2>
+          <p>
+            Enable customers to view, pay, and manage their invoices
+            independently through a branded self-service portal
+          </p>
+        </div>
+
+        <div class="portal-features-grid">
+          <div class="portal-feature-card fade-in">
+            <div class="feature-number">1</div>
+            <h3>Online Payment Gateway</h3>
+            <p>
+              Accept payments through multiple gateways with automatic payment
+              reconciliation and instant confirmation emails
+            </p>
+          </div>
+          <div class="portal-feature-card fade-in">
+            <div class="feature-number">2</div>
+            <h3>Auto-Payment Reminders</h3>
+            <p>
+              Smart reminder sequences that reduce collection time without
+              annoying your customers with excessive follow-ups
+            </p>
+          </div>
+          <div class="portal-feature-card fade-in">
+            <div class="feature-number">3</div>
+            <h3>Customer Self-Service</h3>
+            <p>
+              Give customers 24/7 access to invoices, payment history, and
+              subscription management capabilities
+            </p>
+          </div>
+          <div class="portal-feature-card fade-in">
+            <div class="feature-number">4</div>
+            <h3>Payment Status Tracking</h3>
+            <p>
+              Real-time visibility into payment status with automated updates
+              and notifications for all stakeholders
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="analytics-section">
+      <div class="analytics-container">
+        <div class="analytics-header fade-in">
+          <h2>Complete Visibility Into Revenue</h2>
+          <p>
+            Track key metrics and make data-driven decisions with comprehensive
+            billing analytics
+          </p>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="metric-card fade-in">
+            <div class="metric-label">Monthly Recurring</div>
+            <div class="metric-value">$127K</div>
+            <div class="metric-change">↑ 12.5%</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="metric-label">Annual Revenue</div>
+            <div class="metric-value">$1.5M</div>
+            <div class="metric-change">↑ 23.8%</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="metric-label">Churn Rate</div>
+            <div class="metric-value">2.3%</div>
+            <div class="metric-change negative">↑ 0.5%</div>
+          </div>
+          <div class="metric-card fade-in">
+            <div class="metric-label">Outstanding</div>
+            <div class="metric-value">$45K</div>
+            <div class="metric-change">↓ 8.2%</div>
+          </div>
+        </div>
+
+        <div class="chart-placeholder fade-in">
+          <div class="chart-header">
+            <div class="chart-title">Revenue Growth Trend</div>
+            <div class="chart-period">Last 12 Months</div>
+          </div>
+          <div class="chart-bars">
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+            <div class="chart-bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="service-providers-section">
+      <div class="providers-container">
+        <div class="providers-header fade-in">
+          <h2>How Businesses Use Automated Billing</h2>
+          <p>
+            Industry-specific billing solutions tailored to your business needs
+          </p>
+        </div>
+
+        <div class="providers-grid">
+          <div class="provider-card fade-in">
+            <div class="provider-number">1</div>
+            <h3>SaaS & Subscription</h3>
+            <p>
+              Manage complex subscription models with automated recurring
+              billing and renewals.
+            </p>
+            <ul class="provider-features">
+              <li>Multi-tier subscription plans</li>
+              <li>Usage-based add-ons</li>
+              <li>Trial to paid conversions</li>
+              <li>Churn management</li>
+            </ul>
+          </div>
+          <div class="provider-card fade-in">
+            <div class="provider-number">2</div>
+            <h3>Professional Services</h3>
+            <p>
+              Handle milestone-based and recurring client billing with project
+              tracking.
+            </p>
+            <ul class="provider-features">
+              <li>Project milestone billing</li>
+              <li>Time & material tracking</li>
+              <li>Retainer management</li>
+              <li>Expense reimbursement</li>
+            </ul>
+          </div>
+          <div class="provider-card fade-in">
+            <div class="provider-number">3</div>
+            <h3>Agencies & Consultants</h3>
+            <p>
+              Manage retainers, hourly billing, and project-based invoicing
+              seamlessly.
+            </p>
+            <ul class="provider-features">
+              <li>Monthly retainers</li>
+              <li>Hourly billing rates</li>
+              <li>Project-based pricing</li>
+              <li>Client portal access</li>
+            </ul>
+          </div>
+          <div class="provider-card fade-in">
+            <div class="provider-number">4</div>
+            <h3>E-Commerce Platforms</h3>
+            <p>
+              Automate invoicing for online sales with integrated payment
+              processing.
+            </p>
+            <ul class="provider-features">
+              <li>Order-based invoicing</li>
+              <li>Payment gateway integration</li>
+              <li>Refund management</li>
+              <li>Multi-currency support</li>
+            </ul>
+          </div>
+          <div class="provider-card fade-in">
+            <div class="provider-number">5</div>
+            <h3>Healthcare Providers</h3>
+            <p>
+              Streamline patient billing with insurance integration and payment
+              plans.
+            </p>
+            <ul class="provider-features">
+              <li>Insurance claim processing</li>
+              <li>Patient payment portals</li>
+              <li>Installment planning</li>
+              <li>HIPAA compliance</li>
+            </ul>
+          </div>
+          <div class="provider-card fade-in">
+            <div class="provider-number">6</div>
+            <h3>Membership Organizations</h3>
+            <p>Automate membership dues, renewals, and benefit tracking.</p>
+            <ul class="provider-features">
+              <li>Annual membership billing</li>
+              <li>Tier-based pricing</li>
+              <li>Auto-renewal reminders</li>
+              <li>Member portal access</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p>
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
+          </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
+        </div>
+
+        <!-- Solutions (With Links) -->
+        <div class="footer-section">
+          <h3>Zoho Solutions</h3>
+          <ul>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
+        </div>
+      </div>
+
       <div class="footer-bottom">
         <p>
-          &copy; 2024 Zolytics. All rights reserved. | Certified Zoho Partner
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
         </p>
       </div>
     </footer>
 
+    <div class="scroll-to-top" id="scrollToTop">↑</div>
+
     <script>
-      // Scroll animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animated");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".animate-on-scroll").forEach((el) => {
-        observer.observe(el);
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
       });
 
       // Scroll to top button
@@ -1142,132 +2655,54 @@
       });
 
       scrollToTopBtn.addEventListener("click", () => {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
-        });
+        window.scrollTo({ top: 0, behavior: "smooth" });
       });
 
-      // Smooth scroll for navigation links
+      // Smooth scroll for navigation
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
           }
         });
       });
 
-      // Counter animation for stats
-      const animateCounter = (element, target) => {
-        let current = 0;
-        const text = element.textContent;
-        const isPercentage = text.includes("%");
-        const increment = target / 100;
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            element.textContent = target + (isPercentage ? "%" : "+");
-            clearInterval(timer);
-          } else {
-            element.textContent =
-              Math.floor(current) + (isPercentage ? "%" : "+");
-          }
-        }, 20);
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -80px 0px",
       };
 
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const statNumber = entry.target.querySelector(".stat-number");
-              const text = statNumber.textContent;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
 
-              // Handle different formats
-              if (text === "24/7") {
-                // Don't animate 24/7
-                return;
-              }
-
-              const value = parseInt(text.replace(/\D/g, ""));
-              animateCounter(statNumber, value);
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      document.querySelectorAll(".stat-card").forEach((card) => {
-        statsObserver.observe(card);
+      // Observe all fade-in elements
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
       });
 
-      // Gallery hover effects
-      document.querySelectorAll(".service-card").forEach((card) => {
-        const overlay = card.querySelector('div[style*="opacity: 0"]');
-        const img = card.querySelector("img");
-
-        if (overlay && img) {
-          card.addEventListener("mouseenter", () => {
-            overlay.style.opacity = "1";
-            img.style.transform = "scale(1.1)";
+      // Parallax effect for hero
+      let ticking = false;
+      window.addEventListener("scroll", () => {
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector(".hero");
+            if (hero && scrolled < window.innerHeight) {
+              hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+            }
+            ticking = false;
           });
-
-          card.addEventListener("mouseleave", () => {
-            overlay.style.opacity = "0";
-            img.style.transform = "scale(1)";
-          });
+          ticking = true;
         }
       });
-
-      // Button ripple effect
-      document
-        .querySelectorAll(".btn-primary, .btn-secondary")
-        .forEach((button) => {
-          button.addEventListener("click", function (e) {
-            const rect = this.getBoundingClientRect();
-            const ripple = document.createElement("span");
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.cssText = `
-                    position: absolute;
-                    width: ${size}px;
-                    height: ${size}px;
-                    left: ${x}px;
-                    top: ${y}px;
-                    background: rgba(255,255,255,0.5);
-                    border-radius: 50%;
-                    transform: scale(0);
-                    animation: ripple 0.6s ease-out;
-                    pointer-events: none;
-                `;
-
-            this.style.position = "relative";
-            this.style.overflow = "hidden";
-            this.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 600);
-          });
-        });
-
-      // Add ripple animation
-      const style = document.createElement("style");
-      style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
-      document.head.appendChild(style);
     </script>
   </body>
 </html>
