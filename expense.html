@@ -14,13 +14,13 @@
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
-        color: #333;
+        color: #1a1a1a;
         overflow-x: hidden;
       }
 
       /* Navbar */
       .navbar {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         padding: 20px 0;
         position: fixed;
@@ -29,14 +29,14 @@
         right: 0;
         z-index: 1000;
         transition: all 0.4s ease;
-        border-bottom: 2px solid rgba(0, 102, 204, 0.1);
+        border-bottom: 2px solid rgba(220, 38, 38, 0.15);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       }
 
       .navbar.scrolled {
         padding: 15px 0;
-        background: rgba(26, 26, 46, 0.98);
-        border-bottom: 2px solid rgba(0, 102, 204, 0.3);
+        background: rgba(248, 250, 252, 0.98);
+        border-bottom: 2px solid rgba(220, 38, 38, 0.3);
       }
 
       .navbar-content {
@@ -57,7 +57,7 @@
       .logo {
         height: 50px;
         transition: transform 0.4s ease;
-        filter: drop-shadow(0 2px 8px rgba(0, 102, 204, 0.3));
+        filter: drop-shadow(0 2px 8px rgba(220, 38, 38, 0.3));
       }
 
       .logo:hover {
@@ -80,7 +80,7 @@
       }
 
       .navbar.scrolled .nav-links a {
-        color: rgba(255, 255, 255, 0.9);
+        color: #1f2937;
       }
 
       .nav-links a::after {
@@ -90,8 +90,12 @@
         left: 0;
         width: 0;
         height: 3px;
-        background: #0066cc;
+        background: #dc2626;
         transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover {
+        color: #dc2626;
       }
 
       .nav-links a:hover::after {
@@ -100,7 +104,12 @@
 
       /* Hero Section */
       .hero {
-        background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+        background: linear-gradient(
+          135deg,
+          #dc2626 0%,
+          #b91c1c 50%,
+          #991b1b 100%
+        );
         color: white;
         padding: 180px 20px 100px;
         text-align: center;
@@ -118,12 +127,12 @@
         bottom: 0;
         background: radial-gradient(
             circle at 20% 50%,
-            rgba(255, 255, 255, 0.1) 0%,
+            rgba(255, 255, 255, 0.12) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 80%,
-            rgba(255, 255, 255, 0.08) 0%,
+            rgba(16, 185, 129, 0.1) 0%,
             transparent 50%
           );
       }
@@ -131,23 +140,27 @@
       .hero-content {
         position: relative;
         z-index: 1;
-        max-width: 900px;
+        max-width: 1000px;
         margin: 0 auto;
       }
 
       .hero h1 {
-        font-size: 3.5em;
+        font-size: 3.8em;
         margin-bottom: 25px;
         font-weight: 800;
         animation: fadeInUp 0.8s ease;
         line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       }
 
       .hero p {
-        font-size: 1.4em;
+        font-size: 1.5em;
         margin-bottom: 40px;
         opacity: 0.95;
         animation: fadeInUp 1s ease;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       @keyframes fadeInUp {
@@ -161,9 +174,16 @@
         }
       }
 
+      .cta-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
       .cta-button {
         background: white;
-        color: #0066cc;
+        color: #dc2626;
         padding: 18px 45px;
         font-size: 1.1em;
         border: 3px solid transparent;
@@ -177,7 +197,19 @@
       .cta-button:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-        border-color: white;
+        border-color: #10b981;
+        background: #f0fdf4;
+      }
+
+      .cta-button.secondary {
+        background: transparent;
+        color: white;
+        border: 3px solid white;
+      }
+
+      .cta-button.secondary:hover {
+        background: white;
+        color: #dc2626;
       }
 
       .container {
@@ -192,8 +224,13 @@
       }
 
       .section-blue {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         position: relative;
+      }
+
+      .section-dark {
+        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+        color: white;
       }
 
       .section-title {
@@ -208,6 +245,10 @@
         transform: translateX(-50%);
       }
 
+      .section-dark .section-title {
+        color: white;
+      }
+
       .section-title::after {
         content: "";
         position: absolute;
@@ -216,7 +257,7 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: #0066cc;
+        background: linear-gradient(90deg, #dc2626, #10b981);
         border-radius: 2px;
       }
 
@@ -226,210 +267,686 @@
         color: #6b7280;
         margin-bottom: 70px;
         font-weight: 400;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .features-grid {
+      .section-dark .section-subtitle {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      /* Problem Section */
+      .problem-section {
+        background: white;
+        padding: 80px 20px;
+      }
+
+      .problem-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 60px;
+      }
+
+      .problem-text h2 {
+        font-size: 2.8em;
+        color: #1f2937;
+        margin-bottom: 30px;
+        font-weight: 800;
+        line-height: 1.2;
+      }
+
+      .problem-text p {
+        font-size: 1.2em;
+        color: #4b5563;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      .problem-text .highlight {
+        background: linear-gradient(120deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 30px;
+        border-radius: 15px;
+        border-left: 5px solid #10b981;
+        margin-top: 30px;
+      }
+
+      .problem-visual {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+
+      .problem-box {
+        padding: 30px;
+        border-radius: 15px;
+        transition: all 0.4s ease;
+      }
+
+      .problem-box.before {
+        background: #fee2e2;
+        border: 3px solid #dc2626;
+      }
+
+      .problem-box.after {
+        background: #d1fae5;
+        border: 3px solid #10b981;
+      }
+
+      .problem-box:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .problem-box h4 {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        font-weight: 700;
+      }
+
+      .problem-box.before h4 {
+        color: #dc2626;
+      }
+
+      .problem-box.after h4 {
+        color: #059669;
+      }
+
+      .problem-box p {
+        font-size: 1.05em;
+        line-height: 1.6;
+        color: #374151;
+      }
+
+      /* Core Capabilities Section */
+      .capabilities-section {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 0px 20px;
+      }
+
+      .capability-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-bottom: 80px;
+        padding: 50px;
+        background: white;
+        border-radius: 25px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+      }
+
+      .capability-item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 25px 60px rgba(220, 38, 38, 0.15);
+      }
+
+      .capability-item:nth-child(even) {
+        direction: rtl;
+      }
+
+      .capability-item:nth-child(even) > * {
+        direction: ltr;
+      }
+
+      .capability-content h3 {
+        font-size: 2.2em;
+        color: #dc2626;
+        margin-bottom: 20px;
+        font-weight: 800;
+      }
+
+      .capability-content p {
+        font-size: 1.15em;
+        color: #4b5563;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .capability-content .consulting-angle {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        padding: 25px;
+        border-radius: 12px;
+        border-left: 5px solid #dc2626;
+        margin-top: 25px;
+      }
+
+      .capability-content .consulting-angle h4 {
+        color: #dc2626;
+        font-size: 1.3em;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .capability-content .consulting-angle p {
+        color: #1f2937;
+        font-size: 1.05em;
+      }
+
+      .capability-features {
+        list-style: none;
+        margin: 25px 0;
+      }
+
+      .capability-features li {
+        padding: 15px 0;
+        padding-left: 35px;
+        position: relative;
+        color: #374151;
+        font-size: 1.1em;
+        font-weight: 500;
+      }
+
+      .capability-features li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #10b981;
+        font-weight: bold;
+        font-size: 1.5em;
+      }
+
+      .capability-visual {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 40px;
+        border-radius: 20px;
+        min-height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        color: #1f2937;
+        font-weight: 600;
+        text-align: center;
+        border: 3px solid #10b981;
+      }
+
+      /* Advanced Capabilities Grid */
+      .advanced-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 40px;
-        margin-top: 60px;
+        gap: 35px;
+        margin-top: 30px;
       }
 
-      .feature-card {
+      .advanced-card {
         background: white;
-        padding: 45px 35px;
+        padding: 40px 35px;
         border-radius: 20px;
         border: 3px solid transparent;
+        transition: all 0.4s ease;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
       }
 
-      .feature-card::before {
+      .advanced-card::before {
         content: "";
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        height: 5px;
-        background: linear-gradient(90deg, #0066cc, #004c99);
+        height: 6px;
+        background: linear-gradient(90deg, #dc2626, #10b981);
         transform: scaleX(0);
         transition: transform 0.4s ease;
       }
 
-      .feature-card:hover::before {
+      .advanced-card:hover::before {
         transform: scaleX(1);
       }
 
-      .feature-card:hover {
+      .advanced-card:hover {
+        border-color: #10b981;
         transform: translateY(-10px);
-        border-color: #0066cc;
-        box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
       }
 
-      .feature-image {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        border-radius: 15px;
-        margin-bottom: 25px;
-        transition: transform 0.4s ease;
-      }
-
-      .feature-card:hover .feature-image {
-        transform: scale(1.05);
-      }
-
-      .feature-card h3 {
-        color: #0066cc;
+      .advanced-card h3 {
         font-size: 1.6em;
-        margin-bottom: 20px;
+        color: #dc2626;
+        margin-bottom: 18px;
         font-weight: 700;
       }
 
-      .feature-card p {
+      .advanced-card p {
+        font-size: 1.1em;
         color: #4b5563;
+        line-height: 1.7;
+      }
+
+      /* Integration Flow Section */
+      .integration-section {
+        background: white;
+        padding: 0px 20px;
+      }
+
+      .integration-flow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 60px;
+        position: relative;
+      }
+
+      .integration-flow::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        right: 15%;
+        height: 4px;
+        background: linear-gradient(90deg, #dc2626, #b91010);
+        z-index: 0;
+      }
+
+      .flow-step {
+        background: white;
+        padding: 35px;
+        border-radius: 20px;
+        border: 4px solid #10b981;
+        width: 22%;
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .flow-step:hover {
+        transform: translateY(-15px) scale(1.05);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25);
+        border-color: #dc2626;
+      }
+
+      .flow-step h4 {
+        color: #dc2626;
+        font-size: 1.4em;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .flow-step p {
         font-size: 1.05em;
+        color: #4b5563;
+        line-height: 1.6;
+      }
+
+      .integration-details {
+        margin-top: 60px;
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 45px;
+        border-radius: 20px;
+        border-left: 6px solid #10b981;
+      }
+
+      .integration-details h3 {
+        font-size: 2em;
+        color: #1f2937;
+        margin-bottom: 25px;
+        font-weight: 700;
+      }
+
+      .integration-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+        margin-top: 25px;
+      }
+
+      .integration-point {
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        border: 2px solid #10b981;
+        font-size: 1.1em;
+        color: #1f2937;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .integration-point:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
+        border-color: #dc2626;
+      }
+
+      /* Use Cases Section */
+      .usecases-section {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 0px 20px;
+      }
+
+      .usecase-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        margin-top: 60px;
+      }
+
+      .usecase-card {
+        background: white;
+        padding: 45px 35px;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .usecase-card:hover {
+        border-color: #10b981;
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+      }
+
+      .usecase-header {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        text-align: center;
+      }
+
+      .usecase-header h3 {
+        font-size: 1.8em;
+        font-weight: 700;
+      }
+
+      .usecase-content p {
+        font-size: 1.1em;
+        color: #4b5563;
         line-height: 1.7;
         margin-bottom: 15px;
       }
 
-      .feature-card ul {
+      .usecase-benefits {
         list-style: none;
         margin-top: 20px;
       }
 
-      .feature-card li {
+      .usecase-benefits li {
         padding: 12px 0;
-        padding-left: 35px;
+        padding-left: 30px;
         position: relative;
-        color: #374151;
+        color: #1f2937;
         font-size: 1.05em;
+        font-weight: 500;
       }
 
-      .feature-card li:before {
+      .usecase-benefits li:before {
         content: "✓";
         position: absolute;
         left: 0;
-        color: #0066cc;
+        color: #10b981;
         font-weight: bold;
-        font-size: 1.3em;
+        font-size: 1.4em;
       }
 
-      .consulting-benefits {
+      /* Analytics Section */
+      .analytics-section {
         background: white;
-        padding: 100px 20px;
+        padding: 0px 20px;
       }
 
-      .benefit-item {
-        display: flex;
-        align-items: start;
-        margin-bottom: 35px;
-        padding: 40px;
-        background: white;
-        border-radius: 20px;
-        border: 3px solid transparent;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      .analytics-showcase {
+        display: grid;
+        grid-template-columns: 1.2fr 1fr;
+        gap: 50px;
+        margin-top: 60px;
+        align-items: center;
       }
 
-      .benefit-item:hover {
-        border-color: #0066cc;
-        transform: translateX(10px);
-        box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
-      }
-
-      .benefit-icon {
-        width: 80px;
-        height: 80px;
-        margin-right: 30px;
-        font-size: 3em;
+      .analytics-visual {
+        background: linear-gradient(135deg, #feffff 0%, #f9f9f9 100%);
+        padding: 50px;
+        border-radius: 25px;
+        min-height: 450px;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
         color: white;
+        font-size: 1.3em;
+        font-weight: 600;
+        text-align: center;
+        border: 4px solid #10b981;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      }
+
+      .analytics-features {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .analytics-feature {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 30px;
         border-radius: 15px;
-        transition: transform 0.4s ease;
+        border-left: 5px solid #10b981;
+        transition: all 0.3s ease;
       }
 
-      .benefit-item:hover .benefit-icon {
-        transform: rotate(10deg) scale(1.1);
+      .analytics-feature:hover {
+        transform: translateX(15px);
+        box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
+        border-left-color: #dc2626;
       }
 
-      .benefit-content h4 {
-        color: #0066cc;
-        font-size: 1.6em;
-        margin-bottom: 15px;
+      .analytics-feature h4 {
+        font-size: 1.5em;
+        color: #dc2626;
+        margin-bottom: 12px;
         font-weight: 700;
       }
 
-      .benefit-content p {
-        color: #4b5563;
+      .analytics-feature p {
         font-size: 1.1em;
-        line-height: 1.7;
+        color: #374151;
+        line-height: 1.6;
       }
 
-      /* Auto-scrolling showcase */
-      .showcase-section {
-        background: #1f2937;
-        padding: 80px 0;
-        overflow: hidden;
+      /* Implementation Process Section */
+      .process-section {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        padding: 0px 20px;
+      }
+
+      .process-timeline {
+        position: relative;
+        margin-top: 80px;
+        padding: 0 40px;
+      }
+
+      .process-timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 4px;
+        background: linear-gradient(180deg, #dc2626, #10b981);
+      }
+
+      .timeline-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        margin-bottom: 80px;
         position: relative;
       }
 
-      .showcase-title {
-        text-align: center;
+      .timeline-item:nth-child(even) .timeline-content {
+        order: 2;
+      }
+
+      .timeline-content {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        border: 3px solid #10b981;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s ease;
+        position: relative;
+      }
+
+      .timeline-content:hover {
+        transform: scale(1.05);
+        box-shadow: 0 25px 60px rgba(16, 185, 129, 0.2);
+        border-color: #dc2626;
+      }
+
+      .timeline-number {
+        position: absolute;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #dc2626, #b91c1c);
         color: white;
-        font-size: 2.5em;
-        margin-bottom: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8em;
+        font-weight: 800;
+        z-index: 2;
+        border: 5px solid white;
+        box-shadow: 0 5px 20px rgba(220, 38, 38, 0.4);
+      }
+
+      .timeline-content h3 {
+        font-size: 1.9em;
+        color: #dc2626;
+        margin-bottom: 20px;
         font-weight: 700;
       }
 
-      .scroll-container {
-        display: flex;
-        gap: 30px;
-        animation: scroll 30s linear infinite;
-      }
-
-      @keyframes scroll {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-50%);
-        }
-      }
-
-      .scroll-item {
-        min-width: 350px;
-        background: white;
-        padding: 30px;
-        border-radius: 15px;
-        border: 3px solid #0066cc;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .scroll-item-icon {
-        font-size: 3.5em;
-        margin-bottom: 20px;
-        text-align: center;
-      }
-
-      .scroll-item h4 {
-        color: #0066cc;
-        font-size: 1.3em;
-        margin-bottom: 10px;
-      }
-
-      .scroll-item p {
+      .timeline-content p {
+        font-size: 1.15em;
         color: #4b5563;
-        font-size: 1em;
+        line-height: 1.7;
       }
 
+      /* Differentiators Section */
+      .differentiators-section {
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        padding: 0px 20px;
+        color: #1f2937;
+      }
+
+      .differentiators-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 35px;
+        margin-top: 60px;
+      }
+
+      .differentiator-card {
+        background: white;
+        padding: 45px 40px;
+        border-radius: 20px;
+        border: 3px solid #b91010;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .differentiator-card:hover {
+        background: #fef2f2;
+        border-color: #dc2626;
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.2);
+      }
+
+      .differentiator-card h3 {
+        font-size: 1.8em;
+        color: #dc2626;
+        margin-bottom: 20px;
+        font-weight: 700;
+      }
+
+      .differentiator-card p {
+        font-size: 1.15em;
+        color: #374151;
+        line-height: 1.8;
+      }
+
+      /* Final CTA Section */
+      .final-cta-section {
+        background: linear-gradient(
+          135deg,
+          #dc2626 0%,
+          #b91c1c 50%,
+          #991b1b 100%
+        );
+        padding: 10px 20px;
+        text-align: center;
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .final-cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+            circle at 30% 40%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 70%,
+            rgba(16, 185, 129, 0.12) 0%,
+            transparent 50%
+          );
+      }
+
+      .final-cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .final-cta-content h2 {
+        font-size: 3.5em;
+        margin-bottom: 30px;
+        font-weight: 800;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .final-cta-content p {
+        font-size: 1.4em;
+        margin-bottom: 50px;
+        opacity: 0.95;
+      }
+
+      .final-cta-buttons {
+        display: flex;
+        gap: 25px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .final-cta-buttons .cta-button {
+        font-size: 1.2em;
+        padding: 22px 50px;
+      }
+
+      /* Stats Section */
       .stats-section {
-        background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         padding: 100px 20px;
         text-align: center;
       }
@@ -451,17 +968,16 @@
       }
 
       .stat-item:hover {
-        border-color: #0066cc;
+        border-color: #b91010;
         transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 20px 50px rgba(0, 102, 204, 0.2);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
       }
 
       .stat-number {
         font-size: 4em;
-        color: #0066cc;
+        color: #dc2626;
         font-weight: 800;
         margin-bottom: 15px;
-        animation: countUp 2s ease;
       }
 
       .stat-label {
@@ -470,102 +986,125 @@
         font-weight: 600;
       }
 
-      footer {
-        background: #000;
-        color: white;
-        padding: 70px 20px 40px;
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
       }
 
       .footer-content {
-        max-width: 1400px;
-        margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 50px;
-        margin-bottom: 40px;
-        padding: 0 60px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
       }
 
       .footer-section h3 {
-        color: #0066cc;
-        margin-bottom: 25px;
-        font-size: 1.4em;
-        font-weight: 700;
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
       }
 
       .footer-section p {
-        color: #d1d5db;
-        line-height: 1.8;
-        font-size: 1.05em;
+        color: #cbd5e1;
+        line-height: 1.6;
       }
 
       .footer-section ul {
         list-style: none;
+        padding: 0;
       }
 
-      .footer-section li {
-        margin-bottom: 15px;
+      .footer-section ul li {
+        margin-bottom: 8px;
+        color: #cbd5e1;
       }
 
-      .footer-section a {
-        color: #d1d5db;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 1.05em;
-        display: inline-block;
-      }
-
-      .footer-section a:hover {
-        color: #0066cc;
-        transform: translateX(5px);
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
       }
 
       .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
         text-align: center;
-        padding-top: 40px;
-        border-top: 2px solid #374151;
-        color: #9ca3af;
-        font-size: 1em;
+        color: #94a3b8;
       }
+      @media (max-width: 1024px) {
+        .problem-content,
+        .capability-item,
+        .analytics-showcase {
+          grid-template-columns: 1fr;
+        }
 
+        .capability-item:nth-child(even) {
+          direction: ltr;
+        }
+
+        .integration-flow {
+          flex-direction: column;
+          gap: 40px;
+        }
+
+        .integration-flow::before {
+          display: none;
+        }
+
+        .flow-step {
+          width: 100%;
+          max-width: 400px;
+        }
+
+        .usecase-grid {
+          grid-template-columns: 1fr;
+        }
+        .differentiators-grid {
+          grid-template-columns: 1fr;
+        }
+        .timeline-item {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+        .process-timeline::before {
+          left: 30px;
+        }
+        .timeline-number {
+          left: 30px;
+        }
+      }
       @media (max-width: 768px) {
         .navbar-content {
           padding: 0 30px;
         }
-
         .hero {
           padding: 140px 20px 80px;
         }
-
         .hero h1 {
           font-size: 2.2em;
         }
-
         .section-title {
           font-size: 2em;
         }
-
-        .features-grid {
-          grid-template-columns: 1fr;
-        }
-
         .container {
           padding: 60px 30px;
         }
-
         .nav-links {
           display: none;
         }
-
-        .benefit-item {
-          flex-direction: column;
-          align-items: center;
-          text-align: center;
+        .problem-visual {
+          grid-template-columns: 1fr;
         }
-
-        .benefit-icon {
-          margin-right: 0;
-          margin-bottom: 20px;
+        .integration-grid {
+          grid-template-columns: 1fr;
+        }
+        .advanced-grid {
+          grid-template-columns: 1fr;
+        }
+        .final-cta-content h2 {
+          font-size: 2.5em;
         }
       }
     </style>
@@ -586,9 +1125,9 @@
           />
         </div>
         <div class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#benefits">Benefits</a>
-          <a href="#stats">Impact</a>
+          <a href="#capabilities">Capabilities</a>
+          <a href="#process">Process</a>
+          <a href="#impact">Impact</a>
           <button
             class="cta-button"
             style="
@@ -605,298 +1144,573 @@
 
     <div class="hero">
       <div class="hero-content">
-        <h1>Zoho Expense for Consulting Firms</h1>
-        <p>Automate expense management. Focus on client delivery.</p>
-        <button class="cta-button">Start Free Trial</button>
+        <h1>
+          Automate Every Expense. Control Every Rupee. Close Books Faster.
+        </h1>
+        <p>
+          Enterprise-grade expense management systems that capture, approve,
+          audit, and post employee expenses automatically—fully integrated with
+          accounting and payroll.
+        </p>
       </div>
     </div>
 
-    <div class="section-white" id="features">
+    <!-- Problem Section -->
+    <div class="problem-section">
+      <div class="problem-content">
+        <div class="problem-text">
+          <h2>Why Expense Management Breaks as Businesses Scale</h2>
+          <p>
+            As teams grow, expense tracking becomes fragmented with manual
+            claims, delayed approvals, missing bills, policy violations, and
+            accounting mismatches.
+          </p>
+          <p>
+            Finance teams spend more time correcting expenses than analyzing
+            them, leading to inefficiencies and compliance risks.
+          </p>
+          <div class="highlight">
+            <p>
+              <strong
+                >We design expense systems that run in the background,</strong
+              >
+              ensuring every spend is compliant, approved, and posted
+              automatically.
+            </p>
+          </div>
+        </div>
+        <div class="problem-visual">
+          <div class="problem-box before">
+            <h4>Before Automation</h4>
+            <p>
+              Messy spreadsheets, email chains, delayed approvals, manual
+              reconciliation, policy violations, accounting errors
+            </p>
+          </div>
+          <div class="problem-box after">
+            <h4>After Automation</h4>
+            <p>
+              Clean dashboard, instant approvals, auto-posting, policy
+              enforcement, audit trails, real-time visibility
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Core Capabilities Section -->
+    <div class="capabilities-section" id="capabilities">
       <div class="container">
-        <h2 class="section-title">Why Consulting Firms Choose Zoho Expense</h2>
+        <h2 class="section-title">What a Modern Expense Platform Can Do</h2>
         <p class="section-subtitle">
-          Built for teams that work across projects, clients, and locations
+          Complete expense lifecycle automation from capture to posting
         </p>
 
-        <div class="features-grid">
-          <div class="feature-card">
-            <img
-              src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=800&h=400&fit=crop&q=80"
-              alt="Receipt scanning automation"
-              class="feature-image"
-            />
-            <h3>End-to-End Expense Automation</h3>
+        <div class="capability-item">
+          <div class="capability-content">
+            <h3>Smart Expense Capture</h3>
             <p>
-              From receipt scanning to reimbursement, Zoho Expense automates the
-              entire expense lifecycle, reducing manual work and errors.
+              Employees can submit expenses through multiple channels with zero
+              friction:
             </p>
-          </div>
-
-          <div class="feature-card">
-            <img
-              src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&h=400&fit=crop&q=80"
-              alt="Mobile receipt scanning"
-              class="feature-image"
-            />
-            <h3>Smart Receipt Scanning (OCR)</h3>
-            <p>
-              Employees can scan receipts via mobile. Zoho Expense automatically
-              extracts:
-            </p>
-            <ul>
-              <li>Amount</li>
-              <li>Date</li>
-              <li>Merchant</li>
-              <li>Tax details</li>
+            <ul class="capability-features">
+              <li>Mobile scan of receipts with OCR-based extraction</li>
+              <li>Email forwarding for instant capture</li>
+              <li>Corporate card transaction auto-fetch</li>
+              <li>Manual entry with smart validation</li>
             </ul>
-            <p style="margin-top: 15px; font-weight: 600">
-              No manual entry required.
-            </p>
+            <div class="consulting-angle">
+              <h4>Consulting Angle</h4>
+              <p>
+                We configure capture rules, categories, and validations so
+                incorrect or incomplete expenses never enter your system.
+              </p>
+            </div>
           </div>
-
-          <div class="feature-card">
+          <div class="capability-visual">
             <img
-              src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=400&fit=crop&q=80"
-              alt="Policy management dashboard"
-              class="feature-image"
+              src="https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/10/why-user-trust-4f7b6eb7b52617caf18e95061fa146cc.webp"
+              alt="Smart Expense Capture"
+              style="width: 480px; height: 450px"
             />
-            <h3>Policy-Based Expense Control</h3>
-            <p>Set custom expense policies:</p>
-            <ul>
-              <li>Category limits</li>
-              <li>Daily/monthly caps</li>
-              <li>Approval rules</li>
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-content">
+            <h3>Policy-Driven Expense Controls</h3>
+            <p>The system automatically enforces your company policies:</p>
+            <ul class="capability-features">
+              <li>Category-wise spending limits</li>
+              <li>Daily and monthly caps</li>
+              <li>Project-based expense rules</li>
+              <li>Location and role-based policies</li>
             </ul>
-            <p style="margin-top: 15px; font-weight: 600">
-              🚫 Prevent overspending before it happens.
-            </p>
+            <div class="consulting-angle">
+              <h4>Consulting Angle</h4>
+              <p>
+                We convert your company's expense policy into system-enforced
+                rules, removing human dependency and preventing violations
+                before they happen.
+              </p>
+            </div>
+          </div>
+          <div class="capability-visual">
+            <img
+              src="https://www.expenseout.com/wp-content/uploads/2025/03/The-Role-of-Effective-Policy-Enforcement-in-Corporate-Expense-Management-scaled.jpg"
+              alt="Policy-Driven Expense Controls"
+              style="width: 480px; height: 450px"
+            />
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-content">
+            <h3>Multi-Level Approval Workflows</h3>
+            <p>Expenses automatically route based on intelligent rules:</p>
+            <ul class="capability-features">
+              <li>Amount-based threshold routing</li>
+              <li>Department or project-specific approvers</li>
+              <li>Employee role considerations</li>
+              <li>Policy exception handling</li>
+            </ul>
+            <div class="consulting-angle">
+              <h4>Consulting Angle</h4>
+              <p>
+                We design approval flows that balance speed for employees and
+                control for finance—eliminating unnecessary bottlenecks while
+                maintaining oversight.
+              </p>
+            </div>
+          </div>
+          <div class="capability-visual">
+            <img
+              src="https://cdn.signavio.com/uploads/2018/07/Signavio-Workflow-working-late-WEB.jpg"
+              alt="Multi-Level Approval"
+              style="width: 480px; height: 400px"
+            />
+          </div>
+        </div>
+
+        <div class="capability-item">
+          <div class="capability-content">
+            <h3>Corporate Card & Mileage Automation</h3>
+            <p>Eliminate manual expense claims completely:</p>
+            <ul class="capability-features">
+              <li>Auto-sync corporate card transactions</li>
+              <li>GPS-based mileage tracking</li>
+              <li>Distance-based reimbursement calculations</li>
+              <li>Automatic merchant categorization</li>
+            </ul>
+            <div class="consulting-angle">
+              <h4>Consulting Angle</h4>
+              <p>
+                We integrate cards and travel data directly into the platform,
+                so employees never have to manually create expense claims for
+                card purchases or travel.
+              </p>
+            </div>
+          </div>
+          <div class="capability-visual">
+            <img
+              src="https://www.zaggle.in/blog/wp-content/uploads/2020/04/Why-Businesses-Should-Automate-Mileage-Tracking.jpg"
+              alt="Corporate Card & Mileage Automation"
+              style="width: 480px; height: 450px"
+            />
           </div>
         </div>
       </div>
     </div>
 
-    <div class="section-blue">
+    <!-- Advanced Capabilities -->
+    <div class="section-dark">
       <div class="container">
-        <h2 class="section-title">Streamlined Workflows</h2>
+        <h2 class="section-title">
+          Advanced Expense Capabilities We Configure
+        </h2>
         <p class="section-subtitle">
-          Designed for multi-project consulting environments
+          Enterprise-grade features for complex business requirements
         </p>
 
-        <div class="features-grid">
-          <div class="feature-card">
-            <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=400&fit=crop&q=80"
-              alt="Team approval workflow"
-              class="feature-image"
-            />
-            <h3>Multi-Level Approval Workflow</h3>
-            <p>Create role-based approvals:</p>
-            <ul>
-              <li>Manager</li>
-              <li>Finance</li>
-              <li>Admin</li>
-            </ul>
-            <p style="margin-top: 15px; font-weight: 600">
-              Ensures compliance and faster approvals.
+        <div class="advanced-grid">
+          <div class="advanced-card">
+            <h3>Multi-Currency Expense Handling</h3>
+            <p>
+              Global expenses with real-time exchange rates, automatic currency
+              conversion, and multi-country compliance reporting.
             </p>
           </div>
 
-          <div class="feature-card">
-            <img
-              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=400&fit=crop&q=80"
-              alt="Financial analytics dashboard"
-              class="feature-image"
-            />
-            <h3>Real-Time Spend Visibility</h3>
-            <p>Finance teams get live dashboards showing:</p>
-            <ul>
-              <li>Department-wise spend</li>
-              <li>Project-wise expenses</li>
-              <li>Reimbursement status</li>
-            </ul>
-            <p style="margin-top: 15px; font-weight: 600">
-              Better financial control.
+          <div class="advanced-card">
+            <h3>Project & Client Cost Allocation</h3>
+            <p>
+              Expenses mapped directly to projects, clients, or cost centers
+              with automatic allocation and tracking.
             </p>
           </div>
 
-          <div class="feature-card">
-            <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=400&fit=crop&q=80"
-              alt="Software integration"
-              class="feature-image"
-            />
-            <h3>Seamless Zoho Ecosystem Integration</h3>
-            <p>Native integration with:</p>
-            <ul>
-              <li>Zoho Books</li>
-              <li>Zoho People</li>
-              <li>Zoho Projects</li>
-              <li>Zoho Analytics</li>
-            </ul>
-            <p style="margin-top: 15px; font-weight: 600">
-              Zero data duplication.
+          <div class="advanced-card">
+            <h3>GST & VAT Compliance Mapping</h3>
+            <p>
+              Tax-ready expense categorization with compliant reporting and
+              automatic tax calculations for multiple jurisdictions.
+            </p>
+          </div>
+
+          <div class="advanced-card">
+            <h3>Per Diem & Travel Allowance Automation</h3>
+            <p>
+              Country-specific per diem rules built into workflows with
+              automatic calculation based on location and duration.
+            </p>
+          </div>
+
+          <div class="advanced-card">
+            <h3>Audit-Ready Controls</h3>
+            <p>
+              Duplicate detection, receipt mismatch alerts, complete audit
+              trails, and compliance documentation at every step.
+            </p>
+          </div>
+
+          <div class="advanced-card">
+            <h3>Advanced Policy Engine</h3>
+            <p>
+              Complex rule-based validations, exception management, and
+              hierarchical policy enforcement across the organization.
             </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="consulting-benefits section-white" id="benefits">
+    <!-- Integration Section -->
+    <div class="integration-section">
       <div class="container">
-        <h2 class="section-title">Perfect for Global Consulting Teams</h2>
+        <h2 class="section-title">
+          From Expense to Books—Without Manual Entry
+        </h2>
+        <p class="section-subtitle">
+          Seamless integration with your financial systems
+        </p>
 
-        <div class="benefit-item">
-          <div class="benefit-icon">📋</div>
-          <div class="benefit-content">
-            <h4>GST & Tax Compliance</h4>
-            <p>
-              Supports GST-ready invoices, tax categorization, and audit-ready
-              reports. Perfect for Indian businesses with complete compliance
-              management.
-            </p>
+        <div class="integration-flow">
+          <div class="flow-step">
+            <h4>Expense Capture</h4>
+            <p>Employee submits expense via app or card sync</p>
+          </div>
+          <div class="flow-step">
+            <h4>Approval & Policy</h4>
+            <p>Auto-routing through approval chain</p>
+          </div>
+          <div class="flow-step">
+            <h4>Accounting Post</h4>
+            <p>Automatically posted to ledgers</p>
+          </div>
+          <div class="flow-step">
+            <h4>Reimbursement</h4>
+            <p>Integrated with payroll or payments</p>
           </div>
         </div>
 
-        <div class="benefit-item">
-          <div class="benefit-icon">🌍</div>
-          <div class="benefit-content">
-            <h4>Multi-Currency & Global Ready</h4>
-            <p>
-              Ideal for global consulting teams with multi-currency expenses,
-              automatic exchange rate handling, and international compliance
-              support.
-            </p>
-          </div>
-        </div>
-
-        <div class="benefit-item">
-          <div class="benefit-icon">💳</div>
-          <div class="benefit-content">
-            <h4>Corporate Card Reconciliation</h4>
-            <p>
-              Auto-sync corporate card transactions and match them with
-              expenses. No missing entries, complete visibility.
-            </p>
+        <div class="integration-details">
+          <h3>We Handle the Complete Integration</h3>
+          <div class="integration-grid">
+            <div class="integration-point">Chart of Accounts mapping</div>
+            <div class="integration-point">
+              Tax treatment rules configuration
+            </div>
+            <div class="integration-point">Reimbursement vs payable logic</div>
+            <div class="integration-point">Month-end closing alignment</div>
+            <div class="integration-point">Project cost report generation</div>
+            <div class="integration-point">Real-time financial dashboards</div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="showcase-section">
-      <h2 class="showcase-title">Trusted by Leading Consulting Firms</h2>
-      <div class="scroll-container">
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📊</div>
-          <h4>Project-Based Tracking</h4>
-          <p>
-            Track expenses by client, project, and team member effortlessly.
-          </p>
-        </div>
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📈</div>
-          <h4>Advanced Analytics</h4>
-          <p>
-            Get insights into spending patterns and cost optimization
-            opportunities.
-          </p>
-        </div>
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📱</div>
-          <h4>Mobile-First Design</h4>
-          <p>Submit and approve expenses from anywhere, anytime.</p>
-        </div>
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📑</div>
-          <h4>Custom Reports</h4>
-          <p>Generate detailed expense reports for clients and stakeholders.</p>
-        </div>
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📊</div>
-          <h4>Project-Based Tracking</h4>
-          <p>
-            Track expenses by client, project, and team member effortlessly.
-          </p>
-        </div>
-        <div class="scroll-item">
-          <div class="scroll-item-icon">📈</div>
-          <h4>Advanced Analytics</h4>
-          <p>
-            Get insights into spending patterns and cost optimization
-            opportunities.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <div class="stats-section" id="stats">
+    <!-- Use Cases Section -->
+    <div class="usecases-section">
       <div class="container">
-        <h2 class="section-title">The Impact on Your Consulting Business</h2>
-        <div class="stats-grid">
-          <div class="stat-item">
-            <div class="stat-number">85%</div>
-            <div class="stat-label">Faster Approvals</div>
+        <h2 class="section-title">How Teams Use This System Daily</h2>
+        <p class="section-subtitle">
+          Real-world applications across departments
+        </p>
+
+        <div class="usecase-grid">
+          <div class="usecase-card">
+            <div class="usecase-header">
+              <h3>Sales Teams</h3>
+            </div>
+            <div class="usecase-content">
+              <p>
+                Field sales teams need quick expense processing to maintain
+                productivity and morale.
+              </p>
+              <ul class="usecase-benefits">
+                <li>Travel & client meeting expenses auto-tracked</li>
+                <li>Faster reimbursements improve morale</li>
+                <li>GPS-based mileage claims</li>
+                <li>Mobile-first submission process</li>
+              </ul>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">60%</div>
-            <div class="stat-label">Time Saved</div>
+
+          <div class="usecase-card">
+            <div class="usecase-header">
+              <h3>Finance Teams</h3>
+            </div>
+            <div class="usecase-content">
+              <p>
+                Finance departments gain control and visibility without
+                increasing workload.
+              </p>
+              <ul class="usecase-benefits">
+                <li>Zero manual reconciliation required</li>
+                <li>Audit-ready expense data anytime</li>
+                <li>Real-time spend tracking</li>
+                <li>Automated month-end closing</li>
+              </ul>
+            </div>
           </div>
-          <div class="stat-item">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Compliance</div>
-          </div>
-          <div class="stat-item">
-            <div class="stat-number">0</div>
-            <div class="stat-label">Manual Errors</div>
+
+          <div class="usecase-card">
+            <div class="usecase-header">
+              <h3>Management</h3>
+            </div>
+            <div class="usecase-content">
+              <p>
+                Leadership gets actionable insights for better financial
+                decision-making.
+              </p>
+              <ul class="usecase-benefits">
+                <li>Real-time visibility into spend trends</li>
+                <li>Policy compliance without micromanagement</li>
+                <li>Department-wise cost analysis</li>
+                <li>Project profitability tracking</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <footer>
+    <!-- Analytics Section -->
+    <div class="analytics-section">
+      <div class="container">
+        <h2 class="section-title">Expense Data That Drives Better Decisions</h2>
+        <p class="section-subtitle">
+          Transform expense tracking into strategic intelligence
+        </p>
+
+        <div class="analytics-showcase">
+          <div class="analytics-visual">
+            <img
+              src="https://assets.qlik.com/image/upload/w_2378/q_auto/qlik/glossary/dashboard-examples/seo-hero-financial-dashboards_ttulhs.png"
+              alt="Corporate Card & Mileage Automation"
+              style="width: 480px; height: 450px"
+            />
+          </div>
+          <div class="analytics-features">
+            <div class="analytics-feature">
+              <h4>Department-wise Expense Trends</h4>
+              <p>
+                Track spending patterns across teams and identify cost
+                optimization opportunities.
+              </p>
+            </div>
+            <div class="analytics-feature">
+              <h4>Policy Violation Reports</h4>
+              <p>
+                Monitor compliance rates and identify areas needing policy
+                adjustments.
+              </p>
+            </div>
+            <div class="analytics-feature">
+              <h4>Cost per Project / Client</h4>
+              <p>
+                Understand true project costs with detailed expense allocation
+                and analysis.
+              </p>
+            </div>
+            <div class="analytics-feature">
+              <h4>Reimbursement Cycle Analysis</h4>
+              <p>
+                Track approval times and optimize workflows for faster employee
+                reimbursements.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="integration-details" style="margin-top: 60px">
+          <h3>Consulting Angle: Custom Intelligence</h3>
+          <p style="font-size: 1.15em; color: #1f2937; margin-top: 20px">
+            We build custom dashboards that turn expense data into cost-control
+            intelligence, helping you make informed decisions about spending,
+            policies, and resource allocation.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Process Section -->
+    <div class="process-section" id="process">
+      <div class="container">
+        <h2 class="section-title">How We Implement Expense Systems</h2>
+        <p class="section-subtitle">
+          A proven methodology for successful expense automation
+        </p>
+
+        <div class="process-timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Expense Process Audit</h3>
+              <p>
+                We conduct a comprehensive analysis of your current expense
+                workflows, identifying pain points, policy gaps, compliance
+                risks, and automation opportunities across all departments.
+              </p>
+            </div>
+            <div class="timeline-number">1</div>
+            <div></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>System Design & Configuration</h3>
+              <p>
+                We configure expense rules, approval workflows, policy
+                enforcement, integration points, and custom validations tailored
+                to your business requirements and compliance needs.
+              </p>
+            </div>
+            <div class="timeline-number">2</div>
+            <div></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Employee & Finance Training</h3>
+              <p>
+                Role-based training programs ensure fast adoption across all
+                user groups, from field employees to finance controllers, with
+                ongoing support and documentation.
+              </p>
+            </div>
+            <div class="timeline-number">3</div>
+            <div></div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h3>Go-Live & Optimization</h3>
+              <p>
+                Phased rollout with continuous monitoring, post-implementation
+                fine-tuning, performance tracking, and reporting optimization
+                based on real usage patterns.
+              </p>
+            </div>
+            <div class="timeline-number">4</div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Differentiators Section -->
+    <div class="differentiators-section">
+      <div class="container">
+        <h2 class="section-title">
+          More Than Software Setup—We Build Control Systems
+        </h2>
+        <p class="section-subtitle">
+          Why businesses choose us for expense implementation
+        </p>
+
+        <div class="differentiators-grid">
+          <div class="differentiator-card">
+            <h3>Finance-First Configuration</h3>
+            <p>
+              We approach every implementation from a financial control
+              perspective, ensuring your expense system supports accounting
+              accuracy, compliance requirements, and audit readiness from day
+              one.
+            </p>
+          </div>
+
+          <div class="differentiator-card">
+            <h3>Policy-Driven Automation</h3>
+            <p>
+              We eliminate manual approvals by encoding your expense policies
+              into automated rules and validations, ensuring compliance without
+              slowing down your teams.
+            </p>
+          </div>
+
+          <div class="differentiator-card">
+            <h3>Deep Accounting & Compliance Knowledge</h3>
+            <p>
+              Our team brings extensive experience in accounting systems, tax
+              compliance, and financial controls to ensure your expense platform
+              integrates seamlessly with your books.
+            </p>
+          </div>
+
+          <div class="differentiator-card">
+            <h3>Clean Zoho Ecosystem Integration</h3>
+            <p>
+              Native integration with Zoho Books, Payroll, Projects, and
+              Analytics creates a unified financial management system with zero
+              data duplication or manual transfer.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
       <div class="footer-content">
+        <!-- Company Info -->
         <div class="footer-section">
-          <h3>About Zoho Expense</h3>
+          <h3>Zolytics</h3>
           <p>
-            The complete expense management solution for modern consulting
-            firms. Automate, control, and scale your expense processes.
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
           </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
         </div>
 
+        <!-- Solutions (With Links) -->
         <div class="footer-section">
-          <h3>Product</h3>
+          <h3>Zoho Solutions</h3>
           <ul>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Integrations</a></li>
-            <li><a href="#">Mobile App</a></li>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
           </ul>
         </div>
 
+        <!-- Contact -->
         <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">API Reference</a></li>
-            <li><a href="#">Case Studies</a></li>
-            <li><a href="#">Blog</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-section">
-          <h3>Support</h3>
-          <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Training</a></li>
-            <li><a href="#">Community</a></li>
-          </ul>
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
         </div>
       </div>
 
       <div class="footer-bottom">
         <p>
-          &copy; 2025 Zoho Corporation. All rights reserved. | Privacy Policy |
-          Terms of Service
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
         </p>
       </div>
     </footer>
@@ -910,15 +1724,6 @@
         } else {
           navbar.classList.remove("scrolled");
         }
-      });
-
-      // Pause scroll animation on hover
-      const scrollContainer = document.querySelector(".scroll-container");
-      scrollContainer.addEventListener("mouseenter", function () {
-        this.style.animationPlayState = "paused";
-      });
-      scrollContainer.addEventListener("mouseleave", function () {
-        this.style.animationPlayState = "running";
       });
     </script>
   </body>
