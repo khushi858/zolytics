@@ -3,163 +3,1168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zolytics Books - Professional Accounting Software</title>
+    <title>Zoho Books - Professional Accounting Software</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
       * {
         box-sizing: border-box;
       }
+
       body {
         margin: 0;
         padding: 0;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* Ultra-Advanced Navigation */
+      nav {
+        backdrop-filter: blur(30px) saturate(180%);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.98),
+          rgba(240, 245, 255, 0.95)
+        );
+        border-bottom: 1px solid rgba(59, 130, 246, 0.15);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
+          0 2px 8px rgba(59, 130, 246, 0.08);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      nav::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(59, 130, 246, 0.05),
+          transparent
+        );
+        animation: navShine 8s infinite;
+      }
+
+      @keyframes navShine {
+        0%,
+        100% {
+          left: -100%;
+        }
+        50% {
+          left: 100%;
+        }
+      }
+
+      nav.scrolled {
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12),
+          0 4px 16px rgba(59, 130, 246, 0.15);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.99),
+          rgba(235, 245, 255, 0.97)
+        );
       }
 
       .logo {
         display: flex;
         align-items: center;
-        gap: 1rem;
-        animation: slideInLeft 0.6s ease-out;
+        gap: 1.5rem;
+        animation: logoEntrance 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        z-index: 10;
+      }
+
+      @keyframes logoEntrance {
+        0% {
+          opacity: 0;
+          transform: translateX(-50px) scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0) scale(1);
+        }
       }
 
       .logo img {
-        height: 20px;
-        transition: all 0.3s ease;
-        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        position: relative;
       }
 
       .logo img:hover {
-        transform: scale(1.08) rotate(2deg);
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        transform: scale(1.08) translateY(-4px) rotate(-2deg);
+        filter: drop-shadow(0 12px 24px rgba(59, 130, 246, 0.3));
       }
 
+      /* Revolutionary Hero Section */
       .hero-gradient {
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      }
-
-      .feature-card {
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        border: 2px solid #dee2e6;
-      }
-      .feature-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-        border-color: #495057;
-      }
-
-      .nav-item {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3b82f6 15%,
+          #ffffff 40%,
+          #f0f9ff 60%,
+          #3b82f6 85%,
+          #1e3a8a 100%
+        );
         position: relative;
-        transition: all 0.3s ease;
+        overflow: hidden;
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
       }
-      .nav-item::after {
+
+      .hero-gradient::before {
         content: "";
         position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: -8px;
-        left: 50%;
-        background: #212529;
-        transition: all 0.3s ease;
-      }
-      .nav-item:hover::after {
+        top: -50%;
+        right: -30%;
         width: 100%;
-        left: 0;
+        height: 200%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(59, 130, 246, 0.15) 0%,
+          transparent 60%
+        );
+        animation: heroFloat 25s ease-in-out infinite;
+        transform-origin: center;
       }
 
-      .btn-primary {
-        background: #212529;
-        transition: all 0.3s ease;
-      }
-      .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(33, 37, 41, 0.3);
-        background: #000;
+      .hero-gradient::after {
+        content: "";
+        position: absolute;
+        bottom: -50%;
+        left: -30%;
+        width: 100%;
+        height: 200%;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(30, 58, 138, 0.12) 0%,
+          transparent 60%
+        );
+        animation: heroFloat 30s ease-in-out infinite reverse;
+        transform-origin: center;
       }
 
-      .dropdown {
+      @keyframes heroFloat {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg) scale(1);
+        }
+        33% {
+          transform: translate(8%, 8%) rotate(120deg) scale(1.1);
+        }
+        66% {
+          transform: translate(-8%, 8%) rotate(240deg) scale(0.95);
+        }
+      }
+
+      /* Particle effect overlay */
+      .hero-particles {
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            circle at 20% 30%,
+            rgba(255, 255, 255, 0.3) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(255, 255, 255, 0.2) 1px,
+            transparent 1px
+          ),
+          radial-gradient(
+            circle at 50% 50%,
+            rgba(59, 130, 246, 0.1) 2px,
+            transparent 2px
+          );
+        background-size: 100px 100px, 150px 150px, 200px 200px;
+        animation: particleMove 60s linear infinite;
+      }
+
+      @keyframes particleMove {
+        0% {
+          background-position: 0 0, 0 0, 0 0;
+        }
+        100% {
+          background-position: 100px 100px, -150px 150px, 200px -200px;
+        }
+      }
+
+      /* Advanced Feature Cards */
+      .feature-card {
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        cursor: pointer;
+        border: 2px solid rgba(59, 130, 246, 0.1);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(248, 250, 252, 1) 50%,
+          rgba(241, 245, 249, 1) 100%
+        );
+        transform-style: preserve-3d;
+        perspective: 1000px;
+      }
+
+      .feature-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg at 50% 50%,
+          transparent 0deg,
+          rgba(59, 130, 246, 0.2) 90deg,
+          transparent 180deg,
+          rgba(59, 130, 246, 0.15) 270deg,
+          transparent 360deg
+        );
         opacity: 0;
-        visibility: hidden;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
-      }
-      .dropdown-parent:hover .dropdown {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-      }
-
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(50px);
         transition: all 0.8s ease;
+        animation: rotate 8s linear infinite paused;
       }
-      .scroll-reveal.revealed {
+
+      @keyframes rotate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      .feature-card:hover::before {
         opacity: 1;
-        transform: translateY(0);
+        animation-play-state: running;
       }
 
-      .stats-card {
-        transition: all 0.3s ease;
-        border: 2px solid #dee2e6;
-      }
-      .stats-card:hover {
-        transform: translateY(-4px);
-        border-color: #495057;
+      .feature-card::after {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: #b4cbf1;
+        background-size: 300% 300%;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: -1;
+        filter: blur(20px);
       }
 
-      .progress-bar {
-        background: linear-gradient(90deg, #495057, #212529);
-        transition: width 2s ease;
+      .feature-card:hover::after {
+        opacity: 0.6;
+        animation: gradientShift 3s ease infinite;
       }
 
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .feature-card:hover {
+        transform: translateY(-20px) scale(1.03) rotateX(5deg);
+        box-shadow: 0 30px 60px rgba(59, 130, 246, 0.25),
+          0 15px 30px rgba(0, 0, 0, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        border-color: rgba(59, 130, 246, 0.5);
+      }
+
+      /* Ultra-Premium Dashboard Mockup */
       .dashboard-mockup {
-        background: white;
-        border: 2px solid #dee2e6;
-        transition: all 0.5s ease;
-      }
-      .dashboard-mockup:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(
+          135deg,
+          #f8fafc 0%,
+          #e2e8f0 50%,
+          #cbd5e1 100%
+        );
+        border: 3px solid rgba(59, 130, 246, 0.2);
+        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12),
+          0 10px 25px rgba(59, 130, 246, 0.15),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        transform-style: preserve-3d;
       }
 
+      .dashboard-mockup::before {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(45deg, #3b82f6, #8b5cf6, #ec4899, #3b82f6);
+        background-size: 300% 300%;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+        z-index: -1;
+        animation: borderFlow 4s ease infinite paused;
+      }
+
+      @keyframes borderFlow {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .dashboard-mockup:hover::before {
+        opacity: 1;
+        animation-play-state: running;
+      }
+
+      .dashboard-mockup::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.5) 0%,
+          transparent 50%,
+          rgba(59, 130, 246, 0.1) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+
+      .dashboard-mockup:hover::after {
+        opacity: 1;
+      }
+
+      .dashboard-mockup:hover {
+        transform: translateY(-15px) scale(1.03) rotateX(2deg);
+        box-shadow: 0 40px 80px rgba(59, 130, 246, 0.3),
+          0 20px 40px rgba(0, 0, 0, 0.2), inset 0 2px 4px rgba(255, 255, 255, 1);
+      }
+
+      .dashboard-card {
+        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95),
+          rgba(249, 250, 251, 0.95)
+        );
+        backdrop-filter: blur(10px);
+      }
+
+      .dashboard-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.1) 0%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .dashboard-card:hover::before {
+        opacity: 1;
+      }
+
+      .dashboard-card:hover {
+        transform: translateX(8px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2),
+          -5px 0 15px rgba(59, 130, 246, 0.1);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1),
+          rgba(240, 249, 255, 1)
+        );
+      }
+
+      /* Revolutionary Image Containers */
       .image-container {
         overflow: hidden;
-        border-radius: 12px;
-      }
-      .image-container img {
-        transition: transform 0.6s ease;
-      }
-      .image-container:hover img {
-        transform: scale(1.05);
-      }
-
-      .consultant-section {
-        background: linear-gradient(135deg, #212529 0%, #343a40 100%);
-      }
-
-      .process-step {
+        border-radius: 16px;
         position: relative;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
       }
-      .process-step::before {
+
+      .image-container::before {
         content: "";
         position: absolute;
-        top: 40px;
-        left: 50%;
-        width: 100%;
-        height: 2px;
-        background: #dee2e6;
-        z-index: 0;
-      }
-      .process-step:last-child::before {
-        display: none;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(59, 130, 246, 0.3) 0%,
+          rgba(139, 92, 246, 0.2) 50%,
+          transparent 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+        z-index: 1;
       }
 
-      @media (max-width: 768px) {
-        .process-step::before {
-          display: none;
+      .image-container::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.8) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: all 0.8s ease;
+        z-index: 2;
+      }
+
+      .image-container:hover::before {
+        opacity: 1;
+      }
+
+      .image-container:hover::after {
+        opacity: 1;
+        top: -50%;
+        left: -50%;
+      }
+
+      .image-container img {
+        transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: brightness(1) contrast(1.05) saturate(1.1);
+      }
+
+      .image-container:hover img {
+        transform: scale(1.15) rotate(2deg);
+        filter: brightness(1.1) contrast(1.1) saturate(1.2);
+      }
+
+      /* Premium Progress Bar */
+      .progress-bar {
+        background: linear-gradient(
+          90deg,
+          #3b82f6 0%,
+          #8b5cf6 50%,
+          #ec4899 100%
+        );
+        background-size: 200% 100%;
+        transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4),
+          inset 0 1px 3px rgba(255, 255, 255, 0.5);
+      }
+
+      .progress-bar::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.6),
+          transparent
+        );
+        animation: progressShimmer 2s infinite;
+      }
+
+      @keyframes progressShimmer {
+        0% {
+          left: -100%;
         }
+        100% {
+          left: 200%;
+        }
+      }
+
+      .progress-bar::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.4) 0%,
+          transparent 50%,
+          rgba(0, 0, 0, 0.1) 100%
+        );
+      }
+
+      /* Ultra-Advanced Inventory Section */
+      .inventory-problem-section {
+        padding: 140px 0;
+        background: linear-gradient(
+          180deg,
+          #dbeafe 0%,
+          #bfdbfe 25%,
+          #93c5fd 50%,
+          #bfdbfe 75%,
+          #dbeafe 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .inventory-problem-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+            circle at 20% 30%,
+            rgba(59, 130, 246, 0.1) 2px,
+            transparent 2px
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(59, 130, 246, 0.08) 3px,
+            transparent 3px
+          );
+        background-size: 80px 80px, 120px 120px;
+        animation: inventoryPattern 40s linear infinite;
+      }
+
+      @keyframes inventoryPattern {
+        0% {
+          background-position: 0 0, 0 0;
+        }
+        100% {
+          background-position: 80px 80px, -120px 120px;
+        }
+      }
+
+      .inventory-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.98) 0%,
+          rgba(248, 250, 252, 0.95) 50%,
+          rgba(241, 245, 249, 0.98) 100%
+        );
+        border: 3px solid rgba(59, 130, 246, 0.2);
+        border-radius: 28px;
+        padding: 56px 48px;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(20px);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .inventory-card::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: -100%;
+        width: 300%;
+        height: 300%;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.15) 0%,
+          transparent 60%
+        );
+        transition: all 1s ease;
+      }
+
+      .inventory-card:hover::before {
+        top: -50%;
+        left: -50%;
+        transform: rotate(180deg) scale(1.2);
+      }
+
+      .inventory-card::after {
+        content: "";
+        position: absolute;
+        inset: -3px;
+        background: linear-gradient(
+          45deg,
+          transparent 0%,
+          rgba(59, 130, 246, 0.5) 50%,
+          transparent 100%
+        );
+        background-size: 200% 200%;
+        border-radius: inherit;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+        z-index: -1;
+        animation: inventoryBorder 3s linear infinite paused;
+      }
+
+      @keyframes inventoryBorder {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 200% 50%;
+        }
+      }
+
+      .inventory-card:hover::after {
+        opacity: 1;
+        animation-play-state: running;
+      }
+
+      .inventory-card:hover {
+        transform: translateY(-24px) scale(1.03);
+        box-shadow: 0 45px 90px rgba(59, 130, 246, 0.25),
+          0 25px 50px rgba(0, 0, 0, 0.15),
+          inset 0 2px 4px rgba(255, 255, 255, 1);
+      }
+
+      .inventory-problem:hover {
+        border-color: rgba(239, 68, 68, 0.6);
+        box-shadow: 0 45px 90px rgba(239, 68, 68, 0.25),
+          0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .inventory-solution:hover {
+        border-color: rgba(34, 197, 94, 0.6);
+        box-shadow: 0 45px 90px rgba(34, 197, 94, 0.25),
+          0 25px 50px rgba(0, 0, 0, 0.15);
+      }
+
+      .inventory-card-header {
+        display: inline-block;
+        padding: 14px 28px;
+        border-radius: 20px;
+        font-weight: 800;
+        font-size: 16px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .inventory-card:hover .inventory-card-header {
+        transform: scale(1.1) translateY(-4px);
+      }
+
+      .inventory-card-header.problem {
+        background: linear-gradient(
+          135deg,
+          #fee2e2 0%,
+          #fecaca 50%,
+          #fca5a5 100%
+        );
+        color: #991b1b;
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .inventory-card-header.solution {
+        background: linear-gradient(
+          135deg,
+          #dcfce7 0%,
+          #bbf7d0 50%,
+          #86efac 100%
+        );
+        color: #166534;
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      }
+
+      .inventory-card ul li {
+        font-size: 17px;
+        line-height: 2;
+        padding-left: 8px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+      }
+
+      .inventory-card ul li::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #3b82f6, transparent);
+        transition: width 0.4s ease;
+      }
+
+      .inventory-card ul li:hover {
+        transform: translateX(12px) scale(1.02);
+        color: #1e3a8a;
+      }
+
+      .inventory-card ul li:hover::before {
+        width: 15px;
+      }
+
+      /* Premium Audience Section */
+      .audience-section {
+        padding: 140px 0;
+        background: linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f8fafc 20%,
+          #f1f5f9 40%,
+          #e2e8f0 60%,
+          #f1f5f9 80%,
+          #ffffff 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .audience-section::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            45deg,
+            transparent 48%,
+            rgba(59, 130, 246, 0.03) 50%,
+            transparent 52%
+          ),
+          linear-gradient(
+            -45deg,
+            transparent 48%,
+            rgba(59, 130, 246, 0.03) 50%,
+            transparent 52%
+          );
+        background-size: 60px 60px;
+      }
+
+      .audience-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(248, 250, 252, 1) 100%
+        );
+        border: 2px solid rgba(59, 130, 246, 0.15);
+        border-radius: 28px;
+        padding: 48px 42px;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .audience-card::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          circle at top right,
+          rgba(59, 130, 246, 0.1) 0%,
+          transparent 60%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+
+      .audience-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          #3b82f6,
+          #8b5cf6,
+          #3b82f6,
+          transparent
+        );
+        background-size: 200% 100%;
+        transition: all 0.7s ease;
+        transform: translateX(-50%);
+        animation: audienceUnderline 2s ease infinite paused;
+      }
+
+      @keyframes audienceUnderline {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .audience-card:hover::before {
+        opacity: 1;
+      }
+
+      .audience-card:hover::after {
+        width: 100%;
+        animation-play-state: running;
+      }
+
+      .audience-card:hover {
+        transform: translateY(-20px) scale(1.03);
+        border-color: rgba(59, 130, 246, 0.5);
+        box-shadow: 0 40px 80px rgba(59, 130, 246, 0.2),
+          0 20px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+      }
+
+      .audience-card h3 {
+        font-size: 24px;
+        font-weight: 800;
+        color: #1e3a8a;
+        margin-bottom: 18px;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .audience-card:hover h3 {
+        color: #3b82f6;
+        transform: translateY(-4px) scale(1.02);
+        text-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+      }
+
+      .audience-card p {
+        font-size: 17px;
+        color: #475569;
+        line-height: 1.9;
+        position: relative;
+        z-index: 1;
+        transition: all 0.4s ease;
+      }
+
+      .audience-card:hover p {
+        color: #1e293b;
+      }
+
+      /* Ultra-Premium Problem/Solution Cards */
+      .problem-solution-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(248, 250, 252, 1) 50%,
+          rgba(241, 245, 249, 1) 100%
+        );
+        border: 2px solid rgba(59, 130, 246, 0.15);
+        border-radius: 24px;
+        padding: 3rem;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .problem-solution-card::before {
+        content: "";
+        position: absolute;
+        top: -100%;
+        right: -100%;
+        width: 200%;
+        height: 200%;
+        background: conic-gradient(
+          from 0deg at 50% 50%,
+          transparent 0deg,
+          rgba(59, 130, 246, 0.15) 90deg,
+          transparent 180deg
+        );
+        transition: all 1s ease;
+      }
+
+      .problem-solution-card:hover::before {
+        top: -50%;
+        right: -50%;
+        transform: rotate(360deg);
+      }
+
+      .problem-solution-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0) 0%,
+          rgba(59, 130, 246, 0.05) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+
+      .problem-solution-card:hover::after {
+        opacity: 1;
+      }
+
+      .problem-solution-card:hover {
+        transform: translateY(-16px) scale(1.03);
+        box-shadow: 0 35px 70px rgba(59, 130, 246, 0.2),
+          0 20px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+        border-color: rgba(59, 130, 246, 0.4);
+      }
+
+      .problem-tag {
+        background: linear-gradient(
+          135deg,
+          #fee2e2 0%,
+          #fecaca 50%,
+          #fca5a5 100%
+        );
+        color: #991b1b;
+        padding: 0.7rem 1.4rem;
+        border-radius: 16px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .problem-solution-card:hover .problem-tag {
+        transform: scale(1.1) translateY(-4px);
+        box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4),
+          inset 0 2px 4px rgba(255, 255, 255, 1);
+      }
+
+      .solution-tag {
+        background: linear-gradient(
+          135deg,
+          #dcfce7 0%,
+          #bbf7d0 50%,
+          #86efac 100%
+        );
+        color: #166534;
+        padding: 0.7rem 1.4rem;
+        border-radius: 16px;
+        font-weight: 800;
+        font-size: 0.95rem;
+        display: inline-block;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .problem-solution-card:hover .solution-tag {
+        transform: scale(1.1) translateY(-4px);
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4),
+          inset 0 2px 4px rgba(255, 255, 255, 1);
+      }
+
+      /* Revolutionary Capability Section */
+      .capability-section {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(248, 250, 252, 1) 100%
+        );
+        border-left: 8px solid #3b82f6;
+        padding: 3.5rem;
+        border-radius: 20px;
+        margin-bottom: 3rem;
+        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
+          inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      }
+
+      .capability-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -8px;
+        width: 8px;
+        height: 0;
+        background: linear-gradient(
+          180deg,
+          #3b82f6 0%,
+          #8b5cf6 50%,
+          #ec4899 100%
+        );
+        transition: height 0.7s ease;
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
+      }
+
+      .capability-section::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent 0%,
+          rgba(59, 130, 246, 0.05) 100%
+        );
+        transition: width 0.7s ease;
+      }
+
+      .capability-section:hover::before {
+        height: 100%;
+      }
+
+      .capability-section:hover::after {
+        width: 100%;
+      }
+
+      .capability-section:hover {
+        transform: translateX(20px) scale(1.01);
+        box-shadow: 0 25px 60px rgba(59, 130, 246, 0.2),
+          0 15px 35px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(240, 249, 255, 1) 100%
+        );
+      }
+
+      /* Advanced Scroll Reveal */
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(80px) scale(0.95);
+        transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+
+      .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .site-footer {
+        background: #050505;
+        color: #ffffff;
+        padding: 60px 5% 20px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        margin-bottom: 30px;
+      }
+
+      .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 15px;
+        color: #ffffff;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.6;
+      }
+
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 8px;
+        color: #cbd5e1;
+      }
+
+      .footer-badge {
+        margin-top: 10px;
+        font-weight: 600;
+        color: #090909;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+        text-align: center;
+        color: #94a3b8;
+      }
+      .section-title {
+        background: linear-gradient(
+          135deg,
+          #1e3a8a 0%,
+          #3b82f6 50%,
+          #8b5cf6 100%
+        );
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: titleGradient 5s ease infinite;
+      }
+
+      @keyframes titleGradient {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      /* Responsive Enhancements */
+      @media (max-width: 768px) {
+        .inventory-problem-section,
+        .audience-section {
+          padding: 100px 0;
+        }
+
+        .inventory-card,
+        .audience-card {
+          padding: 40px 32px;
+        }
+
+        .capability-section {
+          padding: 2.5rem;
+        }
+
+        .footer-content {
+          padding: 0 30px;
+          gap: 50px;
+        }
+
+        .feature-card:hover,
+        .dashboard-mockup:hover,
+        .inventory-card:hover,
+        .audience-card:hover {
+          transform: translateY(-10px) scale(1.02);
+        }
+      }
+
+      /* Additional Premium Touches */
+      .inventory-footer {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9) 0%,
+          rgba(248, 250, 252, 0.8) 100%
+        );
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        transition: all 0.5s ease;
+      }
+
+      .inventory-footer:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 50px rgba(59, 130, 246, 0.2);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(240, 249, 255, 0.9) 100%
+        );
       }
     </style>
   </head>
@@ -167,6 +1172,7 @@
     <!-- Navigation -->
     <nav
       class="bg-white shadow-sm sticky top-0 z-40 border-b-2 border-gray-200"
+      id="mainNav"
     >
       <div class="max-w-7xl mx-auto px-6">
         <div class="flex justify-between items-center h-16">
@@ -179,114 +1185,10 @@
               />
               <img
                 src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
-                alt="Zolytics Logo"
+                alt="Zoho Books Logo"
                 style="height: 40px; width: auto; object-fit: contain"
               />
             </div>
-
-            <div class="dropdown-parent relative group hidden md:block">
-              <a
-                href="#"
-                class="nav-item text-gray-700 px-3 py-2 font-medium flex items-center text-sm hover:text-gray-900"
-              >
-                Products
-                <span
-                  class="ml-1 text-xs transform transition-transform group-hover:rotate-180"
-                  >▼</span
-                >
-              </a>
-              <div
-                class="dropdown absolute top-full bg-white shadow-2xl rounded-xl p-6 border-2 border-gray-200"
-                style="left: 0; width: 500px"
-              >
-                <div class="mb-3">
-                  <h3 class="text-lg font-bold text-gray-800 mb-1">
-                    All Products
-                  </h3>
-                  <p class="text-xs text-gray-600">
-                    Comprehensive suite of business solutions
-                  </p>
-                </div>
-                <div class="grid grid-cols-3 gap-3">
-                  <a
-                    href="#"
-                    class="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all border-2 border-transparent hover:border-gray-300"
-                  >
-                    <div
-                      class="w-10 h-10 bg-gray-100 rounded-lg mb-2 flex items-center justify-center"
-                    >
-                      <span class="text-gray-700 font-bold">A</span>
-                    </div>
-                    <div class="text-center">
-                      <div class="font-semibold text-gray-800 text-sm">
-                        Analytics
-                      </div>
-                      <div class="text-xs text-gray-600">
-                        Business Intelligence
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    class="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all border-2 border-transparent hover:border-gray-300"
-                  >
-                    <div
-                      class="w-10 h-10 bg-gray-100 rounded-lg mb-2 flex items-center justify-center"
-                    >
-                      <span class="text-gray-700 font-bold">B</span>
-                    </div>
-                    <div class="text-center">
-                      <div class="font-semibold text-gray-800 text-sm">
-                        Books
-                      </div>
-                      <div class="text-xs text-gray-600">
-                        Accounting Software
-                      </div>
-                    </div>
-                  </a>
-                  <a
-                    href="#"
-                    class="flex flex-col items-center p-3 rounded-lg hover:bg-gray-50 transition-all border-2 border-transparent hover:border-gray-300"
-                  >
-                    <div
-                      class="w-10 h-10 bg-gray-100 rounded-lg mb-2 flex items-center justify-center"
-                    >
-                      <span class="text-gray-700 font-bold">C</span>
-                    </div>
-                    <div class="text-center">
-                      <div class="font-semibold text-gray-800 text-sm">CRM</div>
-                      <div class="text-xs text-gray-600">
-                        Customer Relations
-                      </div>
-                    </div>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="#features"
-              class="nav-item text-gray-700 px-3 py-2 font-medium text-sm hover:text-gray-900 hidden md:block"
-              >Features</a
-            >
-            <a
-              href="#consultant"
-              class="nav-item text-gray-700 px-3 py-2 font-medium text-sm hover:text-gray-900 hidden md:block"
-              >Consulting</a
-            >
-          </div>
-
-          <div class="flex items-center space-x-4">
-            <a
-              href="#"
-              class="text-gray-700 hover:text-gray-900 font-medium text-sm transition-colors"
-              >Sign In</a
-            >
-            <button
-              class="btn-primary text-white px-6 py-2 rounded-md font-medium text-sm"
-            >
-              Sign Up Free
-            </button>
           </div>
         </div>
       </div>
@@ -294,6 +1196,7 @@
 
     <!-- Hero Section -->
     <section class="hero-gradient py-20 relative overflow-hidden">
+      <div class="hero-particles"></div>
       <div class="max-w-7xl mx-auto px-6 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div class="scroll-reveal">
@@ -302,36 +1205,26 @@
             >
               Professional accounting for growing businesses
             </h1>
-            <p class="text-xl mb-8 text-gray-600 leading-relaxed">
+            <p class="text-xl mb-8 text-gray-700 leading-relaxed font-medium">
               Streamline your financial operations with intelligent automation,
-              real-time insights, and enterprise-grade security.
+              real-time insights, and enterprise-grade security. Built for
+              Indian businesses with complete GST compliance.
             </p>
-            <div class="flex flex-col sm:flex-row gap-4 mb-8">
-              <button
-                class="btn-primary text-white px-8 py-3 rounded-md text-base font-medium"
-              >
-                Start Free Trial
-              </button>
-              <button
-                class="bg-white border-2 border-gray-300 text-gray-900 px-8 py-3 rounded-md text-base font-medium hover:border-gray-900 transition-all"
-              >
-                Schedule Demo
-              </button>
-            </div>
+
             <div
-              class="flex flex-wrap items-center gap-6 text-sm text-gray-600"
+              class="flex flex-wrap items-center gap-6 text-base text-gray-700 font-semibold"
             >
               <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-lg">✓</span>
-                14-day free trial
+                <span class="text-gray-900 mr-2 text-xl">✓</span>
+                GST Compliant
               </div>
               <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-lg">✓</span>
-                No credit card required
+                <span class="text-gray-900 mr-2 text-xl">✓</span>
+                E-invoicing Ready
               </div>
               <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-lg">✓</span>
-                Cancel anytime
+                <span class="text-gray-900 mr-2 text-xl">✓</span>
+                Multi-currency Support
               </div>
             </div>
           </div>
@@ -346,7 +1239,7 @@
               </div>
               <div class="space-y-4">
                 <div
-                  class="flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
+                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
                 >
                   <span class="text-gray-800 font-semibold">Total Revenue</span>
                   <span
@@ -356,7 +1249,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
+                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
                 >
                   <span class="text-gray-800 font-semibold">Outstanding</span>
                   <span
@@ -366,7 +1259,7 @@
                   >
                 </div>
                 <div
-                  class="flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
+                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
                 >
                   <span class="text-gray-800 font-semibold">Expenses</span>
                   <span
@@ -383,10 +1276,10 @@
                     <span class="text-gray-900 font-bold">+23.5%</span>
                   </div>
                   <div
-                    class="w-full bg-gray-200 rounded-full h-2 overflow-hidden border border-gray-300"
+                    class="w-full bg-gray-200 rounded-full h-3 overflow-hidden border border-gray-300"
                   >
                     <div
-                      class="progress-bar h-2 rounded-full"
+                      class="progress-bar h-3 rounded-full"
                       id="growthBar"
                       style="width: 0%"
                     ></div>
@@ -399,138 +1292,188 @@
       </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="bg-white py-16 relative border-y-2 border-gray-200">
+    <!-- Who Is Zoho Books For -->
+    <section class="audience-section scroll-reveal">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          <div class="stats-card scroll-reveal bg-white p-6 rounded-xl">
-            <div class="text-4xl font-bold text-gray-900" id="customers">0</div>
-            <p class="text-gray-600 font-medium text-base mt-3">
-              Happy Customers
+        <div class="text-center mb-20">
+          <h2 class="section-title text-5xl font-bold mb-6">
+            Who Is Zoho Books For?
+          </h2>
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Designed to support businesses at every stage — from early growth to
+            complex, multi-location operations.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div class="audience-card">
+            <h3>Startups & Small Businesses</h3>
+            <p>
+              Simple, structured accounting for businesses looking to move away
+              from spreadsheets and manual bookkeeping.
             </p>
           </div>
-          <div class="stats-card scroll-reveal bg-white p-6 rounded-xl">
-            <div class="text-4xl font-bold text-gray-900" id="countries">0</div>
-            <p class="text-gray-600 font-medium text-base mt-3">Countries</p>
-          </div>
-          <div class="stats-card scroll-reveal bg-white p-6 rounded-xl">
-            <div class="text-4xl font-bold text-gray-900" id="invoices">0</div>
-            <p class="text-gray-600 font-medium text-base mt-3">
-              Invoices Sent
+
+          <div class="audience-card">
+            <h3>Service-Based Companies</h3>
+            <p>
+              Ideal for agencies, consultants, and professionals managing
+              recurring billing, expenses, and client payments.
             </p>
           </div>
-          <div class="stats-card scroll-reveal bg-white p-6 rounded-xl">
-            <div class="text-4xl font-bold text-gray-900" id="transactions">
-              0
-            </div>
-            <p class="text-gray-600 font-medium text-base mt-3">Transactions</p>
+
+          <div class="audience-card">
+            <h3>Trading & Distribution Firms</h3>
+            <p>
+              Manage high-volume invoicing, purchases, vendors, and inventory
+              movement with full visibility.
+            </p>
+          </div>
+
+          <div class="audience-card">
+            <h3>Manufacturing Businesses</h3>
+            <p>
+              Track raw materials, finished goods, inventory valuation, and
+              production-linked accounting.
+            </p>
+          </div>
+
+          <div class="audience-card">
+            <h3>GST-Registered Companies</h3>
+            <p>
+              Built to handle GST-compliant invoicing, returns, e-invoicing, and
+              statutory reporting with ease.
+            </p>
+          </div>
+
+          <div class="audience-card">
+            <h3>Multi-Location Businesses</h3>
+            <p>
+              Centralized accounting and inventory control across multiple
+              branches, warehouses, and business units.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50 relative overflow-hidden">
+    <!-- Product Features Overview -->
+    <section id="features" class="py-20 bg-gray-50">
       <div class="max-w-7xl mx-auto px-6">
         <div class="text-center mb-16 scroll-reveal">
           <h2 class="text-4xl font-bold text-gray-900 mb-4">
-            Complete financial management suite
+            Complete Zoho Books Product Capabilities
           </h2>
           <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Everything you need to manage your business finances efficiently and
-            professionally.
+            A comprehensive suite of features designed to handle every aspect of
+            your financial management, from invoicing to compliance.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
             <div class="image-container mb-6">
               <img
-                src="https://www.tyasuite.com/uploads/blog/invoice-management.webp"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08hjsGorIfK71NekONA8Ks7yL2_qrLTYvGA&s"
                 alt="Invoice Management"
-                class="w-full h-48 object-cover"
+                class="w-full h-56 object-cover"
               />
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Smart Invoicing & Billing
+            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
+              Professional Invoicing & Billing
             </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Create professional invoices with customizable templates, automate
-              recurring bills, send payment reminders, and accept online
-              payments through multiple gateways.
+            <p class="text-gray-600 mb-4 text-base leading-relaxed">
+              Create stunning, professional invoices with your brand colors and
+              logo. Support for multiple currencies, languages, and tax
+              configurations. Generate recurring invoices automatically for
+              subscription-based businesses. Send invoices via email with PDF
+              attachments and track when customers view them.
             </p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Multi-currency and multi-language support</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Payment gateway integration for instant collection</span>
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
             <div class="image-container mb-6">
               <img
-                src="https://www.freshbooks.com/wp-content/uploads/2022/02/expense-tracking.jpg"
-                alt="Expense Tracking"
-                class="w-full h-48 object-cover"
+                src="https://img.omnicard.in/blog_images/2023092611304688087552-What_is_Expense_Management.png"
+                alt="Expense Management"
+                class="w-full h-56 object-cover"
               />
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Expense Tracking & Claims
+            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
+              Intelligent Expense Management
             </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Record expenses on-the-go, scan receipts automatically, track
-              mileage, categorize spending, and submit employee expense claims
-              with approval workflows.
+            <p class="text-gray-600 mb-4 text-base leading-relaxed">
+              Capture expenses from anywhere using mobile apps. Scan receipts
+              and let OCR technology automatically extract data. Categorize
+              expenses by project, customer, or department. Set up approval
+              workflows for employee expenses and track reimbursement status in
+              real-time.
             </p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Mobile expense capture with receipt scanning</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Automatic expense categorization and coding</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Multi-level approval workflows</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Mileage tracking with GPS integration</span>
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
             <div class="image-container mb-6">
               <img
-                src="https://zdblogs.zohowebstatic.com/sites/books/academy/files/31.png"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPNf81AjziPyI4yS3GrNpiRFbufCxYLJjl2Q&s"
                 alt="Banking"
-                class="w-full h-48 object-cover"
+                class="w-full h-56 object-cover"
               />
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Banking & Reconciliation
+            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
+              Seamless Banking Integration
             </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Connect your bank accounts, auto-import transactions, match them
-              with invoices and bills, and reconcile your accounts in minutes
-              instead of hours.
+            <p class="text-gray-600 mb-4 text-base leading-relaxed">
+              Connect unlimited bank accounts and credit cards for automatic
+              transaction import. Smart matching engine pairs bank transactions
+              with invoices and bills. Reconcile accounts with a few clicks and
+              maintain accurate cash flow visibility.
             </p>
-          </div>
-
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://www.the-retail-advisor.com/media/2023/08/what-is-inventory-management.jpg"
-                alt="Inventory"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Inventory Management
-            </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Track stock levels across warehouses, manage purchase orders, set
-              reorder points, track serial and batch numbers, and get low stock
-              alerts automatically.
-            </p>
-          </div>
-
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://margbooks.com/blogs/wp-content/uploads/2024/05/Best-Financial-Reporting-and-Analysis-For-Your-Business-min.webp"
-                alt="Financial Reports"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Financial Reports & Analytics
-            </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Generate profit & loss statements, balance sheets, cash flow
-              reports, tax summaries, and custom reports. Get real-time insights
-              with interactive dashboards.
-            </p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Automatic transaction import from banks</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>AI-powered transaction matching</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>One-click bank reconciliation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>Real-time cash position monitoring</span>
+              </li>
+            </ul>
           </div>
 
           <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
@@ -538,352 +1481,371 @@
               <img
                 src="https://akmglobal.com/uploads/image/1906imguf_taxcompliance.jpg"
                 alt="Tax Compliance"
-                class="w-full h-48 object-cover"
+                class="w-full h-56 object-cover"
               />
             </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
+            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
               GST & Tax Compliance
             </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              GST-compliant invoicing, automatic tax calculations, e-invoicing,
-              GSTR-1, GSTR-3B filing support, TDS tracking, and comprehensive
-              tax reports for easy compliance.
+            <p class="text-gray-600 mb-4 text-base leading-relaxed">
+              Stay compliant with Indian GST regulations effortlessly. Generate
+              GST-compliant invoices with proper HSN/SAC codes. File GSTR-1 and
+              GSTR-3B returns directly from the platform. E-invoicing with
+              automatic IRN generation.
             </p>
-          </div>
-
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://miro.medium.com/v2/resize:fit:1400/1*u4EBes6Muu2fy7iM8igMug.jpeg"
-                alt="Project Management"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Project Time Tracking
-            </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Track billable and non-billable hours, manage project budgets,
-              create invoices from timesheets, and monitor project profitability
-              in real-time.
-            </p>
-          </div>
-
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://happay.com/blog/wp-content/uploads/sites/12/2023/05/vendor-management.webp"
-                alt="Vendor Management"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Vendor & Purchase Management
-            </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Manage vendor profiles, track purchase orders and bills, schedule
-              payment runs, maintain payment history, and get vendor performance
-              insights.
-            </p>
-          </div>
-
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://i.ytimg.com/vi/KofjRNodvEQ/maxresdefault.jpg"
-                alt="Client Portal"
-                class="w-full h-48 object-cover"
-              />
-            </div>
-            <h3 class="text-xl font-semibold mb-3 text-gray-900">
-              Client & Customer Portal
-            </h3>
-            <p class="text-gray-600 mb-5 text-base">
-              Give customers a self-service portal to view invoices, make
-              payments, download statements, track project progress, and
-              communicate directly with you.
-            </p>
+            <ul class="space-y-2 text-gray-700">
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>GST-compliant invoicing with HSN/SAC codes</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>One-click GSTR filing</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>E-invoicing with IRN generation</span>
+              </li>
+              <li class="flex items-start">
+                <span class="mr-2 text-gray-900 font-bold">•</span>
+                <span>TDS calculation and reporting</span>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
-    <!-- Zoho Books Consultant Section -->
-    <section
-      id="consultant"
-      class="consultant-section py-20 relative overflow-hidden"
-    >
+
+    <!-- Core Capabilities -->
+    <section id="capabilities" class="py-32 bg-white">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 scroll-reveal">
-          <h2 class="text-4xl font-bold text-white mb-4">
-            Expert Zoho Books Consulting
+        <div class="text-center mb-20 scroll-reveal">
+          <h2 class="section-title text-5xl font-bold mb-6">
+            What Zoho Books Does & Problems It Solves
           </h2>
-          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-            Maximize your Zoho Books investment with our certified consultants.
-            From implementation to optimization, we ensure your success.
+          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Transform your accounting challenges into streamlined workflows with
+            intelligent automation and real-time insights.
           </p>
         </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div class="scroll-reveal">
-            <div class="image-container border-2 border-gray-600">
-              <img
-                src="https://cdn.slidesharecdn.com/ss_thumbnails/zohoconsultingserviceswhychoosingzohoexpertsisessentialforbusinessprocessautomation-251114053623-c9cfb6ee-thumbnail.jpg?width=640&height=640&fit=bounds"
-                alt="Consulting Team"
-                class="w-full h-96 object-cover"
-              />
-            </div>
-          </div>
-          <div class="scroll-reveal text-white">
-            <h3 class="text-3xl font-bold mb-6">
-              Why choose our consulting services?
-            </h3>
-            <div class="space-y-6">
-              <div class="flex items-start">
-                <div
-                  class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0"
-                >
-                  <span class="text-gray-900 font-bold text-xl">1</span>
-                </div>
-                <div>
-                  <h4 class="text-xl font-semibold mb-2">Certified Experts</h4>
-                  <p class="text-gray-300">
-                    Our team consists of Zoho-certified professionals with years
-                    of implementation experience.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0"
-                >
-                  <span class="text-gray-900 font-bold text-xl">2</span>
-                </div>
-                <div>
-                  <h4 class="text-xl font-semibold mb-2">
-                    Customized Solutions
-                  </h4>
-                  <p class="text-gray-300">
-                    We tailor Zoho Books to match your unique business processes
-                    and requirements.
-                  </p>
-                </div>
-              </div>
-              <div class="flex items-start">
-                <div
-                  class="w-12 h-12 bg-white rounded-lg flex items-center justify-center mr-4 flex-shrink-0"
-                >
-                  <span class="text-gray-900 font-bold text-xl">3</span>
-                </div>
-                <div>
-                  <h4 class="text-xl font-semibold mb-2">Ongoing Support</h4>
-                  <p class="text-gray-300">
-                    We provide continuous support and training to ensure your
-                    team maximizes productivity.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="scroll-reveal">
-          <h3 class="text-3xl font-bold text-white text-center mb-12">
-            Our Consulting Process
+        <!-- Automation & Controls -->
+        <div class="capability-section scroll-reveal">
+          <h3 class="text-3xl font-bold text-gray-900 mb-6">
+            Automation & Controls
           </h3>
-          <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-            <div class="process-step text-center scroll-reveal">
-              <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-gray-600 relative z-10"
-              >
-                <span class="text-gray-900 font-bold text-2xl">1</span>
-              </div>
-              <h4 class="text-xl font-semibold text-white mb-3">Discovery</h4>
-              <p class="text-gray-300">
-                We analyze your current processes and identify optimization
-                opportunities.
-              </p>
+          <p class="text-xl text-gray-700 mb-8 font-semibold">
+            Reduce Manual Accounting Work
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="problem-solution-card">
+              <div class="solution-tag">What Zoho Books Does</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Automates recurring transactions</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Applies approval workflows</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Locks transactions to prevent errors</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Supports budgeting and fixed asset tracking</span>
+                </li>
+              </ul>
             </div>
-            <div class="process-step text-center scroll-reveal">
-              <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-gray-600 relative z-10"
-              >
-                <span class="text-gray-900 font-bold text-2xl">2</span>
-              </div>
-              <h4 class="text-xl font-semibold text-white mb-3">
-                Implementation
-              </h4>
-              <p class="text-gray-300">
-                Custom setup of Zoho Books tailored to your business workflows
-                and requirements.
-              </p>
-            </div>
-            <div class="process-step text-center scroll-reveal">
-              <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-gray-600 relative z-10"
-              >
-                <span class="text-gray-900 font-bold text-2xl">3</span>
-              </div>
-              <h4 class="text-xl font-semibold text-white mb-3">Training</h4>
-              <p class="text-gray-300">
-                Comprehensive training sessions to ensure your team is confident
-                and productive.
-              </p>
-            </div>
-            <div class="process-step text-center scroll-reveal">
-              <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-gray-600 relative z-10"
-              >
-                <span class="text-gray-900 font-bold text-2xl">4</span>
-              </div>
-              <h4 class="text-xl font-semibold text-white mb-3">
-                Optimization
-              </h4>
-              <p class="text-gray-300">
-                Ongoing support and optimization to maximize efficiency and ROI.
-              </p>
+
+            <div class="problem-solution-card">
+              <div class="problem-tag">Problem It Solves</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Repetitive accounting tasks</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Data inconsistencies</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Poor financial control</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
 
-        <div class="text-center mt-16 scroll-reveal">
-          <button
-            class="bg-white text-gray-900 px-8 py-4 rounded-md text-lg font-medium hover:bg-gray-100 transition-all transform hover:scale-105"
-          >
-            Schedule a Consultation
-          </button>
+        <!-- Sales, Invoicing & Customer Billing -->
+        <div class="capability-section scroll-reveal">
+          <h3 class="text-3xl font-bold text-gray-900 mb-6">
+            Sales, Invoicing & Customer Billing
+          </h3>
+          <p class="text-xl text-gray-700 mb-8 font-semibold">
+            Faster and Smarter Billing
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="problem-solution-card">
+              <div class="solution-tag">What Zoho Books Does</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Generates quotes, sales orders, and invoices</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Automates recurring and subscription billing</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Supports progress and milestone invoicing</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Sends payment reminders and payment links</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Offers customer portal access</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="problem-solution-card">
+              <div class="problem-tag">Problem It Solves</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Delayed invoicing</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Missed payments</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Manual follow-ups with customers</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Inconsistent invoice formats</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Financial Reports & Business Insights -->
+        <div class="capability-section scroll-reveal">
+          <h3 class="text-3xl font-bold text-gray-900 mb-6">
+            Financial Reports & Business Insights
+          </h3>
+          <p class="text-xl text-gray-700 mb-8 font-semibold">
+            Clear Financial Reporting
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="problem-solution-card">
+              <div class="solution-tag">What Zoho Books Does</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Provides real-time dashboards</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span
+                    >Generates profit & loss, balance sheet, and cashflow
+                    reports</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Allows custom and scheduled reports</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Exports reports to Excel or PDF</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="problem-solution-card">
+              <div class="problem-tag">Problem It Solves</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Lack of financial clarity</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Delayed decision-making</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Dependence on manual reports</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Integrations & Scalability -->
+        <div class="capability-section scroll-reveal">
+          <h3 class="text-3xl font-bold text-gray-900 mb-6">
+            Integrations & Scalability
+          </h3>
+          <p class="text-xl text-gray-700 mb-8 font-semibold">
+            Works With Your Business Ecosystem
+          </p>
+
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div class="problem-solution-card">
+              <div class="solution-tag">What Zoho Books Does</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Integrates with Zoho apps and third-party tools</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span
+                    >Supports payroll, inventory, CRM, and payment
+                    gateways</span
+                  >
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span>
+                  <span>Scales from small businesses to enterprises</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="problem-solution-card">
+              <div class="problem-tag">Problem It Solves</div>
+              <ul class="space-y-3 text-gray-700">
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Tool fragmentation</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Data silos</span>
+                </li>
+                <li class="flex items-start">
+                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span>
+                  <span>Re-implementation as business grows</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="bg-gray-50 py-20">
-      <div class="max-w-4xl mx-auto px-6 text-center scroll-reveal">
-        <h2 class="text-4xl font-bold text-gray-900 mb-6">
-          Ready to transform your accounting?
-        </h2>
-        <p class="text-xl text-gray-600 mb-8">
-          Join thousands of businesses that trust Zolytics Books for their
-          financial management.
-        </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button
-            class="btn-primary text-white px-8 py-4 rounded-md text-lg font-medium"
-          >
-            Start Your Free Trial
-          </button>
-          <button
-            class="bg-white border-2 border-gray-300 text-gray-900 px-8 py-4 rounded-md text-lg font-medium hover:border-gray-900 transition-all"
-          >
-            Contact Sales
-          </button>
-        </div>
-      </div>
-    </section>
+    <!-- Inventory Management – Problems & Solutions -->
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 border-t-2 border-gray-800">
+    <section
+      id="inventory-problems"
+      class="inventory-problem-section scroll-reveal"
+    >
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 class="font-bold text-lg mb-4">Products</h3>
-            <ul class="space-y-2 text-gray-400">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Analytics</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors">Books</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors">CRM</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >All Products</a
-                >
-              </li>
+        <div class="text-center mb-20">
+          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+            Inventory Management – Problems & Solutions
+          </h2>
+          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+            Common inventory challenges businesses face and how Zoho Books
+            Inventory eliminates them with real-time control and accuracy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <!-- Problems -->
+          <div class="inventory-card inventory-problem">
+            <div class="inventory-card-header problem">
+              Problems Businesses Face
+            </div>
+            <ul class="space-y-4 text-gray-700 mt-6">
+              <li>Stock mismatch between physical and system records</li>
+              <li>No real-time visibility across warehouses or locations</li>
+              <li>Overstocking or frequent stock-outs</li>
+              <li>Manual stock tracking using Excel or registers</li>
+              <li>Mismatch between inventory and accounting data</li>
             </ul>
           </div>
-          <div>
-            <h3 class="font-bold text-lg mb-4">Resources</h3>
-            <ul class="space-y-2 text-gray-400">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Documentation</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >API Reference</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Help Center</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Community</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-bold text-lg mb-4">Company</h3>
-            <ul class="space-y-2 text-gray-400">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >About Us</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Careers</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors">Blog</a>
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Contact</a
-                >
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-bold text-lg mb-4">Legal</h3>
-            <ul class="space-y-2 text-gray-400">
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Privacy Policy</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Terms of Service</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Security</a
-                >
-              </li>
-              <li>
-                <a href="#" class="hover:text-white transition-colors"
-                  >Compliance</a
-                >
-              </li>
+
+          <!-- Solutions -->
+          <div class="inventory-card inventory-solution">
+            <div class="inventory-card-header solution">
+              How Zoho Books Inventory Solves This
+            </div>
+            <ul class="space-y-4 text-gray-700 mt-6">
+              <li>Real-time stock tracking with automatic updates</li>
+              <li>Multi-warehouse and location-wise remindering</li>
+              <li>Reorder levels with low-stock alerts</li>
+              <li>Batch and serial number tracking for full traceability</li>
+              <li>Seamless inventory and accounting synchronization</li>
             </ul>
           </div>
         </div>
-        <div
-          class="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm"
-        >
-          <p>&copy; 2024 Zolytics. All rights reserved.</p>
+
+        <div class="inventory-footer text-center mt-20 text-gray-700 text-base">
+          Accurate inventory data ensures smoother operations, better planning,
+          and reliable financial reporting.
         </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p>
+            A certified Zoho consulting partner helping businesses streamline
+            operations through expert implementation, customization, and
+            automation of Zoho applications.
+          </p>
+          <p class="footer-badge">Certified Zoho Partner</p>
+        </div>
+
+        <!-- Solutions (With Links) -->
+        <div class="footer-section">
+          <h3>Zoho Solutions</h3>
+          <ul>
+            <li><a href="books.html">Zoho Books</a></li>
+            <li><a href="crm.html">Zoho CRM</a></li>
+            <li><a href="inventory.html">Zoho Inventory</a></li>
+            <li><a href="expense.html">Zoho Expense</a></li>
+            <li><a href="payroll.html">Zoho Payroll</a></li>
+            <li><a href="analytics.html">Zoho Analytics</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2024 Zolytics. All rights reserved.
+          <span>|</span> Certified Zoho Consulting Partner
+        </p>
       </div>
     </footer>
 
@@ -905,45 +1867,6 @@
       document.querySelectorAll(".scroll-reveal").forEach((el) => {
         observer.observe(el);
       });
-
-      // Counter animations
-      function animateCounter(id, target, duration = 2000, prefix = "") {
-        const element = document.getElementById(id);
-        const start = 0;
-        const increment = target / (duration / 16);
-        let current = start;
-
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            element.textContent = prefix + target.toLocaleString();
-            clearInterval(timer);
-          } else {
-            element.textContent = prefix + Math.floor(current).toLocaleString();
-          }
-        }, 16);
-      }
-
-      // Stats counter observer
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateCounter("customers", 50000);
-              animateCounter("countries", 180);
-              animateCounter("invoices", 10000000);
-              animateCounter("transactions", 50000000);
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      const statsSection = document.querySelector(".stats-card");
-      if (statsSection) {
-        statsObserver.observe(statsSection);
-      }
 
       // Dashboard counter observer
       const dashboardObserver = new IntersectionObserver(
@@ -969,6 +1892,25 @@
       const dashboardMockup = document.querySelector(".dashboard-mockup");
       if (dashboardMockup) {
         dashboardObserver.observe(dashboardMockup);
+      }
+
+      // Counter animations
+      function animateCounter(id, target, duration = 2000, prefix = "") {
+        const element = document.getElementById(id);
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            element.textContent = prefix + target.toLocaleString("en-IN");
+            clearInterval(timer);
+          } else {
+            element.textContent =
+              prefix + Math.floor(current).toLocaleString("en-IN");
+          }
+        }, 16);
       }
 
       // Smooth scrolling for anchor links
