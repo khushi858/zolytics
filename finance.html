@@ -1106,28 +1106,28 @@
       }
 
       .site-footer {
-        background: #050505;
-        color: #ffffff;
-        padding: 60px 5% 20px;
+        background: #0a1f44;
+        color: #e5e7eb;
+        padding: 70px 5% 25px;
         font-size: 14px;
       }
 
       .footer-content {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 40px;
-        margin-bottom: 30px;
+        gap: 45px;
+        margin-bottom: 35px;
       }
 
       .footer-section h3 {
         font-size: 16px;
-        margin-bottom: 15px;
+        margin-bottom: 16px;
         color: #ffffff;
       }
 
       .footer-section p {
         color: #cbd5e1;
-        line-height: 1.6;
+        line-height: 1.7;
       }
 
       .footer-section ul {
@@ -1136,22 +1136,48 @@
       }
 
       .footer-section ul li {
-        margin-bottom: 8px;
-        color: #cbd5e1;
+        margin-bottom: 10px;
       }
 
+      /* CLEAN LINK COLORS */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease, padding-left 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+        padding-left: 4px;
+      }
+
+      /* Zoho Badge */
       .footer-badge {
-        margin-top: 10px;
+        margin-top: 12px;
         font-weight: 600;
-        color: #090909;
+        color: #38bdf8;
       }
 
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 15px;
+      }
+
+      .zoho-logo img {
+        max-width: 130px;
+        opacity: 0.9;
+      }
+
+      /* Bottom Bar */
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
         text-align: center;
         color: #94a3b8;
+        font-size: 13px;
       }
+
       .fade-in {
         opacity: 0;
         transform: translateY(30px);
@@ -2207,13 +2233,21 @@
             Phone: +91 90 7313 9613<br />
             Location: India
           </p>
+
+          <!-- Zoho Logo -->
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Partner Logo"
+            />
+          </div>
         </div>
       </div>
 
       <div class="footer-bottom">
         <p>
-          © 2024 Zolytics. All rights reserved.
-          <span>|</span> Certified Zoho Consulting Partner
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
         </p>
       </div>
     </footer>
