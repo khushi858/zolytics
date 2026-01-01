@@ -12,7 +12,7 @@
       }
 
       :root {
-        --primary: #ff6b35;
+        --primary: #3568ff;
         --secondary: #3498db;
         --accent: #f39c12;
         --dark: #2c3e50;
@@ -27,7 +27,6 @@
         position: relative;
       }
 
-      /* Animated background */
       body::before {
         content: "";
         position: fixed;
@@ -64,7 +63,6 @@
         }
       }
 
-      /* Header Styles */
       header {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px) saturate(180%);
@@ -116,7 +114,7 @@
       }
 
       .nav-btn {
-        background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);
+        background: linear-gradient(135deg, #3586ff 0%, #5a99ff 100%);
         color: white;
         padding: 14px 35px;
         border: none;
@@ -150,10 +148,9 @@
 
       .nav-btn:hover {
         transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 12px 35px rgba(255, 107, 53, 0.45);
+        box-shadow: 0 12px 35px rgba(53, 93, 255, 0.45);
       }
 
-      /* Hero Section */
       .hero {
         padding: 100px 60px;
         text-align: center;
@@ -248,7 +245,7 @@
         margin-bottom: 25px;
         background: linear-gradient(
           135deg,
-          #ff6b35 0%,
+          #3578ff 0%,
           #3498db 60%,
           #f39c12 100%
         );
@@ -350,7 +347,496 @@
         transform: scale(1.02) translateY(-10px);
       }
 
-      /* Features Grid */
+      .audience-seo {
+        padding: 120px 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.02) 0%,
+          rgba(52, 152, 219, 0.02) 50%,
+          rgba(243, 156, 18, 0.02) 100%
+        );
+      }
+
+      .audience-seo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+            circle at 10% 20%,
+            rgba(255, 107, 53, 0.06) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(52, 152, 219, 0.06) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .audience-seo > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .audience-seo h2 {
+        font-size: 56px;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          #ff6b35 0%,
+          #3498db 60%,
+          #f39c12 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        animation: shimmer 3s ease-in-out infinite;
+        background-size: 200% auto;
+      }
+
+      @keyframes shimmer {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .seo-intro {
+        font-size: 20px;
+        color: #5a6c7d;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto 70px;
+        line-height: 1.7;
+        font-weight: 400;
+      }
+
+      .seo-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 35px;
+        perspective: 1000px;
+      }
+
+      .seo-grid > div {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px) saturate(180%);
+        padding: 45px 35px;
+        border-radius: 25px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid transparent;
+        cursor: pointer;
+      }
+
+      .seo-grid > div::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.08) 0%,
+          rgba(52, 152, 219, 0.08) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.5s ease;
+        z-index: 0;
+      }
+
+      .seo-grid > div::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.4),
+          transparent
+        );
+        transition: left 0.7s ease;
+        z-index: 1;
+      }
+
+      .seo-grid > div:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 35px 80px rgba(255, 107, 53, 0.2);
+        border-color: rgba(255, 107, 53, 0.3);
+      }
+
+      .seo-grid > div:hover::before {
+        opacity: 1;
+      }
+
+      .seo-grid > div:hover::after {
+        left: 100%;
+      }
+
+      .seo-grid > div:nth-child(1) {
+        animation: fadeInUp 0.8s ease 0.1s both;
+      }
+
+      .seo-grid > div:nth-child(2) {
+        animation: fadeInUp 0.8s ease 0.2s both;
+      }
+
+      .seo-grid > div:nth-child(3) {
+        animation: fadeInUp 0.8s ease 0.3s both;
+      }
+
+      .seo-grid > div:nth-child(4) {
+        animation: fadeInUp 0.8s ease 0.4s both;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .seo-grid h3 {
+        font-size: 26px;
+        margin-bottom: 18px;
+        color: #2c3e50;
+        font-weight: 800;
+        position: relative;
+        z-index: 2;
+        display: inline-block;
+      }
+
+      .seo-grid h3::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        transition: width 0.4s ease;
+        border-radius: 2px;
+      }
+
+      .seo-grid > div:hover h3::after {
+        width: 100%;
+      }
+
+      .seo-grid p {
+        color: #5a6c7d;
+        line-height: 1.8;
+        font-size: 17px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .seo-grid > div:nth-child(1)::before {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 107, 53, 0.1) 0%,
+          rgba(243, 156, 18, 0.1) 100%
+        );
+      }
+
+      .seo-grid > div:nth-child(2)::before {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 152, 219, 0.1) 0%,
+          rgba(155, 89, 182, 0.1) 100%
+        );
+      }
+
+      .seo-grid > div:nth-child(3)::before {
+        background: linear-gradient(
+          135deg,
+          rgba(46, 204, 113, 0.1) 0%,
+          rgba(26, 188, 156, 0.1) 100%
+        );
+      }
+
+      .seo-grid > div:nth-child(4)::before {
+        background: linear-gradient(
+          135deg,
+          rgba(231, 76, 60, 0.1) 0%,
+          rgba(230, 126, 34, 0.1) 100%
+        );
+      }
+
+      .problem-solution-seo {
+        padding: 120px 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+        position: relative;
+        background: linear-gradient(
+          135deg,
+          rgba(52, 152, 219, 0.03) 0%,
+          rgba(155, 89, 182, 0.03) 100%
+        );
+      }
+
+      .problem-solution-seo::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 50px,
+          rgba(255, 107, 53, 0.01) 50px,
+          rgba(255, 107, 53, 0.01) 100px
+        );
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .problem-solution-seo > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .problem-solution-seo h2 {
+        font-size: 56px;
+        font-weight: 900;
+        text-align: center;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          #e74c3c 0%,
+          #3498db 60%,
+          #2ecc71 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+        animation: shimmer 3s ease-in-out infinite;
+        background-size: 200% auto;
+      }
+
+      .seo-ps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+        gap: 50px;
+        margin-top: 60px;
+      }
+
+      .seo-ps-grid > div {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(20px) saturate(180%);
+        padding: 50px 40px;
+        border-radius: 30px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 3px solid transparent;
+      }
+
+      .seo-ps-grid > div:first-child {
+        animation: slideInLeft 1s ease 0.2s both;
+        border-left: 5px solid #e74c3c;
+      }
+
+      .seo-ps-grid > div:last-child {
+        animation: slideInRight 1s ease 0.2s both;
+        border-left: 5px solid #2ecc71;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .seo-ps-grid > div::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        transform: rotate(0deg);
+        transition: transform 10s linear;
+      }
+
+      .seo-ps-grid > div:hover::before {
+        transform: rotate(360deg);
+      }
+
+      .seo-ps-grid > div:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 40px 90px rgba(0, 0, 0, 0.15);
+      }
+
+      .seo-ps-grid > div:first-child:hover {
+        border-color: rgba(231, 76, 60, 0.5);
+      }
+
+      .seo-ps-grid > div:last-child:hover {
+        border-color: rgba(46, 204, 113, 0.5);
+      }
+
+      .seo-ps-grid h3 {
+        font-size: 32px;
+        margin-bottom: 30px;
+        color: #2c3e50;
+        font-weight: 900;
+        position: relative;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .seo-ps-grid h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(90deg, var(--primary), var(--secondary));
+        border-radius: 2px;
+        animation: expandWidth 2s ease infinite;
+      }
+
+      @keyframes expandWidth {
+        0%,
+        100% {
+          width: 80px;
+        }
+        50% {
+          width: 120px;
+        }
+      }
+
+      .seo-ps-grid ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .seo-ps-grid li {
+        color: #5a6c7d;
+        font-size: 18px;
+        line-height: 2;
+        padding: 15px 0 15px 50px;
+        position: relative;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+
+      .seo-ps-grid li::before {
+        content: "";
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+      }
+
+      .seo-ps-grid > div:first-child li::before {
+        background: linear-gradient(135deg, #3c6de7, #2b55c0);
+        box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+      }
+
+      .seo-ps-grid > div:last-child li::before {
+        background: linear-gradient(135deg, #2ecc71, #27ae60);
+        box-shadow: 0 5px 15px rgba(46, 204, 113, 0.3);
+      }
+
+      .seo-ps-grid li:hover {
+        padding-left: 60px;
+        background: rgba(52, 152, 219, 0.03);
+      }
+
+      .seo-ps-grid li:hover::before {
+        transform: translateY(-50%) scale(1.2);
+        box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+      }
+
+      .seo-ps-grid > div:first-child::after {
+        content: "⚠️";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 60px;
+        opacity: 0.15;
+        animation: pulse 2s ease infinite;
+      }
+
+      .seo-ps-grid > div:last-child::after {
+        content: "✅";
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 60px;
+        opacity: 0.15;
+        animation: pulse 2s ease infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.15;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.25;
+        }
+      }
+
       .features {
         padding: 100px 60px;
         max-width: 1600px;
@@ -366,7 +852,7 @@
       .section-header h2 {
         font-size: 52px;
         font-weight: 800;
-        background: linear-gradient(135deg, #ff6b35 0%, #3498db 100%);
+        background: linear-gradient(135deg, #356bff 0%, #3498db 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -423,7 +909,7 @@
         left: 0;
         width: 100%;
         height: 5px;
-        background: linear-gradient(90deg, #ff6b35, #3498db, #f39c12);
+        background: linear-gradient(90deg, #3568ff, #3498db, #f39c12);
         transform: scaleX(0);
         transition: transform 0.5s ease;
       }
@@ -477,301 +963,124 @@
         z-index: 1;
       }
 
-      /* Stats Section */
-      .stats {
-        background: linear-gradient(
-          135deg,
-          #ff6b35 0%,
-          #ff8c5a 50%,
-          #f39c12 100%
-        );
-        padding: 80px 60px;
-        color: white;
-        text-align: center;
-        margin: 80px 0;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .stats::before,
-      .stats::after {
-        content: "";
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.1);
-      }
-
-      .stats::before {
-        width: 600px;
-        height: 600px;
-        top: -300px;
-        left: -200px;
-        animation: pulse 8s ease-in-out infinite;
-      }
-
-      .stats::after {
-        width: 500px;
-        height: 500px;
-        bottom: -250px;
-        right: -150px;
-        animation: pulse 10s ease-in-out infinite reverse;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.1;
-        }
-        50% {
-          transform: scale(1.2);
-          opacity: 0.2;
-        }
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 50px;
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-
-      .stat-item {
-        padding: 30px;
-        background: rgba(255, 255, 255, 0.15);
-        backdrop-filter: blur(10px);
-        border-radius: 25px;
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        transition: all 0.4s ease;
-      }
-
-      .stat-item:hover {
-        transform: translateY(-10px);
-        background: rgba(255, 255, 255, 0.25);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      .stat-number {
-        font-size: 58px;
-        font-weight: 800;
-        margin-bottom: 12px;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
-        letter-spacing: -1px;
-      }
-
-      .stat-label {
-        font-size: 20px;
-        opacity: 0.95;
-        font-weight: 500;
-      }
-
-      /* Testimonial Section */
-      .testimonials {
-        padding: 100px 60px;
-        background: linear-gradient(180deg, #fafbfc 0%, #f0f4f8 100%);
-      }
-
-      .testimonial-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 40px;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .testimonial-card {
-        background: white;
-        padding: 40px;
-        border-radius: 25px;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-        position: relative;
-        transition: all 0.4s ease;
-      }
-
-      .testimonial-card::before {
-        content: '"';
-        position: absolute;
-        top: 20px;
-        left: 30px;
-        font-size: 80px;
-        color: rgba(255, 107, 53, 0.2);
-        font-family: Georgia, serif;
-        line-height: 1;
-      }
-
-      .testimonial-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
-      }
-
-      .testimonial-content {
-        font-size: 17px;
-        line-height: 1.8;
-        color: #5a6c7d;
-        margin-bottom: 25px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .testimonial-author {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-      }
-
-      .author-avatar {
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 3px solid #ff6b35;
-      }
-
-      .author-avatar img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .author-info h4 {
-        font-size: 18px;
-        color: #2c3e50;
-        margin-bottom: 5px;
-      }
-
-      .author-info p {
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
         font-size: 14px;
-        color: #7f8c8d;
-      }
-
-      /* Footer */
-      footer {
-        background: linear-gradient(135deg, #2c3e50 0%, #1a252f 100%);
-        color: white;
-        padding: 70px 60px 30px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      footer::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, #ff6b35, #3498db, #f39c12);
       }
 
       .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 50px;
-        max-width: 1600px;
-        margin: 0 auto 50px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .footer-section h3 {
-        margin-bottom: 25px;
         font-size: 22px;
-        color: #ff6b35;
-        font-weight: 700;
-        position: relative;
-        padding-bottom: 10px;
+        margin-bottom: 14px;
+        color: #ffffff;
       }
 
-      .footer-section h3::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 40px;
-        height: 3px;
-        background: linear-gradient(90deg, #ff6b35, transparent);
-        border-radius: 2px;
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
       }
 
-      .footer-section ul {
-        list-style: none;
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
       }
 
-      .footer-section ul li {
-        margin-bottom: 15px;
-        transition: all 0.3s ease;
-        padding-left: 0;
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
       }
 
-      .footer-section ul li:hover {
-        padding-left: 10px;
-      }
-
-      .footer-section a {
-        color: #bdc3c7;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        font-size: 15px;
-      }
-
-      .footer-section a:hover {
-        color: #ff6b35;
-      }
-
-      .social-icons {
+      .zoho-solutions {
         display: flex;
-        gap: 15px;
-        margin-top: 25px;
-      }
-
-      .social-icon {
-        width: 50px;
-        height: 50px;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 50%;
-        display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        font-size: 20px;
-        border: 2px solid transparent;
       }
 
-      .social-icon:hover {
-        background: #ff6b35;
-        transform: translateY(-8px) rotate(360deg);
-        border-color: rgba(255, 255, 255, 0.3);
-        box-shadow: 0 10px 25px rgba(255, 107, 53, 0.4);
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
       }
 
       .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
         text-align: center;
-        padding-top: 40px;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: #bdc3c7;
-        font-size: 15px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .footer-bottom a {
-        color: #bdc3c7;
-        text-decoration: none;
-        transition: color 0.3s ease;
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
       }
 
-      .footer-bottom a:hover {
-        color: #ff6b35;
-      }
-
-      /* Scroll to top button */
       .scroll-top {
         position: fixed;
         bottom: 40px;
         right: 40px;
         width: 60px;
         height: 60px;
-        background: linear-gradient(135deg, #ff6b35, #ff8c5a);
+        background: linear-gradient(135deg, #356eff, #5a99ff);
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -791,7 +1100,7 @@
 
       .scroll-top:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(255, 107, 53, 0.5);
+        box-shadow: 0 15px 40px rgba(53, 117, 255, 0.5);
       }
 
       .scroll-top::before {
@@ -801,7 +1110,6 @@
         font-weight: bold;
       }
 
-      /* Responsive */
       @media (max-width: 1024px) {
         h1 {
           font-size: 56px;
@@ -809,6 +1117,16 @@
 
         .features-grid {
           grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .audience-seo h2,
+        .problem-solution-seo h2 {
+          font-size: 44px;
+        }
+
+        .seo-ps-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
         }
       }
 
@@ -855,25 +1173,51 @@
           gap: 30px;
         }
 
-        .stats {
-          padding: 60px 30px;
+        .audience-seo,
+        .problem-solution-seo {
+          padding: 80px 30px;
         }
 
-        .testimonials {
-          padding: 60px 30px;
+        .audience-seo h2,
+        .problem-solution-seo h2 {
+          font-size: 36px;
         }
 
-        .testimonial-grid {
+        .seo-intro {
+          font-size: 18px;
+          margin-bottom: 50px;
+        }
+
+        .seo-grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+        }
+
+        .seo-ps-grid {
           grid-template-columns: 1fr;
         }
 
-        footer {
-          padding: 50px 30px 20px;
+        .seo-ps-grid > div {
+          padding: 35px 25px;
+        }
+
+        .seo-ps-grid h3 {
+          font-size: 26px;
+        }
+
+        .seo-ps-grid li {
+          font-size: 16px;
+          padding-left: 45px;
         }
 
         .footer-content {
           grid-template-columns: 1fr;
-          gap: 40px;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
         }
       }
     </style>
@@ -891,9 +1235,6 @@
           />
         </div>
       </div>
-      <button class="nav-btn" onclick="scrollToFeatures()">
-        Get Started Free
-      </button>
     </header>
 
     <section class="hero">
@@ -908,15 +1249,98 @@
           Professional invoicing for modern businesses. Get paid faster,
           automate workflows, and focus on what matters.
         </p>
-        <button class="cta-button" onclick="startTrial()">
-          Start Free Trial
-        </button>
       </div>
       <div class="hero-image">
         <img
           src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1200&h=600&fit=crop"
           alt="Invoice Dashboard"
         />
+      </div>
+    </section>
+
+    <section class="audience-seo">
+      <h2>Who Should Use Zoho Invoice?</h2>
+      <p class="seo-intro">
+        Zoho Invoice is designed for Indian and global businesses that want
+        faster payments, GST-compliant billing, and automated invoicing
+        workflows.
+      </p>
+      <div class="seo-grid">
+        <div>
+          <h3>Freelancers & Consultants</h3>
+          <p>
+            Create professional invoices, track payments, and automate
+            follow-ups without accounting complexity.
+          </p>
+        </div>
+        <div>
+          <h3>Small & Medium Businesses (SMEs)</h3>
+          <p>
+            Manage GST invoices, recurring billing, and real-time payment
+            tracking from one dashboard.
+          </p>
+        </div>
+        <div>
+          <h3>Agencies & Service Companies</h3>
+          <p>
+            Bill clients on retainers, milestones, or projects with branded
+            invoices and automated reminders.
+          </p>
+        </div>
+        <div>
+          <h3>Exporters & Global Sellers</h3>
+          <p>
+            Send multi-currency invoices and accept international payments
+            securely with Zoho Invoice.
+          </p>
+        </div>
+        <div>
+          <h3>Retailers & Online Sellers</h3>
+          <p>
+            Create GST-compliant invoices for B2B and B2C sales, manage customer
+            billing efficiently, and simplify reconciliation for online and
+            offline transactions.
+          </p>
+        </div>
+        <div>
+          <h3>Subscription-Based & Recurring Billing Businesses</h3>
+          <p>
+            Automate recurring invoices, payment reminders, and billing cycles
+            for memberships, SaaS, and service subscriptions without manual
+            effort.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem-solution-seo">
+      <h2>Common Invoicing Problems Businesses Face</h2>
+      <p class="seo-intro">
+        Many businesses struggle with delayed payments, GST errors, and manual
+        invoicing. Zoho Invoice solves these challenges with automation and
+        clarity.
+      </p>
+      <div class="seo-ps-grid">
+        <div>
+          <h3>Business Challenges</h3>
+          <ul>
+            <li>Delayed customer payments</li>
+            <li>Manual invoice creation errors</li>
+            <li>GST compliance confusion</li>
+            <li>No visibility on invoice status</li>
+            <li>Unprofessional invoice branding</li>
+          </ul>
+        </div>
+        <div>
+          <h3>How Zoho Invoice Solves Them</h3>
+          <ul>
+            <li>Online payment links & auto reminders</li>
+            <li>Automated invoice workflows</li>
+            <li>GST-compliant tax calculations</li>
+            <li>Real-time invoice tracking</li>
+            <li>Custom-branded invoice templates</li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -943,7 +1367,6 @@
             personalized messages.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -958,7 +1381,6 @@
             instantly.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -972,7 +1394,6 @@
             Set it once and let the system handle the rest for you.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -986,7 +1407,6 @@
             and reports. Stay compliant without the complexity.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -1000,7 +1420,6 @@
             viewed and paid. Get instant notifications for every update.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -1014,7 +1433,6 @@
             Give your clients the flexibility to pay their way.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -1029,7 +1447,6 @@
             identity.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -1043,7 +1460,6 @@
             Invoice clients worldwide in their preferred currency.
           </p>
         </div>
-
         <div class="feature-card">
           <div class="feature-image">
             <img
@@ -1060,148 +1476,54 @@
       </div>
     </section>
 
-    <section class="stats">
-      <div class="stats-grid">
-        <div class="stat-item">
-          <div class="stat-number">2M+</div>
-          <div class="stat-label">Active Users Worldwide</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">50M+</div>
-          <div class="stat-label">Invoices Created</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">180+</div>
-          <div class="stat-label">Countries Served</div>
-        </div>
-        <div class="stat-item">
-          <div class="stat-number">4.8★</div>
-          <div class="stat-label">Average User Rating</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="testimonials">
-      <div class="section-header">
-        <h2>Loved by Businesses Worldwide</h2>
-        <p>See what our customers have to say about Zoho Invoice</p>
-      </div>
-      <div class="testimonial-grid">
-        <div class="testimonial-card">
-          <p class="testimonial-content">
-            Zoho Invoice has transformed how we handle billing. The automation
-            features save us hours every week, and our clients love the
-            professional-looking invoices.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop"
-                alt="Sarah Johnson"
-              />
-            </div>
-            <div class="author-info">
-              <h4>Sarah Johnson</h4>
-              <p>Founder, Creative Studio</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <p class="testimonial-content">
-            The GST compliance features are a lifesaver for our Indian
-            operations. We've reduced invoicing errors to almost zero and
-            improved our payment collection rate significantly.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
-                alt="Raj Patel"
-              />
-            </div>
-            <div class="author-info">
-              <h4>Raj Patel</h4>
-              <p>CFO, Tech Solutions Inc</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="testimonial-card">
-          <p class="testimonial-content">
-            As a freelancer, I needed something simple yet powerful. Zoho
-            Invoice is perfect—it handles everything from creation to payment
-            tracking effortlessly.
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar">
-              <img
-                src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop"
-                alt="Emily Chen"
-              />
-            </div>
-            <div class="author-info">
-              <h4>Emily Chen</h4>
-              <p>Freelance Designer</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <footer>
+    <footer class="site-footer">
       <div class="footer-content">
         <div class="footer-section">
-          <h3>Product</h3>
-          <ul>
-            <li><a href="#">Features</a></li>
-            <li><a href="#">Pricing</a></li>
-            <li><a href="#">Integrations</a></li>
-            <li><a href="#">Mobile Apps</a></li>
-            <li><a href="#">API</a></li>
-            <li><a href="#">Templates</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li><a href="#">Help Center</a></li>
-            <li><a href="#">API Documentation</a></li>
-            <li><a href="#">Video Tutorials</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Webinars</a></li>
-            <li><a href="#">Case Studies</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Company</h3>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Partners</a></li>
-            <li><a href="#">Press Kit</a></li>
-            <li><a href="#">Investors</a></li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Connect With Us</h3>
-          <p style="color: #bdc3c7; margin-bottom: 15px; font-size: 15px">
-            Join thousands of businesses using Zoho Invoice
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
           </p>
-          <div class="social-icons">
-            <div class="social-icon">f</div>
-            <div class="social-icon">𝕏</div>
-            <div class="social-icon">in</div>
-            <div class="social-icon">▶</div>
+        </div>
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics.html">Zoho Analytics</a></li>
+              <li><a href="bigin.html">Zoho Bigin</a></li>
+              <li><a href="billing.html">Zoho Billing</a></li>
+              <li><a href="books.html">Zoho Books</a></li>
+              <li><a href="commerce.html">Zoho Commerce</a></li>
+              <li><a href="/zoho-crm.html">Zoho CRM</a></li>
+              <li><a href="expense.html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory.html">Zoho Inventory</a></li>
+              <li><a href="payroll.html">Zoho Payroll</a></li>
+              <li><a href="peopleplus.html">Zoho People Plus</a></li>
+              <li><a href="recruit.html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in<br />Phone: +91 90 7313 9613<br />Location:
+            India
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
           </div>
         </div>
       </div>
       <div class="footer-bottom">
         <p>
-          &copy; 2024 Zoho Corporation Pvt. Ltd. All Rights Reserved. |
-          <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> |
-          <a href="#">Cookie Policy</a>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
         </p>
       </div>
     </footer>
@@ -1223,7 +1545,6 @@
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
 
-      // Show/hide scroll to top button
       window.addEventListener("scroll", () => {
         const scrollTop = document.querySelector(".scroll-top");
         if (window.pageYOffset > 500) {
@@ -1233,7 +1554,6 @@
         }
       });
 
-      // Intersection Observer for fade-in animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -1248,7 +1568,6 @@
         });
       }, observerOptions);
 
-      // Observe feature cards
       document.querySelectorAll(".feature-card").forEach((card, index) => {
         card.style.opacity = "0";
         card.style.transform = "translateY(50px)";
@@ -1258,17 +1577,6 @@
         observer.observe(card);
       });
 
-      // Observe testimonial cards
-      document.querySelectorAll(".testimonial-card").forEach((card, index) => {
-        card.style.opacity = "0";
-        card.style.transform = "translateY(50px)";
-        card.style.transition = `opacity 0.6s ease ${
-          index * 0.15
-        }s, transform 0.6s ease ${index * 0.15}s`;
-        observer.observe(card);
-      });
-
-      // Parallax effect for hero section
       let ticking = false;
       window.addEventListener("scroll", () => {
         if (!ticking) {
@@ -1292,43 +1600,6 @@
         }
       });
 
-      // Animated counter for stats
-      function animateCounter(element, target, duration = 2000) {
-        let current = 0;
-        const increment = target / (duration / 16);
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            const originalText = element.textContent;
-            const suffix = originalText.replace(/[0-9.]/g, "");
-            element.textContent = target.toLocaleString() + suffix;
-            clearInterval(timer);
-          } else {
-            element.textContent = Math.floor(current).toLocaleString();
-          }
-        }, 16);
-      }
-
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const number = entry.target.querySelector(".stat-number");
-              const text = number.textContent;
-              const value = parseFloat(text.replace(/[^0-9.]/g, ""));
-              animateCounter(number, value);
-              statsObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.5 }
-      );
-
-      document.querySelectorAll(".stat-item").forEach((item) => {
-        statsObserver.observe(item);
-      });
-
-      // Add smooth reveal animation to section headers
       document.querySelectorAll(".section-header").forEach((header) => {
         header.style.opacity = "0";
         header.style.transform = "translateY(30px)";
@@ -1336,7 +1607,6 @@
         observer.observe(header);
       });
 
-      // Cursor trail effect (optional - can be removed if too much)
       const canvas = document.createElement("canvas");
       canvas.style.position = "fixed";
       canvas.style.top = "0";
@@ -1377,30 +1647,21 @@
         }
       }
 
-      let mouseX = 0;
-      let mouseY = 0;
-
       document.addEventListener("mousemove", (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-
         for (let i = 0; i < particleCount; i++) {
-          particles.push(new Particle(mouseX, mouseY));
+          particles.push(new Particle(e.clientX, e.clientY));
         }
       });
 
       function animateParticles() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         for (let i = particles.length - 1; i >= 0; i--) {
           particles[i].update();
           particles[i].draw();
-
           if (particles[i].life <= 0) {
             particles.splice(i, 1);
           }
         }
-
         requestAnimationFrame(animateParticles);
       }
 
@@ -1409,6 +1670,26 @@
       window.addEventListener("resize", () => {
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
+      });
+
+      document
+        .querySelectorAll(".seo-grid > div, .seo-ps-grid > div")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      window.addEventListener("scroll", () => {
+        const scrolled = window.pageYOffset;
+        const sections = document.querySelectorAll(
+          ".audience-seo, .problem-solution-seo"
+        );
+        sections.forEach((section) => {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const parallax = (window.innerHeight - rect.top) * 0.1;
+            section.style.transform = `translateY(${parallax}px)`;
+          }
+        });
       });
     </script>
   </body>
