@@ -13,29 +13,29 @@
 
       body {
         font-family: "Inter", "Segoe UI", sans-serif;
-        background: linear-gradient(135deg, #1064b9 0%, #2279c5 100%);
+        background: #ffffff;
         color: #2c3e50;
         overflow-x: hidden;
       }
 
       .header {
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(15px);
-        padding: 1rem 5%;
-        height: 150px;
+        background: #ffffff;
+        padding: 1.5rem 5%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         position: sticky;
         top: 0;
         z-index: 1000;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        animation: slideDown 0.6s ease-out;
+        box-shadow: 0 2px 20px rgba(34, 197, 94, 0.1);
+        border-bottom: 2px solid #22c55e;
+        height: 120px;
       }
 
       .logo-container {
         display: flex;
         align-items: center;
+        gap: 2rem;
       }
 
       .logo-item {
@@ -51,7 +51,6 @@
       .logo-img {
         height: 60px;
         width: auto;
-        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
       }
 
       .nav-menu {
@@ -64,7 +63,8 @@
       .nav-menu a {
         color: #2c3e50;
         text-decoration: none;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 1.05rem;
         position: relative;
         transition: color 0.3s ease;
       }
@@ -75,9 +75,13 @@
         bottom: -5px;
         left: 0;
         width: 0;
-        height: 2px;
-        background: #2253c5;
+        height: 3px;
+        background: #22c55e;
         transition: width 0.3s ease;
+      }
+
+      .nav-menu a:hover {
+        color: #22c55e;
       }
 
       .nav-menu a:hover::after {
@@ -85,12 +89,12 @@
       }
 
       .hero-section {
-        padding: 4rem 5%;
+        padding: 5rem 5%;
+        background: #f0fdf4;
         display: grid;
         grid-template-columns: 1fr 1fr;
         gap: 4rem;
         align-items: center;
-        position: relative;
         min-height: 85vh;
       }
 
@@ -102,15 +106,18 @@
         font-size: 3.5rem;
         line-height: 1.2;
         margin-bottom: 2rem;
-        color: white;
-        font-weight: 700;
-        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+        color: #1a1a1a;
+        font-weight: 800;
+      }
+
+      .hero-content h1 .highlight {
+        color: #22c55e;
       }
 
       .hero-content p {
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         line-height: 1.8;
-        color: rgba(255, 255, 255, 0.95);
+        color: #4b5563;
         margin-bottom: 3rem;
       }
 
@@ -120,55 +127,48 @@
       }
 
       .btn-primary {
-        background: #dc2626;
+        background: #22c55e;
         color: white;
         border: none;
         padding: 1.2rem 3rem;
         font-size: 1.1rem;
-        font-weight: 600;
-        border-radius: 8px;
+        font-weight: 700;
+        border-radius: 12px;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 10px 30px rgba(220, 38, 38, 0.4);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
-
-      .btn-primary:hover::before {
-        width: 300px;
-        height: 300px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
       }
 
       .btn-primary:hover {
+        background: #16a34a;
         transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(220, 38, 38, 0.5);
+        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: #22c55e;
+        border: 3px solid #22c55e;
+        padding: 1.2rem 3rem;
+        font-size: 1.1rem;
+        font-weight: 700;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary:hover {
+        background: #22c55e;
+        color: white;
+        transform: translateY(-3px);
       }
 
       .hero-visual {
         position: relative;
         animation: fadeInRight 1s ease-out;
-      }
-
-      .pos-illustration {
-        position: relative;
-        width: 100%;
-        height: 500px;
         display: flex;
-        align-items: center;
         justify-content: center;
+        align-items: center;
       }
 
       .pos-device {
@@ -176,202 +176,130 @@
         height: 450px;
         background: white;
         border-radius: 40px;
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
-        position: relative;
+        box-shadow: 0 30px 80px rgba(34, 197, 94, 0.3);
         animation: float 4s ease-in-out infinite;
-      }
-
-      .decorative-circles {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-      }
-
-      .circle {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
-        animation: pulse 3s ease-in-out infinite;
-      }
-
-      .circle-1 {
-        width: 250px;
-        height: 250px;
-        top: -50px;
-        right: -50px;
-      }
-
-      .circle-2 {
-        width: 180px;
-        height: 180px;
-        bottom: 30px;
-        left: -40px;
-        animation-delay: 1s;
+        border: 3px solid #22c55e;
       }
 
       .capabilities-section {
         padding: 6rem 5%;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(255, 255, 255, 0.95) 10%,
-          rgba(255, 255, 255, 0.95) 90%,
-          rgba(255, 255, 255, 0) 100%
-        );
+        background: #ffffff;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .section-title {
         text-align: center;
         font-size: 3rem;
         margin-bottom: 1rem;
-        background: linear-gradient(135deg, #dc2626, #2266c5);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        font-weight: 700;
-        animation: fadeInUp 0.8s ease-out;
+        color: #1a1a1a;
+        font-weight: 800;
+      }
+
+      .section-title .highlight {
+        color: #22c55e;
       }
 
       .section-subtitle {
         text-align: center;
-        font-size: 1.2rem;
-        color: #666;
+        font-size: 1.25rem;
+        color: #6b7280;
         margin-bottom: 5rem;
       }
 
       .capabilities-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 3rem;
+        gap: 2.5rem;
+        margin-bottom: 3rem;
       }
 
       .capability-card {
         background: white;
-        border-radius: 24px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      .capability-card.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .capability-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(34, 197, 94, 0.1),
-          transparent
-        );
-        transition: left 0.6s ease;
-      }
-
-      .capability-card:hover::before {
-        left: 100%;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        border: 2px solid #e5e7eb;
       }
 
       .capability-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 25px 70px rgba(34, 197, 94, 0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(34, 197, 94, 0.2);
+        border-color: #22c55e;
       }
 
       .capability-image {
         width: 100%;
-        height: 220px;
-        background: linear-gradient(135deg, #d1e7fa, #a7d0f3);
+        height: 200px;
+        background: #f0fdf4;
         display: flex;
         align-items: center;
         justify-content: center;
-        position: relative;
-        overflow: hidden;
+        border-bottom: 3px solid #22c55e;
       }
 
       .capability-image svg {
-        width: 150px;
-        height: 150px;
-        transition: transform 0.5s ease;
+        width: 120px;
+        height: 120px;
+        transition: transform 0.4s ease;
       }
 
       .capability-card:hover .capability-image svg {
-        transform: scale(1.15) rotate(5deg);
+        transform: scale(1.15);
       }
 
       .capability-content {
-        padding: 2.5rem;
+        padding: 2rem;
       }
 
       .capability-title {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 700;
-        color: #2c3e50;
+        color: #1a1a1a;
         margin-bottom: 1rem;
       }
 
       .capability-description {
-        color: #555;
+        color: #6b7280;
         line-height: 1.8;
         font-size: 1rem;
       }
 
       .workflow-section {
         padding: 6rem 5%;
-        background: linear-gradient(135deg, #f0fdf4 0%, #fef2f2 100%);
-        border-radius: 50px 50px 0 0;
-        margin-top: -50px;
+        background: #f0fdf4;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .workflow-steps {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 3rem;
+        gap: 2.5rem;
         margin-top: 4rem;
-        position: relative;
-      }
-
-      .workflow-steps::before {
-        content: "";
-        position: absolute;
-        top: 40px;
-        left: 10%;
-        right: 10%;
-        height: 3px;
-        background: linear-gradient(90deg, #22c55e, #10b981, #f97316, #dc2626);
-        opacity: 0.4;
       }
 
       .workflow-step {
         text-align: center;
-        position: relative;
-        animation: fadeInUp 0.6s ease backwards;
+        background: white;
+        padding: 2.5rem 1.5rem;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        border: 2px solid #e5e7eb;
       }
 
-      .workflow-step:nth-child(1) {
-        animation-delay: 0.1s;
-      }
-      .workflow-step:nth-child(2) {
-        animation-delay: 0.2s;
-      }
-      .workflow-step:nth-child(3) {
-        animation-delay: 0.3s;
-      }
-      .workflow-step:nth-child(4) {
-        animation-delay: 0.4s;
+      .workflow-step:hover {
+        transform: translateY(-10px);
+        border-color: #22c55e;
+        box-shadow: 0 20px 50px rgba(34, 197, 94, 0.2);
       }
 
       .workflow-number {
-        width: 80px;
-        height: 80px;
-        background: linear-gradient(135deg, #22c55e, #10b981);
+        width: 70px;
+        height: 70px;
+        background: #22c55e;
         color: white;
         border-radius: 50%;
         display: flex;
@@ -379,94 +307,39 @@
         justify-content: center;
         font-size: 2rem;
         font-weight: 900;
-        margin: 0 auto 2rem;
-        box-shadow: 0 15px 40px rgba(34, 197, 94, 0.4);
-        transition: all 0.4s ease;
-        position: relative;
-        z-index: 1;
-      }
-
-      .workflow-step:nth-child(2) .workflow-number {
-        background: linear-gradient(135deg, #10b981, #059669);
-      }
-
-      .workflow-step:nth-child(3) .workflow-number {
-        background: linear-gradient(135deg, #f97316, #ea580c);
-      }
-
-      .workflow-step:nth-child(4) .workflow-number {
-        background: linear-gradient(135deg, #dc2626, #b91c1c);
-      }
-
-      .workflow-step:hover .workflow-number {
-        transform: scale(1.2) rotate(360deg);
+        margin: 0 auto 1.5rem;
+        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
       }
 
       .workflow-visual {
         width: 100%;
-        height: 160px;
-        background: white;
-        border-radius: 20px;
+        height: 140px;
+        background: #f0fdf4;
+        border-radius: 15px;
         margin-bottom: 1.5rem;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: transform 0.4s ease;
-      }
-
-      .workflow-step:hover .workflow-visual {
-        transform: scale(1.08) translateY(-5px);
+        border: 2px solid #22c55e;
       }
 
       .workflow-title {
         font-size: 1.3rem;
         font-weight: 700;
-        color: #2c3e50;
+        color: #1a1a1a;
         margin-bottom: 1rem;
       }
 
       .workflow-description {
-        color: #666;
+        color: #6b7280;
         line-height: 1.6;
       }
 
       .features-section {
         padding: 6rem 5%;
-        background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .features-section::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(34, 197, 94, 0.1) 0%,
-          transparent 70%
-        );
-        animation: rotate 30s linear infinite;
-      }
-
-      .features-section .section-title,
-      .features-section .section-subtitle {
-        position: relative;
-        z-index: 1;
-      }
-
-      .features-section .section-title {
-        background: linear-gradient(135deg, #22c55e, #10b981, #06b6d4);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .features-section .section-subtitle {
-        color: rgba(255, 255, 255, 0.7);
+        background: #ffffff;
+        max-width: 1400px;
+        margin: 0 auto;
       }
 
       .features-grid {
@@ -474,187 +347,133 @@
         grid-template-columns: repeat(4, 1fr);
         gap: 2rem;
         margin-top: 4rem;
-        position: relative;
-        z-index: 1;
       }
 
       .feature-card {
-        background: rgba(255, 255, 255, 0.05);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 24px;
+        background: #f0fdf4;
+        border: 2px solid #22c55e;
+        border-radius: 20px;
         padding: 2.5rem;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .feature-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(34, 197, 94, 0.2),
-          transparent
-        );
-        transition: left 0.8s ease;
-      }
-
-      .feature-card::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: linear-gradient(90deg, #22c55e, #10b981, #06b6d4);
-        transform: scaleX(0);
-        transform-origin: left;
-        transition: transform 0.6s ease;
-      }
-
-      .feature-card:hover::before {
-        left: 100%;
-      }
-
-      .feature-card:hover::after {
-        transform: scaleX(1);
+        text-align: center;
+        transition: all 0.4s ease;
       }
 
       .feature-card:hover {
-        transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 30px 80px rgba(34, 197, 94, 0.3);
-        border-color: rgba(34, 197, 94, 0.3);
-        background: rgba(255, 255, 255, 0.08);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 50px rgba(34, 197, 94, 0.3);
+        background: #dcfce7;
       }
 
       .feature-icon {
         width: 80px;
         height: 80px;
-        background: linear-gradient(135deg, #22c55e, #10b981);
-        border-radius: 20px;
+        background: #22c55e;
+        border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         margin: 0 auto 1.5rem;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
-        position: relative;
-      }
-
-      .feature-icon::before {
-        content: "";
-        position: absolute;
-        inset: -5px;
-        border-radius: 22px;
-        background: linear-gradient(135deg, #22c55e, #10b981);
-        opacity: 0;
-        filter: blur(15px);
-        transition: opacity 0.5s ease;
+        transition: all 0.4s ease;
       }
 
       .feature-card:hover .feature-icon {
         transform: scale(1.15) rotate(360deg);
-        box-shadow: 0 15px 50px rgba(34, 197, 94, 0.6);
-      }
-
-      .feature-card:hover .feature-icon::before {
-        opacity: 0.8;
       }
 
       .feature-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 700;
-        color: white;
+        color: #1a1a1a;
         margin-bottom: 1rem;
-        text-align: center;
       }
 
       .feature-description {
-        color: rgba(255, 255, 255, 0.7);
+        color: #4b5563;
         line-height: 1.8;
-        text-align: center;
         font-size: 0.95rem;
       }
 
-      .footer {
-        background: linear-gradient(135deg, #2c3e50, #1a252f);
-        color: white;
-        padding: 5rem 5% 2rem;
+      .site-footer {
+        background: #040404;
+        color: #e5e7eb;
+        padding: 4rem 5% 2rem;
       }
 
       .footer-content {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 4rem;
-        margin-bottom: 3rem;
-        animation: fadeInUp 0.8s ease-out;
+        gap: 3rem;
+        margin-bottom: 2rem;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .footer-section h3 {
-        color: #dc2626;
-        margin-bottom: 1.5rem;
-        font-size: 1.4rem;
-        font-weight: 600;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #020202;
+        font-weight: 700;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", cursive;
+        font-size: 1.1rem;
+        color: #060606;
+        margin-bottom: 1rem;
       }
 
       .footer-section p {
-        line-height: 1.8;
-        color: #bdc3c7;
-        margin-bottom: 1rem;
+        color: #d1d5db;
+        line-height: 1.7;
+        margin-bottom: 0.8rem;
       }
 
-      .footer-section ul {
+      .zoho-solutions {
+        text-align: center;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
         list-style: none;
+        padding: 0;
       }
 
-      .footer-section ul li {
-        margin-bottom: 1rem;
-        padding-left: 1.5rem;
-        position: relative;
-        color: #bdc3c7;
-        transition: all 0.3s ease;
+      .solutions-grid li a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s ease;
       }
 
-      .footer-section ul li::before {
-        content: "→";
-        position: absolute;
-        left: 0;
-        color: #22c55e;
-        transition: transform 0.3s ease;
+      .solutions-grid li a:hover {
+        color: #0c0c0c;
       }
 
-      .footer-section ul li:hover {
-        color: white;
-        padding-left: 2rem;
+      .zoho-logo {
+        margin-top: 1.5rem;
       }
 
-      .footer-section ul li:hover::before {
-        transform: translateX(5px);
+      .zoho-logo img {
+        max-width: 140px;
       }
 
       .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 1.5rem;
         text-align: center;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        color: #95a5a6;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      @keyframes slideDown {
-        from {
-          transform: translateY(-100%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+      .footer-bottom p {
+        margin: 0;
+        color: #9ca3af;
+        font-size: 0.95rem;
       }
 
       @keyframes fadeInLeft {
@@ -679,50 +498,28 @@
         }
       }
 
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
       @keyframes float {
         0%,
         100% {
           transform: translateY(0);
         }
         50% {
-          transform: translateY(-25px);
+          transform: translateY(-20px);
         }
       }
 
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: scale(1.1);
-          opacity: 0.8;
-        }
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
+      @media (max-width: 1200px) {
+        .capabilities-grid,
+        .features-grid {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
 
       @media (max-width: 968px) {
-        .hero-section,
+        .hero-section {
+          grid-template-columns: 1fr;
+        }
+
         .capabilities-grid,
         .workflow-steps,
         .features-grid {
@@ -743,9 +540,8 @@
     <header class="header">
       <div class="logo-container">
         <div class="logo-item">
-          <img src="images/logo.png" alt="Zolytics" style="height: 70px" />
+          <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" style="height: 90px;"/>
         </div>
-        <div class="divider"></div>
         <div class="logo-item">
           <img
             src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/pos.svg"
@@ -758,134 +554,132 @@
 
     <section class="hero-section">
       <div class="hero-content">
-        <h1>Transform Your Retail Business</h1>
+        <h1>Transform Your <span class="highlight">Retail Business</span></h1>
         <p>
           Experience effortless billing, real-time inventory tracking, and
-          seamless operations with India's most trusted POS system
+          seamless operations with India's most trusted POS system powered by Zoho.
         </p>
+        <div class="cta-buttons">
+          <button class="btn-primary">Start Your Free Trial</button>
+          <button class="btn-secondary">Watch Demo</button>
+        </div>
       </div>
       <div class="hero-visual">
-        <div class="decorative-circles">
-          <div class="circle circle-1"></div>
-          <div class="circle circle-2"></div>
-        </div>
-        <div class="pos-illustration">
-          <div class="pos-device">
-            <svg width="350" height="450" viewBox="0 0 350 450">
-              <rect width="350" height="450" rx="40" fill="white" />
-              <rect
-                x="20"
-                y="30"
-                width="310"
-                height="200"
-                rx="15"
-                fill="#f0fdf4"
-              />
-              <text
-                x="175"
-                y="90"
-                text-anchor="middle"
-                font-family="Arial"
-                font-size="36"
-                font-weight="bold"
-                fill="#22c55e"
-              >
-                ₹1,299.00
-              </text>
-              <text
-                x="175"
-                y="120"
-                text-anchor="middle"
-                font-family="Arial"
-                font-size="16"
-                fill="#666"
-              >
-                Transaction Complete
-              </text>
-              <circle cx="175" cy="170" r="25" fill="#22c55e" />
-              <path
-                d="M 165 170 L 172 177 L 185 164"
-                stroke="white"
-                stroke-width="4"
-                fill="none"
-                stroke-linecap="round"
-              />
+        <div class="pos-device">
+          <svg width="350" height="450" viewBox="0 0 350 450">
+            <rect width="350" height="450" rx="40" fill="white" />
+            <rect
+              x="20"
+              y="30"
+              width="310"
+              height="200"
+              rx="15"
+              fill="#f0fdf4"
+            />
+            <text
+              x="175"
+              y="90"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="36"
+              font-weight="bold"
+              fill="#22c55e"
+            >
+              ₹1,299.00
+            </text>
+            <text
+              x="175"
+              y="120"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="16"
+              fill="#666"
+            >
+              Transaction Complete
+            </text>
+            <circle cx="175" cy="170" r="25" fill="#22c55e" />
+            <path
+              d="M 165 170 L 172 177 L 185 164"
+              stroke="white"
+              stroke-width="4"
+              fill="none"
+              stroke-linecap="round"
+            />
 
-              <rect
-                x="30"
-                y="260"
-                width="290"
-                height="50"
-                rx="10"
-                fill="#f3f4f6"
-              />
-              <rect
-                x="45"
-                y="275"
-                width="100"
-                height="20"
-                rx="5"
-                fill="#22c55e"
-              />
-              <text
-                x="95"
-                y="290"
-                text-anchor="middle"
-                font-family="Arial"
-                font-size="12"
-                font-weight="bold"
-                fill="white"
-              >
-                PAID
-              </text>
+            <rect
+              x="30"
+              y="260"
+              width="290"
+              height="50"
+              rx="10"
+              fill="#f3f4f6"
+            />
+            <rect
+              x="45"
+              y="275"
+              width="100"
+              height="20"
+              rx="5"
+              fill="#22c55e"
+            />
+            <text
+              x="95"
+              y="290"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="12"
+              font-weight="bold"
+              fill="white"
+            >
+              PAID
+            </text>
 
-              <rect
-                x="30"
-                y="330"
-                width="135"
-                height="80"
-                rx="10"
-                fill="#dc2626"
-              />
-              <text
-                x="97"
-                y="375"
-                text-anchor="middle"
-                font-family="Arial"
-                font-size="18"
-                font-weight="bold"
-                fill="white"
-              >
-                CASH
-              </text>
+            <rect
+              x="30"
+              y="330"
+              width="135"
+              height="80"
+              rx="10"
+              fill="#22c55e"
+            />
+            <text
+              x="97"
+              y="375"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="18"
+              font-weight="bold"
+              fill="white"
+            >
+              CASH
+            </text>
 
-              <rect
-                x="185"
-                y="330"
-                width="135"
-                height="80"
-                rx="10"
-                fill="#22c55e"
-              />
-              <text
-                x="252"
-                y="375"
-                text-anchor="middle"
-                font-family="Arial"
-                font-size="18"
-                font-weight="bold"
-                fill="white"
-              >
-                CARD
-              </text>
-            </svg>
-          </div>
+            <rect
+              x="185"
+              y="330"
+              width="135"
+              height="80"
+              rx="10"
+              fill="#16a34a"
+            />
+            <text
+              x="252"
+              y="375"
+              text-anchor="middle"
+              font-family="Arial"
+              font-size="18"
+              font-weight="bold"
+              fill="white"
+            >
+              CARD
+            </text>
+          </svg>
         </div>
       </div>
     </section>
 
     <section class="capabilities-section" id="capabilities">
-      <h2 class="section-title">What We Can Do For You</h2>
+      <h2 class="section-title">What We Can Do <span class="highlight">For You</span></h2>
       <p class="section-subtitle">
         Comprehensive solutions tailored to simplify your retail operations
       </p>
@@ -893,20 +687,17 @@
       <div class="capabilities-grid">
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#d1fae5" opacity="0.5" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
               <rect
-                x="40"
-                y="50"
-                width="70"
-                height="50"
-                rx="8"
+                x="35"
+                y="45"
+                width="50"
+                height="35"
+                rx="6"
                 fill="#22c55e"
               />
-              <rect x="50" y="60" width="50" height="30" rx="4" fill="white" />
-              <circle cx="60" cy="75" r="3" fill="#22c55e" />
-              <rect x="68" y="72" width="25" height="2" fill="#cbd5e0" />
-              <rect x="68" y="78" width="35" height="2" fill="#cbd5e0" />
+              <rect x="42" y="52" width="36" height="21" rx="3" fill="white" />
             </svg>
           </div>
           <div class="capability-content">
@@ -920,23 +711,22 @@
 
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#fef3c7" opacity="0.5" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
               <circle
-                cx="75"
-                cy="75"
-                r="45"
+                cx="60"
+                cy="60"
+                r="35"
                 fill="none"
-                stroke="#f59e0b"
+                stroke="#22c55e"
                 stroke-width="4"
               />
               <path
-                d="M 75 35 L 75 75 L 100 100"
-                stroke="#f59e0b"
-                stroke-width="5"
+                d="M 60 30 L 60 60 L 80 75"
+                stroke="#22c55e"
+                stroke-width="4"
                 stroke-linecap="round"
               />
-              <circle cx="75" cy="75" r="5" fill="#f59e0b" />
             </svg>
           </div>
           <div class="capability-content">
@@ -950,20 +740,20 @@
 
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#dbeafe" opacity="0.5" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
               <rect
-                x="35"
-                y="50"
-                width="80"
-                height="60"
-                rx="6"
-                fill="#3b82f6"
+                x="30"
+                y="45"
+                width="60"
+                height="45"
+                rx="5"
+                fill="#22c55e"
               />
               <path
-                d="M 50 85 L 60 75 L 70 80 L 85 60 L 100 70"
+                d="M 40 70 L 50 60 L 60 65 L 75 50 L 85 60"
                 stroke="white"
-                stroke-width="4"
+                stroke-width="3"
                 fill="none"
                 stroke-linecap="round"
               />
@@ -980,32 +770,25 @@
 
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#fce7f3" opacity="0.5" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
               <rect
-                x="40"
-                y="45"
-                width="30"
-                height="40"
-                rx="4"
-                fill="#ec4899"
+                x="35"
+                y="40"
+                width="22"
+                height="30"
+                rx="3"
+                fill="#22c55e"
               />
               <rect
-                x="80"
-                y="55"
-                width="30"
-                height="40"
-                rx="4"
-                fill="#ec4899"
-                opacity="0.7"
+                x="63"
+                y="48"
+                width="22"
+                height="30"
+                rx="3"
+                fill="#16a34a"
               />
-              <circle cx="75" cy="30" r="8" fill="#22c55e" />
-              <path
-                d="M 55 50 L 75 35 L 95 60"
-                stroke="#22c55e"
-                stroke-width="3"
-                fill="none"
-              />
+              <circle cx="60" cy="25" r="6" fill="#22c55e" />
             </svg>
           </div>
           <div class="capability-content">
@@ -1016,36 +799,30 @@
             </p>
           </div>
         </div>
+
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#e0e7ff" opacity="0.5" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
               <rect
-                x="45"
-                y="50"
-                width="60"
-                height="50"
-                rx="6"
-                fill="#6366f1"
+                x="38"
+                y="45"
+                width="44"
+                height="35"
+                rx="5"
+                fill="#22c55e"
               />
               <text
-                x="75"
-                y="80"
+                x="60"
+                y="68"
                 text-anchor="middle"
-                font-family="Arial"
-                font-size="24"
+                font-size="16"
                 font-weight="bold"
                 fill="white"
               >
                 GST
               </text>
-              <circle cx="110" cy="55" r="8" fill="#22c55e" />
-              <path
-                d="M 107 55 L 109 57 L 113 52"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
+              <circle cx="78" cy="48" r="6" fill="white" />
             </svg>
           </div>
           <div class="capability-content">
@@ -1059,18 +836,16 @@
 
         <div class="capability-card">
           <div class="capability-image">
-            <svg width="150" height="150" viewBox="0 0 150 150">
-              <circle cx="75" cy="75" r="60" fill="#dcfce7" opacity="0.5" />
-              <circle cx="75" cy="60" r="20" fill="#22c55e" />
+            <svg width="120" height="120" viewBox="0 0 120 120">
+              <circle cx="60" cy="60" r="50" fill="#dcfce7" />
+              <circle cx="60" cy="52" r="15" fill="#22c55e" />
               <path
-                d="M 60 95 Q 75 105 90 95"
+                d="M 48 78 Q 60 88 72 78"
                 stroke="#22c55e"
-                stroke-width="6"
+                stroke-width="5"
                 fill="none"
                 stroke-linecap="round"
               />
-              <circle cx="68" cy="55" r="3" fill="white" />
-              <circle cx="82" cy="55" r="3" fill="white" />
             </svg>
           </div>
           <div class="capability-content">
@@ -1085,7 +860,7 @@
     </section>
 
     <section class="workflow-section" id="workflow">
-      <h2 class="section-title">How Zoho POS Makes Your Life Easy</h2>
+      <h2 class="section-title">How Zoho POS Makes <span class="highlight">Your Life Easy</span></h2>
       <p class="section-subtitle">
         From checkout to insights - experience retail made simple
       </p>
@@ -1093,33 +868,18 @@
         <div class="workflow-step">
           <div class="workflow-number">1</div>
           <div class="workflow-visual">
-            <svg width="120" height="120" viewBox="0 0 120 120">
+            <svg width="100" height="100" viewBox="0 0 100 100">
               <rect
-                x="30"
-                y="30"
-                width="60"
-                height="60"
-                rx="8"
-                fill="#22c55e"
-                opacity="0.2"
-              />
-              <rect
-                x="35"
-                y="35"
+                x="25"
+                y="25"
                 width="50"
                 height="40"
-                rx="6"
+                rx="5"
                 fill="#22c55e"
               />
-              <rect x="45" y="45" width="30" height="5" rx="2.5" fill="white" />
-              <rect x="45" y="55" width="35" height="5" rx="2.5" fill="white" />
-              <rect x="45" y="65" width="25" height="5" rx="2.5" fill="white" />
-              <path
-                d="M 50 85 L 50 95 L 70 95 L 70 85"
-                stroke="#22c55e"
-                stroke-width="3"
-                fill="none"
-              />
+              <rect x="32" y="32" width="36" height="5" rx="2" fill="white" />
+              <rect x="32" y="40" width="30" height="5" rx="2" fill="white" />
+              <rect x="32" y="48" width="32" height="5" rx="2" fill="white" />
             </svg>
           </div>
           <h3 class="workflow-title">Lightning Fast Billing</h3>
@@ -1132,35 +892,31 @@
         <div class="workflow-step">
           <div class="workflow-number">2</div>
           <div class="workflow-visual">
-            <svg width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="60" cy="60" r="35" fill="#10b981" opacity="0.2" />
+            <svg width="100" height="100" viewBox="0 0 100 100">
               <rect
-                x="40"
+                x="30"
                 y="35"
-                width="15"
-                height="50"
-                rx="3"
-                fill="#10b981"
+                width="12"
+                height="35"
+                rx="2"
+                fill="#22c55e"
               />
               <rect
-                x="60"
-                y="45"
-                width="15"
-                height="40"
-                rx="3"
-                fill="#10b981"
-                opacity="0.7"
+                x="48"
+                y="42"
+                width="12"
+                height="28"
+                rx="2"
+                fill="#16a34a"
               />
               <rect
-                x="80"
-                y="55"
-                width="15"
-                height="30"
-                rx="3"
-                fill="#10b981"
-                opacity="0.5"
+                x="66"
+                y="50"
+                width="12"
+                height="20"
+                rx="2"
+                fill="#15803d"
               />
-              <path d="M 30 85 L 95 85" stroke="#10b981" stroke-width="2" />
             </svg>
           </div>
           <h3 class="workflow-title">Auto Inventory Update</h3>
@@ -1173,50 +929,18 @@
         <div class="workflow-step">
           <div class="workflow-number">3</div>
           <div class="workflow-visual">
-            <svg width="120" height="120" viewBox="0 0 120 120">
-              <circle cx="60" cy="45" r="15" fill="#f97316" opacity="0.3" />
-              <circle cx="60" cy="45" r="12" fill="#f97316" />
-              <circle cx="52" cy="42" r="2" fill="white" />
-              <circle cx="68" cy="42" r="2" fill="white" />
-              <path
-                d="M 52 50 Q 60 55 68 50"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
+            <svg width="100" height="100" viewBox="0 0 100 100">
+              <circle cx="50" cy="38" r="12" fill="#22c55e" />
               <rect
-                x="35"
-                y="65"
-                width="50"
-                height="30"
-                rx="6"
-                fill="#f97316"
-                opacity="0.2"
+                x="30"
+                y="55"
+                width="40"
+                height="22"
+                rx="4"
+                fill="#dcfce7"
               />
-              <rect
-                x="40"
-                y="70"
-                width="20"
-                height="3"
-                rx="1.5"
-                fill="#f97316"
-              />
-              <rect
-                x="40"
-                y="77"
-                width="30"
-                height="3"
-                rx="1.5"
-                fill="#f97316"
-              />
-              <rect
-                x="40"
-                y="84"
-                width="25"
-                height="3"
-                rx="1.5"
-                fill="#f97316"
-              />
+              <rect x="35" y="61" width="18" height="3" fill="#22c55e" />
+              <rect x="35" y="67" width="25" height="3" fill="#22c55e" />
             </svg>
           </div>
           <h3 class="workflow-title">Customer Insights</h3>
@@ -1229,34 +953,19 @@
         <div class="workflow-step">
           <div class="workflow-number">4</div>
           <div class="workflow-visual">
-            <svg width="120" height="120" viewBox="0 0 120 120">
+            <svg width="100" height="100" viewBox="0 0 100 100">
               <rect
                 x="25"
                 y="25"
-                width="70"
-                height="70"
-                rx="8"
-                fill="#dc2626"
-                opacity="0.2"
+                width="50"
+                height="40"
+                rx="5"
+                fill="#22c55e"
               />
-              <rect
-                x="30"
-                y="30"
-                width="60"
-                height="50"
-                rx="6"
-                fill="#dc2626"
-              />
-              <rect x="40" y="40" width="40" height="3" rx="1.5" fill="white" />
-              <rect x="40" y="48" width="35" height="3" rx="1.5" fill="white" />
-              <rect x="40" y="56" width="38" height="3" rx="1.5" fill="white" />
-              <circle cx="75" cy="70" r="8" fill="#22c55e" />
-              <path
-                d="M 72 70 L 74 72 L 78 68"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
+              <rect x="32" y="32" width="36" height="3" fill="white" />
+              <rect x="32" y="38" width="30" height="3" fill="white" />
+              <rect x="32" y="44" width="34" height="3" fill="white" />
+              <circle cx="68" cy="58" r="7" fill="white" />
             </svg>
           </div>
           <h3 class="workflow-title">Instant Reports</h3>
@@ -1269,7 +978,7 @@
     </section>
 
     <section class="features-section" id="features">
-      <h2 class="section-title">Features That Transform Your Business</h2>
+      <h2 class="section-title">Features That <span class="highlight">Transform</span> Your Business</h2>
       <p class="section-subtitle">
         Everything you need to run a modern retail business
       </p>
@@ -1316,12 +1025,6 @@
                 opacity="0.7"
               />
               <circle cx="35" cy="8" r="4" fill="white" />
-              <path
-                d="M 14 10 L 31 8 L 31 10"
-                stroke="white"
-                stroke-width="2"
-                fill="none"
-              />
             </svg>
           </div>
           <h3 class="feature-title">Multi-Location Management</h3>
@@ -1366,7 +1069,7 @@
               >
                 GST
               </text>
-              <circle cx="38" cy="18" r="4" fill="#22c55e" />
+              <circle cx="38" cy="18" r="4" fill="white" />
             </svg>
           </div>
           <h3 class="feature-title">100% GST Compliant</h3>
@@ -1375,13 +1078,74 @@
             returns.
           </p>
         </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+              <circle cx="25" cy="20" r="8" fill="white" />
+              <path
+                d="M 15 35 Q 25 42 35 35"
+                stroke="white"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+            </svg>
+          </div>
+          <h3 class="feature-title">Customer Loyalty Programs</h3>
+          <p class="feature-description">
+            Build lasting relationships with automated rewards and personalized
+            offers.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+              <rect x="15" y="12" width="20" height="26" rx="2" fill="white" />
+              <circle cx="25" cy="32" r="3" fill="#22c55e" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Mobile POS Ready</h3>
+          <p class="feature-description">
+            Turn any tablet or smartphone into a powerful POS terminal for
+            flexible operations.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+              <rect x="10" y="18" width="30" height="18" rx="2" fill="white" />
+              <rect x="10" y="18" width="30" height="6" rx="2" fill="#22c55e" />
+              <rect x="15" y="28" width="8" height="4" rx="1" fill="#22c55e" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Multiple Payment Options</h3>
+          <p class="feature-description">
+            Accept cash, cards, UPI, wallets, and EMI - all integrated
+            seamlessly.
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="50" height="50" viewBox="0 0 50 50">
+              <circle cx="25" cy="25" r="15" fill="none" stroke="white" stroke-width="3" />
+              <path d="M 25 15 L 25 25 L 35 25" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" />
+            </svg>
+          </div>
+          <h3 class="feature-title">Real-Time Sync</h3>
+          <p class="feature-description">
+            Instant synchronization across all devices and locations for
+            accurate data.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
@@ -1392,9 +1156,8 @@
           </p>
         </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
+          <h3>Zoho Solutions</h3>
           <div class="solutions-wrapper">
             <ul class="solutions-grid">
               <li><a href="analytics.html">Zoho Analytics</a></li>
@@ -1406,11 +1169,8 @@
               <li><a href="expense.html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
               <li><a href="inventory.html">Zoho Inventory</a></li>
-
               <li><a href="payroll.html">Zoho Payroll</a></li>
-
               <li><a href="peopleplus.html">Zoho People Plus</a></li>
-
               <li><a href="recruit.html">Zoho Recruit</a></li>
             </ul>
           </div>
@@ -1423,6 +1183,33 @@
             Email: info@zolytics.in <br />
             Phone: +91 90 7313 9613<br />
             Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
           </p>
           <div class="zoho-logo">
             <img
@@ -1435,196 +1222,14 @@
 
       <div class="footer-bottom">
         <p>
-          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
-          Zoho Consulting Partner
+          © 2026 Zolytics. All rights reserved. | Certified Zoho Consulting
+          Partner
         </p>
       </div>
     </footer>
 
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
-
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        // Intersection Observer for capability cards
-        const cards = document.querySelectorAll(".capability-card");
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry, index) => {
-              if (entry.isIntersecting) {
-                setTimeout(() => {
-                  entry.target.classList.add("visible");
-                }, index * 150);
-              }
-            });
-          },
-          {
-            threshold: 0.2,
-          }
-        );
-
-        cards.forEach((card) => {
-          observer.observe(card);
-        });
-
-        // Button ripple effect
-        const buttons = document.querySelectorAll(".btn-primary");
-        buttons.forEach((button) => {
-          button.addEventListener("click", function (e) {
-            const rect = this.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const ripple = document.createElement("span");
-            ripple.style.cssText = `
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                background: rgba(255,255,255,0.6);
-                border-radius: 50%;
-                left: ${x}px;
-                top: ${y}px;
-                transform: translate(-50%, -50%) scale(0);
-                animation: ripple 0.6s ease-out;
-                pointer-events: none;
-            `;
-
-            this.style.position = "relative";
-            this.style.overflow = "hidden";
-            this.appendChild(ripple);
-
-            setTimeout(() => ripple.remove(), 600);
-          });
-        });
-
         // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
           anchor.addEventListener("click", function (e) {
@@ -1639,28 +1244,39 @@
           });
         });
 
-        // Parallax effect for decorative circles
-        window.addEventListener("scroll", () => {
-          const circles = document.querySelectorAll(".circle");
-          const scrolled = window.pageYOffset;
-
-          circles.forEach((circle, index) => {
-            const speed = (index + 1) * 0.3;
-            circle.style.transform = `translateY(${scrolled * speed}px)`;
+        // Button click effects
+        const buttons = document.querySelectorAll(".btn-primary, .btn-secondary");
+        buttons.forEach((button) => {
+          button.addEventListener("click", function () {
+            this.style.transform = "scale(0.95)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 150);
           });
         });
 
-        // Add ripple animation style
-        const style = document.createElement("style");
-        style.textContent = `
-        @keyframes ripple {
-            to {
-                transform: translate(-50%, -50%) scale(20);
-                opacity: 0;
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -100px 0px",
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.style.opacity = "1";
+              entry.target.style.transform = "translateY(0)";
             }
-        }
-    `;
-        document.head.appendChild(style);
+          });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll(".capability-card, .workflow-step, .feature-card").forEach((card) => {
+          card.style.opacity = "0";
+          card.style.transform = "translateY(30px)";
+          card.style.transition = "all 0.6s ease";
+          observer.observe(card);
+        });
       });
     </script>
   </body>
