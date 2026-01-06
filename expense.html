@@ -12,31 +12,86 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         line-height: 1.6;
-        color: #1a1a1a;
+        color: #1e293b;
         overflow-x: hidden;
+        background: #ffffff;
+      }
+
+      /* Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 55px;
+        height: 55px;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        z-index: 1000;
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.8);
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-5px) scale(1.1);
+        box-shadow: 0 12px 35px rgba(220, 38, 38, 0.6);
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      }
+
+      .scroll-to-top::before {
+        content: "↑";
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      /* Progress Bar */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #dc2626 0%, #ef4444 100%);
+        z-index: 9999;
+        transition: width 0.1s ease;
+        box-shadow: 0 0 10px rgba(220, 38, 38, 0.5);
       }
 
       /* Navbar */
       .navbar {
-        background: rgba(255, 255, 255, 0.98);
+        background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
-        padding: 20px 0;
+        padding: 18px 0;
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         z-index: 1000;
         transition: all 0.4s ease;
-        border-bottom: 2px solid rgba(220, 38, 38, 0.15);
+        border-bottom: 1px solid rgba(220, 38, 38, 0.1);
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       }
 
       .navbar.scrolled {
-        padding: 15px 0;
+        padding: 12px 0;
         background: rgba(248, 250, 252, 0.98);
-        border-bottom: 2px solid rgba(220, 38, 38, 0.3);
+        border-bottom: 1px solid rgba(220, 38, 38, 0.2);
       }
 
       .navbar-content {
@@ -71,16 +126,12 @@
       }
 
       .nav-links a {
-        color: #1f2937;
+        color: #334155;
         text-decoration: none;
         font-weight: 600;
         font-size: 0.95rem;
         transition: all 0.3s ease;
         position: relative;
-      }
-
-      .navbar.scrolled .nav-links a {
-        color: #1f2937;
       }
 
       .nav-links a::after {
@@ -100,6 +151,25 @@
 
       .nav-links a:hover::after {
         width: 100%;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 12px 30px;
+        font-size: 0.95rem;
+        border: 2px solid transparent;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: all 0.4s ease;
+        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(220, 38, 38, 0.5);
+        background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
       }
 
       /* Hero Section */
@@ -127,14 +197,40 @@
         bottom: 0;
         background: radial-gradient(
             circle at 20% 50%,
-            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.1) 0%,
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 80%,
-            rgba(16, 185, 129, 0.1) 0%,
+            rgba(239, 68, 68, 0.15) 0%,
             transparent 50%
           );
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-50px, 50px);
+        }
       }
 
       .hero-content {
@@ -150,7 +246,7 @@
         font-weight: 800;
         animation: fadeInUp 0.8s ease;
         line-height: 1.2;
-        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
       }
 
       .hero p {
@@ -181,37 +277,31 @@
         flex-wrap: wrap;
       }
 
-      .cta-button {
+      .cta-buttons .cta-button {
         background: white;
         color: #dc2626;
         padding: 18px 45px;
         font-size: 1.1em;
-        border: 3px solid transparent;
-        border-radius: 50px;
-        cursor: pointer;
-        font-weight: 700;
-        transition: all 0.4s ease;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
       }
 
-      .cta-button:hover {
+      .cta-buttons .cta-button:hover {
         transform: translateY(-3px) scale(1.05);
         box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-        border-color: #10b981;
-        background: #f0fdf4;
       }
 
-      .cta-button.secondary {
+      .cta-buttons .cta-button.secondary {
         background: transparent;
         color: white;
         border: 3px solid white;
       }
 
-      .cta-button.secondary:hover {
+      .cta-buttons .cta-button.secondary:hover {
         background: white;
         color: #dc2626;
       }
 
+      /* Container */
       .container {
         max-width: 1400px;
         margin: 0 auto;
@@ -220,33 +310,27 @@
 
       .section-white {
         background: white;
-        position: relative;
       }
 
-      .section-blue {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        position: relative;
+      .section-gray {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
       }
 
-      .section-dark {
-        background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
-        color: white;
+      .section-red {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
       }
 
       .section-title {
         text-align: center;
         font-size: 3em;
         margin-bottom: 25px;
-        color: #1f2937;
+        color: #0f172a;
         font-weight: 800;
         position: relative;
+
         display: inline-block;
         left: 50%;
         transform: translateX(-50%);
-      }
-
-      .section-dark .section-title {
-        color: white;
       }
 
       .section-title::after {
@@ -257,23 +341,19 @@
         transform: translateX(-50%);
         width: 80px;
         height: 4px;
-        background: linear-gradient(90deg, #dc2626, #10b981);
+        background: linear-gradient(90deg, #dc2626, #ef4444);
         border-radius: 2px;
       }
 
       .section-subtitle {
         text-align: center;
         font-size: 1.3em;
-        color: #6b7280;
+        color: #64748b;
         margin-bottom: 70px;
         font-weight: 400;
         max-width: 800px;
         margin-left: auto;
         margin-right: auto;
-      }
-
-      .section-dark .section-subtitle {
-        color: rgba(255, 255, 255, 0.8);
       }
 
       /* Problem Section */
@@ -294,7 +374,7 @@
 
       .problem-text h2 {
         font-size: 2.8em;
-        color: #1f2937;
+        color: #0f172a;
         margin-bottom: 30px;
         font-weight: 800;
         line-height: 1.2;
@@ -302,16 +382,16 @@
 
       .problem-text p {
         font-size: 1.2em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.8;
         margin-bottom: 25px;
       }
 
       .problem-text .highlight {
-        background: linear-gradient(120deg, #f0fdf4 0%, #dcfce7 100%);
+        background: linear-gradient(120deg, #fef2f2 0%, #fee2e2 100%);
         padding: 30px;
         border-radius: 15px;
-        border-left: 5px solid #10b981;
+        border-left: 5px solid #dc2626;
         margin-top: 30px;
       }
 
@@ -325,16 +405,17 @@
         padding: 30px;
         border-radius: 15px;
         transition: all 0.4s ease;
+        border: 3px solid;
       }
 
       .problem-box.before {
         background: #fee2e2;
-        border: 3px solid #dc2626;
+        border-color: #ef4444;
       }
 
       .problem-box.after {
-        background: #d1fae5;
-        border: 3px solid #10b981;
+        background: #f0fdf4;
+        border-color: #22c55e;
       }
 
       .problem-box:hover {
@@ -349,11 +430,11 @@
       }
 
       .problem-box.before h4 {
-        color: #dc2626;
+        color: #ef4444;
       }
 
       .problem-box.after h4 {
-        color: #059669;
+        color: #22c55e;
       }
 
       .problem-box p {
@@ -362,12 +443,7 @@
         color: #374151;
       }
 
-      /* Core Capabilities Section */
-      .capabilities-section {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 0px 20px;
-      }
-
+      /* Capabilities Section */
       .capability-item {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -379,11 +455,13 @@
         border-radius: 25px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
         transition: all 0.4s ease;
+        border: 2px solid transparent;
       }
 
       .capability-item:hover {
         transform: translateY(-10px);
         box-shadow: 0 25px 60px rgba(220, 38, 38, 0.15);
+        border-color: #dc2626;
       }
 
       .capability-item:nth-child(even) {
@@ -403,7 +481,7 @@
 
       .capability-content p {
         font-size: 1.15em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.8;
         margin-bottom: 20px;
       }
@@ -424,7 +502,7 @@
       }
 
       .capability-content .consulting-angle p {
-        color: #1f2937;
+        color: #1e293b;
         font-size: 1.05em;
       }
 
@@ -437,7 +515,7 @@
         padding: 15px 0;
         padding-left: 35px;
         position: relative;
-        color: #374151;
+        color: #334155;
         font-size: 1.1em;
         font-weight: 500;
       }
@@ -446,27 +524,31 @@
         content: "→";
         position: absolute;
         left: 0;
-        color: #10b981;
+        color: #dc2626;
         font-weight: bold;
         font-size: 1.5em;
       }
 
       .capability-visual {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
         padding: 40px;
         border-radius: 20px;
         min-height: 350px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.2em;
-        color: #1f2937;
-        font-weight: 600;
-        text-align: center;
-        border: 3px solid #10b981;
+        border: 3px solid #dc2626;
+        overflow: hidden;
       }
 
-      /* Advanced Capabilities Grid */
+      .capability-visual img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        border-radius: 12px;
+      }
+
+      /* Advanced Cards */
       .advanced-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -492,7 +574,7 @@
         left: 0;
         right: 0;
         height: 6px;
-        background: linear-gradient(90deg, #dc2626, #10b981);
+        background: linear-gradient(90deg, #dc2626, #ef4444);
         transform: scaleX(0);
         transition: transform 0.4s ease;
       }
@@ -502,9 +584,9 @@
       }
 
       .advanced-card:hover {
-        border-color: #10b981;
+        border-color: #dc2626;
         transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.2);
       }
 
       .advanced-card h3 {
@@ -516,16 +598,11 @@
 
       .advanced-card p {
         font-size: 1.1em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.7;
       }
 
-      /* Integration Flow Section */
-      .integration-section {
-        background: white;
-        padding: 0px 20px;
-      }
-
+      /* Integration Flow */
       .integration-flow {
         display: flex;
         justify-content: space-between;
@@ -541,7 +618,7 @@
         left: 15%;
         right: 15%;
         height: 4px;
-        background: linear-gradient(90deg, #dc2626, #b91010);
+        background: linear-gradient(90deg, #dc2626, #ef4444);
         z-index: 0;
       }
 
@@ -549,7 +626,7 @@
         background: white;
         padding: 35px;
         border-radius: 20px;
-        border: 4px solid #10b981;
+        border: 4px solid #dc2626;
         width: 22%;
         text-align: center;
         transition: all 0.4s ease;
@@ -560,8 +637,8 @@
 
       .flow-step:hover {
         transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25);
-        border-color: #dc2626;
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.25);
+        border-color: #ef4444;
       }
 
       .flow-step h4 {
@@ -573,55 +650,11 @@
 
       .flow-step p {
         font-size: 1.05em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.6;
       }
 
-      .integration-details {
-        margin-top: 60px;
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 45px;
-        border-radius: 20px;
-        border-left: 6px solid #10b981;
-      }
-
-      .integration-details h3 {
-        font-size: 2em;
-        color: #1f2937;
-        margin-bottom: 25px;
-        font-weight: 700;
-      }
-
-      .integration-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 25px;
-        margin-top: 25px;
-      }
-
-      .integration-point {
-        padding: 20px;
-        background: white;
-        border-radius: 12px;
-        border: 2px solid #10b981;
-        font-size: 1.1em;
-        color: #1f2937;
-        font-weight: 600;
-        transition: all 0.3s ease;
-      }
-
-      .integration-point:hover {
-        transform: translateX(10px);
-        box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15);
-        border-color: #dc2626;
-      }
-
-      /* Use Cases Section */
-      .usecases-section {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 0px 20px;
-      }
-
+      /* Use Cases */
       .usecase-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -639,9 +672,9 @@
       }
 
       .usecase-card:hover {
-        border-color: #10b981;
+        border-color: #dc2626;
         transform: translateY(-10px);
-        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.2);
       }
 
       .usecase-header {
@@ -660,7 +693,7 @@
 
       .usecase-content p {
         font-size: 1.1em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.7;
         margin-bottom: 15px;
       }
@@ -674,7 +707,7 @@
         padding: 12px 0;
         padding-left: 30px;
         position: relative;
-        color: #1f2937;
+        color: #1e293b;
         font-size: 1.05em;
         font-weight: 500;
       }
@@ -683,80 +716,12 @@
         content: "✓";
         position: absolute;
         left: 0;
-        color: #10b981;
+        color: #22c55e;
         font-weight: bold;
         font-size: 1.4em;
       }
 
-      /* Analytics Section */
-      .analytics-section {
-        background: white;
-        padding: 0px 20px;
-      }
-
-      .analytics-showcase {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
-        gap: 50px;
-        margin-top: 60px;
-        align-items: center;
-      }
-
-      .analytics-visual {
-        background: linear-gradient(135deg, #feffff 0%, #f9f9f9 100%);
-        padding: 50px;
-        border-radius: 25px;
-        min-height: 450px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.3em;
-        font-weight: 600;
-        text-align: center;
-        border: 4px solid #10b981;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
-      }
-
-      .analytics-features {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-      }
-
-      .analytics-feature {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 30px;
-        border-radius: 15px;
-        border-left: 5px solid #10b981;
-        transition: all 0.3s ease;
-      }
-
-      .analytics-feature:hover {
-        transform: translateX(15px);
-        box-shadow: 0 15px 35px rgba(16, 185, 129, 0.15);
-        border-left-color: #dc2626;
-      }
-
-      .analytics-feature h4 {
-        font-size: 1.5em;
-        color: #dc2626;
-        margin-bottom: 12px;
-        font-weight: 700;
-      }
-
-      .analytics-feature p {
-        font-size: 1.1em;
-        color: #374151;
-        line-height: 1.6;
-      }
-
-      /* Implementation Process Section */
-      .process-section {
-        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
-        padding: 0px 20px;
-      }
-
+      /* Timeline */
       .process-timeline {
         position: relative;
         margin-top: 80px;
@@ -770,7 +735,7 @@
         bottom: 0;
         left: 50%;
         width: 4px;
-        background: linear-gradient(180deg, #dc2626, #10b981);
+        background: linear-gradient(180deg, #dc2626, #ef4444);
       }
 
       .timeline-item {
@@ -789,16 +754,15 @@
         background: white;
         padding: 40px;
         border-radius: 20px;
-        border: 3px solid #10b981;
+        border: 3px solid #dc2626;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         transition: all 0.4s ease;
-        position: relative;
       }
 
       .timeline-content:hover {
         transform: scale(1.05);
-        box-shadow: 0 25px 60px rgba(16, 185, 129, 0.2);
-        border-color: #dc2626;
+        box-shadow: 0 25px 60px rgba(220, 38, 38, 0.2);
+        border-color: #ef4444;
       }
 
       .timeline-number {
@@ -830,17 +794,11 @@
 
       .timeline-content p {
         font-size: 1.15em;
-        color: #4b5563;
+        color: #475569;
         line-height: 1.7;
       }
 
-      /* Differentiators Section */
-      .differentiators-section {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 0px 20px;
-        color: #1f2937;
-      }
-
+      /* Differentiators */
       .differentiators-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -852,7 +810,7 @@
         background: white;
         padding: 45px 40px;
         border-radius: 20px;
-        border: 3px solid #b91010;
+        border: 3px solid #fecaca;
         transition: all 0.4s ease;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       }
@@ -873,11 +831,56 @@
 
       .differentiator-card p {
         font-size: 1.15em;
-        color: #374151;
+        color: #334155;
         line-height: 1.8;
       }
 
-      /* Final CTA Section */
+      /* Stats Section */
+      .stats-section {
+        background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+        padding: 100px 20px;
+        text-align: center;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 50px;
+        margin-top: 60px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .stat-item {
+        padding: 40px 30px;
+        background: white;
+        border-radius: 20px;
+        border: 3px solid transparent;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      .stat-item:hover {
+        border-color: #dc2626;
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 20px 50px rgba(220, 38, 38, 0.2);
+      }
+
+      .stat-number {
+        font-size: 4em;
+        color: #dc2626;
+        font-weight: 800;
+        margin-bottom: 15px;
+      }
+
+      .stat-label {
+        font-size: 1.2em;
+        color: #1e293b;
+        font-weight: 600;
+      }
+
+      /* Final CTA */
       .final-cta-section {
         background: linear-gradient(
           135deg,
@@ -885,7 +888,7 @@
           #b91c1c 50%,
           #991b1b 100%
         );
-        padding: 10px 20px;
+        padding: 100px 20px;
         text-align: center;
         color: white;
         position: relative;
@@ -906,7 +909,7 @@
           ),
           radial-gradient(
             circle at 70% 70%,
-            rgba(16, 185, 129, 0.12) 0%,
+            rgba(239, 68, 68, 0.12) 0%,
             transparent 50%
           );
       }
@@ -932,60 +935,86 @@
         opacity: 0.95;
       }
 
-      .final-cta-buttons {
-        display: flex;
-        gap: 25px;
-        justify-content: center;
-        flex-wrap: wrap;
+      /* Footer */
+      .site-footer {
+        background: #090909;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
       }
 
-      .final-cta-buttons .cta-button {
-        font-size: 1.2em;
-        padding: 22px 50px;
-      }
-
-      /* Stats Section */
-      .stats-section {
-        background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 100px 20px;
-        text-align: center;
-      }
-
-      .stats-grid {
+      .footer-content {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 50px;
-        margin-top: 60px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .stat-item {
-        padding: 40px 30px;
-        background: white;
-        border-radius: 20px;
-        border: 3px solid transparent;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
       }
 
-      .stat-item:hover {
-        border-color: #b91010;
-        transform: translateY(-10px) scale(1.05);
-        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.2);
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #ef4444;
+        margin-bottom: 12px;
       }
 
-      .stat-number {
-        font-size: 4em;
-        color: #dc2626;
-        font-weight: 800;
-        margin-bottom: 15px;
+      .footer-section p {
+        color: #f3f5f9;
+        line-height: 1.7;
       }
 
-      .stat-label {
-        font-size: 1.2em;
-        color: #1f2937;
-        font-weight: 600;
+      .solutions-grid-footer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        list-style: none;
+        padding: 0;
       }
 
+      .solutions-grid-footer li a {
+        color: #f8f9fa;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .solutions-grid-footer li a:hover {
+        color: #ef4444;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #f6f7f9;
+        font-size: 13 px;
+      }
+
+      /* Responsive Design */
       @media (max-width: 1024px) {
         .problem-content,
         .capability-item,
@@ -1014,60 +1043,85 @@
         .usecase-grid {
           grid-template-columns: 1fr;
         }
+
         .differentiators-grid {
           grid-template-columns: 1fr;
         }
+
         .timeline-item {
           grid-template-columns: 1fr;
           gap: 40px;
         }
+
         .process-timeline::before {
           left: 30px;
         }
+
         .timeline-number {
           left: 30px;
         }
       }
+
       @media (max-width: 768px) {
         .navbar-content {
           padding: 0 30px;
         }
+
         .hero {
           padding: 140px 20px 80px;
         }
+
         .hero h1 {
           font-size: 2.2em;
         }
+
         .section-title {
           font-size: 2em;
         }
+
         .container {
           padding: 60px 30px;
         }
+
         .nav-links {
           display: none;
         }
+
         .problem-visual {
           grid-template-columns: 1fr;
         }
-        .integration-grid {
-          grid-template-columns: 1fr;
-        }
+
         .advanced-grid {
           grid-template-columns: 1fr;
         }
+
         .final-cta-content h2 {
           font-size: 2.5em;
+        }
+
+        .solutions-grid-footer {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Scroll to Top Button -->
+    <button
+      class="scroll-to-top"
+      id="scrollToTop"
+      aria-label="Scroll to top"
+    ></button>
+
+    <!-- Navbar -->
     <nav class="navbar" id="navbar">
       <div class="navbar-content">
         <div class="logo-container">
           <img
-            src="images/logo.png"
+            src="https://www.zolytics.in/files/logo.png"
             style="height: 80px; width: auto"
             alt="Zolytics"
           />
@@ -1077,10 +1131,10 @@
             class="logo"
           />
         </div>
-       
       </div>
     </nav>
 
+    <!-- Hero Section -->
     <div class="hero">
       <div class="hero-content">
         <h1>
@@ -1091,6 +1145,10 @@
           audit, and post employee expenses automatically—fully integrated with
           accounting and payroll.
         </p>
+        <div class="cta-buttons">
+          <button class="cta-button">Start Free Trial</button>
+          <button class="cta-button secondary">Schedule Demo</button>
+        </div>
       </div>
     </div>
 
@@ -1138,7 +1196,7 @@
     </div>
 
     <!-- Core Capabilities Section -->
-    <div class="capabilities-section" id="capabilities">
+    <div class="section-blue" id="capabilities">
       <div class="container">
         <h2 class="section-title">What a Modern Expense Platform Can Do</h2>
         <p class="section-subtitle">
@@ -1170,7 +1228,6 @@
             <img
               src="https://d3pxwdeb4y32a1.cloudfront.net/wp-content/uploads/2025/10/why-user-trust-4f7b6eb7b52617caf18e95061fa146cc.webp"
               alt="Smart Expense Capture"
-              style="width: 480px; height: 450px"
             />
           </div>
         </div>
@@ -1198,7 +1255,6 @@
             <img
               src="https://www.expenseout.com/wp-content/uploads/2025/03/The-Role-of-Effective-Policy-Enforcement-in-Corporate-Expense-Management-scaled.jpg"
               alt="Policy-Driven Expense Controls"
-              style="width: 480px; height: 450px"
             />
           </div>
         </div>
@@ -1226,7 +1282,6 @@
             <img
               src="https://cdn.signavio.com/uploads/2018/07/Signavio-Workflow-working-late-WEB.jpg"
               alt="Multi-Level Approval"
-              style="width: 480px; height: 400px"
             />
           </div>
         </div>
@@ -1254,7 +1309,6 @@
             <img
               src="https://www.zaggle.in/blog/wp-content/uploads/2020/04/Why-Businesses-Should-Automate-Mileage-Tracking.jpg"
               alt="Corporate Card & Mileage Automation"
-              style="width: 480px; height: 450px"
             />
           </div>
         </div>
@@ -1262,7 +1316,7 @@
     </div>
 
     <!-- Advanced Capabilities -->
-    <div class="section-dark">
+    <div class="section-white">
       <div class="container">
         <h2 class="section-title">
           Advanced Expense Capabilities We Configure
@@ -1324,7 +1378,7 @@
     </div>
 
     <!-- Integration Section -->
-    <div class="integration-section">
+    <div class="section-gray">
       <div class="container">
         <h2 class="section-title">
           From Expense to Books—Without Manual Entry
@@ -1351,25 +1405,11 @@
             <p>Integrated with payroll or payments</p>
           </div>
         </div>
-
-        <div class="integration-details">
-          <h3>We Handle the Complete Integration</h3>
-          <div class="integration-grid">
-            <div class="integration-point">Chart of Accounts mapping</div>
-            <div class="integration-point">
-              Tax treatment rules configuration
-            </div>
-            <div class="integration-point">Reimbursement vs payable logic</div>
-            <div class="integration-point">Month-end closing alignment</div>
-            <div class="integration-point">Project cost report generation</div>
-            <div class="integration-point">Real-time financial dashboards</div>
-          </div>
-        </div>
       </div>
     </div>
 
     <!-- Use Cases Section -->
-    <div class="usecases-section">
+    <div class="section-blue">
       <div class="container">
         <h2 class="section-title">How Teams Use This System Daily</h2>
         <p class="section-subtitle">
@@ -1434,67 +1474,8 @@
       </div>
     </div>
 
-    <!-- Analytics Section -->
-    <div class="analytics-section">
-      <div class="container">
-        <h2 class="section-title">Expense Data That Drives Better Decisions</h2>
-        <p class="section-subtitle">
-          Transform expense tracking into strategic intelligence
-        </p>
-
-        <div class="analytics-showcase">
-          <div class="analytics-visual">
-            <img
-              src="https://assets.qlik.com/image/upload/w_2378/q_auto/qlik/glossary/dashboard-examples/seo-hero-financial-dashboards_ttulhs.png"
-              alt="Corporate Card & Mileage Automation"
-              style="width: 480px; height: 450px"
-            />
-          </div>
-          <div class="analytics-features">
-            <div class="analytics-feature">
-              <h4>Department-wise Expense Trends</h4>
-              <p>
-                Track spending patterns across teams and identify cost
-                optimization opportunities.
-              </p>
-            </div>
-            <div class="analytics-feature">
-              <h4>Policy Violation Reports</h4>
-              <p>
-                Monitor compliance rates and identify areas needing policy
-                adjustments.
-              </p>
-            </div>
-            <div class="analytics-feature">
-              <h4>Cost per Project / Client</h4>
-              <p>
-                Understand true project costs with detailed expense allocation
-                and analysis.
-              </p>
-            </div>
-            <div class="analytics-feature">
-              <h4>Reimbursement Cycle Analysis</h4>
-              <p>
-                Track approval times and optimize workflows for faster employee
-                reimbursements.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="integration-details" style="margin-top: 60px">
-          <h3>Consulting Angle: Custom Intelligence</h3>
-          <p style="font-size: 1.15em; color: #1f2937; margin-top: 20px">
-            We build custom dashboards that turn expense data into cost-control
-            intelligence, helping you make informed decisions about spending,
-            policies, and resource allocation.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Process Section -->
-    <div class="process-section" id="process">
+    <!-- Implementation Process Section -->
+    <div class="section-white" id="process">
       <div class="container">
         <h2 class="section-title">How We Implement Expense Systems</h2>
         <p class="section-subtitle">
@@ -1558,7 +1539,7 @@
     </div>
 
     <!-- Differentiators Section -->
-    <div class="differentiators-section">
+    <div class="section-blue">
       <div class="container">
         <h2 class="section-title">
           More Than Software Setup—We Build Control Systems
@@ -1608,10 +1589,8 @@
       </div>
     </div>
 
-    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
@@ -1622,37 +1601,60 @@
           </p>
         </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics.html">Zoho Analytics</a></li>
-              <li><a href="bigin.html">Zoho Bigin</a></li>
-              <li><a href="billing.html">Zoho Billing</a></li>
-              <li><a href="books.html">Zoho Books</a></li>
-              <li><a href="commerce.html">Zoho Commerce</a></li>
-              <li><a href="/zoho-crm.html">Zoho CRM</a></li>
-              <li><a href="expense.html">Zoho Expense</a></li>
+            <ul class="solutions-grid-footer">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory.html">Zoho Inventory</a></li>
-
-              <li><a href="payroll.html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus.html">Zoho People Plus</a></li>
-
-              <li><a href="recruit.html">Zoho Recruit</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+              <li><a href="recruit-html">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Contact -->
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>
             Email: info@zolytics.in <br />
             Phone: +91 90 7313 9613<br />
             Location: India
+          </p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+             <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
           </p>
           <div class="zoho-logo">
             <img
@@ -1671,136 +1673,6 @@
       </div>
     </footer>
 
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
-
     <script>
       // Navbar scroll effect
       window.addEventListener("scroll", function () {
@@ -1810,6 +1682,49 @@
         } else {
           navbar.classList.remove("scrolled");
         }
+      });
+
+      // Progress bar
+      window.addEventListener("scroll", function () {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("progressBar").style.width = scrolled + "%";
+      });
+
+      // Scroll to top button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add("visible");
+        } else {
+          scrollToTopBtn.classList.remove("visible");
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
       });
     </script>
   </body>
