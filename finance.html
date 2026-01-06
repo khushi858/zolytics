@@ -102,7 +102,7 @@
       .nav-container {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 0 60px;
+        padding: 0 clamp(20px, 4vw, 60px);
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -123,7 +123,7 @@
       }
 
       .logo {
-        margin-left: 50px;
+        margin-left: clamp(20px, 4vw, 50px);
         display: flex;
         align-items: center;
         gap: 12px;
@@ -138,6 +138,13 @@
       .logo img {
         display: block;
         filter: drop-shadow(0 4px 12px rgba(22, 163, 74, 0.2));
+        max-height: 85px;
+        height: auto;
+        width: auto;
+      }
+
+      .logo img:last-child {
+        max-height: 50px;
       }
 
       .hero {
@@ -151,13 +158,13 @@
           #1a2942 80%,
           #0a0e1a 100%
         );
-        padding: 10rem 0 8rem;
+        padding: clamp(6rem, 15vw, 10rem) 0 clamp(4rem, 10vw, 8rem);
         position: relative;
         overflow: hidden;
       }
-      /* Add to your CSS */
+
       .hero-tagline {
-        font-size: 1.8rem;
+        font-size: clamp(1.2rem, 2.5vw, 1.8rem);
         color: #cbd5e1;
         font-weight: 600;
         letter-spacing: 1px;
@@ -169,6 +176,7 @@
         font-weight: 800;
         text-shadow: 0 0 30px rgba(34, 197, 94, 0.6);
       }
+
       .hero::before {
         content: "";
         position: absolute;
@@ -206,10 +214,10 @@
 
       .hero h1 {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 4.5rem;
+        font-size: clamp(2rem, 5vw, 4.5rem);
         font-weight: 900;
         line-height: 1.1;
-        letter-spacing: -3px;
+        letter-spacing: clamp(-2px, -0.5vw, -3px);
         margin-bottom: 2rem;
         background: linear-gradient(
           135deg,
@@ -223,7 +231,7 @@
       }
 
       .hero p.lead {
-        font-size: 1.4rem;
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
         color: #e2e8f0;
         line-height: 1.8;
         margin-bottom: 3rem;
@@ -235,9 +243,9 @@
       }
 
       .btn-hero {
-        padding: 1.4rem 3.5rem;
+        padding: clamp(1rem, 2vw, 1.4rem) clamp(2rem, 4vw, 3.5rem);
         border-radius: 50px;
-        font-size: 1.1rem;
+        font-size: clamp(0.95rem, 1.5vw, 1.1rem);
         font-weight: 700;
         text-decoration: none;
         display: inline-block;
@@ -298,17 +306,17 @@
       }
 
       section {
-        padding: 6rem 0;
+        padding: clamp(3rem, 8vw, 6rem) 0;
         position: relative;
         clear: both;
       }
 
       .section-subtitle {
-        font-size: 0.85rem;
+        font-size: clamp(0.75rem, 1.2vw, 0.85rem);
         color: var(--primary-green);
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 4px;
+        letter-spacing: clamp(2px, 0.5vw, 4px);
         margin-bottom: 1.5rem;
         display: inline-block;
         padding: 0.5rem 1.5rem;
@@ -323,16 +331,16 @@
 
       .section-title {
         font-family: "Space Grotesk", sans-serif;
-        font-size: 3.2rem;
+        font-size: clamp(2rem, 4vw, 3.2rem);
         font-weight: 900;
-        letter-spacing: -2px;
+        letter-spacing: clamp(-1px, -0.3vw, -2px);
         margin-bottom: 2rem;
         color: var(--dark-gray);
       }
 
       .feature-number-box {
-        width: 50px;
-        height: 50px;
+        width: clamp(45px, 7vw, 50px);
+        height: clamp(45px, 7vw, 50px);
         border-radius: 15px;
         background: linear-gradient(
           135deg,
@@ -354,7 +362,7 @@
 
       .problem-box {
         background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
-        padding: 3.5rem;
+        padding: clamp(2rem, 4vw, 3.5rem);
         border-radius: 30px;
         box-shadow: 0 25px 60px rgba(22, 163, 74, 0.15);
         border: 2px solid rgba(22, 163, 74, 0.2);
@@ -382,7 +390,7 @@
         backdrop-filter: blur(10px);
         border: 2px solid rgba(34, 197, 94, 0.2);
         border-radius: 25px;
-        padding: 2.5rem 2rem;
+        padding: clamp(2rem, 3vw, 2.5rem) clamp(1.5rem, 2.5vw, 2rem);
         text-align: center;
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         height: 100%;
@@ -396,8 +404,8 @@
       }
 
       .consulting-icon {
-        width: 80px;
-        height: 80px;
+        width: clamp(70px, 10vw, 80px);
+        height: clamp(70px, 10vw, 80px);
         border-radius: 20px;
         background: linear-gradient(
           135deg,
@@ -410,7 +418,7 @@
         margin: 0 auto 1.5rem;
         box-shadow: 0 15px 40px rgba(22, 163, 74, 0.4);
         transition: all 0.5s;
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 3vw, 2.5rem);
       }
 
       .consulting-card:hover .consulting-icon {
@@ -423,7 +431,7 @@
         backdrop-filter: blur(15px);
         border: 2px solid rgba(34, 197, 94, 0.3);
         border-radius: 30px;
-        padding: 3rem;
+        padding: clamp(2rem, 4vw, 3rem);
         max-width: 1000px;
         margin: 0 auto;
       }
@@ -435,10 +443,10 @@
           var(--secondary-green)
         );
         color: white;
-        padding: 0.8rem 1.8rem;
+        padding: clamp(0.6rem, 1.2vw, 0.8rem) clamp(1.2rem, 2vw, 1.8rem);
         border-radius: 50px;
         font-weight: 700;
-        font-size: 0.95rem;
+        font-size: clamp(0.8rem, 1.3vw, 0.95rem);
         display: inline-block;
         margin: 0.5rem;
         transition: all 0.3s;
@@ -449,30 +457,58 @@
         box-shadow: 0 10px 25px rgba(22, 163, 74, 0.4);
       }
 
+      /* IMPROVED FILTER TABS */
       .filter-tabs {
         display: flex;
         justify-content: center;
-        gap: 1rem;
+        align-items: center;
+        gap: clamp(0.8rem, 2vw, 1.2rem);
         margin-bottom: 4rem;
         flex-wrap: wrap;
+        padding: 0 clamp(1rem, 3vw, 2rem);
       }
 
       .filter-tab {
-        padding: 1rem 2.5rem;
-        border: 2px solid rgba(22, 163, 74, 0.2);
+        padding: clamp(0.9rem, 1.8vw, 1.1rem) clamp(1.8rem, 3.5vw, 2.8rem);
+        border: 2px solid rgba(22, 163, 74, 0.25);
         background: white;
         color: var(--medium-gray);
         border-radius: 50px;
         cursor: pointer;
-        transition: all 0.4s;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         font-weight: 600;
-        font-size: 0.95rem;
+        font-size: clamp(0.9rem, 1.4vw, 1rem);
+        white-space: nowrap;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .filter-tab::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(22, 163, 74, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .filter-tab:hover::before {
+        left: 100%;
       }
 
       .filter-tab:hover {
         border-color: var(--primary-green);
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.15);
+        transform: translateY(-4px);
+        box-shadow: 0 12px 35px rgba(22, 163, 74, 0.2);
+        color: var(--dark-gray);
       }
 
       .filter-tab.active {
@@ -483,35 +519,67 @@
         );
         color: white;
         border-color: transparent;
-        box-shadow: 0 10px 40px rgba(22, 163, 74, 0.4);
+        box-shadow: 0 12px 45px rgba(22, 163, 74, 0.45);
+        transform: translateY(-2px) scale(1.05);
       }
 
+      .filter-tab.active::before {
+        display: none;
+      }
+
+      /* IMPROVED SOLUTIONS GRID */
       .solutions-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 2.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+        gap: clamp(2rem, 3.5vw, 3rem);
         margin-top: 3rem;
+        padding: 0 clamp(1rem, 3vw, 0);
       }
 
+      /* ENHANCED FINANCE CARDS */
       .finance-card {
         background: white;
         border-radius: 30px;
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         overflow: hidden;
-        border: 1px solid rgba(0, 0, 0, 0.05);
+        border: 2px solid rgba(22, 163, 74, 0.1);
         position: relative;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .finance-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(22, 163, 74, 0.08) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.6s;
+        pointer-events: none;
+      }
+
+      .finance-card:hover::after {
+        opacity: 1;
       }
 
       .finance-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 35px 70px rgba(22, 163, 74, 0.25);
-        border-color: rgba(22, 163, 74, 0.3);
+        transform: translateY(-18px) scale(1.03);
+        box-shadow: 0 40px 80px rgba(22, 163, 74, 0.3);
+        border-color: rgba(22, 163, 74, 0.4);
       }
 
       .card-image-container {
         width: 100%;
-        height: 260px;
+        height: clamp(220px, 32vw, 280px);
         overflow: hidden;
         position: relative;
       }
@@ -526,59 +594,97 @@
           var(--secondary-green)
         );
         color: white;
-        padding: 0.5rem 1.5rem;
+        padding: 0.6rem 1.6rem;
         border-radius: 50px;
-        font-size: 0.75rem;
+        font-size: clamp(0.7rem, 1vw, 0.8rem);
         font-weight: 700;
         text-transform: uppercase;
         z-index: 2;
-        box-shadow: 0 5px 20px rgba(22, 163, 74, 0.4);
+        box-shadow: 0 8px 25px rgba(22, 163, 74, 0.5);
+        letter-spacing: 0.5px;
       }
 
       .card-image {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+        filter: brightness(0.95);
       }
 
       .finance-card:hover .card-image {
-        transform: scale(1.15);
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 30px 70px rgba(22, 163, 74, 0.2);
+        border-color: rgba(22, 163, 74, 0.3);
       }
 
       .card-content {
-        padding: 2.5rem;
+        padding: clamp(1.8rem, 3.5vw, 2.8rem);
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .finance-card h3 {
         color: var(--primary-green);
         font-family: "Space Grotesk", sans-serif;
-        font-size: 1.7rem;
-        margin-bottom: 1rem;
+        font-size: clamp(1.4rem, 2.3vw, 1.8rem);
+        margin-bottom: 1.2rem;
         font-weight: 800;
+        letter-spacing: -0.5px;
+        position: relative;
+        padding-bottom: 0.8rem;
+      }
+
+      .finance-card h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-green),
+          var(--secondary-green)
+        );
+        border-radius: 2px;
+        transition: width 0.4s;
+      }
+
+      .finance-card:hover h3::after {
+        width: 100px;
       }
 
       .finance-card p {
         color: var(--medium-gray);
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-        font-size: 1.05rem;
+        line-height: 1.9;
+        margin-bottom: 1.8rem;
+        font-size: clamp(0.98rem, 1.35vw, 1.08rem);
+        flex-grow: 1;
       }
 
       .features-list {
         list-style: none;
         padding: 0;
-        margin: 0 0 1.5rem 0;
+        margin: 0 0 1.8rem 0;
       }
 
       .features-list li {
-        padding: 0.9rem 0;
+        padding: 1rem 0;
         color: var(--medium-gray);
         display: flex;
         align-items: center;
-        gap: 1rem;
-        font-size: 0.95rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        gap: 1.2rem;
+        font-size: clamp(0.9rem, 1.25vw, 1rem);
+        border-bottom: 1px solid rgba(22, 163, 74, 0.08);
+        transition: all 0.3s;
+      }
+
+      .features-list li:hover {
+        padding-left: 8px;
+        color: var(--dark-gray);
+        border-bottom-color: rgba(22, 163, 74, 0.2);
       }
 
       .features-list li:last-child {
@@ -589,8 +695,8 @@
         content: "✓";
         color: white;
         font-weight: bold;
-        width: 28px;
-        height: 28px;
+        width: 30px;
+        height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -601,7 +707,13 @@
           var(--secondary-green)
         );
         flex-shrink: 0;
-        box-shadow: 0 5px 15px rgba(22, 163, 74, 0.3);
+        box-shadow: 0 6px 18px rgba(22, 163, 74, 0.35);
+        transition: all 0.3s;
+      }
+
+      .features-list li:hover::before {
+        transform: scale(1.15) rotate(10deg);
+        box-shadow: 0 8px 22px rgba(22, 163, 74, 0.5);
       }
 
       .btn-learn-more {
@@ -612,20 +724,23 @@
         );
         color: white;
         border: none;
-        padding: 0.9rem 2rem;
+        padding: clamp(0.9rem, 1.4vw, 1rem) clamp(1.8rem, 2.8vw, 2.2rem);
         border-radius: 50px;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.4s;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         width: 100%;
-        margin-top: 1rem;
-        font-size: 0.95rem;
-        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.3);
+        margin-top: auto;
+        font-size: clamp(0.9rem, 1.25vw, 1rem);
+        box-shadow: 0 10px 30px rgba(22, 163, 74, 0.35);
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
       }
 
       .btn-learn-more:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 15px 40px rgba(22, 163, 74, 0.5);
+        transform: translateY(-4px);
+        box-shadow: 0 18px 45px rgba(22, 163, 74, 0.55);
+        letter-spacing: 1px;
       }
 
       .app-modal {
@@ -710,19 +825,19 @@
       .modal-header h2 {
         color: white;
         font-family: "Space Grotesk", sans-serif;
-        font-size: 2.5rem;
+        font-size: clamp(1.8rem, 3vw, 2.5rem);
         font-weight: 900;
         margin-bottom: 1rem;
       }
 
       .modal-header p {
         color: #cbd5e1;
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
         margin: 0;
       }
 
       .modal-body {
-        padding: 3rem;
+        padding: clamp(2rem, 4vw, 3rem);
       }
 
       .modal-section {
@@ -732,7 +847,7 @@
       .modal-section h3 {
         color: var(--primary-green);
         font-family: "Space Grotesk", sans-serif;
-        font-size: 1.8rem;
+        font-size: clamp(1.4rem, 2.2vw, 1.8rem);
         font-weight: 800;
         margin-bottom: 1.5rem;
       }
@@ -740,12 +855,12 @@
       .modal-section p {
         color: var(--medium-gray);
         line-height: 1.9;
-        font-size: 1.05rem;
+        font-size: clamp(0.95rem, 1.3vw, 1.05rem);
       }
 
       .feature-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
         gap: 1.5rem;
         margin-top: 2rem;
       }
@@ -766,13 +881,13 @@
         color: var(--dark-gray);
         font-weight: 700;
         margin-bottom: 0.8rem;
-        font-size: 1.1rem;
+        font-size: clamp(1rem, 1.4vw, 1.1rem);
       }
 
       .feature-box p {
         color: var(--medium-gray);
         margin: 0;
-        font-size: 0.95rem;
+        font-size: clamp(0.85rem, 1.2vw, 0.95rem);
         line-height: 1.7;
       }
 
@@ -790,7 +905,7 @@
         border-radius: 10px;
         box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
         color: var(--medium-gray);
-        font-size: 1.05rem;
+        font-size: clamp(0.95rem, 1.3vw, 1.05rem);
       }
 
       .use-case-list li strong {
@@ -815,7 +930,7 @@
 
       .benefit-card {
         background: white;
-        padding: 3rem 2.5rem;
+        padding: clamp(2rem, 3.5vw, 3rem) clamp(1.5rem, 3vw, 2.5rem);
         border-radius: 30px;
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
         text-align: center;
@@ -831,8 +946,8 @@
       }
 
       .benefit-img {
-        width: 100px;
-        height: 100px;
+        width: clamp(80px, 12vw, 100px);
+        height: clamp(80px, 12vw, 100px);
         margin: 0 auto 2rem;
         filter: drop-shadow(0 10px 25px rgba(22, 163, 74, 0.2));
         transition: all 0.5s;
@@ -846,7 +961,7 @@
       .benefit-card h3 {
         color: var(--primary-green);
         margin-bottom: 1rem;
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 1.8vw, 1.5rem);
         font-weight: 800;
         font-family: "Space Grotesk", sans-serif;
       }
@@ -854,18 +969,18 @@
       .benefit-card p {
         color: var(--medium-gray);
         line-height: 1.8;
-        font-size: 1.05rem;
+        font-size: clamp(0.95rem, 1.3vw, 1.05rem);
       }
 
       .integration-box {
         background: white;
-        padding: 2.5rem 3rem;
+        padding: clamp(1.8rem, 3vw, 2.5rem) clamp(2rem, 3.5vw, 3rem);
         border-radius: 25px;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
         transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
         cursor: pointer;
         border: 2px solid rgba(22, 163, 74, 0.1);
-        min-width: 200px;
+        min-width: clamp(160px, 20vw, 200px);
         text-align: center;
       }
 
@@ -876,7 +991,7 @@
       }
 
       .integration-box strong {
-        font-size: 1.2rem;
+        font-size: clamp(1rem, 1.5vw, 1.2rem);
         font-family: "Space Grotesk", sans-serif;
         font-weight: 800;
         color: var(--dark-gray);
@@ -885,12 +1000,12 @@
       }
 
       .integration-box small {
-        font-size: 0.9rem;
+        font-size: clamp(0.8rem, 1.1vw, 0.9rem);
         color: var(--medium-gray);
       }
 
       .integration-arrow {
-        font-size: 3rem;
+        font-size: clamp(2rem, 3.5vw, 3rem);
         color: var(--primary-green);
         font-weight: bold;
         animation: pulse 2s ease-in-out infinite;
@@ -914,7 +1029,7 @@
           #dcfce7 50%,
           #ffffff 100%
         );
-        padding: 4rem 3rem;
+        padding: clamp(2.5rem, 5vw, 4rem) clamp(2rem, 4vw, 3rem);
         border-radius: 40px;
         box-shadow: 0 25px 70px rgba(22, 163, 74, 0.15);
         max-width: 1100px;
@@ -923,15 +1038,15 @@
       }
 
       .stat-number {
-        font-size: 3.5rem;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
         font-weight: 900;
         color: var(--primary-green);
         font-family: "Space Grotesk", sans-serif;
         text-shadow: 0 5px 20px rgba(22, 163, 74, 0.2);
       }
-      /* Add to your CSS */
+
       .comparison-box {
-        padding: 3rem;
+        padding: clamp(2rem, 4vw, 3rem);
         border-radius: 30px;
         height: 100%;
         backdrop-filter: blur(10px);
@@ -961,7 +1076,7 @@
 
       .comparison-box h3 {
         color: white;
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 2.5vw, 2rem);
         font-weight: 900;
         margin-bottom: 2rem;
         font-family: "Space Grotesk", sans-serif;
@@ -975,7 +1090,7 @@
 
       .comparison-list li {
         color: #e2e8f0;
-        font-size: 1.1rem;
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
         line-height: 2;
         padding: 1rem 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1005,17 +1120,17 @@
         font-size: 1.3rem;
       }
 
-      /* Add to your CSS */
       .features-timeline {
         max-width: 900px;
         margin: 3rem auto 0;
         position: relative;
+        padding: 0 clamp(1rem, 3vw, 0);
       }
 
       .features-timeline::before {
         content: "";
         position: absolute;
-        left: 40px;
+        left: clamp(30px, 5vw, 40px);
         top: 0;
         bottom: 0;
         width: 4px;
@@ -1029,14 +1144,14 @@
 
       .timeline-item {
         display: flex;
-        gap: 2rem;
+        gap: clamp(1rem, 2.5vw, 2rem);
         margin-bottom: 3rem;
         position: relative;
       }
 
       .timeline-icon {
-        width: 80px;
-        height: 80px;
+        width: clamp(60px, 10vw, 80px);
+        height: clamp(60px, 10vw, 80px);
         border-radius: 50%;
         background: linear-gradient(
           135deg,
@@ -1046,7 +1161,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2.5rem;
+        font-size: clamp(2rem, 3vw, 2.5rem);
         flex-shrink: 0;
         box-shadow: 0 10px 30px rgba(22, 163, 74, 0.4);
         transition: all 0.5s;
@@ -1062,7 +1177,7 @@
       .timeline-content {
         flex: 1;
         background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
-        padding: 2rem 2.5rem;
+        padding: clamp(1.5rem, 2.5vw, 2rem) clamp(1.8rem, 3vw, 2.5rem);
         border-radius: 20px;
         border: 2px solid rgba(22, 163, 74, 0.2);
         transition: all 0.4s;
@@ -1076,7 +1191,7 @@
 
       .timeline-content h3 {
         color: var(--primary-green);
-        font-size: 1.6rem;
+        font-size: clamp(1.3rem, 2vw, 1.6rem);
         font-weight: 800;
         margin-bottom: 0.8rem;
         font-family: "Space Grotesk", sans-serif;
@@ -1085,24 +1200,8 @@
       .timeline-content p {
         color: var(--medium-gray);
         line-height: 1.8;
-        font-size: 1.05rem;
+        font-size: clamp(0.95rem, 1.3vw, 1.05rem);
         margin: 0;
-      }
-
-      @media (max-width: 768px) {
-        .features-timeline::before {
-          left: 30px;
-        }
-
-        .timeline-icon {
-          width: 60px;
-          height: 60px;
-          font-size: 2rem;
-        }
-
-        .timeline-item {
-          gap: 1rem;
-        }
       }
 
       .fade-in {
@@ -1121,65 +1220,202 @@
       }
 
       @media (max-width: 1200px) {
-        .hero h1 {
-          font-size: 3.8rem;
-        }
-        .section-title {
-          font-size: 2.8rem;
-        }
-        .solutions-grid {
-          grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+        .nav-container {
+          padding: 0 30px;
         }
       }
 
       @media (max-width: 992px) {
-        .hero h1 {
-          font-size: 3.2rem;
-        }
-        section {
-          padding: 4rem 0;
-        }
         .solutions-grid {
-          grid-template-columns: 1fr;
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(min(100%, 320px), 1fr)
+          );
+        }
+
+        .features-timeline::before {
+          left: 30px;
         }
       }
 
       @media (max-width: 768px) {
         .hero {
-          padding: 6rem 0 4rem;
-          margin-top: 80px;
+          margin-top: 70px;
         }
-        .hero h1 {
-          font-size: 2.5rem;
-          letter-spacing: -1px;
+
+        .logo {
+          margin-left: 20px;
         }
-        .hero p.lead {
-          font-size: 1.2rem;
+
+        .logo img {
+          max-height: 70px;
         }
-        .section-title {
-          font-size: 2.2rem;
+
+        .logo img:last-child {
+          max-height: 40px;
         }
-        .stat-number {
-          font-size: 2.8rem;
+
+        .timeline-item {
+          gap: 1rem;
         }
-        .btn-hero {
-          padding: 1.2rem 2.5rem;
-          font-size: 1rem;
-        }
-        section {
-          padding: 3rem 0;
-        }
+
         .integration-arrow {
-          font-size: 2rem;
+          display: block;
+          margin: 1rem 0;
+        }
+
+        .d-flex.gap-4 {
+          gap: 1rem !important;
+        }
+
+        .filter-tabs {
+          gap: 0.6rem;
+        }
+
+        .filter-tab {
+          font-size: 0.85rem;
+          padding: 0.8rem 1.5rem;
         }
       }
 
       @media (max-width: 480px) {
-        .hero h1 {
-          font-size: 2rem;
+        .filter-tabs {
+          gap: 0.5rem;
         }
-        .section-title {
-          font-size: 1.8rem;
+
+        .filter-tab {
+          font-size: 0.8rem;
+          padding: 0.7rem 1.2rem;
+        }
+
+        .solutions-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: clamp(50px, 8vw, 75px) 5% 25px;
+        font-size: clamp(13px, 1.2vw, 14px);
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: clamp(25px, 4vw, 40px);
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: clamp(18px, 2vw, 22px);
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: clamp(16px, 1.8vw, 18px);
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid-footer {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: clamp(20px, 4vw, 40px);
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid-footer li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid-footer li:hover {
+        color: #38bdf8;
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: clamp(120px, 15vw, 140px);
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: clamp(12px, 1.1vw, 13px);
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+        }
+
+        .solutions-grid-footer {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+
+        .center-heading {
+          margin-right: 0;
         }
       }
     </style>
@@ -1188,12 +1424,15 @@
     <div class="progress-bar-container">
       <div class="progress-bar" id="progressBar"></div>
     </div>
-
     <header id="header">
       <div class="nav-container">
         <nav class="nav">
           <div class="logo">
-            <img src="images/logo.png" style="height: 85px" alt="Zoho" />
+            <img
+              src="https://www.zolytics.in/files/logo.png"
+              style="height: 85px"
+              alt="Zoho"
+            />
             <img
               src="images/finance-removebg-preview.png"
               style="height: 50px"
@@ -1211,7 +1450,6 @@
             <h1 class="fade-in">
               End-to-End Financial Transformation Powered by Zoho Finance Plus
             </h1>
-            <!-- Add this right after the h1 in hero section -->
             <div class="hero-tagline fade-in" style="margin-bottom: 2rem">
               <span class="tagline-highlight">Simple</span> to use.
               <span class="tagline-highlight">Smart</span> by design.
@@ -1431,7 +1669,7 @@
         </div>
       </div>
     </section>
-    <!-- Add after capabilities section -->
+
     <section
       style="
         background: linear-gradient(135deg, #0a0e1a 0%, #1a2942 100%);
@@ -1488,7 +1726,6 @@
       </div>
     </section>
 
-    <!-- Add after solutions section -->
     <section style="background: white; padding: 6rem 0">
       <div class="container">
         <div class="text-center mb-5 fade-in">
@@ -1554,7 +1791,6 @@
         </div>
       </div>
     </section>
-
     <section
       style="
         background: linear-gradient(
@@ -2125,10 +2361,8 @@
       </div>
     </section>
 
-    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
@@ -2139,31 +2373,26 @@
           </p>
         </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics.html">Zoho Analytics</a></li>
-              <li><a href="bigin.html">Zoho Bigin</a></li>
-              <li><a href="billing.html">Zoho Billing</a></li>
-              <li><a href="books.html">Zoho Books</a></li>
-              <li><a href="commerce.html">Zoho Commerce</a></li>
-              <li><a href="/zoho-crm.html">Zoho CRM</a></li>
-              <li><a href="expense.html">Zoho Expense</a></li>
+            <ul class="solutions-grid-footer">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory.html">Zoho Inventory</a></li>
-
-              <li><a href="payroll.html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus.html">Zoho People Plus</a></li>
-
-              <li><a href="recruit.html">Zoho Recruit</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+              <li><a href="recruit-html">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Contact -->
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>
@@ -2171,6 +2400,33 @@
             Phone: +91 90 7313 9613<br />
             Location: India
           </p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: -10px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500"> +91 90 7313 9613</span>
+            </a>
+          </div>
           <div class="zoho-logo">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
@@ -2187,137 +2443,6 @@
         </p>
       </div>
     </footer>
-
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #0a1f44;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        font-style: oblique;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: center;
-        margin-bottom: 18px;
-        margin-right: 110px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
@@ -2745,42 +2870,42 @@
         const featuresHTML = data.features
           .map(
             (f) => `
-          <div class="feature-box">
-            <h4>${f.title}</h4>
-            <p>${f.desc}</p>
-          </div>
-        `
+      <div class="feature-box">
+        <h4>${f.title}</h4>
+        <p>${f.desc}</p>
+      </div>
+    `
           )
           .join("");
 
         const useCasesHTML = data.useCases
           .map(
             (u) => `
-          <li><strong>${u.title}:</strong> ${u.desc}</li>
-        `
+      <li><strong>${u.title}:</strong> ${u.desc}</li>
+    `
           )
           .join("");
 
         const modalHTML = `
-          <div class="modal-header">
-            <h2>${data.title}</h2>
-            <p>${data.subtitle}</p>
-          </div>
-          <div class="modal-body">
-            <div class="modal-section">
-              <h3>What is ${data.title}?</h3>
-              <p>${data.description}</p>
-            </div>
-            <div class="modal-section">
-              <h3>Key Features</h3>
-              <div class="feature-grid">${featuresHTML}</div>
-            </div>
-            <div class="modal-section">
-              <h3>Perfect For</h3>
-              <ul class="use-case-list">${useCasesHTML}</ul>
-            </div>
-          </div>
-        `;
+      <div class="modal-header">
+        <h2>${data.title}</h2>
+        <p>${data.subtitle}</p>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>What is ${data.title}?</h3>
+          <p>${data.description}</p>
+        </div>
+        <div class="modal-section">
+          <h3>Key Features</h3>
+          <div class="feature-grid">${featuresHTML}</div>
+        </div>
+        <div class="modal-section">
+          <h3>Perfect For</h3>
+          <ul class="use-case-list">${useCasesHTML}</ul>
+        </div>
+      </div>
+    `;
 
         document.getElementById("modalContentArea").innerHTML = modalHTML;
         document.getElementById("appModal").classList.add("active");
