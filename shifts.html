@@ -13,62 +13,23 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 50%, #f5f9ff 100%);
+            background: #ffffff;
             color: #2c3e50;
             overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Animated Background Particles */
-        .bg-animation {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: radial-gradient(circle, rgba(0, 102, 204, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float-particle 20s infinite ease-in-out;
-        }
-
-        .particle:nth-child(1) { width: 100px; height: 100px; top: 10%; left: 10%; animation-delay: 0s; }
-        .particle:nth-child(2) { width: 150px; height: 150px; top: 60%; left: 80%; animation-delay: 3s; }
-        .particle:nth-child(3) { width: 80px; height: 80px; top: 80%; left: 20%; animation-delay: 6s; }
-        .particle:nth-child(4) { width: 120px; height: 120px; top: 30%; left: 70%; animation-delay: 9s; }
-        .particle:nth-child(5) { width: 90px; height: 90px; top: 50%; left: 50%; animation-delay: 12s; }
-
-        @keyframes float-particle {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-            25% { transform: translate(50px, -50px) scale(1.2); opacity: 0.5; }
-            50% { transform: translate(-30px, -80px) scale(0.9); opacity: 0.4; }
-            75% { transform: translate(70px, -30px) scale(1.1); opacity: 0.6; }
         }
 
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
+            background: #ffffff;
             padding: 25px 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 8px 32px rgba(0, 102, 204, 0.12);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 102, 204, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        header.scrolled {
-            padding: 15px 60px;
-            box-shadow: 0 12px 40px rgba(0, 102, 204, 0.18);
+            border-bottom: 3px solid #dc2626;
         }
 
         .logo-container {
@@ -79,175 +40,87 @@
 
         .logo {
             height: 55px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: drop-shadow(0 4px 8px rgba(0, 102, 204, 0.2));
+            transition: transform 0.3s ease;
         }
 
         .logo:hover {
-            transform: scale(1.1) rotate(2deg);
-            filter: drop-shadow(0 8px 16px rgba(0, 102, 204, 0.3));
+            transform: scale(1.05);
         }
 
         .divider {
             width: 2px;
             height: 50px;
-            background: linear-gradient(to bottom, transparent, #0066cc, transparent);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .divider::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 0;
-            width: 100%;
-            height: 200%;
-            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.8), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        @keyframes shimmer {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100%); }
+            background: #10b981;
         }
 
         /* Hero Section */
         .hero {
-            padding: 120px 60px 100px;
+            padding: 100px 60px;
             max-width: 1400px;
             margin: 0 auto;
             text-align: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            opacity: 0.1;
-            background: radial-gradient(circle at 20% 50%, #0066cc 0%, transparent 50%),
-                        radial-gradient(circle at 80% 50%, #0099ff 0%, transparent 50%);
-            animation: pulse-bg 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse-bg {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.2; transform: scale(1.05); }
+            background: #f9fafb;
         }
 
         h1 {
-            font-size: 4.5rem;
-            color: #0066cc;
+            font-size: 4rem;
+            color: #dc2626;
             margin-bottom: 25px;
             font-weight: 800;
-            background: linear-gradient(135deg, #0066cc 0%, #0099ff 50%, #0066cc 100%);
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: gradient-shift 3s ease infinite, slideDown 1s ease-out;
-            position: relative;
-            z-index: 2;
             letter-spacing: -2px;
             line-height: 1.2;
         }
 
-        @keyframes gradient-shift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-50px) scale(0.9);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0) scale(1);
-            }
-        }
-
         .usp {
             font-size: 1.8rem;
-            color: #555;
+            color: #4b5563;
             margin-bottom: 50px;
             font-weight: 400;
-            animation: fadeIn 1.2s ease-out 0.4s both;
-            position: relative;
-            z-index: 2;
             line-height: 1.6;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
         .hero-stats {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             margin-top: 60px;
-            flex-wrap: wrap;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .stat-item {
             text-align: center;
-            padding: 30px 40px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(0, 102, 204, 0.2);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .stat-item:hover::before {
-            left: 100%;
+            padding: 40px 30px;
+            background: #ffffff;
+            border-radius: 15px;
+            border: 2px solid #10b981;
+            transition: all 0.3s ease;
         }
 
         .stat-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.4);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.2);
         }
 
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
-            color: #0066cc;
+            color: #dc2626;
             display: block;
             margin-bottom: 10px;
         }
 
         .stat-label {
             font-size: 1rem;
-            color: #666;
+            color: #6b7280;
             font-weight: 500;
         }
 
         /* Features Grid */
         .features-section {
             padding: 100px 60px;
-            background: linear-gradient(180deg, transparent 0%, rgba(230, 243, 255, 0.3) 50%, transparent 100%);
-            position: relative;
-            z-index: 1;
+            background: #ffffff;
         }
 
         .section-header {
@@ -257,7 +130,7 @@
 
         .section-title {
             font-size: 3rem;
-            color: #0066cc;
+            color: #dc2626;
             margin-bottom: 20px;
             font-weight: 800;
             position: relative;
@@ -272,13 +145,13 @@
             transform: translateX(-50%);
             width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, transparent, #0066cc, transparent);
+            background: #10b981;
             border-radius: 2px;
         }
 
         .section-subtitle {
             font-size: 1.3rem;
-            color: #666;
+            color: #6b7280;
             max-width: 700px;
             margin: 30px auto 0;
             line-height: 1.8;
@@ -286,317 +159,137 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 50px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .feature-card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 0;
-            border-radius: 30px;
-            box-shadow: 0 20px 60px rgba(0, 102, 204, 0.15);
-            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             overflow: hidden;
-            border: 2px solid rgba(0, 102, 204, 0.1);
-            cursor: pointer;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(0, 153, 255, 0.2), transparent);
-            transition: left 0.6s ease;
-            z-index: 1;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-card::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 6px;
-            background: linear-gradient(90deg, #0066cc, #0099ff, #00ccff);
-            background-size: 200% auto;
-            transform: scaleX(0);
-            transition: transform 0.5s ease;
-            animation: gradient-shift 3s ease infinite;
-        }
-
-        .feature-card:hover::after {
-            transform: scaleX(1);
+            border: 2px solid #e5e7eb;
         }
 
         .feature-card:hover {
-            transform: translateY(-20px) scale(1.03);
-            box-shadow: 0 30px 80px rgba(0, 102, 204, 0.3);
-            border-color: rgba(0, 102, 204, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: #10b981;
         }
 
         .feature-image-container {
             width: 100%;
-            height: 280px;
+            height: 250px;
             overflow: hidden;
-            position: relative;
-            background: linear-gradient(135deg, #e6f3ff 0%, #f0f8ff 100%);
-        }
-
-        .feature-image-container::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: linear-gradient(to top, rgba(255,255,255,0.9), transparent);
-            z-index: 1;
+            background: #f3f4f6;
         }
 
         .feature-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            filter: brightness(1.05) saturate(1.1);
+            transition: transform 0.5s ease;
         }
 
         .feature-card:hover .feature-image {
-            transform: scale(1.2) rotate(3deg);
-            filter: brightness(1.15) saturate(1.3);
+            transform: scale(1.1);
         }
 
         .feature-content {
-            padding: 40px;
-            position: relative;
-            z-index: 2;
+            padding: 30px;
         }
 
         .feature-number {
-            position: absolute;
-            top: -140px;
-            right: 30px;
-            font-size: 8rem;
-            font-weight: 900;
-            color: rgba(0, 102, 204, 0.08);
-            z-index: 0;
-            transition: all 0.6s ease;
-        }
-
-        .feature-card:hover .feature-number {
-            color: rgba(0, 102, 204, 0.15);
-            transform: scale(1.2);
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: #dc2626;
+            color: #ffffff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
         .feature-card h3 {
-            color: #0066cc;
-            font-size: 1.8rem;
-            margin-bottom: 20px;
+            color: #1f2937;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
             font-weight: 700;
-            transition: all 0.3s ease;
-            position: relative;
-            display: inline-block;
-        }
-
-        .feature-card h3::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #0066cc, #0099ff);
-            transition: width 0.4s ease;
-            border-radius: 2px;
-        }
-
-        .feature-card:hover h3::after {
-            width: 100%;
-        }
-
-        .feature-card:hover h3 {
-            transform: translateX(8px);
-            color: #0099ff;
         }
 
         .feature-card p {
-            color: #666;
-            line-height: 1.9;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        .feature-card:hover p {
-            color: #555;
+            color: #6b7280;
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         /* Benefits Section */
         .benefits-section {
             padding: 100px 60px;
-            background: rgba(255, 255, 255, 0.5);
-            position: relative;
-            z-index: 1;
+            background: #f9fafb;
         }
 
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .benefit-item {
             text-align: center;
-            padding: 50px 30px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(240, 248, 255, 0.9) 100%);
-            border-radius: 25px;
-            border: 2px solid rgba(0, 102, 204, 0.15);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .benefit-item::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: radial-gradient(circle, rgba(0, 102, 204, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.6s ease;
-        }
-
-        .benefit-item:hover::before {
-            width: 400px;
-            height: 400px;
+            padding: 40px 25px;
+            background: #ffffff;
+            border-radius: 20px;
+            border: 2px solid #e5e7eb;
+            transition: all 0.3s ease;
         }
 
         .benefit-item:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 25px 50px rgba(0, 102, 204, 0.2);
-            border-color: rgba(0, 102, 204, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: #dc2626;
         }
 
         .benefit-icon {
-            font-size: 4rem;
-            margin-bottom: 25px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             display: inline-block;
-            transition: all 0.5s ease;
-            filter: drop-shadow(0 5px 15px rgba(0, 102, 204, 0.3));
+            transition: transform 0.3s ease;
         }
 
         .benefit-item:hover .benefit-icon {
-            transform: scale(1.2) rotate(360deg);
+            transform: scale(1.2);
         }
 
         .benefit-item h4 {
-            font-size: 1.5rem;
-            color: #0066cc;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: #1f2937;
+            margin-bottom: 12px;
             font-weight: 700;
-            position: relative;
-            z-index: 2;
         }
 
         .benefit-item p {
-            color: #666;
-            line-height: 1.7;
-            font-size: 1rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Testimonial Section */
-        .testimonial-section {
-            padding: 100px 60px;
-            background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .testimonial-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 153, 255, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(0, 204, 255, 0.3) 0%, transparent 50%);
-            animation: pulse-radial 8s ease-in-out infinite;
-        }
-
-        .testimonial-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .testimonial-quote {
-            font-size: 2rem;
-            color: white;
-            line-height: 1.8;
-            font-style: italic;
-            margin-bottom: 40px;
-            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 20px;
-        }
-
-        .author-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 4px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .author-info h5 {
-            color: white;
-            font-size: 1.3rem;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        .author-info p {
-            color: #b3d9ff;
-            font-size: 1rem;
+            color: #6b7280;
+            line-height: 1.6;
+            font-size: 0.95rem;
         }
 
         /* Result Section */
         .result-section {
             padding: 100px 60px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            background: linear-gradient(135deg, #f0f8ff 0%, #ffffff 100%);
+            background: #ffffff;
         }
 
         .result-content {
-            position: relative;
-            z-index: 2;
             max-width: 1000px;
             margin: 0 auto;
         }
@@ -605,282 +298,176 @@
             font-size: 3.5rem;
             margin-bottom: 30px;
             font-weight: 800;
-            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #dc2626;
         }
 
         .result-section p {
-            color: #555;
+            color: #4b5563;
             font-size: 1.5rem;
-            position: relative;
             line-height: 1.8;
             margin-bottom: 50px;
         }
 
         .cta-button {
             display: inline-block;
-            margin-top: 20px;
             padding: 25px 70px;
-            background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);
-            color: white;
+            background: #10b981;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 60px;
-            font-size: 1.4rem;
+            border-radius: 50px;
+            font-size: 1.3rem;
             font-weight: 700;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.4);
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.5s ease, height 0.5s ease;
-        }
-
-        .cta-button:hover::before {
-            width: 400px;
-            height: 400px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
         }
 
         .cta-button:hover {
-            transform: translateY(-8px) scale(1.08);
-            box-shadow: 0 25px 60px rgba(0, 102, 204, 0.5);
-        }
-
-        .cta-button span {
-            position: relative;
-            z-index: 2;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(16, 185, 129, 0.4);
+            background: #059669;
         }
 
         /* Footer */
-        footer {
-            background: linear-gradient(135deg, #001a33 0%, #002a4d 50%, #003366 100%);
-            color: white;
-            padding: 80px 60px 40px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, rgba(0, 102, 204, 0.05) 25%, transparent 25%),
-                linear-gradient(-45deg, rgba(0, 102, 204, 0.05) 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, rgba(0, 102, 204, 0.05) 75%),
-                linear-gradient(-45deg, transparent 75%, rgba(0, 102, 204, 0.05) 75%);
-            background-size: 80px 80px;
-            opacity: 0.3;
+        .site-footer {
+            background: #1f2937;
+            color: #e5e7eb;
+            padding: 75px 5% 25px;
+            font-size: 14px;
         }
 
         .footer-content {
-            max-width: 1400px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 60px;
-            margin-bottom: 50px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .footer-section {
-            transition: transform 0.4s ease;
-        }
-
-        .footer-section:hover {
-            transform: translateY(-8px);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-bottom: 35px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .footer-section h3 {
-            color: #66b3ff;
-            margin-bottom: 30px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            position: relative;
-            display: inline-block;
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #10b981;
         }
 
-        .footer-section h3::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #66b3ff, transparent);
-            border-radius: 2px;
+        .tagline {
+            font-family: 'Segoe Script', 'Lucida Handwriting', cursive;
+            font-size: 18px;
+            color: #dc2626;
+            margin-bottom: 12px;
         }
 
-        .footer-section ul {
-            list-style: none;
+        .footer-section p {
+            color: #d1d5db;
+            line-height: 1.7;
         }
 
-        .footer-section ul li {
-            margin-bottom: 18px;
-            transition: transform 0.3s ease;
-        }
-
-        .footer-section ul li:hover {
-            transform: translateX(12px);
-        }
-
-        .footer-section a {
-            color: #b3d9ff;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            display: inline-block;
-            font-size: 1.05rem;
-        }
-
-        .footer-section a::after {
-            content: '';
-            position: absolute;
-            bottom: -3px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #66b3ff;
-            transition: width 0.3s ease;
-        }
-
-        .footer-section a:hover::after {
-            width: 100%;
-        }
-
-        .footer-section a:hover {
-            color: white;
-        }
-
-        .social-icons {
+        .zoho-solutions {
             display: flex;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .social-icon {
-            width: 55px;
-            height: 55px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
+            flex-direction: column;
             align-items: center;
+        }
+
+        .solutions-wrapper {
+            display: flex;
             justify-content: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 1.5rem;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .social-icon::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: #0066cc;
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            transition: width 0.4s ease, height 0.4s ease;
-        }
-
-        .social-icon:hover::before {
             width: 100%;
-            height: 100%;
         }
 
-        .social-icon:hover {
-            transform: translateY(-10px) scale(1.15) rotate(360deg);
-            box-shadow: 0 12px 30px rgba(0, 102, 204, 0.5);
-            border-color: #0066cc;
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(150px, 180px));
+            column-gap: 40px;
+            row-gap: 10px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
-        .social-icon span {
-            position: relative;
-            z-index: 2;
+        .solutions-grid li {
+            text-align: left;
+            white-space: nowrap;
+            color: #d1d5db;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
         }
 
-        .copyright {
-            margin-top: 60px;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: #99ccff;
-            position: relative;
-            z-index: 2;
-            font-size: 1rem;
+        .solutions-grid li:hover {
+            color: #10b981;
         }
 
-        /* Scroll Progress Bar */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 5px;
-            background: linear-gradient(90deg, #0066cc, #0099ff, #00ccff);
-            z-index: 9999;
-            transition: width 0.1s ease;
-            box-shadow: 0 2px 10px rgba(0, 102, 204, 0.5);
+        .site-footer a {
+            color: #d1d5db;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .site-footer a:hover {
+            color: #10b981;
+        }
+
+        .zoho-logo {
+            margin-top: 16px;
+        }
+
+        .zoho-logo img {
+            max-width: 140px;
+            opacity: 0.95;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            padding-top: 18px;
+            text-align: center;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            color: #9ca3af;
+            font-size: 13px;
         }
 
         /* Responsive */
+        @media (max-width: 1200px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            h1 { font-size: 2.8rem; letter-spacing: -1px; }
+            h1 { font-size: 2.5rem; }
             .usp { font-size: 1.3rem; }
             .section-title { font-size: 2.2rem; }
             .section-subtitle { font-size: 1.1rem; }
             header { padding: 20px; flex-direction: column; gap: 20px; }
-            .hero { padding: 80px 20px 50px; }
-            .hero-stats { gap: 30px; }
-            .stat-item { padding: 20px 30px; }
+            .hero { padding: 60px 20px; }
+            .hero-stats { grid-template-columns: 1fr; gap: 20px; }
             .features-section { padding: 60px 20px; }
-            .features { gap: 35px; grid-template-columns: 1fr; }
+            .features { grid-template-columns: 1fr; gap: 30px; }
             .benefits-section { padding: 60px 20px; }
-            .benefits-grid { gap: 30px; }
-            .testimonial-section { padding: 60px 20px; }
-            .testimonial-quote { font-size: 1.5rem; }
+            .benefits-grid { grid-template-columns: 1fr; gap: 20px; }
             .result-section { padding: 60px 20px; }
             .result-section h2 { font-size: 2.5rem; }
             .result-section p { font-size: 1.2rem; }
             .cta-button { padding: 20px 50px; font-size: 1.2rem; }
-            footer { padding: 60px 20px 30px; }
-            .footer-content { gap: 40px; }
+            .site-footer { padding: 60px 20px 30px; }
+            .footer-content { gap: 30px; }
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Background Animation -->
-    <div class="bg-animation">
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-        <div class="particle"></div>
-    </div>
-
-    <!-- Scroll Progress Bar -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
     <header id="header">
         <div class="logo-container">
             <img src="images/logo.png" alt="Zolytics Logo" class="logo" style="height: 90px;">
@@ -890,7 +477,6 @@
     </header>
 
     <section class="hero">
-        <div class="hero-background"></div>
         <h1>Zoho Shift – Smarter Scheduling for Modern Teams</h1>
         <p class="usp">Plan shifts easily, reduce conflicts & improve productivity</p>
         
@@ -924,7 +510,7 @@
                 <div class="feature-content">
                     <span class="feature-number">01</span>
                     <h3>Drag-and-drop Shift Scheduling</h3>
-                    <p>Intuitive interface lets you create and modify schedules in seconds. Visual calendar makes planning effortless for managers and teams alike. Simply drag employees to time slots and watch your schedule come together.</p>
+                    <p>Intuitive interface lets you create and modify schedules in seconds. Visual calendar makes planning effortless for managers and teams alike.</p>
                 </div>
             </div>
 
@@ -935,7 +521,7 @@
                 <div class="feature-content">
                     <span class="feature-number">02</span>
                     <h3>Real-time Availability & Attendance</h3>
-                    <p>Know who's available instantly. Automated attendance tracking eliminates confusion and ensures accurate shift coverage every time. Get real-time updates on employee availability and time-off requests.</p>
+                    <p>Know who's available instantly. Automated attendance tracking eliminates confusion and ensures accurate shift coverage every time.</p>
                 </div>
             </div>
 
@@ -946,7 +532,7 @@
                 <div class="feature-content">
                     <span class="feature-number">03</span>
                     <h3>Seamless Integration with Zoho Suite</h3>
-                    <p>Integrates perfectly with Zoho People & Payroll. Shift data flows directly to HR and payroll systems automatically. No manual data entry, no errors. Everything syncs in real-time across your entire organization.</p>
+                    <p>Integrates perfectly with Zoho People & Payroll. Shift data flows directly to HR and payroll systems automatically with no manual entry.</p>
                 </div>
             </div>
         </div>
@@ -962,77 +548,83 @@
             <div class="benefit-item">
                 <div class="benefit-icon">🚀</div>
                 <h4>Boost Productivity</h4>
-                <p>Reduce scheduling time by 75% and focus on what matters most - growing your business</p>
+                <p>Reduce scheduling time by 75% and focus on growing your business</p>
             </div>
             
             <div class="benefit-item">
                 <div class="benefit-icon">💰</div>
                 <h4>Cut Labor Costs</h4>
-                <p>Optimize staffing levels and eliminate overtime with smart scheduling algorithms</p>
+                <p>Optimize staffing levels and eliminate overtime with smart scheduling</p>
             </div>
             
             <div class="benefit-item">
                 <div class="benefit-icon">😊</div>
                 <h4>Happier Employees</h4>
-                <p>Give your team flexibility and transparency with self-service shift management</p>
+                <p>Give your team flexibility with self-service shift management</p>
             </div>
             
             <div class="benefit-item">
                 <div class="benefit-icon">📱</div>
                 <h4>Mobile Access</h4>
-                <p>Manage schedules on-the-go with our intuitive mobile app for iOS and Android</p>
+                <p>Manage schedules on-the-go with our mobile app for iOS and Android</p>
             </div>
-            
-           
         </div>
     </section>
 
-  
- <!-- Global Footer -->
+    <section class="result-section">
+        <div class="result-content">
+            <h2>Ready to Transform Your Scheduling?</h2>
+            <p>Join thousands of companies who have simplified their workforce management with Zoho Shift</p>
+            <a href="#" class="cta-button">Get Started Today</a>
+        </div>
+    </section>
+
     <footer class="site-footer">
-      <div class="footer-content">
-        <!-- Company Info -->
-        <div class="footer-section">
-          <h3>Zolytics</h3>
-          <p class="tagline">Certified Zoho Partner</p>
-          <p>
-            We help businesses simplify operations by implementing, customizing,
-            and automating Zoho applications tailored to real-world business
-            workflows.
-          </p>
-        </div>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Zolytics</h3>
+                <p class="tagline">Certified Zoho Partner</p>
+                <p>We help businesses simplify operations by implementing, customizing, and automating Zoho applications tailored to real-world business workflows.</p>
+            </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
-        <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
-          <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics.html">Zoho Analytics</a></li>
-              <li><a href="bigin.html">Zoho Bigin</a></li>
-              <li><a href="billing.html">Zoho Billing</a></li>
-              <li><a href="books.html">Zoho Books</a></li>
-              <li><a href="commerce.html">Zoho Commerce</a></li>
-              <li><a href="crm.html">Zoho CRM</a></li>
-              <li><a href="expense.html">Zoho Expense</a></li>
-              <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory.html">Zoho Inventory</a></li>
+            <div class="footer-section zoho-solutions">
+                <h3>Zoho Solutions</h3>
+                <div class="solutions-wrapper">
+                    <ul class="solutions-grid">
+                        <li><a href="analytics.html">Zoho Analytics</a></li>
+                        <li><a href="bigin.html">Zoho Bigin</a></li>
+                        <li><a href="billing.html">Zoho Billing</a></li>
+                        <li><a href="books.html">Zoho Books</a></li>
+                        <li><a href="commerce.html">Zoho Commerce</a></li>
+                        <li><a href="crm.html">Zoho CRM</a></li>
+                        <li><a href="expense.html">Zoho Expense</a></li>
+                        <li><a href="finance.html">Zoho Finance Plus</a></li>
+                        <li><a href="inventory.html">Zoho Inventory</a></li>
+                        <li><a href="payroll.html">Zoho Payroll</a></li>
+                        <li><a href="peopleplus.html">Zoho People Plus</a></li>
+                        <li><a href="recruit.html">Zoho Recruit</a></li>
+                    </ul>
+                </div>
+            </div>
 
-              <li><a href="payroll.html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus.html">Zoho People Plus</a></li>
-
-              <li><a href="recruit.html">Zoho Recruit</a></li>
-            </ul>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <p>
+                    Email: info@zolytics.in<br>
+                    Phone: +91 90 7313 9613<br>
+                    Location: India
+                </p>
+                <div style="display: flex; align-items: center; gap: 8px; margin-top: 15px;">
+                    <a href="https://wa.me/+919073139613" target="_blank" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
           </div>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>
-            Email: info@zolytics.in <br />
-            Phone: +91 90 7313 9613<br />
-            Location: India
           </p>
           <div class="zoho-logo">
             <img
