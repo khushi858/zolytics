@@ -16,32 +16,23 @@
         --primary-dark: #4f46e5;
         --primary-light: #818cf8;
         --accent: #ec4899;
-        --accent-2: #f97316;
-        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-        --light-bg: #ffffff;
-        --light-bg-2: #f8fafc;
-        --light-bg-3: #f1f5f9;
         --text-dark: #0f172a;
         --text-body: #334155;
         --text-muted: #64748b;
         --border: #e2e8f0;
-        --glass-bg: rgba(255, 255, 255, 0.9);
-        --glass-border: rgba(226, 232, 240, 0.8);
+        --light-bg: #ffffff;
+        --light-bg-2: #f8fafc;
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          system-ui, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         background: #ffffff;
         color: var(--text-body);
         line-height: 1.6;
         overflow-x: hidden;
-        -webkit-font-smoothing: antialiased;
       }
 
-      /* Advanced Animated Background */
+      /* Background */
       .animated-bg {
         position: fixed;
         top: 0;
@@ -49,12 +40,7 @@
         width: 100%;
         height: 100%;
         z-index: 0;
-        background: linear-gradient(
-          135deg,
-          #fefefe 0%,
-          #f8fafc 50%,
-          #f1f5f9 100%
-        );
+        background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
       }
 
       .floating-shapes {
@@ -69,279 +55,150 @@
 
       .shape {
         position: absolute;
-        opacity: 0.25;
-        animation: float-shapes 20s infinite ease-in-out;
+        opacity: 0.1;
+        animation: float 30s infinite ease-in-out;
+        border-radius: 50%;
       }
 
       .shape-1 {
-        width: 500px;
-        height: 500px;
+        width: 400px;
+        height: 400px;
         background: radial-gradient(circle, #ddd6fe 0%, transparent 70%);
-        top: -250px;
-        left: -250px;
-        filter: blur(100px);
-        animation-delay: 0s;
+        top: -200px;
+        left: -200px;
+        filter: blur(80px);
       }
 
       .shape-2 {
-        width: 600px;
-        height: 600px;
+        width: 500px;
+        height: 500px;
         background: radial-gradient(circle, #fecdd3 0%, transparent 70%);
-        top: 20%;
-        right: -300px;
-        filter: blur(120px);
-        animation-delay: -7s;
+        bottom: -250px;
+        right: -250px;
+        filter: blur(100px);
+        animation-delay: -15s;
       }
 
-      .shape-3 {
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(circle, #bfdbfe 0%, transparent 70%);
-        bottom: -200px;
-        left: 30%;
-        filter: blur(90px);
-        animation-delay: -14s;
-      }
-
-      .shape-4 {
-        width: 550px;
-        height: 550px;
-        background: radial-gradient(circle, #fed7aa 0%, transparent 70%);
-        top: 50%;
-        left: 50%;
-        filter: blur(110px);
-        animation-delay: -3.5s;
-      }
-
-      @keyframes float-shapes {
-        0%,
-        100% {
-          transform: translate(0, 0) rotate(0deg) scale(1);
-        }
-        25% {
-          transform: translate(100px, -100px) rotate(90deg) scale(1.1);
+      @keyframes float {
+        0%, 100% {
+          transform: translate(0, 0) scale(1);
         }
         50% {
-          transform: translate(200px, 50px) rotate(180deg) scale(0.9);
-        }
-        75% {
-          transform: translate(-50px, 150px) rotate(270deg) scale(1.05);
+          transform: translate(50px, 50px) scale(1.1);
         }
       }
 
-      /* Particle Effect */
-      .particles {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        pointer-events: none;
-      }
-
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: rgba(99, 102, 241, 0.4);
-        border-radius: 50%;
-        animation: particle-float 15s infinite ease-in-out;
-        box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
-      }
-
-      @keyframes particle-float {
-        0%,
-        100% {
-          transform: translateY(0) translateX(0);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100vh) translateX(100px);
-          opacity: 0;
-        }
-      }
-
-      /* Glass Header */
+      /* Header */
       header {
         position: fixed;
         top: 0;
         width: 100%;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(20px) saturate(180%);
-        border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--border);
         z-index: 1000;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.3s ease;
       }
 
       header.scrolled {
-        background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
-          0 0 0 1px rgba(226, 232, 240, 0.5);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       }
 
       .header-container {
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
-        padding: 1.5rem 3rem;
+        padding: 1.2rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position: relative;
-        z-index: 1;
       }
 
       .logo-container {
         display: flex;
         align-items: center;
-        gap: 2.5rem;
+        gap: 2rem;
       }
 
       .logo-item {
         height: 40px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: brightness(1);
+        transition: all 0.3s ease;
       }
 
       .logo-item:hover {
-        transform: translateY(-3px) scale(1.1);
-        filter: brightness(1.1) drop-shadow(0 4px 20px rgba(99, 102, 241, 0.3));
+        transform: translateY(-2px);
       }
 
-      /* Advanced Scroll Progress */
       .scroll-progress {
         position: fixed;
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(
-          90deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f5576c 100%
-        );
+        background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
         z-index: 1001;
         transform-origin: left;
-        box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        transition: width 0.1s ease;
       }
 
-      /* Hero Section with Advanced Effects */
+      /* Hero Section */
       .hero {
-        min-height: 100vh;
+        min-height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 140px 3rem 80px;
+        padding: 120px 2rem 80px;
         position: relative;
         z-index: 2;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: radial-gradient(
-          ellipse at top,
-          rgba(99, 102, 241, 0.08) 0%,
-          transparent 60%
-        );
-        pointer-events: none;
       }
 
       .hero-container {
-        max-width: 1280px;
+        max-width: 1200px;
         width: 100%;
         display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 6rem;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 5rem;
         align-items: center;
-        position: relative;
       }
 
       .hero-content h1 {
-        font-size: clamp(3rem, 6vw, 5.5rem);
-        font-weight: 900;
-        line-height: 1.05;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
         margin-bottom: 1.5rem;
-        letter-spacing: -0.03em;
-        background: linear-gradient(
-          135deg,
-          #1e293b 0%,
-          #6366f1 50%,
-          #8b5cf6 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: slideUp 0.8s ease-out, glow 3s ease-in-out infinite;
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          filter: brightness(1);
-        }
-        50% {
-          filter: brightness(1.2);
-        }
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
+        letter-spacing: -0.02em;
+        color: var(--text-dark);
       }
 
       .hero-content .subtitle {
-        font-size: clamp(1.5rem, 3vw, 2.2rem);
+        font-size: clamp(1.5rem, 3vw, 2rem);
         font-weight: 700;
         background: linear-gradient(135deg, #ec4899 0%, #f97316 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        margin-bottom: 2rem;
-        animation: slideUp 0.8s ease-out 0.1s backwards;
+        margin-bottom: 1.5rem;
       }
 
       .hero-content .description {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         color: var(--text-body);
-        line-height: 1.8;
-        margin-bottom: 3rem;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
         max-width: 600px;
-        animation: slideUp 0.8s ease-out 0.2s backwards;
       }
 
       .hero-buttons {
         display: flex;
-        gap: 1.5rem;
+        gap: 1rem;
         flex-wrap: wrap;
-        animation: slideUp 0.8s ease-out 0.3s backwards;
       }
 
-      /* Advanced Button Styles */
       .btn {
-        padding: 1.1rem 2.8rem;
-        border-radius: 14px;
-        font-size: 1.05rem;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        font-size: 1rem;
         font-weight: 600;
         border: none;
         cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
+        transition: all 0.3s ease;
         text-decoration: none;
         display: inline-flex;
         align-items: center;
@@ -351,483 +208,272 @@
       .btn-primary {
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3),
-          0 0 0 1px rgba(255, 255, 255, 0.2) inset;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        transition: left 0.7s;
-      }
-
-      .btn-primary:hover::before {
-        left: 100%;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
       }
 
       .btn-primary:hover {
-        transform: translateY(-3px) scale(1.02);
-        box-shadow: 0 20px 60px rgba(102, 126, 234, 0.5),
-          0 0 0 1px rgba(255, 255, 255, 0.2) inset;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
       }
 
       .btn-secondary {
-        background: rgba(255, 255, 255, 0.9);
+        background: white;
         color: var(--primary);
         border: 2px solid var(--border);
-        backdrop-filter: blur(10px);
       }
 
       .btn-secondary:hover {
-        background: rgba(255, 255, 255, 1);
-        border-color: var(--primary-light);
-        transform: translateY(-3px);
-        box-shadow: 0 12px 40px rgba(99, 102, 241, 0.2);
+        border-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
       }
 
-      /* 3D Hero Visual */
       .hero-visual {
         position: relative;
-        animation: slideUp 0.8s ease-out 0.4s backwards;
-        perspective: 1500px;
       }
 
       .hero-image-wrapper {
         position: relative;
-        border-radius: 24px;
+        border-radius: 20px;
         overflow: hidden;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15),
-          0 0 0 1px rgba(226, 232, 240, 0.5);
-        transform: perspective(1500px) rotateY(-8deg) rotateX(2deg);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.05),
-          rgba(236, 72, 153, 0.05)
-        );
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
       }
 
       .hero-image-wrapper:hover {
-        transform: perspective(1500px) rotateY(0deg) rotateX(0deg)
-          translateY(-15px) scale(1.02);
-        box-shadow: 0 60px 140px rgba(0, 0, 0, 0.2),
-          0 0 80px rgba(99, 102, 241, 0.15);
-      }
-
-      .hero-image-wrapper::after {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -50%;
-        width: 200%;
-        height: 200%;
-        background: linear-gradient(
-          45deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.3) 50%,
-          transparent 70%
-        );
-        animation: shimmer 3s infinite;
-      }
-
-      @keyframes shimmer {
-        0% {
-          transform: translateX(-100%) translateY(-100%) rotate(45deg);
-        }
-        100% {
-          transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
+        transform: translateY(-10px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
       }
 
       .hero-image-wrapper img {
         width: 100%;
         height: auto;
         display: block;
-        position: relative;
-        z-index: 1;
       }
 
-      /* Glassmorphism Sections */
+      /* Section Styles */
       .section {
-        padding: 120px 3rem;
+        padding: 80px 2rem;
         position: relative;
         z-index: 2;
       }
 
       .section-container {
-        max-width: 1280px;
+        max-width: 1200px;
         margin: 0 auto;
       }
 
       .section-header {
         text-align: center;
-        margin-bottom: 5rem;
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .section-header.visible {
-        opacity: 1;
-        transform: translateY(0);
+        margin-bottom: 4rem;
       }
 
       .section-header h2 {
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 900;
-        margin-bottom: 1.5rem;
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 1rem;
         letter-spacing: -0.02em;
-        background: linear-gradient(
-          135deg,
-          #1e293b 0%,
-          #6366f1 50%,
-          #8b5cf6 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: var(--text-dark);
       }
 
       .section-header p {
-        font-size: 1.25rem;
+        font-size: 1.15rem;
         color: var(--text-muted);
         max-width: 700px;
         margin: 0 auto;
-        line-height: 1.8;
       }
 
-      /* Advanced Use Case Cards */
+      /* Audience Grid */
+      .audience-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .audience-card {
+        padding: 2rem;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1rem;
+        background: white;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        transition: all 0.3s ease;
+      }
+
+      .audience-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary);
+        box-shadow: 0 8px 25px rgba(99, 102, 241, 0.15);
+      }
+
+      /* Flow Grid */
+      .flow-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .flow-step {
+        padding: 2rem;
+        font-weight: 700;
+        text-align: center;
+        background: linear-gradient(135deg, #eef2ff, #fff);
+        border-radius: 12px;
+        border: 2px dashed rgba(99, 102, 241, 0.3);
+        transition: all 0.3s ease;
+      }
+
+      .flow-step:hover {
+        background: linear-gradient(135deg, #667eea, #764ba2);
+        color: white;
+        transform: scale(1.03);
+        border-style: solid;
+      }
+
+      /* Use Cases Grid */
       .use-cases-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
       }
 
       .use-case-card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 24px;
-        padding: 3rem;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      .use-case-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          135deg,
-          rgba(99, 102, 241, 0.05) 0%,
-          rgba(236, 72, 153, 0.05) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-
-      .use-case-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(90deg, #667eea, #764ba2, #f5576c);
-        transition: left 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .use-case-card.visible {
-        opacity: 1;
-        transform: translateY(0);
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.3s ease;
       }
 
       .use-case-card:hover {
-        background: rgba(255, 255, 255, 1);
-        border-color: rgba(99, 102, 241, 0.4);
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 30px 80px rgba(99, 102, 241, 0.2),
-          0 0 60px rgba(99, 102, 241, 0.1);
-      }
-
-      .use-case-card:hover::before {
-        opacity: 1;
-      }
-
-      .use-case-card:hover::after {
-        left: 0;
+        border-color: var(--primary);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
       }
 
       .use-case-card h3 {
-        font-size: 1.75rem;
-        font-weight: 700;
-        margin-bottom: 1rem;
-        color: var(--text-dark);
-        position: relative;
-        z-index: 1;
-      }
-
-      .use-case-card p {
-        font-size: 1.05rem;
-        color: var(--text-body);
-        line-height: 1.8;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Differentiation Section with 3D Effects */
-      .differentiation {
-        background: rgba(255, 255, 255, 0.6);
-        backdrop-filter: blur(20px);
-        border-radius: 32px;
-        padding: 5rem 4rem;
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.08);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .differentiation::before {
-        content: "";
-        position: absolute;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(
-          circle,
-          rgba(99, 102, 241, 0.1) 0%,
-          transparent 70%
-        );
-        top: -400px;
-        right: -400px;
-        border-radius: 50%;
-        filter: blur(100px);
-        animation: rotate 30s linear infinite;
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .diff-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 2.5rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      .diff-item {
-        display: flex;
-        gap: 2rem;
-        padding: 3rem;
-        background: rgba(255, 255, 255, 0.8);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 20px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        transform: translateX(-30px);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .diff-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 4px;
-        height: 0;
-        background: linear-gradient(180deg, #667eea, #f5576c);
-        transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .diff-item.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      .diff-item:hover {
-        background: rgba(255, 255, 255, 1);
-        border-color: rgba(99, 102, 241, 0.4);
-        transform: translateX(15px) scale(1.02);
-        box-shadow: 0 30px 70px rgba(99, 102, 241, 0.2);
-      }
-
-      .diff-item:hover::before {
-        height: 100%;
-      }
-
-      .diff-number {
-        font-size: 4rem;
-        font-weight: 900;
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f5576c 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        line-height: 1;
-        min-width: 90px;
-        flex-shrink: 0;
-      }
-
-      .diff-content h4 {
         font-size: 1.5rem;
         font-weight: 700;
         margin-bottom: 1rem;
         color: var(--text-dark);
       }
 
-      .diff-content p {
-        font-size: 1.05rem;
+      .use-case-card p {
+        font-size: 1rem;
         color: var(--text-body);
-        line-height: 1.8;
+        line-height: 1.6;
       }
 
-      /* Implementation Cards with Hover Effects */
+      /* Differentiation */
+      .differentiation {
+        background: white;
+        border-radius: 20px;
+        padding: 4rem 3rem;
+        border: 1px solid var(--border);
+      }
+
+      .diff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        gap: 2.5rem;
+      }
+
+      .diff-item {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem;
+        background: var(--light-bg-2);
+        border-radius: 12px;
+        transition: all 0.3s ease;
+      }
+
+      .diff-item:hover {
+        background: var(--light-bg);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .diff-number {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1;
+        min-width: 70px;
+        flex-shrink: 0;
+      }
+
+      .diff-content h4 {
+        font-size: 1.35rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        color: var(--text-dark);
+      }
+
+      .diff-content p {
+        font-size: 1rem;
+        color: var(--text-body);
+        line-height: 1.6;
+      }
+
+      /* Implementation Cards */
       .implementations-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
-        gap: 3rem;
+        gap: 2.5rem;
       }
 
       .implementation-card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(20px);
-        border: 1px solid rgba(226, 232, 240, 0.8);
-        border-radius: 24px;
+        background: white;
+        border: 1px solid var(--border);
+        border-radius: 16px;
         overflow: hidden;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        opacity: 0;
-        transform: scale(0.95);
-        position: relative;
-      }
-
-      .implementation-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(99, 102, 241, 0.08) 0%,
-          transparent 70%
-        );
-        opacity: 0;
-        transition: opacity 0.5s;
-      }
-
-      .implementation-card.visible {
-        opacity: 1;
-        transform: scale(1);
+        transition: all 0.3s ease;
       }
 
       .implementation-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 40px 100px rgba(99, 102, 241, 0.2),
-          0 0 80px rgba(99, 102, 241, 0.1);
-        border-color: rgba(99, 102, 241, 0.4);
-      }
-
-      .implementation-card:hover::before {
-        opacity: 1;
+        transform: translateY(-5px);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        border-color: var(--primary);
       }
 
       .impl-image {
-        height: 280px;
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f5576c 100%
-        );
+        height: 250px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         display: flex;
         align-items: center;
         justify-content: center;
         font-size: 5rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .impl-image::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          transparent 30%,
-          rgba(255, 255, 255, 0.3) 50%,
-          transparent 70%
-        );
-        animation: shimmer-slow 4s infinite;
-      }
-
-      @keyframes shimmer-slow {
-        0% {
-          transform: translateX(-100%) translateY(-100%) rotate(45deg);
-        }
-        100% {
-          transform: translateX(100%) translateY(100%) rotate(45deg);
-        }
       }
 
       .impl-content {
-        padding: 3rem;
-        position: relative;
-        z-index: 1;
+        padding: 2.5rem;
       }
 
       .impl-tag {
         display: inline-block;
-        padding: 0.6rem 1.2rem;
+        padding: 0.5rem 1rem;
         background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.3);
-        border-radius: 24px;
-        font-size: 0.9rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
         font-weight: 600;
         color: var(--primary);
         margin-bottom: 1.5rem;
       }
 
       .impl-content h3 {
-        font-size: 2rem;
+        font-size: 1.75rem;
         font-weight: 700;
         margin-bottom: 1rem;
         color: var(--text-dark);
       }
 
       .impl-content > p {
-        font-size: 1.05rem;
+        font-size: 1rem;
         color: var(--text-body);
-        line-height: 1.8;
-        margin-bottom: 2rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
       }
 
       .impl-benefits {
@@ -835,199 +481,189 @@
       }
 
       .impl-benefits li {
-        padding: 0.8rem 0;
-        padding-left: 2.5rem;
+        padding: 0.75rem 0;
+        padding-left: 2rem;
         color: var(--text-body);
         position: relative;
         line-height: 1.6;
+        font-size: 0.95rem;
       }
 
       .impl-benefits li::before {
         content: "✓";
         position: absolute;
         left: 0;
-        width: 28px;
-        height: 28px;
+        width: 24px;
+        height: 24px;
         background: rgba(99, 102, 241, 0.1);
-        border: 1px solid rgba(99, 102, 241, 0.3);
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
         color: var(--primary);
         font-weight: bold;
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
 
-      /* CTA Section with Animated Background */
+      /* CTA Section */
       .cta-section {
-        background: linear-gradient(
-          135deg,
-          #667eea 0%,
-          #764ba2 50%,
-          #f5576c 100%
-        );
-        border-radius: 32px;
-        padding: 6rem 4rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f5576c 100%);
+        border-radius: 20px;
+        padding: 5rem 3rem;
         text-align: center;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 40px 100px rgba(102, 126, 234, 0.3);
-      }
-
-      .cta-section::before {
-        content: "";
-        position: absolute;
-        width: 1000px;
-        height: 1000px;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.2) 0%,
-          transparent 70%
-        );
-        top: -500px;
-        right: -500px;
-        animation: rotate 25s linear infinite;
-      }
-
-      .cta-section::after {
-        content: "";
-        position: absolute;
-        width: 800px;
-        height: 800px;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.15) 0%,
-          transparent 70%
-        );
-        bottom: -400px;
-        left: -400px;
-        animation: rotate 30s linear infinite reverse;
       }
 
       .cta-section h2 {
         font-size: clamp(2rem, 5vw, 3.5rem);
-        font-weight: 900;
+        font-weight: 800;
         color: white;
         margin-bottom: 1.5rem;
-        position: relative;
-        z-index: 1;
         letter-spacing: -0.02em;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
       }
 
       .cta-section p {
-        font-size: 1.35rem;
+        font-size: 1.2rem;
         color: rgba(255, 255, 255, 0.95);
-        margin-bottom: 3rem;
-        position: relative;
-        z-index: 1;
+        margin-bottom: 2.5rem;
         max-width: 700px;
         margin-left: auto;
         margin-right: auto;
+        line-height: 1.7;
       }
 
       .cta-section .btn {
         background: white;
         color: #764ba2;
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        font-size: 1.1rem;
+        padding: 1.2rem 2.5rem;
       }
 
       .cta-section .btn:hover {
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
       }
 
       /* Footer */
-      footer {
-        background: linear-gradient(180deg, #080808 0%, #060606 100%);
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        padding: 5rem 3rem 3rem;
+      .site-footer {
+        background: #0a0a0a;
+        color: #e5e7eb;
+        padding: 60px 2rem 30px;
+        font-size: 14px;
         position: relative;
         z-index: 2;
       }
 
       .footer-content {
-        max-width: 1280px;
-        margin: 0 auto;
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1.2fr 2fr 1fr;
         gap: 4rem;
         margin-bottom: 3rem;
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
       .footer-section h3 {
-        font-size: 1.4rem;
+        font-size: 20px;
+        margin-bottom: 1rem;
+        color: #ffffff;
         font-weight: 700;
-        color: rgb(119, 9, 9);
-        margin-bottom: 1.5rem;
       }
 
-      .footer-section p,
-      .footer-section ul {
-        color: white;
-        line-height: 1.9;
-        font-size: 1.05rem;
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 16px;
+        color: #38bdf8;
+        margin-bottom: 1rem;
+        font-weight: 400;
       }
 
-      .footer-section ul {
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .zoho-solutions h3 {
+        text-align: center;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem 3rem;
         list-style: none;
+        padding: 0;
       }
 
-      .footer-section ul li {
-        margin-bottom: 0.8rem;
-        transition: all 0.3s ease;
+      .solutions-grid li {
+        text-align: left;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
         cursor: pointer;
       }
 
-      .footer-section ul li:hover {
-        color: white;
-        transform: translateX(5px);
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      .solutions-grid a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .zoho-logo {
+        margin-top: 1.5rem;
+      }
+
+      .zoho-logo img {
+        max-width: 130px;
+        opacity: 0.9;
       }
 
       .footer-bottom {
-        max-width: 1280px;
-        margin: 0 auto;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
         text-align: center;
-        padding-top: 3rem;
-        border-top: 1px solid rgba(226, 232, 240, 0.8);
-        color: var(--text-muted);
+        max-width: 1200px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      /* Responsive */
-      @media (max-width: 1024px) {
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
         .hero-container {
           grid-template-columns: 1fr;
-          gap: 4rem;
+          gap: 3rem;
         }
 
-        .hero-image-wrapper {
-          transform: perspective(1500px) rotateY(0deg) rotateX(0deg);
+        .section {
+          padding: 60px 1.5rem;
         }
 
+        .use-cases-grid,
         .diff-grid,
         .implementations-grid {
           grid-template-columns: 1fr;
         }
-      }
 
-      @media (max-width: 768px) {
-        .section {
-          padding: 80px 2rem;
-        }
-
-        .header-container {
-          padding: 1.2rem 2rem;
-        }
-
-        .hero {
-          padding: 120px 2rem 60px;
-        }
-
-        .use-cases-grid {
+        .footer-content {
           grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.5rem 2rem;
         }
 
         .diff-item {
@@ -1036,7 +672,36 @@
         }
 
         .diff-number {
-          font-size: 3rem;
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          padding: 100px 1.5rem 60px;
+        }
+
+        .section {
+          padding: 50px 1.5rem;
+        }
+
+        .header-container {
+          padding: 1rem 1.5rem;
+        }
+
+        .logo-item {
+          height: 32px;
+        }
+
+        .btn {
+          padding: 0.9rem 1.5rem;
+          font-size: 0.95rem;
+        }
+
+        .use-case-card,
+        .diff-item,
+        .impl-content {
+          padding: 2rem;
         }
 
         .differentiation {
@@ -1046,11 +711,6 @@
         .cta-section {
           padding: 4rem 2rem;
         }
-
-        .btn {
-          padding: 0.9rem 2rem;
-          font-size: 1rem;
-        }
       }
     </style>
   </head>
@@ -1059,15 +719,17 @@
     <div class="floating-shapes">
       <div class="shape shape-1"></div>
       <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
     </div>
-    <div class="particles" id="particles"></div>
     <div class="scroll-progress" id="scrollProgress"></div>
+
     <header id="header">
       <div class="header-container">
         <div class="logo-container">
-          <img src="images/logo.png" alt="Zolytics Logo" class="logo-item" />
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+            class="logo-item"
+          />
           <img
             src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/payments.svg"
             alt="Zoho Payments"
@@ -1102,6 +764,44 @@
                 alt="Payment Processing"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section audience-section">
+        <div class="section-container">
+          <div class="section-header">
+            <h2>Who Is Zoho Payments Built For?</h2>
+            <p>
+              Designed for businesses that want faster collections and zero
+              manual work
+            </p>
+          </div>
+
+          <div class="audience-grid">
+            <div class="audience-card">SMEs & Growing Businesses</div>
+            <div class="audience-card">Subscription & SaaS Companies</div>
+            <div class="audience-card">Consultants & Agencies</div>
+            <div class="audience-card">E-commerce & D2C Brands</div>
+            <div class="audience-card">Enterprises with GST Compliance</div>
+            <div class="audience-card">Zoho Finance Users</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section payment-flow">
+        <div class="section-container">
+          <div class="section-header">
+            <h2>How Payments Flow in Your Business</h2>
+            <p>From invoice to bank — fully automated</p>
+          </div>
+
+          <div class="flow-grid">
+            <div class="flow-step">Invoice Generated</div>
+            <div class="flow-step">Customer Pays Online</div>
+            <div class="flow-step">Payment Auto-Captured</div>
+            <div class="flow-step">Books Auto-Reconciled</div>
+            <div class="flow-step">GST Ready Reports</div>
           </div>
         </div>
       </section>
@@ -1266,140 +966,131 @@
                   <li>Multi-gateway setup with smart routing</li>
                   <li>Recurring billing and subscription management</li>
                   <li>Custom payment workflows and approvals</li>
-                  <li>Advanced reconciliation with ERP integration</li>
-                  <li>Payment analytics dashboard</li>
-                  <li>Multi-currency support configuration</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+                 <li>Advanced reconciliation with ERP integration</li>
+<li>Payment analytics dashboard</li>
+<li>Multi-currency support configuration</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</section>
 
-      <section class="section">
-        <div class="section-container">
-          <div class="cta-section">
-            <h2>Ready to Transform Your Payment Collection?</h2>
-            <p>
-              Join 500+ businesses that have reduced their payment collection
-              time by 70% with our Zoho Payments implementation
-            </p>
-            <button class="btn">Schedule Free Consultation</button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Zolytics</h3>
-          <p>
-            Your trusted Zoho implementation partner. We help businesses
-            leverage the full power of Zoho's ecosystem.
-          </p>
-        </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <ul>
-            <li>Zoho Payments Setup</li>
-            <li>Zoho Books Implementation</li>
-            <li>Zoho CRM Integration</li>
-            <li>Custom Development</li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Resources</h3>
-          <ul>
-            <li>Documentation</li>
-            <li>Case Studies</li>
-            <li>Blog</li>
-            <li>Support</li>
-          </ul>
-        </div>
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <ul>
-            <li>contact@zolytics.com</li>
-            <li>+91 XXXXX XXXXX</li>
-            <li>Schedule a Call</li>
-          </ul>
-        </div>
+<section class="section">
+    <div class="section-container">
+      <div class="cta-section">
+        <h2>Ready to Transform Your Payments?</h2>
+        <p>
+          Let's discuss how Zoho Payments can accelerate your cash flow and
+          eliminate reconciliation headaches.
+        </p>
+        <button class="btn">Schedule a Consultation</button>
       </div>
-      <div class="footer-bottom">
-        <p>&copy; 2024 Zolytics. All rights reserved.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>Zolytics</h3>
+      <p class="tagline">Certified Zoho Partner</p>
+      <p>
+        We help businesses simplify operations by implementing, customizing,
+        and automating Zoho applications tailored to real-world business
+        workflows.
+      </p>
+    </div>
+
+    <div class="footer-section zoho-solutions">
+      <h3>Zoho Solutions</h3>
+      <ul class="solutions-grid">
+        <li><a href="analytics.html">Zoho Analytics</a></li>
+        <li><a href="bigin.html">Zoho Bigin</a></li>
+        <li><a href="billing.html">Zoho Billing</a></li>
+        <li><a href="books.html">Zoho Books</a></li>
+        <li><a href="commerce.html">Zoho Commerce</a></li>
+        <li><a href="crm.html">Zoho CRM</a></li>
+        <li><a href="expense.html">Zoho Expense</a></li>
+        <li><a href="finance.html">Zoho Finance Plus</a></li>
+        <li><a href="inventory.html">Zoho Inventory</a></li>
+        <li><a href="payroll.html">Zoho Payroll</a></li>
+        <li><a href="peopleplus.html">Zoho People Plus</a></li>
+        <li><a href="recruit.html">Zoho Recruit</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Contact Us</h3>
+      <p>
+        Email: info@zolytics.in<br />
+        Phone: +91 90 7313 9613<br />
+        Location: India <br />
+         <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+      </p>
+      <div class="zoho-logo">
+        <img
+          src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+          alt="Zoho Premium Partner"
+        />
       </div>
-    </footer>
+    </div>
+  </div>
 
-    <script>
-      // Create particles
-      const particlesContainer = document.getElementById("particles");
-      for (let i = 0; i < 50; i++) {
-        const particle = document.createElement("div");
-        particle.className = "particle";
-        particle.style.left = Math.random() * 100 + "%";
-        particle.style.animationDelay = Math.random() * 15 + "s";
-        particle.style.animationDuration = Math.random() * 10 + 10 + "s";
-        particlesContainer.appendChild(particle);
-      }
+  <div class="footer-bottom">
+    <p>
+      © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+      Zoho Consulting Partner
+    </p>
+  </div>
+</footer>
 
-      // Scroll Progress Bar
-      window.addEventListener("scroll", () => {
-        const scrollProgress = document.getElementById("scrollProgress");
-        const scrollTop = window.pageYOffset;
-        const docHeight = document.body.offsetHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
-        scrollProgress.style.width = scrollPercent + "%";
-      });
+<script>
+  // Scroll Progress Bar
+  window.addEventListener("scroll", () => {
+    const scrollProgress = document.getElementById("scrollProgress");
+    const scrollTop = window.pageYOffset;
+    const docHeight = document.body.offsetHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+    scrollProgress.style.width = scrollPercent + "%";
+  });
 
-      // Header Scroll Effect
-      const header = document.getElementById("header");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 50) {
-          header.classList.add("scrolled");
-        } else {
-          header.classList.remove("scrolled");
-        }
-      });
-
-      // Intersection Observer for Animations
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -100px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
-
-      // Observe all animated elements
-      document
-        .querySelectorAll(
-          ".section-header, .use-case-card, .diff-item, .implementation-card"
-        )
-        .forEach((el) => {
-          observer.observe(el);
-        });
-
-      // Stagger animation for cards
-      const useCaseCards = document.querySelectorAll(".use-case-card");
-      useCaseCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.1}s`;
-      });
-
-      const diffItems = document.querySelectorAll(".diff-item");
-      diffItems.forEach((item, index) => {
-        item.style.transitionDelay = `${index * 0.1}s`;
-      });
-
-      const implCards = document.querySelectorAll(".implementation-card");
-      implCards.forEach((card, index) => {
-        card.style.transitionDelay = `${index * 0.15}s`;
-      });
-    </script>
-  </body>
+  // Header Scroll Effect
+  const header = document.getElementById("header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 50) {
+      header.classList.add("scrolled");
+    } else {
+      header.classList.remove("scrolled");
+    }
+  });
+</script>
+</body>
 </html>
+
