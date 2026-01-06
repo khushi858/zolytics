@@ -778,6 +778,127 @@
         font-size: 1.05rem;
       }
 
+      /* Problems Section - White Background with Problem Cards */
+.problems-section {
+  background: white;
+  position: relative;
+}
+
+.problems-section .section-title {
+  color: #1a1a1a;
+}
+
+.problems-section .section-title::after {
+  background: #e74c3c;
+}
+
+.problems-section .section-subtitle {
+  color: #666;
+}
+
+/* Problem Cards Grid */
+.problems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 3rem;
+  margin-top: 4rem;
+}
+
+.problem-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.problem-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 0;
+  background: #e74c3c;
+  transition: height 0.6s ease;
+}
+
+.problem-card:hover::before {
+  height: 100%;
+}
+
+.problem-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 8px;
+  background: linear-gradient(90deg, transparent, #e74c3c);
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.problem-card:hover::after {
+  opacity: 1;
+}
+
+.problem-card:hover {
+  transform: translateY(-20px) scale(1.03);
+  box-shadow: 0 25px 70px rgba(231, 76, 60, 0.15);
+  border-color: #e74c3c;
+}
+
+.problem-icon {
+  width: 70px;
+  height: 70px;
+  background: #e74c3c;
+  color: white;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: 900;
+  margin-bottom: 1.8rem;
+  box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
+  transition: all 0.4s ease;
+}
+
+.problem-card:hover .problem-icon {
+  transform: scale(1.15) rotate(10deg);
+}
+
+.problem-card h3 {
+  font-size: 1.7rem;
+  margin-bottom: 1.3rem;
+  color: #1a1a1a;
+  font-weight: 800;
+}
+
+.problem-card p {
+  line-height: 1.9;
+  color: #666;
+  font-size: 1.05rem;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .problems-grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .problems-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
       /* Real Implementations - Red Background */
       .impl-grid {
         display: grid;
@@ -894,268 +1015,7 @@
         font-size: 1.1rem;
       }
 
-      /* Video Section - White Background */
-      .video-section {
-        position: relative;
-      }
-
-      .video-section::before {
-        content: "";
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background: #2874a6;
-        opacity: 0.03;
-        border-radius: 50%;
-        top: 20%;
-        right: 10%;
-        animation: pulse 4s ease-in-out infinite;
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.1);
-        }
-      }
-
-      .video-container {
-        max-width: 1100px;
-        margin: 0 auto;
-        border-radius: 25px;
-        overflow: hidden;
-        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.15);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        background: white;
-        border: 6px solid #2874a6;
-        position: relative;
-      }
-
-      .video-container::before {
-        content: "";
-        position: absolute;
-        top: -6px;
-        left: -6px;
-        right: -6px;
-        bottom: -6px;
-        background: linear-gradient(45deg, #2874a6, #e74c3c, #2874a6);
-        border-radius: 25px;
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        z-index: -1;
-      }
-
-      .video-container:hover::before {
-        opacity: 1;
-        animation: rotateBorder 3s linear infinite;
-      }
-
-      @keyframes rotateBorder {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-
-      .video-container:hover {
-        transform: scale(1.05);
-        box-shadow: 0 30px 100px rgba(40, 116, 166, 0.3);
-      }
-
-      .video-placeholder {
-        width: 100%;
-        aspect-ratio: 16/9;
-        background: linear-gradient(135deg, #f8f9fa 0%, white 100%);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        transition: all 0.4s ease;
-        position: relative;
-      }
-
-      .video-placeholder::before {
-        content: "";
-        position: absolute;
-        width: 120px;
-        height: 120px;
-        background: #296d9a;
-        border-radius: 50%;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 40px rgba(40, 116, 166, 0.3);
-      }
-
-      .video-placeholder:hover::before {
-        transform: scale(1.1);
-        box-shadow: 0 15px 50px rgba(40, 116, 166, 0.5);
-      }
-
-      .video-placeholder::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-left: 35px solid white;
-        border-top: 23px solid transparent;
-        border-bottom: 23px solid transparent;
-        margin-left: 10px;
-        transition: all 0.4s ease;
-      }
-
-      .video-placeholder:hover::after {
-        border-left-width: 40px;
-        border-top-width: 27px;
-        border-bottom-width: 27px;
-      }
-
-      .video-text {
-        position: relative;
-        z-index: 2;
-        margin-top: 170px;
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: #1a1a1a;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      /* Final CTA - Blue Background */
-      .final-cta {
-        text-align: center;
-        padding: 10rem 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .final-cta::after {
-        content: "";
-        position: absolute;
-        width: 400px;
-        height: 400px;
-        background: rgba(255, 255, 255, 0.05);
-        border-radius: 50%;
-        top: -200px;
-        left: -100px;
-        animation: float 15s ease-in-out infinite;
-      }
-
-      .final-cta h2 {
-        font-size: 4.5rem;
-        margin-bottom: 2rem;
-        font-weight: 900;
-        letter-spacing: -2px;
-        position: relative;
-        z-index: 2;
-      }
-
-      .final-cta p {
-        font-size: 1.7rem;
-        margin-bottom: 4rem;
-        position: relative;
-        z-index: 2;
-      }
-
-      .final-cta .cta-buttons {
-        position: relative;
-        z-index: 2;
-      }
-
-      /* Footer */
-      footer {
-        background: #1a1a1a;
-        color: white;
-        padding: 5rem 2rem 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      footer::before {
-        content: "";
-        position: absolute;
-        width: 300px;
-        height: 300px;
-        background: #e74c3c;
-        opacity: 0.03;
-        border-radius: 50%;
-        bottom: -150px;
-        right: -100px;
-      }
-
-      .footer-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 4rem;
-        margin-bottom: 3rem;
-        position: relative;
-        z-index: 2;
-      }
-
-      .footer-section h3 {
-        color: #e74c3c;
-        font-size: 1.4rem;
-        margin-bottom: 1.8rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .footer-section p,
-      .footer-section a {
-        color: rgba(255, 255, 255, 0.7);
-        line-height: 2;
-        font-size: 1.05rem;
-        text-decoration: none;
-        display: block;
-        margin-bottom: 1rem;
-        transition: all 0.3s ease;
-        position: relative;
-        padding-left: 0;
-      }
-
-      .footer-section a::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 0;
-        height: 2px;
-        background: #2874a6;
-        transition: width 0.3s ease;
-      }
-
-      .footer-section a:hover {
-        color: white;
-        padding-left: 20px;
-      }
-
-      .footer-section a:hover::before {
-        width: 12px;
-      }
-
-      .footer-bottom {
-        text-align: center;
-        padding-top: 2.5rem;
-        border-top: 2px solid rgba(255, 255, 255, 0.1);
-        color: rgba(255, 255, 255, 0.6);
-        font-size: 1rem;
-        position: relative;
-        z-index: 2;
-      }
-
-      .footer-bottom span {
-        color: #2874a6;
-        font-weight: 700;
-      }
-
+     
       /* Scroll Animations */
       .scroll-reveal {
         opacity: 0;
@@ -1272,7 +1132,7 @@
       <div class="header-container">
         <div class="logo">
           <img
-            src="images/logo.png"
+            src="https://www.zolytics.in/files/logo.png"
             style="height: 80px; width: auto"
             alt="Zolytics"
           />
@@ -1282,14 +1142,6 @@
             style="height: 50px"
           />
         </div>
-        
-        <nav>
-          <a href="#use-cases">Use Cases</a>
-          <a href="#differentiation">Why Us</a>
-          <a href="#implementations">Implementations</a>
-          <a href="#demo">Demo</a>
-          <a href="#contact">Contact</a>
-        </nav>
       </div>
       </div>
     </header>
@@ -1306,14 +1158,54 @@
         <p class="subtitle">
           Zoho Cliq Consulting That Transforms Communication Into Automation
         </p>
-        <div class="cta-buttons">
-          <a href="#contact" class="cta-btn cta-primary"
-            >Build Your First Automation</a
-          >
-          <a href="#demo" class="cta-btn cta-secondary">See Live Bot Demo</a>
-        </div>
+       
       </div>
     </div>
+
+   <section class="white-section problems-section">
+  <div class="container">
+    <h2 class="section-title scroll-reveal">Problems We Replace With Zoho Cliq</h2>
+    <p class="section-subtitle scroll-reveal">
+      If this sounds familiar, Cliq automation is the solution
+    </p>
+
+    <div class="problems-grid">
+      <div class="problem-card scroll-reveal">
+        <div class="problem-icon">⚠️</div>
+        <h3>Slack Chaos & Noise</h3>
+        <p>
+          Too many channels, no ownership, and important updates getting buried.
+        </p>
+      </div>
+
+      <div class="problem-card scroll-reveal">
+        <div class="problem-icon">⏱️</div>
+        <h3>Manual Status Updates</h3>
+        <p>
+          Teams wasting time posting updates instead of doing actual work.
+        </p>
+      </div>
+
+      <div class="problem-card scroll-reveal">
+        <div class="problem-icon">🔌</div>
+        <h3>Disconnected Tools</h3>
+        <p>
+          CRM, Desk, Projects updates living outside your daily conversations.
+        </p>
+      </div>
+
+      <div class="problem-card scroll-reveal">
+        <div class="problem-icon">🚨</div>
+        <h3>Missed Critical Alerts</h3>
+        <p>
+          High-priority deals, tickets, or incidents not reaching the right
+          people on time.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- Use Cases Section - WHITE -->
     <section id="use-cases" class="white-section">
@@ -1474,71 +1366,225 @@
       </div>
     </section>
 
-    <!-- Video Demo Section - WHITE -->
-    <section class="white-section" id="demo">
-      <div class="container">
-        <h2 class="section-title scroll-reveal">See It In Action</h2>
-        <p class="section-subtitle scroll-reveal">
-          Watch how our Cliq automations transform daily workflows
-        </p>
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
 
-        <div class="video-container scroll-reveal">
-          <div class="video-placeholder">
-            <div class="video-text">Live Bot Demo Video</div>
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- Final CTA Section - BLUE -->
-    <section class="blue-section final-cta" id="contact">
-      <div class="container">
-        <h2 class="scroll-reveal">
-          Ready to Transform Your Team Communication?
-        </h2>
-        <p class="scroll-reveal">
-          Let's build your first Cliq automation together and eliminate the
-          chaos
-        </p>
-        <div class="cta-buttons">
-          <a href="#" class="cta-btn cta-primary">Schedule Free Consultation</a>
-          <a href="#" class="cta-btn cta-secondary"
-            >Download Integration Guide</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-      <div class="footer-container">
-        <div class="footer-section">
-          <h3>About Zolytics</h3>
-          <p>
-            Certified Zoho Partner providing expert CRM implementation,
-            customization, and consulting services across India. We help
-            businesses leverage technology to drive growth.
-          </p>
-        </div>
-        <div class="footer-section">
-          <h3>Services</h3>
-          <a href="#">CRM Implementation</a>
-          <a href="#">Customization & Development</a>
-          <a href="#">Strategic Consulting</a>
-          <a href="#">Training & Support</a>
-        </div>
-        <div class="footer-section">
-          <h3>Contact</h3>
-          <p>Email: contact@zolytics.com</p>
-          <p>Phone: +91-XXXXXXXXXX</p>
-          <p>Location: India</p>
-        </div>
-      </div>
       <div class="footer-bottom">
-        © 2024 Zolytics. All rights reserved. |
-        <span>Certified Zoho Partner</span>
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
       </div>
     </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
 
     <script>
       // Header scroll effect
