@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickBooks to Zoho Books Migration | Save 60% - Zolytics</title>
+    <meta
+      name="description"
+      content="Switch from QuickBooks Online to Zoho Books and save up to 60%. Expert migration with zero downtime and superior features."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        line-height: 1.6;
+        color: #2d3748;
+        background: #f7fafc;
+      }
+
+      header {
+        background: white;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-section {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .logo-section img {
+        height: 80px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #4a5568;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #10b981;
+      }
+
+      .hero {
+        background:  #ebd5d5 ;
+        color: rgb(5, 5, 5);
+        padding: 100px 2rem;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: 1.3rem;
+        max-width: 800px;
+        margin: 0 auto 2rem;
+        opacity: 0.95;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn-primary {
+        background: white;
+        color: #10b981;
+        padding: 1rem 2.5rem;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .btn-secondary {
+        background: transparent;
+        color: rgb(5, 5, 5);
+        padding: 1rem 2.5rem;
+        border: 2px solid white;
+        border-radius: 50px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .btn-secondary:hover {
+        background: white;
+        color: #10b981;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 1rem;
+        color: #1a202c;
+      }
+
+      .section-subtitle {
+        text-align: center;
+        color: #10b981;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 3rem;
+      }
+
+      .migration-flow {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 3rem;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto 80px;
+        padding: 3rem;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .platform-card {
+        text-align: center;
+        padding: 2rem;
+        border-radius: 15px;
+        background: #f7fafc;
+        transition: all 0.3s;
+      }
+
+      .platform-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .platform-card img {
+        width: 120px;
+        height: 120px;
+        object-fit: contain;
+        margin-bottom: 1rem;
+      }
+
+      .platform-card h3 {
+        font-size: 1.3rem;
+        color: #2d3748;
+      }
+
+      .arrow {
+        font-size: 3rem;
+        color: #10b981;
+      }
+
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 3fr,1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .benefit-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s;
+        border-left: 4px solid #10b981;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+      }
+
+      .benefit-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .benefit-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+        color: #1a202c;
+      }
+
+      .benefit-card p {
+        color: #4a5568;
+        line-height: 1.7;
+      }
+
+      
+
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .step-card {
+        background: white;
+        padding: 2.5rem 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        text-align: center;
+        transition: all 0.3s;
+      }
+
+      .step-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .step-number {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0 auto 1.5rem;
+      }
+
+      .step-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #1a202c;
+      }
+
+      .step-card p {
+        color: #4a5568;
+        line-height: 1.6;
+      }
+
+      .pricing-comparison {
+        background: white;
+        border-radius: 20px;
+        padding: 3rem;
+        margin: 3rem 0;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      }
+
+      .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* ✅ 3–3 grid */
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .pricing-card {
+        padding: 2rem;
+        border-radius: 15px;
+        border: 2px solid #e2e8f0;
+      }
+
+      .pricing-card.qbo {
+        background: #fef2f2;
+        border-color: #fca5a5;
+      }
+
+      .pricing-card.zoho {
+        background: #f0fdf4;
+        border-color: #86efac;
+      }
+
+      .pricing-card h4 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 1rem 0;
+      }
+
+      .price-details {
+        color: #4a5568;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-list {
+        list-style: none;
+      }
+
+      .feature-list li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .feature-list li:last-child {
+        border-bottom: none;
+      }
+
+      .testimonials {
+        margin-top: 3rem;
+      }
+
+      .testimonial-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 2rem;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        color: #4a5568;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .author-info h4 {
+        color: #1a202c;
+        font-size: 1.1rem;
+      }
+
+      .author-info p {
+        color: #718096;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .migration-flow {
+          grid-template-columns: 1fr;
+        }
+
+        .arrow {
+          transform: rotate(90deg);
+        }
+
+        .pricing-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .nav-links {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-section">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+          />
+        </div>
+        
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>QuickBooks to Zoho Books Migration</h1>
+      <p>
+        Businesses across India and globally are moving away from QuickBooks due
+        to rising subscription costs, limited GST localization, and restricted
+        scalability. Zoho Books offers a cost-effective, compliant, and
+        extensible accounting platform designed for growing businesses.
+      </p>
+    </section>
+
+    <!-- Migration Overview -->
+    <section>
+      <div class="container">
+        <p class="section-subtitle">Platform Transition</p>
+        <h2 class="section-title">From QuickBooks Online to Zoho Books</h2>
+
+        <div class="migration-flow">
+          <div class="platform-card">
+            <img
+              src="data:image/png;base64,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"
+              alt="QuickBooks"
+            />
+            <h3>QuickBooks Online</h3>
+            <p>High subscription cost, limited GST support</p>
+          </div>
+
+          <div class="arrow">→</div>
+
+          <div class="platform-card">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
+              alt="Zoho Books"
+            />
+            <h3>Zoho Books</h3>
+            <p>GST-ready, scalable, affordable accounting</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Switch -->
+    <section id="benefits">
+      <div class="container">
+        <p class="section-subtitle">Business Benefits</p>
+        <h2 class="section-title">Why Businesses Switch from QuickBooks</h2>
+
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <div class="benefit-icon">💸</div>
+            <h3>Lower Total Cost of Ownership</h3>
+            <p>
+              Zoho Books pricing is significantly lower than QuickBooks,
+              especially for multi-user access. Businesses save up to 60%
+              annually without compromising features.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🇮🇳</div>
+            <h3>Built for Indian Compliance</h3>
+            <p>
+              Native GST support, e-invoicing, e-way bills, and
+              government-compliant reporting come built-in with Zoho Books,
+              unlike QuickBooks.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">🔗</div>
+            <h3>Deep Zoho Ecosystem Integration</h3>
+            <p>
+              Seamless integration with Zoho CRM, Inventory, Payroll, Expense,
+              and Analytics enables end-to-end business automation.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">☁️</div>
+            <h3>Secure Cloud Architecture</h3>
+            <p>
+              Zoho Books offers enterprise-grade security, encrypted backups,
+              and role-based access controls to protect financial data.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📈</div>
+            <h3>Scales with Your Business</h3>
+            <p>
+              From startups to mid-sized enterprises, Zoho Books scales
+              effortlessly without forcing costly plan upgrades.
+            </p>
+          </div>
+
+          <div class="benefit-card">
+            <div class="benefit-icon">📱</div>
+            <h3>Modern User Experience</h3>
+            <p>
+              A clean interface, mobile apps, and automation tools improve
+              day-to-day accounting efficiency for teams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- Migration Process -->
+    <section id="process">
+      <div class="container">
+        <p class="section-subtitle">Migration Methodology</p>
+        <h2 class="section-title">Our Structured Migration Process</h2>
+
+        <div class="process-steps">
+          <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Data Assessment</h3>
+            <p>
+              We analyze your QuickBooks data structure, chart of accounts,
+              transactions, and historical records.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Data Cleansing</h3>
+            <p>
+              Duplicate entries, inactive masters, and inconsistencies are
+              identified and corrected before migration.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Field & Tax Mapping</h3>
+            <p>
+              Accounts, taxes, customers, vendors, and inventory are mapped
+              precisely to Zoho Books structure.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">4</div>
+            <h3>Secure Data Migration</h3>
+            <p>
+              Masters, opening balances, invoices, bills, and historical
+              transactions are migrated securely.
+            </p>
+          </div>
+
+          <div class="step-card">
+            <div class="step-number">5</div>
+            <h3>Validation & Reconciliation</h3>
+            <p>
+              Reports are cross-verified to ensure zero data loss and complete
+              accuracy.
+            </p>
+          </div>
+          <div class="step-card">
+  <div class="step-number">6</div>
+  <h3>Go-Live & Post-Migration Support</h3>
+  <p>
+    We provide post-migration
+    support, user guidance, and minor adjustments to ensure smooth
+    day-to-day operations.
+  </p>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+  </body>
+</html>
