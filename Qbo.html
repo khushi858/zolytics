@@ -9,7 +9,7 @@
       content="Switch from QuickBooks Online to Zoho Books and save up to 60%. Expert migration with zero downtime and superior features."
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <style>
@@ -19,25 +19,34 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
         line-height: 1.6;
         color: #2d3748;
         background: #f7fafc;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
+      /* ========== HEADER ========== */
       header {
         background: white;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
         position: sticky;
         top: 0;
         z-index: 1000;
+        backdrop-filter: blur(10px);
       }
 
       nav {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1rem 2rem;
+        padding: 1.2rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -50,45 +59,116 @@
       }
 
       .logo-section img {
-        height: 80px;
+        height: 70px;
+        transition: transform 0.3s ease;
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.05);
       }
 
       .nav-links {
         display: flex;
         gap: 2rem;
         list-style: none;
+        align-items: center;
       }
 
       .nav-links a {
         text-decoration: none;
         color: #4a5568;
-        font-weight: 500;
+        font-weight: 600;
+        font-size: 0.95rem;
         transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #10b981, #059669);
+        transition: width 0.3s ease;
       }
 
       .nav-links a:hover {
         color: #10b981;
       }
 
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* ========== HERO SECTION ========== */
       .hero {
-        background:  #ebd5d5 ;
-        color: rgb(5, 5, 5);
-        padding: 100px 2rem;
+        background: linear-gradient(135deg, #f5e6e8 0%, #d4e4f7 100%);
+        color: #050505;
+        padding: 120px 2rem 100px;
         text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.12) 0%,
+          transparent 70%
+        );
+        animation: float 20s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(-30px, 30px) rotate(180deg);
+        }
       }
 
       .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
-        margin-bottom: 1.5rem;
-        line-height: 1.2;
+        font-size: 3.8rem;
+        font-weight: 900;
+        margin-bottom: 1.8rem;
+        line-height: 1.1;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out;
+        letter-spacing: -0.02em;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .hero p {
-        font-size: 1.3rem;
-        max-width: 800px;
-        margin: 0 auto 2rem;
-        opacity: 0.95;
+        font-size: 1.25rem;
+        max-width: 900px;
+        margin: 0 auto 2.5rem;
+        opacity: 0.92;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out 0.2s both;
+        line-height: 1.8;
+        font-weight: 500;
       }
 
       .cta-buttons {
@@ -96,40 +176,71 @@
         gap: 1.5rem;
         justify-content: center;
         flex-wrap: wrap;
+        position: relative;
+        z-index: 1;
+        animation: fadeInUp 1s ease-out 0.4s both;
       }
 
       .btn-primary {
-        background: white;
-        color: #10b981;
-        padding: 1rem 2.5rem;
+        background: linear-gradient(135deg, #10b981, #059669);
+        color: white;
+        padding: 1.1rem 2.8rem;
         border-radius: 50px;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1.05rem;
         text-decoration: none;
-        transition: all 0.3s;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+        position: relative;
+        overflow: hidden;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-primary::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+
+      .btn-primary:hover::before {
+        width: 350px;
+        height: 350px;
       }
 
       .btn-primary:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.45);
       }
 
       .btn-secondary {
-        background: transparent;
-        color: rgb(5, 5, 5);
-        padding: 1rem 2.5rem;
-        border: 2px solid white;
+        background: white;
+        color: #10b981;
+        padding: 1.1rem 2.8rem;
+        border: 2px solid #10b981;
         border-radius: 50px;
-        font-weight: 600;
+        font-weight: 700;
+        font-size: 1.05rem;
         text-decoration: none;
-        transition: all 0.3s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
       }
 
       .btn-secondary:hover {
-        background: white;
-        color: #10b981;
+        background: #10b981;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(16, 185, 129, 0.35);
       }
 
+      /* ========== CONTAINER & SECTIONS ========== */
       .container {
         max-width: 1400px;
         margin: 0 auto;
@@ -137,275 +248,1429 @@
       }
 
       section {
-        padding: 80px 0;
+        padding: 100px 0;
       }
 
       .section-title {
-        font-size: 2.5rem;
-        font-weight: 700;
+        font-size: 2.8rem;
+        font-weight: 900;
         text-align: center;
-        margin-bottom: 1rem;
+        margin-bottom: 1.2rem;
         color: #1a202c;
+        position: relative;
+        padding-bottom: 25px;
+        letter-spacing: -0.02em;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #10b981, #059669);
+        border-radius: 3px;
       }
 
       .section-subtitle {
         text-align: center;
         color: #10b981;
-        font-weight: 600;
+        font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 2px;
-        margin-bottom: 3rem;
+        letter-spacing: 3px;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
       }
 
+      /* ========== MIGRATION FLOW ========== */
       .migration-flow {
         display: grid;
         grid-template-columns: 1fr auto 1fr;
-        gap: 3rem;
+        gap: 3.5rem;
         align-items: center;
-        max-width: 1000px;
-        margin: 0 auto 80px;
-        padding: 3rem;
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 3.5rem;
         background: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        border-radius: 24px;
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .migration-flow::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #10b981, #059669, #10b981);
+        background-size: 200% 100%;
+        animation: gradientShift 3s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .platform-card {
         text-align: center;
-        padding: 2rem;
-        border-radius: 15px;
-        background: #f7fafc;
-        transition: all 0.3s;
+        padding: 2.5rem;
+        border-radius: 20px;
+        background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        border: 2px solid transparent;
+      }
+
+      .platform-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 20px;
+        background: linear-gradient(
+          135deg,
+          rgba(16, 185, 129, 0.12),
+          rgba(5, 150, 105, 0.12)
+        );
+        opacity: 0;
+        transition: opacity 0.5s;
+      }
+
+      .platform-card:hover::after {
+        opacity: 1;
       }
 
       .platform-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 20px 50px rgba(16, 185, 129, 0.25);
+        border-color: #10b981;
       }
 
       .platform-card img {
-        width: 120px;
-        height: 120px;
+        width: 130px;
+        height: 130px;
         object-fit: contain;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
       }
 
       .platform-card h3 {
-        font-size: 1.3rem;
-        color: #2d3748;
+        font-size: 1.5rem;
+        color: #1a202c;
+        font-weight: 800;
+        margin-bottom: 0.8rem;
+      }
+
+      .platform-card p {
+        color: #4a5568;
+        font-weight: 500;
+        line-height: 1.7;
+        font-size: 1rem;
       }
 
       .arrow {
-        font-size: 3rem;
+        font-size: 3.5rem;
         color: #10b981;
+        animation: pulse 2s ease-in-out infinite;
+        filter: drop-shadow(0 4px 12px rgba(16, 185, 129, 0.3));
       }
 
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.25);
+          opacity: 0.75;
+        }
+      }
+
+      /* ========== QBO COMPARISON SECTION ========== */
+      .qbo-migration-section {
+        padding: 100px 20px;
+        background: linear-gradient(135deg, #f4f8fd, #eef5ff);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .qbo-container {
+        max-width: 1300px;
+        margin: auto;
+        text-align: center;
+      }
+
+      .qbo-subtitle {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 700;
+        color: #2563eb;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .qbo-title {
+        font-size: 2.8rem;
+        font-weight: 900;
+        margin-bottom: 70px;
+        color: #0f172a;
+        letter-spacing: -0.02em;
+      }
+
+      .qbo-flow {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 50px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .qbo-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 40px 35px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border: 2px solid transparent;
+      }
+
+      .qbo-card:hover {
+        transform: translateY(-15px) scale(1.03);
+        border-color: rgba(37, 99, 235, 0.2);
+      }
+
+      .qbo-card img {
+        height: 80px;
+        margin-bottom: 20px;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .qbo-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        font-weight: 900;
+        color: #0f172a;
+      }
+
+      .qbo-card ul {
+        list-style: none;
+        padding: 0;
+        text-align: left;
+        margin: 20px 0;
+      }
+
+      .qbo-card ul li {
+        padding-left: 28px;
+        margin-bottom: 14px;
+        position: relative;
+        color: #475569;
+        font-weight: 500;
+        line-height: 1.6;
+      }
+
+      .qbo-card ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #22c55e;
+        font-size: 18px;
+        font-weight: 900;
+      }
+
+      .qbo-badge {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 22px;
+        border-radius: 999px;
+        font-size: 0.9rem;
+        font-weight: 800;
+        letter-spacing: 0.5px;
+      }
+
+      .qbo-badge.danger {
+        background: linear-gradient(135deg, #fee2e2, #fecaca);
+        color: #991b1b;
+        box-shadow: 0 4px 12px rgba(185, 28, 28, 0.2);
+      }
+
+      .qbo-badge.success {
+        background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+        color: #15803d;
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+      }
+
+      .qbo-connector {
+        position: relative;
+        height: 200px;
+        width: 100px;
+      }
+
+      .qbo-connector span {
+        position: absolute;
+        width: 5px;
+        height: 100%;
+        background: linear-gradient(180deg, #2563eb, #22c55e);
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 3px;
+        animation: flow 2.5s infinite;
+      }
+
+      .qbo-connector span:nth-child(2) {
+        animation-delay: 0.8s;
+        opacity: 0.7;
+      }
+
+      .qbo-connector span:nth-child(3) {
+        animation-delay: 1.6s;
+        opacity: 0.4;
+      }
+
+      @keyframes flow {
+        0% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(-50px);
+        }
+        50% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(-50%) translateY(50px);
+        }
+      }
+
+      .qbo-arrow {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2.8rem;
+        transform: translate(-50%, -50%);
+        color: #2563eb;
+        animation: pulseArrow 2s infinite;
+        filter: drop-shadow(0 4px 12px rgba(37, 99, 235, 0.3));
+      }
+
+      @keyframes pulseArrow {
+        0%,
+        100% {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        50% {
+          transform: translate(-50%, -50%) scale(1.3);
+        }
+      }
+
+      .qbo-glow,
+      .zoho-glow {
+        position: absolute;
+        inset: -25px;
+        border-radius: 35px;
+        filter: blur(45px);
+        opacity: 0.3;
+        z-index: -1;
+        transition: opacity 0.5s;
+      }
+
+      .qbo-card:hover .qbo-glow,
+      .qbo-card:hover .zoho-glow {
+        opacity: 0.5;
+      }
+
+      .qbo-glow {
+        background: #2563eb;
+      }
+
+      .zoho-glow {
+        background: #22c55e;
+      }
+
+      /* ========== BENEFITS SECTION ========== */
       .benefits-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 3fr,1fr));
-        gap: 2rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2.5rem;
+        margin-top: 60px;
       }
 
       .benefit-card {
         background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s;
-        border-left: 4px solid #10b981;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        border-left: 5px solid #10b981;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .benefit-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(16, 185, 129, 0.1),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .benefit-card:hover::before {
+        left: 100%;
       }
 
       .benefit-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 15px 45px rgba(16, 185, 129, 0.18);
+        border-left-width: 7px;
       }
 
       .benefit-icon {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         background: linear-gradient(135deg, #10b981, #059669);
-        border-radius: 12px;
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        margin-bottom: 1.8rem;
+        transition: all 0.5s;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+      }
+
+      .benefit-card:hover .benefit-icon {
+        transform: rotateY(360deg) scale(1.1);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.4);
       }
 
       .benefit-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.8rem;
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
         color: #1a202c;
+        font-weight: 800;
       }
 
       .benefit-card p {
         color: #4a5568;
-        line-height: 1.7;
+        line-height: 1.8;
+        font-weight: 500;
       }
 
-      
+      /* ========== CONSULTING MIGRATION SECTION ========== */
+      /* ========== QZ CONSULTING MIGRATION (SCOPED) ========== */
+      .qz-consulting-migration {
+        --ink: #0f172a;
+        --muted: #475569;
+        --soft: #e2e8f0;
+        --card: #ffffff;
+        --blue: #2563eb;
+        --green: #22c55e;
+        --shadow: 0 18px 50px rgba(2, 6, 23, 0.1);
+        --shadow2: 0 10px 25px rgba(2, 6, 23, 0.1);
+        padding: 92px 18px;
+        background: radial-gradient(
+            1100px 500px at 15% 10%,
+            rgba(37, 99, 235, 0.12),
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 450px at 85% 30%,
+            rgba(34, 197, 94, 0.12),
+            transparent 55%
+          ),
+          linear-gradient(135deg, #f6f9ff, #f3fff8);
+        position: relative;
+        overflow: hidden;
+      }
 
+      .qz-consulting-migration::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(
+            circle at 20% 30%,
+            rgba(37, 99, 235, 0.1),
+            transparent 45%
+          ),
+          radial-gradient(
+            circle at 80% 70%,
+            rgba(34, 197, 94, 0.1),
+            transparent 45%
+          );
+        filter: blur(22px);
+        opacity: 0.9;
+        pointer-events: none;
+      }
+
+      .qz-wrap {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+      .qz-head {
+        text-align: center;
+        margin-bottom: 34px;
+      }
+      .qz-kicker {
+        display: inline-block;
+        padding: 8px 14px;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(8px);
+        border-radius: 999px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(37, 99, 235, 0.95);
+        margin-bottom: 14px;
+        animation: qzFloatIn 0.8s ease-out both;
+      }
+      .qz-title {
+        font-size: clamp(1.9rem, 2.5vw, 2.7rem);
+        color: var(--ink);
+        font-weight: 900;
+        line-height: 1.15;
+        margin: 8px auto 12px;
+        max-width: 980px;
+        animation: qzFloatIn 0.9s ease-out 0.05s both;
+      }
+      .qz-lead {
+        max-width: 980px;
+        margin: 0 auto 18px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.75;
+        animation: qzFloatIn 0.95s ease-out 0.12s both;
+      }
+
+      @keyframes qzFloatIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .qz-metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 18px auto 18px;
+        max-width: 1050px;
+      }
+      .qz-metric {
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 18px;
+        padding: 14px 14px 12px;
+        box-shadow: 0 8px 24px rgba(2, 6, 23, 0.06);
+        backdrop-filter: blur(10px);
+        transition: transform 0.35s ease, box-shadow 0.35s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .qz-metric::after {
+        content: "";
+        position: absolute;
+        inset: -80px;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.75),
+          transparent 55%
+        );
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .qz-metric:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(2, 6, 23, 0.1);
+      }
+      .qz-metric:hover::after {
+        opacity: 0.65;
+      }
+      .qz-num {
+        font-weight: 900;
+        color: var(--ink);
+        font-size: 1.2rem;
+        letter-spacing: -0.02em;
+      }
+      .qz-num span {
+        color: var(--blue);
+      }
+      .qz-txt {
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.92rem;
+        margin-top: 6px;
+      }
+
+      .qz-ctaRow {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 10px;
+      }
+      .qz-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 800;
+        transition: transform 0.25s ease, box-shadow 0.25s ease,
+          background 0.25s ease, border-color 0.25s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      .qz-btnPrimary {
+        background: linear-gradient(135deg, var(--blue), #1d4ed8);
+        color: #fff;
+        box-shadow: 0 14px 35px rgba(37, 99, 235, 0.3);
+      }
+      .qz-btnPrimary::before {
+        content: "";
+        position: absolute;
+        inset: -2px;
+        background: radial-gradient(
+          circle at 30% 20%,
+          rgba(255, 255, 255, 0.45),
+          transparent 45%
+        );
+        opacity: 0;
+        transition: opacity 0.25s ease;
+      }
+      .qz-btnPrimary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 45px rgba(37, 99, 235, 0.35);
+      }
+      .qz-btnPrimary:hover::before {
+        opacity: 1;
+      }
+
+      .qz-btnGhost {
+        background: rgba(255, 255, 255, 0.65);
+        color: var(--ink);
+        border: 1px solid rgba(37, 99, 235, 0.22);
+        backdrop-filter: blur(8px);
+      }
+      .qz-btnGhost:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 30px rgba(2, 6, 23, 0.1);
+        border-color: rgba(37, 99, 235, 0.35);
+      }
+
+      /* FLOW */
+      .qz-flow {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 22px;
+        align-items: stretch;
+        margin: 28px 0 28px;
+      }
+
+      .qz-platform {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+        transform-style: preserve-3d;
+        transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1),
+          box-shadow 0.5s ease;
+      }
+      .qz-platform:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 25px 70px rgba(2, 6, 23, 0.14);
+      }
+      .qz-platformTop {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+      .qz-logo {
+        height: 56px;
+        width: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 6px 18px rgba(2, 6, 23, 0.1));
+      }
+      .qz-platformMeta h3 {
+        margin: 0;
+        font-size: 1.25rem;
+        color: var(--ink);
+        font-weight: 900;
+      }
+      .qz-platformMeta p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .qz-bullets {
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        text-align: left;
+      }
+      .qz-bullets li {
+        position: relative;
+        padding-left: 22px;
+        margin: 10px 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+      .qz-bullets li::before {
+        content: "•";
+        position: absolute;
+        left: 6px;
+        top: 0;
+        color: rgba(15, 23, 42, 0.55);
+        font-weight: 900;
+      }
+      .qz-pill {
+        display: inline-flex;
+        margin-top: 14px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+        font-size: 0.82rem;
+      }
+      .qz-pillWarn {
+        background: rgba(239, 68, 68, 0.12);
+        color: #991b1b;
+        border: 1px solid rgba(239, 68, 68, 0.18);
+      }
+      .qz-pillOk {
+        background: rgba(34, 197, 94, 0.12);
+        color: #14532d;
+        border: 1px solid rgba(34, 197, 94, 0.18);
+      }
+
+      /* glows */
+      .qz-glow {
+        position: absolute;
+        inset: -60px;
+        filter: blur(50px);
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      .qz-glowBlue {
+        background: radial-gradient(
+          circle,
+          rgba(37, 99, 235, 0.9),
+          transparent 55%
+        );
+      }
+      .qz-glowGreen {
+        background: radial-gradient(
+          circle,
+          rgba(34, 197, 94, 0.85),
+          transparent 55%
+        );
+      }
+
+      .qz-connector {
+        width: 80px;
+        min-height: 210px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .qz-stream {
+        position: absolute;
+        left: 50%;
+        width: 4px;
+        height: 100%;
+        transform: translateX(-50%);
+        background: linear-gradient(var(--blue), var(--green));
+        border-radius: 999px;
+        opacity: 0.65;
+        animation: qzFlow 2.4s ease-in-out infinite;
+      }
+      .qz-stream:nth-child(2) {
+        opacity: 0.45;
+        filter: blur(0.2px);
+        animation-delay: 0.75s;
+      }
+      .qz-stream:nth-child(3) {
+        opacity: 0.3;
+        filter: blur(0.6px);
+        animation-delay: 1.45s;
+      }
+
+      @keyframes qzFlow {
+        0% {
+          transform: translateX(-50%) translateY(-35px);
+          opacity: 0;
+        }
+        40% {
+          opacity: 0.75;
+        }
+        100% {
+          transform: translateX(-50%) translateY(35px);
+          opacity: 0;
+        }
+      }
+      .qz-arrow {
+        font-size: 2.4rem;
+        color: var(--blue);
+        animation: qzPulse 1.8s ease-in-out infinite;
+        filter: drop-shadow(0 12px 22px rgba(37, 99, 235, 0.25));
+      }
+      @keyframes qzPulse {
+        0%,
+        100% {
+          transform: translateX(0) scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: translateX(2px) scale(1.18);
+          opacity: 0.85;
+        }
+      }
+
+      /* Offer cards */
+      .qz-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+        margin: 18px 0 22px;
+      }
+      .qz-card {
+        background: rgba(255, 255, 255, 0.82);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 20px;
+        padding: 18px 16px 16px;
+        box-shadow: var(--shadow2);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
+      }
+      .qz-card::before {
+        content: "";
+        position: absolute;
+        inset: -60px;
+        background: radial-gradient(
+            circle at 25% 20%,
+            rgba(37, 99, 235, 0.18),
+            transparent 55%
+          ),
+          radial-gradient(
+            circle at 85% 80%,
+            rgba(34, 197, 94, 0.14),
+            transparent 55%
+          );
+        opacity: 0;
+        transition: opacity 0.35s ease;
+      }
+      .qz-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 22px 55px rgba(2, 6, 23, 0.12);
+        border-color: rgba(37, 99, 235, 0.14);
+      }
+      .qz-card:hover::before {
+        opacity: 1;
+      }
+      .qz-ic {
+        width: 44px;
+        height: 44px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.14),
+          rgba(34, 197, 94, 0.12)
+        );
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+      .qz-card h3 {
+        margin: 0 0 8px;
+        color: var(--ink);
+        font-weight: 900;
+        font-size: 1.05rem;
+      }
+      .qz-card p {
+        margin: 0 0 10px;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.6;
+        font-size: 0.95rem;
+      }
+      .qz-mini {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+        text-align: left;
+      }
+      .qz-mini li {
+        margin: 6px 0;
+        font-weight: 650;
+      }
+
+      /* Tabs */
+      .qz-tabs {
+        margin-top: 48px;
+
+        background: rgba(244, 225, 225, 0.75);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        border-radius: 22px;
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+      .qz-tabs input {
+        display: none;
+      }
+      .qz-tabBar {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        background: rgba(2, 6, 23, 0.03);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      }
+      .qz-tabBar label {
+        padding: 14px 12px;
+        cursor: pointer;
+        font-weight: 900;
+        color: rgba(15, 23, 42, 0.72);
+        letter-spacing: 0.01em;
+        text-align: center;
+        transition: background 0.25s ease, color 0.25s ease,
+          transform 0.25s ease;
+        position: relative;
+      }
+      .qz-tabBar label:hover {
+        background: rgba(255, 255, 255, 0.55);
+        transform: translateY(-1px);
+      }
+      .qz-panels {
+        padding: 18px;
+      }
+      .qz-panel {
+        display: none;
+        animation: qzPanelIn 0.35s ease both;
+      }
+      @keyframes qzPanelIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      #qzTab1:checked ~ .qz-tabBar label[for="qzTab1"],
+      #qzTab2:checked ~ .qz-tabBar label[for="qzTab2"],
+      #qzTab3:checked ~ .qz-tabBar label[for="qzTab3"],
+      #qzTab4:checked ~ .qz-tabBar label[for="qzTab4"] {
+        background: linear-gradient(
+          135deg,
+          rgba(37, 99, 235, 0.16),
+          rgba(34, 197, 94, 0.12)
+        );
+        color: var(--ink);
+      }
+
+      #qzTab1:checked ~ .qz-panels .qz-panel:nth-child(1),
+      #qzTab2:checked ~ .qz-panels .qz-panel:nth-child(2),
+      #qzTab3:checked ~ .qz-panels .qz-panel:nth-child(3),
+      #qzTab4:checked ~ .qz-panels .qz-panel:nth-child(4) {
+        display: block;
+      }
+
+      .qz-panelGrid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .qz-panelCard {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 18px;
+        padding: 16px 16px 14px;
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
+      }
+      .qz-panelCard h4 {
+        margin: 0 0 10px;
+        color: var(--ink);
+        font-weight: 950;
+        font-size: 1.05rem;
+      }
+      .qz-panelCard ul {
+        margin: 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+      .qz-panelCard li {
+        margin: 8px 0;
+        font-weight: 650;
+        line-height: 1.55;
+      }
+      .qz-note {
+        margin-top: 10px;
+        padding: 10px 12px;
+        border-radius: 14px;
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(37, 99, 235, 0.14);
+        color: rgba(15, 23, 42, 0.78);
+        font-weight: 650;
+        line-height: 1.55;
+      }
+
+      /* Timeline */
+      .qz-timeline {
+        display: grid;
+        gap: 12px;
+      }
+      .qz-step {
+        display: flex;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 18px;
+        padding: 14px 14px 12px;
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
+      }
+      .qz-dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 999px;
+        margin-top: 6px;
+        background: linear-gradient(135deg, var(--blue), var(--green));
+        box-shadow: 0 10px 25px rgba(37, 99, 235, 0.22);
+        flex: 0 0 auto;
+      }
+      .qz-step h4 {
+        margin: 0;
+        font-weight: 950;
+        color: var(--ink);
+      }
+      .qz-step p {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.6;
+      }
+
+      /* Trust row */
+      .qz-trust {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 14px;
+      }
+      .qz-trustItem {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(15, 23, 42, 0.08);
+        border-radius: 18px;
+        padding: 14px 14px 12px;
+        box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
+      }
+      .qz-trustItem strong {
+        display: block;
+        color: var(--ink);
+        font-weight: 950;
+        margin-bottom: 6px;
+      }
+      .qz-trustItem span {
+        color: var(--muted);
+        font-weight: 650;
+        line-height: 1.6;
+        display: block;
+      }
+
+      /* Responsive */
+      @media (max-width: 1100px) {
+        .qz-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .qz-metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      @media (max-width: 900px) {
+        .qz-flow {
+          grid-template-columns: 1fr;
+        }
+        .qz-connector {
+          min-height: 80px;
+          width: 100%;
+        }
+        .qz-arrow {
+          transform: rotate(90deg);
+        }
+        .qz-stream {
+          height: 4px;
+          width: 100%;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        @keyframes qzFlow {
+          0% {
+            transform: translateY(-50%) translateX(-35px);
+            opacity: 0;
+          }
+          40% {
+            opacity: 0.75;
+          }
+          100% {
+            transform: translateY(-50%) translateX(35px);
+            opacity: 0;
+          }
+        }
+        .qz-panelGrid {
+          grid-template-columns: 1fr;
+        }
+        .qz-trust {
+          grid-template-columns: 1fr;
+        }
+        .qz-tabBar {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .qz-kicker,
+        .qz-title,
+        .qz-lead,
+        .qz-panel {
+          animation: none !important;
+        }
+        .qz-stream,
+        .qz-arrow {
+          animation: none !important;
+        }
+        .qz-card,
+        .qz-platform,
+        .qz-metric,
+        .qz-btn {
+          transition: none !important;
+        }
+      }
+      /* ========== PROCESS STEPS ========== */
       .process-steps {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
-        margin-top: 3rem;
+        gap: 2.5rem;
+        margin-top: 60px;
       }
 
       .step-card {
         background: white;
-        padding: 2.5rem 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        padding: 3rem 2.5rem;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
         text-align: center;
-        transition: all 0.3s;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        overflow: hidden;
+        border: 2px solid transparent;
       }
 
       .step-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 18px 50px rgba(16, 185, 129, 0.22);
+        border-color: rgba(16, 185, 129, 0.3);
       }
 
       .step-number {
-        width: 60px;
-        height: 60px;
+        width: 70px;
+        height: 70px;
         background: linear-gradient(135deg, #10b981, #059669);
         color: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 0 auto 1.5rem;
+        font-size: 1.8rem;
+        font-weight: 900;
+        margin: 0 auto 1.8rem;
+        position: relative;
+        z-index: 1;
+        transition: all 0.5s;
+        box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+      }
+
+      .step-card:hover .step-number {
+        transform: rotate(360deg) scale(1.15);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.5);
       }
 
       .step-card h3 {
-        font-size: 1.2rem;
-        margin-bottom: 1rem;
+        font-size: 1.3rem;
+        margin-bottom: 1.2rem;
         color: #1a202c;
+        font-weight: 800;
       }
 
       .step-card p {
         color: #4a5568;
-        line-height: 1.6;
+        line-height: 1.7;
+        font-weight: 500;
       }
 
-      .pricing-comparison {
-        background: white;
-        border-radius: 20px;
-        padding: 3rem;
-        margin: 3rem 0;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+      /* ========== FOOTER ========== */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 80px 5% 30px;
+        font-size: 14px;
       }
 
-      .pricing-grid {
+      .footer-content {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* ✅ 3–3 grid */
-        gap: 2rem;
-        margin-top: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 45px;
+        margin-bottom: 40px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .pricing-card {
-        padding: 2rem;
-        border-radius: 15px;
-        border: 2px solid #e2e8f0;
+      .footer-section h3 {
+        font-size: 24px;
+        margin-bottom: 16px;
+        color: #ffffff;
+        font-weight: 800;
       }
 
-      .pricing-card.qbo {
-        background: #fef2f2;
-        border-color: #fca5a5;
-      }
-
-      .pricing-card.zoho {
-        background: #f0fdf4;
-        border-color: #86efac;
-      }
-
-      .pricing-card h4 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .price {
-        font-size: 2.5rem;
+      .tagline {
+        font-family: "Inter", sans-serif;
+        font-size: 16px;
+        color: #38bdf8;
+        margin-bottom: 14px;
         font-weight: 700;
-        margin: 1rem 0;
       }
 
-      .price-details {
-        color: #4a5568;
-        margin-bottom: 1.5rem;
-      }
-
-      .feature-list {
-        list-style: none;
-      }
-
-      .feature-list li {
-        padding: 0.5rem 0;
-        border-bottom: 1px solid #e2e8f0;
-      }
-
-      .feature-list li:last-child {
-        border-bottom: none;
-      }
-
-      .testimonials {
-        margin-top: 3rem;
-      }
-
-      .testimonial-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-        margin-bottom: 2rem;
-      }
-
-      .testimonial-text {
-        font-style: italic;
-        color: #4a5568;
-        margin-bottom: 1.5rem;
+      .footer-section p {
+        color: #cbd5e1;
         line-height: 1.8;
+        font-weight: 500;
       }
 
-      .testimonial-author {
+      .zoho-solutions {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        gap: 1rem;
       }
 
-      .author-info h4 {
-        color: #1a202c;
-        font-size: 1.1rem;
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
       }
 
-      .author-info p {
-        color: #718096;
-        font-size: 0.9rem;
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(160px, 190px));
+        column-gap: 45px;
+        row-gap: 12px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
       }
 
-      @media (max-width: 768px) {
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+        transform: translateX(5px);
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      .zoho-logo {
+        margin-top: 18px;
+      }
+
+      .zoho-logo img {
+        max-width: 150px;
+        opacity: 0.95;
+        transition: opacity 0.3s ease;
+      }
+
+      .zoho-logo img:hover {
+        opacity: 1;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+        padding-top: 20px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      /* ========== RESPONSIVE ========== */
+      @media (max-width: 1100px) {
+        .qz-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        .qz-metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 900px) {
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.8rem;
+        }
+
+        .hero p {
+          font-size: 1.1rem;
         }
 
         .migration-flow {
           grid-template-columns: 1fr;
+          gap: 2rem;
+          padding: 2.5rem;
         }
 
         .arrow {
           transform: rotate(90deg);
+          font-size: 3rem;
         }
 
-        .pricing-grid {
+        .qbo-flow {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .qbo-connector {
+          height: 100px;
+          width: 100%;
+          transform: rotate(90deg);
+        }
+
+        .benefits-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .process-steps {
           grid-template-columns: 1fr;
         }
 
         .nav-links {
           display: none;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 35px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 25px;
+        }
+
+        .qz-panelGrid {
+          grid-template-columns: 1fr;
+        }
+
+        .qz-trust {
+          grid-template-columns: 1fr;
+        }
+
+        .qz-tabBar {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .qz-tabBar label {
+          padding: 12px 10px;
+          font-size: 0.9rem;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .hero h1 {
+          font-size: 2.2rem;
+        }
+
+        .section-title {
+          font-size: 2.2rem;
+        }
+
+        .qbo-title {
+          font-size: 2.2rem;
+        }
+
+        .qz-title {
+          font-size: 1.8rem;
+        }
+
+        .qz-metrics {
+          grid-template-columns: 1fr;
+        }
+
+        .qz-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
@@ -419,21 +1684,31 @@
             alt="Zolytics Logo"
           />
         </div>
-        
+        <ul class="nav-links">
+          <li><a href="#benefits">Benefits</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#qbo-zoho-migration">Migration</a></li>
+        </ul>
       </nav>
     </header>
 
     <section class="hero">
       <h1>QuickBooks to Zoho Books Migration</h1>
       <p>
-        Businesses across India and globally are moving away from QuickBooks due
-        to rising subscription costs, limited GST localization, and restricted
-        scalability. Zoho Books offers a cost-effective, compliant, and
-        extensible accounting platform designed for growing businesses.
+        Businesses worldwide are switching from QuickBooks Online to Zoho Books
+        for lower costs, better compliance, and superior scalability. Whether
+        you're in India, US, UK, Australia, or anywhere else, Zoho Books offers
+        a cost-effective, feature-rich accounting platform with GST/VAT/Sales
+        Tax support, multi-currency handling, and seamless integration with the
+        entire Zoho ecosystem. Save up to 60% on subscription costs while
+        gaining access to enterprise-grade features.
       </p>
+      <div class="cta-buttons">
+        <a href="#benefits" class="btn-primary">See Benefits</a>
+        <a href="#process" class="btn-secondary">Migration Process</a>
+      </div>
     </section>
 
-    <!-- Migration Overview -->
     <section>
       <div class="container">
         <p class="section-subtitle">Platform Transition</p>
@@ -446,7 +1721,7 @@
               alt="QuickBooks"
             />
             <h3>QuickBooks Online</h3>
-            <p>High subscription cost, limited GST support</p>
+            <p>Rising costs, limited customization, complex pricing tiers</p>
           </div>
 
           <div class="arrow">→</div>
@@ -457,81 +1732,349 @@
               alt="Zoho Books"
             />
             <h3>Zoho Books</h3>
-            <p>GST-ready, scalable, affordable accounting</p>
+            <p>Affordable, GST/VAT ready, multi-currency, highly scalable</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Why Switch -->
+    <section class="qbo-migration-section">
+      <div class="qbo-container">
+        <p class="qbo-subtitle">Global Accounting Migration</p>
+        <h2 class="qbo-title">
+          Move from QuickBooks Online to Zoho Books — Worldwide
+        </h2>
+
+        <div class="qbo-flow">
+          <div class="qbo-card qbo-left">
+            <div class="qbo-glow"></div>
+            <img
+              src="data:image/png;base64,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"
+              alt="QuickBooks Online"
+            />
+            <h3>QuickBooks Online</h3>
+
+            <ul>
+              <li>Used across 🇺🇸 US, 🇬🇧 UK, 🇨🇦 Canada, 🇦🇺 Australia & more</li>
+              <li>Complex & region-based pricing</li>
+              <li>High add-on & user costs</li>
+              <li>Limited customization without apps</li>
+              <li>Scaling = forced plan upgrades</li>
+            </ul>
+
+            <span class="qbo-badge danger">Costly at Scale</span>
+          </div>
+
+          <div class="qbo-connector">
+            <span></span>
+            <span></span>
+            <span></span>
+            <div class="qbo-arrow">➜</div>
+          </div>
+
+          <div class="qbo-card qbo-right">
+            <div class="zoho-glow"></div>
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
+              alt="Zoho Books"
+            />
+            <h3>Zoho Books</h3>
+
+            <ul>
+              <li>Built for 🌍 global businesses</li>
+              <li>GST, VAT, Sales Tax & multi-tax ready</li>
+              <li>Multi-currency + global compliance</li>
+              <li>Deep Zoho ecosystem integration</li>
+              <li>No surprise pricing jumps</li>
+            </ul>
+
+            <span class="qbo-badge success">Up to 60% Savings</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="benefits">
       <div class="container">
         <p class="section-subtitle">Business Benefits</p>
-        <h2 class="section-title">Why Businesses Switch from QuickBooks</h2>
-
+        <h2 class="section-title">Why Businesses Switch Globally</h2>
         <div class="benefits-grid">
           <div class="benefit-card">
             <div class="benefit-icon">💸</div>
-            <h3>Lower Total Cost of Ownership</h3>
+            <h3>Save Up To 60% Annually</h3>
             <p>
-              Zoho Books pricing is significantly lower than QuickBooks,
-              especially for multi-user access. Businesses save up to 60%
-              annually without compromising features.
+              Zoho Books pricing is significantly lower than QuickBooks across
+              all plans. Multi-user access, advanced features, and unlimited
+              transactions come at a fraction of the cost—whether you're in the
+              US, Europe, Asia, or Australia.
             </p>
           </div>
 
           <div class="benefit-card">
-            <div class="benefit-icon">🇮🇳</div>
-            <h3>Built for Indian Compliance</h3>
+            <div class="benefit-icon">🌍</div>
+            <h3>Global Tax Compliance Made Easy</h3>
             <p>
-              Native GST support, e-invoicing, e-way bills, and
-              government-compliant reporting come built-in with Zoho Books,
-              unlike QuickBooks.
+              Built-in support for GST (India), VAT (EU, UK, UAE), Sales Tax
+              (US, Canada), and other regional tax requirements. Generate
+              compliant e-invoices, handle multi-currency transactions, and stay
+              audit-ready anywhere in the world.
             </p>
           </div>
 
           <div class="benefit-card">
             <div class="benefit-icon">🔗</div>
-            <h3>Deep Zoho Ecosystem Integration</h3>
+            <h3>Powerful Ecosystem Integration</h3>
             <p>
-              Seamless integration with Zoho CRM, Inventory, Payroll, Expense,
-              and Analytics enables end-to-end business automation.
+              Seamlessly connect with Zoho CRM, Inventory, Payroll, Expense,
+              Projects, Analytics, and 40+ Zoho applications. Build end-to-end
+              business automation without expensive third-party integrations or
+              complex APIs.
             </p>
           </div>
 
           <div class="benefit-card">
             <div class="benefit-icon">☁️</div>
-            <h3>Secure Cloud Architecture</h3>
+            <h3>Enterprise-Grade Security & Reliability</h3>
             <p>
-              Zoho Books offers enterprise-grade security, encrypted backups,
-              and role-based access controls to protect financial data.
+              Bank-level encryption, automated backups, role-based access
+              controls, SOC 2 Type II certification, and 99.9% uptime SLA ensure
+              your financial data stays protected and accessible 24/7 from
+              anywhere.
             </p>
           </div>
 
           <div class="benefit-card">
             <div class="benefit-icon">📈</div>
-            <h3>Scales with Your Business</h3>
+            <h3>Scale Without Limitations</h3>
             <p>
-              From startups to mid-sized enterprises, Zoho Books scales
-              effortlessly without forcing costly plan upgrades.
+              From freelancers to mid-market enterprises managing thousands of
+              transactions monthly, Zoho Books scales effortlessly. No forced
+              upgrades, no artificial user limits, no surprise charges as your
+              business grows.
             </p>
           </div>
 
           <div class="benefit-card">
             <div class="benefit-icon">📱</div>
-            <h3>Modern User Experience</h3>
+            <h3>Modern UI & Mobile Experience</h3>
             <p>
-              A clean interface, mobile apps, and automation tools improve
-              day-to-day accounting efficiency for teams.
+              Intuitive interface, powerful mobile apps for iOS and Android,
+              automated workflows, AI-powered reconciliation, and customizable
+              dashboards make daily accounting tasks faster and more efficient
+              for your entire team.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-   
+    <section class="qz-consulting-migration" id="qbo-zoho-migration">
+      <div class="qz-wrap">
+        <header class="qz-head">
+          <p class="qz-kicker">
+            Consulting-led Migration • Global • Audit-safe
+          </p>
+          <h2 class="qz-title">
+            QuickBooks Online → Zoho Books Migration for Global Businesses
+          </h2>
+          <p class="qz-lead">
+            We're a consulting firm — so we don't "just import data". We
+            redesign your accounting setup for scale: clean chart of accounts,
+            accurate taxes (VAT/GST/Sales Tax), multi-currency flows, approvals,
+            roles, reports, and reconciliation — with a controlled cutover and
+            post go-live support.
+          </p>
 
-    <!-- Migration Process -->
+          <div class="qz-metrics">
+            <div class="qz-metric">
+              <div class="qz-num"><span>Zero</span> chaos</div>
+              <div class="qz-txt">Controlled migration & cutover plan</div>
+            </div>
+            <div class="qz-metric">
+              <div class="qz-num"><span>Audit</span> ready</div>
+              <div class="qz-txt">Validation + reconciliation checkpoints</div>
+            </div>
+            <div class="qz-metric">
+              <div class="qz-num"><span>Global</span> taxes</div>
+              <div class="qz-txt">VAT / GST / Sales Tax mapping</div>
+            </div>
+            <div class="qz-metric">
+              <div class="qz-num"><span>Multi</span>-currency</div>
+              <div class="qz-txt">FX, opening balances & reports</div>
+            </div>
+          </div>
+        </header>
+
+        <div class="qz-tabs">
+          <input checked type="radio" name="qzTab" id="qzTab1" />
+          <input type="radio" name="qzTab" id="qzTab2" />
+          <input type="radio" name="qzTab" id="qzTab3" />
+          <input type="radio" name="qzTab" id="qzTab4" />
+
+          <div class="qz-tabBar">
+            <label for="qzTab1">What we migrate</label>
+            <label for="qzTab2">Deliverables</label>
+            <label for="qzTab3">Timeline</label>
+            <label for="qzTab4">Post go-live</label>
+          </div>
+
+          <div class="qz-panels">
+            <section class="qz-panel">
+              <div class="qz-panelGrid">
+                <div class="qz-panelCard">
+                  <h4>Core accounting</h4>
+                  <ul>
+                    <li>Chart of accounts + account mapping</li>
+                    <li>Customers, vendors, items, tax rates</li>
+                    <li>Opening balances (bank, AR/AP, tax accounts)</li>
+                    <li>Sales: invoices, credit notes, payments</li>
+                    <li>Purchases: bills, vendor credits, expenses</li>
+                  </ul>
+                </div>
+                <div class="qz-panelCard">
+                  <h4>Optional / based on scope</h4>
+                  <ul>
+                    <li>Multi-currency setup + FX handling plan</li>
+                    <li>
+                      Inventory (if needed): items + valuation method alignment
+                    </li>
+                    <li>Templates, numbering, approvals</li>
+                    <li>Integrations planning (Zoho ecosystem / external)</li>
+                  </ul>
+                  <p class="qz-note">
+                    Note: Some data imports have known limitations depending on
+                    how data was entered in QBO. We proactively plan around them
+                    during blueprint + mapping.
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            <section class="qz-panel">
+              <div class="qz-panelGrid">
+                <div class="qz-panelCard">
+                  <h4>Consulting-grade outputs</h4>
+                  <ul>
+                    <li>Migration blueprint (scope, risks, timeline)</li>
+                    <li>COA restructuring + mapping sheet</li>
+                    <li>Tax mapping sheet (VAT/GST/Sales Tax)</li>
+                    <li>Cutover checklist + rollback plan</li>
+                    <li>Reconciliation report (pre/post)</li>
+                  </ul>
+                </div>
+                <div class="qz-panelCard">
+                  <h4>Configured Zoho Books</h4>
+                  <ul>
+                    <li>Org preferences, base currency, regional settings</li>
+                    <li>Roles, approvals, audit-friendly controls</li>
+                    <li>Invoice templates + branding</li>
+                    <li>Bank feeds rules guidance</li>
+                    <li>Standard reports pack for management</li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+
+            <section class="qz-panel">
+              <div class="qz-timeline">
+                <div class="qz-step">
+                  <div class="qz-dot"></div>
+                  <div>
+                    <h4>Week 1: Discovery + blueprint</h4>
+                    <p>
+                      Understand your current setup, choose edition/region
+                      approach, finalize scope.
+                    </p>
+                  </div>
+                </div>
+                <div class="qz-step">
+                  <div class="qz-dot"></div>
+                  <div>
+                    <h4>Week 2: Build + mapping</h4>
+                    <p>
+                      COA, taxes, items, workflows, templates, and migration
+                      mappings.
+                    </p>
+                  </div>
+                </div>
+                <div class="qz-step">
+                  <div class="qz-dot"></div>
+                  <div>
+                    <h4>Week 3: Migration + validation</h4>
+                    <p>
+                      Import + reconcile (TB, AR/AP, tax, FX) with stakeholder
+                      sign-off.
+                    </p>
+                  </div>
+                </div>
+                <div class="qz-step">
+                  <div class="qz-dot"></div>
+                  <div>
+                    <h4>Go-live: Cutover</h4>
+                    <p>
+                      Controlled cutover window, final checks, and team
+                      handover.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <p class="qz-note">
+                Timeline varies with transaction volume, multi-entity
+                complexity, and whether inventory or integrations are included.
+              </p>
+            </section>
+
+            <section class="qz-panel">
+              <div class="qz-panelGrid">
+                <div class="qz-panelCard">
+                  <h4>Hypercare support</h4>
+                  <ul>
+                    <li>First-close guidance (Month 1)</li>
+                    <li>Issue triage + fixes</li>
+                    <li>Report fine-tuning</li>
+                    <li>Workflow adjustments</li>
+                  </ul>
+                </div>
+                <div class="qz-panelCard">
+                  <h4>Optimization (optional)</h4>
+                  <ul>
+                    <li>Automations across Zoho ecosystem</li>
+                    <li>Analytics dashboards</li>
+                    <li>Department/project profitability views</li>
+                    <li>Policy + approvals hardening</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="qz-trust">
+                <div class="qz-trustItem">
+                  <strong>Security & Compliance</strong>
+                  <span
+                    >SOC 2 Type II + ISO certifications supported by Zoho's
+                    trust programs.</span
+                  >
+                </div>
+                <div class="qz-trustItem">
+                  <strong>Region correctness</strong>
+                  <span
+                    >Edition & tax behavior depends on country selection — we
+                    set it right from Day 0.</span
+                  >
+                </div>
+                <div class="qz-trustItem">
+                  <strong>QBO variability</strong>
+                  <span
+                    >QBO pricing/features can vary by country — we optimize
+                    total cost in the target setup.</span
+                  >
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="process">
       <div class="container">
         <p class="section-subtitle">Migration Methodology</p>
@@ -582,24 +2125,21 @@
               accuracy.
             </p>
           </div>
-          <div class="step-card">
-  <div class="step-number">6</div>
-  <h3>Go-Live & Post-Migration Support</h3>
-  <p>
-    We provide post-migration
-    support, user guidance, and minor adjustments to ensure smooth
-    day-to-day operations.
-  </p>
-</div>
 
+          <div class="step-card">
+            <div class="step-number">6</div>
+            <h3>Go-Live & Support</h3>
+            <p>
+              We provide post-migration support, user guidance, and minor
+              adjustments to ensure smooth day-to-day operations.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
@@ -610,43 +2150,39 @@
           </p>
         </div>
 
-         <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
+          <h3>Zoho Solutions</h3>
           <div class="solutions-wrapper">
             <ul class="solutions-grid">
-              <li><a href="analytics-html">Zoho Analytics</a></li>
-              <li><a href="bigin-html">Zoho Bigin</a></li>
-              <li><a href="billing-html">Zoho Billing</a></li>
-              <li><a href="books-html">Zoho Books</a></li>
-              <li><a href="commerce-html">Zoho Commerce</a></li>
-              <li><a href="crm-html">Zoho CRM</a></li>
-              <li><a href="expense-html">Zoho Expense</a></li>
-              <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory-html">Zoho Inventory</a></li>
-
-              <li><a href="payroll-html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus-html">Zoho People Plus</a></li>
-
-              <li><a href="recruit-html">Zoho Recruit</a></li>
+              <li><a href="#">Zoho Analytics</a></li>
+              <li><a href="#">Zoho Bigin</a></li>
+              <li><a href="#">Zoho Billing</a></li>
+              <li><a href="#">Zoho Books</a></li>
+              <li><a href="#">Zoho Commerce</a></li>
+              <li><a href="#">Zoho CRM</a></li>
+              <li><a href="#">Zoho Expense</a></li>
+              <li><a href="#">Zoho Finance Plus</a></li>
+              <li><a href="#">Zoho Inventory</a></li>
+              <li><a href="#">Zoho Payroll</a></li>
+              <li><a href="#">Zoho People Plus</a></li>
+              <li><a href="#">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Contact -->
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>
-            Email: info@zolytics.in <br />
+            Email: info@zolytics.in<br />
             Phone: +91 90 7313 9613<br />
             Location: India
-             <div
+          </p>
+          <div
             style="
               display: flex;
               align-items: center;
-              gap: 8px;
-              margin-top: 5px;
+              gap: 10px;
+              margin-top: 12px;
             "
           >
             <a
@@ -655,20 +2191,20 @@
               style="
                 display: flex;
                 align-items: center;
+                gap: 8px;
                 text-decoration: none;
                 color: inherit;
               "
             >
               <img
-                src="data:image/png;base64,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"
+                src="data:image/png;base64,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"
                 alt="WhatsApp"
-                width="22"
-                height="22"
+                width="24"
+                height="24"
               />
-              <span style="font-weight: 500">  +91 90 7313 9613</span>
+              <span>+91 90 7313 9613</span>
             </a>
           </div>
-          </p>
           <div class="zoho-logo">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
@@ -680,140 +2216,10 @@
 
       <div class="footer-bottom">
         <p>
-          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
-          Zoho Consulting Partner
+          © 2026 Zolytics. All rights reserved. | Certified Zoho Consulting
+          Partner
         </p>
       </div>
     </footer>
-
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
   </body>
 </html>
