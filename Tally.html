@@ -3,17 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>
-      Tally to Zoho Books Migration | Expert Migration Services - Zolytics
-    </title>
-    <meta
-      name="description"
-      content="Seamless Tally to Zoho Books migration services. Zero data loss, complete support, and smooth transition to cloud-based accounting."
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+    <title>Tally to Zoho Books Migration | Expert Migration Services - Zolytics</title>
+    <meta name="description" content="Seamless Tally to Zoho Books migration services. Zero data loss, complete support, and smooth transition to cloud-based accounting." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <style>
       * {
         margin: 0;
@@ -25,21 +17,25 @@
         font-family: "Inter", sans-serif;
         line-height: 1.6;
         color: #2d3748;
-        background: #f8fdf8;
+        background: linear-gradient(135deg, #f8fdf8 0%, #e8f5e9 100%);
+        overflow-x: hidden;
       }
 
-      /* Header */
+      /* Header with glassmorphism */
       header {
-        background: white;
-        box-shadow: 0 4px 12px rgba(76, 175, 80, 0.1);
+        background: rgba(255, 255, 255, 0.85);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 30px rgba(76, 175, 80, 0.1);
         position: sticky;
         top: 0;
         z-index: 1000;
         transition: all 0.3s ease;
+        border-bottom: 1px solid rgba(76, 175, 80, 0.1);
       }
 
       header:hover {
-        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.15);
+        box-shadow: 0 8px 40px rgba(76, 175, 80, 0.15);
+        background: rgba(255, 255, 255, 0.95);
       }
 
       nav {
@@ -47,33 +43,45 @@
         margin: 0 auto;
         padding: 1.5rem 2rem;
         display: flex;
-        justify-content: flex-start;;
+        justify-content: space-between;
         align-items: center;
       }
 
       .logo-section {
         display: flex;
-        transition: transform 0.3s ease;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .logo-section:hover {
-        transform: scale(1.05);
+        transform: scale(1.08) translateY(-2px);
       }
 
       .logo-section img {
-         height: 90px;
+        height: 90px;
         width: auto;
-        filter: drop-shadow(0 2px 4px rgba(76, 175, 80, 0.2));
+        filter: drop-shadow(0 4px 8px rgba(76, 175, 80, 0.2));
+        transition: filter 0.3s ease;
       }
 
-      /* Hero Section */
+      .logo-section:hover img {
+        filter: drop-shadow(0 6px 12px rgba(76, 175, 80, 0.3));
+      }
+
+      /* Enhanced Hero Section with Gradient Animation */
       .hero {
-        background: #4c74af;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        background-size: 200% 200%;
+        animation: gradientShift 8s ease infinite;
         color: white;
-        padding: 120px 2rem;
+        padding: 140px 2rem;
         text-align: center;
         position: relative;
         overflow: hidden;
+      }
+
+      @keyframes gradientShift {
+        0%, 100% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
       }
 
       .hero::before {
@@ -83,27 +91,31 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: radial-gradient(
-          circle at 20% 50%,
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 50%
-        );
-        pointer-events: none;
+        background: 
+          radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.15) 0%, transparent 50%),
+          radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
       }
 
       .hero h1 {
-        font-size: 3.5rem;
-        font-weight: 800;
+        font-size: 3.8rem;
+        font-weight: 900;
         margin-bottom: 1.5rem;
         line-height: 1.2;
         position: relative;
         animation: fadeInUp 0.8s ease;
+        text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.2);
       }
 
       @keyframes fadeInUp {
         from {
           opacity: 0;
-          transform: translateY(30px);
+          transform: translateY(40px);
         }
         to {
           opacity: 1;
@@ -112,12 +124,13 @@
       }
 
       .hero p {
-        font-size: 1.3rem;
-        max-width: 800px;
-        margin: 0 auto 2.5rem;
+        font-size: 1.4rem;
+        max-width: 850px;
+        margin: 0 auto 3rem;
         opacity: 0.95;
         position: relative;
         animation: fadeInUp 0.8s ease 0.2s both;
+        text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.15);
       }
 
       .cta-buttons {
@@ -129,16 +142,17 @@
       }
 
       .btn-primary {
-        background: #f5cfcf;
+        background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
         color: #2d3748;
-        padding: 1.2rem 2.8rem;
+        padding: 1.3rem 3rem;
         border-radius: 50px;
         font-weight: 700;
         text-decoration: none;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 6px 20px rgba(255, 235, 59, 0.4);
+        box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
         position: relative;
         overflow: hidden;
+        border: 3px solid transparent;
       }
 
       .btn-primary::before {
@@ -149,39 +163,87 @@
         width: 0;
         height: 0;
         border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.4);
         transition: width 0.6s, height 0.6s, top 0.6s, left 0.6s;
         transform: translate(-50%, -50%);
       }
 
       .btn-primary:hover::before {
-        width: 300px;
-        height: 300px;
+        width: 350px;
+        height: 350px;
       }
 
       .btn-primary:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 10px 30px rgba(255, 235, 59, 0.5);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        border-color: rgba(255, 255, 255, 0.3);
       }
 
       .btn-secondary {
-        background: white;
-        color: #4c70af;
-        padding: 1.2rem 2.8rem;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(10px);
+        color: white;
+        padding: 1.3rem 3rem;
         border: 3px solid white;
         border-radius: 50px;
         font-weight: 700;
         text-decoration: none;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 6px 20px rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
       }
 
       .btn-secondary:hover {
-        transform: translateY(-4px) scale(1.05);
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
-        background: #ff3b3b;
-        border-color: #3b86ff;
-        color: #2d3748;
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+        background: white;
+        color: #667eea;
+      }
+
+      /* Stats Section - NEW */
+      .stats-section {
+        background: white;
+        padding: 80px 2rem;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.05);
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .stat-card {
+        text-align: center;
+        padding: 2rem;
+        transition: transform 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 0.5rem;
+        animation: countUp 2s ease-out;
+      }
+
+      @keyframes countUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: #4a5568;
+        font-weight: 600;
       }
 
       /* Content Container */
@@ -197,26 +259,41 @@
       }
 
       .section-title {
-        font-size: 2.8rem;
-        font-weight: 700;
+        font-size: 3rem;
+        font-weight: 800;
         text-align: center;
         margin-bottom: 1rem;
         color: #1a202c;
         animation: fadeInUp 0.6s ease;
+        position: relative;
+        display: inline-block;
+        width: 100%;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #667eea, #764ba2);
+        border-radius: 2px;
       }
 
       .section-subtitle {
         text-align: center;
-        color: #af4c4c;
+        color: #667eea;
         font-weight: 700;
         text-transform: uppercase;
-        letter-spacing: 3px;
+        letter-spacing: 4px;
         margin-bottom: 3.5rem;
         font-size: 0.9rem;
         animation: fadeInUp 0.6s ease 0.1s both;
       }
 
-      /* Migration Flow */
+      /* Enhanced Migration Flow */
       .migration-flow {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -229,81 +306,101 @@
       .platform-card {
         text-align: center;
         padding: 3rem 2rem;
-        border-radius: 20px;
+        border-radius: 25px;
         background: white;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.1);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 10px 40px rgba(76, 175, 80, 0.1);
         position: relative;
         overflow: hidden;
+        border: 2px solid transparent;
       }
 
       .platform-card::before {
         content: "";
         position: absolute;
         top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+        transition: left 0.6s ease;
+      }
+
+      .platform-card:hover::before {
+        left: 100%;
+      }
+
+      .platform-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
         left: 0;
         right: 0;
         height: 5px;
-        background: #4c6baf;
+        background: linear-gradient(90deg, #667eea, #764ba2);
         transform: scaleX(0);
         transition: transform 0.5s ease;
       }
 
-      .platform-card:hover::before {
+      .platform-card:hover::after {
         transform: scaleX(1);
       }
 
       .platform-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 20px 50px rgba(76, 175, 80, 0.2);
+        transform: translateY(-20px) scale(1.05);
+        box-shadow: 0 25px 60px rgba(102, 126, 234, 0.2);
+        border-color: #667eea;
       }
 
       .platform-card img {
-        width: 130px;
-        height: 130px;
+        width: 140px;
+        height: 140px;
         object-fit: contain;
         margin-bottom: 1.5rem;
-        transition: transform 0.5s ease;
+        transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
       }
 
       .platform-card:hover img {
-        transform: scale(1.1) rotate(5deg);
+        transform: scale(1.2) rotate(5deg);
+        filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.3));
       }
 
       .platform-card h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         color: #2d3748;
         margin-bottom: 0.5rem;
+        font-weight: 700;
       }
 
       .platform-card p {
-        color: #af4c4c;
+        color: #667eea;
         font-weight: 600;
+        font-size: 1.05rem;
       }
 
       .arrow-card {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 4rem;
-        color: #3b69ff;
-        animation: pulse 2s ease-in-out infinite;
+        font-size: 5rem;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: bounce 2s ease-in-out infinite;
+        text-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
       }
 
-      @keyframes pulse {
-        0%,
-        100% {
-          transform: scale(1);
-        }
-        50% {
-          transform: scale(1.2);
-        }
+      @keyframes bounce {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(15px); }
       }
 
-      /* Benefits Grid */
+      /* Enhanced Benefits Grid */
       .benefits-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2.5rem;
         margin-top: 3rem;
       }
@@ -311,10 +408,10 @@
       .benefit-card {
         background: white;
         padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.08);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        border-left: 5px solid #af4c4c;
+        border-radius: 25px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        border-left: 5px solid transparent;
         position: relative;
         overflow: hidden;
       }
@@ -322,67 +419,70 @@
       .benefit-card::after {
         content: "";
         position: absolute;
-        top: 0;
-        right: 0;
-        width: 100px;
-        height: 100px;
-        background: #3b83ff;
-        border-radius: 0 0 0 100%;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
         opacity: 0;
-        transition: all 0.5s ease;
+        transition: all 0.6s ease;
+        transform: scale(0);
       }
 
       .benefit-card:hover::after {
-        opacity: 0.1;
-        width: 200px;
-        height: 200px;
+        opacity: 1;
+        transform: scale(1);
       }
 
       .benefit-card:hover {
-        transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 20px 50px rgba(76, 175, 80, 0.15);
-        border-left-width: 8px;
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 60px rgba(102, 126, 234, 0.15);
+        border-left: 5px solid #667eea;
       }
 
       .benefit-icon {
-        width: 70px;
-        height: 70px;
-        background: #4c66af;
-        border-radius: 15px;
+        width: 75px;
+        height: 75px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 2rem;
+        font-size: 2.2rem;
         margin-bottom: 1.5rem;
-        transition: all 0.5s ease;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         position: relative;
         z-index: 1;
+        box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
       }
 
       .benefit-card:hover .benefit-icon {
-        background: #3b62ff;
-        transform: rotate(360deg) scale(1.1);
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        transform: rotate(360deg) scale(1.15);
+        box-shadow: 0 12px 30px rgba(240, 147, 251, 0.4);
       }
 
       .benefit-card h3 {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         margin-bottom: 1rem;
         color: #1a202c;
         position: relative;
         z-index: 1;
+        font-weight: 700;
       }
 
       .benefit-card p {
         color: #4a5568;
-        line-height: 1.8;
+        line-height: 1.9;
         position: relative;
         z-index: 1;
+        font-size: 1.05rem;
       }
 
-      /* Process Steps */
+      /* Enhanced Process Steps */
       .process-steps {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+         grid-template-columns: repeat(3, 1fr);
         gap: 2.5rem;
         margin-top: 3rem;
       }
@@ -390,91 +490,90 @@
       .step-card {
         background: white;
         padding: 3rem 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(76, 175, 80, 0.08);
+        border-radius: 25px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
         text-align: center;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         overflow: hidden;
+        border: 2px solid transparent;
       }
 
       .step-card::before {
         content: "";
         position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(255, 235, 59, 0.1) 0%,
-          transparent 70%
-        );
-        opacity: 0;
-        transition: opacity 0.5s ease;
+        top: -100%;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(180deg, rgba(102, 126, 234, 0.1) 0%, transparent 100%);
+        transition: top 0.6s ease;
       }
 
       .step-card:hover::before {
-        opacity: 1;
+        top: 0;
       }
 
       .step-card:hover {
-        transform: translateY(-15px) scale(1.05);
-        box-shadow: 0 25px 60px rgba(76, 175, 80, 0.2);
+        transform: translateY(-20px) scale(1.03);
+        box-shadow: 0 30px 70px rgba(102, 126, 234, 0.2);
+        border-color: #667eea;
       }
 
       .step-number {
-        width: 70px;
-        height: 70px;
-        background: #4c7caf;
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
         border-radius: 50%;
         display: flex;
         align-items: center;
         justify-content: center;
-        font-size: 1.8rem;
-        font-weight: 700;
+        font-size: 2rem;
+        font-weight: 800;
         margin: 0 auto 1.5rem;
-        transition: all 0.5s ease;
-        box-shadow: 0 8px 20px rgba(76, 175, 80, 0.3);
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
         position: relative;
         z-index: 1;
       }
 
       .step-card:hover .step-number {
-        background: #ff3b3b;
-        color: #2d3748;
-        transform: scale(1.2) rotate(360deg);
-        box-shadow: 0 12px 30px rgba(255, 235, 59, 0.4);
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        transform: scale(1.25) rotate(360deg);
+        box-shadow: 0 15px 40px rgba(240, 147, 251, 0.4);
       }
 
       .step-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
         margin-bottom: 1rem;
         color: #1a202c;
         position: relative;
         z-index: 1;
+        font-weight: 700;
       }
 
       .step-card p {
         color: #4a5568;
-        line-height: 1.7;
+        line-height: 1.8;
         position: relative;
         z-index: 1;
+        font-size: 1.05rem;
       }
 
-      /* Comparison Table */
+      /* Enhanced Comparison Table */
       .comparison-table {
         margin-top: 3rem;
         background: white;
-        border-radius: 20px;
+        border-radius: 25px;
         overflow: hidden;
-        box-shadow: 0 10px 40px rgba(76, 175, 80, 0.1);
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
         transition: all 0.5s ease;
       }
 
       .comparison-table:hover {
-        box-shadow: 0 15px 60px rgba(76, 175, 80, 0.15);
+        box-shadow: 0 20px 70px rgba(102, 126, 234, 0.15);
+        transform: translateY(-5px);
       }
 
       .comparison-table table {
@@ -483,19 +582,20 @@
       }
 
       .comparison-table th {
-        background: #4c65af;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 1.8rem;
+        padding: 2rem 1.5rem;
         text-align: left;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         transition: all 0.3s ease;
       }
 
       .comparison-table td {
-        padding: 1.8rem;
-        border-bottom: 2px solid #f0f7f0;
+        padding: 2rem 1.5rem;
+        border-bottom: 2px solid #f0f0f0;
         transition: all 0.3s ease;
+        font-size: 1.05rem;
       }
 
       .comparison-table tr:last-child td {
@@ -507,29 +607,183 @@
       }
 
       .comparison-table tbody tr:hover {
-        background: #f0f7f0;
+        background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, transparent 100%);
         transform: scale(1.01);
       }
 
       .check {
-        color: #4caf50;
+        color: #10b981;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
       }
 
       .cross {
-        color: #ff5252;
+        color: #ef4444;
+        font-weight: 700;
+        font-size: 1.2rem;
+      }
+
+      /* Testimonials Section - NEW */
+      .testimonials-section {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 100px 2rem;
+      }
+
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        max-width: 1200px;
+        margin: 3rem auto 0;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        padding: 2.5rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.4s ease;
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.15);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .testimonial-author {
         font-weight: 700;
         font-size: 1.1rem;
       }
 
+      .testimonial-role {
+        opacity: 0.8;
+        font-size: 0.95rem;
+      }
+
+      /* FAQ Section - NEW */
+      .faq-section {
+        background: white;
+        padding: 100px 2rem;
+      }
+
+      .faq-container {
+        max-width: 900px;
+        margin: 3rem auto 0;
+      }
+
+      .faq-item {
+        background: white;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: all 0.3s ease;
+      }
+
+      .faq-item:hover {
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.15);
+      }
+
+      .faq-question {
+        padding: 1.8rem 2rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: 700;
+        color: #1a202c;
+        font-size: 1.15rem;
+        transition: all 0.3s ease;
+      }
+
+      .faq-question:hover {
+        color: #667eea;
+      }
+
+      .faq-question span:last-child {
+        font-size: 1.8rem;
+        font-weight: 300;
+        transition: transform 0.3s ease;
+      }
+
+      .faq-item.active .faq-question span:last-child {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease, padding 0.4s ease;
+        padding: 0 2rem;
+        color: #4a5568;
+        line-height: 1.8;
+      }
+
+      .faq-item.active .faq-answer {
+        max-height: 500px;
+        padding: 0 2rem 1.8rem;
+      }
+
+      /* CTA Section - NEW */
+      .cta-section {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        color: white;
+        padding: 100px 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(102, 126, 234, 0.2) 0%, transparent 70%);
+        animation: rotate 20s linear infinite;
+      }
+
+      @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .cta-content h2 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      .cta-content p {
+        font-size: 1.3rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+      }
 
       /* Responsive */
       @media (max-width: 1024px) {
         .migration-flow,
         .benefits-grid,
-        .process-steps,
-        .footer-content {
+        .process-steps {
           grid-template-columns: repeat(2, 1fr);
         }
 
@@ -546,7 +800,8 @@
         .migration-flow,
         .benefits-grid,
         .process-steps,
-        .footer-content {
+        .stats-grid,
+        .testimonials-grid {
           grid-template-columns: 1fr;
         }
 
@@ -556,58 +811,278 @@
         }
 
         .section-title {
-          font-size: 2rem;
+          font-size: 2.2rem;
+        }
+
+        .stat-number {
+          font-size: 2.8rem;
         }
       }
 
-      /* Scroll Animations */
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      /* Scroll reveal animation */
+      .scroll-reveal {
+        .scroll-reveal {
+  opacity: 1;
+  transform: none;
+}
+
       }
 
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
+      .scroll-reveal.revealed {
+        opacity: 1;
+        transform: translateY(0);
       }
 
-      .animate-in {
-        animation: fadeInUp 0.8s ease both;
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
       }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+      .migration-scope-section {
+  background: white;
+}
+
+.scope-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.8rem;
+  margin-top: 3rem;
+}
+
+.scope-card {
+  background: linear-gradient(135deg, #f0fdf4, #ffffff);
+  padding: 1.8rem 2rem;
+  border-radius: 18px;
+  font-weight: 600;
+  box-shadow: 0 8px 25px rgba(16,185,129,0.15);
+  transition: all 0.3s ease;
+}
+
+.scope-card:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #dcfce7, #ffffff);
+}
+/* ===============================
+   RISK-FREE MIGRATION SECTION
+================================ */
+.risk-section {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+.risk-section .section-title {
+  color: #ffffff;
+}
+
+.risk-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+.risk-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 2.8rem;
+  border-radius: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.risk-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.risk-card:hover::after {
+  opacity: 1;
+}
+
+.risk-card:hover {
+  transform: translateY(-12px) scale(1.03);
+  box-shadow: 0 30px 70px rgba(102, 126, 234, 0.35);
+}
+
+.risk-card h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+}
+
+.risk-card p {
+  opacity: 0.9;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.risk-card.highlight {
+  border: 2px solid #667eea;
+  background: rgba(102, 126, 234, 0.15);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .pain-card,
+  .scope-card,
+  .risk-card {
+    padding: 2rem;
+  }
+  
+}
     </style>
   </head>
   <body>
     <header>
       <nav>
         <div class="logo-section">
-          <img
-            src="https://www.zolytics.in/files/logo.png"
-            alt="Zolytics Logo"
-          />
+          <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics Logo" />
         </div>
       </nav>
     </header>
 
     <section class="hero">
       <h1>Migrate from Tally to Zoho Books<br />Without Any Hassle</h1>
-      <p>
-        Experience seamless migration with zero data loss. Our expert team
-        ensures your complete accounting data, transactions, and reports are
-        transferred accurately to Zoho's cloud platform.
-      </p>
-     
+      <p>Experience seamless migration with zero data loss. Our expert team ensures your complete accounting data, transactions, and reports are transferred accurately to Zoho's cloud platform.</p>
+      <div class="cta-buttons">
+        <a href="#process" class="btn-primary">Start Your Migration</a>
+        <a href="#benefits" class="btn-secondary">Why Switch?</a>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-card scroll-reveal">
+          <div class="stat-number">500+</div>
+          <div class="stat-label">Successful Migrations</div>
+        </div>
+        <div class="stat-card scroll-reveal">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Data Accuracy</div>
+        </div>
+        <div class="stat-card scroll-reveal">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support Available</div>
+        </div>
+        <div class="stat-card scroll-reveal">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
     </section>
 
     <section>
@@ -616,22 +1091,16 @@
         <h2 class="section-title">Your Journey from Desktop to Cloud</h2>
 
         <div class="migration-flow">
-          <div class="platform-card">
-            <img
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAABZVBMVEX///8AAAABAQH//v////3/AACMjIz8///6AADn5+cAAANeXl7vAADx8fH3AAD7+/vrAABLS0uEhIS8vLxCQkI7OzsYGBiqqqpxcXHLy8uhoaHa2trBwcFSUlJ5eXmRkZEgICDgAAD/Wlo0NDTdAAD+5uUvLy/S0tL/8vFgAACampovAADBAADSAADwCwwbAABpamlEBgY4BwjjOjqkCQlJAAAOAADPAACysrJ0CAnsTUz9vbzlc3PpjY9aCgvuMDDwXVt7AACwAAB/OjolAACzZmeQBwbBDg7/4eCdKyysBgaQCwv2cHDjHx78paVpAAP7h4f0ycj5jI3onp3jFxixSEjaq6uOFBT7n59NFBT5LCv5srDcR0b5kZDehYJbRUbGMDHfXlyYOTnml5gbIyM7GRpZaWjlz9GfT09jPjwDFxfduLZHKSmrJSX+Zma3g4VxJSXaS0t+Hx7EICHdJyfDra37OjqYTIKZAAAVYElEQVR4nOWdi1/iSpbHk0AgwZDwEkHeCgoKQZCn2LT2usKgjaDObUfb3unpne3Zedy7d/Zu//1bVXkhEkhIIo/5fe7tthFCfevU45xTlQqGW6uA1+vdxYBs2AvZOPDHLvhlwOICYJZdOZBwOBw+TibCJovzgbclrMO0BnAj6vdHVIgmKuL3RzcsKYoVgGHarQdOkpsOW1AYcwGTsc150Ea1GUviOGFekcwEjDuiRvGgoo64iYUyCRBU+Yafm114beL85vVHsyw4Z79Tk3n90QzAQNxMNkVxMyYPw4DBhM+0pjkuzpcILhwwbBWdoP3FAoZo2lo+DKPp0KIAd70W9b1xxb27iwDc1OWLGRO9+faA0TfkA75q9I0Bty3ve+Oit98Q0Lv11nhQW963AgwtAg8KjKcEkMWAJvqceoV8VKsB9xaGhxD39MZSOgGTprrU88id1FdiXYBBx5vODZMVcejyT3UAElb7nVq1r6eV6rHgkvBhmJ5YUTugd3/RXCPa0jzWaAZcyNyuri2tM6JWwO1FE43rADcVcOn4MEyjb6oJ0LtomMnSlF3UAhhfQvshaYn1tQC+eWikVbQpgCF6od7nNHH0kXHAN8q7zKv4rPlwOiCxuNhPq2bZcJYFl7b/SeJmjKXTAePL2/9kzSCcCuhd1vnhhba906L8qYCLLrpWzQu4EvaD2p4ylE4BXBm+qX6pOuCSxUfTtaUfcEkdbDWpJoVVAZcpftegsFo3VANcmvyLVqnlaSYDBlfMflDhydnEyYCORZd2Hjm0AyaXIL+rX5GJOe+JgAvPz88nt1bAvUWXdF5NIpwAuLH8EYSK3BN2gE0A9C+6nPPL/3o2fA0YWlkDgtjwdZ7tFeCKuWjjeuWyvQJcKR/7tV553eOAKxQjTdZ45DQOuPRJplkaTwaPAZqyJ3mxik4DfMv9Z1YpsqkOuLsGfIBwVxVwxacISV5VwCVfh9CquBrg0q9DaFVIBXDlpwhJ9L8m4CrmYdS0H5wAmFh0qcxUQt5kogD6Fl0oM+V7DRhY0UTMZHEBfBxwTeZASfFXgIsukdlaf8CxUXTl1iJmKTwGuDaTvCT6JeDGWo2hUFKOFAES8+ZC3ZHGgUNd29EFNgwxRypYMK4zF8rtJ45isZg3sDt9B3xy0wveFoqqHYNgpcT9MwKg1uUyt5uO+H2hl+ljDXuLvYuwJPJmCASY1Jhr8h/Jtw0TAhchagbgQrKt0SQuAcY0fkQJlYkxzQL8t4ylLJMVkwG1ns+grIMraC7XLDiomwdLUSZrUwbU/JHGxTgg7qrVihcXNfnfpXa1Wi2VyoeH4NWaC/G7XBfHixhn9ANm/320MRbL1ZvmZaXS6VTKMuA9xTCMJ3Vfr4OXK+fNZq5dPSxWC121a9KNRsSiBS3dgHas+7saQsudV3qdfD3tYSmKZT1XkgVrFfLH9dnO8cd0qpBOezwINl3PF1ItlWtGY/AoBUfDJKYXgi0NAurxQ/uXpepNrw7BKIpkmcedn68Hd3Kjbaaop2w2m8lkhsNWq/88+PnsxyPPsBTTn3y9LXHnABGyIOkMxwwIqH2ScmJYZgdw8e9Prm9baGR0OjEnnC7Qf00Peye+04neDX8r/OiceMEDpcErGQXH7qZ32wxeWgDU5YfanJmH0y9P3Sz6hzByhASnCAww98xvnN2OCXyzxW0px3Ec/n4oXI0Wz684iBrumdAfxXSvKNntnIyAitQIIkDQAXvk2RCROTUBukdS0KU6c4sqLRGTfSPjS11RBKjP0Xba5Z8EiEhAuNWNwM9JzxMmGFDTpXzydIPn6iTbhxaLyK+58J/sMy8xQ/45AEcFOaAZYH0TrhvGc4c5xWYrNV91cXGJBcc/8dTjELaHA2WWLXaYk7lLJgoBBox1ZwcuZOiIww57ZpP5VM9Rk8RtB2XATzzzvgVM7z4IyjZtdxjm1lDJMNS6MIMJX/m8l1qFZbra+h5SoyaZCs/x1DGyX0jy3l34TZoUO6UhOQCgsZ2FMQmwzTItjYML1HZQbIs4fpmiTobAfpGQjFy8SlPMQ9ZwHzQMSAcUPraP2bUCun2SS+s6zJPMM+i6WDgpdT9XuU4yp3a1uVOPDALaEhLfRZ466YIR1K6p0uWbVQj8Dz3y8RR+bF8YrFCT7bCPt5xT62A8TRDQwJpEuCbaoXgJR0HMNgLY2G6oOhCy/0LgHdDVkG+QlIfUaprk+3Y7GK6MA/pwLGDAXwhKxWyyzCk2Yjz6yBvEg4HYZBe6IePhFYp5l7XbMPeRPKTm0mTqSZhtjQNyAczAxoNtwXw4UU5TnxUPgKOVXY2+CVbc35PwDj+w/C3AsKMbHQW+c576+IRhxscXQV4DgA2xfYIZgjrOShOfLRyXCwu08WqW9e9J9it9gK4PYNkPSENq7Ypiz4bQHeJoN2dCmGgAUNxwAyud/DEEXUaY4xN7cmNDf8TGbNiQ9+kQedLzDrgGGBaQ/Zcmz55lAJ8N24+F4o4tw9k4L7Y75yc5cZO7y1VNkQ92pwAY3lB8LdGKBy8+5pf7X7lHPbY4gCJ/BseveOo5g9r6AbIzsek1uGgyL544EoIyuS56zFnWiSG+/Rg+BkjgSf+I1ybvdoSxP/sF2kq60Ri895xnP8OxGOMiu9Le3f8wBji33HJDvGI9XVDpgM8mbWVEr9fabTHuUdrZvtz/wMfA/A46rjsgv9QG/S+LfAV0k4fw4T+2pJ44z/KJfd5uTMclK7UL7ECY4bmEdEQIcpZ7qZQ41nyRhsTIhlwtTQ9zmgXjC3ckV0rznj3rAp/GiQJVwSct99jP4jB1APqk7jh/bsADqQR4mjnJoAleiJuE2N6FX3koZiBa4cM3YQqhlTs3cin2FM3vyqakdpr8I0yC2NCd1aJP2gEOBIdGL2GH3a73SN+4M2e20i+FOvgV+X4IfGw7RsdwKXAi8GqepI77wpEoLjz/FX1Iap9ANyn2BLRruzsknwtTylMfOScqj8wH5kkQYsL5fiT4f4tN87Q8VZdTzDcU2ruV+9ldeLNAss9dWpgwAOAJKCMXlh1zV6kO4iPnqK+OE3XgzCJHzy2dKQpTII/AQQIGdMtBC4H/qW89oU/6tsMedZsBMQTmDiklOPzEsydP9gjc1egCdrhInwHAhmI/osPyQxAsROX+hxcvyRM4v4NOKTuqtR7Dg5AJQMuuEey8qZT16xxySW94BgWlo+kj/JInPS3xZjCXCy9WyDMwvoykxM8p9gG0RfuIWc55BgxFECYqv9Zk2EHWCSYNaQMobP9NnuQtB5RpygW2jyLAhFL6Up2kvmaQd4K8mWIH+mMNJb+EtxnYrLH9XWXxremhbgX/MyLb7xPvOUWpnZGzN4uXDHttPM6fIb+8qttj3mcgX0MaKoC98iwPxn86IY6ytUsQaHBhrwJYzTMDUAGRIyk9QRClAvsjIwy0ATEFiYPGcZqB/tG+1JBdrotLnjn5bjUfLbesKvC1bHAArclV3P5AfbwDlS4OhMDNoR6/Ib9LmD8IotwhgWeO+b3SKYXgNfDSEA1VEakxwnnkGg2q8tjrchU7DDPomhZoqEi+PchF9KhTG3Ss/HIXAWM982TDIuKUQRQrLPUAG7A4QYKSV1im5XRG93AZEC+TzJ2QzpFGL7yWJ1NDMI9g9MgmgAoJnEKr+UYWQSvk+y7qJGGp2m8o0tOVEi6EC0wHJPMcCSjL+MDxIfknacwVoW9S4CWUgMGlC4EPogDMPZIbLuVBoG8xHDY6dZXz7B1KLMj3JTY/smd9pxgcwHwL6I/P4ZCS3wWvXVGnWZQ+Q6v8aODosdc2aD+lV4KO+/gTMFVYzg2Dpt1jqSdtKR9DUsbLcyYtfZ/ggh2mqdQQhfli0+sA+0X/E/5L3q2A54674n0N0ivtNNOF5oN9mxBcgxLPPEC+oMIHLuYZzOt46RAnjzC1XuoZEwmF7G8pdZxtxAjZIcUL91/iSdGaLsmMf/buSYMGHEBh0/sZXiMiBRowbKJAX3P7kjKeq1ihPO8snx8wJR9G4D322ekUAd17Quriv6QiCn8VpcpAmfiSkseAcKBChFfwm+9OTvEU4EueE9HMcv+rk/dqS8SmSvGZcJ4fKgNaQxpHiFFAucT44VWa/fTX0b0ZRPG8/kFEDiQOYvL7YUVd/iWk0EK+Dhh638J+csIB9EDyLAPtJyRi3COjAaHMeQQhmY+l7ltHSosDc2iPJT1/UcZXfORv5ePiNUDQ9E77qocBoegGpinwap39NjojZf9UkyPEclmpfbgs2u6A2PC2a3f/t9g2wXjbSVHMyfD7X3GhI0oo0t4pl0tuzDB5CqYWbm4+XQNT4+/V8mG5XC71yK+ZkTq1Y8PflYqoc5U/pdKySVz4BTAVSx3/BB2Vh3a5WLsol3L3LEUe34H6+dvfpZEToVWbVcEBUgDBzxWW/QYay1wzxMxVynH1U/X6/f09z6bG9r04u9f/OL9pN8/vKernX/7nQoh7m5cdnuJP++LXPP/6oZe/50lmZ9DPorr92z+rIl6tel7hyf9FeZzaIbSrUEkXPYZ5MiHHrUl2rHv7WypdSBc+fn31ndnnFJNiKDI1yNhue81SNXdZ50mS/bVlE9oJqM3Wb2nGk049QBddWMg4zTdLAKOUq9RZkr1/+np+SFw0m4TQluHiGsV+fYP5T5DNZufgHhigrJToleTEst1BPV0YZDjMnj0tpDwMy6bq192sWBXw/eDT3W4GvMMJ/GiUqco+FdKpdMrDUmyq0MrYsnXwyfoFLuwBA+MTxTxnDQHqy4zapa+yv2rfdgiZgWk/mNhsXZ+cnN0+ZZ2YtOJkQ/4m+KUTE/6HAj5ad3B2cnx8fDZooU6dfTg7zgFvTQBs8sx11667J43imX3Xp1gWWFaYy9BU+dlsFuVZxHEkIfl6RPuehPGDU8fS+JiMLL5oFMe56f2ov7G1dXCQcCSghD+hDg62txr+6D5NK+vVcCOrMH+CQJiHy6pLB8jZ6PC2I7QRg/u6vd7A5l4yGFTbNUsEg8m9zU0v3N0dix1t+4KSQ3RYJ8+6mMZVYxV5DS2AvqRy0xGapvf9jthkEu0S6+I3z8chhmFGALmAoSXsEbSwP3E00URiHKhGoiL029LNL+GI21AI6DO4y4Lj6EbCEQ9tbCoIhHqx5aKL75uE+LIGkpshX0J9sX+mDO2yiPyf78i7KedMRr1l2bUkRn8jcr204IvXiYm2Dno35t1dOQ8gbJCNo5ePJRutfcQFZzEQEBYPD8ulajt307y6uux1OvkCmMZlAaemUO9UKldXzeZNu1oqHxZf8SlVsJeIuHWPFw69W7m48JZvI6lQTQBEuqjmmueXvQ/5ejoFPBqWAZ4KEv/jx48dWT9+8DwFfgXeAnHzn+QYcqzqhBc2fX6drTWhZzOee9vhiE9+Xgdqj/CHYqn9z8sK5OJ5gMUwHn7n58Fzv//01Gq1hkjdjKxudwi3PkP1H24HZzlkfWD65qdmtYZSHa6Xd5+EHHo2R8LNeFpvzKLVH5bnEuBgPNApeFjgYAODpFJ1z/XgCeAAN2XmNA2zH1z2Oy4Ctu9ZT7pzXkJXd72wIh50aHfc/DihDXB/8j1Y8BtrxXI1V8mnGRKKYt5//vX0AXjNL8oOpjI5gQP/RD/axX+JXqlN2CUPdVEnd778evxIAg+8kisXlXuIhKrcHHGKNQBq2Dnsf9nloNHA/7VqDvSzfAEMFywg27l+93AHTDYreWKXEUeDWBtaAseRuc7ZxyEITlp37wY7Hz31D5XzUs01kkIMwDVlLYBRBKhhUzr9y59fdPeLdhP2tLQH2uz++Lr/BPoXjIIw6GbPqNzJgOLGItjncqnHJw766gA7M2z1B+lUIV85r0pzLN7eGWoK8N0bEJDQclvBsJMTmySAu+rUQQAH2g/DnAz6sJfJQZSBHXRCPh/WX5085VC0KGw4tANbDnY8nkIejkFwybHDassh0rgAOHOvDXDnhydM/rx53kvBnsYyj8dwAMmiWyLE+wiMptX9YreGN890nS92ZsKvyQ4Hn1lP/aparFUo5KPOVhhUCAScfWsPMEz23fV70NeYx53B7btvwk0haH+T1k2iM8SJSzZELp3qoxBCuioaoNBb+u8GJ/UPPYbvZzW1E9igMdimZ78VfkG29Xx2fTfMKDioZaK2ZDwpFBbn04sO9dkmxUhidx2pw+7d+5TnWOPWYh2AwrdxcEobv7RJgNKqziWbHjptrwHlzEc2083oBdTxAGvr8nfDf+RKh8USWgxVHYdhT9dchE0cFwG13uJqqb7/ytfzHwrkdUZ/unayYjKg1puUrZQdyzwNdh7Z96ZtMogmJUBiWU5lhknXrmm9wIcrgHoPCrBKNpt5i0hcXAGc+6gH02XOiIzkF+adf43DOvD1P25l/Q/MWfsjj9YfcO2OHRsHNG2NYinEBV4BrtvRf68B1+zwxteAwTWaKSYev7lGk/3kA1Q1ZddWQ2pH4K79IcbrMheqHkO9/geJr/1R8Gt/mP/6P45hDebCGQ/UWP9Hoqz9Q21WfaqY+VgiYt0fLEWs+KPBZgMSa/5wN5jmXuvH86FdFCua5nZP2so3AZBY60dkEsu0nKZPOh5yupL5GV2PqV3BtYqwysZpFUCtOy+WRyq7hdWfhb1iPunW6C5aTYCrRbg1tjNcC+AqRU7jMZI2wNUhnMI3FXBlBpqpDNN+uSJ50vg0hqmAeIhegcjidQyoHXAVklC+6QCzAI8WXf7p4mbYbzbgsvfDqf1PEyB+tMTdcEIORjcgscQ25GbaT4sFAeGyzviz7acFEF/aXKkG+2kEXEqvbZp/phcQ+OlLR6iRTysgsWzR06s1CEOASEZP2zVVmvl0AC5RniY8u6zzABL4kjyKeF/1vnxjgPDu0iXICEccQcsAcTy58Ky+Ozl2M6qpgPBM6YUiuseX4M0GhKtr/oV535x/wvqY2YDEAve0hfS1zjkBwfW9C5n1t7z42wDCb9h+81QGvS2XwELAEUXfdMaIRGeXyGTAN93XFtlUWXmwEhDf9b5RrB/37qotrVgKiMO8qeV9kaZfHAj8xoBAFvun8qPHFgYYTPgsm/g5X2L6o6jfAhCHzyi1hk/9BBsdMg4otJ2wuT6qm9YT802TGYDC5Guij4p8zvFjohYOiONxhyk7oqOO+MvrGpIZfVAUKEwypuPUiMnajCXVT9KbQ2YCSvUdna8/Kv3OBMPJMhdQ7o9Rv1+XJxfx+6MbIxcxr1RWAArlCyQcDof6HCmdx8H5wNsSgbGLmFcqawCVMga8Xq/qKbu78PDRiRcxr1T/Dzj8Ddk0/sEZAAAAAElFTkSuQmCC"
-              alt="Tally"
-            />
+          <div class="platform-card scroll-reveal">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOAAAADgCAMAAAAt85rTAAABZVBMVEX///8AAAABAQH//v////3/AACMjIz8///6AADn5+cAAANeXl7vAADx8fH3AAD7+/vrAABLS0uEhIS8vLxCQkI7OzsYGBiqqqpxcXHLy8uhoaHa2trBwcFSUlJ5eXmRkZEgICDgAAD/Wlo0NDTdAAD+5uUvLy/S0tL/8vFgAACampovAADBAADSAADwCwwbAABpamlEBgY4BwjjOjqkCQlJAAAOAADPAACysrJ0CAnsTUz9vbzlc3PpjY9aCgvuMDDwXVt7AACwAAB/OjolAACzZmeQBwbBDg7/4eCdKyysBgaQCwv2cHDjHx78paVpAAP7h4f0ycj5jI3onp3jFxixSEjaq6uOFBT7n59NFBT5LCv5srDcR0b5kZDehYJbRUbGMDHfXlyYOTnml5gbIyM7GRpZaWjlz9GfT09jPjwDFxfduLZHKSmrJSX+Zma3g4VxJSXaS0t+Hx7EICHdJyfDra37OjqYTIKZAAAVYElEQVR4nOWdi1/iSpbHk0AgwZDwEkHeCgoKQZCn2LT2usKgjaDObUfb3unpne3Zedy7d/Zu//1bVXkhEkhIIo/5fe7tthFCfevU45xTlQqGW6uA1+vdxYBs2AvZOPDHLvhlwOICYJZdOZBwOBw+TibCJovzgbclrMO0BnAj6vdHVIgmKuL3RzcsKYoVgGHarQdOkpsOW1AYcwGTsc150Ea1GUviOGFekcwEjDuiRvGgoo64iYUyCRBU+Yafm114beL85vVHsyw4Z79Tk3n90QzAQNxMNkVxMyYPw4DBhM+0pjkuzpcILhwwbBWdoP3FAoZo2lo+DKPp0KIAd70W9b1xxb27iwDc1OWLGRO9+faA0TfkA75q9I0Bty3ve+Oit98Q0Lv11nhQW963AgwtAg8KjKcEkMWAJvqceoV8VKsB9xaGhxD39MZSOgGTprrU88id1FdiXYBBx5vODZMVcejyT3UAElb7nVq1r6eV6rHgkvBhmJ5YUTugd3/RXCPa0jzWaAZcyNyuri2tM6JWwO1FE43rADcVcOn4MEyjb6oJ0LtomMnSlF3UAhhfQvshaYn1tQC+eWikVbQpgCF6od7nNHH0kXHAN8q7zKv4rPlwOiCxuNhPq2bZcJYFl7b/SeJmjKXTAePL2/9kzSCcCuhd1vnhhba906L8qYCLLrpWzQu4EvaD2p4ylE4BXBm+qX6pOuCSxUfTtaUfcEkdbDWpJoVVAZcpftegsFo3VANcmvyLVqnlaSYDBlfMflDhydnEyYCORZd2Hjm0AyaXIL+rX5GJOe+JgAvPz88nt1bAvUWXdF5NIpwAuLH8EYSK3BN2gE0A9C+6nPPL/3o2fA0YWlkDgtjwdZ7tFeCKuWjjeuWyvQJcKR/7tV553eOAKxQjTdZ45DQOuPRJplkaTwaPAZqyJ3mxik4DfMv9Z1YpsqkOuLsGfIBwVxVwxacISV5VwCVfh9CquBrg0q9DaFVIBXDlpwhJ9L8m4CrmYdS0H5wAmFh0qcxUQt5kogD6Fl0oM+V7DRhY0UTMZHEBfBxwTeZASfFXgIsukdlaf8CxUXTl1iJmKTwGuDaTvCT6JeDGWo2hUFKOFAES8+ZC3ZHGgUNd29EFNgwxRypYMK4zF8rtJ45isZg3sDt9B3xy0wveFoqqHYNgpcT9MwKg1uUyt5uO+H2hl+ljDXuLvYuwJPJmCASY1Jhr8h/Jtw0TAhchagbgQrKt0SQuAcY0fkQJlYkxzQL8t4ylLJMVkwG1ns+grIMraC7XLDiomwdLUSZrUwbU/JHGxTgg7qrVihcXNfnfpXa1Wi2VyoeH4NWaC/G7XBfHixhn9ANm/320MRbL1ZvmZaXS6VTKMuA9xTCMJ3Vfr4OXK+fNZq5dPSxWC121a9KNRsSiBS3dgHas+7saQsudV3qdfD3tYSmKZT1XkgVrFfLH9dnO8cd0qpBOezwINl3PF1ItlWtGY/AoBUfDJKYXgi0NAurxQ/uXpepNrw7BKIpkmcedn68Hd3Kjbaaop2w2m8lkhsNWq/88+PnsxyPPsBTTn3y9LXHnABGyIOkMxwwIqH2ScmJYZgdw8e9Prm9baGR0OjEnnC7Qf00Peye+04neDX8r/OiceMEDpcErGQXH7qZ32wxeWgDU5YfanJmH0y9P3Sz6hzByhASnCAww98xvnN2OCXyzxW0px3Ec/n4oXI0Wz684iBrumdAfxXSvKNntnIyAitQIIkDQAXvk2RCROTUBukdS0KU6c4sqLRGTfSPjS11RBKjP0Xba5Z8EiEhAuNWNwM9JzxMmGFDTpXzydIPn6iTbhxaLyK+58J/sMy8xQ/45AEcFOaAZYH0TrhvGc4c5xWYrNV91cXGJBcc/8dTjELaHA2WWLXaYk7lLJgoBBox1ZwcuZOiIww57ZpP5VM9Rk8RtB2XATzzzvgVM7z4IyjZtdxjm1lDJMNS6MIMJX/m8l1qFZbra+h5SoyaZCs/x1DGyX0jy3l34TZoUO6UhOQCgsZ2FMQmwzTItjYML1HZQbIs4fpmiTobAfpGQjFy8SlPMQ9ZwHzQMSAcUPraP2bUCun2SS+s6zJPMM+i6WDgpdT9XuU4yp3a1uVOPDALaEhLfRZ466YIR1K6p0uWbVQj8Dz3y8RR+bF8YrFCT7bCPt5xT62A8TRDQwJpEuCbaoXgJR0HMNgLY2G6oOhCy/0LgHdDVkG+QlIfUaprk+3Y7GK6MA/pwLGDAXwhKxWyyzCk2Yjz6yBvEg4HYZBe6IePhFYp5l7XbMPeRPKTm0mTqSZhtjQNyAczAxoNtwXw4UU5TnxUPgKOVXY2+CVbc35PwDj+w/C3AsKMbHQW+c576+IRhxscXQV4DgA2xfYIZgjrOShOfLRyXCwu08WqW9e9J9it9gK4PYNkPSENq7Ypiz4bQHeJoN2dCmGgAUNxwAyud/DEEXUaY4xN7cmNDf8TGbNiQ9+kQedLzDrgGGBaQ/Zcmz55lAJ8N24+F4o4tw9k4L7Y75yc5cZO7y1VNkQ92pwAY3lB8LdGKBy8+5pf7X7lHPbY4gCJ/BseveOo5g9r6AbIzsek1uGgyL544EoIyuS56zFnWiSG+/Rg+BkjgSf+I1ybvdoSxP/sF2kq60Ri895xnP8OxGOMiu9Le3f8wBji33HJDvGI9XVDpgM8mbWVEr9fabTHuUdrZvtz/wMfA/A46rjsgv9QG/S+LfAV0k4fw4T+2pJ44z/KJfd5uTMclK7UL7ECY4bmEdEQIcpZ7qZQ41nyRhsTIhlwtTQ9zmgXjC3ckV0rznj3rAp/GiQJVwSct99jP4jB1APqk7jh/bsADqQR4mjnJoAleiJuE2N6FX3koZiBa4cM3YQqhlTs3cin2FM3vyqakdpr8I0yC2NCd1aJP2gEOBIdGL2GH3a73SN+4M2e20i+FOvgV+X4IfGw7RsdwKXAi8GqepI77wpEoLjz/FX1Iap9ANyn2BLRruzsknwtTylMfOScqj8wH5kkQYsL5fiT4f4tN87Q8VZdTzDcU2ruV+9ldeLNAss9dWpgwAOAJKCMXlh1zV6kO4iPnqK+OE3XgzCJHzy2dKQpTII/AQQIGdMtBC4H/qW89oU/6tsMedZsBMQTmDiklOPzEsydP9gjc1egCdrhInwHAhmI/osPyQxAsROX+hxcvyRM4v4NOKTuqtR7Dg5AJQMuuEey8qZT16xxySW94BgWlo+kj/JInPS3xZjCXCy9WyDMwvoykxM8p9gG0RfuIWc55BgxFECYqv9Zk2EHWCSYNaQMobP9NnuQtB5RpygW2jyLAhFL6Up2kvmaQd4K8mWIH+mMNJb+EtxnYrLH9XWXxremhbgX/MyLb7xPvOUWpnZGzN4uXDHttPM6fIb+8qttj3mcgX0MaKoC98iwPxn86IY6ytUsQaHBhrwJYzTMDUAGRIyk9QRClAvsjIwy0ATEFiYPGcZqB/tG+1JBdrotLnjn5bjUfLbesKvC1bHAArclV3P5AfbwDlS4OhMDNoR6/Ib9LmD8IotwhgWeO+b3SKYXgNfDSEA1VEakxwnnkGg2q8tjrchU7DDPomhZoqEi+PchF9KhTG3Ss/HIXAWM982TDIuKUQRQrLPUAG7A4QYKSV1im5XRG93AZEC+TzJ2QzpFGL7yWJ1NDMI9g9MgmgAoJnEKr+UYWQSvk+y7qJGGp2m8o0tOVEi6EC0wHJPMcCSjL+MDxIfknacwVoW9S4CWUgMGlC4EPogDMPZIbLuVBoG8xHDY6dZXz7B1KLMj3JTY/smd9pxgcwHwL6I/P4ZCS3wWvXVGnWZQ+Q6v8aODosdc2aD+lV4KO+/gTMFVYzg2Dpt1jqSdtKR9DUsbLcyYtfZ/ggh2mqdQQhfli0+sA+0X/E/5L3q2A54674n0N0ivtNNOF5oN9mxBcgxLPPEC+oMIHLuYZzOt46RAnjzC1XuoZEwmF7G8pdZxtxAjZIcUL91/iSdGaLsmMf/buSYMGHEBh0/sZXiMiBRowbKJAX3P7kjKeq1ihPO8snx8wJR9G4D322ekUAd17Quriv6QiCn8VpcpAmfiSkseAcKBChFfwm+9OTvEU4EueE9HMcv+rk/dqS8SmSvGZcJ4fKgNaQxpHiFFAucT44VWa/fTX0b0ZRPG8/kFEDiQOYvL7YUVd/iWk0EK+Dhh638J+csIB9EDyLAPtJyRi3COjAaHMeQQhmY+l7ltHSosDc2iPJT1/UcZXfORv5ePiNUDQ9E77qocBoegGpinwap39NjojZf9UkyPEclmpfbgs2u6A2PC2a3f/t9g2wXjbSVHMyfD7X3GhI0oo0t4pl0tuzDB5CqYWbm4+XQNT4+/V8mG5XC71yK+ZkTq1Y8PflYqoc5U/pdKySVz4BTAVSx3/BB2Vh3a5WLsol3L3LEUe34H6+dvfpZEToVWbVcEBUgDBzxWW/QYay1wzxMxVynH1U/X6/f09z6bG9r04u9f/OL9pN8/vKernX/7nQoh7m5cdnuJP++LXPP/6oZe/50lmZ9DPorr92z+rIl6tel7hyf9FeZzaIbSrUEkXPYZ5MiHHrUl2rHv7WypdSBc+fn31ndnnFJNiKDI1yNhue81SNXdZ50mS/bVlE9oJqM3Wb2nGk049QBddWMg4zTdLAKOUq9RZkr1/+np+SFw0m4TQluHiGsV+fYP5T5DNZufgHhigrJToleTEst1BPV0YZDjMnj0tpDwMy6bq192sWBXw/eDT3W4GvMMJ/GiUqco+FdKpdMrDUmyq0MrYsnXwyfoFLuwBA+MTxTxnDQHqy4zapa+yv2rfdgiZgWk/mNhsXZ+cnN0+ZZ2YtOJkQ/4m+KUTE/6HAj5ad3B2cnx8fDZooU6dfTg7zgFvTQBs8sx11667J43imX3Xp1gWWFaYy9BU+dlsFuVZxHEkIfl6RPuehPGDU8fS+JiMLL5oFMe56f2ov7G1dXCQcCSghD+hDg62txr+6D5NK+vVcCOrMH+CQJiHy6pLB8jZ6PC2I7QRg/u6vd7A5l4yGFTbNUsEg8m9zU0v3N0dix1t+4KSQ3RYJ8+6mMZVYxV5DS2AvqRy0xGapvf9jthkEu0S6+I3z8chhmFGALmAoSXsEbSwP3E00URiHKhGoiL029LNL+GI21AI6DO4y4Lj6EbCEQ9tbCoIhHqx5aKL75uE+LIGkpshX0J9sX+mDO2yiPyf78i7KedMRr1l2bUkRn8jcr204IvXiYm2Dno35t1dOQ8gbJCNo5ePJRutfcQFZzEQEBYPD8ulajt307y6uux1OvkCmMZlAaemUO9UKldXzeZNu1oqHxZf8SlVsJeIuHWPFw69W7m48JZvI6lQTQBEuqjmmueXvQ/5ejoFPBqWAZ4KEv/jx48dWT9+8DwFfgXeAnHzn+QYcqzqhBc2fX6drTWhZzOee9vhiE9+Xgdqj/CHYqn9z8sK5OJ5gMUwHn7n58Fzv//01Gq1hkjdjKxudwi3PkP1H24HZzlkfWD65qdmtYZSHa6Xd5+EHHo2R8LNeFpvzKLVH5bnEuBgPNApeFjgYAODpFJ1z/XgCeAAN2XmNA2zH1z2Oy4Ctu9ZT7pzXkJXd72wIh50aHfc/DihDXB/8j1Y8BtrxXI1V8mnGRKKYt5//vX0AXjNL8oOpjI5gQP/RD/axX+JXqlN2CUPdVEnd778evxIAg+8kisXlXuIhKrcHHGKNQBq2Dnsf9nloNHA/7VqDvSzfAEMFywg27l+93AHTDYreWKXEUeDWBtaAseRuc7ZxyEITlp37wY7Hz31D5XzUs01kkIMwDVlLYBRBKhhUzr9y59fdPeLdhP2tLQH2uz++Lr/BPoXjIIw6GbPqNzJgOLGItjncqnHJw766gA7M2z1B+lUIV85r0pzLN7eGWoK8N0bEJDQclvBsJMTmySAu+rUQQAH2g/DnAz6sJfJQZSBHXRCPh/WX5085VC0KGw4tANbDnY8nkIejkFwybHDassh0rgAOHOvDXDnhydM/rx53kvBnsYyj8dwAMmiWyLE+wiMptX9YreGN890nS92ZsKvyQ4Hn1lP/aparFUo5KPOVhhUCAScfWsPMEz23fV70NeYx53B7btvwk0haH+T1k2iM8SJSzZELp3qoxBCuioaoNBb+u8GJ/UPPYbvZzW1E9igMdimZ78VfkG29Xx2fTfMKDioZaK2ZDwpFBbn04sO9dkmxUhidx2pw+7d+5TnWOPWYh2AwrdxcEobv7RJgNKqziWbHjptrwHlzEc2083oBdTxAGvr8nfDf+RKh8USWgxVHYdhT9dchE0cFwG13uJqqb7/ytfzHwrkdUZ/unayYjKg1puUrZQdyzwNdh7Z96ZtMogmJUBiWU5lhknXrmm9wIcrgHoPCrBKNpt5i0hcXAGc+6gH02XOiIzkF+adf43DOvD1P25l/Q/MWfsjj9YfcO2OHRsHNG2NYinEBV4BrtvRf68B1+zwxteAwTWaKSYev7lGk/3kA1Q1ZddWQ2pH4K79IcbrMheqHkO9/geJr/1R8Gt/mP/6P45hDebCGQ/UWP9Hoqz9Q21WfaqY+VgiYt0fLEWs+KPBZgMSa/5wN5jmXuvH86FdFCua5nZP2so3AZBY60dkEsu0nKZPOh5yupL5GV2PqV3BtYqwysZpFUCtOy+WRyq7hdWfhb1iPunW6C5aTYCrRbg1tjNcC+AqRU7jMZI2wNUhnMI3FXBlBpqpDNN+uSJ50vg0hqmAeIhegcjidQyoHXAVklC+6QCzAI8WXf7p4mbYbzbgsvfDqf1PEyB+tMTdcEIORjcgscQ25GbaT4sFAeGyzviz7acFEF/aXKkG+2kEXEqvbZp/phcQ+OlLR6iRTysgsWzR06s1CEOASEZP2zVVmvl0AC5RniY8u6zzABL4kjyKeF/1vnxjgPDu0iXICEccQcsAcTy58Ky+Ozl2M6qpgPBM6YUiuseX4M0GhKtr/oV535x/wvqY2YDEAve0hfS1zjkBwfW9C5n1t7z42wDCb9h+81QGvS2XwELAEUXfdMaIRGeXyGTAN93XFtlUWXmwEhDf9b5RrB/37qotrVgKiMO8qeV9kaZfHAj8xoBAFvun8qPHFgYYTPgsm/g5X2L6o6jfAhCHzyi1hk/9BBsdMg4otJ2wuT6qm9YT802TGYDC5Guij4p8zvFjohYOiONxhyk7oqOO+MvrGpIZfVAUKEwypuPUiMnajCXVT9KbQ2YCSvUdna8/Kv3OBMPJMhdQ7o9Rv1+XJxfx+6MbIxcxr1RWAArlCyQcDof6HCmdx8H5wNsSgbGLmFcqawCVMga8Xq/qKbu78PDRiRcxr1T/Dzj8Ddk0/sEZAAAAAElFTkSuQmCC"
             <h3>Tally ERP 9</h3>
             <p>Desktop-based accounting</p>
           </div>
 
           <div class="arrow-card">→</div>
 
-          <div class="platform-card">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
-              alt="Zoho Books"
-            />
+          <div class="platform-card scroll-reveal">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg" alt="Zoho Books" />
             <h3>Zoho Books</h3>
             <p>Cloud-based accounting</p>
           </div>
@@ -641,151 +1110,153 @@
         <h2 class="section-title">Why Make the Switch to Zoho Books?</h2>
 
         <div class="benefits-grid">
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">☁️</div>
             <h3>Work From Anywhere</h3>
-            <p>
-              Access your accounting data from any device, anywhere in the
-              world. No more being tied to a single computer or office location.
-            </p>
+            <p>Access your accounting data from any device, anywhere in the world. No more being tied to a single computer or office location.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">💰</div>
             <h3>Lower Total Cost</h3>
-            <p>
-              Eliminate expensive license renewals, hardware maintenance, and IT
-              infrastructure costs. Pay only for what you use with flexible
-              subscription plans.
-            </p>
+            <p>Eliminate expensive license renewals, hardware maintenance, and IT infrastructure costs. Pay only for what you use with flexible subscription plans.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">🔐</div>
             <h3>Enhanced Security</h3>
-            <p>
-              Bank-level encryption, automatic backups, and secure cloud storage
-              protect your financial data better than local servers.
-            </p>
+            <p>Bank-level encryption, automatic backups, and secure cloud storage protect your financial data better than local servers.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">📊</div>
             <h3>Real-Time Insights</h3>
-            <p>
-              Get instant financial reports and dashboards. Make informed
-              decisions with up-to-date data visualization and analytics.
-            </p>
+            <p>Get instant financial reports and dashboards. Make informed decisions with up-to-date data visualization and analytics.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">🔄</div>
             <h3>Automatic Updates</h3>
-            <p>
-              Always stay compliant with the latest GST regulations and tax
-              laws. No manual updates or patches required.
-            </p>
+            <p>Always stay compliant with the latest GST regulations and tax laws. No manual updates or patches required.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">🤝</div>
             <h3>Seamless Integration</h3>
-            <p>
-              Connect with 1000+ apps including payment gateways, banks, CRM
-              systems, e-commerce platforms, and inventory management tools.
-            </p>
+            <p>Connect with 1000+ apps including payment gateways, banks, CRM systems, e-commerce platforms, and inventory management tools.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">👥</div>
             <h3>Multi-User Collaboration</h3>
-            <p>
-              Enable your team, accountant, and stakeholders to work together in
-              real-time with role-based access controls.
-            </p>
+            <p>Enable your team, accountant, and stakeholders to work together in real-time with role-based access controls.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">📱</div>
             <h3>Mobile Accessibility</h3>
-            <p>
-              Manage invoices, track expenses, and view reports on the go with
-              full-featured iOS and Android mobile apps.
-            </p>
+            <p>Manage invoices, track expenses, and view reports on the go with full-featured iOS and Android mobile apps.</p>
           </div>
 
-          <div class="benefit-card">
+          <div class="benefit-card scroll-reveal">
             <div class="benefit-icon">⚡</div>
             <h3>Workflow Automation</h3>
-            <p>
-              Automate recurring invoices, payment reminders, bank
-              reconciliation, and financial reporting to save hours every week.
-            </p>
+            <p>Automate recurring invoices, payment reminders, bank reconciliation, and financial reporting to save hours every week.</p>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="migration-scope-section">
+  <div class="container">
+    <p class="section-subtitle">No Surprises</p>
+    <h2 class="section-title">What Data We Migrate from Tally to Zoho Books</h2>
+
+    <div class="scope-grid">
+      <div class="scope-card">✔ Chart of Accounts & Ledgers</div>
+      <div class="scope-card">✔ Customers & Vendors</div>
+      <div class="scope-card">✔ Sales & Purchase Invoices</div>
+      <div class="scope-card">✔ GST Details & Tax Structure</div>
+      <div class="scope-card">✔ Inventory, Batches & Godowns</div>
+      <div class="scope-card">✔ Opening Balances</div>
+      <div class="scope-card">✔ Bank & Cash Transactions</div>
+      <div class="scope-card">✔ Multi-Year Historical Data</div>
+      <div class="scope-card">✔ Credit Notes & Debit Notes</div>
+      <div class="scope-card">✔ Profit & Loss, Balance Sheet</div>
+    </div>
+  </div>
+</section>
+
+
+<section class="risk-section">
+  <div class="container">
+    <h2 class="section-title">Zero Risk. Zero Downtime. Guaranteed.</h2>
+
+    <div class="risk-grid">
+      <div class="risk-card">
+        <h3>🔒 Data Backup Before Migration</h3>
+        <p>We take complete Tally backups before starting. Your original data remains untouched.</p>
+      </div>
+
+      <div class="risk-card">
+        <h3>🔁 Parallel Run Support</h3>
+        <p>Run Tally and Zoho Books simultaneously until you’re fully confident.</p>
+      </div>
+
+      <div class="risk-card">
+        <h3>⏱ No Business Downtime</h3>
+        <p>Migration is done without interrupting daily operations.</p>
+      </div>
+
+      <div class="risk-card highlight">
+        <h3>♻ Rollback Assurance</h3>
+        <p>If needed, you can revert safely. No forced lock-in.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <section style="background: white" id="process">
       <div class="container">
         <p class="section-subtitle">Our Methodology</p>
-        <h2 class="section-title">5-Step Migration Process</h2>
+        <h2 class="section-title">6-Step Migration Process</h2>
 
         <div class="process-steps">
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">1</div>
             <h3>Initial Assessment</h3>
-            <p>
-              We analyze your current Tally setup, data structure,
-              customizations, and business requirements to create a tailored
-              migration plan.
-            </p>
+            <p>We analyze your current Tally setup, data structure, customizations, and business requirements to create a tailored migration plan.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">2</div>
             <h3>Data Preparation</h3>
-            <p>
-              Your Tally data is cleaned, validated, and organized. We identify
-              and resolve any inconsistencies or errors before migration.
-            </p>
+            <p>Your Tally data is cleaned, validated, and organized. We identify and resolve any inconsistencies or errors before migration.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">3</div>
             <h3>Custom Mapping</h3>
-            <p>
-              Chart of accounts, customer/vendor data, inventory items, and
-              transaction categories are precisely mapped to Zoho Books
-              structure.
-            </p>
+            <p>Chart of accounts, customer/vendor data, inventory items, and transaction categories are precisely mapped to Zoho Books structure.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">4</div>
             <h3>Secure Migration</h3>
-            <p>
-              All data including masters, transactions, historical records, and
-              reports are securely transferred with complete accuracy.
-            </p>
+            <p>All data including masters, transactions, historical records, and reports are securely transferred with complete accuracy.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">5</div>
             <h3>Training & Support</h3>
-            <p>
-              Comprehensive training for your team, documentation handover, and
-              30 days of post-migration support to ensure smooth adoption.
-            </p>
+            <p>Comprehensive training for your team, documentation handover, and 30 days of post-migration support to ensure smooth adoption.</p>
           </div>
 
-          <div class="step-card">
+          <div class="step-card scroll-reveal">
             <div class="step-number">6</div>
             <h3>Post-Migration Review</h3>
-            <p>
-              Complete verification and validation of migrated data with ongoing
-              support to ensure business continuity and optimal performance.
-            </p>
+            <p>Complete verification and validation of migrated data with ongoing support to ensure business continuity and optimal performance.</p>
           </div>
         </div>
       </div>
@@ -796,7 +1267,7 @@
         <p class="section-subtitle">Feature Comparison</p>
         <h2 class="section-title">Tally vs Zoho Books</h2>
 
-        <div class="comparison-table">
+        <div class="comparison-table scroll-reveal">
           <table>
             <thead>
               <tr>
@@ -857,6 +1328,10 @@
       </div>
     </section>
 
+  
+
+    
+   
     <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
@@ -1076,6 +1551,22 @@
         }
       }
     </style>
+<script>
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("revealed");
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
+
+  document.querySelectorAll(".scroll-reveal").forEach(el => {
+    observer.observe(el);
+  });
+</script>
 
 
     <script>
