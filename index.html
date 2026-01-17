@@ -790,49 +790,7 @@
         z-index: 1000;
       }
 
-      .arrow-btn {
-        background: linear-gradient(135deg, #dc2626, #ef4444);
-        color: white;
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 28px;
-        font-weight: bold;
-        transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
-        position: relative;
-      }
-
-      .arrow-btn:hover {
-        transform: scale(1.15);
-        box-shadow: 0 6px 25px rgba(220, 38, 38, 0.6);
-      }
-
-      .arrow-btn:active {
-        transform: scale(0.95);
-      }
-
-      .arrow-btn::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.3);
-        opacity: 0;
-        transform: scale(0);
-        transition: all 0.3s ease;
-      }
-
-      .arrow-btn:active::after {
-        opacity: 1;
-        transform: scale(1.2);
-      }
+    
 
       @keyframes scroll-left {
         0% {
@@ -4692,10 +4650,9 @@
       const decreaseBtn = document.getElementById("decreaseSpeed");
       const increaseBtn = document.getElementById("increaseSpeed");
       const speedLevel = document.getElementById("speedLevel");
-
-      let currentSpeed = 1; // 1x speed
-      const speedLevels = [0.5, 1, 1.5, 2, 3]; // Available speed multipliers
-      let currentSpeedIndex = 1; // Start at 1x (index 1)
+let currentSpeed = 1; // 1x speed
+const speedLevels = [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5]; // Available speed multipliers - MORE OPTIONS
+let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
 
       function updateAnimationSpeed() {
         const baseSpeed = 50; // Base animation duration in seconds
