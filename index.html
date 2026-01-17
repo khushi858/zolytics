@@ -2154,6 +2154,45 @@
         margin-top: 2px;
       }
 
+      /* Replace the .arrow-btn styles and add these new styles */
+.speed-btn {
+  background: linear-gradient(135deg, #dc2626, #ef4444);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+}
+
+.speed-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(220, 38, 38, 0.6);
+}
+
+.speed-btn:active {
+  transform: scale(0.95);
+}
+
+.speed-indicator {
+  background: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  min-width: 60px;
+  text-align: center;
+}
+
+.speed-indicator span {
+  font-weight: 600;
+  color: #dc2626;
+  font-size: 1.1rem;
+}
       /* FOOTER WITH ZOHO LOGO */
       footer {
         background: #fdfbfb;
@@ -3363,10 +3402,51 @@
                 <a href="peopleplus.html">Learn More →</a>
               </div>
             </div>
-            <!-- Add this HTML right after the scroll-controls div -->
           </div>
         </div>
       </div>
+       <!-- Replace the existing scroll-controls div with this -->
+            <div class="scroll-controls">
+              <button
+                class="speed-btn"
+                id="decreaseSpeed"
+                aria-label="Decrease Speed"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="8" y1="12" x2="16" y2="12" />
+                </svg>
+              </button>
+              <div class="speed-indicator">
+                <span id="speedLevel">1x</span>
+              </div>
+              <button
+                class="speed-btn"
+                id="increaseSpeed"
+                aria-label="Increase Speed"
+              >
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <line x1="12" y1="8" x2="12" y2="16" />
+                  <line x1="8" y1="12" x2="16" y2="12" />
+                </svg>
+              </button>
+            </div>
+          </div>
     </section>
 
     <!-- Add this CSS in your <style> section -->
@@ -4602,13 +4682,56 @@
         });
       });
 
-      // Update your existing JavaScript section - Replace the scroll button logic
+      // Replace the scroll button logic with this speed control logic
       const wrapper1 = document.querySelector(
         ".left-to-right .scrolling-wrapper"
       );
       const wrapper2 = document.querySelector(
         ".right-to-left .scrolling-wrapper"
       );
+      const decreaseBtn = document.getElementById("decreaseSpeed");
+      const increaseBtn = document.getElementById("increaseSpeed");
+      const speedLevel = document.getElementById("speedLevel");
+
+      let currentSpeed = 1; // 1x speed
+      const speedLevels = [0.5, 1, 1.5, 2, 3]; // Available speed multipliers
+      let currentSpeedIndex = 1; // Start at 1x (index 1)
+
+      function updateAnimationSpeed() {
+        const baseSpeed = 50; // Base animation duration in seconds
+        const newDuration = baseSpeed / currentSpeed;
+
+        wrapper1.style.animation = `scroll-left ${newDuration}s linear infinite`;
+        wrapper2.style.animation = `scroll-right ${newDuration}s linear infinite`;
+
+        speedLevel.textContent = currentSpeed + "x";
+      }
+
+      decreaseBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (currentSpeedIndex > 0) {
+          currentSpeedIndex--;
+          currentSpeed = speedLevels[currentSpeedIndex];
+          updateAnimationSpeed();
+        }
+      });
+
+      increaseBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (currentSpeedIndex < speedLevels.length - 1) {
+          currentSpeedIndex++;
+          currentSpeed = speedLevels[currentSpeedIndex];
+          updateAnimationSpeed();
+        }
+      });
+
+      // Initialize with default speed
+      updateAnimationSpeed();
+      //////
       const leftBtn = document.getElementById("leftBtn");
       const rightBtn = document.getElementById("rightBtn");
       const scrollThumb = document.getElementById("scrollThumb");
