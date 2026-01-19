@@ -488,7 +488,7 @@
       .qbo-card {
         background: #ffffff;
         border-radius: 24px;
-        padding: 40px 35px;
+        padding: 40px ;
         text-align: center;
         position: relative;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
@@ -561,14 +561,26 @@
         box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
       }
 
-      .qbo-connector {
+    .qbo-connector {
         position: relative;
         width: 180px;
         height: 6px;
         background: linear-gradient(90deg, #2563eb, #22c55e);
         border-radius: 3px;
         overflow: visible;
-}
+      }
+
+      .qbo-connector::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 30%;
+        background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+        border-radius: 3px;
+        animation: flowLine 2s linear infinite;
+      }
 
 
 .qbo-connector span {
@@ -896,10 +908,6 @@
   z-index: 1;
   text-align: center; /* ✅ centers inline & inline-block */
 }
-
-
-       
-
         .qz-head {
         max-width: 1280px;
         height: 350px;
@@ -924,18 +932,13 @@
   display: inline-flex;        /* required for pill sizing */
   align-items: center;
   justify-content: center;
-
   padding: 8px 14px;
-  border: 1px solid rgba(15, 23, 42, 0.1);
-  background: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(8px);
   border-radius: 999px;
-
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: rgba(14, 67, 38, 0.95);
-
   margin: 0 auto 14px;          /* 🔥 centers it */
   animation: qzFloatIn 0.8s ease-out both;
 }
