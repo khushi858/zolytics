@@ -1407,13 +1407,15 @@
   box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
   text-align: left; /* 🔑 */
 }
-      .qz-panelCard h4 {
-        margin: 0 0 10px;
-        color: var(--ink);
-        font-weight: 2000;        /* 🔥 very bold */
-        text-align: center;
-        font-size: 1.05rem;
-      }
+     .panel-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
       .qz-panelCard ul {
   margin: 0;
   padding-left: 18px;
@@ -2266,7 +2268,7 @@
   <div class="qz-panelGrid">
 
     <div class="qz-panelCard">
-      <h4>Core accounting</h4>
+      <div class="panel-title">Core accounting</div>
       <ul>
         <li>Chart of accounts review & restructuring</li>
         <li>Account-to-account mapping (QBO → Zoho)</li>
@@ -2278,7 +2280,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Transactions</h4>
+      <div class="panel-title">Transactions</div>
       <ul>
         <li>Sales invoices & customer payments</li>
         <li>Credit notes & refunds</li>
@@ -2290,7 +2292,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Taxes & Compliance</h4>
+      <div class="panel-title">Taxes & Compliance</div>
       <ul>
         <li>GST / VAT / Sales Tax configuration</li>
         <li>Tax rates, exemptions & mappings</li>
@@ -2302,7 +2304,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Optional / Based on scope</h4>
+      <div class="panel-title">Optional / Based on scope</div>
       <ul>
         <li>Multi-currency enablement & FX rules</li>
         <li>Opening exchange rate configuration</li>
@@ -2321,7 +2323,7 @@
   <div class="qz-panelGrid">
 
     <div class="qz-panelCard">
-      <h4>Consulting-grade outputs</h4>
+      <div class="panel-title">Consulting-grade outputs</div>
       <ul>
         <li>Migration blueprint (scope, risks, timeline)</li>
         <li>COA restructuring + mapping sheet</li>
@@ -2332,7 +2334,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Configured Zoho Books</h4>
+      <div class="panel-title">Configured Zoho Books</div>
       <ul>
         <li>Org preferences, base currency, regional settings</li>
         <li>Roles, approvals, audit-friendly controls</li>
@@ -2344,7 +2346,7 @@
 
     <!-- 🆕 Card 3 -->
     <div class="qz-panelCard">
-      <h4>Data validation & controls</h4>
+      <div class="panel-title">Data validation & controls</div>
       <ul>
         <li>Opening balance cross-verification</li>
         <li>AR/AP ageing reconciliation</li>
@@ -2355,7 +2357,7 @@
 
     <!-- 🆕 Card 4 -->
     <div class="qz-panelCard">
-      <h4>Client handover package</h4>
+      <div class="panel-title">Client handover package</div>
       <ul>
         <li>Configured system walkthrough</li>
         <li>Key accounting assumptions document</li>
@@ -2420,7 +2422,7 @@
   <div class="qz-panelGrid">
 
     <div class="qz-panelCard">
-      <h4>Hypercare support</h4>
+      <div class="panel-title">Hypercare support</div>
       <ul>
         <li>First-close guidance (Month 1)</li>
         <li>Issue triage & resolution</li>
@@ -2431,7 +2433,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Optimization (Optional)</h4>
+      <div class="panel-title">Optimization (Optional)</div>
       <ul>
         <li>Automation across Zoho ecosystem</li>
         <li>Custom workflows & rules</li>
@@ -2442,7 +2444,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Security & Compliance</h4>
+      <div class="panel-title">Security & Compliance</div>
       <ul>
         <li>SOC 2 Type II aligned setup</li>
         <li>ISO-grade security controls</li>
@@ -2453,7 +2455,7 @@
     </div>
 
     <div class="qz-panelCard">
-      <h4>Region correctness</h4>
+      <div class="panel-title">Region correctness</div>
       <ul>
         <li>Country-specific Zoho Books edition</li>
         <li>Correct tax behavior from Day 0</li>
