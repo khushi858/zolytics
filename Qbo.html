@@ -1349,9 +1349,10 @@
         background: rgba(255, 255, 255, 0.55);
         transform: translateY(-1px);
       }
-     .qz-panels {
+    .qz-panels {
   padding: 40px;
   text-align: left; /* 🔑 important */
+   margin-bottom: -50px;
 }
       .qz-panel {
         display: none;
@@ -1386,17 +1387,18 @@
       #qzTab4:checked ~ .qz-panels .qz-panel:nth-child(4) {
         display: block;
       }
-
-     .qz-panelGrid {
-     margin-top: -100px;
-        display: grid;
-          gap: 20px;
+.qz-panelGrid {
+       margin-top: -100px;
+       display: grid;
+       grid-template-columns: repeat(2, 1fr); /* ✅ 2 cards per row */
+       gap: 20px;
        justify-items: start; /* 🔑 aligns cards to left */
+       justify-content: stretch;
 }
 
 
       .qz-panelCard {
-       width: 900px;
+        width: 500px;
   background: rgba(255, 255, 255, 0.78);
   border: 1px solid rgba(15, 23, 42, 0.08);
   border-radius: 18px;
@@ -1404,7 +1406,6 @@
   box-shadow: 0 10px 25px rgba(2, 6, 23, 0.06);
   text-align: left; /* 🔑 */
 }
-
       .qz-panelCard h4 {
         margin: 0 0 10px;
         color: var(--ink);
@@ -2213,7 +2214,7 @@
         <p class="qz-kicker">
             Consulting-led Migration • Global • Audit-safe
           </p>
-        <header class="qz-head">
+        <header class="qz-head" style="width: 1400px;">
           <h2 class="qz-title" style="margin-top: 20px; margin-bottom: 20px;">
             QuickBooks Online → Zoho Books Migration for Global Businesses
           </h2>
@@ -2260,60 +2261,109 @@
 
           <div class="qz-panels">
             <section class="qz-panel">
-              <div class="qz-panelGrid">
-                <div class="qz-panelCard">
-                  <h4>Core accounting</h4>
-                  <ul>
-                    <li>Chart of accounts + account mapping</li>
-                    <li>Customers, vendors, items, tax rates</li>
-                    <li>Opening balances (bank, AR/AP, tax accounts)</li>
-                    <li>Sales: invoices, credit notes, payments</li>
-                    <li>Purchases: bills, vendor credits, expenses</li>
-                  </ul>
-                </div>
-                <div class="qz-panelCard">
-                  <h4>Optional / based on scope</h4>
-                  <ul>
-                    <li>Multi-currency setup + FX handling plan</li>
-                    <li>
-                      Inventory (if needed): items + valuation method alignment
-                    </li>
-                    <li>Templates, numbering, approvals</li>
-                    <li>Integrations planning (Zoho ecosystem / external)</li>
-                  </ul>
-                  <p class="qz-note">
-                    Note: Some data imports have known limitations depending on
-                    how data was entered in QBO. We proactively plan around them
-                    during blueprint + mapping.
-                  </p>
-                </div>
-              </div>
-            </section>
+  <div class="qz-panelGrid">
 
-            <section class="qz-panel">
-              <div class="qz-panelGrid">
-                <div class="qz-panelCard">
-                  <h4>Consulting-grade outputs</h4>
-                  <ul>
-                    <li>Migration blueprint (scope, risks, timeline)</li>
-                    <li>COA restructuring + mapping sheet</li>
-                    <li>Tax mapping sheet (VAT/GST/Sales Tax)</li>
-                    <li>Cutover checklist + rollback plan</li>
-                    <li>Reconciliation report (pre/post)</li>
-                  </ul>
-                </div>
-                <div class="qz-panelCard">
-                  <h4>Configured Zoho Books</h4>
-                  <ul>
-                    <li>Org preferences, base currency, regional settings</li>
-                    <li>Roles, approvals, audit-friendly controls</li>
-                    <li>Invoice templates + branding</li>
-                    <li>Bank feeds rules guidance</li>
-                    <li>Standard reports pack for management</li>
-                  </ul>
-                </div>
-              </div>
-            </section>
+    <div class="qz-panelCard">
+      <h4>Core accounting</h4>
+      <ul>
+        <li>Chart of accounts review & restructuring</li>
+        <li>Account-to-account mapping (QBO → Zoho)</li>
+        <li>Customers, vendors & item masters</li>
+        <li>Opening balances (Bank, AR, AP)</li>
+        <li>Tax control & suspense account setup</li>
+        <li>Inactive / duplicate master clean-up</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Transactions</h4>
+      <ul>
+        <li>Sales invoices & customer payments</li>
+        <li>Credit notes & refunds</li>
+        <li>Purchase bills & vendor credits</li>
+        <li>Expense transactions & reimbursements</li>
+        <li>Manual journals (if required)</li>
+        <li>Transaction date & numbering alignment</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Taxes & Compliance</h4>
+      <ul>
+        <li>GST / VAT / Sales Tax configuration</li>
+        <li>Tax rates, exemptions & mappings</li>
+        <li>Historical tax balance migration</li>
+        <li>Tax rounding & reporting behavior</li>
+        <li>Compliance validation & mismatch checks</li>
+        <li>Region-specific tax rules handling</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Optional / Based on scope</h4>
+      <ul>
+        <li>Multi-currency enablement & FX rules</li>
+        <li>Opening exchange rate configuration</li>
+        <li>Inventory tracking & valuation method</li>
+        <li>Templates, numbering & approval workflows</li>
+        <li>Zoho ecosystem / external integrations</li>
+        <li>Custom fields & reporting tags</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="qz-panel">
+  <div class="qz-panelGrid">
+
+    <div class="qz-panelCard">
+      <h4>Consulting-grade outputs</h4>
+      <ul>
+        <li>Migration blueprint (scope, risks, timeline)</li>
+        <li>COA restructuring + mapping sheet</li>
+        <li>Tax mapping sheet (VAT/GST/Sales Tax)</li>
+        <li>Cutover checklist + rollback plan</li>
+        <li>Reconciliation report (pre/post)</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Configured Zoho Books</h4>
+      <ul>
+        <li>Org preferences, base currency, regional settings</li>
+        <li>Roles, approvals, audit-friendly controls</li>
+        <li>Invoice templates + branding</li>
+        <li>Bank feeds rules guidance</li>
+        <li>Standard reports pack for management</li>
+      </ul>
+    </div>
+
+    <!-- 🆕 Card 3 -->
+    <div class="qz-panelCard">
+      <h4>Data validation & controls</h4>
+      <ul>
+        <li>Opening balance cross-verification</li>
+        <li>AR/AP ageing reconciliation</li>
+        <li>Tax & FX variance checks</li>
+        <li>Exception handling & fixes</li>
+      </ul>
+    </div>
+
+    <!-- 🆕 Card 4 -->
+    <div class="qz-panelCard">
+      <h4>Client handover package</h4>
+      <ul>
+        <li>Configured system walkthrough</li>
+        <li>Key accounting assumptions document</li>
+        <li>Month-1 close checklist</li>
+        <li>Post go-live support pointers</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
 
             <section class="qz-panel">
               <div class="qz-timeline">
@@ -2364,52 +2414,56 @@
               </p>
             </section>
 
-            <section class="qz-panel">
-              <div class="qz-panelGrid">
-                <div class="qz-panelCard">
-                  <h4>Hypercare support</h4>
-                  <ul>
-                    <li>First-close guidance (Month 1)</li>
-                    <li>Issue triage + fixes</li>
-                    <li>Report fine-tuning</li>
-                    <li>Workflow adjustments</li>
-                  </ul>
-                </div>
-                <div class="qz-panelCard">
-                  <h4>Optimization (optional)</h4>
-                  <ul>
-                    <li>Automations across Zoho ecosystem</li>
-                    <li>Analytics dashboards</li>
-                    <li>Department/project profitability views</li>
-                    <li>Policy + approvals hardening</li>
-                  </ul>
-                </div>
-              </div>
+          <section class="qz-panel">
+  <div class="qz-panelGrid">
 
-              <div class="qz-trust">
-                <div class="qz-trustItem">
-                  <strong>Security & Compliance</strong>
-                  <span
-                    >SOC 2 Type II + ISO certifications supported by Zoho's
-                    trust programs.</span
-                  >
-                </div>
-                <div class="qz-trustItem">
-                  <strong>Region correctness</strong>
-                  <span
-                    >Edition & tax behavior depends on country selection — we
-                    set it right from Day 0.</span
-                  >
-                </div>
-                <div class="qz-trustItem">
-                  <strong>QBO variability</strong>
-                  <span
-                    >QBO pricing/features can vary by country — we optimize
-                    total cost in the target setup.</span
-                  >
-                </div>
-              </div>
-            </section>
+    <div class="qz-panelCard">
+      <h4>Hypercare support</h4>
+      <ul>
+        <li>First-close guidance (Month 1)</li>
+        <li>Issue triage & resolution</li>
+        <li>Report corrections & fine-tuning</li>
+        <li>Workflow & approval adjustments</li>
+        <li>Priority support window</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Optimization (Optional)</h4>
+      <ul>
+        <li>Automation across Zoho ecosystem</li>
+        <li>Custom workflows & rules</li>
+        <li>Analytics dashboards</li>
+        <li>Department / project profitability</li>
+        <li>Process efficiency improvements</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Security & Compliance</h4>
+      <ul>
+        <li>SOC 2 Type II aligned setup</li>
+        <li>ISO-grade security controls</li>
+        <li>Audit trail preservation</li>
+        <li>Role-based access configuration</li>
+        <li>Compliance-ready reporting</li>
+      </ul>
+    </div>
+
+    <div class="qz-panelCard">
+      <h4>Region correctness</h4>
+      <ul>
+        <li>Country-specific Zoho Books edition</li>
+        <li>Correct tax behavior from Day 0</li>
+        <li>Currency & statutory rules alignment</li>
+        <li>QBO feature variability handling</li>
+        <li>Total cost optimization</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
           </div>
         </div>
       </div>
