@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Transform your e-commerce business with Zoho's comprehensive solutions for Amazon, Shopify, and Flipkart sellers. Streamline operations, boost sales, and scale efficiently.">
+    <meta name="keywords" content="e-commerce solutions, Zoho for Amazon sellers, Shopify integration, Flipkart management, online retail software, inventory management, multi-channel selling">
+    <meta name="author" content="Zoho Corporation">
+    <meta property="og:title" content="E-commerce Solutions for Amazon, Shopify & Flipkart Sellers | Zoho">
+    <meta property="og:description" content="Overcome e-commerce challenges with Zoho's integrated platform. Manage inventory, orders, customers, and marketing across all channels from one dashboard.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>E-commerce Solutions for Amazon, Shopify & Flipkart Sellers | Zoho</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+         /* ========== ADVANCED HEADER ========== */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-section img {
+            height: 90px;
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+
+        .logo-section img:hover {
+            transform: scale(1.08) rotate(2deg);
+        }
+        .ecom-solution-page * {
+            box-sizing: border-box;
+        }
+        
+        .ecom-solution-page {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .ecom-hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .ecom-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><path d="M0 0L100 100M100 0L0 100" stroke="rgba(255,255,255,0.1)" stroke-width="2"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .ecom-hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .ecom-hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .ecom-hero-section .lead {
+            font-size: 1.3rem;
+            opacity: 0.95;
+        }
+        
+        .ecom-platform-badges {
+            margin-top: 30px;
+        }
+        
+        .ecom-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 25px;
+            margin: 5px;
+            font-weight: 500;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ecom-section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #2d3748;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .ecom-section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 500px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+            margin-left: 400px;
+        }
+        
+        .ecom-section-subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            margin-bottom: 50px;
+        }
+        
+        .ecom-problems-section {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+        
+        .ecom-problem-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            border-left: 4px solid #fc8181;
+        }
+        
+        .ecom-problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        
+        .ecom-problem-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .ecom-problem-card p {
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+        
+        .ecom-solutions-section {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .ecom-solution-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 12px;
+            padding: 35px;
+            height: 100%;
+            color: white;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .ecom-solution-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+        
+        .ecom-solution-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ecom-solution-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .ecom-solution-card p {
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+        
+        .ecom-feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .ecom-feature-list li {
+            padding: 8px 0;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .ecom-feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #68d391;
+        }
+        
+        .ecom-outcomes-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+        
+        .ecom-outcome-card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            border-top: 4px solid #48bb78;
+        }
+        
+        .ecom-outcome-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        }
+        
+        .ecom-outcome-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #48bb78, #38a169);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .ecom-outcome-card h4 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #2d3748;
+        }
+        
+        .ecom-outcome-card p {
+            color: #4a5568;
+            margin-bottom: 0;
+        }
+        
+        .ecom-cta-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+            color: white;
+        }
+        
+        .ecom-cta-box {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .ecom-cta-box h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .ecom-cta-box p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .ecom-btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .ecom-btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+        
+        .ecom-btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+            padding: 13px 38px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 15px;
+        }
+        
+        .ecom-btn-secondary:hover {
+            background: white;
+            color: #2d3748;
+        }
+        
+        @media (max-width: 768px) {
+            .ecom-hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .ecom-hero-section .lead {
+                font-size: 1.1rem;
+            }
+            
+            .ecom-section-title {
+                font-size: 1.8rem;
+            }
+            
+            .ecom-btn-secondary {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+        }
+        
+        .ecom-stats-bar {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .ecom-stat {
+            text-align: center;
+        }
+        
+        .ecom-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+        
+        .ecom-stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+      <nav>
+        <div class="logo-section">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+          />
+        </div>
+      </nav>
+    </header> 
+
+    <div class="ecom-solution-page">
+        <!-- Hero Section -->
+        <section class="ecom-hero-section">
+            <div class="container">
+                <div class="row align-items-center ecom-hero-content">
+                    <div class="col-lg-12 text-center">
+                        <h1>E-commerce Solutions That Scale Your Business</h1>
+                        <p class="lead">Streamline your Amazon, Shopify, and Flipkart operations with Zoho's integrated platform</p>
+                        <div class="ecom-platform-badges">
+                            <span class="ecom-badge"><i class="fab fa-amazon"></i> Amazon</span>
+                            <span class="ecom-badge"><i class="fab fa-shopify"></i> Shopify</span>
+                            <span class="ecom-badge">Flipkart</span>
+                            <span class="ecom-badge">Multi-Channel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Problems Section -->
+        <section class="ecom-problems-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="ecom-section-title">The E-commerce Challenges You Face Daily</h2>
+                    <p class="ecom-section-subtitle">Running an online store across multiple platforms creates complexity that slows you down</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                                
+                            </div>
+                            <h3>Inventory Chaos</h3>
+                            <p>Managing stock across Amazon, Shopify, and Flipkart leads to overselling, stockouts, and manual reconciliation nightmares. You're constantly firefighting inventory discrepancies.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                                
+                            </div>
+                            <h3>Scattered Order Management</h3>
+                            <p>Orders come from different platforms, each with their own dashboard. You're jumping between multiple systems, missing orders, and frustrating customers with delayed shipments.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                               
+                            </div>
+                            <h3>Fragmented Customer Data</h3>
+                            <p>Customer information is siloed across platforms. You can't track lifetime value, personalize marketing, or provide consistent support across channels.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                                
+                            </div>
+                            <h3>No Clear Performance Metrics</h3>
+                            <p>Without unified analytics, you're making decisions in the dark. Which channel performs best? What products drive profit? You need days to compile basic reports.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                                
+                            </div>
+                            <h3>Manual Accounting Headaches</h3>
+                            <p>Reconciling payments, managing invoices, and tracking expenses across platforms consumes hours. Tax season becomes a nightmare with scattered financial data.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-problem-card">
+                            <div class="ecom-problem-icon">
+                                
+                            </div>
+                            <h3>Growth Bottlenecks</h3>
+                            <p>Your current setup doesn't scale. Adding new products, channels, or team members creates more chaos. Growth means more manual work instead of efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Solutions Section -->
+        <section class="ecom-solutions-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="ecom-section-title">How Zoho Transforms Your E-commerce Operations</h2>
+                    <p class="ecom-section-subtitle">One integrated platform that connects, automates, and scales your entire business</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-sync-alt"></i>
+                            </div>
+                            <h3>Unified Inventory Management</h3>
+                            <p>Sync inventory in real-time across all channels from one dashboard. Prevent overselling with automated stock updates and get low-stock alerts.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Multi-channel inventory sync</li>
+                                <li>Automated stock level updates</li>
+                                <li>Smart reorder point alerts</li>
+                                <li>Barcode & SKU management</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-clipboard-check"></i>
+                            </div>
+                            <h3>Centralized Order Processing</h3>
+                            <p>Manage all orders from Amazon, Shopify, and Flipkart in a single interface. Automate fulfillment workflows and shipping label generation.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Unified order dashboard</li>
+                                <li>Automated order routing</li>
+                                <li>Bulk shipping label printing</li>
+                                <li>Real-time tracking updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h3>360° Customer View</h3>
+                            <p>Consolidate customer data from all channels. Build detailed profiles, track purchase history, and deliver personalized experiences.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Unified customer database</li>
+                                <li>Purchase history tracking</li>
+                                <li>Automated email campaigns</li>
+                                <li>Customer segmentation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Powerful Analytics & Reporting</h3>
+                            <p>Get real-time insights across all channels. Track sales, inventory turnover, profitability, and customer behavior with customizable dashboards.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Multi-channel sales reports</li>
+                                <li>Profit margin analysis</li>
+                                <li>Product performance metrics</li>
+                                <li>Custom dashboard builder</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>Automated Accounting</h3>
+                            <p>Sync all transactions automatically. Manage invoices, reconcile payments, track expenses, and stay tax-compliant with zero manual entry.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Automated invoice generation</li>
+                                <li>Payment reconciliation</li>
+                                <li>GST/tax compliance</li>
+                                <li>Financial reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-solution-card">
+                            <div class="ecom-solution-icon">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <h3>Scalable Automation</h3>
+                            <p>Build workflows that grow with you. Automate repetitive tasks, integrate new channels effortlessly, and add team members without complexity.</p>
+                            <ul class="ecom-feature-list">
+                                <li>Custom workflow builder</li>
+                                <li>API integrations</li>
+                                <li>Role-based access control</li>
+                                <li>Unlimited scalability</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Outcomes Section -->
+        <section class="ecom-outcomes-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="ecom-section-title">The Results You'll Achieve</h2>
+                    <p class="ecom-section-subtitle">Real outcomes that transform your bottom line and free your time</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">60%</div>
+                            <h4>Time Saved</h4>
+                            <p>Reduce manual work by automating inventory sync, order processing, and accounting tasks</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">40%</div>
+                            <h4>Revenue Growth</h4>
+                            <p>Increase sales with better inventory availability, faster fulfillment, and data-driven decisions</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">95%</div>
+                            <h4>Order Accuracy</h4>
+                            <p>Eliminate errors with automated order routing and real-time inventory synchronization</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">3x</div>
+                            <h4>Faster Scaling</h4>
+                            <p>Expand to new marketplaces and products without increasing operational complexity</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">100%</div>
+                            <h4>Inventory Visibility</h4>
+                            <p>Know exactly what you have, where it is, and when to reorder across all channels in real-time</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">85%</div>
+                            <h4>Customer Satisfaction</h4>
+                            <p>Deliver better experiences with faster shipping, accurate orders, and personalized communication</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="ecom-outcome-card">
+                            <div class="ecom-outcome-number">50%</div>
+                            <h4>Cost Reduction</h4>
+                            <p>Lower operational costs by eliminating manual processes, reducing errors, and optimizing inventory</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="ecom-cta-section">
+            <div class="container">
+                <div class="ecom-cta-box">
+                    <h2>Ready to Scale Your E-commerce Business?</h2>
+                    <p>Join thousands of sellers who've transformed their operations with Zoho's integrated platform</p>
+                    <a href="#" class="ecom-btn-primary">Start Free Trial</a>
+                    <a href="#" class="ecom-btn-secondary">Schedule Demo</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.ecom-problem-card, .ecom-solution-card, .ecom-outcome-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Track CTA clicks
+        document.querySelectorAll('.ecom-btn-primary, .ecom-btn-secondary').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                // Add your analytics tracking here
+                console.log('CTA clicked:', this.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
