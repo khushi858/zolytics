@@ -1416,15 +1416,25 @@
   box-shadow: 0 15px 35px rgba(239, 45, 45, 0.45);
   background: #e02424;
 }
-<a href="E-Commerce.html" class="industry-card-link">
-  <div class="industry-card">
-    <div class="icon"></div>
-    <h3>E-commerce</h3>
-    <p>
-      Scalable e-commerce automation, from order to delivery and analytics.
-    </p>
-  </div>
-</a>
+.industry-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.industry-card {
+  cursor: pointer;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+
+.industry-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
 
 
 
@@ -4781,4 +4791,5 @@ let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
     ></script>
    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
 <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siqb722856ae3f305dfe620d16e5e3588c546cb4c94622e81fff56cbb615c1e9f2e" defer></script>
+
 
