@@ -1,0 +1,1418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoho Solutions for Accounting & CA Firms</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(
+          to bottom,
+          #f8f9fa 0%,
+          #f8f9fa 50%,
+          #1a1a2e 50%,
+          #1a1a2e 100%
+        );
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* HEADER */
+      header {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s ease;
+      }
+
+      header.scrolled {
+        box-shadow: 0 4px 40px rgba(106, 17, 203, 0.15);
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-section img {
+        height: 90px;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.08) rotate(2deg);
+        filter: drop-shadow(0 8px 20px rgba(139, 92, 246, 0.3));
+      }
+
+      .hero-section {
+        padding: 100px 0 80px;
+        text-align: center;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+        opacity: 0.4;
+      }
+
+      .hero-section h1 {
+        font-size: 3.8rem;
+        font-weight: 800;
+        color: #ffffff;
+        margin-bottom: 25px;
+        animation: fadeInDown 1s ease;
+        position: relative;
+        z-index: 1;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-section p {
+        font-size: 1.4rem;
+        color: rgba(255, 255, 255, 0.95);
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease;
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .section-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 0 30px;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-header h2 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+        padding-bottom: 20px;
+      }
+
+      .section-header h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 3px;
+      }
+
+      .section-header p {
+        font-size: 1.15rem;
+        color: #666;
+        margin-top: 20px;
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.7;
+      }
+
+      /* Problems Section - Grid Layout */
+      .problems-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .problems-section h2 {
+        color: #1a1a2e;
+      }
+
+      .problems-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .problem-card {
+        background: white;
+        padding: 40px 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        border-top: 4px solid transparent;
+      }
+
+      .problem-card:nth-child(1) {
+        border-top-color: #f093fb;
+      }
+
+      .problem-card:nth-child(2) {
+        border-top-color: #667eea;
+      }
+
+      .problem-card:nth-child(3) {
+        border-top-color: #f5576c;
+      }
+
+      .problem-card:nth-child(4) {
+        border-top-color: #4facfe;
+      }
+
+      .problem-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+      }
+
+      .problem-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.05) 0%,
+          rgba(118, 75, 162, 0.05) 100%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .problem-card:hover::before {
+        opacity: 1;
+      }
+
+      .problem-icon-box {
+        display: none;
+      }
+
+      .problem-card h3 {
+        color: #1a1a2e;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .problem-card p {
+        color: #555;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Solutions Section - 3x2 Grid */
+      .solutions-section {
+        padding: 80px 0;
+        background: #ffffff;
+      }
+
+      .solutions-section h2 {
+        color: #1a1a2e;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      .solution-card {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 20px;
+        padding: 45px 35px;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+      }
+
+      .solution-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 70%
+        );
+        transition: all 0.6s ease;
+      }
+
+      .solution-card:hover::before {
+        top: -75%;
+        right: -75%;
+      }
+
+      .solution-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 50px rgba(102, 126, 234, 0.35);
+      }
+
+      .solution-card h3 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+        font-weight: 700;
+        color: white;
+        position: relative;
+        z-index: 1;
+      }
+
+      .solution-card p {
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.95);
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Zoho Apps Section - 4x2 Grid */
+      .apps-ecosystem-section {
+        padding: 80px 0;
+        background: #f8f9fa;
+      }
+
+      .apps-ecosystem-section h2 {
+        color: #1a1a2e;
+      }
+
+      .apps-ecosystem-section .section-header p {
+        color: #666;
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .app-card {
+        background: white;
+        border-radius: 18px;
+        padding: 35px 28px;
+        transition: all 0.4s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        border-left: 5px solid #667eea;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app-card::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 0;
+        background: linear-gradient(
+          to top,
+          rgba(102, 126, 234, 0.05),
+          transparent
+        );
+        transition: height 0.4s ease;
+      }
+
+      .app-card:hover::after {
+        height: 100%;
+      }
+
+      .app-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+        border-left-color: #f5576c;
+      }
+
+      .app-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 22px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-logo {
+        display: none;
+      }
+
+      .app-header h4 {
+        font-size: 1.35rem;
+        color: #1a1a2e;
+        margin: 0;
+        font-weight: 700;
+      }
+
+      .app-description {
+        color: #666;
+        margin-bottom: 18px;
+        line-height: 1.7;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-features {
+        list-style: none;
+        padding: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .app-features li {
+        color: #555;
+        padding: 10px 0;
+        padding-left: 28px;
+        position: relative;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+
+      .app-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: #667eea;
+        font-weight: bold;
+        font-size: 1.1rem;
+      }
+
+      /* Research Section - Vertical Steps */
+      .research-section {
+        padding: 80px 0;
+        background: #1a1a2e;
+      }
+
+      .research-section h2 {
+        color: #ffffff;
+      }
+
+      .research-section .section-header p {
+        color: rgba(255, 255, 255, 0.85);
+      }
+
+      .research-flow {
+        display: flex;
+        flex-direction: column;
+        gap: 35px;
+        margin-top: 50px;
+      }
+
+      .research-step {
+        background: white;
+        border-radius: 20px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      .research-step::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 6px;
+        background: linear-gradient(to bottom, #667eea, #764ba2);
+      }
+
+      .research-step:hover {
+        transform: translateX(15px);
+        box-shadow: 0 15px 45px rgba(102, 126, 234, 0.25);
+      }
+
+      .step-number {
+        position: absolute;
+        top: 25px;
+        right: 35px;
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: 800;
+        box-shadow: 0 5px 20px rgba(245, 87, 108, 0.4);
+      }
+
+      .research-step h4 {
+        color: #1a1a2e;
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+        font-weight: 700;
+        padding-right: 85px;
+      }
+
+      .research-step p {
+        color: #666;
+        line-height: 1.8;
+        margin-bottom: 20px;
+      }
+
+      .tools-used {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .tool-tag {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 3px 10px rgba(102, 126, 234, 0.3);
+      }
+
+      /* Integration Section - 3x2 Grid */
+      .integration-section {
+        padding: 80px 0;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      }
+
+      .integration-section h2 {
+        color: white;
+      }
+
+      .integration-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .integration-item {
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(255, 255, 255, 0.15);
+        border-radius: 18px;
+        padding: 40px 30px;
+        text-align: center;
+        transition: all 0.4s ease;
+      }
+
+      .integration-item:hover {
+        background: rgba(255, 255, 255, 0.15);
+        border-color: rgba(240, 147, 251, 0.5);
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(240, 147, 251, 0.2);
+      }
+
+      .integration-item h5 {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .integration-item p {
+        color: rgba(255, 255, 255, 0.85);
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      /* Outcomes Section - 4 Column Grid */
+      .outcomes-section {
+        padding: 80px 0 100px;
+        background: #1a1a2e;
+      }
+
+      .outcomes-section h2 {
+        color: white;
+      }
+
+      .outcome-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 50px;
+      }
+
+      .outcome-box {
+        background: white;
+        border-radius: 18px;
+        padding: 45px 30px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .outcome-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, #f093fb 0%, #f5576c 100%);
+      }
+
+      .outcome-box:hover {
+        transform: translateY(-15px) scale(1.03);
+        box-shadow: 0 20px 50px rgba(240, 147, 251, 0.3);
+      }
+
+      .outcome-number {
+        font-size: 3.5rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 15px;
+      }
+
+      .outcome-box h4 {
+        font-size: 1.3rem;
+        color: #1a1a2e;
+        margin-bottom: 12px;
+        font-weight: 700;
+      }
+
+      .outcome-box p {
+        color: #666;
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+
+      .cta-section {
+        text-align: center;
+        padding: 50px 0 0;
+      }
+
+      .cta-button {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+        padding: 20px 55px;
+        font-size: 1.25rem;
+        border: none;
+        border-radius: 50px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 20px 45px rgba(245, 87, 108, 0.5);
+      }
+
+      /* Footer Styles */
+      .site-footer {
+        background: #0a0a0a;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #f093fb;
+        margin-bottom: 12px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid-footer {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid-footer li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid-footer li:hover {
+        color: #f093fb;
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #f093fb;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .apps-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        .integration-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .outcome-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .solutions-grid,
+        .apps-grid,
+        .integration-grid,
+        .outcome-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .problems-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .solutions-grid-footer {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo-section">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+          />
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+      <div class="section-container">
+        <h1>Transform Your Accounting Practice</h1>
+        <p>
+          Streamline operations, boost efficiency, and scale your CA firm with
+          Zoho's integrated solutions
+        </p>
+      </div>
+    </div>
+
+    <!-- Problems Section -->
+    <section class="problems-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Challenges Facing Accounting Firms</h2>
+        </div>
+
+        <div class="problems-grid">
+          <div class="problem-card">
+            <h3>Manual Data Entry & Reconciliation</h3>
+            <p>
+              Hours spent on repetitive tasks like invoice processing, bank
+              reconciliations, and data entry across multiple systems, leading
+              to errors and inefficiency.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <h3>Client Communication Gaps</h3>
+            <p>
+              Difficulty tracking client requests, document sharing, and
+              maintaining transparent communication throughout tax season and
+              audit periods.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <h3>Compliance & Deadline Pressure</h3>
+            <p>
+              Managing multiple client deadlines, staying compliant with
+              changing regulations, and ensuring accurate filings without a
+              centralized system.
+            </p>
+          </div>
+
+          <div class="problem-card">
+            <h3>Limited Business Insights</h3>
+            <p>
+              Lack of real-time reporting and analytics to track firm
+              performance, profitability per client, and resource allocation
+              effectively.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Zoho's Comprehensive Solution</h2>
+        </div>
+
+        <div class="solutions-grid">
+          <div class="solution-card">
+            <h3>Intelligent Automation</h3>
+            <p>
+              Automate invoice processing, expense tracking, and bank
+              reconciliations with Zoho Books and AI-powered workflows, reducing
+              manual work by 70%.
+            </p>
+          </div>
+
+          <div class="solution-card">
+            <h3>Client Portal & CRM</h3>
+            <p>
+              Centralized client management with Zoho CRM and dedicated portals
+              for seamless document sharing, request tracking, and status
+              updates.
+            </p>
+          </div>
+
+          <div class="solution-card">
+            <h3>Compliance Management</h3>
+            <p>
+              Built-in compliance tracking, automated deadline reminders, and
+              audit trails ensuring you never miss critical filings and
+              regulatory requirements.
+            </p>
+          </div>
+
+          <div class="solution-card">
+            <h3>Advanced Analytics</h3>
+            <p>
+              Real-time dashboards with Zoho Analytics providing insights into
+              firm profitability, client billing, resource utilization, and
+              growth trends.
+            </p>
+          </div>
+
+          <div class="solution-card">
+            <h3>Cloud Collaboration</h3>
+            <p>
+              Access your practice management tools anywhere with secure cloud
+              storage, team collaboration features, and mobile accessibility.
+            </p>
+          </div>
+
+          <div class="solution-card">
+            <h3>Seamless Integration</h3>
+            <p>
+              Connect all your tools - accounting software, tax platforms,
+              payroll systems - into one unified ecosystem with 500+
+              integrations.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zoho Apps Ecosystem Section -->
+    <section class="apps-ecosystem-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Complete Zoho Suite for Accounting Firms</h2>
+          <p>
+            Integrated applications working together to power every aspect of
+            your practice
+          </p>
+        </div>
+
+        <div class="apps-grid">
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho Books</h4>
+            </div>
+            <p class="app-description">
+              Core accounting platform for managing client accounts, invoicing,
+              and financial reporting.
+            </p>
+            <ul class="app-features">
+              <li>Multi-currency & GST compliance</li>
+              <li>Automated bank reconciliation</li>
+              <li>Client billing & expense tracking</li>
+              <li>Financial statement generation</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho CRM</h4>
+            </div>
+            <p class="app-description">
+              Manage client relationships, track engagement, and streamline new
+              client onboarding.
+            </p>
+            <ul class="app-features">
+              <li>360° client view & history</li>
+              <li>Automated follow-up reminders</li>
+              <li>Lead nurturing & conversion</li>
+              <li>Client satisfaction tracking</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho Projects</h4>
+            </div>
+            <p class="app-description">
+              Manage audit engagements, tax filing projects, and team workload
+              efficiently.
+            </p>
+            <ul class="app-features">
+              <li>Task assignment & tracking</li>
+              <li>Gantt charts for deadlines</li>
+              <li>Time tracking & budgeting</li>
+              <li>Milestone management</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho WorkDrive</h4>
+            </div>
+            <p class="app-description">
+              Secure cloud storage for client documents, tax returns, and
+              financial records.
+            </p>
+            <ul class="app-features">
+              <li>Client-specific folders</li>
+              <li>Version control & audit trails</li>
+              <li>Advanced encryption & security</li>
+              <li>Easy client file sharing</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho Mail</h4>
+            </div>
+            <p class="app-description">
+              Professional email with integrated calendar for scheduling client
+              meetings and deadlines.
+            </p>
+            <ul class="app-features">
+              <li>Custom domain emails</li>
+              <li>Shared calendars for team</li>
+              <li>Email templates for clients</li>
+              <li>Meeting scheduler integration</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho Cliq</h4>
+            </div>
+            <p class="app-description">
+              Team communication and collaboration tool for instant messaging
+              and quick queries.
+            </p>
+            <ul class="app-features">
+              <li>Team channels & direct messages</li>
+              <li>File sharing & screen sharing</li>
+              <li>Audio/video calls</li>
+              <li>Integration with other apps</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho People</h4>
+            </div>
+            <p class="app-description">
+              HR management for tracking employee time, leave, and performance
+              within your firm.
+            </p>
+            <ul class="app-features">
+              <li>Timesheet management</li>
+              <li>Leave tracking & approval</li>
+              <li>Employee database</li>
+              <li>Performance reviews</li>
+            </ul>
+          </div>
+
+          <div class="app-card">
+            <div class="app-header">
+              <h4>Zoho Sign</h4>
+            </div>
+            <p class="app-description">
+              Digital signature solution for engagement letters, tax forms, and
+              client agreements.
+            </p>
+            <ul class="app-features">
+              <li>Legally binding e-signatures</li>
+              <li>Document templates</li>
+              <li>Multi-party signing workflows</li>
+              <li>Audit trail & compliance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research & Due Diligence Section -->
+    <section class="research-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Research & Due Diligence Workflow</h2>
+          <p>
+            How Zoho apps streamline financial research, compliance checks, and
+            client due diligence
+          </p>
+        </div>
+
+        <div class="research-flow">
+          <div class="research-step">
+            <div class="step-number">1</div>
+            <h4>Client Data Collection & Organization</h4>
+            <p>
+              Gather comprehensive client information through customized forms
+              and secure document uploads. Zoho Forms collects structured data
+              while WorkDrive organizes all supporting documents in encrypted
+              folders with role-based access control.
+            </p>
+            <div class="tools-used">
+              <span class="tool-tag">Zoho Forms</span>
+              <span class="tool-tag">Zoho WorkDrive</span>
+              <span class="tool-tag">Zoho CRM</span>
+            </div>
+          </div>
+
+          <div class="research-step">
+            <div class="step-number">2</div>
+            <h4>Financial Analysis & Background Verification</h4>
+            <p>
+              Perform in-depth financial analysis using Zoho Analytics to
+              identify trends, anomalies, and risk factors. Cross-reference with
+              external databases and generate comprehensive reports on client
+              financial health, credit history, and regulatory compliance
+              status.
+            </p>
+            <div class="tools-used">
+              <span class="tool-tag">Zoho Analytics</span>
+              <span class="tool-tag">Zoho Books</span>
+              <span class="tool-tag">Zoho Sheet</span>
+            </div>
+          </div>
+
+          <div class="research-step">
+            <div class="step-number">3</div>
+            <h4>Regulatory Compliance & Risk Assessment</h4>
+            <p>
+              Automate compliance checks against KYC/AML requirements, tax
+              regulations, and industry standards. Zoho Creator builds custom
+              compliance checklists while automated workflows flag high-risk
+              areas requiring additional review or documentation.
+            </p>
+            <div class="tools-used">
+              <span class="tool-tag">Zoho Creator</span>
+              <span class="tool-tag">Zoho Flow</span>
+              <span class="tool-tag">Zoho Sign</span>
+            </div>
+          </div>
+
+          <div class="research-step">
+            <div class="step-number">4</div>
+            <h4>Collaboration & Expert Consultation</h4>
+            <p>
+              Facilitate team discussions on complex cases through Zoho Cliq
+              channels. Share findings, assign research tasks via Zoho Projects,
+              and maintain complete documentation of all research activities
+              with timestamp and contributor tracking for audit purposes.
+            </p>
+            <div class="tools-used">
+              <span class="tool-tag">Zoho Cliq</span>
+              <span class="tool-tag">Zoho Projects</span>
+              <span class="tool-tag">Zoho WorkDrive</span>
+            </div>
+          </div>
+
+          <div class="research-step">
+            <div class="step-number">5</div>
+            <h4>Report Generation & Client Presentation</h4>
+            <p>
+              Compile research findings into professional reports using Zoho
+              Writer templates. Generate executive summaries, detailed analysis,
+              and actionable recommendations. Present findings through
+              interactive dashboards that clients can access via secure portal.
+            </p>
+            <div class="tools-used">
+              <span class="tool-tag">Zoho Writer</span>
+              <span class="tool-tag">Zoho Analytics</span>
+              <span class="tool-tag">Zoho CRM</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Integration Benefits Section -->
+    <section class="integration-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Why Zoho's Integrated Ecosystem Matters</h2>
+        </div>
+
+        <div class="integration-grid">
+          <div class="integration-item">
+            <h5>Unified Data Flow</h5>
+            <p>Data entered once flows across all applications automatically</p>
+          </div>
+
+          <div class="integration-item">
+            <h5>Cost Efficiency</h5>
+            <p>
+              One subscription for entire suite saves 60% vs. separate tools
+            </p>
+          </div>
+
+          <div class="integration-item">
+            <h5>Single Learning Curve</h5>
+            <p>Consistent interface across apps reduces training time</p>
+          </div>
+
+          <div class="integration-item">
+            <h5>Enhanced Security</h5>
+            <p>Centralized security controls and compliance management</p>
+          </div>
+
+          <div class="integration-item">
+            <h5>Unified Support</h5>
+            <p>One point of contact for all technical assistance</p>
+          </div>
+
+          <div class="integration-item">
+            <h5>Rapid Deployment</h5>
+            <p>Pre-built integrations enable faster implementation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes Section -->
+    <section class="outcomes-section">
+      <div class="section-container">
+        <div class="section-header">
+          <h2>Measurable Business Outcomes</h2>
+        </div>
+
+        <div class="outcome-grid">
+          <div class="outcome-box">
+            <div class="outcome-number">70%</div>
+            <h4>Time Saved</h4>
+            <p>Reduction in manual data entry and administrative tasks</p>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-number">3x</div>
+            <h4>Client Capacity</h4>
+            <p>Increase in clients managed with the same team size</p>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-number">95%</div>
+            <h4>On-Time Filings</h4>
+            <p>Improvement in meeting compliance deadlines</p>
+          </div>
+
+          <div class="outcome-box">
+            <div class="outcome-number">45%</div>
+            <h4>Revenue Growth</h4>
+            <p>Average increase in firm profitability within 12 months</p>
+          </div>
+        </div>
+
+        <div class="cta-section">
+          <button class="cta-button" onclick="handleCTA()">
+            Start Your Transformation
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+        <div class="footer-section zoho-solutions">
+          <h3>Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid-footer">
+              <li><a href="analytics.html">Zoho Analytics</a></li>
+              <li><a href="bigin.html">Zoho Bigin</a></li>
+              <li><a href="billing.html">Zoho Billing</a></li>
+              <li><a href="books.html">Zoho Books</a></li>
+              <li><a href="commerce.html">Zoho Commerce</a></li>
+              <li><a href="crm.html">Zoho CRM</a></li>
+              <li><a href="expense.html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory.html">Zoho Inventory</a></li>
+              <li><a href="payroll.html">Zoho Payroll</a></li>
+              <li><a href="peopleplus.html">Zoho People Plus</a></li>
+              <li><a href="recruit.html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in<br />Phone: +91 90 7313 9613<br />Location:
+            India
+          </p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 15px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">+91 90 7313 9613</span>
+            </a>
+          </div>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Header scroll effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector("header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Intersection Observer for scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -100px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document
+        .querySelectorAll(
+          ".problem-card, .solution-card, .app-card, .research-step, .integration-item, .outcome-box",
+        )
+        .forEach((el) => {
+          el.style.opacity = "0";
+          el.style.transform = "translateY(30px)";
+          el.style.transition = "all 0.6s ease";
+          observer.observe(el);
+        });
+
+      // CTA Button interaction
+      function handleCTA() {
+        alert(
+          "Ready to transform your accounting practice? Our team will contact you shortly!",
+        );
+      }
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
