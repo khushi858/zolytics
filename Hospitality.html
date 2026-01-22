@@ -1,0 +1,1376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hospitality & Real Estate Solutions | Zoho</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #fafbff;
+        color: #1e293b;
+        overflow-x: hidden;
+      }
+
+      /* Animated Background */
+      .bg-gradient {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          #fef3f2 0%,
+          #fef9f5 25%,
+          #f0f9ff 50%,
+          #faf5ff 75%,
+          #fef2f2 100%
+        );
+        z-index: -2;
+      }
+
+      .bg-gradient::before {
+        content: "";
+        position: absolute;
+        width: 200%;
+        height: 200%;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(251, 146, 60, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(168, 85, 247, 0.08) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 40% 20%,
+            rgba(59, 130, 246, 0.06) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 20s ease infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          transform: translate(0, 0);
+        }
+        50% {
+          transform: translate(-10%, -10%);
+        }
+      }
+
+      /* Header */
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+      background-color: white;
+        backdrop-filter: blur(20px);
+        border-bottom: 2px solid rgba(12, 50, 145, 0.3);
+        z-index: 1000;
+        padding: 1.2rem 5%;
+        transition: all 0.3s ease;
+      }
+
+      header.scrolled {
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo img {
+        height: 90px;
+        transition: transform 0.4s ease;
+      }
+
+      .logo img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 120px 5% 80px;
+        position: relative;
+        background: linear-gradient(
+    to bottom,
+    #ffffff 0%,
+    #ffffff 50%,
+    #193a95 50%,
+    #193da0 100%
+  );
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 5rem);
+        font-weight: 800;
+        background:black;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .hero p {
+        font-size: clamp(1.1rem, 2vw, 1.5rem);
+        color: #e9ecef;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        line-height: 1.6;
+      }
+
+      .tag {
+        display: inline-block;
+        padding: 0.6rem 1.5rem;
+        background: linear-gradient(135deg, #fee2e2, #dbeafe);
+        border: 2px solid #ef4444;
+        border-radius: 50px;
+        color: #dc2626;
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 2rem;
+      }
+
+      /* Bento Grid Layout for Problems */
+      .section {
+        padding: 100px 5%;
+        max-width: 1600px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 700;
+        color: #0f172a;
+        margin-bottom: 1rem;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        color: #64748b;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+
+      /* Bento Grid - Asymmetric Card Layout */
+      .bento-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .bento-card {
+        backdrop-filter: blur(10px);
+        border: 2px solid rgba(239, 68, 68, 0.2);
+        border-radius: 24px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        box-shadow: 0 4px 20px rgba(239, 68, 68, 0.08);
+      }
+
+      .bento-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .bento-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, #ef4444, #dc2626);
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .bento-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .bento-card:hover {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(239, 68, 68, 0.4);
+        transform: translateY(-8px);
+        box-shadow: 0 12px 40px rgba(239, 68, 68, 0.15);
+      }
+
+      .bento-card.large {
+        grid-column: span 2;
+      }
+
+      .card-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+      }
+
+      .bento-card h3 {
+        font-size: 1.6rem;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .bento-card p {
+        color: #475569;
+        line-height: 1.7;
+        font-size: 1.05rem;
+      }
+
+      /* Floating Cards for Solutions */
+      .floating-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+      }
+
+      .solution-card {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(219, 234, 254, 0.8)
+        );
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        border-radius: 32px;
+        padding: 3rem;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease;
+        box-shadow: 0 4px 30px rgba(59, 130, 246, 0.1);
+      }
+
+      .solution-card.animate {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .solution-card:nth-child(even) {
+        flex-direction: row-reverse;
+        transform: translateX(50px);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(254, 226, 226, 0.8)
+        );
+        border-color: rgba(239, 68, 68, 0.2);
+      }
+
+      .solution-card:nth-child(even).animate {
+        transform: translateX(0);
+      }
+
+      .solution-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(59, 130, 246, 0.05) 0%,
+          transparent 70%
+        );
+        animation: pulse 8s ease infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.1);
+          opacity: 0.8;
+        }
+      }
+
+      .solution-visual {
+        flex: 0 0 280px;
+        height: 280px;
+        position: relative;
+      }
+
+      .solution-orb {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #3b82f6, #2563eb);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 5rem;
+        color: white;
+        box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .solution-card:nth-child(even) .solution-orb {
+        background: linear-gradient(135deg, #ef4444, #dc2626);
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .solution-content {
+        flex: 1;
+        z-index: 1;
+      }
+
+      .solution-content h3 {
+        font-size: 2rem;
+        color: #0f172a;
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+      }
+
+      .solution-content p {
+        color: #475569;
+        font-size: 1.15rem;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .feature-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        color: #1e293b;
+        font-size: 1rem;
+      }
+
+      .feature-list i {
+        color: #3b82f6;
+        font-size: 1.2rem;
+      }
+
+      /* Zoho Apps Showcase */
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+
+      .app-card {
+        border: 2px solid rgba(59, 130, 246, 0.15);
+        border-radius: 20px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: scale(0.9);
+        box-shadow: 0 4px 20px rgba(59, 130, 246, 0.08);
+      }
+
+      .app-card.animate {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .app-card:hover {
+        
+        border-color: rgba(59, 130, 246, 0.4);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(59, 130, 246, 0.2);
+      }
+.app-icon {
+  width: 72px;
+  height: 72px;
+
+  /* ❌ remove background completely */
+  background: transparent;
+
+  border-radius: 0; /* no tile shape */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto 1.5rem;
+
+  /* optional: keep or remove */
+  box-shadow: none;
+}
+
+      .app-card h4 {
+        font-size: 1.4rem;
+        color: #0f172a;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+      }
+
+      .app-card p {
+        color: #64748b;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .app-icon img {
+  width: 98px;
+  height: 88px;
+  object-fit: contain;
+}
+
+      /* Stats Section */
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 columns */
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.1),
+          rgba(16, 185, 129, 0.05)
+        );
+        border: 2px solid rgba(52, 211, 153, 0.3);
+        border-radius: 20px;
+        padding: 2.5rem 2rem;
+        text-align: center;
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateY(30px);
+        box-shadow: 0 4px 20px rgba(52, 211, 153, 0.1);
+      }
+
+      .stat-card.animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .stat-card:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(52, 211, 153, 0.15),
+          rgba(16, 185, 129, 0.1)
+        );
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(52, 211, 153, 0.2);
+      }
+
+      .stat-icon {
+        width: 70px;
+        height: 70px;
+        background: linear-gradient(135deg, #34d399, #10b981);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+        color: white;
+        box-shadow: 0 10px 25px rgba(52, 211, 153, 0.3);
+      }
+
+      .stat-card h4 {
+        font-size: 1.5rem;
+        color: #0f172a;
+        margin-bottom: 0.8rem;
+        font-weight: 700;
+      }
+
+      .stat-card p {
+        color: #64748b;
+        line-height: 1.7;
+      }
+
+      /* Use Cases Section */
+      .use-cases {
+        display: grid;
+        grid-template-columns: repeat((auto-fit, minmax(350px,) 1fr));
+        gap: 2.5rem;
+      }
+
+      .use-case {
+        background: rgba(255, 255, 255, 0.8);
+        border-left: 4px solid #ef4444;
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.4s ease;
+        opacity: 0;
+        transform: translateX(-30px);
+        box-shadow: 0 4px 20px rgba(239, 68, 68, 0.08);
+      }
+
+      .use-case.animate {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .use-case:hover {
+        background: rgba(255, 255, 255, 1);
+        border-left-color: #3b82f6;
+        box-shadow: 0 8px 30px rgba(59, 130, 246, 0.15);
+      }
+
+      .use-case h4 {
+        font-size: 1.6rem;
+        color: #0f172a;
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .use-case p {
+        color: #475569;
+        line-height: 1.8;
+        margin-bottom: 1.5rem;
+      }
+
+      .use-case ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .use-case ul li {
+        color: #64748b;
+        padding: 0.5rem 0;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .use-case ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #ef4444;
+        font-weight: bold;
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    <div class="bg-gradient"></div>
+
+    <header id="header">
+      <div class="logo">
+        <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <span class="tag">Industry Solutions</span>
+        <h1>Transform Hospitality<br />& Real Estate</h1>
+        <p>
+          End-to-end Zoho solutions that streamline operations, enhance guest
+          experiences, and drive revenue growth for hotels, resorts, and
+          property management companies.
+        </p>
+      </div>
+    </section>
+
+    <!-- Problems Section - Bento Grid -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Industry Challenges We Solve</h2>
+        <p>
+          The hospitality and real estate sectors face unique operational
+          complexities
+        </p>
+      </div>
+
+      <div class="bento-grid">
+        <div class="bento-card">
+          <div class="card-icon"></div>
+          <h3>Fragmented Guest Data</h3>
+          <p>
+            Guest information scattered across booking platforms, email, phone
+            calls, and physical records leads to inconsistent service delivery.
+            Staff cannot access complete guest history, resulting in missed
+            personalization opportunities and decreased satisfaction scores.
+          </p>
+        </div>
+
+        <div class="bento-card">
+          <div class="card-icon">
+           
+          </div>
+          <h3>Property Chaos</h3>
+          <p>
+            Managing multiple properties with different maintenance schedules,
+            vendor contracts, and compliance requirements becomes overwhelming
+            without centralized systems.
+          </p>
+        </div>
+
+
+        <div class="bento-card ">
+          <div class="card-icon"></div>
+          <h3>Revenue Leakage</h3>
+          <p>
+            Without dynamic pricing, upselling automation, and accurate
+            financial tracking, properties lose 15-30% potential revenue through
+            pricing inefficiencies, missed upsell opportunities, and billing
+            errors.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Section - Floating Cards -->
+    <section class="section" style="background: rgba(250, 245, 255, 0.3)">
+      <div class="section-header">
+        <h2>Comprehensive Zoho Solutions</h2>
+        <p>
+          Integrated platform approach designed specifically for hospitality and
+          real estate
+        </p>
+      </div>
+
+      <div class="floating-cards">
+        <div class="solution-card">
+          <div class="solution-visual">
+            <div class="solution-orb">
+              <i class="fas fa-user-tie"></i>
+            </div>
+          </div>
+          <div class="solution-content">
+            <h3>Zoho CRM - Guest Relationship Hub</h3>
+            <p>
+              Create unified guest profiles with complete interaction history,
+              preferences, and booking patterns. Automate personalized
+              communications and loyalty programs.
+            </p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> 360° guest view</li>
+              <li><i class="fas fa-check-circle"></i> Automated follow-ups</li>
+              <li><i class="fas fa-check-circle"></i> Loyalty tracking</li>
+              <li><i class="fas fa-check-circle"></i> Review management</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-visual">
+            <div class="solution-orb">
+              <i class="fas fa-calendar-alt"></i>
+            </div>
+          </div>
+          <div class="solution-content">
+            <h3>Zoho Bookings - Smart Reservations</h3>
+            <p>
+              Eliminate double bookings with real-time availability sync. Accept
+              online reservations 24/7 with automated confirmations and payment
+              processing.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <i class="fas fa-check-circle"></i> Real-time availability
+              </li>
+              <li><i class="fas fa-check-circle"></i> Payment integration</li>
+              <li><i class="fas fa-check-circle"></i> Auto-confirmations</li>
+              <li><i class="fas fa-check-circle"></i> Cancellation handling</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-visual">
+            <div class="solution-orb">
+              <i class="fas fa-wrench"></i>
+            </div>
+          </div>
+          <div class="solution-content">
+            <h3>Zoho Creator - Property Operations</h3>
+            <p>
+              Custom applications for maintenance tracking, housekeeping
+              schedules, vendor management, and asset tracking across all
+              properties.
+            </p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Maintenance workflows</li>
+              <li>
+                <i class="fas fa-check-circle"></i> Housekeeping schedules
+              </li>
+              <li><i class="fas fa-check-circle"></i> Vendor portals</li>
+              <li><i class="fas fa-check-circle"></i> Inspection checklists</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-visual">
+            <div class="solution-orb">
+              <i class="fas fa-headset"></i>
+            </div>
+          </div>
+          <div class="solution-content">
+            <h3>Zoho Desk - Guest Support</h3>
+            <p>
+              Multi-channel support system handling guest inquiries via email,
+              chat, phone, and social media with automated ticket routing and
+              SLA management.
+            </p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Multi-channel support</li>
+              <li><i class="fas fa-check-circle"></i> SLA tracking</li>
+              <li><i class="fas fa-check-circle"></i> Knowledge base</li>
+              <li><i class="fas fa-check-circle"></i> Satisfaction surveys</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="solution-card">
+          <div class="solution-visual">
+            <div class="solution-orb">
+              <i class="fas fa-calculator"></i>
+            </div>
+          </div>
+          <div class="solution-content">
+            <h3>Zoho Books - Financial Control</h3>
+            <p>
+              Automate invoicing, expense tracking, and financial reporting.
+              Manage security deposits, advance payments, and multi-property
+              accounting.
+            </p>
+            <ul class="feature-list">
+              <li><i class="fas fa-check-circle"></i> Automated invoicing</li>
+              <li><i class="fas fa-check-circle"></i> Expense tracking</li>
+              <li><i class="fas fa-check-circle"></i> Tax compliance</li>
+              <li><i class="fas fa-check-circle"></i> Financial reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Additional Zoho Apps -->
+<section class="section">
+  <div class="section-header">
+    <h2>Extended Zoho Ecosystem</h2>
+    <p>
+      Additional applications that enhance your hospitality and real estate
+      operations
+    </p>
+  </div>
+
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/analytics.svg" alt="Zoho Analytics">
+      </div>
+      <h4>Zoho Analytics</h4>
+      <p>Revenue analytics, occupancy trends, guest demographics, and performance dashboards with predictive forecasting.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg" alt="Zoho People">
+      </div>
+      <h4>Zoho People</h4>
+      <p>Staff scheduling, shift management, attendance tracking, and HR automation for hospitality workforce.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg" alt="Zoho Campaigns">
+      </div>
+      <h4>Zoho Campaigns</h4>
+      <p>Email marketing for promotions, seasonal offers, event announcements, and guest re-engagement campaigns.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/social.svg" alt="Zoho Social">
+      </div>
+      <h4>Zoho Social</h4>
+      <p>Manage reviews, social media presence, and brand reputation across all platforms from one dashboard.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/expense.svg" alt="Zoho Expense">
+      </div>
+      <h4>Zoho Expense</h4>
+      <p>Track operational expenses, vendor payments, and petty cash with automated approval workflows.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg" alt="Zoho Inventory">
+      </div>
+      <h4>Zoho Inventory</h4>
+      <p>Manage linens, amenities, supplies, and equipment across properties with automated reorder points.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sign.svg" alt="Zoho Sign">
+      </div>
+      <h4>Zoho Sign</h4>
+      <p>Digital contracts, lease agreements, vendor agreements, and guest waivers with legally binding e-signatures.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sites.svg" alt="Zoho Sites">
+      </div>
+      <h4>Zoho Sites</h4>
+      <p>Build property websites with integrated booking widgets, photo galleries, and contact forms.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/cliq.svg" alt="Zoho Cliq">
+      </div>
+      <h4>Zoho Cliq</h4>
+      <p>Team chat, video calls, and collaboration for front desk, housekeeping, and maintenance coordination.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="Zoho Projects">
+      </div>
+      <h4>Zoho Projects</h4>
+      <p>Manage renovations, property improvements, and multi-location projects with timeline and budget tracking.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/forms.svg" alt="Zoho Forms">
+      </div>
+      <h4>Zoho Forms</h4>
+      <p>Guest feedback forms, maintenance requests, vendor applications, and custom data collection.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-icon">
+        <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/pagesense.svg" alt="Zoho PageSense">
+      </div>
+      <h4>Zoho PageSense</h4>
+      <p>Website optimization, A/B testing for booking pages, and conversion rate improvement tools.</p>
+    </div>
+
+  </div>
+</section>
+
+    <!-- Use Cases Section -->
+    <section class="section" style="background: rgba(239, 246, 255, 0.2)">
+      <div class="section-header">
+        <h2>Real-World Use Cases</h2>
+        <p>
+          See how our solutions work together to solve complex hospitality
+          challenges
+        </p>
+      </div>
+
+      <div class="use-cases">
+        <div class="use-case">
+          <h4>Boutique Hotel Chain</h4>
+          <p>
+            A 5-property boutique hotel chain transformed guest experience and
+            operations by implementing an integrated Zoho ecosystem.
+          </p>
+          <ul>
+            <li>Zoho CRM tracks guest preferences across all properties</li>
+            <li>Zoho Bookings manages reservations with real-time sync</li>
+            <li>Zoho Desk handles guest requests within 15 minutes</li>
+            <li>Zoho Analytics provides occupancy and revenue insights</li>
+            <li>
+              Result: 35% increase in repeat bookings, 40% faster response times
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-case">
+          <h4>Property Management Company</h4>
+          <p>
+            A real estate company managing 200+ residential and commercial
+            properties streamlined operations end-to-end.
+          </p>
+          <ul>
+            <li>Zoho Creator custom app for property and tenant management</li>
+            <li>Zoho Books for rent collection and financial tracking</li>
+            <li>Zoho Sign for digital lease agreements</li>
+            <li>Zoho Projects for renovation and maintenance projects</li>
+            <li>
+              Result: 50% reduction in administrative time, 99% on-time rent
+              collection
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-case">
+          <h4>Luxury Resort & Spa</h4>
+          <p>
+            An upscale resort enhanced guest personalization and operational
+            efficiency using Zoho's comprehensive platform.
+          </p>
+          <ul>
+            <li>Zoho CRM for VIP guest management and loyalty programs</li>
+            <li>Zoho Bookings for spa appointments and dining reservations</li>
+            <li>Zoho Campaigns for targeted seasonal promotions</li>
+            <li>Zoho People for 200+ staff scheduling and shift management</li>
+            <li>
+              Result: 28% revenue increase, 4.8/5 guest satisfaction score
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-case">
+          <h4>Vacation Rental Platform</h4>
+          <p>
+            A vacation rental company managing 150+ properties automated guest
+            communication and property operations.
+          </p>
+          <ul>
+            <li>Zoho CRM for guest relationship and booking management</li>
+            <li>Zoho Desk for 24/7 guest support across multiple channels</li>
+            <li>Zoho Inventory for linens, supplies, and amenity tracking</li>
+            <li>
+              Zoho Cliq for instant coordination between cleaners and property
+              managers
+            </li>
+            <li>
+              Result: 45% faster turnaround between bookings, 90% guest
+              satisfaction
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-case">
+          <h4>Commercial Real Estate Firm</h4>
+          <p>
+            A commercial real estate firm optimized tenant relationships and
+            property maintenance across office buildings.
+          </p>
+          <ul>
+            <li>
+              Zoho CRM for tenant relationship management and lease renewals
+            </li>
+            <li>
+              Zoho Creator for maintenance request tracking and vendor
+              coordination
+            </li>
+            <li>
+              Zoho Analytics for space utilization and financial reporting
+            </li>
+            <li>Zoho Sign for contract management and renewals</li>
+            <li>
+              Result: 85% lease renewal rate, 60% faster maintenance resolution
+            </li>
+          </ul>
+        </div>
+
+        <div class="use-case">
+          <h4>Event Venue & Conference Center</h4>
+          <p>
+            A multi-purpose venue streamlined event bookings, catering
+            coordination, and client communication.
+          </p>
+          <ul>
+            <li>
+              Zoho Bookings for event space reservations and calendar management
+            </li>
+            <li>Zoho CRM for client management and event customization</li>
+            <li>Zoho Projects for event planning and vendor coordination</li>
+            <li>Zoho Campaigns for event promotion and attendee engagement</li>
+            <li>
+              Result: 200% increase in bookings, 95% client satisfaction rate
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats/Outcomes Section -->
+    <section class="section">
+      <div class="section-header">
+        <h2>Measurable Business Outcomes</h2>
+        <p>Real results our clients achieve with Zoho solutions</p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+          <h4>45% Faster Operations</h4>
+          <p>
+            Automation reduces manual tasks, accelerates booking processes, and
+            streamlines property management workflows significantly.
+          </p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-smile-beam"></i></div>
+          <h4>Enhanced Guest Satisfaction</h4>
+          <p>
+            Personalized experiences and faster response times lead to improved
+            ratings, reviews, and repeat bookings from satisfied guests.
+          </p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-chart-bar"></i></div>
+          <h4>30% Revenue Growth</h4>
+          <p>
+            Optimized pricing strategies, reduced no-shows, and improved
+            occupancy rates drive substantial revenue increases.
+          </p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-sync-alt"></i></div>
+          <h4>Real-Time Synchronization</h4>
+          <p>
+            All systems communicate instantly, eliminating data silos and
+            providing accurate, up-to-date information across your organization.
+          </p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-dollar-sign"></i></div>
+          <h4>Reduced Operational Costs</h4>
+          <p>
+            Automated workflows and centralized management reduce administrative
+            overhead, manual errors, and resource waste.
+          </p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Mobile-First Approach</h4>
+          <p>
+            Manage operations on-the-go with mobile apps that keep your team
+            connected and productive from anywhere.
+          </p>
+        </div>
+      </div>
+    </section>
+
+     <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+   
+
+
+    <script>
+      // Intersection Observer for animations
+      const observerOptions = {
+        threshold: 0.15,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate");
+          }
+        });
+      }, observerOptions);
+
+      // Observe all animated elements
+      document
+        .querySelectorAll(
+          ".bento-card, .solution-card, .app-card, .stat-card, .use-case",
+        )
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Header scroll effect
+      const header = document.getElementById("header");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 100) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Stagger animation for cards
+      document.querySelectorAll(".app-card").forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.05}s`;
+      });
+
+      document.querySelectorAll(".stat-card").forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.1}s`;
+      });
+
+      document.querySelectorAll(".use-case").forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.08}s`;
+      });
+    </script>
+  </body>
+</html>
