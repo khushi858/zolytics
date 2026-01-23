@@ -83,7 +83,7 @@
         width: 100%;
       background-color: white;
         backdrop-filter: blur(20px);
-        border-bottom: 2px solid rgba(12, 50, 145, 0.3);
+        border-bottom: 3px solid rgb(199, 19, 19);
         z-index: 1000;
         padding: 1.2rem 5%;
         transition: all 0.3s ease;
@@ -112,13 +112,7 @@
         text-align: center;
         padding: 120px 5% 80px;
         position: relative;
-        background: linear-gradient(
-    to bottom,
-    #ffffff 0%,
-    #ffffff 50%,
-    #193a95 50%,
-    #193da0 100%
-  );
+        background: rgb(44, 76, 164);
       }
 
       .hero h1 {
@@ -293,12 +287,7 @@
       .solution-card:nth-child(even) {
         flex-direction: row-reverse;
         transform: translateX(50px);
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.9),
-          rgba(254, 226, 226, 0.8)
-        );
-        border-color: rgba(239, 68, 68, 0.2);
+       
       }
 
       .solution-card:nth-child(even).animate {
@@ -312,12 +301,6 @@
         right: -50%;
         width: 200%;
         height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(59, 130, 246, 0.05) 0%,
-          transparent 70%
-        );
-        animation: pulse 8s ease infinite;
       }
 
       @keyframes pulse {
@@ -338,34 +321,32 @@
         position: relative;
       }
 
-      .solution-orb {
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, #3b82f6, #2563eb);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 5rem;
-        color: white;
-        box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
-        animation: float 6s ease-in-out infinite;
-      }
+      /* Updated solution-orb style - removes circular background */
+.solution-orb {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 6s ease-in-out infinite;
+}
 
-      .solution-card:nth-child(even) .solution-orb {
-        background: linear-gradient(135deg, #ef4444, #dc2626);
-      }
+.solution-orb img {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 30px rgba(59, 130, 246, 0.2));
+}
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
       .solution-content {
         flex: 1;
         z-index: 1;
@@ -685,7 +666,7 @@
         <div class="solution-card">
           <div class="solution-visual">
             <div class="solution-orb">
-              <i class="fas fa-user-tie"></i>
+              <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg">
             </div>
           </div>
           <div class="solution-content">
@@ -707,7 +688,7 @@
         <div class="solution-card">
           <div class="solution-visual">
             <div class="solution-orb">
-              <i class="fas fa-calendar-alt"></i>
+              <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bookings.svg">
             </div>
           </div>
           <div class="solution-content">
@@ -731,7 +712,7 @@
         <div class="solution-card">
           <div class="solution-visual">
             <div class="solution-orb">
-              <i class="fas fa-wrench"></i>
+              <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/creator.svg">
             </div>
           </div>
           <div class="solution-content">
@@ -755,7 +736,7 @@
         <div class="solution-card">
           <div class="solution-visual">
             <div class="solution-orb">
-              <i class="fas fa-headset"></i>
+              <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg">
             </div>
           </div>
           <div class="solution-content">
@@ -777,7 +758,7 @@
         <div class="solution-card">
           <div class="solution-visual">
             <div class="solution-orb">
-              <i class="fas fa-calculator"></i>
+              <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg">
             </div>
           </div>
           <div class="solution-content">
