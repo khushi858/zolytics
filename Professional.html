@@ -1,0 +1,1223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Services - Automation & CRM Solutions</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --primary-green: #28a745;
+        --primary-red: #dc3545;
+        --primary-blue: #0d6efd;
+        --dark-blue: #11348f;
+        --light-green: #d4edda;
+        --light-red: #f8d7da;
+        --light-blue: #cfe2ff;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.12);
+        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        overflow-x: hidden;
+      }
+
+      /* Header */
+      header {
+        background: rgba(255, 255, 255, 0.98);
+        box-shadow: var(--shadow-sm);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+
+        justify-content: center;
+        align-items: center;
+      }
+
+      .logo-section img {
+        height: 90px;
+        transition: transform 0.4s ease;
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.08);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(135deg, var(--dark-blue) 0%, #1e40af 100%);
+        color: white;
+        padding: 100px 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(255, 255, 255, 0.1) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 50%
+          );
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 20px;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .hero-content .subtitle {
+        font-size: 1.4rem;
+        opacity: 0.95;
+        margin-bottom: 2rem;
+      }
+
+      .hero-trust {
+        margin-top: 50px;
+        opacity: 0.95;
+      }
+
+      .hero-trust span {
+        display: block;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 25px;
+        font-weight: 600;
+      }
+
+      .trust-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 40px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .trust-stats div {
+        text-align: center;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        backdrop-filter: blur(10px);
+      }
+
+      .trust-stats strong {
+        font-size: 2.5rem;
+        display: block;
+        font-weight: 800;
+      }
+
+      .trust-stats small {
+        font-size: 1rem;
+        opacity: 0.9;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Section Styling */
+      section {
+        padding: 80px 0;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .section-heading {
+        font-size: 2.8rem;
+        font-weight: 800;
+        color: var(--dark-blue);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-heading::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 5px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        border-radius: 10px;
+      }
+
+      .section-subtext {
+        font-size: 1.2rem;
+        color: #6c757d;
+        margin-bottom: 50px;
+      }
+
+      /* Use Case Grid */
+      .usecase-section {
+        background: white;
+      }
+
+      .usecase-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        padding: 0 40px;
+      }
+
+      .usecase-card {
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 35px;
+        border: 2px solid #e9ecef;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usecase-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .usecase-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .usecase-card:hover {
+        border-color: var(--primary-blue);
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .usecase-card h4 {
+        font-weight: 700;
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+        color: var(--dark-blue);
+      }
+
+      .usecase-card p {
+        color: #495057;
+        font-size: 1.05rem;
+        line-height: 1.7;
+      }
+
+      /* Comparison Section */
+      .comparison-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+        padding: 0 40px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .comparison-box {
+        border-radius: 24px;
+        padding: 45px;
+        box-shadow: var(--shadow-md);
+        transition: transform 0.3s ease;
+      }
+
+      .comparison-box:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .comparison-box h4 {
+        font-weight: 800;
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+      }
+
+      .comparison-box ul {
+        padding-left: 0;
+        list-style: none;
+      }
+
+      .comparison-box li {
+        margin-bottom: 18px;
+        padding-left: 35px;
+        color: #343a40;
+        font-size: 1.1rem;
+        position: relative;
+        line-height: 1.6;
+      }
+
+      .before {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+        border-left: 8px solid var(--primary-red);
+      }
+
+      .before h4 {
+        color: var(--primary-red);
+      }
+
+      .before li::before {
+        content: "✕";
+        position: absolute;
+        left: 0;
+        color: var(--primary-red);
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      .after {
+        background: linear-gradient(135deg, #e8f0ff 0%, #cfe2ff 100%);
+        border-left: 8px solid var(--primary-blue);
+      }
+
+      .after h4 {
+        color: var(--primary-blue);
+      }
+
+      .after li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary-green);
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      /* Problems, Solutions, Outcomes Grid */
+      .pso-section {
+        background: white;
+      }
+
+      .pso-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        padding: 0 40px;
+      }
+
+      .pso-card {
+        background: white;
+        border-radius: 24px;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+        transition: all 0.4s ease;
+      }
+
+      .pso-card:hover {
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .pso-header {
+        padding: 30px;
+        text-align: center;
+        font-weight: 700;
+        font-size: 1.8rem;
+      }
+
+      .problems-card .pso-header {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+        color: var(--primary-red);
+      }
+
+      .solution-card .pso-header {
+        background: linear-gradient(135deg, #e8f0ff 0%, #cfe2ff 100%);
+        color: var(--primary-blue);
+      }
+
+      .outcome-card .pso-header {
+        background: linear-gradient(135deg, #f0fdf4 0%, #d4edda 100%);
+        color: var(--primary-green);
+      }
+
+      .pso-body {
+        padding: 35px;
+      }
+
+      .pso-item {
+        padding: 25px;
+        margin-bottom: 20px;
+        border-radius: 16px;
+        transition: all 0.3s ease;
+        border-left: 5px solid;
+      }
+
+      .pso-item h5 {
+        font-weight: 700;
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+      }
+
+      .pso-item p {
+        margin: 0;
+        line-height: 1.7;
+        color: #495057;
+      }
+
+      .problems-item {
+        background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
+        border-left-color: var(--primary-red);
+      }
+
+      .problems-item h5 {
+        color: var(--primary-red);
+      }
+
+      .problems-item:hover {
+        background: #fff5f5;
+        transform: translateX(8px);
+      }
+
+      .solution-item {
+        background: linear-gradient(135deg, #e8f0ff 0%, #ffffff 100%);
+        border-left-color: var(--primary-blue);
+      }
+
+      .solution-item h5 {
+        color: var(--primary-blue);
+      }
+
+      .solution-item:hover {
+        background: #e8f0ff;
+        transform: translateX(8px);
+      }
+
+      .outcome-item {
+        background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+        border-left-color: var(--primary-green);
+      }
+
+      .outcome-item h5 {
+        color: var(--primary-green);
+      }
+
+      .outcome-item:hover {
+        background: #f0fdf4;
+        transform: translateX(8px);
+      }
+
+      /* Zoho Apps Grid */
+      .apps-section {
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      }
+
+      .apps-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 35px;
+        padding: 0 40px;
+      }
+
+      .app-card {
+        background: white;
+        border-radius: 24px;
+        padding: 40px;
+        border: 2px solid #e9ecef;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .app-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: linear-gradient(
+          90deg,
+          var(--primary-blue),
+          var(--primary-green)
+        );
+        transform: scaleX(0);
+        transition: transform 0.4s ease;
+      }
+
+      .app-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .app-card:hover {
+        border-color: var(--primary-blue);
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .app-badge {
+        display: inline-block;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-weight: 700;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1.2px;
+        margin-bottom: 20px;
+      }
+
+      .app-card h4 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+      }
+
+      .app-card p {
+        color: #495057;
+        line-height: 1.7;
+        margin-bottom: 25px;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .feature-list li {
+        padding: 12px 0;
+        padding-left: 30px;
+        position: relative;
+        color: #343a40;
+        font-size: 1.05rem;
+      }
+
+      .feature-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--primary-green);
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: rgb(172, 32, 32);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+      }
+
+      .cta-section h2 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+      }
+
+      .cta-section p {
+        font-size: 1.3rem;
+        margin-bottom: 40px;
+        opacity: 0.95;
+      }
+
+      .cta-button {
+        background: white;
+        color: var(--dark-blue);
+        border: none;
+        padding: 18px 50px;
+        font-size: 1.2rem;
+        font-weight: 700;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+      }
+
+      .cta-button:hover {
+        transform: scale(1.08);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+        background: var(--primary-green);
+        color: white;
+      }
+
+      /* Footer */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 50px;
+        max-width: 1400px;
+        margin: 0 auto 35px;
+      }
+
+      .footer-section h3 {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+        color: white;
+        font-weight: 700;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", cursive;
+        font-size: 1.1rem;
+        color: #38bdf8;
+        margin-bottom: 15px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.8;
+        font-size: 1rem;
+      }
+
+      .zoho-solutions {
+        text-align: center;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px 40px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        color: #d1d5db;
+        font-size: 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      .solutions-grid a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .zoho-logo {
+        margin-top: 25px;
+      }
+
+      .zoho-logo img {
+        max-width: 150px;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 25px;
+        text-align: center;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 0.95rem;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .usecase-grid,
+        .apps-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .trust-stats {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .usecase-grid,
+        .comparison-grid,
+        .pso-grid,
+        .apps-grid {
+          grid-template-columns: 1fr;
+          padding: 0 20px;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .section-heading {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header id="mainHeader">
+      <nav>
+        <div class="logo-section">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+          />
+        </div>
+      </nav>
+    </header>
+
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1>Professional Services Solutions</h1>
+        <p class="subtitle">
+          Automation and CRM solutions for consultants, agencies, and
+          service-based firms
+        </p>
+        <div class="hero-trust">
+          <span>Trusted by Consultants, Agencies & Service Firms</span>
+          <div class="trust-stats">
+            <div><strong>100+</strong><small>Clients</small></div>
+            <div><strong>20+</strong><small>Industries</small></div>
+            <div><strong>10+</strong><small>Zoho Apps</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="usecase-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-heading">Who This Is Built For</h2>
+          <p class="section-subtext">
+            Tailored Zoho solutions for different professional service firms
+          </p>
+        </div>
+        <div class="usecase-grid">
+          <div class="usecase-card fade-in">
+            <h4>Consulting Firms</h4>
+            <p>
+              Centralize clients, projects, billing, and follow-ups in one CRM.
+            </p>
+          </div>
+          <div class="usecase-card fade-in">
+            <h4>Digital & Creative Agencies</h4>
+            <p>
+              Track projects, billable hours, approvals, and campaign
+              performance.
+            </p>
+          </div>
+          <div class="usecase-card fade-in">
+            <h4>IT Services & MSPs</h4>
+            <p>
+              Manage tickets, SLAs, contracts, renewals, and support workflows.
+            </p>
+          </div>
+          <div class="usecase-card fade-in">
+            <h4>Legal Firms</h4>
+            <p>
+              Case tracking, document management, client history, and billing.
+            </p>
+          </div>
+          <div class="usecase-card fade-in">
+            <h4>Accounting & CA Firms</h4>
+            <p>
+              Client compliance tracking, task deadlines, and automated
+              invoicing.
+            </p>
+          </div>
+          <div class="usecase-card fade-in">
+            <h4>Architecture & Engineering</h4>
+            <p>
+              Project timelines, resource planning, approvals, and reporting.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="comparison-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-heading">Before Zoho vs After Zoho</h2>
+          <p class="section-subtext">
+            See the transformation in daily operations
+          </p>
+        </div>
+        <div class="comparison-grid">
+          <div class="comparison-box before fade-in">
+            <h4>Before Zoho</h4>
+            <ul>
+              <li>Spreadsheets & email chains</li>
+              <li>Missed billable hours</li>
+              <li>Manual invoicing</li>
+              <li>No real-time visibility</li>
+            </ul>
+          </div>
+          <div class="comparison-box after fade-in">
+            <h4>After Zoho</h4>
+            <ul>
+              <li>Centralized CRM & Projects</li>
+              <li>Automated time tracking</li>
+              <li>Instant invoicing</li>
+              <li>Live dashboards & reports</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="pso-section">
+      <div class="container">
+        <div class="pso-grid">
+          <div class="pso-card problems-card fade-in">
+            <div class="pso-header">Problems</div>
+            <div class="pso-body">
+              <div class="pso-item problems-item">
+                <h5>Scattered Client Data</h5>
+                <p>
+                  Information spread across emails, spreadsheets, and sticky
+                  notes makes it difficult to track client relationships and
+                  project history.
+                </p>
+              </div>
+              <div class="pso-item problems-item">
+                <h5>Manual Time Tracking</h5>
+                <p>
+                  Billable hours get lost or forgotten, leading to revenue
+                  leakage and inaccurate client invoicing.
+                </p>
+              </div>
+              <div class="pso-item problems-item">
+                <h5>Project Chaos</h5>
+                <p>
+                  Multiple projects running simultaneously without clear
+                  visibility into deadlines, resources, and deliverables.
+                </p>
+              </div>
+              <div class="pso-item problems-item">
+                <h5>Inefficient Communication</h5>
+                <p>
+                  Team members and clients constantly asking for updates,
+                  creating endless email threads and missed messages.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pso-card solution-card fade-in">
+            <div class="pso-header">Zoho Solution</div>
+            <div class="pso-body">
+              <div class="pso-item solution-item">
+                <h5>Unified CRM Platform</h5>
+                <p>
+                  Zoho CRM centralizes all client information, interactions, and
+                  documents in one accessible location for your entire team.
+                </p>
+              </div>
+              <div class="pso-item solution-item">
+                <h5>Automated Time Tracking</h5>
+                <p>
+                  Zoho Projects captures every billable minute automatically,
+                  integrating seamlessly with invoicing for accurate client
+                  billing.
+                </p>
+              </div>
+              <div class="pso-item solution-item">
+                <h5>Project Management Hub</h5>
+                <p>
+                  Zoho Projects provides complete visibility into timelines,
+                  milestones, and team workloads with real-time dashboards.
+                </p>
+              </div>
+              <div class="pso-item solution-item">
+                <h5>Integrated Communication</h5>
+                <p>
+                  Zoho Cliq and email integration keep all conversations
+                  organized and connected to relevant projects and clients.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="pso-card outcome-card fade-in">
+            <div class="pso-header">Outcome</div>
+            <div class="pso-body">
+              <div class="pso-item outcome-item">
+                <h5>360° Client View</h5>
+                <p>
+                  Every team member has instant access to complete client
+                  history, preferences, and ongoing projects, improving service
+                  quality.
+                </p>
+              </div>
+              <div class="pso-item outcome-item">
+                <h5>Revenue Recovery</h5>
+                <p>
+                  Capture and bill 100% of billable hours, recovering previously
+                  lost revenue and improving profitability by up to 30%.
+                </p>
+              </div>
+              <div class="pso-item outcome-item">
+                <h5>On-Time Delivery</h5>
+                <p>
+                  Clear project visibility and automated workflows ensure
+                  deadlines are met consistently, boosting client satisfaction.
+                </p>
+              </div>
+              <div class="pso-item outcome-item">
+                <h5>Enhanced Collaboration</h5>
+                <p>
+                  Team productivity increases as everyone stays informed and
+                  aligned, reducing meeting time by up to 40%.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="apps-section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-heading">Complete Zoho Ecosystem</h2>
+          <p class="section-subtext">
+            Integrated applications that work seamlessly together
+          </p>
+        </div>
+        <div class="apps-grid">
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="background: var(--light-blue); color: var(--primary-blue)"
+            >
+              Finance
+            </div>
+            <h4 style="color: var(--primary-blue)">Zoho Books</h4>
+            <p>
+              Streamline invoicing, expense tracking, and financial reporting.
+              Automatically convert project milestones into invoices and track
+              payments in real-time.
+            </p>
+            <ul class="feature-list">
+              <li>Automated invoicing from project hours</li>
+              <li>Expense management and receipts</li>
+              <li>Financial reports and insights</li>
+            </ul>
+          </div>
+
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="
+                background: var(--light-green);
+                color: var(--primary-green);
+              "
+            >
+              Support
+            </div>
+            <h4 style="color: var(--primary-green)">Zoho Desk</h4>
+            <p>
+              Deliver exceptional client support with ticketing, knowledge base,
+              and multi-channel communication. Keep clients happy with fast
+              response times.
+            </p>
+            <ul class="feature-list">
+              <li>Multi-channel ticket management</li>
+              <li>SLA tracking and automation</li>
+              <li>Client self-service portal</li>
+            </ul>
+          </div>
+
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="background: var(--light-red); color: var(--primary-red)"
+            >
+              Documents
+            </div>
+            <h4 style="color: var(--primary-red)">Zoho Sign</h4>
+            <p>
+              Get contracts and proposals signed faster with legally binding
+              electronic signatures. Reduce turnaround time from days to hours.
+            </p>
+            <ul class="feature-list">
+              <li>Digital signature workflows</li>
+              <li>Template management</li>
+              <li>Audit trails and compliance</li>
+            </ul>
+          </div>
+
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="background: var(--light-blue); color: var(--primary-blue)"
+            >
+              Insights
+            </div>
+            <h4 style="color: var(--primary-blue)">Zoho Analytics</h4>
+            <p>
+              Transform data into actionable insights with powerful reporting
+              and visualization tools. Make data-driven decisions for business
+              growth.
+            </p>
+            <ul class="feature-list">
+              <li>Custom dashboards and reports</li>
+              <li>Resource utilization analytics</li>
+              <li>Revenue forecasting</li>
+            </ul>
+          </div>
+
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="
+                background: var(--light-green);
+                color: var(--primary-green);
+              "
+            >
+              HR
+            </div>
+            <h4 style="color: var(--primary-green)">Zoho People</h4>
+            <p>
+              Manage your team with HR tools for attendance, leave management,
+              and performance reviews. Keep your workforce organized and
+              engaged.
+            </p>
+            <ul class="feature-list">
+              <li>Time and attendance tracking</li>
+              <li>Leave management system</li>
+              <li>Performance evaluations</li>
+            </ul>
+          </div>
+
+          <div class="app-card fade-in">
+            <div
+              class="app-badge"
+              style="background: var(--light-red); color: var(--primary-red)"
+            >
+              Storage
+            </div>
+            <h4 style="color: var(--primary-red)">Zoho WorkDrive</h4>
+            <p>
+              Secure cloud storage and file collaboration for teams. Share
+              project files, collaborate in real-time, and maintain version
+              control.
+            </p>
+            <ul class="feature-list">
+              <li>Team folders and file sharing</li>
+              <li>Real-time collaboration</li>
+              <li>Advanced security controls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>Ready to Transform Your Business?</h2>
+        <p>Let's discuss how Zoho can streamline your professional services</p>
+        <button class="cta-button">Get Started Today</button>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+        <div class="footer-section zoho-solutions">
+          <h3>Zoho Solutions</h3>
+          <ul class="solutions-grid">
+            <li><a href="analytics-html">Zoho Analytics</a></li>
+            <li><a href="bigin-html">Zoho Bigin</a></li>
+            <li><a href="billing-html">Zoho Billing</a></li>
+            <li><a href="books-html">Zoho Books</a></li>
+            <li><a href="commerce-html">Zoho Commerce</a></li>
+            <li><a href="crm-html">Zoho CRM</a></li>
+            <li><a href="expense-html">Zoho Expense</a></li>
+            <li><a href="finance.html">Zoho Finance Plus</a></li>
+            <li><a href="inventory-html">Zoho Inventory</a></li>
+            <li><a href="payroll-html">Zoho Payroll</a></li>
+            <li><a href="peopleplus-html">Zoho People Plus</a></li>
+            <li><a href="recruit-html">Zoho Recruit</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in<br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 15px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500; margin-left: 5px"
+                >+91 90 7313 9613</span
+              >
+            </a>
+          </div>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // CTA Button interaction
+      document
+        .querySelector(".cta-button")
+        .addEventListener("click", function () {
+          this.innerHTML = "Loading...";
+          this.style.transform = "scale(0.95)";
+          setTimeout(() => {
+            this.innerHTML = "Thank you for your interest!";
+            this.style.background = "var(--primary-green)";
+            this.style.color = "white";
+            this.style.transform = "scale(1)";
+          }, 1000);
+        });
+
+      // Header scroll effect
+      const header = document.getElementById("mainHeader");
+      let lastScroll = 0;
+
+      window.addEventListener("scroll", () => {
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          header.style.boxShadow = "0 4px 20px rgba(0,0,0,0.15)";
+        } else {
+          header.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+  </body>
+</html>
