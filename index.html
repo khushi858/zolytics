@@ -396,8 +396,8 @@
 
       .hero {
         margin-top: 80px;
-        background: linear-gradient(135deg, #fef3f2 0%, #fff 100%);
-        padding: 6rem 2rem;
+        height: 500px;
+        background: linear-gradient(135deg, #eaf1f7 0%, #f0e1e1 100%);
         text-align: center;
         position: relative;
         overflow: hidden;
@@ -488,7 +488,6 @@
 
       .about-section {
         background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-        padding: 100px 20px;
         position: relative;
         overflow: hidden;
       }
@@ -1368,7 +1367,7 @@
 
       /* ========== WHY CHOOSE SECTION ========== */
       .why-section {
-        background: #fff;
+        background: #f7f8f7;
         padding: 5rem 8%;
         position: relative;
         overflow: hidden;
@@ -1388,24 +1387,39 @@
       }
 
       .why-card {
-        background: #fff6f6;
+        background: #ffffff;
         padding: 1.5rem;
         border-radius: 15px;
         box-shadow: 0 10px 25px rgba(220, 38, 38, 0.08);
         transition: all 0.3s ease;
-        border-left: 4px solid #dc2626;
       }
 
-      .why-card:hover {
+      .card2:hover{
         transform: translateX(10px);
         box-shadow: 0 12px 30px rgba(220, 38, 38, 0.2);
       }
 
-      .why-card h3 {
-        color: #dc2626;
-        margin-bottom: 0.5rem;
-        font-size: 1.2rem;
+      .card3:hover{
+        transform: translateX(10px);
+        box-shadow: 0 12px 30px rgba(181, 38, 220, 0.2);
       }
+      .card4:hover{
+        transform: translateX(10px);
+        box-shadow: 0 12px 30px rgba(21, 168, 92, 0.2);
+      }
+      .card1:hover{
+        transform: translateX(10px);
+        box-shadow: 0 12px 30px rgba(38, 129, 220, 0.2);
+      }
+      .card5:hover{
+        transform: translateX(10px);
+        box-shadow: 0 12px 30px rgba(208, 220, 38, 0.2);
+      }
+
+
+
+    .why-card h3 { color: #761717; margin-bottom: 0.5rem; font-size: 1.2rem; }
+
 
       .why-card p {
         color: #666;
@@ -3744,36 +3758,36 @@
       <div class="why-container">
         <!-- LEFT SIDE: CONTENT -->
         <div class="why-content" data-aos="fade-right">
-          <div class="why-card">
-            <h3>Certified Zoho Finance Experts</h3>
+          <div class="why-card card1" style="border-left: 4px solid #1d2879; background: #dfe2f5;">
+            <h3 style="color: #1d2879">Certified Zoho Finance Experts</h3>
             <p>
               Our team holds official Zoho certifications and deep technical
               expertise across all finance modules.
             </p>
           </div>
-          <div class="why-card">
-            <h3>Deep Domain Knowledge</h3>
+          <div class="why-card card2" style="border-left: 4px solid #9b1818; background: #f3e2e2;">
+            <h3 style="color: #9b1818">Deep Domain Knowledge</h3>
             <p>
               Experience serving clients across India, UAE, and US with
               region-specific compliance and best practices.
             </p>
           </div>
-          <div class="why-card">
-            <h3>End-to-End Automation</h3>
+          <div class="why-card card3" style="border-left: 4px solid #791d65;background: #f9e1ee;">
+            <h3 style="color: #791d65">End-to-End Automation</h3>
             <p>
               We connect all your business processes — from accounting to
               analytics — creating unified, efficient workflows.
             </p>
           </div>
-          <div class="why-card">
-            <h3>Transparent Communication</h3>
+          <div class="why-card card4" style="border-left: 4px solid #1d7934; background: rgb(227, 243, 227);">
+            <h3 style="color: #1d7934">Transparent Communication</h3>
             <p>
               Regular updates, clear timelines, and honest feedback throughout
               your implementation journey.
             </p>
           </div>
-          <div class="why-card">
-            <h3>Dedicated Post-Implementation Support</h3>
+          <div class="why-card card5" style="border-left: 4px solid #b6bb26; background: #eef5e1;">
+            <h3 style="color: #b6bb26" >Dedicated Post-Implementation Support</h3>
             <p>
               Ongoing assistance, training, and optimization to ensure you get
               maximum value from your Zoho investment.
@@ -3850,48 +3864,42 @@
   </div>
 </a>
 
-          
-          <a href="Hospitality.html" class="industry-card-link">
-  <div class="industry-card">
-    <div class="icon"></div>
-    <h3>Hospitality & Real Estate</h3>
-    <p>
-     Streamlined operations for hotels, resorts, properties, and
-              real-estate workflows.
-    </p>
-  </div>
-</a>
 
-          <a href="IT.html" class="industry-card-link">
-  <div class="industry-card">
-    <div class="icon"></div>
-    <h3>IT & Software</h3>
-    <p>
-    Custom software, SaaS workflows, and integrated technology
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>Hospitality & Real Estate</h3>
+            <p>
+              Streamlined operations for hotels, resorts, properties, and
+              real-estate workflows.
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>IT & Software</h3>
+            <p>
+              Custom software, SaaS workflows, and integrated technology
               solutions.
-    </p>
-  </div>
-</a>
-         <a href="Logistic.html" class="industry-card-link">
-  <div class="industry-card">
-    <div class="icon"></div>
-    <h3>Logistics & Supply Chain</h3>
-    <p>
-     End-to-end tracking, warehouse automation, fleet management, and
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>Logistics & Supply Chain</h3>
+            <p>
+              End-to-end tracking, warehouse automation, fleet management, and
               vendor coordination.
-    </p>
-  </div>
-</a>
-           <a href="Professional.html" class="industry-card-link">
-  <div class="industry-card">
-    <div class="icon"></div>
-    <h3>Professional Services</h3>
-    <p>
-     Automation and CRM solutions for consultants, agencies, and
+            </p>
+          </div>
+
+          <div class="industry-card">
+            <div class="icon"></div>
+            <h3>Professional Services</h3>
+            <p>
+              Automation and CRM solutions for consultants, agencies, and
               service-based firms.
-    </p>
-  </div>
-           </a>
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -4996,6 +5004,3 @@ let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
     ></script>
    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
 <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siqb722856ae3f305dfe620d16e5e3588c546cb4c94622e81fff56cbb615c1e9f2e" defer></script>
-
-
-
