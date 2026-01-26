@@ -1,1081 +1,771 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zolytics - Premier Zoho Commerce Partner</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
     <style>
-      * {
-        margin: 0;
-        padding: 0;
+      #zcp *,
+      #zcp *::before,
+      #zcp *::after {
         box-sizing: border-box;
       }
 
+      #zcp {
+        all: initial;
+        display: block !important;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif !important;
+      }
       :root {
-        --primary: #e94560;
-        --primary-dark: #d63447;
-        --secondary: #0f3460;
-        --secondary-dark: #16213e;
-        --accent: #00ff88;
-        --dark: #1a1a2e;
-        --light: #f8f9fa;
-        --text: #333;
-        --text-light: #666;
-        --white: #ffffff;
+        --pg: #0d7a3f;
+        --pgd: #0a5c30;
+        --pgl: #10b759;
+        --ag: #34d399;
+        --dg: #064e2f;
+        --w: #fff;
+        --ow: #f8fffe;
+        --lgbg: #e8f5f0;
+        --td: #1a1a1a;
+        --tg: #4a5568;
+        --bg: #c6f6d5;
+      }
+      #zcp {
+        font-family: "Inter", sans-serif !important;
+        line-height: 1.6 !important;
+        color: var(--td) !important;
+        overflow-x: hidden !important;
+        background: var(--w) !important;
+      }
+      #zcp h1,
+      #zcp h2,
+      #zcp h3,
+      #zcp h4,
+      #zcp h5,
+      #zcp h6 {
+        margin: 0 !important;
+        padding: 0 !important;
+        font-weight: 700 !important;
+        color: var(--td) !important;
+      }
+      #zcp p {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      #zcp .pb {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        height: 4px !important;
+        background: linear-gradient(90deg, var(--pg), var(--ag)) !important;
+        z-index: 9999 !important;
+        transition: width 0.1s !important;
+        box-shadow: 0 2px 10px rgba(13, 122, 63, 0.5) !important;
+      }
+      #zcp .nav {
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 18px 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        transition: all 0.3s !important;
+        border-bottom: 2px solid var(--bg) !important;
+        box-shadow: 0 4px 20px rgba(13, 122, 63, 0.1) !important;
       }
 
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, "Helvetica Neue", Arial, sans-serif;
-        line-height: 1.6;
-        color: var(--text);
-        overflow-x: hidden;
-        background: var(--white);
+      #zcp .nav.sc {
+        padding: 12px 0 !important;
+        box-shadow: 0 6px 30px rgba(13, 122, 63, 0.15) !important;
       }
-
-      /* Header/Navigation */
-      .navbar {
-        background: rgba(242, 242, 244, 0.98);
-        backdrop-filter: blur(20px);
-        padding: 18px 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border-bottom: 1px solid rgba(233, 69, 96, 0.1);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      #zcp .lc {
+        display: flex !important;
+        align-items: center !important;
+        gap: 24px !important;
       }
-
-      .navbar.scrolled {
-        padding: 12px 0;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-        background: rgb(241, 241, 245);
-      }
-
-      .navbar-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 60px;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
-
-      .logo-container {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-      }
-
-      .logo-divider {
-        width: 2px;
-        height: 40px;
+      #zcp .ld {
+        width: 2px !important;
+        height: 40px !important;
         background: linear-gradient(
           180deg,
           transparent,
-          rgba(233, 69, 96, 0.5),
+          var(--pg),
           transparent
-        );
+        ) !important;
       }
-
-      .logo {
-        height: 42px;
-        transition: all 0.3s ease;
-        filter: brightness(1);
+      #zcp .lg {
+        height: 42px !important;
+        transition: all 0.3s !important;
       }
-
-      .logo:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.1);
+      #zcp .lg:hover {
+        transform: translateY(-2px) !important;
       }
-
-      /* Hero Section */
-      .hero {
+      #zcp .hero {
         background: linear-gradient(
           135deg,
-          #0f6013 0%,
-          #1a2e1d 50%,
-          #163e26 100%
-        );
-        padding: 180px 60px 120px;
-        text-align: center;
-        color: var(--white);
-        position: relative;
-        overflow: hidden;
-        margin-top: 76px;
+          #0d7a3f 0%,
+          #064e2f 50%,
+          #0a5c30 100%
+        ) !important;
+        padding: 180px 60px 120px !important;
+        text-align: center !important;
+        color: var(--w) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        margin-top: 76px !important;
       }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
+      #zcp .hero::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background:
+          radial-gradient(
             circle at 20% 50%,
-            rgba(233, 69, 96, 0.12) 0%,
+            rgba(52, 211, 153, 0.15),
             transparent 50%
           ),
           radial-gradient(
             circle at 80% 80%,
-            rgba(0, 255, 136, 0.08) 0%,
+            rgba(16, 183, 89, 0.1),
             transparent 50%
-          );
-        animation: gradientShift 15s ease infinite;
+          ) !important;
+        animation: gs 15s ease infinite !important;
       }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-image: repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.03) 2px,
-            rgba(255, 255, 255, 0.03) 4px
-          ),
-          repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 255, 255, 0.03) 2px,
-            rgba(255, 255, 255, 0.03) 4px
-          );
-        opacity: 0.4;
-      }
-
-      @keyframes gradientShift {
+      @keyframes gs {
         0%,
         100% {
           opacity: 1;
-          transform: scale(1) rotate(0deg);
+          transform: scale(1);
         }
         50% {
           opacity: 0.8;
-          transform: scale(1.05) rotate(2deg);
+          transform: scale(1.05);
         }
       }
-
-      .hero-content {
-        max-width: 1100px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
-      }
-
-      .hero-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        padding: 10px 24px;
-        border-radius: 50px;
-        margin-bottom: 32px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        animation: fadeInUp 0.8s ease-out;
-      }
-
-      .hero h1 {
-        font-size: 3.75rem;
-        margin-bottom: 24px;
-        animation: fadeInUp 0.8s ease-out 0.2s backwards;
-        font-weight: 700;
-        line-height: 1.15;
-        letter-spacing: -0.02em;
-      }
-
-      .hero-subtitle {
-        font-size: 1.25rem;
-        margin-bottom: 40px;
-        animation: fadeInUp 0.8s ease-out 0.4s backwards;
-        max-width: 850px;
-        margin-left: auto;
-        margin-right: auto;
-        color: rgba(255, 255, 255, 0.9);
-        font-weight: 400;
-        line-height: 1.7;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 20px;
-        justify-content: center;
-        animation: fadeInUp 0.8s ease-out 0.6s backwards;
-        flex-wrap: wrap;
-      }
-
-      .cta-button {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 16px 40px;
-        background: var(--primary);
-        color: var(--white);
-        text-decoration: none;
-        border-radius: 50px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        font-size: 1rem;
-        box-shadow: 0 10px 30px rgba(233, 69, 96, 0.3);
-        border: 2px solid var(--primary);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .cta-button::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.15);
-        transform: translate(-50%, -50%);
-        transition: width 0.5s, height 0.5s;
-      }
-
-      .cta-button:hover::before {
-        width: 300px;
-        height: 300px;
-      }
-
-      .cta-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 15px 40px rgba(233, 69, 96, 0.45);
-      }
-
-      /* Stats Banner */
-      .stats-banner {
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        padding: 80px 60px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .stats-banner::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 10px,
-          rgba(255, 255, 255, 0.02) 10px,
-          rgba(255, 255, 255, 0.02) 20px
-        );
-      }
-
-      .stats-grid {
-        max-width: 1400px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 40px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .stat-item {
-        text-align: center;
-        color: var(--white);
-        padding: 36px 24px;
-        border-radius: 16px;
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.12);
-        transition: all 0.3s ease;
-      }
-
-      .stat-item:hover {
-        transform: translateY(-8px);
-        background: rgba(255, 255, 255, 0.12);
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      .stat-number {
-        font-size: 3.5rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-        display: block;
-        line-height: 1;
-      }
-
-      .stat-label {
-        font-size: 1rem;
-        opacity: 0.95;
-        font-weight: 400;
-        letter-spacing: 0.3px;
-      }
-
-      /* Section Styling */
-      .section {
-        padding: 120px 60px;
-        position: relative;
-      }
-
-      .section-light {
-        background: linear-gradient(180deg, var(--white) 0%, var(--light) 100%);
-      }
-
-      .section-white {
-        background: var(--white);
-      }
-
-      .section-dark {
-        background: linear-gradient(135deg, #0a4d4d 0%, #0d5e5e 100%);
-        color: var(--white);
-      }
-
-      .section-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 80px;
-        max-width: 800px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .section-badge {
-        display: inline-block;
-        background: rgba(233, 69, 96, 0.1);
-        color: var(--primary);
-        padding: 8px 20px;
-        border-radius: 50px;
-        font-size: 0.813rem;
-        font-weight: 600;
-        margin-bottom: 20px;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-      }
-
-      .section-dark .section-badge {
-        background: rgba(0, 255, 136, 0.15);
-        color: var(--accent);
-      }
-
-      .section-title {
-        font-size: 2.75rem;
-        color: var(--dark);
-        margin-bottom: 20px;
-        font-weight: 700;
-        line-height: 1.2;
-        letter-spacing: -0.01em;
-      }
-
-      .section-dark .section-title {
-        color: var(--white);
-      }
-
-      .section-subtitle {
-        font-size: 1.125rem;
-        color: var(--text-light);
-        line-height: 1.7;
-      }
-
-      .section-dark .section-subtitle {
-        color: rgba(255, 255, 255, 0.85);
-      }
-
-      /* Services Grid */
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-      }
-
-      .service-card {
-        background: var(--white);
-        border-radius: 20px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        overflow: hidden;
-        border: 2px solid transparent;
-        position: relative;
-      }
-
-      .service-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      .service-card:hover::before {
-        opacity: 0.03;
-      }
-
-      .service-card:hover {
-        transform: translateY(-12px);
-        box-shadow: 0 20px 50px rgba(233, 69, 96, 0.15);
-        border-color: rgba(233, 69, 96, 0.3);
-      }
-
-      .service-card-image {
-        width: 100%;
-        height: 220px;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-      }
-
-      .service-card:hover .service-card-image {
-        transform: scale(1.08);
-      }
-
-      .service-card-content {
-        padding: 32px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .service-number {
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--white);
-        margin-bottom: 20px;
-        box-shadow: 0 6px 20px rgba(233, 69, 96, 0.25);
-        transition: all 0.3s ease;
-      }
-
-      .service-card:hover .service-number {
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(233, 69, 96, 0.4);
-      }
-
-      .service-card h3 {
-        color: var(--dark);
-        font-size: 1.5rem;
-        margin-bottom: 14px;
-        font-weight: 600;
-        transition: color 0.3s ease;
-        line-height: 1.3;
-      }
-
-      .service-card:hover h3 {
-        color: var(--primary);
-      }
-
-      .service-card p {
-        color: var(--text-light);
-        line-height: 1.7;
-        font-size: 0.938rem;
-      }
-
-      /* Fit Section */
-      .fit-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 50px;
-        margin-bottom: 60px;
-      }
-
-      .fit-card {
-        background: var(--white);
-        padding: 48px 42px;
-        border-radius: 20px;
-        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 3px solid transparent;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .fit-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        transition: height 0.4s ease;
-      }
-
-      .good-fit::before {
-        background: linear-gradient(90deg, #00c853 0%, #00e676 100%);
-      }
-
-      .bad-fit::before {
-        background: linear-gradient(90deg, #ff9800 0%, #ffc107 100%);
-      }
-
-      .fit-card:hover::before {
-        height: 100%;
-        opacity: 0.04;
-      }
-
-      .fit-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
-      }
-
-      .good-fit {
-        border-color: rgba(0, 200, 83, 0.2);
-      }
-
-      .good-fit:hover {
-        border-color: rgba(0, 200, 83, 0.4);
-      }
-
-      .bad-fit {
-        border-color: rgba(255, 152, 0, 0.2);
-      }
-
-      .bad-fit:hover {
-        border-color: rgba(255, 152, 0, 0.4);
-      }
-
-      .fit-card h3 {
-        font-size: 1.75rem;
-        margin-bottom: 28px;
-        color: var(--dark);
-        font-weight: 600;
-      }
-
-      .fit-card ul {
-        list-style: none;
-      }
-
-      .fit-card ul li {
-        position: relative;
-        padding-left: 32px;
-        margin-bottom: 16px;
-        color: var(--text);
-        font-size: 1rem;
-        line-height: 1.7;
-        transition: all 0.3s ease;
-      }
-
-      .fit-card ul li:hover {
-        transform: translateX(4px);
-        color: var(--dark);
-      }
-
-      .fit-card ul li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 6px;
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        font-weight: bold;
-        font-size: 0.875rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .good-fit ul li::before {
-        content: "✓";
-        color: #00c853;
-        background: rgba(0, 200, 83, 0.1);
-      }
-
-      .bad-fit ul li::before {
-        content: "×";
-        color: #ff9800;
-        background: rgba(255, 152, 0, 0.1);
-      }
-
-      .fit-footer {
-        text-align: center;
-        margin-top: 60px;
-      }
-
-      .fit-footer p {
-        font-size: 1.125rem;
-        color: var(--text);
-        margin-bottom: 28px;
-        line-height: 1.6;
-      }
-
-      /* Differentiators */
-      .diff-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-      }
-
-      .diff-card {
-        background: rgba(255, 255, 255, 0.08);
-        backdrop-filter: blur(15px);
-        padding: 42px;
-        border-radius: 20px;
-        border: 2px solid rgba(255, 255, 255, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-      }
-
-      .diff-card:hover {
-        background: rgba(255, 255, 255, 0.12);
-        border-color: rgba(0, 255, 136, 0.3);
-        transform: translateY(-12px);
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
-      }
-
-      .diff-number {
-        width: 56px;
-        height: 56px;
-        background: linear-gradient(135deg, var(--accent) 0%, #00c853 100%);
-        border-radius: 14px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--dark);
-        margin-bottom: 24px;
-        box-shadow: 0 6px 20px rgba(0, 255, 136, 0.25);
-        transition: all 0.3s ease;
-      }
-
-      .diff-card:hover .diff-number {
-        transform: scale(1.1);
-        box-shadow: 0 8px 25px rgba(0, 255, 136, 0.4);
-      }
-
-      .diff-card h3 {
-        color: var(--white);
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-        font-weight: 600;
-      }
-
-      .diff-card ul {
-        list-style: none;
-        color: rgba(255, 255, 255, 0.9);
-        line-height: 1.8;
-      }
-
-      .diff-card ul li {
-        padding-left: 28px;
-        position: relative;
-        margin-bottom: 12px;
-        transition: all 0.3s ease;
-        font-size: 0.938rem;
-      }
-
-      .diff-card ul li:hover {
-        transform: translateX(4px);
-        color: var(--white);
-      }
-
-      .diff-card ul li::before {
-        content: "→";
-        color: var(--accent);
-        font-weight: bold;
-        font-size: 1.125rem;
-        position: absolute;
-        left: 0;
-        transition: all 0.3s ease;
-      }
-
-      /* Problems Section */
-      .problems-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 50px;
-      }
-
-      .problem-card {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        background: var(--white);
-        border-radius: 24px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.06);
-        overflow: hidden;
-        transition: all 0.4s ease;
-        border: 2px solid transparent;
-      }
-
-      .problem-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 25px 70px rgba(233, 69, 96, 0.12);
-        border-color: rgba(233, 69, 96, 0.2);
-      }
-
-      .problem-side,
-      .solution-side {
-        padding: 48px 42px;
-        position: relative;
-      }
-
-      .problem-side {
-        background: linear-gradient(135deg, #fff5f5 0%, var(--white) 100%);
-        border-right: 2px solid rgba(233, 69, 96, 0.08);
-      }
-
-      .solution-side {
-        background: linear-gradient(135deg, #f3fff8 0%, var(--white) 100%);
-      }
-
-      .problem-side h3,
-      .solution-side h3 {
-        font-size: 1.625rem;
-        margin-bottom: 24px;
-        font-weight: 600;
-      }
-
-      .problem-side h3 {
-        color: #d63447;
-      }
-
-      .solution-side h3 {
-        color: #1b5e20;
-      }
-
-      .problem-side ul,
-      .solution-side ul {
-        list-style: none;
-      }
-
-      .problem-side ul li,
-      .solution-side ul li {
-        padding-left: 32px;
-        margin-bottom: 14px;
-        position: relative;
-        color: var(--text);
-        font-size: 1rem;
-        line-height: 1.7;
-        transition: all 0.3s ease;
-      }
-
-      .problem-side ul li:hover,
-      .solution-side ul li:hover {
-        transform: translateX(4px);
-        color: var(--dark);
-      }
-
-      .problem-side ul li::before {
-        content: "×";
-        position: absolute;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #d63447;
-        font-weight: bold;
-        font-size: 1.25rem;
-      }
-
-      .solution-side ul li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #00c853;
-        font-weight: bold;
-        border-radius: 50%;
-        background: rgba(0, 200, 83, 0.1);
-        font-size: 0.875rem;
-      }
-
-      /* Process Section */
-      .process-timeline {
-        max-width: 1200px;
-        margin: 0 auto;
-        position: relative;
-      }
-
-      .process-timeline::before {
-        content: "";
-        position: absolute;
-        left: 50%;
-        top: 0;
-        bottom: 0;
-        width: 3px;
-        background: linear-gradient(
-          180deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        transform: translateX(-50%);
-        box-shadow: 0 0 15px rgba(233, 69, 96, 0.3);
-      }
-
-      .process-step {
-        display: flex;
-        align-items: center;
-        margin-bottom: 90px;
-        position: relative;
-      }
-
-      .process-step:nth-child(even) {
-        flex-direction: row-reverse;
-      }
-
-      .process-content {
-        flex: 1;
-        padding: 0 70px;
-      }
-
-      .process-number {
-        width: 72px;
-        height: 72px;
-        background: linear-gradient(
-          135deg,
-          var(--primary) 0%,
-          var(--primary-dark) 100%
-        );
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--white);
-        font-size: 1.75rem;
-        font-weight: 700;
-        box-shadow: 0 12px 35px rgba(233, 69, 96, 0.35);
-        position: relative;
-        z-index: 2;
-        transition: all 0.3s ease;
-        border: 4px solid var(--white);
-      }
-
-      .process-step:hover .process-number {
-        transform: scale(1.15);
-        box-shadow: 0 15px 45px rgba(233, 69, 96, 0.5);
-      }
-
-      .process-content h3 {
-        font-size: 1.875rem;
-        color: var(--dark);
-        margin-bottom: 16px;
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-
-      .process-step:hover .process-content h3 {
-        color: var(--primary);
-      }
-
-      .process-content p {
-        color: var(--text-light);
-        line-height: 1.8;
-        font-size: 1rem;
-      }
-
-      /* Progress Bar */
-      .progress-bar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 3px;
-        background: linear-gradient(
-          90deg,
-          var(--primary) 0%,
-          var(--accent) 100%
-        );
-        z-index: 9999;
-        transition: width 0.1s ease;
-        box-shadow: 0 2px 8px rgba(233, 69, 96, 0.4);
-      }
-
-      /* Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1200px) {
-        .services-grid,
-        .diff-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .stats-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .footer-content {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .section {
-          padding: 100px 40px;
-        }
-
-        .navbar-content {
-          padding: 0 40px;
-        }
-      }
-
-      @media (max-width: 900px) {
-        .fit-grid,
-        .problem-card {
-          grid-template-columns: 1fr;
-        }
-
-        .services-grid,
-        .diff-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .problem-side,
-        .solution-side {
-          border: none;
-          border-bottom: 2px solid rgba(233, 69, 96, 0.08);
-        }
-
-        .solution-side {
-          border-bottom: none;
-        }
-
-        .section {
-          padding: 80px 30px;
-        }
-      }
-
+      #zcp .hc {
+        max-width: 1100px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        z-index: 1 !important;
+      }
+      #zcp .hb {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 2px solid rgba(255, 255, 255, 0.3) !important;
+        padding: 10px 24px !important;
+        border-radius: 50px !important;
+        margin-bottom: 32px !important;
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        letter-spacing: 0.5px !important;
+        text-transform: uppercase !important;
+      }
+      #zcp .ht {
+        font-size: 3.75rem !important;
+        margin-bottom: 24px !important;
+        font-weight: 700 !important;
+        line-height: 1.15 !important;
+        color: var(--w) !important;
+      }
+      #zcp .hs {
+        font-size: 1.25rem !important;
+        margin-bottom: 40px !important;
+        max-width: 850px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        color: rgba(255, 255, 255, 0.95) !important;
+        line-height: 1.7 !important;
+      }
+      #zcp .cta {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 16px 40px !important;
+        background: var(--w) !important;
+        color: var(--pg) !important;
+        text-decoration: none !important;
+        border-radius: 50px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s !important;
+        font-size: 1rem !important;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3) !important;
+        border: 2px solid var(--w) !important;
+      }
+      #zcp .cta:hover {
+        transform: translateY(-3px) scale(1.05) !important;
+        box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4) !important;
+        background: var(--ag) !important;
+        color: var(--w) !important;
+      }
+      #zcp .sb {
+        background: linear-gradient(135deg, var(--pg), var(--dg)) !important;
+        padding: 80px 60px !important;
+      }
+      #zcp .stc {
+        text-align: center !important;
+        color: var(--w) !important;
+        padding: 36px 24px !important;
+        border-radius: 16px !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(10px) !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        transition: all 0.3s !important;
+        margin-bottom: 30px !important;
+      }
+      #zcp .stc:hover {
+        transform: translateY(-8px) !important;
+        background: rgba(255, 255, 255, 0.15) !important;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+      }
+      #zcp .stn {
+        font-size: 3.5rem !important;
+        font-weight: 700 !important;
+        margin-bottom: 8px !important;
+        display: block !important;
+        color: var(--w) !important;
+      }
+      #zcp .stl {
+        font-size: 1rem !important;
+        color: var(--w) !important;
+      }
+      #zcp .sec {
+        padding: 120px 60px !important;
+      }
+      #zcp .sl {
+        background: linear-gradient(180deg, var(--w), var(--lgbg)) !important;
+      }
+      #zcp .sw {
+        background: var(--w) !important;
+      }
+      #zcp .sg {
+        background: linear-gradient(135deg, #0d7a3f, #0a5c30) !important;
+        color: var(--w) !important;
+      }
+      #zcp .sbg {
+        display: inline-block !important;
+        background: rgba(13, 122, 63, 0.1) !important;
+        color: var(--pg) !important;
+        padding: 8px 20px !important;
+        border-radius: 50px !important;
+        font-size: 0.813rem !important;
+        font-weight: 600 !important;
+        margin-bottom: 20px !important;
+        letter-spacing: 1px !important;
+        text-transform: uppercase !important;
+        border: 2px solid var(--bg) !important;
+      }
+      #zcp .sg .sbg {
+        background: rgba(52, 211, 153, 0.2) !important;
+        color: var(--ag) !important;
+        border-color: rgba(52, 211, 153, 0.3) !important;
+      }
+      #zcp .st {
+        font-size: 2.75rem !important;
+        color: var(--td) !important;
+        margin-bottom: 20px !important;
+        font-weight: 700 !important;
+      }
+      #zcp .sg .st {
+        color: var(--w) !important;
+      }
+      #zcp .ss {
+        font-size: 1.125rem !important;
+        color: var(--tg) !important;
+        line-height: 1.7 !important;
+      }
+      #zcp .sg .ss {
+        color: rgba(255, 255, 255, 0.9) !important;
+      }
+      #zcp .svc {
+        background: var(--w) !important;
+        border-radius: 20px !important;
+        box-shadow: 0 8px 30px rgba(13, 122, 63, 0.08) !important;
+        transition: all 0.4s !important;
+        overflow: hidden !important;
+        border: 3px solid transparent !important;
+        margin-bottom: 30px !important;
+        height: 100% !important;
+      }
+      #zcp .svc:hover {
+        transform: translateY(-12px) !important;
+        box-shadow: 0 20px 50px rgba(13, 122, 63, 0.2) !important;
+        border-color: var(--ag) !important;
+      }
+      #zcp .svi {
+        width: 100% !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        transition: transform 0.5s !important;
+      }
+      #zcp .svc:hover .svi {
+        transform: scale(1.08) !important;
+      }
+      #zcp .svcont {
+        padding: 32px !important;
+      }
+      #zcp .svn {
+        width: 56px !important;
+        height: 56px !important;
+        background: linear-gradient(135deg, var(--pg), var(--dg)) !important;
+        border-radius: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: var(--w) !important;
+        margin-bottom: 20px !important;
+        box-shadow: 0 6px 20px rgba(13, 122, 63, 0.3) !important;
+        transition: all 0.3s !important;
+      }
+      #zcp .svc:hover .svn {
+        transform: scale(1.1) rotate(5deg) !important;
+      }
+      #zcp .svc h3 {
+        color: var(--td) !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 14px !important;
+        font-weight: 600 !important;
+        transition: color 0.3s !important;
+      }
+      #zcp .svc:hover h3 {
+        color: var(--pg) !important;
+      }
+      #zcp .svc p {
+        color: var(--tg) !important;
+        line-height: 1.7 !important;
+        font-size: 0.938rem !important;
+      }
+      #zcp .fc {
+        background: var(--w) !important;
+        padding: 48px 42px !important;
+        border-radius: 20px !important;
+        box-shadow: 0 12px 40px rgba(13, 122, 63, 0.08) !important;
+        transition: all 0.4s !important;
+        border: 3px solid transparent !important;
+        overflow: hidden !important;
+        margin-bottom: 30px !important;
+        height: 100% !important;
+      }
+      #zcp .fc::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 5px !important;
+        transition: height 0.4s !important;
+      }
+      #zcp .gf::before {
+        background: linear-gradient(90deg, #0d7a3f, #10b759) !important;
+      }
+      #zcp .bf::before {
+        background: linear-gradient(90deg, #dc2626, #f97316) !important;
+      }
+      #zcp .fc:hover::before {
+        height: 100% !important;
+        opacity: 0.05 !important;
+      }
+      #zcp .fc:hover {
+        transform: translateY(-10px) !important;
+        box-shadow: 0 20px 60px rgba(13, 122, 63, 0.15) !important;
+      }
+      #zcp .gf {
+        border-color: rgba(13, 122, 63, 0.3) !important;
+      }
+      #zcp .gf:hover {
+        border-color: var(--pg) !important;
+      }
+      #zcp .bf {
+        border-color: rgba(220, 38, 38, 0.3) !important;
+      }
+      #zcp .bf:hover {
+        border-color: #dc2626 !important;
+      }
+      #zcp .fc h3 {
+        font-size: 1.75rem !important;
+        margin-bottom: 28px !important;
+        color: var(--td) !important;
+      }
+      #zcp .fc ul {
+        list-style: none !important;
+        padding-left: 0 !important;
+      }
+      #zcp .fc ul li {
+        position: relative !important;
+        padding-left: 32px !important;
+        margin-bottom: 16px !important;
+        color: var(--td) !important;
+        font-size: 1rem !important;
+        line-height: 1.7 !important;
+        transition: all 0.3s !important;
+      }
+      #zcp .fc ul li:hover {
+        transform: translateX(4px) !important;
+        color: var(--pg) !important;
+      }
+      #zcp .fc ul li::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 6px !important;
+        width: 20px !important;
+        height: 20px !important;
+        border-radius: 50% !important;
+        font-weight: bold !important;
+        font-size: 0.875rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      #zcp .gf ul li::before {
+        content: "✓" !important;
+        color: #0d7a3f !important;
+        background: rgba(13, 122, 63, 0.15) !important;
+      }
+      #zcp .bf ul li::before {
+        content: "×" !important;
+        color: #dc2626 !important;
+        background: rgba(220, 38, 38, 0.15) !important;
+      }
+      #zcp .dc {
+        background: rgba(255, 255, 255, 0.1) !important;
+        backdrop-filter: blur(15px) !important;
+        padding: 42px !important;
+        border-radius: 20px !important;
+        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        transition: all 0.4s !important;
+        margin-bottom: 30px !important;
+        height: 100% !important;
+      }
+      #zcp .dc:hover {
+        background: rgba(255, 255, 255, 0.15) !important;
+        border-color: rgba(52, 211, 153, 0.4) !important;
+        transform: translateY(-12px) !important;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3) !important;
+      }
+      #zcp .dn {
+        width: 56px !important;
+        height: 56px !important;
+        background: linear-gradient(135deg, var(--ag), var(--pgl)) !important;
+        border-radius: 14px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: var(--w) !important;
+        margin-bottom: 24px !important;
+        box-shadow: 0 6px 20px rgba(52, 211, 153, 0.3) !important;
+        transition: all 0.3s !important;
+      }
+      #zcp .dc:hover .dn {
+        transform: scale(1.1) rotate(-5deg) !important;
+      }
+      #zcp .dc h3 {
+        color: var(--w) !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 20px !important;
+      }
+      #zcp .dc ul {
+        list-style: none !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+        padding-left: 0 !important;
+      }
+      #zcp .dc ul li {
+        padding-left: 28px !important;
+        position: relative !important;
+        margin-bottom: 12px !important;
+        transition: all 0.3s !important;
+        font-size: 0.938rem !important;
+      }
+      #zcp .dc ul li:hover {
+        transform: translateX(4px) !important;
+        color: var(--w) !important;
+      }
+      #zcp .dc ul li::before {
+        content: "→" !important;
+        color: var(--ag) !important;
+        font-weight: bold !important;
+        font-size: 1.125rem !important;
+        position: absolute !important;
+        left: 0 !important;
+      }
+      #zcp .pc {
+        background: var(--w) !important;
+        border-radius: 24px !important;
+        box-shadow: 0 15px 50px rgba(13, 122, 63, 0.08) !important;
+        overflow: hidden !important;
+        transition: all 0.4s !important;
+        border: 3px solid transparent !important;
+        margin-bottom: 50px !important;
+      }
+      #zcp .pc:hover {
+        transform: translateY(-8px) !important;
+        box-shadow: 0 25px 70px rgba(13, 122, 63, 0.15) !important;
+        border-color: var(--bg) !important;
+      }
+      #zcp .ps,
+      #zcp .sols {
+        padding: 48px 42px !important;
+      }
+      #zcp .ps {
+        background: linear-gradient(135deg, #fee2e2, var(--w)) !important;
+        border-right: 3px solid rgba(220, 38, 38, 0.1) !important;
+      }
+      #zcp .sols {
+        background: linear-gradient(135deg, #d1fae5, var(--w)) !important;
+      }
+      #zcp .ps h3 {
+        color: #dc2626 !important;
+        font-size: 1.625rem !important;
+        margin-bottom: 24px !important;
+      }
+      #zcp .sols h3 {
+        color: var(--pg) !important;
+        font-size: 1.625rem !important;
+        margin-bottom: 24px !important;
+      }
+      #zcp .ps ul,
+      #zcp .sols ul {
+        list-style: none !important;
+        padding-left: 0 !important;
+      }
+      #zcp .ps ul li,
+      #zcp .sols ul li {
+        padding-left: 32px !important;
+        margin-bottom: 14px !important;
+        position: relative !important;
+        color: var(--td) !important;
+        font-size: 1rem !important;
+        line-height: 1.7 !important;
+        transition: all 0.3s !important;
+      }
+      #zcp .ps ul li::before {
+        content: "×" !important;
+        position: absolute !important;
+        left: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        color: #dc2626 !important;
+        font-weight: bold !important;
+        font-size: 1.25rem !important;
+      }
+      #zcp .sols ul li::before {
+        content: "✓" !important;
+        position: absolute !important;
+        left: 0 !important;
+        width: 20px !important;
+        height: 20px !important;
+        color: var(--pg) !important;
+        font-weight: bold !important;
+        border-radius: 50% !important;
+        background: rgba(13, 122, 63, 0.15) !important;
+        font-size: 0.875rem !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+      #zcp .prt {
+        position: relative !important;
+        padding: 0 50px !important;
+      }
+      #zcp .prt::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 50% !important;
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 3px !important;
+        background: linear-gradient(180deg, var(--pg), var(--ag)) !important;
+        transform: translateX(-50%) !important;
+      }
+      #zcp .prs {
+        position: relative !important;
+        margin-bottom: 80px !important;
+      }
+      #zcp .prn {
+        width: 72px !important;
+        height: 72px !important;
+        background: linear-gradient(135deg, var(--pg), var(--pgd)) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--w) !important;
+        font-size: 1.75rem !important;
+        font-weight: 700 !important;
+        box-shadow: 0 12px 35px rgba(13, 122, 63, 0.35) !important;
+        position: absolute !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        z-index: 2 !important;
+        transition: all 0.3s !important;
+        border: 4px solid var(--w) !important;
+      }
+      #zcp .prs:hover .prn {
+        transform: translateX(-50%) scale(1.15) !important;
+        box-shadow: 0 15px 45px rgba(13, 122, 63, 0.5) !important;
+      }
+      #zcp .prcl,
+      #zcp .prcr {
+        padding: 0 20px !important;
+      }
+      #zcp .prcl {
+        text-align: right !important;
+        padding-right: 100px !important;
+      }
+      #zcp .prcr {
+        text-align: left !important;
+        padding-left: 100px !important;
+      }
+      #zcp .prcl h3,
+      #zcp .prcr h3 {
+        font-size: 1.875rem !important;
+        color: var(--td) !important;
+        margin-bottom: 16px !important;
+        font-weight: 600 !important;
+        transition: color 0.3s !important;
+      }
+      #zcp .prs:hover h3 {
+        color: var(--pg) !important;
+      }
+      #zcp .prcl p,
+      #zcp .prcr p {
+        color: var(--tg) !important;
+        line-height: 1.8 !important;
+      }
+      #zcp .ft {
+        background: #050505 !important;
+        color: #e5e7eb !important;
+        padding: 75px 5% 25px !important;
+      }
+      #zcp .ftc {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 20px !important;
+        margin-bottom: 35px !important;
+      }
+      #zcp .footer-section h3 {
+        font-size: 22px !important;
+        margin-bottom: 14px !important;
+        color: white !important;
+      }
+      #zcp .footer-section p {
+        color: #cbd5e1 !important;
+        line-height: 1.7 !important;
+      }
+      #zcp .ftb {
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding-top: 18px !important;
+        text-align: center !important;
+      }
+      #zcp .ftb p {
+        color: #94a3b8 !important;
+        font-size: 13px !important;
+      }
+      #zcp .zl img {
+        max-width: 140px !important;
+        opacity: 0.95 !important;
+      }
       @media (max-width: 768px) {
-        .hero {
-          padding: 140px 30px 80px;
+        #zcp .hero {
+          padding: 140px 30px 80px !important;
         }
+        #zcp .ht {
+          font-size: 2.25rem !important;
+        }
+        #zcp .hs {
+          font-size: 1rem !important;
+        }
+        #zcp .st {
+          font-size: 2rem !important;
+        }
+        #zcp .sec {
+          padding: 80px 30px !important;
+        }
+        #zcp .prt {
+          padding: 0 !important;
+        }
+        #zcp .prt::before {
+          left: 30px !important;
+        }
+        #zcp .prn {
+          left: 30px !important;
+          transform: none !important;
+          width: 60px !important;
+          height: 60px !important;
+          font-size: 1.5rem !important;
+        }
+        #zcp .prcl,
+        #zcp .prcr {
+          padding-left: 80px !important;
+          text-align: left !important;
+        }
+      }
+      /* Restore Bootstrap gutters properly */
+      #zcp .row {
+        --bs-gutter-x: 1.5rem; /* horizontal gap */
+        --bs-gutter-y: 1.5rem; /* vertical gap */
+        margin-top: 30px !important;
+      }
 
-        .hero h1 {
-          font-size: 2.25rem;
-        }
-
-        .hero-subtitle {
-          font-size: 1rem;
-        }
-
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .navbar-content {
-          padding: 0 20px;
-        }
-
-        .stats-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .stat-number {
-          font-size: 2.5rem;
-        }
-
-        .stats-banner {
-          padding: 60px 30px;
-        }
-
-        .process-timeline::before {
-          left: 30px;
-        }
-
-        .process-step {
-          flex-direction: column !important;
-          align-items: flex-start;
-        }
-
-        .process-content {
-          padding: 0 0 0 80px;
-        }
-
-        .process-number {
-          position: absolute;
-          left: 0;
-          width: 60px;
-          height: 60px;
-          font-size: 1.5rem;
-        }
-
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        .logo {
-          height: 36px;
-        }
-
-        .logo-divider {
-          height: 32px;
-        }
+      /* Card spacing */
+      #zcp .stc,
+      #zcp .svc,
+      #zcp .fc,
+      #zcp .dc,
+      #zcp .pc {
+        margin-top: 20px !important;
       }
     </style>
   </head>
-  <body>
-    <div class="progress-bar" id="progressBar"></div>
+  <body id="zcp">
+    <div class="pb" id="progressBar"></div>
 
-    <nav class="navbar" id="navbar">
-      <div class="navbar-content">
-        <div class="logo-container">
+    <nav class="nav" id="navbar">
+      <div class="container">
+        <div class="lc">
           <img
             src="images/logo.png"
             style="height: 80px; width: auto"
             alt="Zolytics"
           />
-          <div class="logo-divider"></div>
+          <div class="ld"></div>
           <img
             src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg"
             alt="Zoho Commerce"
-            class="logo"
+            class="lg"
           />
         </div>
       </div>
     </nav>
 
     <section class="hero">
-      <div class="hero-content">
-        <h1>Transform Your E-Commerce with Zoho Commerce</h1>
-        <p class="hero-subtitle">
+      <div class="hc">
+        <h1 class="ht">Transform Your E-Commerce with Zoho Commerce</h1>
+        <p class="hs">
           Full-stack Zoho Commerce implementation with seamless ecosystem
           integration. Launch faster, scale smarter, and automate your entire
           business workflow.
@@ -1083,428 +773,555 @@
       </div>
     </section>
 
-    <section class="section section-light" id="services">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">What We Do</span>
-          <h2 class="section-title">Comprehensive Zoho Commerce Solutions</h2>
-          <p class="section-subtitle">
+    <section class="sb">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6" data-aos="fade-up">
+            <div class="stc">
+              <span class="stn">200+</span>
+              <div class="stl">Projects Delivered</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="stc">
+              <span class="stn">15+</span>
+              <div class="stl">Years Experience</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="stc">
+              <span class="stn">98%</span>
+              <div class="stl">Client Satisfaction</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="stc">
+              <span class="stn">24/7</span>
+              <div class="stl">Support Available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sl">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="sbg">What We Do</span>
+          <h2 class="st">Comprehensive Zoho Commerce Solutions</h2>
+          <p class="ss">
             End-to-end services designed to launch, optimize, and scale your
             e-commerce business
           </p>
         </div>
-        <div class="services-grid">
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://www.zohowebstatic.com/sites/zweb/images/commerce/homepage/templates.png"
-              alt="Store Setup"
-            />
-            <div class="service-card-content">
-              <div class="service-number">01</div>
-              <h3>Store Setup & Theme Customization</h3>
-              <p>
-                Complete Zoho Commerce store configuration with custom theme
-                design, responsive layouts, and brand-aligned styling that
-                converts visitors into customers.
-              </p>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://www.zohowebstatic.com/sites/zweb/images/commerce/homepage/templates.png"
+                alt="Store Setup"
+              />
+              <div class="svcont">
+                <div class="svn">01</div>
+                <h3>Store Setup & Theme Customization</h3>
+                <p>
+                  Complete Zoho Commerce store configuration with custom theme
+                  design, responsive layouts, and brand-aligned styling that
+                  converts visitors into customers.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://www.zohowebstatic.com/sites/zweb/images/flow/solutions/zoho-one-zoho-flow-integrations.png"
-              alt="Integration"
-            />
-            <div class="service-card-content">
-              <div class="service-number">02</div>
-              <h3>Zoho Ecosystem Integration</h3>
-              <p>
-                Seamless integration with Zoho CRM, Books, Inventory, Analytics,
-                and other Zoho apps to create a unified business platform.
-              </p>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://www.zohowebstatic.com/sites/zweb/images/flow/solutions/zoho-one-zoho-flow-integrations.png"
+                alt="Integration"
+              />
+              <div class="svcont">
+                <div class="svn">02</div>
+                <h3>Zoho Ecosystem Integration</h3>
+                <p>
+                  Seamless integration with Zoho CRM, Books, Inventory,
+                  Analytics, and other Zoho apps to create a unified business
+                  platform.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://www.zohowebstatic.com/sites/zweb/images/commerce/integrationfullimage.png"
-              alt="Migration"
-            />
-            <div class="service-card-content">
-              <div class="service-number">03</div>
-              <h3>Platform Migration</h3>
-              <p>
-                Risk-free migration from Shopify, WooCommerce, Magento, or
-                custom platforms with zero downtime and complete data
-                preservation.
-              </p>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://www.zohowebstatic.com/sites/zweb/images/commerce/integrationfullimage.png"
+                alt="Migration"
+              />
+              <div class="svcont">
+                <div class="svn">03</div>
+                <h3>Platform Migration</h3>
+                <p>
+                  Risk-free migration from Shopify, WooCommerce, Magento, or
+                  custom platforms with zero downtime and complete data
+                  preservation.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://blog.zohowebstatic.com/sites/zblogs/images/commerce/zcto/explore_zoho_commerce.png"
-              alt="Optimization"
-            />
-            <div class="service-card-content">
-              <div class="service-number">04</div>
-              <h3>Performance Optimization</h3>
-              <p>
-                Speed optimization, SEO enhancement, conversion rate
-                optimization, and analytics implementation to maximize revenue
-                potential.
-              </p>
+          <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://blog.zohowebstatic.com/sites/zblogs/images/commerce/zcto/explore_zoho_commerce.png"
+                alt="Optimization"
+              />
+              <div class="svcont">
+                <div class="svn">04</div>
+                <h3>Performance Optimization</h3>
+                <p>
+                  Speed optimization, SEO enhancement, conversion rate
+                  optimization, and analytics implementation to maximize revenue
+                  potential.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://cdn.prod.website-files.com/6682ec96de60d2c61b7b1789/66bb78729e9aae88e68bb026_Banner%2031.png"
-              alt="Training"
-            />
-            <div class="service-card-content">
-              <div class="service-number">05</div>
-              <h3>Training & Documentation</h3>
-              <p>
-                Comprehensive team training, detailed documentation, and ongoing
-                support to ensure independent store management.
-              </p>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="zoom-in"
+            data-aos-delay="100"
+          >
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://cdn.prod.website-files.com/6682ec96de60d2c61b7b1789/66bb78729e9aae88e68bb026_Banner%2031.png"
+                alt="Training"
+              />
+              <div class="svcont">
+                <div class="svn">05</div>
+                <h3>Training & Documentation</h3>
+                <p>
+                  Comprehensive team training, detailed documentation, and
+                  ongoing support to ensure independent store management.
+                </p>
+              </div>
             </div>
           </div>
-
-          <div class="service-card">
-            <img
-              class="service-card-image"
-              src="https://techvaria.com/wp-content/uploads/2025/10/zoho-support.webp"
-              alt="Support"
-            />
-            <div class="service-card-content">
-              <div class="service-number">06</div>
-              <h3>Ongoing Support & Maintenance</h3>
-              <p>
-                24/7 technical support, regular updates, security monitoring,
-                and continuous optimization for peak performance.
-              </p>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="zoom-in"
+            data-aos-delay="200"
+          >
+            <div class="svc">
+              <img
+                class="svi"
+                src="https://techvaria.com/wp-content/uploads/2025/10/zoho-support.webp"
+                alt="Support"
+              />
+              <div class="svcont">
+                <div class="svn">06</div>
+                <h3>Ongoing Support & Maintenance</h3>
+                <p>
+                  24/7 technical support, regular updates, security monitoring,
+                  and continuous optimization for peak performance.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-white">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">Platform Fit</span>
-          <h2 class="section-title">
-            Is Zoho Commerce Right for Your Business?
-          </h2>
-          <p class="section-subtitle">
+    <section class="sec sw">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="sbg">Platform Fit</span>
+          <h2 class="st">Is Zoho Commerce Right for Your Business?</h2>
+          <p class="ss">
             Zoho Commerce is powerful when used for the right business model.
             Here's how to know if it's the right fit.
           </p>
         </div>
-
-        <div class="fit-grid">
-          <div class="fit-card good-fit">
-            <h3>Best Fit For</h3>
-            <ul>
-              <li>D2C brands selling through their own website</li>
-              <li>B2B & wholesale businesses with structured pricing</li>
-              <li>Businesses using Zoho Books, Inventory, or CRM</li>
-              <li>Multi-warehouse or multi-location sellers</li>
-              <li>Brands looking for accounting + commerce automation</li>
-            </ul>
+        <div class="row g-4 mb-5">
+          <div class="col-lg-6" data-aos="fade-right">
+            <div class="fc gf">
+              <h3>Best Fit For</h3>
+              <ul>
+                <li>D2C brands selling through their own website</li>
+                <li>B2B & wholesale businesses with structured pricing</li>
+                <li>Businesses using Zoho Books, Inventory, or CRM</li>
+                <li>Multi-warehouse or multi-location sellers</li>
+                <li>Brands looking for accounting + commerce automation</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="fit-card bad-fit">
-            <h3>Not Ideal If</h3>
-            <ul>
-              <li>You only sell via marketplaces (Amazon / Flipkart only)</li>
-              <li>You need a headless or heavily custom frontend</li>
-              <li>Your store depends on hundreds of custom plugins</li>
-              <li>You want extreme UI customization over operations</li>
-              <li>You run flash-sale / ultra high traffic events</li>
-            </ul>
+          <div class="col-lg-6" data-aos="fade-left">
+            <div class="fc bf">
+              <h3>Not Ideal If</h3>
+              <ul>
+                <li>You only sell via marketplaces (Amazon / Flipkart only)</li>
+                <li>You need a headless or heavily custom frontend</li>
+                <li>Your store depends on hundreds of custom plugins</li>
+                <li>You want extreme UI customization over operations</li>
+                <li>You run flash-sale / ultra high traffic events</li>
+              </ul>
+            </div>
           </div>
         </div>
-
-        <div class="fit-footer">
-          <p>
+        <div class="text-center">
+          <p
+            class="mb-4"
+            style="font-size: 1.125rem !important; color: var(--td) !important"
+          >
             Not sure where you fit?
             <strong>That's exactly what our consultation helps clarify.</strong>
           </p>
-          <a href="#contact" class="cta-button"
-            >Talk to a Zoho Commerce Expert</a
-          >
+          <a href="#contact" class="cta">Talk to a Zoho Commerce Expert</a>
         </div>
       </div>
     </section>
 
-    <section class="section section-dark" id="why-us">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">Why Choose Us</span>
-          <h2 class="section-title">What Sets Zolytics Apart</h2>
-          <p class="section-subtitle">
+    <section class="sec sg">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="sbg">Why Choose Us</span>
+          <h2 class="st">What Sets Zolytics Apart</h2>
+          <p class="ss">
             We're not just developers—we're strategic partners invested in your
             e-commerce success
           </p>
         </div>
-        <div class="diff-grid">
-          <div class="diff-card">
-            <div class="diff-number">01</div>
-            <h3>Zoho Expertise</h3>
-            <ul>
-              <li>Certified Zoho Commerce specialists</li>
-              <li>Deep knowledge of entire Zoho ecosystem</li>
-              <li>200+ successful implementations</li>
-              <li>Direct partnership with Zoho</li>
-            </ul>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6" data-aos="flip-left">
+            <div class="dc">
+              <div class="dn">01</div>
+              <h3>Zoho Expertise</h3>
+              <ul>
+                <li>Certified Zoho Commerce specialists</li>
+                <li>Deep knowledge of entire Zoho ecosystem</li>
+                <li>200+ successful implementations</li>
+                <li>Direct partnership with Zoho</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="diff-card">
-            <div class="diff-number">02</div>
-            <h3>Rapid Deployment</h3>
-            <ul>
-              <li>Go live in 2-4 weeks</li>
-              <li>Pre-built templates & workflows</li>
-              <li>Agile development methodology</li>
-              <li>Parallel task execution</li>
-            </ul>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="flip-left"
+            data-aos-delay="100"
+          >
+            <div class="dc">
+              <div class="dn">02</div>
+              <h3>Rapid Deployment</h3>
+              <ul>
+                <li>Go live in 2-4 weeks</li>
+                <li>Pre-built templates & workflows</li>
+                <li>Agile development methodology</li>
+                <li>Parallel task execution</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="diff-card">
-            <div class="diff-number">03</div>
-            <h3>Full-Stack Solutions</h3>
-            <ul>
-              <li>End-to-end implementation</li>
-              <li>Custom integrations & APIs</li>
-              <li>Advanced automation setup</li>
-              <li>Complete ecosystem connectivity</li>
-            </ul>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div class="dc">
+              <div class="dn">03</div>
+              <h3>Full-Stack Solutions</h3>
+              <ul>
+                <li>End-to-end implementation</li>
+                <li>Custom integrations & APIs</li>
+                <li>Advanced automation setup</li>
+                <li>Complete ecosystem connectivity</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="diff-card">
-            <div class="diff-number">04</div>
-            <h3>Business-First Approach</h3>
-            <ul>
-              <li>ROI-focused strategies</li>
-              <li>Industry best practices</li>
-              <li>Conversion optimization</li>
-              <li>Scalability planning</li>
-            </ul>
+          <div class="col-lg-4 col-md-6" data-aos="flip-left">
+            <div class="dc">
+              <div class="dn">04</div>
+              <h3>Business-First Approach</h3>
+              <ul>
+                <li>ROI-focused strategies</li>
+                <li>Industry best practices</li>
+                <li>Conversion optimization</li>
+                <li>Scalability planning</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="diff-card">
-            <div class="diff-number">05</div>
-            <h3>Security & Compliance</h3>
-            <ul>
-              <li>PCI DSS compliant setup</li>
-              <li>GDPR & data protection</li>
-              <li>Regular security audits</li>
-              <li>Secure payment gateway integration</li>
-            </ul>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="flip-left"
+            data-aos-delay="100"
+          >
+            <div class="dc">
+              <div class="dn">05</div>
+              <h3>Security & Compliance</h3>
+              <ul>
+                <li>PCI DSS compliant setup</li>
+                <li>GDPR & data protection</li>
+                <li>Regular security audits</li>
+                <li>Secure payment gateway integration</li>
+              </ul>
+            </div>
           </div>
-
-          <div class="diff-card">
-            <div class="diff-number">06</div>
-            <h3>Dedicated Support</h3>
-            <ul>
-              <li>24/7 technical assistance</li>
-              <li>Assigned account manager</li>
-              <li>Priority response times</li>
-              <li>Proactive monitoring</li>
-            </ul>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="flip-left"
+            data-aos-delay="200"
+          >
+            <div class="dc">
+              <div class="dn">06</div>
+              <h3>Dedicated Support</h3>
+              <ul>
+                <li>24/7 technical assistance</li>
+                <li>Assigned account manager</li>
+                <li>Priority response times</li>
+                <li>Proactive monitoring</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-light">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">Business Challenges</span>
-          <h2 class="section-title">E-commerce Problems We Solve</h2>
-          <p class="section-subtitle">
+    <section class="sec sl">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="sbg">Business Challenges</span>
+          <h2 class="st">E-commerce Problems We Solve</h2>
+          <p class="ss">
             Most online businesses don't fail because of traffic — they fail
             because operations, accounting, and inventory don't work together.
           </p>
         </div>
-
-        <div class="problems-grid">
-          <div class="problem-card">
-            <div class="problem-side">
-              <h3>Disconnected Systems</h3>
-              <ul>
-                <li>Orders managed in one tool</li>
-                <li>Accounting handled separately</li>
-                <li>Inventory updated manually</li>
-                <li>No single source of truth</li>
-              </ul>
-            </div>
-            <div class="solution-side">
-              <h3>Unified Zoho Ecosystem</h3>
-              <ul>
-                <li>Commerce + Books + Inventory fully synced</li>
-                <li>Automatic order to invoice to payment flow</li>
-                <li>Real-time stock updates</li>
-                <li>Centralized operational control</li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="problem-card">
-            <div class="problem-side">
-              <h3>Inventory Mismatch</h3>
-              <ul>
-                <li>Overselling popular products</li>
-                <li>Stock errors across warehouses</li>
-                <li>Manual reconciliation</li>
-                <li>Delayed fulfillment</li>
-              </ul>
-            </div>
-            <div class="solution-side">
-              <h3>Smart Inventory Automation</h3>
-              <ul>
-                <li>Real-time multi-warehouse sync</li>
-                <li>Automated stock deduction</li>
-                <li>Low-stock & reorder alerts</li>
-                <li>Accurate fulfillment tracking</li>
-              </ul>
+        <div data-aos="fade-up">
+          <div class="pc">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="ps">
+                  <h3>Disconnected Systems</h3>
+                  <ul>
+                    <li>Orders managed in one tool</li>
+                    <li>Accounting handled separately</li>
+                    <li>Inventory updated manually</li>
+                    <li>No single source of truth</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sols">
+                  <h3>Unified Zoho Ecosystem</h3>
+                  <ul>
+                    <li>Commerce + Books + Inventory fully synced</li>
+                    <li>Automatic order to invoice to payment flow</li>
+                    <li>Real-time stock updates</li>
+                    <li>Centralized operational control</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="problem-card">
-            <div class="problem-side">
-              <h3>Manual Order Processing</h3>
-              <ul>
-                <li>Invoice creation done manually</li>
-                <li>Shipping updates sent separately</li>
-                <li>High chances of errors</li>
-                <li>Time-consuming operations</li>
-              </ul>
-            </div>
-            <div class="solution-side">
-              <h3>Automated Order Workflows</h3>
-              <ul>
-                <li>Auto invoice & payment capture</li>
-                <li>Shipment & status automation</li>
-                <li>Reduced human errors</li>
-                <li>Faster order fulfillment</li>
-              </ul>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="100">
+          <div class="pc">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="ps">
+                  <h3>Inventory Mismatch</h3>
+                  <ul>
+                    <li>Overselling popular products</li>
+                    <li>Stock errors across warehouses</li>
+                    <li>Manual reconciliation</li>
+                    <li>Delayed fulfillment</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sols">
+                  <h3>Smart Inventory Automation</h3>
+                  <ul>
+                    <li>Real-time multi-warehouse sync</li>
+                    <li>Automated stock deduction</li>
+                    <li>Low-stock & reorder alerts</li>
+                    <li>Accurate fulfillment tracking</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
-
-          <div class="problem-card">
-            <div class="problem-side">
-              <h3>Poor Business Visibility</h3>
-              <ul>
-                <li>No clarity on margins</li>
-                <li>Scattered reports</li>
-                <li>Delayed decision-making</li>
-                <li>Guess-based scaling</li>
-              </ul>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="200">
+          <div class="pc">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="ps">
+                  <h3>Manual Order Processing</h3>
+                  <ul>
+                    <li>Invoice creation done manually</li>
+                    <li>Shipping updates sent separately</li>
+                    <li>High chances of errors</li>
+                    <li>Time-consuming operations</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sols">
+                  <h3>Automated Order Workflows</h3>
+                  <ul>
+                    <li>Auto invoice & payment capture</li>
+                    <li>Shipment & status automation</li>
+                    <li>Reduced human errors</li>
+                    <li>Faster order fulfillment</li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="solution-side">
-              <h3>Actionable Business Insights</h3>
-              <ul>
-                <li>Sales, revenue & margin dashboards</li>
-                <li>Zoho Analytics integration</li>
-                <li>Real-time performance tracking</li>
-                <li>Data-driven growth planning</li>
-              </ul>
+          </div>
+        </div>
+        <div data-aos="fade-up" data-aos-delay="300">
+          <div class="pc">
+            <div class="row g-0">
+              <div class="col-md-6">
+                <div class="ps">
+                  <h3>Poor Business Visibility</h3>
+                  <ul>
+                    <li>No clarity on margins</li>
+                    <li>Scattered reports</li>
+                    <li>Delayed decision-making</li>
+                    <li>Guess-based scaling</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="sols">
+                  <h3>Actionable Business Insights</h3>
+                  <ul>
+                    <li>Sales, revenue & margin dashboards</li>
+                    <li>Zoho Analytics integration</li>
+                    <li>Real-time performance tracking</li>
+                    <li>Data-driven growth planning</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section section-white">
-      <div class="section-container">
-        <div class="section-header">
-          <span class="section-badge">Our Process</span>
-          <h2 class="section-title">How We Work</h2>
-          <p class="section-subtitle">
+    <section class="sec sw">
+      <div class="container">
+        <div class="text-center mb-5">
+          <span class="sbg">Our Process</span>
+          <h2 class="st">How We Work</h2>
+          <p class="ss">
             A proven methodology that ensures successful project delivery every
             time
           </p>
         </div>
-        <div class="process-timeline">
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Discovery & Planning</h3>
-              <p>
-                We analyze your business requirements, current systems, and
-                goals to create a comprehensive implementation roadmap.
-              </p>
+        <div class="prt">
+          <div class="prs" data-aos="fade-right">
+            <div class="prn">1</div>
+            <div class="row">
+              <div class="col-md-6 prcl">
+                <h3>Discovery & Planning</h3>
+                <p>
+                  We analyze your business requirements, current systems, and
+                  goals to create a comprehensive implementation roadmap.
+                </p>
+              </div>
+              <div class="col-md-6"></div>
             </div>
-            <div class="process-number">1</div>
-            <div class="process-content"></div>
           </div>
-
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Design & Configuration</h3>
-              <p>
-                Custom theme design, store setup, product catalog configuration,
-                and integration architecture planning.
-              </p>
+          <div class="prs" data-aos="fade-left">
+            <div class="prn">2</div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6 prcr">
+                <h3>Design & Configuration</h3>
+                <p>
+                  Custom theme design, store setup, product catalog
+                  configuration, and integration architecture planning.
+                </p>
+              </div>
             </div>
-            <div class="process-number">2</div>
-            <div class="process-content"></div>
           </div>
-
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Development & Integration</h3>
-              <p>
-                Full implementation of customizations, third-party integrations,
-                and Zoho ecosystem connections.
-              </p>
+          <div class="prs" data-aos="fade-right">
+            <div class="prn">3</div>
+            <div class="row">
+              <div class="col-md-6 prcl">
+                <h3>Development & Integration</h3>
+                <p>
+                  Full implementation of customizations, third-party
+                  integrations, and Zoho ecosystem connections.
+                </p>
+              </div>
+              <div class="col-md-6"></div>
             </div>
-            <div class="process-number">3</div>
-            <div class="process-content"></div>
           </div>
-
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Testing & Quality Assurance</h3>
-              <p>
-                Rigorous testing of all features, payment gateways,
-                integrations, and user flows.
-              </p>
+          <div class="prs" data-aos="fade-left">
+            <div class="prn">4</div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6 prcr">
+                <h3>Testing & Quality Assurance</h3>
+                <p>
+                  Rigorous testing of all features, payment gateways,
+                  integrations, and user flows.
+                </p>
+              </div>
             </div>
-            <div class="process-number">4</div>
-            <div class="process-content"></div>
           </div>
-
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Launch & Training</h3>
-              <p>
-                Smooth store launch with comprehensive team training and
-                immediate post-launch support.
-              </p>
+          <div class="prs" data-aos="fade-right">
+            <div class="prn">5</div>
+            <div class="row">
+              <div class="col-md-6 prcl">
+                <h3>Launch & Training</h3>
+                <p>
+                  Smooth store launch with comprehensive team training and
+                  immediate post-launch support.
+                </p>
+              </div>
+              <div class="col-md-6"></div>
             </div>
-            <div class="process-number">5</div>
-            <div class="process-content"></div>
           </div>
-
-          <div class="process-step">
-            <div class="process-content">
-              <h3>Optimize & Scale</h3>
-              <p>
-                Ongoing optimization, performance monitoring, and strategic
-                guidance as your business grows.
-              </p>
+          <div
+            class="prs"
+            data-aos="fade-left"
+            style="margin-bottom: 0 !important"
+          >
+            <div class="prn">6</div>
+            <div class="row">
+              <div class="col-md-6"></div>
+              <div class="col-md-6 prcr">
+                <h3>Optimize & Scale</h3>
+                <p>
+                  Ongoing optimization, performance monitoring, and strategic
+                  guidance as your business grows.
+                </p>
+              </div>
             </div>
-            <div class="process-number">6</div>
-            <div class="process-content"></div>
           </div>
         </div>
       </div>
@@ -1515,7 +1332,7 @@
       <div class="footer-content">
         <!-- Company Info -->
         <div class="footer-section">
-          <h3>Zolytics</h3>
+          <h3 >Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
           <p>
             We help businesses simplify operations by implementing, customizing,
@@ -1524,26 +1341,26 @@
           </p>
         </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
+         <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
             <ul class="solutions-grid">
-              <li><a href="analytics.html">Zoho Analytics</a></li>
-              <li><a href="bigin.html">Zoho Bigin</a></li>
-              <li><a href="billing.html">Zoho Billing</a></li>
-              <li><a href="books.html">Zoho Books</a></li>
-              <li><a href="commerce.html">Zoho Commerce</a></li>
-              <li><a href="crm.html">Zoho CRM</a></li>
-              <li><a href="expense.html">Zoho Expense</a></li>
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory.html">Zoho Inventory</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
 
-              <li><a href="payroll.html">Zoho Payroll</a></li>
+              <li><a href="payroll-html">Zoho Payroll</a></li>
 
-              <li><a href="peopleplus.html">Zoho People Plus</a></li>
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
 
-              <li><a href="recruit.html">Zoho Recruit</a></li>
+              <li><a href="recruit-html">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
@@ -1555,6 +1372,33 @@
             Email: info@zolytics.in <br />
             Phone: +91 90 7313 9613<br />
             Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
           </p>
           <div class="zoho-logo">
             <img
@@ -1702,101 +1546,63 @@
         }
       }
     </style>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      // Scroll Progress Bar
+      AOS.init({ duration: 800, once: true });
       window.addEventListener("scroll", () => {
-        const windowHeight =
+        const h =
           document.documentElement.scrollHeight -
           document.documentElement.clientHeight;
-        const scrolled = (window.scrollY / windowHeight) * 100;
-        document.getElementById("progressBar").style.width = scrolled + "%";
+        const s = (window.scrollY / h) * 100;
+        document.getElementById("progressBar").style.width = s + "%";
+        const n = document.getElementById("navbar");
+        window.scrollY > 50 ? n.classList.add("sc") : n.classList.remove("sc");
       });
-
-      // Navbar scroll effect
-      window.addEventListener("scroll", () => {
-        const navbar = document.getElementById("navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-
-      // Smooth scrolling for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
+      document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener("click", function (e) {
           e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            target.scrollIntoView({
-              behavior: "smooth",
-              block: "start",
-            });
-          }
+          const t = document.querySelector(this.getAttribute("href"));
+          if (t) t.scrollIntoView({ behavior: "smooth", block: "start" });
         });
       });
-
-      // Counter animation for stats
-      const animateCounter = (element, target) => {
-        let current = 0;
-        const increment = target / 100;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            element.textContent =
-              target +
-              (target === 98
-                ? "%"
-                : target === 200
-                ? "+"
-                : target === 15
-                ? "+"
-                : "");
-            clearInterval(timer);
+      const ac = (e, t) => {
+        let c = 0;
+        const i = t / 100;
+        const tm = setInterval(() => {
+          c += i;
+          if (c >= t) {
+            e.textContent =
+              t + (t === 98 ? "%" : t === 200 ? "+" : t === 15 ? "+" : "");
+            clearInterval(tm);
           } else {
-            element.textContent =
-              Math.floor(current) + (target === 98 ? "%" : "");
+            e.textContent = Math.floor(c) + (t === 98 ? "%" : "");
           }
         }, 20);
       };
-
-      // Trigger counter animation when stats section is visible
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const statNumbers = entry.target.querySelectorAll(".stat-number");
-              statNumbers.forEach((stat) => {
-                const text = stat.textContent;
-                const number = parseInt(text);
-                if (!isNaN(number)) {
-                  stat.textContent = "0";
+      const so = new IntersectionObserver(
+        (es) => {
+          es.forEach((e) => {
+            if (e.isIntersecting) {
+              const sns = e.target.querySelectorAll(".stn");
+              sns.forEach((s) => {
+                const txt = s.textContent;
+                const n = parseInt(txt);
+                if (!isNaN(n)) {
+                  s.textContent = "0";
                   setTimeout(() => {
-                    animateCounter(stat, number);
+                    ac(s, n);
                   }, 300);
                 }
               });
-              statsObserver.unobserve(entry.target);
+              so.unobserve(e.target);
             }
           });
         },
-        { threshold: 0.5 }
+        { threshold: 0.5 },
       );
-
-      const statsSection = document.querySelector(".stats-banner");
-      if (statsSection) {
-        statsObserver.observe(statsSection);
-      }
-
-      // Loading animation
-      window.addEventListener("load", () => {
-        document.body.style.opacity = "0";
-        setTimeout(() => {
-          document.body.style.transition = "opacity 0.5s ease-in";
-          document.body.style.opacity = "1";
-        }, 100);
-      });
+      const ss = document.querySelector(".sb");
+      if (ss) so.observe(ss);
     </script>
   </body>
 </html>
