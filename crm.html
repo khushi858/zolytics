@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -10,17 +10,32 @@
       name="description"
       content="Discover how Zoho CRM's powerful features streamline business operations with AI-powered automation, 360° customer view, and intelligent workflow management."
     />
+
+    <!-- Bootstrap 5 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
 
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <!-- AOS Animation Library -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+      rel="stylesheet"
+    />
+
+    <style>
       :root {
         --primary-color: #3d5a80;
         --primary-dark: #2c4563;
@@ -33,18 +48,24 @@
         --border-light: #dee2e6;
         --bg-light: #f8f9fa;
         --white: #ffffff;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
-        --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
-        --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.16);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
       }
 
       body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
         line-height: 1.6;
         color: var(--text-primary);
-        background: var(--white);
-        -webkit-font-smoothing: antialiased;
         overflow-x: hidden;
       }
 
@@ -53,264 +74,89 @@
       }
 
       /* Scroll Progress Bar */
-      .scroll-progress-container {
+      .scroll-progress {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
-        height: 5px;
+        height: 4px;
         background: rgba(255, 255, 255, 0.1);
         z-index: 9999;
-        backdrop-filter: blur(10px);
       }
 
       .scroll-progress-bar {
         height: 100%;
-        background: linear-gradient(90deg, #e74c3c 0%, #3d5a80 50%, #5b7fa8 100%);
+        background: linear-gradient(
+          90deg,
+          #e74c3c 0%,
+          #3d5a80 50%,
+          #5b7fa8 100%
+        );
         width: 0%;
-        transition: width 0.1s ease-out;
+        transition: width 0.1s ease;
         box-shadow: 0 0 20px rgba(231, 76, 60, 0.5);
       }
 
       /* Scroll to Top Button */
-      .scroll-to-top {
+      .scroll-top {
         position: fixed;
         bottom: 30px;
         right: 30px;
-        width: 55px;
-        height: 55px;
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
         color: white;
         border: none;
         border-radius: 50%;
-        font-size: 1.5rem;
-        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         opacity: 0;
         visibility: hidden;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 9998;
+        z-index: 999;
+        cursor: pointer;
         box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
       }
 
-      .scroll-to-top.visible {
+      .scroll-top.visible {
         opacity: 1;
         visibility: visible;
       }
 
-      .scroll-to-top:hover {
-        transform: translateY(-8px) scale(1.1);
+      .scroll-top:hover {
+        transform: translateY(-5px) scale(1.1);
         box-shadow: 0 12px 35px rgba(231, 76, 60, 0.6);
-        background: linear-gradient(135deg, #ff5544 0%, #e74c3c 100%);
       }
 
-      .scroll-to-top:active {
-        transform: translateY(-5px) scale(1.05);
-      }
-
-      /* Advanced Animations */
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(60px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-60px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(60px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0px);
-        }
-        50% {
-          transform: translateY(-20px);
-        }
-      }
-
-      @keyframes pulse {
-        0%,
-        100% {
-          opacity: 1;
-          transform: scale(1);
-        }
-        50% {
-          opacity: 0.85;
-          transform: scale(1.02);
-        }
-      }
-
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
-        }
-        100% {
-          background-position: 1000px 0;
-        }
-      }
-
-      @keyframes gradientShift {
-        0% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
-        100% {
-          background-position: 0% 50%;
-        }
-      }
-
-      @keyframes scaleIn {
-        from {
-          opacity: 0;
-          transform: scale(0.9);
-        }
-        to {
-          opacity: 1;
-          transform: scale(1);
-        }
-      }
-
-      @keyframes rotateIn {
-        from {
-          opacity: 0;
-          transform: rotate(-5deg) scale(0.95);
-        }
-        to {
-          opacity: 1;
-          transform: rotate(0deg) scale(1);
-        }
-      }
-
-      @keyframes floatSoft {
-        0%, 100% {
-          transform: translateY(0) scale(1);
-        }
-        50% {
-          transform: translateY(-30px) scale(1.05);
-        }
-      }
-
-      /* Enhanced Header */
+      /* Header */
       header {
         background: rgba(255, 255, 255, 0.98);
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(44, 62, 80, 0.1);
-        padding: 1.2rem 0;
         position: sticky;
         top: 0;
         z-index: 1000;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-        animation: fadeIn 0.6s ease-out;
         transition: all 0.3s ease;
       }
 
-      header:hover {
-        box-shadow: 0 6px 40px rgba(0, 0, 0, 0.12);
+      .navbar-brand img {
+        height: 60px;
+        transition: transform 0.3s ease;
       }
 
-      nav {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .navbar-brand img:hover {
+        transform: scale(1.05);
       }
 
-      .logo {
+      .logo-container {
         display: flex;
         align-items: center;
         gap: 1.5rem;
-        animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .logo img {
-        height: 55px;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
-      }
-
-      .logo img:hover {
-        transform: scale(1.08) translateY(-2px);
-        filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.2));
-      }
-
-      .cta-header {
-        background: linear-gradient(135deg, #000 0%, #2c3e50 100%);
-        color: var(--white);
-        padding: 0.9rem 2.5rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 0.95rem;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
-      }
-
-      .cta-header::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.2);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
-
-      .cta-header:hover::before {
-        width: 300px;
-        height: 300px;
-      }
-
-      .cta-header:hover {
-        transform: translateY(-3px) scale(1.05);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
-      }
-
-      /* Hero Section - Advanced */
+      /* Hero Section */
       .hero {
         background: linear-gradient(
           135deg,
@@ -320,10 +166,19 @@
         );
         background-size: 200% 200%;
         animation: gradientShift 15s ease infinite;
-        padding: 8rem 2rem 7rem;
-        text-align: center;
+        padding: 120px 0 100px;
         position: relative;
         overflow: hidden;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
       }
 
       .hero::before {
@@ -334,187 +189,92 @@
         width: 200%;
         height: 200%;
         background: radial-gradient(
-            circle at 30% 40%,
-            rgba(255, 255, 255, 0.15) 0%,
-            transparent 60%
-          ),
-          radial-gradient(
-            circle at 70% 60%,
-            rgba(255, 255, 255, 0.1) 0%,
-            transparent 60%
-          );
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          transparent 60%
+        );
         animation: float 20s ease-in-out infinite;
       }
 
-      .hero::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 2px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.5),
-          transparent
-        );
-        animation: shimmer 3s infinite;
-      }
-
-      .hero-content {
-        max-width: 950px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        50% {
+          transform: translate(50px, 50px) rotate(180deg);
+        }
       }
 
       .hero h1 {
-        font-size: 4rem;
+        font-size: 3.5rem;
         font-weight: 900;
-        color: var(--white);
-        margin-bottom: 2rem;
-        line-height: 1.15;
-        letter-spacing: -0.03em;
-        text-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1);
+        color: white;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+        position: relative;
+        z-index: 1;
       }
 
       .hero .highlight {
         color: #fff;
         background: rgba(255, 255, 255, 0.2);
-        padding: 5px 25px;
-        border-radius: 15px;
+        padding: 5px 20px;
+        border-radius: 12px;
         border: 2px solid rgba(255, 255, 255, 0.4);
         display: inline-block;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         backdrop-filter: blur(10px);
-      }
-
-      .hero .highlight:hover {
-        transform: scale(1.08) translateY(-3px);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
-        background: rgba(255, 255, 255, 0.25);
-        border-color: rgba(255, 255, 255, 0.6);
       }
 
       .hero p {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         color: rgba(255, 255, 255, 0.95);
-        margin-bottom: 3.5rem;
-        line-height: 1.9;
-        font-weight: 500;
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s backwards;
-      }
-
-      .hero-buttons {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s backwards;
-      }
-
-      .btn-primary,
-      .btn-secondary {
-        padding: 1.4rem 3.5rem;
-        border-radius: 50px;
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 1.05rem;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        display: inline-block;
+        margin-bottom: 2.5rem;
         position: relative;
-        overflow: hidden;
+        z-index: 1;
       }
 
-      .btn-primary {
-        background: var(--white);
+      .btn-custom-primary {
+        background: white;
         color: var(--primary-color);
-        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
-        border: 2px solid var(--white);
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        border: 2px solid white;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
       }
 
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        border-radius: 50%;
-        background: rgba(61, 90, 128, 0.1);
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
-
-      .btn-primary:hover::before {
-        width: 400px;
-        height: 400px;
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-5px) scale(1.05);
+      .btn-custom-primary:hover {
+        transform: translateY(-3px);
         box-shadow: 0 15px 40px rgba(255, 255, 255, 0.5);
+        color: var(--primary-color);
       }
 
-      .btn-secondary {
+      .btn-custom-secondary {
         background: rgba(255, 255, 255, 0.15);
-        color: var(--white);
-        border: 2px solid var(--white);
+        color: white;
+        padding: 15px 40px;
+        border-radius: 50px;
+        font-weight: 700;
+        border: 2px solid white;
         backdrop-filter: blur(10px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        transition: all 0.3s ease;
       }
 
-      .btn-secondary:hover {
-        background: rgba(255, 255, 255, 0.3);
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+      .btn-custom-secondary:hover {
+        background: rgba(255, 255, 255, 0.25);
+        transform: translateY(-3px);
+        color: white;
       }
 
-      /* Section Styles - Enhanced */
-      .section {
-        padding: 7rem 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(44, 62, 80, 0.2),
-          transparent
-        );
-      }
-
-      .section-light {
-        background: var(--white);
-      }
-
-      .section-gray {
-        background: linear-gradient(180deg, #fafbfc 0%, #f0f3f5 100%);
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
+      /* Section Titles */
       .section-title {
-        font-size: 3.2rem;
+        font-size: 2.8rem;
         font-weight: 900;
         text-align: center;
+        margin-bottom: 1rem;
         color: var(--text-primary);
-        margin-bottom: 1.5rem;
-        letter-spacing: -0.02em;
         position: relative;
         display: inline-block;
         width: 100%;
@@ -523,448 +283,162 @@
       .section-title::after {
         content: "";
         position: absolute;
-        bottom: -25px;
+        bottom: -15px;
         left: 50%;
         transform: translateX(-50%);
-        width: 120px;
-        height: 6px;
-        background: linear-gradient(
-          90deg,
-          #3d5a80 0%,
-          #5b7fa8 50%,
-          #3d5a80 100%
-        );
-        border-radius: 3px;
-        animation: shimmer 3s infinite;
-        background-size: 200% 100%;
+        width: 100px;
+        height: 4px;
+        background: linear-gradient(90deg, #3d5a80, #5b7fa8, #3d5a80);
+        border-radius: 2px;
       }
 
       .section-subtitle {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         color: var(--text-secondary);
         text-align: center;
-        max-width: 850px;
-        margin: 3.5rem auto 5rem;
-        line-height: 1.9;
-        font-weight: 500;
+        max-width: 800px;
+        margin: 2.5rem auto 4rem;
+        line-height: 1.8;
       }
 
-      /* ULTRA-ADVANCED PROBLEMS SECTION */
+      /* Problems Section */
       .problems-section {
-        background:  #fafbfd ;
-        padding: 8rem 2rem;
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        padding: 100px 0;
         position: relative;
         overflow: hidden;
-      }
-
-      .problems-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-          radial-gradient(circle at 15% 20%, rgba(231, 76, 60, 0.08) 0%, transparent 40%),
-          radial-gradient(circle at 85% 80%, rgba(61, 90, 128, 0.12) 0%, transparent 50%),
-          radial-gradient(circle at 50% 50%, rgba(91, 127, 168, 0.06) 0%, transparent 60%);
-        animation: float 15s ease-in-out infinite;
-      }
-
-      .problems-section::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: 
-          repeating-linear-gradient(
-            90deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            transparent 1px,
-            transparent 80px,
-            rgba(255, 255, 255, 0.02) 81px
-          ),
-          repeating-linear-gradient(
-            0deg,
-            rgba(255, 255, 255, 0.02) 0px,
-            transparent 1px,
-            transparent 80px,
-            rgba(255, 255, 255, 0.02) 81px
-          );
-        pointer-events: none;
-      }
-
-      .problems-section .section-title {
-        color: var(--black);
-        position: relative;
-        z-index: 1;
-      }
-
-      .problems-section .section-title::after {
-        background: linear-gradient(
-          90deg,
-          rgba(231, 76, 60, 0.8) 0%,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(231, 76, 60, 0.8) 100%
-        );
-      }
-
-      .problems-section .section-subtitle {
-        color: rgba(7, 7, 7, 0.9);
-        position: relative;
-        z-index: 1;
-      }
-
-      .problems-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 3.5rem;
-        margin-top: 5rem;
-        padding: 0 1rem;
-        position: relative;
-        z-index: 1;
       }
 
       .problem-card {
-        width: 400px;
-         gap: 3.5rem;
-        margin-right: -90px;
-        position: relative;
-        border-radius: 32px;
+        background: white;
+        border-radius: 20px;
         overflow: hidden;
-        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-        background: linear-gradient(145deg, rgba(20, 25, 40, 0.95), rgba(15, 20, 35, 0.98));
-        backdrop-filter: blur(20px);
-        border: 2px solid rgba(255, 255, 255, 0.08);
-        transform-style: preserve-3d;
-        perspective: 1000px;
-      }
-
-      .problem-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          145deg,
-          rgba(231, 76, 60, 0.15) 0%,
-          rgba(61, 90, 128, 0.12) 50%,
-          rgba(91, 127, 168, 0.1) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 1;
-      }
-
-      .problem-card:hover::before {
-        opacity: 1;
-      }
-
-      .problem-card::after {
-        content: "";
-        position: absolute;
-        top: -4px;
-        left: -4px;
-        right: -4px;
-        bottom: -4px;
-        background-size: 300% 300%;
-        border-radius: 32px;
-        opacity: 0;
-        z-index: -1;
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        animation: gradientShift 6s ease infinite;
-      }
-
-      .problem-card:hover::after {
-        opacity: 1;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        height: 100%;
       }
 
       .problem-card:hover {
-        transform: translateY(-30px) scale(1.05) rotateX(2deg);
-        box-shadow: 0 40px 100px rgba(231, 76, 60, 0.4), 0 0 80px rgba(61, 90, 128, 0.3);
-        border-color: rgba(231, 76, 60, 0.3);
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 30px 80px rgba(231, 76, 60, 0.2);
       }
 
       .problem-icon {
         position: relative;
-        width: 100%;
-        height: 340px;
+        height: 250px;
         overflow: hidden;
-        background: linear-gradient(135deg, #0a0e1a 0%, #1a1f35 100%);
       }
 
-      .problem-icon::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(0, 0, 0, 0.4) 70%,
-          rgba(0, 0, 0, 0.8) 100%
-        );
-        z-index: 2;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .problem-card:hover .problem-icon::after {
-        background: linear-gradient(
-          180deg,
-          rgba(231, 76, 60, 0.1) 0%,
-          rgba(0, 0, 0, 0.2) 70%,
-          rgba(0, 0, 0, 0.6) 100%
-        );
-      }
-
-      .problem-card img {
+      .problem-icon img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
-        transition: all 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-        filter: brightness(0.8) contrast(1.15) saturate(1.1);
+        transition: transform 0.5s ease;
       }
 
-      .problem-card:hover img {
-        transform: scale(1.2) translateZ(30px);
-        filter: brightness(1.1) contrast(1.3) saturate(1.3);
-      }
-
-      .problem-content {
-        padding: 3rem 2.8rem;
-        position: relative;
-        z-index: 2;
-        background: linear-gradient(180deg, rgba(10, 15, 28, 0.98), rgba(15, 20, 35, 1));
-        backdrop-filter: blur(30px);
+      .problem-card:hover .problem-icon img {
+        transform: scale(1.1);
       }
 
       .problem-badge {
         position: absolute;
-        top: -28px;
-        left: 2.8rem;
-        background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, #e74c3c, #c0392b);
         color: white;
-        padding: 0.8rem 2rem;
-        border-radius: 30px;
-        font-size: 0.88rem;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
         font-weight: 800;
         text-transform: uppercase;
-        letter-spacing: 1.5px;
+        letter-spacing: 1px;
         box-shadow: 0 10px 30px rgba(231, 76, 60, 0.5);
-        z-index: 3;
-        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border: 2px solid rgba(255, 255, 255, 0.2);
+        z-index: 2;
       }
 
-      .problem-card:hover .problem-badge {
-        transform: translateY(-8px) scale(1.1);
-        box-shadow: 0 15px 45px rgba(231, 76, 60, 0.8);
-        background: linear-gradient(135deg, #ff5544 0%, #e74c3c 100%);
-        border-color: rgba(255, 255, 255, 0.4);
+      .problem-content {
+        padding: 30px;
       }
 
-      .problem-card h4 {
-        font-size: 1.85rem;
-        font-weight: 900;
-        margin-bottom: 1.5rem;
-        color: var(--white);
-        transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-        letter-spacing: -0.02em;
-        text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        line-height: 1.3;
+      .problem-content h4 {
+        font-size: 1.6rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        color: var(--text-primary);
       }
 
-      .problem-card:hover h4 {
-        color: #ff6b5a;
-        transform: translateX(12px);
-        text-shadow: 0 6px 25px rgba(231, 76, 60, 0.6);
+      .problem-content p {
+        color: var(--text-secondary);
+        line-height: 1.8;
       }
 
-      .problem-card p {
-        font-size: 1.12rem;
-        color: rgba(255, 255, 255, 0.75);
-        line-height: 1.9;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .problem-card:hover p {
-        color: rgba(255, 255, 255, 0.95);
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-      }
-
-      .problem-icon-overlay {
-        position: absolute;
-        top: 25px;
-        right: 25px;
-        width: 70px;
-        height: 70px;
-        background: linear-gradient(135deg, rgba(231, 76, 60, 0.95), rgba(192, 57, 43, 1));
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.2rem;
-        color: white;
-        z-index: 3;
-        box-shadow: 0 10px 35px rgba(231, 76, 60, 0.6);
-        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        border: 3px solid rgba(255, 255, 255, 0.3);
-      }
-
-      .problem-card:hover .problem-icon-overlay {
-        transform: rotate(360deg) scale(1.25);
-        background: linear-gradient(135deg, rgba(255, 85, 68, 1), rgba(231, 76, 60, 1));
-        box-shadow: 0 15px 50px rgba(231, 76, 60, 0.9), 0 0 40px rgba(231, 76, 60, 0.5);
-        border-color: rgba(255, 255, 255, 0.6);
-      }
-
-      /* Scroll Animation - Enhanced */
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(60px);
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .scroll-reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Core Capabilities Grid - Enhanced */
-      .capabilities-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 3rem;
-        margin-top: 3rem;
-      }
-
+      /* Capability Cards */
       .capability-card {
-        background: var(--white);
-        border-radius: 28px;
-        border: 3px solid var(--border-light);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background: white;
+        border-radius: 20px;
         overflow: hidden;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        position: relative;
-      }
-
-
-      .capability-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(61, 90, 128, 0.05),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.6s;
-      }
-
-      .capability-card:hover::before {
-        opacity: 1;
+        transition: all 0.5s ease;
+        height: 100%;
+        border: 2px solid transparent;
       }
 
       .capability-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(61, 90, 128, 0.15);
         border-color: var(--primary-color);
       }
 
       .capability-image {
-        width: 100%;
-        height: 260px;
+        height: 220px;
         overflow: hidden;
         position: relative;
-        background: linear-gradient(135deg, #3d5a80 0%, #2c4563 100%);
-      }
-
-      .capability-image::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          180deg,
-          transparent 0%,
-          rgba(0, 0, 0, 0.3) 100%
-        );
-        transition: opacity 0.6s;
-      }
-
-      .capability-card:hover .capability-image::after {
-        opacity: 0;
       }
 
       .capability-image img {
         width: 100%;
         height: 100%;
         object-fit: cover;
-        object-position: center;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.5s ease;
       }
 
       .capability-card:hover .capability-image img {
-        transform: scale(1.15) rotate(2deg);
+        transform: scale(1.1);
       }
 
       .capability-content {
-        padding: 2.5rem;
+        padding: 30px;
       }
 
       .capability-content h4 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         font-weight: 800;
-        margin-bottom: 1.3rem;
+        margin-bottom: 15px;
         color: var(--text-primary);
-        transition: all 0.4s ease;
+        transition: color 0.3s ease;
       }
 
-      .capability-card:hover h4 {
+      .capability-card:hover .capability-content h4 {
         color: var(--primary-color);
-        transform: translateX(5px);
-      }
-
-      .capability-content p {
-        font-size: 1.08rem;
-        color: var(--text-secondary);
-        line-height: 1.9;
-        margin-bottom: 1.8rem;
       }
 
       .capability-features {
         display: flex;
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 12px;
+        margin-top: 20px;
       }
 
       .capability-feature {
         display: flex;
         align-items: center;
-        gap: 0.8rem;
-        font-size: 0.98rem;
-        color: var(--text-secondary);
-        padding: 0.5rem 0;
-        transition: all 0.3s ease;
+        gap: 10px;
+        padding: 8px 0;
+        transition: transform 0.3s ease;
       }
 
       .capability-feature:hover {
         transform: translateX(8px);
-        color: var(--text-primary);
       }
 
       .capability-feature::before {
@@ -974,392 +448,99 @@
         justify-content: center;
         width: 24px;
         height: 24px;
-        background: linear-gradient(135deg, #3d5a80 0%, #2c4563 100%);
+        background: linear-gradient(135deg, #3d5a80, #2c4563);
         color: white;
         border-radius: 50%;
         font-weight: 700;
         font-size: 0.75rem;
         flex-shrink: 0;
-        box-shadow: 0 3px 10px rgba(61, 90, 128, 0.3);
-        transition: all 0.3s ease;
       }
 
-      .capability-feature:hover::before {
-        transform: scale(1.2) rotate(360deg);
-        box-shadow: 0 5px 15px rgba(61, 90, 128, 0.5);
-      }
-
-      /* Carousel Section - Enhanced */
+      /* Carousel */
       .carousel-section {
-        background: linear-gradient(
-          135deg,
-          #1a2332 0%,
-          #2c3e50 50%,
-          #34495e 100%
-        );
-        background-size: 200% 200%;
-        animation: gradientShift 15s ease infinite;
-        padding: 7rem 2rem;
-        overflow: hidden;
-        position: relative;
+        background: linear-gradient(135deg, #1a2332, #2c3e50, #34495e);
+        padding: 100px 0;
       }
 
-      .carousel-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: radial-gradient(
-          circle at 20% 50%,
-          rgba(255, 255, 255, 0.08) 0%,
-          transparent 50%
-        );
-        animation: float 12s ease-in-out infinite;
-      }
-
-      .carousel-section .section-title {
-        color: var(--white);
-      }
-
-      .carousel-section .section-title::after {
-        background: linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.8) 0%,
-          rgba(255, 255, 255, 1) 50%,
-          rgba(255, 255, 255, 0.8) 100%
-        );
-      }
-
+      .carousel-section .section-title,
       .carousel-section .section-subtitle {
-        color: rgba(255, 255, 255, 0.9);
+        color: white;
       }
 
-      .carousel-container {
-        position: relative;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 0;
-      }
-
-      .carousel-wrapper {
-        overflow: hidden;
-        border-radius: 24px;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-      }
-
-      .carousel-track {
-        display: flex;
-        transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .carousel-slide {
-        min-width: 100%;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 4rem;
-        align-items: center;
-        padding: 4rem;
-        background: var(--white);
-      }
-
-      .carousel-slide.reverse {
-        direction: rtl;
-      }
-
-      .carousel-slide.reverse > * {
-        direction: ltr;
-      }
-
-      .carousel-image {
+      .carousel-item-custom {
+        background: white;
         border-radius: 20px;
+        padding: 50px;
+      }
+
+      .carousel-image-wrapper {
+        border-radius: 15px;
         overflow: hidden;
-        border: 3px solid var(--border-light);
         box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-        height: 480px;
-        position: relative;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
-      .carousel-image::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(61, 90, 128, 0.2),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.6s;
-        z-index: 1;
-      }
-
-      .carousel-image:hover::before {
-        opacity: 1;
-      }
-
-      .carousel-image:hover {
-        transform: scale(1.03);
-        box-shadow: 0 20px 70px rgba(0, 0, 0, 0.3);
-        border-color: var(--primary-color);
-      }
-
-      .carousel-image img {
+      .carousel-image-wrapper img {
         width: 100%;
-        height: 100%;
+        height: 400px;
         object-fit: cover;
-        object-position: center;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.5s ease;
       }
 
-      .carousel-image:hover img {
-        transform: scale(1.1);
-      }
-
-      .carousel-content h3 {
-        font-size: 2.4rem;
-        font-weight: 900;
-        color: var(--text-primary);
-        margin-bottom: 1.8rem;
-        line-height: 1.2;
-        transition: color 0.3s;
-      }
-
-      .carousel-content p {
-        font-size: 1.15rem;
-        color: var(--text-secondary);
-        line-height: 2;
-        margin-bottom: 2.5rem;
-      }
-
-      .feature-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1.2rem;
+      .carousel-image-wrapper:hover img {
+        transform: scale(1.05);
       }
 
       .feature-list-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 1.2rem;
-        padding: 1.3rem;
-        background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
-        border-radius: 16px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
+        background: linear-gradient(135deg, #f8f9fa, #ecf0f1);
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--primary-color);
       }
 
       .feature-list-item:hover {
-        background: linear-gradient(135deg, #ecf0f1 0%, #e8ecef 100%);
-        transform: translateX(12px) scale(1.02);
-        border-color: rgba(61, 90, 128, 0.2);
+        transform: translateX(10px);
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
       }
 
-      .feature-list-item::before {
-        content: "→";
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 32px;
-        height: 32px;
-        background: linear-gradient(135deg, #3d5a80 0%, #2c4563 100%);
-        color: white;
-        border-radius: 50%;
-        font-weight: 700;
-        font-size: 1.1rem;
-        flex-shrink: 0;
-        margin-top: 2px;
-        box-shadow: 0 4px 15px rgba(61, 90, 128, 0.3);
-        transition: all 0.4s;
-      }
-
-      .feature-list-item:hover::before {
-        transform: rotate(360deg) scale(1.1);
-        box-shadow: 0 6px 20px rgba(61, 90, 128, 0.5);
-      }
-
-      .feature-list-item strong {
-        color: var(--text-primary);
-        font-weight: 700;
-      }
-
-      .carousel-controls {
-        display: flex;
-        justify-content: center;
-        gap: 1.5rem;
-        margin-top: 2.5rem;
-      }
-
-      .carousel-btn {
-        background: var(--white);
-        color: var(--text-primary);
-        border: 2px solid var(--white);
-        width: 55px;
-        height: 55px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 1.6rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-      }
-
-      .carousel-btn:hover {
-        background: var(--primary-color);
-        color: var(--white);
-        transform: scale(1.15);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .carousel-dots {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 2rem;
-      }
-
-      .carousel-dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.4);
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-      }
-
-      .carousel-dot:hover {
-        background: rgba(255, 255, 255, 0.7);
-        transform: scale(1.2);
-      }
-
-      .carousel-dot.active {
-        background: var(--white);
-        width: 40px;
-        border-radius: 8px;
-        border-color: var(--white);
-        box-shadow: 0 4px 15px rgba(255, 255, 255, 0.5);
-      }
-
-      /* CRM Audience Grid - Enhanced */
-      .crm-audience-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-        gap: 2.5rem;
-        margin-top: 4rem;
-      }
-
+      /* CRM Audience */
       .crm-audience-card {
-        background: var(--white);
-        border: 3px solid var(--border-light);
-        border-radius: 26px;
-        padding: 3rem 2.5rem;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        background: white;
+        border: 2px solid var(--border-light);
+        border-radius: 20px;
+        padding: 40px 30px;
+        transition: all 0.5s ease;
+        height: 100%;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .crm-audience-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(61, 90, 128, 0.08) 0%,
-          transparent 70%
-        );
-        opacity: 0;
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        transform: scale(0);
-      }
-
-      .crm-audience-card:hover::before {
-        opacity: 1;
-        transform: scale(1);
       }
 
       .crm-audience-card:hover {
-        transform: translateY(-15px) scale(1.02);
+        transform: translateY(-10px);
         border-color: var(--primary-color);
         box-shadow: 0 20px 60px rgba(61, 90, 128, 0.15);
       }
 
       .crm-audience-card h4 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
         font-weight: 800;
-        margin-bottom: 1.2rem;
+        margin-bottom: 15px;
         color: var(--text-primary);
-        position: relative;
-        z-index: 1;
-        transition: all 0.4s;
       }
 
-      .crm-audience-card:hover h4 {
-        color: var(--primary-color);
-        transform: translateY(-3px);
-      }
-
-      .crm-audience-card p {
-        font-size: 1.05rem;
-        line-height: 1.9;
-        color: var(--text-secondary);
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Implementation Grid - Enhanced */
-      .implementation-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-        gap: 3rem;
-        margin-top: 4.5rem;
-      }
-
+      /* Implementation Steps */
       .implementation-card {
-        background: var(--white);
-        border: 3px solid var(--border-light);
-        border-radius: 28px;
-        padding: 3rem 2.8rem;
+        background: white;
+        border: 2px solid var(--border-light);
+        border-radius: 20px;
+        padding: 40px 30px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .implementation-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
+        transition: all 0.5s ease;
         height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(61, 90, 128, 0.05),
-          transparent
-        );
-        transition: left 0.8s;
-      }
-
-      .implementation-card:hover::before {
-        left: 100%;
       }
 
       .implementation-card:hover {
-        transform: translateY(-15px) scale(1.02);
+        transform: translateY(-10px);
         border-color: var(--primary-color);
         box-shadow: 0 20px 60px rgba(61, 90, 128, 0.15);
       }
@@ -1368,69 +549,31 @@
         width: 60px;
         height: 60px;
         border-radius: 50%;
-        background: linear-gradient(135deg, #3d5a80 0%, #2c4563 100%);
-        color: var(--white);
+        background: linear-gradient(135deg, #3d5a80, #2c4563);
+        color: white;
         font-weight: 900;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 1.8rem;
+        margin-bottom: 20px;
         box-shadow: 0 8px 25px rgba(61, 90, 128, 0.35);
-        position: relative;
-        z-index: 1;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        transition: transform 0.3s ease;
       }
 
       .implementation-card:hover .step-badge {
-        transform: scale(1.15) rotate(360deg);
-        box-shadow: 0 12px 35px rgba(61, 90, 128, 0.5);
-      }
-
-      .implementation-card h4 {
-        font-size: 1.55rem;
-        font-weight: 800;
-        margin-bottom: 1.2rem;
-        color: var(--text-primary);
-        position: relative;
-        z-index: 1;
-        transition: all 0.4s;
-      }
-
-      .implementation-card:hover h4 {
-        color: var(--primary-color);
-        transform: translateX(5px);
-      }
-
-      .implementation-card p {
-        font-size: 1.05rem;
-        line-height: 1.9;
-        color: var(--text-secondary);
-        margin-bottom: 1.8rem;
-        position: relative;
-        z-index: 1;
+        transform: scale(1.1) rotate(360deg);
       }
 
       .implementation-card ul {
         list-style: none;
         padding: 0;
-        margin: 0;
-        position: relative;
-        z-index: 1;
       }
 
       .implementation-card ul li {
-        font-size: 1rem;
-        color: var(--text-secondary);
-        padding: 0.6rem 0 0.6rem 2rem;
+        padding: 8px 0 8px 30px;
         position: relative;
-        margin-bottom: 0.8rem;
-        transition: all 0.3s;
-      }
-
-      .implementation-card ul li:hover {
-        color: var(--text-primary);
-        transform: translateX(8px);
+        color: var(--text-secondary);
       }
 
       .implementation-card ul li::before {
@@ -1440,213 +583,198 @@
         color: var(--primary-color);
         font-weight: 700;
         font-size: 1.2rem;
-        transition: all 0.3s;
       }
 
-      .implementation-card ul li:hover::before {
-        transform: translateX(5px);
-      }
-
-      /* Scroll Animation - Enhanced */
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(60px);
-        transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .scroll-reveal.active {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    
 
       /* Responsive */
-      @media (max-width: 968px) {
+      @media (max-width: 768px) {
         .hero h1 {
-          font-size: 3rem;
+          font-size: 2.5rem;
         }
-        .section-title {
-          font-size: 2.6rem;
-        }
-        .carousel-slide {
-          grid-template-columns: 1fr;
-          gap: 2rem;
-          padding: 3rem;
-        }
-        .carousel-slide.reverse {
-          direction: ltr;
-        }
-        .carousel-image {
-          height: 350px;
-        }
-        .problems-grid {
-          grid-template-columns: 1fr;
-        }
-        .capabilities-grid {
-          grid-template-columns: 1fr;
-        }
-      }
 
-      @media (max-width: 640px) {
-        .hero {
-          padding: 5rem 1.5rem 4rem;
-        }
-        .hero h1 {
-          font-size: 2.4rem;
-        }
-        .section {
-          padding: 5rem 1.5rem;
-        }
         .section-title {
-          font-size: 2.2rem;
+          font-size: 2rem;
         }
-        .cta-section h2 {
-          font-size: 2.4rem;
+
+        .carousel-item-custom {
+          padding: 30px 20px;
         }
-        .btn-primary,
-        .btn-secondary {
-          padding: 1.2rem 2.5rem;
-        }
-        .logo {
-          gap: 1rem;
-        }
-        .logo img {
-          height: 45px;
-        }
-        .carousel-slide {
-          padding: 2rem;
+
+        .solutions-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>
   </head>
   <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress">
+      <div class="scroll-progress-bar" id="scrollProgress"></div>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Header -->
     <header>
-      <nav>
-        <div class="logo">
-          <img
-            src="https://www.zolytics.in/files/logo.png"
-            style="height: 80px; width: auto"
-            alt="Zolytics"
-          />
-          <img
-            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
-            alt="Zoho CRM"
-            style="height: 50px"
-          />
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <div class="logo-container navbar-brand">
+            <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg"
+              alt="Zoho CRM"
+              style="height: 50px"
+            />
+          </div>
         </div>
-       
       </nav>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-content">
-          <h1>
-            Streamline Business Operations with
-            <span class="highlight">Zoho CRM</span>
-          </h1>
-          <p>
-            The complete customer relationship management platform with
-            AI-powered automation, intelligent workflows, and 360° customer
-            visibility to transform how you manage your business.
-          </p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 text-center">
+            <h1 data-aos="fade-up">
+              Streamline Business Operations with
+              <span class="highlight">Zoho CRM</span>
+            </h1>
+            <p data-aos="fade-up" data-aos-delay="100">
+              The complete customer relationship management platform with
+              AI-powered automation, intelligent workflows, and 360° customer
+              visibility to transform how you manage your business.
+            </p>
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="d-flex gap-3 justify-content-center flex-wrap"
+            >
+              <button class="btn btn-custom-primary">Get Started</button>
+              <button class="btn btn-custom-secondary">Learn More</button>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-     <!-- ADVANCED PROBLEMS SECTION -->
-      <section class="problems-section">
-        <div class="container">
-          <h2 class="section-title scroll-reveal">
-            Problems Businesses Face Without a CRM
-          </h2>
-          <p class="section-subtitle scroll-reveal">
-            Are these critical challenges holding your business back from its full potential?
-          </p>
-          <div class="problems-grid">
-            <div class="problem-card scroll-reveal">
+    <!-- Problems Section -->
+    <section class="problems-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Problems Businesses Face Without a CRM
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Are these critical challenges holding your business back from its full
+          potential?
+        </p>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="problem-card">
               <div class="problem-icon">
-                
+                <div class="problem-badge">Problem #1</div>
                 <img
                   src="https://blog.enrcloud.com/wp-content/uploads/2025/04/Top-5-Customer-Data-Challenges-middle-img-1.jpg"
-                  alt="Scattered Customer Data"
+                  alt="Scattered Data"
                 />
               </div>
               <div class="problem-content">
-                
                 <h4>Scattered Customer Data</h4>
                 <p>
                   Customer information lost in Excel sheets, emails, and sticky
-                  notes leading to confusion, duplicate entries, and missed opportunities
-                  that cost you revenue every single day.
+                  notes leading to confusion, duplicate entries, and missed
+                  opportunities.
                 </p>
               </div>
             </div>
-
-            <div class="problem-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="problem-card">
               <div class="problem-icon">
-               
+                <div class="problem-badge">Problem #2</div>
                 <img
                   src="https://cdn.prod.website-files.com/64abb91e69c1429ab62638be/66c349940045b7efc333e2f9_AD_4nXeQZVgvyqe62DpmanEX7_abjT5DN9Tp3UkZ0_hTgvBu6MF_Mi2cPd3O8wozR_4VKkpVbJLoloWpt6gFKvnQjEDHZyjgAoYBR3TNYJZarLEf3ImJC-Dvwf8ibGFRD3vKHpARqFGpf6BOdzq7QjFCK93W7Am_.png"
                   alt="Missed Follow-ups"
                 />
               </div>
               <div class="problem-content">
-                
                 <h4>Missed Follow-ups</h4>
                 <p>
                   Lost leads due to forgotten follow-ups and no systematic
                   tracking of customer interactions. Every missed touchpoint is
-                  potential revenue walking straight to your competitors.
+                  revenue walking to competitors.
                 </p>
               </div>
             </div>
-
-            <div class="problem-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="problem-card">
               <div class="problem-icon">
-                
+                <div class="problem-badge">Problem #3</div>
                 <img
                   src="https://telecrm.in/blog/wp-content/uploads/2025/09/sales-pipeline-visiblity-crm.png"
-                  alt="No Pipeline Visibility"
+                  alt="No Visibility"
                 />
               </div>
               <div class="problem-content">
-               
                 <h4>No Pipeline Visibility</h4>
                 <p>
-                  Unable to see where deals stand, forecast revenue accurately, or
-                  identify bottlenecks in your sales process. Flying blind means
-                  leaving money on the table.
+                  Unable to see where deals stand, forecast revenue accurately,
+                  or identify bottlenecks in your sales process.
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section id="features" class="section section-light">
-        <div class="container">
-          <h2 class="section-title scroll-reveal">What is Zoho CRM?</h2>
-          <p class="section-subtitle scroll-reveal">
-            Zoho CRM is a comprehensive cloud-based customer relationship
-            management platform that unifies your sales, marketing, and customer
-            support operations. With AI-powered intelligence (Zia), advanced
-            automation, and 360° customer visibility, Zoho CRM transforms how
-            businesses manage customer relationships and streamline operations.
-          </p>
-         
-        </div>
-      </section>
+    <!-- What is Zoho CRM -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">What is Zoho CRM?</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Zoho CRM is a comprehensive cloud-based customer relationship
+          management platform that unifies your sales, marketing, and customer
+          support operations. With AI-powered intelligence (Zia), advanced
+          automation, and 360° customer visibility, Zoho CRM transforms how
+          businesses manage customer relationships.
+        </p>
+      </div>
+    </section>
 
-       <section id="capabilities" class="section section-gray">
-        <div class="container">
-          <h2 class="section-title scroll-reveal">
-            Core Platform Capabilities
-          </h2>
-          <p class="section-subtitle scroll-reveal">
-            Powerful features designed to streamline every aspect of your
-            business operations
-          </p>
-          <div class="capabilities-grid">
-            <div class="capability-card scroll-reveal">
+    <!-- Core Capabilities -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Core Platform Capabilities
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Powerful features designed to streamline every aspect of your business
+          operations
+        </p>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
                   src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=500&fit=crop"
@@ -1657,7 +785,7 @@
                 <h4>AI-Powered Intelligence</h4>
                 <p>
                   Zia, your AI assistant, analyzes patterns, predicts outcomes,
-                  and automates routine tasks to help your team work smarter.
+                  and automates routine tasks.
                 </p>
                 <div class="capability-features">
                   <div class="capability-feature">
@@ -1666,51 +794,52 @@
                   <div class="capability-feature">
                     Predictive sales analytics
                   </div>
-                  <div class="capability-feature">
-                    Sentiment analysis on communications
-                  </div>
+                  <div class="capability-feature">Sentiment analysis</div>
                   <div class="capability-feature">
                     Best time to contact insights
                   </div>
-                  <div class="capability-feature">
-                    Anomaly detection and alerts
-                  </div>
                 </div>
               </div>
             </div>
-
-            <div class="capability-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
-                  src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=500&fit=crop"
-                  alt="Workflow Automation"
+                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop"
+                  alt="Integrations"
                 />
               </div>
               <div class="capability-content">
-                <h4>Workflow Automation</h4>
+                <h4>Seamless Integrations</h4>
                 <p>
-                  Eliminate manual tasks with intelligent workflows that trigger
-                  actions based on specific conditions and customer behaviors.
+                  Connect with 800+ business applications including email,
+                  accounting, and marketing tools.
                 </p>
                 <div class="capability-features">
                   <div class="capability-feature">
-                    Flexible rule builder with conditions
+                    Gmail & Outlook integration
                   </div>
                   <div class="capability-feature">
-                    Automated email sequences and follow-ups
+                    Accounting software connections
                   </div>
-                  <div class="capability-feature">
-                    Task assignment and escalations
-                  </div>
-                  <div class="capability-feature">
-                    Custom approval processes
-                  </div>
-                  <div class="capability-feature">Cross-module automation</div>
+                  <div class="capability-feature">Marketing automation</div>
+                  <div class="capability-feature">Custom API integrations</div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="capability-card scroll-reveal">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
                   src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&h=500&fit=crop"
@@ -1740,66 +869,14 @@
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="capability-card scroll-reveal">
-              <div class="capability-image">
-                <img
-                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop"
-                  alt="Advanced Analytics"
-                />
-              </div>
-              <div class="capability-content">
-                <h4>Advanced Analytics</h4>
-                <p>
-                  Get real-time insights with customizable dashboards, detailed
-                  reports, and AI-powered analytics that reveal hidden patterns.
-                </p>
-                <div class="capability-features">
-                  <div class="capability-feature">Custom dashboard builder</div>
-                  <div class="capability-feature">
-                    Real-time sales pipeline view
-                  </div>
-                  <div class="capability-feature">
-                    Forecasting and revenue predictions
-                  </div>
-                  <div class="capability-feature">Team performance metrics</div>
-                  <div class="capability-feature">
-                    Trend analysis and anomaly detection
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="capability-card scroll-reveal">
-              <div class="capability-image">
-                <img
-                  src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop"
-                  alt="Integrations"
-                />
-              </div>
-              <div class="capability-content">
-                <h4>Seamless Integrations</h4>
-                <p>
-                  Connect Zoho CRM with 800+ business applications including
-                  email, accounting, marketing, and productivity tools.
-                </p>
-                <div class="capability-features">
-                  <div class="capability-feature">
-                    Gmail, Outlook email integration
-                  </div>
-                  <div class="capability-feature">
-                    Accounting software connections
-                  </div>
-                  <div class="capability-feature">
-                    Marketing automation platforms
-                  </div>
-                  <div class="capability-feature">Custom API integrations</div>
-                  <div class="capability-feature">Marketplace extensions</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="capability-card scroll-reveal">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
                   src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop"
@@ -1809,28 +886,27 @@
               <div class="capability-content">
                 <h4>Lead Management</h4>
                 <p>
-                  Capture, qualify, and nurture leads efficiently with
-                  AI-powered scoring and automated assignment rules.
+                  Capture, qualify, and nurture leads with AI-powered scoring
+                  and automation.
                 </p>
                 <div class="capability-features">
                   <div class="capability-feature">
                     Multi-channel lead capture
                   </div>
                   <div class="capability-feature">Intelligent lead scoring</div>
-                  <div class="capability-feature">
-                    Automatic lead distribution
-                  </div>
-                  <div class="capability-feature">
-                    Lead enrichment from databases
-                  </div>
-                  <div class="capability-feature">
-                    Conversion tracking and analytics
-                  </div>
+                  <div class="capability-feature">Automatic distribution</div>
+                  <div class="capability-feature">Conversion tracking</div>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="capability-card scroll-reveal">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
                   src="https://zdblogs.zohowebstatic.com/sites/crm/crm-express/files/sales_funnel.jpg"
@@ -1840,24 +916,26 @@
               <div class="capability-content">
                 <h4>Sales Pipeline Management</h4>
                 <p>
-                  Visualize your entire sales process, track deal progression,
-                  and identify bottlenecks with intuitive pipeline views.
+                  Visualize your entire sales process and track deal progression
+                  intuitively.
                 </p>
                 <div class="capability-features">
                   <div class="capability-feature">
                     Customizable sales stages
                   </div>
-                  <div class="capability-feature">
-                    Drag-and-drop deal management
-                  </div>
+                  <div class="capability-feature">Drag-and-drop management</div>
                   <div class="capability-feature">Win/loss analysis</div>
                   <div class="capability-feature">Revenue forecasting</div>
-                  <div class="capability-feature">Deal health indicators</div>
                 </div>
               </div>
             </div>
-
-            <div class="capability-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="capability-card">
               <div class="capability-image">
                 <img
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&h=500&fit=crop"
@@ -1867,8 +945,8 @@
               <div class="capability-content">
                 <h4>Contact & Account Management</h4>
                 <p>
-                  Build a complete 360° view of customers with detailed
-                  profiles, interaction history, and relationship mapping.
+                  Build a complete 360° view of customers with detailed profiles
+                  and history.
                 </p>
                 <div class="capability-features">
                   <div class="capability-feature">
@@ -1878,73 +956,116 @@
                     Complete interaction timeline
                   </div>
                   <div class="capability-feature">Relationship hierarchies</div>
-                  <div class="capability-feature">
-                    Custom fields and modules
-                  </div>
-                  <div class="capability-feature">
-                    Document and file management
-                  </div>
+                  <div class="capability-feature">Document management</div>
                 </div>
               </div>
             </div>
-
-         
+          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section section-light">
-        <div class="container">
-          <h2 class="section-title scroll-reveal">Who Is Zoho CRM For?</h2>
-          <p class="section-subtitle scroll-reveal">
-            Zoho CRM is built for growing businesses that need structure,
-            visibility, and control across sales, marketing, and customer
-            relationships.
-          </p>
-
-          <div class="crm-audience-grid">
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Startups & Growing Businesses</h4>
+    <!-- Who Is Zoho CRM For -->
+    <section class="py-5 bg-white">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">Who Is Zoho CRM For?</h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          Zoho CRM is built for growing businesses that need structure,
+          visibility, and control across sales, marketing, and customer
+          relationships.
+        </p>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-rocket me-2 text-primary"></i>Startups &
+                Growing Businesses
+              </h4>
               <p>
                 Perfect for teams that want to move beyond Excel and manage
                 leads, deals, and customer communication in one centralized
                 system.
               </p>
             </div>
-
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Sales-Driven Organizations</h4>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-chart-line me-2 text-primary"></i>Sales-Driven
+                Organizations
+              </h4>
               <p>
                 Ideal for businesses with active sales teams that need pipeline
                 visibility, follow-up tracking, and revenue forecasting.
               </p>
             </div>
-
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Service-Based Companies</h4>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-handshake me-2 text-primary"></i>Service-Based
+                Companies
+              </h4>
               <p>
                 Consulting firms, agencies, and service providers managing
                 long-term customer relationships and recurring engagements.
               </p>
             </div>
-
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Marketing-Focused Teams</h4>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-bullhorn me-2 text-primary"></i
+                >Marketing-Focused Teams
+              </h4>
               <p>
                 Organizations running campaigns, capturing leads from multiple
                 channels, and tracking conversion performance end-to-end.
               </p>
             </div>
-
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Multi-Team & Multi-Role Businesses</h4>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-users me-2 text-primary"></i>Multi-Team
+                Businesses
+              </h4>
               <p>
                 Businesses that require role-based access, approvals,
                 collaboration, and cross-department visibility.
               </p>
             </div>
-
-            <div class="crm-audience-card scroll-reveal">
-              <h4>Scalable & Process-Driven Enterprises</h4>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="crm-audience-card">
+              <h4>
+                <i class="fas fa-cogs me-2 text-primary"></i>Scalable
+                Enterprises
+              </h4>
               <p>
                 Companies that want customizable workflows, automation, and
                 integrations that scale as the business grows.
@@ -1952,20 +1073,26 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section section-gray">
-        <div class="container">
-          <h2 class="section-title scroll-reveal">
-            Our Zoho CRM Implementation Approach
-          </h2>
-          <p class="section-subtitle scroll-reveal">
-            A structured, business-first approach to ensure Zoho CRM fits your
-            processes, not the other way around.
-          </p>
-
-          <div class="implementation-grid">
-            <div class="implementation-card scroll-reveal">
+    <!-- Implementation Approach -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          Our Zoho CRM Implementation Approach
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+          A structured, business-first approach to ensure Zoho CRM fits your
+          processes, not the other way around.
+        </p>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="implementation-card">
               <div class="step-badge">01</div>
               <h4>Business Requirement Discovery</h4>
               <p>
@@ -1979,8 +1106,13 @@
                 <li>Role & responsibility mapping</li>
               </ul>
             </div>
-
-            <div class="implementation-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="implementation-card">
               <div class="step-badge">02</div>
               <h4>CRM Architecture & Customization</h4>
               <p>
@@ -1990,11 +1122,16 @@
               <ul>
                 <li>Custom modules & fields</li>
                 <li>Role-based layouts & permissions</li>
-                <li>Sales pipeline & stage configuration</li>
+                <li>Sales pipeline configuration</li>
               </ul>
             </div>
-
-            <div class="implementation-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="implementation-card">
               <div class="step-badge">03</div>
               <h4>Workflow Automation Setup</h4>
               <p>
@@ -2007,8 +1144,13 @@
                 <li>Approval workflows</li>
               </ul>
             </div>
-
-            <div class="implementation-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="implementation-card">
               <div class="step-badge">04</div>
               <h4>Data Migration & Integration</h4>
               <p>
@@ -2021,8 +1163,13 @@
                 <li>Accounting & marketing tool sync</li>
               </ul>
             </div>
-
-            <div class="implementation-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="implementation-card">
               <div class="step-badge">05</div>
               <h4>Testing & User Training</h4>
               <p>
@@ -2035,8 +1182,13 @@
                 <li>Best practices & SOPs</li>
               </ul>
             </div>
-
-            <div class="implementation-card scroll-reveal">
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="implementation-card">
               <div class="step-badge">06</div>
               <h4>Go-Live & Continuous Support</h4>
               <p>
@@ -2051,306 +1203,282 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-     
-
-      <section class="carousel-section">
-        <h2 class="section-title">How Zoho CRM Streamlines Operations</h2>
-        <p class="section-subtitle">
+    <!-- Carousel Section -->
+    <section class="carousel-section">
+      <div class="container">
+        <h2 class="section-title" data-aos="fade-up">
+          How Zoho CRM Streamlines Operations
+        </h2>
+        <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
           Practical capabilities that transform your daily business processes
         </p>
-        <div class="carousel-container">
-          <div class="carousel-wrapper">
-            <div class="carousel-track" id="carouselTrack">
-              <div class="carousel-slide">
-                <div class="carousel-image">
-                  <img
-                    src="https://www.leadsquared.com/wp-content/uploads/2021/11/banner-1-4.jpg"
-                    alt="Sales Automation"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Automated Sales Processes</h3>
-                  <p>
-                    Eliminate repetitive manual work and let your team focus on
-                    selling. Zoho CRM automates everything from lead capture to
-                    deal closure.
-                  </p>
-                  <div class="feature-list">
+        <div
+          id="featuresCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-indicators">
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="3"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="4"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#featuresCarousel"
+              data-bs-slide-to="5"
+            ></button>
+          </div>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://www.leadsquared.com/wp-content/uploads/2021/11/banner-1-4.jpg"
+                        alt="Sales Automation"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <h3 class="mb-4">Automated Sales Processes</h3>
+                    <p class="mb-4">
+                      Eliminate repetitive manual work and let your team focus
+                      on selling. Zoho CRM automates everything from lead
+                      capture to deal closure.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Auto-assignment:</strong> Leads automatically
-                        routed to the right sales rep based on territory,
-                        product, or workload</span
-                      >
+                      <strong>Auto-assignment:</strong> Leads automatically
+                      routed to the right sales rep based on territory, product,
+                      or workload
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Smart workflows:</strong> Trigger emails,
-                        tasks, and updates based on customer actions and deal
-                        stage changes</span
-                      >
+                      <strong>Smart workflows:</strong> Trigger emails, tasks,
+                      and updates based on customer actions and deal stage
+                      changes
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Blueprint:</strong> Guide teams through complex
-                        sales processes with step-by-step workflows and
-                        mandatory checkpoints</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Macros:</strong> Execute multiple actions with
-                        one click - update fields, send emails, create tasks
-                        simultaneously</span
-                      >
+                      <strong>Blueprint:</strong> Guide teams through complex
+                      sales processes with step-by-step workflows
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="carousel-slide reverse">
-                <div class="carousel-image">
-                  <img
-                    src="https://www.questionpro.com/blog/wp-content/uploads/2022/08/analytics-vs-reporting.jpg"
-                    alt="Analytics"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Real-Time Business Intelligence</h3>
-                  <p>
-                    Make informed decisions with instant access to critical
-                    metrics, trends, and AI-powered predictions across your
-                    entire operation.
-                  </p>
-                  <div class="feature-list">
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6 order-lg-2">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://www.questionpro.com/blog/wp-content/uploads/2022/08/analytics-vs-reporting.jpg"
+                        alt="Analytics"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 order-lg-1">
+                    <h3 class="mb-4">Real-Time Business Intelligence</h3>
+                    <p class="mb-4">
+                      Make informed decisions with instant access to critical
+                      metrics, trends, and AI-powered predictions.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Live dashboards:</strong> Monitor KPIs in
-                        real-time with customizable widgets showing sales
-                        velocity, conversion rates, and team performance</span
-                      >
+                      <strong>Live dashboards:</strong> Monitor KPIs in
+                      real-time with customizable widgets
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Revenue forecasting:</strong> AI analyzes
-                        historical data and current pipeline to predict future
-                        revenue with accuracy</span
-                      >
+                      <strong>Revenue forecasting:</strong> AI analyzes
+                      historical data to predict future revenue
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Comparative analysis:</strong> Compare
-                        performance across teams, products, regions, and time
-                        periods instantly</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Anomaly alerts:</strong> Get notified when
-                        metrics deviate from normal patterns or targets</span
-                      >
+                      <strong>Anomaly alerts:</strong> Get notified when metrics
+                      deviate from normal patterns
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="carousel-slide">
-                <div class="carousel-image">
-                  <img
-                    src="https://www.wellright.com/hubfs/team-collaboration-blog.jpg"
-                    alt="Collaboration"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Unified Team Collaboration</h3>
-                  <p>
-                    Break down silos and enable seamless collaboration across
-                    sales, marketing, and support with centralized customer
-                    information.
-                  </p>
-                  <div class="feature-list">
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://www.wellright.com/hubfs/team-collaboration-blog.jpg"
+                        alt="Collaboration"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <h3 class="mb-4">Unified Team Collaboration</h3>
+                    <p class="mb-4">
+                      Break down silos and enable seamless collaboration across
+                      sales, marketing, and support.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Shared visibility:</strong> Everyone sees the
-                        same up-to-date customer information, communications,
-                        and deal status</span
-                      >
+                      <strong>Shared visibility:</strong> Everyone sees the same
+                      up-to-date customer information
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Internal chat:</strong> Discuss deals, tag team
-                        members, and share updates without leaving the CRM</span
-                      >
+                      <strong>Internal chat:</strong> Discuss deals and share
+                      updates without leaving the CRM
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Task management:</strong> Assign, track, and
-                        collaborate on tasks with deadlines and priorities</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Activity timeline:</strong> Complete history of
-                        customer interactions visible to authorized team
-                        members</span
-                      >
+                      <strong>Activity timeline:</strong> Complete history of
+                      customer interactions
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="carousel-slide reverse">
-                <div class="carousel-image">
-                  <img
-                    src="https://play-lh.googleusercontent.com/GknxxypYafRNvwMuDFVdMgzpfoS0zH_gNIGlTsEZM_OZyO_YZT3bX-Srj7L6XobGkQ"
-                    alt="Mobile CRM"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Mobile-First Accessibility</h3>
-                  <p>
-                    Access full CRM functionality anywhere, anytime with
-                    powerful mobile apps for iOS and Android that work offline
-                    too.
-                  </p>
-                  <div class="feature-list">
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6 order-lg-2">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://play-lh.googleusercontent.com/GknxxypYafRNvwMuDFVdMgzpfoS0zH_gNIGlTsEZM_OZyO_YZT3bX-Srj7L6XobGkQ"
+                        alt="Mobile CRM"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 order-lg-1">
+                    <h3 class="mb-4">Mobile-First Accessibility</h3>
+                    <p class="mb-4">
+                      Access full CRM functionality anywhere, anytime with
+                      powerful mobile apps that work offline too.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Complete access:</strong> View and update
-                        leads, contacts, deals, and all custom modules from your
-                        phone</span
-                      >
+                      <strong>Complete access:</strong> View and update all
+                      modules from your phone
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Offline mode:</strong> Continue working without
-                        internet - changes sync automatically when
-                        reconnected</span
-                      >
+                      <strong>Offline mode:</strong> Continue working without
+                      internet connection
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Location tracking:</strong> Check-in at
-                        customer locations and track field team activities</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Quick actions:</strong> Log calls, send emails,
-                        create tasks, and update deal stages with simplified
-                        mobile interface</span
-                      >
+                      <strong>Location tracking:</strong> Check-in at customer
+                      locations
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="carousel-slide">
-                <div class="carousel-image">
-                  <img
-                    src="https://www.printxpand.com/wp-content/uploads/2021/04/top_10_inspiring_examples_of_brands_offering_product_customization-f.png"
-                    alt="Customization"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Flexible Customization</h3>
-                  <p>
-                    Adapt Zoho CRM to match your exact business processes
-                    without coding. Build custom modules, fields, and workflows
-                    easily.
-                  </p>
-                  <div class="feature-list">
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://www.printxpand.com/wp-content/uploads/2021/04/top_10_inspiring_examples_of_brands_offering_product_customization-f.png"
+                        alt="Customization"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <h3 class="mb-4">Flexible Customization</h3>
+                    <p class="mb-4">
+                      Adapt Zoho CRM to match your exact business processes
+                      without coding.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Custom modules:</strong> Create entirely new
-                        modules beyond standard ones to track industry-specific
-                        data</span
-                      >
+                      <strong>Custom modules:</strong> Create entirely new
+                      modules beyond standard ones
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Field customization:</strong> Add unlimited
-                        custom fields with various types - text, number,
-                        dropdown, date, lookup</span
-                      >
+                      <strong>Field customization:</strong> Add unlimited custom
+                      fields with various types
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Page layouts:</strong> Design different layouts
-                        for different user roles and profiles</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Custom buttons:</strong> Add action buttons
-                        that trigger workflows or external integrations</span
-                      >
+                      <strong>Page layouts:</strong> Design different layouts
+                      for different user roles
                     </div>
                   </div>
                 </div>
               </div>
-
-              <div class="carousel-slide reverse">
-                <div class="carousel-image">
-                  <img
-                    src="https://www.questionpro.com/blog/wp-content/uploads/2023/02/customer-support.jpg"
-                    alt="Customer Support"
-                  />
-                </div>
-                <div class="carousel-content">
-                  <h3>Integrated Customer Support</h3>
-                  <p>
-                    Deliver exceptional service by connecting support operations
-                    with sales data for a complete customer experience.
-                  </p>
-                  <div class="feature-list">
+            </div>
+            <div class="carousel-item">
+              <div class="carousel-item-custom">
+                <div class="row align-items-center g-5">
+                  <div class="col-lg-6 order-lg-2">
+                    <div class="carousel-image-wrapper">
+                      <img
+                        src="https://www.questionpro.com/blog/wp-content/uploads/2023/02/customer-support.jpg"
+                        alt="Support"
+                      />
+                    </div>
+                  </div>
+                  <div class="col-lg-6 order-lg-1">
+                    <h3 class="mb-4">Integrated Customer Support</h3>
+                    <p class="mb-4">
+                      Deliver exceptional service by connecting support
+                      operations with sales data.
+                    </p>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Ticket management:</strong> Convert customer
-                        issues into tickets, assign to teams, and track
-                        resolution</span
-                      >
+                      <strong>Ticket management:</strong> Convert issues into
+                      tickets and track resolution
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>Knowledge base:</strong> Build self-service
-                        help center with articles and FAQs integrated with
-                        CRM</span
-                      >
+                      <strong>Knowledge base:</strong> Build self-service help
+                      center
                     </div>
                     <div class="feature-list-item">
-                      <span
-                        ><strong>SLA management:</strong> Define and monitor
-                        service level agreements with automatic
-                        escalations</span
-                      >
-                    </div>
-                    <div class="feature-list-item">
-                      <span
-                        ><strong>Customer portal:</strong> Let customers view
-                        their data, submit tickets, and track status
-                        independently</span
-                      >
+                      <strong>SLA management:</strong> Define and monitor
+                      service level agreements
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-controls">
-            <button class="carousel-btn" id="prevBtn">‹</button>
-            <button class="carousel-btn" id="nextBtn">›</button>
-          </div>
-          <div class="carousel-dots" id="carouselDots"></div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#featuresCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#featuresCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
-      </section>
+      </div>
+    </section>
 
-      
-    </main>
-
-        <!-- Global Footer -->
+     <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
         <!-- Company Info -->
@@ -2364,7 +1492,7 @@
           </p>
         </div>
 
-        <!-- Zoho Solutions - Centered with balanced columns -->
+         <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
@@ -2570,26 +1698,49 @@
       }
     </style>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
     <script>
-      // Scroll reveal animation
-      const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -100px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("active");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".scroll-reveal").forEach((el) => {
-        observer.observe(el);
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
       });
 
-      // Smooth scroll
+      // Scroll Progress Bar
+      window.addEventListener("scroll", () => {
+        const winScroll =
+          document.body.scrollTop || document.documentElement.scrollTop;
+        const height =
+          document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        document.getElementById("scrollProgress").style.width = scrolled + "%";
+      });
+
+      // Scroll to Top Button
+      const scrollTopBtn = document.getElementById("scrollTop");
+      window.addEventListener("scroll", () => {
+        if (window.pageYOffset > 300) {
+          scrollTopBtn.classList.add("visible");
+        } else {
+          scrollTopBtn.classList.remove("visible");
+        }
+      });
+
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Smooth Scroll for Anchor Links
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -2602,54 +1753,6 @@
           }
         });
       });
-
-      // Carousel functionality
-      const track = document.getElementById("carouselTrack");
-      const slides = track.querySelectorAll(".carousel-slide");
-      const prevBtn = document.getElementById("prevBtn");
-      const nextBtn = document.getElementById("nextBtn");
-      const dotsContainer = document.getElementById("carouselDots");
-      let currentSlide = 0;
-      const totalSlides = slides.length;
-
-      // Create dots
-      for (let i = 0; i < totalSlides; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("carousel-dot");
-        if (i === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => goToSlide(i));
-        dotsContainer.appendChild(dot);
-      }
-
-      const dots = dotsContainer.querySelectorAll(".carousel-dot");
-
-      function updateCarousel() {
-        track.style.transform = `translateX(-${currentSlide * 100}%)`;
-        dots.forEach((dot, index) => {
-          dot.classList.toggle("active", index === currentSlide);
-        });
-      }
-
-      function goToSlide(index) {
-        currentSlide = index;
-        updateCarousel();
-      }
-
-      function nextSlide() {
-        currentSlide = (currentSlide + 1) % totalSlides;
-        updateCarousel();
-      }
-
-      function prevSlide() {
-        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-        updateCarousel();
-      }
-
-      nextBtn.addEventListener("click", nextSlide);
-      prevBtn.addEventListener("click", prevSlide);
-
-      // Auto-advance carousel every 7 seconds
-      setInterval(nextSlide, 7000);
     </script>
   </body>
 </html>
