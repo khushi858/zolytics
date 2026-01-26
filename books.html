@@ -1,448 +1,212 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoho Books - Professional Accounting Software</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
     <style>
+      :root {
+        --primary-blue: #2563eb;
+        --dark-blue: #1e40af;
+        --light-blue: #eff6ff;
+        --gray-50: #f9fafb;
+        --gray-100: #f3f4f6;
+        --gray-600: #4b5563;
+        --gray-800: #1f2937;
+        --gray-900: #111827;
+      }
+
       * {
         box-sizing: border-box;
       }
+
       body {
-        margin: 0;
-        padding: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
           "Helvetica Neue", Arial, sans-serif;
         overflow-x: hidden;
+        color: var(--gray-800);
       }
 
-      /* FIXED: Problem/Solution Cards */
-      .problem-solution-card {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(248, 250, 252, 1) 50%,
-          rgba(241, 245, 249, 1) 100%
-        );
-        border: 2px solid rgba(59, 130, 246, 0.15);
-        border-radius: 24px;
-        padding: 3rem;
-        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+      /* Navigation */
+      .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        padding: 1rem 0;
+        transition: all 0.3s ease;
+        border-bottom: 5px solid rgba(0, 0, 0, 0.08);
+      }
+
+      .navbar.scrolled {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+      }
+
+      .navbar-brand img {
+        transition: transform 0.3s ease;
+      }
+
+      .navbar-brand img:hover {
+        transform: scale(1.05);
+      }
+
+      /* Hero Section - Simple and Clean */
+      .hero-section {
+        height: 100%;
+        background: linear-gradient(0deg, #07488d 50%, #f0f1f3 50%);
+        padding: 100px 0 80px;
         position: relative;
         overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-        transform: translateZ(0);
-        will-change: transform, box-shadow;
-        isolation: isolate;
-      }
-      .problem-solution-card > *,
-      .problem-solution-card ul,
-      .problem-solution-card li,
-      .problem-solution-card span,
-      .problem-solution-card .solution-tag,
-      .problem-solution-card .problem-tag {
-        position: relative;
-        z-index: 10;
-      }
-      .problem-solution-card::before {
-        content: "";
-        position: absolute;
-        top: -100%;
-        right: -100%;
-        width: 200%;
-        height: 200%;
-        background: conic-gradient(
-          from 0deg at 50% 50%,
-          transparent 0deg,
-          rgba(59, 130, 246, 0.15) 90deg,
-          transparent 180deg
-        );
-        transition: all 1s ease;
-        z-index: 1;
-        pointer-events: none;
-      }
-      .problem-solution-card:hover::before {
-        top: -50%;
-        right: -50%;
-        transform: rotate(360deg);
-      }
-      .problem-solution-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0) 0%,
-          rgba(59, 130, 246, 0.05) 100%
-        );
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        z-index: 2;
-        pointer-events: none;
-      }
-      .problem-solution-card:hover::after {
-        opacity: 1;
-      }
-      .problem-solution-card:hover {
-        transform: translateY(-16px) scale(1.03);
-        box-shadow: 0 35px 70px rgba(59, 130, 246, 0.2),
-          0 20px 40px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-        border-color: rgba(59, 130, 246, 0.4);
       }
 
-      .problem-tag,
-      .solution-tag {
-        padding: 0.7rem 1.4rem;
-        border-radius: 16px;
-        font-weight: 800;
-        font-size: 0.95rem;
-        display: inline-block;
-        margin-bottom: 1.5rem;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        position: relative;
-        z-index: 15 !important;
-      }
-      .problem-tag {
-        background: linear-gradient(
-          135deg,
-          #fee2e2 0%,
-          #fecaca 50%,
-          #fca5a5 100%
-        );
-        color: #991b1b;
-        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-      }
-      .solution-tag {
-        background: linear-gradient(
-          135deg,
-          #dcfce7 0%,
-          #bbf7d0 50%,
-          #86efac 100%
-        );
-        color: #166534;
-        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-      }
-      .problem-solution-card:hover .problem-tag {
-        transform: scale(1.1) translateY(-4px);
-        box-shadow: 0 10px 30px rgba(239, 68, 68, 0.4),
-          inset 0 2px 4px rgba(255, 255, 255, 1);
-      }
-      .problem-solution-card:hover .solution-tag {
-        transform: scale(1.1) translateY(-4px);
-        box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4),
-          inset 0 2px 4px rgba(255, 255, 255, 1);
-      }
-
-      /* Capability Section */
-      .capability-section {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(248, 250, 252, 1) 100%
-        );
-        border-left: 8px solid #3b82f6;
-        padding: 3.5rem;
-        border-radius: 20px;
-        margin-bottom: 3rem;
-        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        position: relative;
-        overflow: visible;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08),
-          inset 0 1px 0 rgba(255, 255, 255, 0.9);
-      }
-      .capability-section > * {
-        position: relative;
-        z-index: 10;
-      }
-      .capability-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -8px;
-        width: 8px;
-        height: 0;
-        background: linear-gradient(
-          180deg,
-          #3b82f6 0%,
-          #8b5cf6 50%,
-          #ec4899 100%
-        );
-        transition: height 0.7s ease;
-        box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-        z-index: 1;
-      }
-      .capability-section::after {
+      .hero-section::before {
         content: "";
         position: absolute;
         top: 0;
         right: 0;
-        width: 0;
+        width: 50%;
         height: 100%;
         background: linear-gradient(
-          90deg,
+          135deg,
           transparent 0%,
-          rgba(59, 130, 246, 0.05) 100%
+          rgba(37, 99, 235, 0.03) 100%
         );
-        transition: width 0.7s ease;
-        z-index: 2;
         pointer-events: none;
       }
-      .capability-section:hover::before {
-        height: 100%;
-      }
-      .capability-section:hover::after {
-        width: 100%;
-      }
-      .capability-section:hover {
-        transform: translateX(20px) scale(1.01);
-        box-shadow: 0 25px 60px rgba(59, 130, 246, 0.2),
-          0 15px 35px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(240, 249, 255, 1) 100%
-        );
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease-out;
       }
 
-      /* Scroll Reveal */
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(80px) scale(0.95);
-        transition: all 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .scroll-reveal.revealed {
-        opacity: 1;
-        transform: translateY(0) scale(1);
+      .hero-subtitle {
+        font-size: 1.25rem;
+        color: white;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
       }
 
-      /* Section Title */
-      .section-title {
-        background: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #3b82f6 50%,
-          #8b5cf6 100%
-        );
-        background-size: 200% 200%;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        animation: titleGradient 5s ease infinite;
-      }
-      @keyframes titleGradient {
-        0%,
-        100% {
-          background-position: 0% 50%;
-        }
-        50% {
-          background-position: 100% 50%;
-        }
+      .hero-features {
+        animation: fadeInUp 0.8s ease-out 0.4s both;
       }
 
-      /* Navigation */
-      nav {
-        backdrop-filter: blur(30px) saturate(180%);
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.98),
-          rgba(240, 245, 255, 0.95)
-        );
-        border-bottom: 1px solid rgba(59, 130, 246, 0.15);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06),
-          0 2px 8px rgba(59, 130, 246, 0.08);
-      }
-      .logo {
-        display: flex;
+      .feature-check {
+        display: inline-flex;
         align-items: center;
-        gap: 1.5rem;
-        position: relative;
-        z-index: 10;
-      }
-      .logo img {
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .logo img:hover {
-        transform: scale(1.08) translateY(-4px);
+        padding: 0.5rem 1rem;
+        background: white;
+        border-radius: 50px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        margin: 0.5rem 0.5rem 0.5rem 0;
+        transition: all 0.3s ease;
       }
 
-      /* Hero */
-      .hero-gradient {
-        background: linear-gradient(
-          135deg,
-          #1e3a8a 0%,
-          #3b82f6 15%,
-          #ffffff 40%,
-          #f0f9ff 60%,
-          #3b82f6 85%,
-          #1e3a8a 100%
-        );
-        position: relative;
-        overflow: hidden;
-        min-height: 90vh;
-        display: flex;
-        align-items: center;
-      }
-      .hero-particles {
-        position: absolute;
-        inset: 0;
-        background-image: radial-gradient(
-          circle at 20% 30%,
-          rgba(255, 255, 255, 0.3) 1px,
-          transparent 1px
-        );
-        background-size: 100px 100px;
-        animation: particleMove 60s linear infinite;
-      }
-      @keyframes particleMove {
-        0% {
-          background-position: 0 0;
-        }
-        100% {
-          background-position: 100px 100px;
-        }
+      .feature-check:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
       }
 
-      /* Feature Cards */
-      .feature-card {
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        cursor: pointer;
-        border: 2px solid rgba(59, 130, 246, 0.1);
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 1) 0%,
-          rgba(248, 250, 252, 1) 50%,
-          rgba(241, 245, 249, 1) 100%
-        );
-        will-change: transform, box-shadow;
-      }
-      .feature-card > * {
-        position: relative;
-        z-index: 10;
-      }
-      .feature-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: conic-gradient(
-          from 0deg at 50% 50%,
-          transparent 0deg,
-          rgba(59, 130, 246, 0.15) 90deg,
-          transparent 180deg
-        );
-        opacity: 0;
-        transition: all 0.6s ease;
-        z-index: 1;
-        pointer-events: none;
-      }
-      .feature-card:hover::before {
-        opacity: 1;
-        animation: rotate 8s linear infinite;
-      }
-      @keyframes rotate {
-        0% {
-          transform: rotate(0deg);
-        }
-        100% {
-          transform: rotate(360deg);
-        }
-      }
-      .feature-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 25px 50px rgba(59, 130, 246, 0.25),
-          0 15px 30px rgba(0, 0, 0, 0.15);
-        border-color: rgba(59, 130, 246, 0.4);
+      .feature-check::before {
+        content: "✓";
+        display: inline-block;
+        width: 25px;
+        height: 30px;
+        color: #000;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        font-size: 19px;
+        font-weight: bold;
+        margin-right: 0.5rem;
       }
 
-      /* Dashboard */
-      .dashboard-mockup {
-        background: linear-gradient(
-          135deg,
-          #f8fafc 0%,
-          #e2e8f0 50%,
-          #cbd5e1 100%
-        );
-        border: 3px solid rgba(59, 130, 246, 0.2);
-        transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-        position: relative;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-        will-change: transform, box-shadow;
-      }
-      .dashboard-mockup > * {
-        position: relative;
-        z-index: 10;
-      }
-      .dashboard-mockup:hover {
-        transform: translateY(-15px) scale(1.03);
-        box-shadow: 0 40px 80px rgba(59, 130, 246, 0.3);
-      }
+      /* Dashboard Card */
       .dashboard-card {
-        transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.95),
-          rgba(249, 250, 251, 0.95)
-        );
+        background: white;
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+        animation: fadeInUp 0.8s ease-out 0.6s both;
       }
+
       .dashboard-card:hover {
-        transform: translateX(8px) scale(1.02);
-        box-shadow: 0 15px 30px rgba(59, 130, 246, 0.2);
+        transform: translateY(-10px);
+        box-shadow: 0 20px 60px rgba(37, 99, 235, 0.15);
       }
 
-      /* Images */
-      .image-container {
-        overflow: hidden;
-        border-radius: 16px;
-        position: relative;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-      }
-      .image-container img {
-        transition: transform 1s cubic-bezier(0.34, 1.56, 0.64, 1);
-      }
-      .image-container:hover img {
-        transform: scale(1.15) rotate(2deg);
+      .stat-item {
+        background: var(--gray-50);
+        border-radius: 12px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+        border-left: 4px solid var(--primary-blue);
+        transition: all 0.3s ease;
       }
 
-      /* Progress Bar */
+      .stat-item:hover {
+        background: var(--light-blue);
+        transform: translateX(5px);
+      }
+
+      .stat-label {
+        font-size: 0.9rem;
+        color: var(--gray-600);
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-value {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--gray-900);
+      }
+
+      .progress {
+        height: 10px;
+        border-radius: 10px;
+        background: var(--gray-100);
+      }
+
       .progress-bar {
         background: linear-gradient(
           90deg,
-          #3b82f6 0%,
-          #8b5cf6 50%,
-          #ec4899 100%
+          var(--primary-blue) 0%,
+          var(--dark-blue) 100%
         );
-        transition: all 2.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+        border-radius: 10px;
+        transition: width 2s ease-in-out;
       }
 
-      /* Audience Section */
-      .audience-section {
-        padding: 140px 0;
-        background: linear-gradient(
-          180deg,
-          #ffffff 0%,
-          #f8fafc 20%,
-          #f1f5f9 40%,
-          #e2e8f0 60%,
-          #f1f5f9 80%,
-          #ffffff 100%
-        );
+      /* Section Titles */
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
         position: relative;
-        overflow: hidden;
+        display: inline-block;
       }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        margin-bottom: 3rem;
+      }
+
+      /* Audience Cards */
       .audience-card {
         background: linear-gradient(
           135deg,
@@ -458,33 +222,28 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         will-change: transform, box-shadow;
       }
-      .audience-card > * {
-        position: relative;
-        z-index: 10;
-      }
+
       .audience-card::before {
         content: "";
         position: absolute;
-        inset: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(59, 130, 246, 0.1) 0%,
-          transparent 60%
-        );
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        z-index: 1;
-        pointer-events: none;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: var(--primary-blue);
+        transition: height 0.4s ease;
       }
+
       .audience-card:hover::before {
-        opacity: 1;
+        height: 100%;
       }
+
       .audience-card:hover {
-        transform: translateY(-20px) scale(1.03);
-        border-color: rgba(59, 130, 246, 0.5);
-        box-shadow: 0 40px 80px rgba(59, 130, 246, 0.2),
-          0 20px 40px rgba(0, 0, 0, 0.12);
+        border-color: var(--primary-blue);
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
       }
+
       .audience-card h3 {
         font-size: 24px;
         font-weight: 800;
@@ -497,393 +256,358 @@
         transform: translateY(-4px) scale(1.02);
       }
       .audience-card p {
-        font-size: 17px;
-        color: #475569;
-        line-height: 1.9;
+        color: var(--gray-600);
+        line-height: 1.7;
+      }
+
+      /* Feature Cards */
+      .feature-card {
+        background: white;
+        border: 2px solid var(--gray-100);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(37, 99, 235, 0.15);
+        border-color: var(--primary-blue);
+      }
+
+      .feature-image {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .feature-card:hover .feature-image {
+        transform: scale(1.1);
+      }
+
+      .feature-content {
+        padding: 1.5rem;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
+      }
+
+      .feature-card p {
+        color: var(--gray-600);
+        line-height: 1.7;
+      }
+
+      /* Capability Section */
+      .capability-card {
+        background: white;
+        border-radius: 16px;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        border-left: 6px solid var(--primary-blue);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+      }
+
+      .capability-card:hover {
+        transform: translateX(10px);
+        box-shadow: 0 10px 40px rgba(37, 99, 235, 0.15);
+      }
+
+      .capability-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--gray-900);
+        margin-bottom: 1rem;
+      }
+
+      .capability-subtitle {
+        font-size: 1.125rem;
+        color: var(--gray-600);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+      }
+
+      .solution-box {
+        background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+        border: 2px solid #86efac;
+        border-radius: 12px;
+        padding: 1.5rem;
+        height: 100%;
+      }
+
+      .problem-box {
+        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+        border: 2px solid #fca5a5;
+        border-radius: 12px;
+        padding: 1.5rem;
+        height: 100%;
+      }
+
+      .box-tag {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 1rem;
+      }
+
+      .solution-tag {
+        background: #166534;
+        color: white;
+      }
+
+      .problem-tag {
+        background: #991b1b;
+        color: white;
+      }
+
+      .solution-box ul li,
+      .problem-box ul li {
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+      }
+
+      .solution-box ul li::before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: #166534;
+        font-weight: bold;
+      }
+
+      .problem-box ul li::before {
+        content: "✕";
+        position: absolute;
+        left: 0;
+        color: #991b1b;
+        font-weight: bold;
       }
 
       /* Inventory Section */
-      .inventory-problem-section {
-        padding: 140px 0;
-        background: linear-gradient(
-          180deg,
-          #dbeafe 0%,
-          #bfdbfe 25%,
-          #93c5fd 50%,
-          #bfdbfe 75%,
-          #dbeafe 100%
-        );
-        position: relative;
-        overflow: hidden;
+      .inventory-section {
+        background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+        padding: 100px 0;
       }
+
       .inventory-card {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.98) 0%,
-          rgba(248, 250, 252, 0.95) 50%,
-          rgba(241, 245, 249, 0.98) 100%
-        );
-        border: 3px solid rgba(59, 130, 246, 0.2);
-        border-radius: 28px;
-        padding: 56px 48px;
-        transition: all 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
-        will-change: transform, box-shadow;
-      }
-      .inventory-card > * {
-        position: relative;
-        z-index: 10;
-      }
-      .inventory-card:hover {
-        transform: translateY(-24px) scale(1.03);
-        box-shadow: 0 45px 90px rgba(59, 130, 246, 0.25),
-          0 25px 50px rgba(0, 0, 0, 0.15);
-      }
-      .inventory-card-header {
-        display: inline-block;
-        padding: 14px 28px;
+        background: white;
+        border: 3px solid var(--primary-blue);
         border-radius: 20px;
-        font-weight: 800;
-        font-size: 16px;
-        position: relative;
-        z-index: 15;
-        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        padding: 2.5rem;
+        height: 100%;
+        transition: all 0.4s ease;
+      }
+
+      .inventory-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0 20px 60px rgba(37, 99, 235, 0.2);
+      }
+
+      .inventory-header {
+        display: inline-block;
+        padding: 0.75rem 1.5rem;
+        border-radius: 25px;
+        font-weight: 700;
+        font-size: 1rem;
         text-transform: uppercase;
         letter-spacing: 1px;
+        margin-bottom: 1.5rem;
       }
-      .inventory-card-header.problem {
-        background: linear-gradient(
-          135deg,
-          #fee2e2 0%,
-          #fecaca 50%,
-          #fca5a5 100%
-        );
+
+      .inventory-header.problem {
+        background: linear-gradient(135deg, #fee2e2 0%, #fca5a5 100%);
         color: #991b1b;
-        box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
       }
-      .inventory-card-header.solution {
-        background: linear-gradient(
-          135deg,
-          #dcfce7 0%,
-          #bbf7d0 50%,
-          #86efac 100%
-        );
+
+      .inventory-header.solution {
+        background: linear-gradient(135deg, #dcfce7 0%, #86efac 100%);
         color: #166534;
-        box-shadow: 0 6px 20px rgba(34, 197, 94, 0.3);
+      }
+
+      .inventory-card ul li {
+        font-size: 1.125rem;
+        color: var(--gray-700);
+        margin-bottom: 1rem;
+        padding-left: 0.5rem;
       }
 
       /* Footer */
       .site-footer {
         background: #050505;
         color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
+        padding: 4rem 0 2rem;
       }
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin: 0 auto;
+
+      .footer-title {
+        font-size: 1.25rem;
+        color: white;
+        margin-bottom: 1rem;
+        font-weight: 600;
       }
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-      .tagline {
+
+      .footer-tagline {
         font-family: "Segoe Script", cursive;
-        font-size: 18px;
+        font-size: 1.125rem;
         color: #38bdf8;
-        margin-bottom: 12px;
-      }
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
+        margin-bottom: 1rem;
       }
 
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      .site-footer a {
+      .footer-link {
         color: #d1d5db;
         text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
+        transition: color 0.3s ease;
+        display: block;
+        margin-bottom: 0.5rem;
       }
 
-      .site-footer a:hover {
+      .footer-link:hover {
         color: #38bdf8;
-      }
-
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
       }
 
       .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+        margin-top: 3rem;
         text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
+        color: #94a3b8;
       }
 
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+
+      .fade-in-up {
+        animation: fadeInUp 0.8s ease-out;
       }
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+
+      /* Scroll reveal */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease;
       }
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-      .solutions-grid li:hover,
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       @media (max-width: 768px) {
-        .inventory-problem-section,
-        .audience-section {
-          padding: 100px 0;
+        .hero-title {
+          font-size: 2.5rem;
         }
-        .inventory-card,
-        .audience-card {
-          padding: 40px 32px;
+
+        .section-title {
+          font-size: 2rem;
         }
-        .capability-section {
-          padding: 2.5rem;
-        }
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
+
+        .dashboard-card {
+          margin-top: 2rem;
         }
       }
     </style>
   </head>
-  <body class="bg-white overflow-x-hidden">
-    <nav
-      class="bg-white shadow-sm sticky top-0 z-40 border-b-2 border-gray-200"
-    >
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="flex justify-between items-center h-16">
-          <div class="flex items-center space-x-8">
-            <div class="logo">
-              <img
-                src="https://www.zolytics.in/files/logo.png"
-                style="height: 80px; width: auto"
-                alt="Zolytics"
-              />
-              <img
-                src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
-                alt="Zoho Books"
-                style="height: 40px; width: auto"
-              />
-            </div>
-          </div>
-        </div>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+      <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics"
+            height="70"
+            class="me-3"
+            style="height: 90px"
+          />
+          <img
+            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg"
+            alt="Zoho Books"
+            height="35"
+            style="height: 50px"
+          />
+        </a>
       </div>
     </nav>
 
-    <section class="hero-gradient py-20 relative overflow-hidden">
-      <div class="hero-particles"></div>
-      <div class="max-w-7xl mx-auto px-6 relative z-10">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div class="scroll-reveal">
-            <h1
-              class="text-5xl lg:text-6xl font-bold mb-6 leading-tight text-gray-900"
-            >
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <h1 class="hero-title">
               Professional accounting for growing businesses
             </h1>
-            <p class="text-xl mb-8 text-gray-700 leading-relaxed font-medium">
+            <p class="hero-subtitle">
               Streamline your financial operations with intelligent automation,
               real-time insights, and enterprise-grade security.
             </p>
-            <div
-              class="flex flex-wrap items-center gap-6 text-base text-gray-700 font-semibold"
-            >
-              <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-xl">✓</span>GST Compliant
-              </div>
-              <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-xl">✓</span>E-invoicing
-                Ready
-              </div>
-              <div class="flex items-center">
-                <span class="text-gray-900 mr-2 text-xl">✓</span>Multi-currency
-                Support
-              </div>
+            <div class="hero-features">
+              <span class="feature-check" class="text-gray-900 mr-2 text-xl"
+                >GST Compliant</span
+              >
+              <span class="feature-check" class="text-gray-900 mr-2 text-xl"
+                >E-invoicing Ready</span
+              >
+              <span class="feature-check" class="text-gray-900 mr-2 text-xl"
+                >Multi-currency Support</span
+              >
             </div>
           </div>
-          <div class="scroll-reveal">
-            <div class="dashboard-mockup rounded-2xl p-8 bg-white">
-              <div class="image-container mb-6">
+          <div class="col-lg-6">
+            <div class="dashboard-card">
+              <div class="mb-4">
                 <img
                   src="https://www.zohowebstatic.com/sites/zweb/images/enterprise/home/banner-mobile.png"
                   alt="Dashboard"
-                  class="w-full h-64 object-cover rounded-xl"
+                  class="img-fluid rounded"
+                  style="width: 100%; height: 250px; object-fit: cover"
                 />
               </div>
-              <div class="space-y-4">
-                <div
-                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
-                >
-                  <span class="text-gray-800 font-semibold">Total Revenue</span>
-                  <span
-                    class="text-gray-900 font-bold text-xl"
-                    id="revenueCounter"
-                    >₹0</span
-                  >
+              <div class="stat-item">
+                <div class="stat-label">Total Revenue</div>
+                <div class="stat-value" id="revenueCounter">₹0</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Outstanding</div>
+                <div class="stat-value" id="outstandingCounter">₹0</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-label">Expenses</div>
+                <div class="stat-value" id="expensesCounter">₹0</div>
+              </div>
+              <div class="mt-4">
+                <div class="d-flex justify-content-between mb-2">
+                  <span class="stat-label">Monthly Growth</span>
+                  <span class="fw-bold text-dark">+23.5%</span>
                 </div>
-                <div
-                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
-                >
-                  <span class="text-gray-800 font-semibold">Outstanding</span>
-                  <span
-                    class="text-gray-900 font-bold text-xl"
-                    id="outstandingCounter"
-                    >₹0</span
-                  >
-                </div>
-                <div
-                  class="dashboard-card flex justify-between items-center p-4 bg-gray-50 rounded-xl border-2 border-gray-200"
-                >
-                  <span class="text-gray-800 font-semibold">Expenses</span>
-                  <span
-                    class="text-gray-900 font-bold text-xl"
-                    id="expensesCounter"
-                    >₹0</span
-                  >
-                </div>
-                <div class="mt-6">
+                <div class="progress">
                   <div
-                    class="flex justify-between text-sm text-gray-700 mb-3 font-semibold"
-                  >
-                    <span>Monthly Growth</span>
-                    <span class="text-gray-900 font-bold">+23.5%</span>
-                  </div>
-                  <div
-                    class="w-full bg-gray-200 rounded-full h-3 overflow-hidden border border-gray-300"
-                  >
-                    <div
-                      class="progress-bar h-3 rounded-full"
-                      id="growthBar"
-                      style="width: 0%"
-                    ></div>
-                  </div>
+                    class="progress-bar"
+                    id="growthBar"
+                    role="progressbar"
+                    style="width: 0%"
+                    aria-valuenow="75"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                  ></div>
                 </div>
               </div>
             </div>
@@ -892,503 +616,487 @@
       </div>
     </section>
 
-    <section class="audience-section scroll-reveal">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20">
-          <h2 class="section-title text-5xl font-bold mb-6">
-            Who Is Zoho Books For?
-          </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Designed to support businesses at every stage.
+    <!-- Audience Section -->
+    <section class="py-5 bg-light">
+      <div class="container my-5">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title">Who Is Zoho Books For?</h2>
+          <p class="section-subtitle">
+            Designed to support businesses at every stage
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          <div class="audience-card">
-            <h3>Startups & Small Businesses</h3>
-            <p>
-              Simple, structured accounting for businesses looking to move away
-              from spreadsheets.
-            </p>
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>Startups & Small Businesses</h3>
+              <p>
+                Simple, structured accounting for businesses looking to move
+                away from spreadsheets.
+              </p>
+            </div>
           </div>
-          <div class="audience-card">
-            <h3>Service-Based Companies</h3>
-            <p>
-              Ideal for agencies, consultants, and professionals managing
-              recurring billing.
-            </p>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>Service-Based Companies</h3>
+              <p>
+                Ideal for agencies, consultants, and professionals managing
+                recurring billing.
+              </p>
+            </div>
           </div>
-          <div class="audience-card">
-            <h3>Trading & Distribution Firms</h3>
-            <p>
-              Manage high-volume invoicing, purchases, and inventory with full
-              visibility.
-            </p>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>Trading & Distribution Firms</h3>
+              <p>
+                Manage high-volume invoicing, purchases, and inventory with full
+                visibility.
+              </p>
+            </div>
           </div>
-          <div class="audience-card">
-            <h3>Manufacturing Businesses</h3>
-            <p>
-              Track raw materials, finished goods, and production-linked
-              accounting.
-            </p>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>Manufacturing Businesses</h3>
+              <p>
+                Track raw materials, finished goods, and production-linked
+                accounting.
+              </p>
+            </div>
           </div>
-          <div class="audience-card">
-            <h3>GST-Registered Companies</h3>
-            <p>
-              Built to handle GST-compliant invoicing and statutory reporting.
-            </p>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>GST-Registered Companies</h3>
+              <p>
+                Built to handle GST-compliant invoicing and statutory reporting.
+              </p>
+            </div>
           </div>
-          <div class="audience-card">
-            <h3>Multi-Location Businesses</h3>
-            <p>
-              Centralized accounting across multiple branches and warehouses.
-            </p>
+          <div class="col-md-6 col-lg-4 reveal">
+            <div class="audience-card">
+              <h3>Multi-Location Businesses</h3>
+              <p>
+                Centralized accounting across multiple branches and warehouses.
+              </p>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="features" class="py-20 bg-gray-50">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 scroll-reveal">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+    <!-- Features Section -->
+    <section class="py-5">
+      <div class="container my-5">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title">
             Complete Zoho Books Product Capabilities
           </h2>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            A comprehensive suite of features for financial management.
+          <p class="section-subtitle">
+            A comprehensive suite of features for financial management
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08hjsGorIfK71NekONA8Ks7yL2_qrLTYvGA&s"
-                alt="Invoicing"
-                class="w-full h-56 object-cover"
-              />
+        <div class="row g-4">
+          <div class="col-md-6 reveal">
+            <div class="feature-card">
+              <div style="overflow: hidden">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT08hjsGorIfK71NekONA8Ks7yL2_qrLTYvGA&s"
+                  alt="Invoicing"
+                  class="feature-image"
+                />
+              </div>
+              <div class="feature-content">
+                <h3>Professional Invoicing & Billing</h3>
+                <p>
+                  Create stunning, professional invoices with your brand colors
+                  and logo. Support for multiple currencies and languages.
+                </p>
+              </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
-              Professional Invoicing & Billing
-            </h3>
-            <p class="text-gray-600 mb-4 text-base leading-relaxed">
-              Create stunning, professional invoices with your brand colors and
-              logo. Support for multiple currencies and languages.
-            </p>
           </div>
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://img.omnicard.in/blog_images/2023092611304688087552-What_is_Expense_Management.png"
-                alt="Expenses"
-                class="w-full h-56 object-cover"
-              />
+          <div class="col-md-6 reveal">
+            <div class="feature-card">
+              <div style="overflow: hidden">
+                <img
+                  src="https://img.omnicard.in/blog_images/2023092611304688087552-What_is_Expense_Management.png"
+                  alt="Expenses"
+                  class="feature-image"
+                />
+              </div>
+              <div class="feature-content">
+                <h3>Intelligent Expense Management</h3>
+                <p>
+                  Capture expenses from anywhere using mobile apps. Scan
+                  receipts and let OCR extract data automatically.
+                </p>
+              </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
-              Intelligent Expense Management
-            </h3>
-            <p class="text-gray-600 mb-4 text-base leading-relaxed">
-              Capture expenses from anywhere using mobile apps. Scan receipts
-              and let OCR extract data automatically.
-            </p>
           </div>
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPNf81AjziPyI4yS3GrNpiRFbufCxYLJjl2Q&s"
-                alt="Banking"
-                class="w-full h-56 object-cover"
-              />
+          <div class="col-md-6 reveal">
+            <div class="feature-card">
+              <div style="overflow: hidden">
+                <img
+                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPNf81AjziPyI4yS3GrNpiRFbufCxYLJjl2Q&s"
+                  alt="Banking"
+                  class="feature-image"
+                />
+              </div>
+              <div class="feature-content">
+                <h3>Seamless Banking Integration</h3>
+                <p>
+                  Connect unlimited bank accounts for automatic transaction
+                  import. Smart matching engine pairs transactions.
+                </p>
+              </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
-              Seamless Banking Integration
-            </h3>
-            <p class="text-gray-600 mb-4 text-base leading-relaxed">
-              Connect unlimited bank accounts for automatic transaction import.
-              Smart matching engine pairs transactions.
-            </p>
           </div>
-          <div class="feature-card bg-white p-8 rounded-xl scroll-reveal">
-            <div class="image-container mb-6">
-              <img
-                src="https://akmglobal.com/uploads/image/1906imguf_taxcompliance.jpg"
-                alt="Tax"
-                class="w-full h-56 object-cover"
-              />
+          <div class="col-md-6 reveal">
+            <div class="feature-card">
+              <div style="overflow: hidden">
+                <img
+                  src="https://akmglobal.com/uploads/image/1906imguf_taxcompliance.jpg"
+                  alt="Tax"
+                  class="feature-image"
+                />
+              </div>
+              <div class="feature-content">
+                <h3>GST & Tax Compliance</h3>
+                <p>
+                  Stay compliant with Indian GST regulations effortlessly.
+                  Generate GST-compliant invoices with proper HSN/SAC codes.
+                </p>
+              </div>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-900">
-              GST & Tax Compliance
-            </h3>
-            <p class="text-gray-600 mb-4 text-base leading-relaxed">
-              Stay compliant with Indian GST regulations effortlessly. Generate
-              GST-compliant invoices with proper HSN/SAC codes.
-            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="capabilities" class="py-32 bg-white">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20 scroll-reveal">
-          <h2 class="section-title text-5xl font-bold mb-6">
+    <!-- Capabilities Section -->
+    <section class="py-5 bg-light">
+      <div class="container my-5">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title">
             What Zoho Books Does & Problems It Solves
           </h2>
-          <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Transform your accounting challenges into streamlined workflows.
+          <p class="section-subtitle">
+            Transform your accounting challenges into streamlined workflows
           </p>
         </div>
 
-        <div class="capability-section scroll-reveal">
-          <h3 class="text-3xl font-bold text-gray-900 mb-6">
-            Automation & Controls
-          </h3>
-          <p class="text-xl text-gray-700 mb-8 font-semibold">
-            Reduce Manual Accounting Work
-          </p>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="problem-solution-card">
-              <div class="solution-tag">What Zoho Books Does</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Automates recurring transactions</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Applies approval workflows</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Locks transactions to prevent errors</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Supports budgeting and fixed asset tracking</span>
-                </li>
-              </ul>
+        <div class="capability-card reveal">
+          <h3 class="capability-title">Automation & Controls</h3>
+          <p class="capability-subtitle">Reduce Manual Accounting Work</p>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="solution-box">
+                <span class="box-tag solution-tag">What Zoho Books Does</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Automates recurring transactions</li>
+                  <li>Applies approval workflows</li>
+                  <li>Locks transactions to prevent errors</li>
+                  <li>Supports budgeting and fixed asset tracking</li>
+                </ul>
+              </div>
             </div>
-            <div class="problem-solution-card">
-              <div class="problem-tag">Problem It Solves</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Repetitive accounting tasks</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Data inconsistencies</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Poor financial control</span>
-                </li>
-              </ul>
+            <div class="col-lg-6">
+              <div class="problem-box">
+                <span class="box-tag problem-tag">Problem It Solves</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Repetitive accounting tasks</li>
+                  <li>Data inconsistencies</li>
+                  <li>Poor financial control</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="capability-section scroll-reveal">
-          <h3 class="text-3xl font-bold text-gray-900 mb-6">
-            Sales, Invoicing & Customer Billing
-          </h3>
-          <p class="text-xl text-gray-700 mb-8 font-semibold">
-            Faster and Smarter Billing
-          </p>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="problem-solution-card">
-              <div class="solution-tag">What Zoho Books Does</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Generates quotes, sales orders, and invoices</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Automates recurring billing</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Supports milestone invoicing</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Sends payment reminders</span>
-                </li>
-              </ul>
+        <div class="capability-card reveal">
+          <h3 class="capability-title">Sales, Invoicing & Customer Billing</h3>
+          <p class="capability-subtitle">Faster and Smarter Billing</p>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="solution-box">
+                <span class="box-tag solution-tag">What Zoho Books Does</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Generates quotes, sales orders, and invoices</li>
+                  <li>Automates recurring billing</li>
+                  <li>Supports milestone invoicing</li>
+                  <li>Sends payment reminders</li>
+                </ul>
+              </div>
             </div>
-            <div class="problem-solution-card">
-              <div class="problem-tag">Problem It Solves</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Delayed invoicing</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Missed payments</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Manual follow-ups</span>
-                </li>
-              </ul>
+            <div class="col-lg-6">
+              <div class="problem-box">
+                <span class="box-tag problem-tag">Problem It Solves</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Delayed invoicing</li>
+                  <li>Missed payments</li>
+                  <li>Manual follow-ups</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="capability-section scroll-reveal">
-          <h3 class="text-3xl font-bold text-gray-900 mb-6">
+        <div class="capability-card reveal">
+          <h3 class="capability-title">
             Financial Reports & Business Insights
           </h3>
-          <p class="text-xl text-gray-700 mb-8 font-semibold">
-            Clear Financial Reporting
-          </p>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="problem-solution-card">
-              <div class="solution-tag">What Zoho Books Does</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Provides real-time dashboards</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Generates P&L, balance sheet reports</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Allows custom reports</span>
-                </li>
-              </ul>
+          <p class="capability-subtitle">Clear Financial Reporting</p>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="solution-box">
+                <span class="box-tag solution-tag">What Zoho Books Does</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Provides real-time dashboards</li>
+                  <li>Generates P&L, balance sheet reports</li>
+                  <li>Allows custom reports</li>
+                </ul>
+              </div>
             </div>
-            <div class="problem-solution-card">
-              <div class="problem-tag">Problem It Solves</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Lack of financial clarity</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Delayed decision-making</span>
-                </li>
-              </ul>
+            <div class="col-lg-6">
+              <div class="problem-box">
+                <span class="box-tag problem-tag">Problem It Solves</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Lack of financial clarity</li>
+                  <li>Delayed decision-making</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
 
-        <div class="capability-section scroll-reveal">
-          <h3 class="text-3xl font-bold text-gray-900 mb-6">
-            Integrations & Scalability
-          </h3>
-          <p class="text-xl text-gray-700 mb-8 font-semibold">
-            Works With Your Business Ecosystem
-          </p>
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div class="problem-solution-card">
-              <div class="solution-tag">What Zoho Books Does</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Integrates with Zoho apps and third-party tools</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Supports payroll, inventory, CRM</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-gray-900 font-bold text-lg">→</span
-                  ><span>Scales from small to enterprise</span>
-                </li>
-              </ul>
+        <div class="capability-card reveal">
+          <h3 class="capability-title">Integrations & Scalability</h3>
+          <p class="capability-subtitle">Works With Your Business Ecosystem</p>
+          <div class="row g-4">
+            <div class="col-lg-6">
+              <div class="solution-box">
+                <span class="box-tag solution-tag">What Zoho Books Does</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Integrates with Zoho apps and third-party tools</li>
+                  <li>Supports payroll, inventory, CRM</li>
+                  <li>Scales from small to enterprise</li>
+                </ul>
+              </div>
             </div>
-            <div class="problem-solution-card">
-              <div class="problem-tag">Problem It Solves</div>
-              <ul class="space-y-3 text-gray-700">
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Tool fragmentation</span>
-                </li>
-                <li class="flex items-start">
-                  <span class="mr-3 text-red-600 font-bold text-lg">✕</span
-                  ><span>Data silos</span>
-                </li>
-              </ul>
+            <div class="col-lg-6">
+              <div class="problem-box">
+                <span class="box-tag problem-tag">Problem It Solves</span>
+                <ul class="list-unstyled mb-0">
+                  <li>Tool fragmentation</li>
+                  <li>Data silos</li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="inventory-problem-section scroll-reveal">
-      <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-20">
-          <h2 class="text-4xl font-bold text-gray-900 mb-4">
+    <!-- Inventory Section -->
+    <section class="inventory-section">
+      <div class="container">
+        <div class="text-center mb-5 reveal">
+          <h2 class="section-title">
             Inventory Management – Problems & Solutions
           </h2>
-          <p class="text-lg text-gray-600 max-w-3xl mx-auto">
-            Common inventory challenges and how Zoho Books solves them.
+          <p class="section-subtitle">
+            Common inventory challenges and how Zoho Books solves them
           </p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div class="inventory-card inventory-problem">
-            <div class="inventory-card-header problem">
-              Problems Businesses Face
+
+        <!-- FIRST PROBLEM–SOLUTION -->
+        <div class="row g-4 mb-4">
+          <div class="col-lg-6 reveal">
+            <div class="inventory-card">
+              <span class="inventory-header problem">
+                Problems Businesses Face
+              </span>
+              <ul class="list-unstyled">
+                <li>Stock mismatch between physical and system records</li>
+                <li>No real-time visibility across warehouses</li>
+                <li>Overstocking or frequent stock-outs</li>
+                <li>Manual stock tracking using Excel</li>
+              </ul>
             </div>
-            <ul class="space-y-4 text-gray-700 mt-6">
-              <li>Stock mismatch between physical and system records</li>
-              <li>No real-time visibility across warehouses</li>
-              <li>Overstocking or frequent stock-outs</li>
-              <li>Manual stock tracking using Excel</li>
-            </ul>
           </div>
-          <div class="inventory-card inventory-solution">
-            <div class="inventory-card-header solution">
-              How Zoho Books Solves This
+
+          <div class="col-lg-6 reveal">
+            <div class="inventory-card">
+              <span class="inventory-header solution">
+                How Zoho Books Solves This
+              </span>
+              <ul class="list-unstyled">
+                <li>Real-time stock tracking with automatic updates</li>
+                <li>Multi-warehouse location tracking</li>
+                <li>Reorder levels with low-stock alerts</li>
+                <li>Batch and serial number tracking</li>
+              </ul>
             </div>
-            <ul class="space-y-4 text-gray-700 mt-6">
-              <li>Real-time stock tracking with automatic updates</li>
-              <li>Multi-warehouse location tracking</li>
-              <li>Reorder levels with low-stock alerts</li>
-              <li>Batch and serial number tracking</li>
-            </ul>
+          </div>
+        </div>
+
+        <!-- SECOND PROBLEM–SOLUTION (NEW) -->
+        <div class="row g-4">
+          <div class="col-lg-6 reveal">
+            <div class="inventory-card">
+              <span class="inventory-header problem">
+                More Inventory Challenges
+              </span>
+              <ul class="list-unstyled">
+                <li>No control over expired or damaged stock</li>
+                <li>Inaccurate valuation due to manual costing</li>
+                <li>Difficulty tracking fast-moving items</li>
+                <li>Lack of audit trail for inventory changes</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-lg-6 reveal">
+            <div class="inventory-card">
+              <span class="inventory-header solution">
+                Zoho Books Capability
+              </span>
+              <ul class="list-unstyled">
+                <li>Expiry-based inventory and stock aging reports</li>
+                <li>FIFO / Weighted Average costing methods</li>
+                <li>Item-wise sales velocity tracking</li>
+                <li>Complete audit logs for stock adjustments</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Footer -->
     <footer class="site-footer">
-      <div class="footer-content">
-        <div class="footer-section">
-          <h3>Zolytics</h3>
-          <p class="tagline">Certified Zoho Partner</p>
-          <p>
-            We help businesses simplify operations by implementing, customizing,
-            and automating Zoho applications tailored to real-world business
-            workflows.
-          </p>
-        </div>
-        
-         <!-- Zoho Solutions - Centered with balanced columns -->
-        <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
-          <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics-html">Zoho Analytics</a></li>
-              <li><a href="bigin-html">Zoho Bigin</a></li>
-              <li><a href="billing-html">Zoho Billing</a></li>
-              <li><a href="books-html">Zoho Books</a></li>
-              <li><a href="commerce-html">Zoho Commerce</a></li>
-              <li><a href="/zoho-crm-html">Zoho CRM</a></li>
-              <li><a href="expense-html">Zoho Expense</a></li>
-              <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory-html">Zoho Inventory</a></li>
-
-              <li><a href="payroll-html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus-html">Zoho People Plus</a></li>
-
-              <li><a href="recruit-html">Zoho Recruit</a></li>
-            </ul>
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h3 class="footer-title">Zolytics</h3>
+            <p class="footer-tagline">Certified Zoho Partner</p>
+            <p>
+              We help businesses simplify operations by implementing,
+              customizing, and automating Zoho applications tailored to
+              real-world business workflows.
+            </p>
           </div>
-        </div>
 
-        <!-- Contact -->
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>
-            Email: info@zolytics.in <br />
-            Phone: +91 90 7313 9613<br />
-            Location: India
-             <div
-            style="
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              margin-top: 5px;
-            "
-          >
-            <a
-              href="https://wa.me/+919073139613"
-              target="_blank"
+          <div class="col-md-4">
+            <h3 class="footer-title">Zoho Solutions</h3>
+            <div class="row">
+              <div class="col-6">
+                <a href="analytics-html" class="footer-link">Zoho Analytics</a>
+                <a href="bigin-html" class="footer-link">Zoho Bigin</a>
+                <a href="billing-html" class="footer-link">Zoho Billing</a>
+                <a href="books-html" class="footer-link">Zoho Books</a>
+                <a href="commerce-html" class="footer-link">Zoho Commerce</a>
+                <a href="crm-html" class="footer-link">Zoho CRM</a>
+              </div>
+              <div class="col-6">
+                <a href="expense-html" class="footer-link">Zoho Expense</a>
+                <a href="finance.html" class="footer-link">Zoho Finance Plus</a>
+                <a href="inventory-html" class="footer-link">Zoho Inventory</a>
+                <a href="payroll-html" class="footer-link">Zoho Payroll</a>
+                <a href="peopleplus-html" class="footer-link"
+                  >Zoho People Plus</a
+                >
+                <a href="recruit-html" class="footer-link">Zoho Recruit</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <h3 class="footer-title">Contact Us</h3>
+            <p class="mb-2">Email: info@zolytics.in</p>
+            <p class="mb-2">Phone: +91 90 7313 9613</p>
+            <p class="mb-3">Location: India</p>
+            <div
+              class="d-flex align-items-center mb-3"
               style="
                 display: flex;
                 align-items: center;
-                text-decoration: none;
-                color: inherit;
-                
+                gap: 8px;
+                margin-top: 5px;
               "
             >
-              <img
-                src="data:image/png;base64,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"
-                alt="WhatsApp"
-                width="22"
-                height="22"
-              />
-              <span style="font-weight: 500">  +91 90 7313 9613</span>
-            </a>
-          </div>
-          </p>
-          <div class="zoho-logo">
+              <a
+                href="https://wa.me/+919073139613"
+                target="_blank"
+                style="
+                  display: flex;
+                  align-items: center;
+                  text-decoration: none;
+                  color: inherit;
+                "
+              >
+                <img
+                  src="data:image/png;base64,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"
+                  alt="WhatsApp"
+                  width="22"
+                  height="22"
+                />
+                <span style="font-weight: 500"> +91 90 7313 9613</span>
+              </a>
+            </div>
             <img
-              style=" max-width: 140px;
-        opacity: 0.95; margin-top: 16px;"
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
-              alt="Zoho Premium Partner"
+              alt="Zoho Partner"
+              style="max-width: 140px; opacity: 0.95"
             />
           </div>
         </div>
-      </div>
-       
-      <div class="footer-bottom">
-        <p>
-          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
-          Zoho Consulting Partner
-        </p>
+
+        <div class="footer-bottom">
+          <p class="mb-0">
+            © 2026 Zolytics. All rights reserved, All wrong reversed. |
+            Certified Zoho Consulting Partner
+          </p>
+        </div>
       </div>
     </footer>
 
-    <div class="scroll-top" onclick="scrollToTop()"></div>
-
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("revealed");
-        });
-      }, observerOptions);
-      document
-        .querySelectorAll(".scroll-reveal")
-        .forEach((el) => observer.observe(el));
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
 
-      const dashboardObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              animateCounter("revenueCounter", 2450000, 2000, "₹");
-              animateCounter("outstandingCounter", 345000, 2000, "₹");
-              animateCounter("expensesCounter", 890000, 2000, "₹");
-              setTimeout(() => {
-                document.getElementById("growthBar").style.width = "75%";
-              }, 500);
-              dashboardObserver.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.3 }
-      );
+      // Scroll reveal animation
+      function reveal() {
+        const reveals = document.querySelectorAll(".reveal");
 
-      const dashboardMockup = document.querySelector(".dashboard-mockup");
-      if (dashboardMockup) dashboardObserver.observe(dashboardMockup);
+        for (let i = 0; i < reveals.length; i++) {
+          const windowHeight = window.innerHeight;
+          const elementTop = reveals[i].getBoundingClientRect().top;
+          const elementVisible = 150;
 
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
+          }
+        }
+      }
+
+      window.addEventListener("scroll", reveal);
+      reveal(); // Check on load
+
+      // Counter animation
       function animateCounter(id, target, duration = 2000, prefix = "") {
         const element = document.getElementById(id);
         const start = 0;
         const increment = target / (duration / 16);
         let current = start;
+
         const timer = setInterval(() => {
           current += increment;
           if (current >= target) {
@@ -1400,6 +1108,45 @@
           }
         }, 16);
       }
+
+      // Intersection Observer for dashboard card
+      const dashboardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCounter("revenueCounter", 2450000, 2000, "₹");
+              animateCounter("outstandingCounter", 345000, 2000, "₹");
+              animateCounter("expensesCounter", 890000, 2000, "₹");
+
+              setTimeout(() => {
+                document.getElementById("growthBar").style.width = "75%";
+              }, 500);
+
+              dashboardObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      const dashboardCard = document.querySelector(".dashboard-card");
+      if (dashboardCard) {
+        dashboardObserver.observe(dashboardCard);
+      }
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
     </script>
   </body>
 </html>
