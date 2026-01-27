@@ -445,7 +445,6 @@
         padding: 200px 40px 140px !important;
         position: relative !important;
         overflow: hidden !important;
-        margin-top: 80px !important;
       }
 
       #zoho-billing-wrapper .zb-hero::before {
@@ -636,12 +635,21 @@
         color: var(--zb-primary-blue) !important;
       }
 
+      /* Fix header overlap */
+      #zoho-billing-wrapper {
+        padding-top: 120px !important; /* match header height */
+      }
+
+      /* Remove hero margin */
+      #zoho-billing-wrapper .zb-hero {
+        margin-top: 0 !important;
+      }
+
       /* ============================================
          SECTION STYLES
          ============================================ */
       #zoho-billing-wrapper .zb-section {
-        padding: 140px 40px !important;
-        position: relative !important;
+        padding: 70px 40px !important; /* Reduced spacing */
       }
 
       #zoho-billing-wrapper .zb-section-title {
@@ -1362,12 +1370,12 @@
                 <img
                   src="https://www.zolytics.in/files/logo.png"
                   alt="Zolytics"
-                  style="height: 80px !important; width: auto !important"
+                  style="height: 90px !important; width: auto !important"
                 />
                 <img
                   src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg"
                   alt="Zoho Billing"
-                  style="height: 70px !important"
+                  style="height: 60px !important"
                 />
               </div>
             </div>
@@ -2519,15 +2527,6 @@
 
       // Enhanced hover effects for cards
       document.addEventListener("DOMContentLoaded", function () {
-        // Add parallax effect to hero section
-        window.addEventListener("scroll", function () {
-          const scrolled = window.pageYOffset;
-          const parallax = document.querySelector(".zb-hero");
-          if (parallax) {
-            parallax.style.transform = "translateY(" + scrolled * 0.3 + "px)";
-          }
-        });
-
         // Add stagger animation to metric cards
         const metricCards = document.querySelectorAll(".zb-metric-card");
         metricCards.forEach((card, index) => {
