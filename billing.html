@@ -1,177 +1,486 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Advanced Billing Platform - Professional</title>
+    <title>Advanced Billing Platform - Professional | Zolytics</title>
+
+    <!-- Bootstrap 5.3.2 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      /* ============================================
+         ZOHO SITE COMPATIBILITY - CRITICAL RESETS
+         ============================================ */
+      #zoho-billing-wrapper,
+      #zoho-billing-wrapper *,
+      #zoho-billing-wrapper *::before,
+      #zoho-billing-wrapper *::after {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif !important;
       }
 
+      /* Re-apply Bootstrap Container & Grid */
+      #zoho-billing-wrapper .container,
+      #zoho-billing-wrapper .container-fluid,
+      #zoho-billing-wrapper .container-sm,
+      #zoho-billing-wrapper .container-md,
+      #zoho-billing-wrapper .container-lg,
+      #zoho-billing-wrapper .container-xl,
+      #zoho-billing-wrapper .container-xxl {
+        width: 100% !important;
+        padding-right: var(--bs-gutter-x, 0.75rem) !important;
+        padding-left: var(--bs-gutter-x, 0.75rem) !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+      }
+
+      #zoho-billing-wrapper .row {
+        --bs-gutter-x: 1.5rem !important;
+        --bs-gutter-y: 0 !important;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        margin-top: calc(-1 * var(--bs-gutter-y)) !important;
+        margin-right: calc(-0.5 * var(--bs-gutter-x)) !important;
+        margin-left: calc(-0.5 * var(--bs-gutter-x)) !important;
+      }
+
+      #zoho-billing-wrapper .row > * {
+        flex-shrink: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-right: calc(var(--bs-gutter-x) * 0.5) !important;
+        padding-left: calc(var(--bs-gutter-x) * 0.5) !important;
+        margin-top: var(--bs-gutter-y) !important;
+      }
+
+      #zoho-billing-wrapper .col {
+        flex: 1 0 0% !important;
+      }
+
+      #zoho-billing-wrapper .col-12 {
+        flex: 0 0 auto !important;
+        width: 100% !important;
+      }
+
+      #zoho-billing-wrapper .col-lg-6 {
+        flex: 0 0 auto !important;
+        width: 50% !important;
+      }
+
+      #zoho-billing-wrapper .col-lg-4 {
+        flex: 0 0 auto !important;
+        width: 33.333333% !important;
+      }
+
+      #zoho-billing-wrapper .col-lg-3 {
+        flex: 0 0 auto !important;
+        width: 25% !important;
+      }
+
+      #zoho-billing-wrapper .col-md-6 {
+        flex: 0 0 auto !important;
+        width: 50% !important;
+      }
+
+      @media (min-width: 576px) {
+        #zoho-billing-wrapper .container,
+        #zoho-billing-wrapper .container-sm {
+          max-width: 540px !important;
+        }
+      }
+
+      @media (min-width: 768px) {
+        #zoho-billing-wrapper .container,
+        #zoho-billing-wrapper .container-sm,
+        #zoho-billing-wrapper .container-md {
+          max-width: 720px !important;
+        }
+
+        #zoho-billing-wrapper .col-md-6 {
+          flex: 0 0 auto !important;
+          width: 50% !important;
+        }
+      }
+
+      @media (min-width: 992px) {
+        #zoho-billing-wrapper .container,
+        #zoho-billing-wrapper .container-sm,
+        #zoho-billing-wrapper .container-md,
+        #zoho-billing-wrapper .container-lg {
+          max-width: 960px !important;
+        }
+
+        #zoho-billing-wrapper .col-lg-6 {
+          flex: 0 0 auto !important;
+          width: 50% !important;
+        }
+
+        #zoho-billing-wrapper .col-lg-4 {
+          flex: 0 0 auto !important;
+          width: 33.333333% !important;
+        }
+
+        #zoho-billing-wrapper .col-lg-3 {
+          flex: 0 0 auto !important;
+          width: 25% !important;
+        }
+      }
+
+      @media (min-width: 1200px) {
+        #zoho-billing-wrapper .container,
+        #zoho-billing-wrapper .container-sm,
+        #zoho-billing-wrapper .container-md,
+        #zoho-billing-wrapper .container-lg,
+        #zoho-billing-wrapper .container-xl {
+          max-width: 1140px !important;
+        }
+      }
+
+      @media (min-width: 1400px) {
+        #zoho-billing-wrapper .container,
+        #zoho-billing-wrapper .container-sm,
+        #zoho-billing-wrapper .container-md,
+        #zoho-billing-wrapper .container-lg,
+        #zoho-billing-wrapper .container-xl,
+        #zoho-billing-wrapper .container-xxl {
+          max-width: 1320px !important;
+        }
+      }
+
+      /* Re-apply Bootstrap spacing utilities */
+      #zoho-billing-wrapper .m-0 {
+        margin: 0 !important;
+      }
+      #zoho-billing-wrapper .p-0 {
+        padding: 0 !important;
+      }
+      #zoho-billing-wrapper .mt-3 {
+        margin-top: 1rem !important;
+      }
+      #zoho-billing-wrapper .mt-4 {
+        margin-top: 1.5rem !important;
+      }
+      #zoho-billing-wrapper .mb-3 {
+        margin-bottom: 1rem !important;
+      }
+      #zoho-billing-wrapper .mb-4 {
+        margin-bottom: 1.5rem !important;
+      }
+      #zoho-billing-wrapper .mb-5 {
+        margin-bottom: 3rem !important;
+      }
+      #zoho-billing-wrapper .pt-4 {
+        padding-top: 1.5rem !important;
+      }
+      #zoho-billing-wrapper .pt-5 {
+        padding-top: 3rem !important;
+      }
+      #zoho-billing-wrapper .pb-5 {
+        padding-bottom: 3rem !important;
+      }
+      #zoho-billing-wrapper .p-4 {
+        padding: 1.5rem !important;
+      }
+      #zoho-billing-wrapper .p-5 {
+        padding: 3rem !important;
+      }
+      #zoho-billing-wrapper .px-3 {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+      }
+      #zoho-billing-wrapper .py-5 {
+        padding-top: 3rem !important;
+        padding-bottom: 3rem !important;
+      }
+      #zoho-billing-wrapper .g-4 {
+        --bs-gutter-x: 1.5rem !important;
+        --bs-gutter-y: 1.5rem !important;
+      }
+      #zoho-billing-wrapper .g-5 {
+        --bs-gutter-x: 3rem !important;
+        --bs-gutter-y: 3rem !important;
+      }
+      #zoho-billing-wrapper .gap-2 {
+        gap: 0.5rem !important;
+      }
+      #zoho-billing-wrapper .gap-3 {
+        gap: 1rem !important;
+      }
+      #zoho-billing-wrapper .gap-4 {
+        gap: 1.5rem !important;
+      }
+
+      /* Display utilities */
+      #zoho-billing-wrapper .d-flex {
+        display: flex !important;
+      }
+      #zoho-billing-wrapper .d-grid {
+        display: grid !important;
+      }
+      #zoho-billing-wrapper .d-inline-block {
+        display: inline-block !important;
+      }
+      #zoho-billing-wrapper .d-inline-flex {
+        display: inline-flex !important;
+      }
+      #zoho-billing-wrapper .flex-wrap {
+        flex-wrap: wrap !important;
+      }
+      #zoho-billing-wrapper .flex-column {
+        flex-direction: column !important;
+      }
+
+      /* Alignment utilities */
+      #zoho-billing-wrapper .align-items-center {
+        align-items: center !important;
+      }
+      #zoho-billing-wrapper .justify-content-center {
+        justify-content: center !important;
+      }
+      #zoho-billing-wrapper .justify-content-between {
+        justify-content: space-between !important;
+      }
+      #zoho-billing-wrapper .text-center {
+        text-align: center !important;
+      }
+      #zoho-billing-wrapper .mx-auto {
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      /* List utilities */
+      #zoho-billing-wrapper .list-unstyled {
+        list-style: none !important;
+        padding-left: 0 !important;
+      }
+
+      /* Rounded utilities */
+      #zoho-billing-wrapper .rounded-3 {
+        border-radius: 0.375rem !important;
+      }
+      #zoho-billing-wrapper .rounded-4 {
+        border-radius: 0.5rem !important;
+      }
+      #zoho-billing-wrapper .rounded-pill {
+        border-radius: 50rem !important;
+      }
+
+      /* Border utilities */
+      #zoho-billing-wrapper .border-2 {
+        border-width: 2px !important;
+      }
+      #zoho-billing-wrapper .border-5 {
+        border-width: 5px !important;
+      }
+      #zoho-billing-wrapper .border-transparent {
+        border-color: transparent !important;
+      }
+      #zoho-billing-wrapper .border-start {
+        border-left: 1px solid !important;
+      }
+      #zoho-billing-wrapper .border-success {
+        border-color: #198754 !important;
+      }
+
+      /* Background utilities */
+      #zoho-billing-wrapper .bg-white {
+        background-color: #ffffff !important;
+      }
+
+      /* Text utilities */
+      #zoho-billing-wrapper .text-decoration-none {
+        text-decoration: none !important;
+      }
+
+      /* Responsive order */
+      @media (min-width: 992px) {
+        #zoho-billing-wrapper .order-lg-1 {
+          order: 1 !important;
+        }
+        #zoho-billing-wrapper .order-lg-2 {
+          order: 2 !important;
+        }
+      }
+
+      #zoho-billing-wrapper {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        background: #ffffff !important;
+        position: relative !important;
+      }
+
+      /* ============================================
+         BLUE-WHITE-GREEN COLOR THEME
+         ============================================ */
       :root {
-        --primary-green: #2d5f3f;
-        --light-green: #e8f5e9;
-        --accent-green: #4caf50;
-        --dark-text: #1a1a1a;
-        --light-gray: #f8f9fa;
-        --white: #ffffff;
-        --border-color: #e0e0e0;
-        --gradient-1: linear-gradient(135deg, #2d5f3f 0%, #1a4028 100%);
-        --gradient-2: linear-gradient(135deg, #4caf50 0%, #2d5f3f 100%);
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
-        --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
-        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
-        --shadow-xl: 0 30px 90px rgba(0, 0, 0, 0.2);
-      }
+        /* Blue Colors */
+        --zb-primary-blue: #115f20;
+        --zb-secondary-blue: #166324;
+        --zb-light-blue: #dbeafe;
+        --zb-sky-blue: #0ea5e9;
 
-      body {
-        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-          Roboto, sans-serif;
-        line-height: 1.6;
-        color: var(--dark-text);
-        overflow-x: hidden;
-        background: var(--white);
-      }
+        /* Green Colors */
+        --zb-primary-green: #059669;
+        --zb-light-green: #d1fae5;
+        --zb-accent-green: #10b981;
+        --zb-emerald: #047857;
 
-      /* Header */
-      header {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(30px) saturate(180%);
-        -webkit-backdrop-filter: blur(30px) saturate(180%);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        padding: 1.5rem 0;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
+        /* Base Colors */
+        --zb-dark-text: #1a1a1a;
+        --zb-light-gray: #f8f9fa;
+        --zb-white: #ffffff;
+        --zb-border-color: #e0e0e0;
 
-      header::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--accent-green),
-          transparent
+        /* Gradients */
+        --zb-gradient-blue: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        --zb-gradient-blue-sky: linear-gradient(
+          135deg,
+          #0ea5e9 0%,
+          #3b82f6 100%
         );
-        transform: scaleX(0);
-        transition: transform 0.6s ease;
+        --zb-gradient-green: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        --zb-gradient-mixed: linear-gradient(135deg, #1e3a8a 0%, #059669 100%);
+
+        /* Shadows */
+        --zb-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.05);
+        --zb-shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
+        --zb-shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.15);
+        --zb-shadow-blue: 0 10px 40px rgba(30, 58, 138, 0.2);
+        --zb-shadow-green: 0 10px 40px rgba(5, 150, 105, 0.2);
       }
 
-      header.scrolled {
-        padding: 1rem 0;
-        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.12);
+      #zoho-billing-wrapper body {
+        line-height: 1.6 !important;
+        color: var(--zb-dark-text) !important;
+        background: var(--zb-white) !important;
       }
 
-      header.scrolled::before {
-        transform: scaleX(1);
+      /* ============================================
+         HEADER STYLES
+         ============================================ */
+      #zoho-billing-wrapper .zb-header {
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(30px) saturate(180%) !important;
+        -webkit-backdrop-filter: blur(30px) saturate(180%) !important;
+        border-bottom: 1px solid rgba(30, 58, 138, 0.1) !important;
+        padding: 1.5rem 0 !important;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 9999 !important;
+        box-shadow: 0 4px 30px rgba(30, 58, 138, 0.08) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
-      nav {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 3rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      #zoho-billing-wrapper .zb-header.scrolled {
+        padding: 1rem 0 !important;
+        box-shadow: 0 8px 40px rgba(30, 58, 138, 0.15) !important;
       }
 
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
+      #zoho-billing-wrapper .zb-header .zb-logo {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
-      .logo::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: var(--gradient-2);
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border-radius: 3px;
+      #zoho-billing-wrapper .zb-header .zb-logo:hover {
+        transform: translateY(-3px) !important;
       }
 
-      .logo:hover::after {
-        width: 100%;
+      #zoho-billing-wrapper .zb-header .zb-logo img {
+        height: 55px !important;
+        width: auto !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1)) !important;
       }
 
-      .logo:hover {
-        transform: translateY(-3px);
+      #zoho-billing-wrapper .zb-header .zb-logo:hover img {
+        filter: drop-shadow(0 4px 12px rgba(59, 130, 246, 0.3)) !important;
       }
 
-      .logo img {
-        height: 55px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
-      }
-
-      .logo:hover img {
-        filter: drop-shadow(0 4px 12px rgba(76, 175, 80, 0.3));
-      }
-
-      /* Hero Section */
-      .hero {
+      /* ============================================
+         HERO SECTION
+         ============================================ */
+      #zoho-billing-wrapper .zb-hero {
         background: linear-gradient(
           135deg,
-          #f0f7f4 0%,
-          #ffffff 50%,
-          #f8fdf9 100%
-        );
-        padding: 200px 40px 140px;
-        position: relative;
-        overflow: hidden;
-        margin-top: 80px;
+          #0a4898 0%,
+          #ffffff 40%,
+          #085937 100%
+        ) !important;
+        padding: 200px 40px 140px !important;
+        position: relative !important;
+        overflow: hidden !important;
+        margin-top: 80px !important;
       }
 
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        right: -20%;
-        width: 1000px;
-        height: 1000px;
+      #zoho-billing-wrapper .zb-hero::before {
+        content: "" !important;
+        position: absolute !important;
+        top: -50% !important;
+        right: -20% !important;
+        width: 1000px !important;
+        height: 1000px !important;
         background: radial-gradient(
           circle,
-          rgba(76, 175, 80, 0.15) 0%,
+          rgba(59, 130, 246, 0.15) 0%,
           transparent 70%
-        );
-        animation: float 25s ease-in-out infinite;
-        filter: blur(60px);
+        ) !important;
+        animation: zb-float 25s ease-in-out infinite !important;
+        filter: blur(60px) !important;
       }
 
-      .hero::after {
-        content: "";
-        position: absolute;
-        bottom: -40%;
-        left: -20%;
-        width: 800px;
-        height: 800px;
+      #zoho-billing-wrapper .zb-hero::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: -40% !important;
+        left: -20% !important;
+        width: 800px !important;
+        height: 800px !important;
         background: radial-gradient(
           circle,
-          rgba(45, 95, 63, 0.12) 0%,
+          rgba(5, 150, 105, 0.12) 0%,
           transparent 70%
-        );
-        animation: float 20s ease-in-out infinite reverse;
-        filter: blur(50px);
+        ) !important;
+        animation: zb-float 20s ease-in-out infinite reverse !important;
+        filter: blur(50px) !important;
       }
 
-      @keyframes float {
+      @keyframes zb-float {
         0%,
         100% {
           transform: translate(0, 0) rotate(0deg) scale(1);
@@ -187,2578 +496,1959 @@
         }
       }
 
-      .hero-content {
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 1;
+      #zoho-billing-wrapper .zb-badge {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 12px !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px) !important;
+        color: var(--zb-primary-blue) !important;
+        padding: 14px 32px !important;
+        border-radius: 50px !important;
+        font-size: 14px !important;
+        font-weight: 700 !important;
+        margin-bottom: 35px !important;
+        box-shadow:
+          0 8px 32px rgba(30, 58, 138, 0.12),
+          inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+        border: 1px solid rgba(59, 130, 246, 0.2) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(10px);
-        color: var(--primary-green);
-        padding: 14px 32px;
-        border-radius: 50px;
-        font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 35px;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12),
-          inset 0 1px 0 rgba(255, 255, 255, 0.8);
-        animation: slideDown 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(76, 175, 80, 0.2);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-badge:hover {
+        transform: translateY(-4px) scale(1.05) !important;
+        box-shadow: 0 12px 40px rgba(59, 130, 246, 0.25) !important;
       }
 
-      .badge:hover {
-        transform: translateY(-4px) scale(1.05);
-        box-shadow: 0 12px 40px rgba(76, 175, 80, 0.25);
-        border-color: rgba(76, 175, 80, 0.4);
+      #zoho-billing-wrapper .zb-badge .pulse-dot {
+        width: 10px !important;
+        height: 10px !important;
+        background: var(--zb-secondary-blue) !important;
+        border-radius: 50% !important;
+        animation: zb-pulse 2.5s ease-in-out infinite !important;
       }
 
-      @keyframes slideDown {
-        from {
-          opacity: 0;
-          transform: translateY(-30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .badge span {
-        width: 10px;
-        height: 10px;
-        background: var(--accent-green);
-        border-radius: 50%;
-        animation: pulse 2.5s ease-in-out infinite;
-        box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
-      }
-
-      @keyframes pulse {
+      @keyframes zb-pulse {
         0%,
         100% {
           transform: scale(1);
-          box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7);
         }
         50% {
           transform: scale(1.2);
-          box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
+          box-shadow: 0 0 0 8px rgba(59, 130, 246, 0);
         }
       }
 
-      .hero-text {
-        text-align: center;
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s both;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(40px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero-text h1 {
-        font-size: 68px;
-        color: var(--dark-text);
-        margin-bottom: 28px;
-        line-height: 1.15;
-        font-weight: 800;
-        letter-spacing: -1px;
+      #zoho-billing-wrapper .zb-hero h1 {
+        font-size: 68px !important;
+        color: var(--zb-dark-text) !important;
+        margin-bottom: 28px !important;
+        line-height: 1.15 !important;
+        font-weight: 800 !important;
+        letter-spacing: -1px !important;
         background: linear-gradient(
           135deg,
-          var(--dark-text) 0%,
-          var(--primary-green) 100%
-        );
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+          var(--zb-primary-blue) 0%,
+          var(--zb-secondary-blue) 50%,
+          var(--zb-primary-green) 100%
+        ) !important;
+        -webkit-background-clip: text !important;
+        -webkit-text-fill-color: transparent !important;
+        background-clip: text !important;
       }
 
-      .hero-text p {
-        font-size: 22px;
-        color: #555;
-        margin-bottom: 45px;
-        max-width: 950px;
-        margin-left: auto;
-        margin-right: auto;
-        line-height: 1.8;
-        font-weight: 400;
+      #zoho-billing-wrapper .zb-hero p {
+        font-size: 22px !important;
+        color: #555 !important;
+        margin-bottom: 45px !important;
+        line-height: 1.8 !important;
+        font-weight: 400 !important;
       }
 
-      .hero-buttons {
-        display: flex;
-        gap: 25px;
-        justify-content: center;
-        margin-bottom: 90px;
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+      /* ============================================
+         BUTTON STYLES
+         ============================================ */
+      #zoho-billing-wrapper .zb-btn-primary {
+        background: var(--zb-gradient-blue) !important;
+        color: white !important;
+        padding: 20px 50px !important;
+        border: none !important;
+        border-radius: 14px !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        text-decoration: none !important;
+        display: inline-block !important;
       }
 
-      .btn-primary {
-        background: var(--gradient-1);
-        color: white;
-        padding: 20px 50px;
-        border: none;
-        border-radius: 14px;
-        font-size: 17px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.35);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-primary::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
+      #zoho-billing-wrapper .zb-btn-primary::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100% !important;
         background: linear-gradient(
           90deg,
           transparent,
           rgba(255, 255, 255, 0.3),
           transparent
-        );
-        transition: left 0.6s ease;
+        ) !important;
+        transition: left 0.6s ease !important;
       }
 
-      .btn-primary:hover::before {
-        left: 100%;
+      #zoho-billing-wrapper .zb-btn-primary:hover::before {
+        left: 100% !important;
       }
 
-      .btn-primary:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 15px 40px rgba(45, 95, 63, 0.45);
+      #zoho-billing-wrapper .zb-btn-primary:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: 0 15px 50px rgba(30, 58, 138, 0.35) !important;
+        color: white !important;
       }
 
-      .btn-secondary {
-        background: rgba(255, 255, 255, 0.9);
-        color: var(--primary-green);
-        padding: 20px 50px;
-        border: 2px solid var(--primary-green);
-        border-radius: 14px;
-        font-size: 17px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(10px);
-        position: relative;
-        overflow: hidden;
+      #zoho-billing-wrapper .zb-btn-secondary {
+        background: rgba(255, 255, 255, 0.9) !important;
+        color: var(--zb-primary-blue) !important;
+        padding: 20px 50px !important;
+        border: 2px solid var(--zb-primary-blue) !important;
+        border-radius: 14px !important;
+        font-size: 17px !important;
+        font-weight: 700 !important;
+        cursor: pointer !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        backdrop-filter: blur(10px) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        text-decoration: none !important;
+        display: inline-block !important;
       }
 
-      .btn-secondary::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: var(--light-green);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.6s ease, height 0.6s ease;
+      #zoho-billing-wrapper .zb-btn-secondary:hover {
+        transform: translateY(-4px) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
+        background: var(--zb-light-blue) !important;
+        color: var(--zb-primary-blue) !important;
       }
 
-      .btn-secondary:hover::before {
-        width: 400px;
-        height: 400px;
+      /* ============================================
+         SECTION STYLES
+         ============================================ */
+      #zoho-billing-wrapper .zb-section {
+        padding: 140px 40px !important;
+        position: relative !important;
       }
 
-      .btn-secondary:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 12px 35px rgba(45, 95, 63, 0.25);
+      #zoho-billing-wrapper .zb-section-title {
+        font-size: 56px !important;
+        color: var(--zb-dark-text) !important;
+        margin-bottom: 25px !important;
+        font-weight: 800 !important;
+        letter-spacing: -1px !important;
+        text-align: center !important;
       }
 
-      .hero-image {
-        max-width: 1200px;
-        margin: 0 auto;
-        border-radius: 24px;
-        overflow: hidden;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
-        animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s both;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
+      #zoho-billing-wrapper .zb-section-subtitle {
+        font-size: 21px !important;
+        color: #666 !important;
+        max-width: 900px !important;
+        margin: 0 auto 90px !important;
+        line-height: 1.8 !important;
+        text-align: center !important;
       }
 
-      .hero-image::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 24px;
-        padding: 2px;
-        background: linear-gradient(135deg, var(--accent-green), transparent);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      .hero-image:hover::before {
-        opacity: 1;
-      }
-
-      .hero-image:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 50px 120px rgba(76, 175, 80, 0.3);
-      }
-
-      .hero-image img {
-        width: 100%;
-        height: auto;
-        display: block;
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .hero-image:hover img {
-        transform: scale(1.05);
-      }
-
-      /* Billing Challenges Section */
-      .billing-challenges {
-        padding: 140px 40px;
-        background: linear-gradient(180deg, #ffffff 0%, #fafbfc 100%);
-        position: relative;
-      }
-
-      .billing-challenges::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80%;
-        height: 1px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--border-color),
-          transparent
-        );
-      }
-
-      .challenges-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .challenges-header {
-        text-align: center;
-        margin-bottom: 90px;
-        position: relative;
-      }
-
-      .challenges-header::before {
-        content: "";
-        position: absolute;
-        top: -40px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 4px;
-        background: var(--gradient-2);
-        border-radius: 2px;
-      }
-
-      .challenges-header h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
-        position: relative;
-        display: inline-block;
-      }
-
-      .challenges-header h2::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 0;
-        width: 100%;
-        height: 4px;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--accent-green),
-          transparent
-        );
-        opacity: 0.3;
-      }
-
-      .challenges-header p {
-        font-size: 21px;
-        color: #666;
-        max-width: 950px;
-        margin: 0 auto 25px;
-        line-height: 1.8;
-        font-weight: 400;
-      }
-
-      .comparison-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 70px;
-        margin-top: 70px;
-      }
-
-      .comparison-card {
+      /* ============================================
+         COMPARISON CARDS
+         ============================================ */
+      #zoho-billing-wrapper .zb-comparison-card {
         background: linear-gradient(
           135deg,
           rgba(255, 255, 255, 0.9) 0%,
           rgba(248, 250, 252, 0.95) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 70px;
-        border-radius: 28px;
-        border: 2px solid transparent;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
+        ) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 70px !important;
+        border-radius: 28px !important;
+        border: 2px solid transparent !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: var(--zb-shadow-md) !important;
+        height: 100% !important;
       }
 
-      .comparison-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(76, 175, 80, 0.05),
-          transparent
-        );
-        transition: left 0.8s ease;
+      #zoho-billing-wrapper .zb-comparison-card:hover {
+        transform: translateY(-15px) scale(1.02) !important;
+        border-color: var(--zb-secondary-blue) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .comparison-card:hover::before {
-        left: 100%;
+      #zoho-billing-wrapper .zb-comparison-label {
+        display: inline-block !important;
+        padding: 12px 28px !important;
+        border-radius: 30px !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        margin-bottom: 35px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
       }
 
-      .comparison-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 28px;
-        padding: 2px;
-        background: linear-gradient(135deg, var(--accent-green), transparent);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-
-      .comparison-card:hover::after {
-        opacity: 1;
-      }
-
-      .comparison-card:hover {
-        transform: translateY(-15px) scale(1.02);
-        border-color: var(--accent-green);
-        box-shadow: 0 30px 80px rgba(76, 175, 80, 0.25);
-        background: rgba(255, 255, 255, 0.98);
-      }
-
-      .comparison-label {
-        display: inline-block;
-        padding: 12px 28px;
-        border-radius: 30px;
-        font-size: 13px;
-        font-weight: 800;
-        margin-bottom: 35px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .comparison-label::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.4),
-          transparent
-        );
-        transition: left 0.6s ease;
-      }
-
-      .comparison-card:hover .comparison-label::before {
-        left: 100%;
-      }
-
-      .before-label {
-        background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
-        color: #c62828;
-        box-shadow: 0 4px 15px rgba(198, 40, 40, 0.2);
-      }
-
-      .after-label {
+      #zoho-billing-wrapper .zb-before-label {
         background: linear-gradient(
           135deg,
-          var(--light-green) 0%,
-          #c8e6c9 100%
-        );
-        color: var(--primary-green);
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.25);
+          #ffebee 0%,
+          #ffcdd2 100%
+        ) !important;
+        color: #c62828 !important;
+        box-shadow: 0 4px 15px rgba(198, 40, 40, 0.2) !important;
       }
 
-      .comparison-card h3 {
-        font-size: 36px;
-        color: var(--dark-text);
-        margin-bottom: 35px;
-        font-weight: 800;
-        letter-spacing: -0.5px;
+      #zoho-billing-wrapper .zb-after-label {
+        background: linear-gradient(
+          135deg,
+          var(--zb-light-green) 0%,
+          #a7f3d0 100%
+        ) !important;
+        color: var(--zb-primary-green) !important;
+        box-shadow: var(--zb-shadow-green) !important;
       }
 
-      .comparison-list {
-        list-style: none;
+      #zoho-billing-wrapper .zb-comparison-card h3 {
+        font-size: 36px !important;
+        color: var(--zb-dark-text) !important;
+        margin-bottom: 35px !important;
+        font-weight: 800 !important;
       }
 
-      .comparison-list li {
-        color: #555;
-        font-size: 18px;
-        margin-bottom: 22px;
-        padding-left: 40px;
-        position: relative;
-        line-height: 1.7;
-        transition: all 0.3s ease;
+      #zoho-billing-wrapper .zb-comparison-list {
+        list-style: none !important;
       }
 
-      .comparison-list li:hover {
-        transform: translateX(8px);
-        color: var(--dark-text);
+      #zoho-billing-wrapper .zb-comparison-list li {
+        color: #555 !important;
+        font-size: 18px !important;
+        margin-bottom: 22px !important;
+        padding-left: 40px !important;
+        position: relative !important;
+        line-height: 1.7 !important;
+        transition: all 0.3s ease !important;
       }
 
-      .comparison-list.before li::before {
-        content: "×";
-        position: absolute;
-        left: 0;
-        color: #c62828;
-        font-weight: bold;
-        font-size: 28px;
-        line-height: 1;
+      #zoho-billing-wrapper .zb-comparison-list li:hover {
+        transform: translateX(8px) !important;
+        color: var(--zb-dark-text) !important;
       }
 
-      .comparison-list.after li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--accent-green);
-        font-weight: bold;
-        font-size: 24px;
-        line-height: 1;
+      #zoho-billing-wrapper .zb-comparison-list.before li::before {
+        content: "×" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: #c62828 !important;
+        font-weight: bold !important;
+        font-size: 28px !important;
       }
 
-      /* Audience Section */
-      .audience-section {
-        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
-        position: relative;
+      #zoho-billing-wrapper .zb-comparison-list.after li::before {
+        content: "✓" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: var(--zb-accent-green) !important;
+        font-weight: bold !important;
+        font-size: 24px !important;
       }
 
-      .use-cases-container {
-        max-width: 1400px;
-        margin: 0 auto;
+      /* ============================================
+         USE CASE CARDS
+         ============================================ */
+      #zoho-billing-wrapper .zb-use-case-card {
+        background: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 55px 45px !important;
+        border-radius: 28px !important;
+        border: 2px solid transparent !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        box-shadow: var(--zb-shadow-md) !important;
+        height: 100% !important;
       }
 
-      .use-cases-header {
-        text-align: center;
-        margin-bottom: 90px;
+      #zoho-billing-wrapper .zb-use-case-card:hover {
+        border-color: var(--zb-secondary-blue) !important;
+        transform: translateY(-15px) scale(1.03) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .use-cases-header h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
+      #zoho-billing-wrapper .zb-use-case-badge {
+        display: inline-block !important;
+        background: var(--zb-gradient-blue) !important;
+        color: white !important;
+        padding: 10px 24px !important;
+        border-radius: 25px !important;
+        font-size: 12px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
+        margin-bottom: 28px !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .use-cases-header p {
-        font-size: 21px;
-        color: #666;
-        max-width: 900px;
-        margin: 0 auto;
-        line-height: 1.8;
+      #zoho-billing-wrapper .zb-use-case-card h3 {
+        font-size: 28px !important;
+        color: var(--zb-dark-text) !important;
+        margin-bottom: 22px !important;
+        font-weight: 800 !important;
       }
 
-      .use-cases-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 45px;
+      #zoho-billing-wrapper .zb-use-case-card p {
+        font-size: 17px !important;
+        color: #666 !important;
+        line-height: 1.8 !important;
+        margin-bottom: 28px !important;
       }
 
-      .use-case-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(20px);
-        padding: 55px 45px;
-        border-radius: 28px;
-        border: 2px solid transparent;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
+      #zoho-billing-wrapper .zb-feature-list {
+        list-style: none !important;
       }
 
-      .use-case-card::before {
-        content: "";
-        position: absolute;
-        top: -50%;
-        left: -50%;
-        width: 200%;
-        height: 200%;
-        background: radial-gradient(
-          circle,
-          rgba(76, 175, 80, 0.1) 0%,
-          transparent 70%
-        );
-        transform: scale(0);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-feature-list li {
+        font-size: 16px !important;
+        color: #555 !important;
+        margin-bottom: 14px !important;
+        padding-left: 32px !important;
+        position: relative !important;
+        transition: all 0.3s ease !important;
       }
 
-      .use-case-card:hover::before {
-        transform: scale(1);
+      #zoho-billing-wrapper .zb-feature-list li::before {
+        content: "✓" !important;
+        position: absolute !important;
+        left: 0 !important;
+        color: var(--zb-accent-green) !important;
+        font-weight: bold !important;
+        font-size: 20px !important;
       }
 
-      .use-case-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 28px;
-        padding: 2px;
-        background: var(--gradient-2);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.5s ease;
+      #zoho-billing-wrapper .zb-feature-list li:hover {
+        transform: translateX(6px) !important;
+        color: var(--zb-dark-text) !important;
       }
 
-      .use-case-card:hover::after {
-        opacity: 1;
+      /* ============================================
+         TIMELINE VISUAL
+         ============================================ */
+      #zoho-billing-wrapper .zb-timeline-visual {
+        background: var(--zb-gradient-blue) !important;
+        padding: 70px !important;
+        border-radius: 28px !important;
+        box-shadow: 0 40px 100px rgba(30, 58, 138, 0.35) !important;
+        position: relative !important;
+        overflow: hidden !important;
       }
 
-      .use-case-card:hover {
-        border-color: var(--accent-green);
-        transform: translateY(-15px) scale(1.03);
-        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.3);
-        background: rgba(255, 255, 255, 1);
+      #zoho-billing-wrapper .zb-timeline-item {
+        display: flex !important;
+        gap: 35px !important;
+        margin-bottom: 50px !important;
+        position: relative !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
-      .use-case-badge {
-        display: inline-block;
-        background: var(--gradient-1);
-        color: white;
-        padding: 10px 24px;
-        border-radius: 25px;
-        font-size: 12px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        margin-bottom: 28px;
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 4px 15px rgba(45, 95, 63, 0.3);
-        transition: all 0.3s ease;
+      #zoho-billing-wrapper .zb-timeline-item:hover {
+        transform: translateX(10px) !important;
       }
 
-      .use-case-card:hover .use-case-badge {
-        transform: scale(1.08);
-        box-shadow: 0 6px 20px rgba(45, 95, 63, 0.4);
+      #zoho-billing-wrapper .zb-timeline-dot {
+        width: 58px !important;
+        height: 58px !important;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f0f0f0 100%
+        ) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: var(--zb-primary-blue) !important;
+        font-weight: 800 !important;
+        font-size: 24px !important;
+        flex-shrink: 0 !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
       }
 
-      .use-case-card h3 {
-        font-size: 28px;
-        color: var(--dark-text);
-        margin-bottom: 22px;
-        font-weight: 800;
-        position: relative;
-        z-index: 1;
-        letter-spacing: -0.5px;
+      #zoho-billing-wrapper .zb-timeline-item:hover .zb-timeline-dot {
+        transform: scale(1.15) rotate(360deg) !important;
       }
 
-      .use-case-card p {
-        font-size: 17px;
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 28px;
-        position: relative;
-        z-index: 1;
+      #zoho-billing-wrapper .zb-timeline-content h5 {
+        color: white !important;
+        font-size: 24px !important;
+        margin-bottom: 14px !important;
+        font-weight: 800 !important;
       }
 
-      .use-case-features {
-        list-style: none;
-        position: relative;
-        z-index: 1;
+      #zoho-billing-wrapper .zb-timeline-content p {
+        color: rgba(255, 255, 255, 0.85) !important;
+        font-size: 17px !important;
+        margin: 0 !important;
+        line-height: 1.7 !important;
       }
 
-      .use-case-features li {
-        font-size: 16px;
-        color: #555;
-        margin-bottom: 14px;
-        padding-left: 32px;
-        position: relative;
-        transition: all 0.3s ease;
+      /* ============================================
+         INVOICE MOCKUP
+         ============================================ */
+      #zoho-billing-wrapper .zb-invoice-mockup {
+        background: linear-gradient(
+          135deg,
+          #fafbfc 0%,
+          #ffffff 100%
+        ) !important;
+        padding: 55px !important;
+        border-radius: 20px !important;
+        border: 2px solid var(--zb-border-color) !important;
+        position: relative !important;
       }
 
-      .use-case-features li:hover {
-        transform: translateX(6px);
-        color: var(--dark-text);
+      #zoho-billing-wrapper .zb-invoice-mockup::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 5px !important;
+        background: var(--zb-gradient-green) !important;
       }
 
-      .use-case-features li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--accent-green);
-        font-weight: bold;
-        font-size: 20px;
+      #zoho-billing-wrapper .zb-invoice-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        margin-bottom: 40px !important;
+        padding-bottom: 30px !important;
+        border-bottom: 2px solid var(--zb-border-color) !important;
       }
 
-      /* Subscription Section */
-      .subscription-section {
-        padding: 140px 40px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
-        position: relative;
+      #zoho-billing-wrapper .zb-invoice-title {
+        font-size: 32px !important;
+        font-weight: 800 !important;
+        color: var(--zb-dark-text) !important;
       }
 
-      .subscription-container {
-        max-width: 1400px;
-        margin: 0 auto;
+      #zoho-billing-wrapper .zb-invoice-row {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 18px 0 !important;
+        border-bottom: 1px solid #e8e8e8 !important;
+        transition: all 0.3s ease !important;
       }
 
-      .subscription-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 120px;
-        align-items: center;
+      #zoho-billing-wrapper .zb-invoice-row:hover {
+        background: rgba(59, 130, 246, 0.03) !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        margin-left: -15px !important;
+        margin-right: -15px !important;
       }
 
-      .subscription-content h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 35px;
-        font-weight: 800;
-        line-height: 1.15;
-        letter-spacing: -1px;
+      #zoho-billing-wrapper .zb-invoice-total {
+        display: flex !important;
+        justify-content: space-between !important;
+        padding: 30px 0 !important;
+        margin-top: 30px !important;
+        border-top: 3px solid var(--zb-primary-blue) !important;
+        font-size: 24px !important;
+        font-weight: 800 !important;
+        color: var(--zb-primary-blue) !important;
       }
 
-      .subscription-content p {
-        font-size: 19px;
-        color: #666;
-        margin-bottom: 55px;
-        line-height: 1.8;
+      /* ============================================
+         METRICS CARD
+         ============================================ */
+      #zoho-billing-wrapper .zb-metric-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        ) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 50px 40px !important;
+        border-radius: 24px !important;
+        border: 2px solid var(--zb-border-color) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-sm) !important;
+        height: 100% !important;
       }
 
-      .capability-cards {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
+      #zoho-billing-wrapper .zb-metric-card:hover {
+        border-color: var(--zb-secondary-blue) !important;
+        transform: translateY(-8px) scale(1.03) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .capability-card {
+      #zoho-billing-wrapper .zb-metric-label {
+        font-size: 13px !important;
+        color: #666 !important;
+        margin-bottom: 20px !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
+        font-weight: 700 !important;
+      }
+
+      #zoho-billing-wrapper .zb-metric-value {
+        font-size: 48px !important;
+        color: var(--zb-primary-blue) !important;
+        font-weight: 900 !important;
+        margin-bottom: 14px !important;
+      }
+
+      #zoho-billing-wrapper .zb-metric-change {
+        font-size: 15px !important;
+        color: var(--zb-accent-green) !important;
+        font-weight: 700 !important;
+      }
+
+      #zoho-billing-wrapper .zb-metric-change.negative {
+        color: #c62828 !important;
+      }
+
+      /* ============================================
+         CHART
+         ============================================ */
+      #zoho-billing-wrapper .zb-chart-placeholder {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(248, 250, 252, 0.9) 100%
+        ) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 70px !important;
+        border-radius: 28px !important;
+        box-shadow: var(--zb-shadow-md) !important;
+        border: 2px solid var(--zb-border-color) !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+      }
+
+      #zoho-billing-wrapper .zb-chart-bars {
+        display: flex !important;
+        gap: 25px !important;
+        align-items: flex-end !important;
+        height: 350px !important;
+      }
+
+      #zoho-billing-wrapper .zb-chart-bar {
+        flex: 1 !important;
+        background: var(--zb-gradient-blue-sky) !important;
+        border-radius: 16px 16px 0 0 !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        cursor: pointer !important;
+        box-shadow: 0 -4px 20px rgba(59, 130, 246, 0.2) !important;
+      }
+
+      #zoho-billing-wrapper .zb-chart-bar:hover {
+        transform: translateY(-12px) scale(1.05) !important;
+        box-shadow: 0 -8px 35px rgba(59, 130, 246, 0.4) !important;
+        background: var(--zb-gradient-green) !important;
+      }
+
+      /* ============================================
+         PORTAL FEATURE CARD
+         ============================================ */
+      #zoho-billing-wrapper .zb-portal-feature-card {
         background: linear-gradient(
           135deg,
           rgba(248, 250, 252, 0.9) 0%,
           rgba(255, 255, 255, 0.95) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 40px;
-        border-radius: 20px;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 2px solid transparent;
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
+        ) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 60px !important;
+        border-radius: 28px !important;
+        border: 2px solid transparent !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-md) !important;
+        height: 100% !important;
       }
 
-      .capability-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 0;
-        background: var(--gradient-2);
-        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-portal-feature-card:hover {
+        transform: translateY(-15px) scale(1.02) !important;
+        border-color: var(--zb-secondary-blue) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .capability-card:hover::before {
-        height: 100%;
+      #zoho-billing-wrapper .zb-feature-number {
+        width: 80px !important;
+        height: 80px !important;
+        background: var(--zb-gradient-blue) !important;
+        border-radius: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        font-size: 38px !important;
+        font-weight: 900 !important;
+        margin-bottom: 35px !important;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .capability-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(76, 175, 80, 0.08),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.4s ease;
+      #zoho-billing-wrapper .zb-portal-feature-card:hover .zb-feature-number {
+        transform: rotate(360deg) scale(1.1) !important;
       }
 
-      .capability-card:hover::after {
-        opacity: 1;
-      }
-
-      .capability-card:hover {
-        border-color: var(--accent-green);
-        transform: translateX(10px) scale(1.03);
-        background: rgba(255, 255, 255, 1);
-        box-shadow: 0 15px 45px rgba(76, 175, 80, 0.2);
-      }
-
-      .capability-card h4 {
-        font-size: 22px;
-        color: var(--dark-text);
-        margin-bottom: 14px;
-        font-weight: 800;
-        position: relative;
-        z-index: 1;
-      }
-
-      .capability-card p {
-        font-size: 16px;
-        color: #666;
-        margin: 0;
-        line-height: 1.7;
-        position: relative;
-        z-index: 1;
-      }
-
-      .subscription-visual {
-        position: relative;
-      }
-
-      .timeline-visual {
-        background: var(--gradient-1);
-        padding: 70px;
-        border-radius: 28px;
-        box-shadow: 0 40px 100px rgba(45, 95, 63, 0.4);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .timeline-visual::before {
-        content: "";
-        position: absolute;
-        top: -60%;
-        right: -60%;
-        width: 500px;
-        height: 500px;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.15) 0%,
-          transparent 70%
-        );
-        animation: rotate 30s linear infinite;
-        filter: blur(40px);
-      }
-
-      @keyframes rotate {
-        from {
-          transform: rotate(0deg);
-        }
-        to {
-          transform: rotate(360deg);
-        }
-      }
-
-      .timeline-visual::after {
-        content: "";
-        position: absolute;
-        bottom: -40%;
-        left: -40%;
-        width: 400px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.1) 0%,
-          transparent 70%
-        );
-        animation: rotate 25s linear infinite reverse;
-        filter: blur(35px);
-      }
-
-      .timeline-item {
-        display: flex;
-        gap: 35px;
-        margin-bottom: 50px;
-        position: relative;
-        z-index: 1;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .timeline-item:hover {
-        transform: translateX(10px);
-      }
-
-      .timeline-item:last-child {
-        margin-bottom: 0;
-      }
-
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: 29px;
-        top: 58px;
-        width: 3px;
-        height: calc(100% + 50px);
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.4),
-          rgba(255, 255, 255, 0.1)
-        );
-        border-radius: 2px;
-      }
-
-      .timeline-item:last-child::before {
-        display: none;
-      }
-
-      .timeline-dot {
-        width: 58px;
-        height: 58px;
-        background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--primary-green);
-        font-weight: 800;
-        font-size: 24px;
-        flex-shrink: 0;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3),
-          inset 0 2px 4px rgba(255, 255, 255, 0.5);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 3px solid rgba(255, 255, 255, 0.3);
-      }
-
-      .timeline-item:hover .timeline-dot {
-        transform: scale(1.15) rotate(360deg);
-        box-shadow: 0 12px 35px rgba(255, 255, 255, 0.4);
-      }
-
-      .timeline-content h5 {
-        color: white;
-        font-size: 24px;
-        margin-bottom: 14px;
-        font-weight: 800;
-        letter-spacing: -0.5px;
-      }
-
-      .timeline-content p {
-        color: rgba(255, 255, 255, 0.85);
-        font-size: 17px;
-        margin: 0;
-        line-height: 1.7;
-      }
-
-      /* Tax Compliance Section */
-      .tax-compliance-section {
-        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
-        position: relative;
-      }
-
-      .compliance-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .compliance-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 120px;
-        align-items: center;
-      }
-
-      .compliance-visual {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.95) 0%,
-          rgba(248, 250, 252, 0.9) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 70px;
-        border-radius: 28px;
-        position: relative;
-        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15);
-        border: 2px solid rgba(76, 175, 80, 0.1);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .compliance-visual:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 50px 120px rgba(76, 175, 80, 0.2);
-      }
-
-      .invoice-mockup {
-        background: linear-gradient(135deg, #fafbfc 0%, #ffffff 100%);
-        padding: 55px;
-        border-radius: 20px;
-        border: 2px solid var(--border-color);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .invoice-mockup::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 5px;
-        background: var(--gradient-2);
-      }
-
-      .invoice-header {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 40px;
-        padding-bottom: 30px;
-        border-bottom: 2px solid var(--border-color);
-        position: relative;
-      }
-
-      .invoice-header::after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100px;
-        height: 2px;
-        background: var(--accent-green);
-      }
-
-      .invoice-title {
-        font-size: 32px;
-        font-weight: 800;
-        color: var(--dark-text);
-        letter-spacing: -0.5px;
-      }
-
-      .invoice-number {
-        font-size: 16px;
-        color: #666;
-        font-weight: 700;
-      }
-
-      .invoice-row {
-        display: flex;
-        justify-content: space-between;
-        padding: 18px 0;
-        border-bottom: 1px solid #e8e8e8;
-        transition: all 0.3s ease;
-      }
-
-      .invoice-row:hover {
-        background: rgba(76, 175, 80, 0.03);
-        padding-left: 15px;
-        padding-right: 15px;
-        margin-left: -15px;
-        margin-right: -15px;
-      }
-
-      .invoice-label {
-        color: #666;
-        font-size: 16px;
-        font-weight: 500;
-      }
-
-      .invoice-value {
-        color: var(--dark-text);
-        font-weight: 700;
-        font-size: 16px;
-      }
-
-      .tax-breakdown {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.8) 0%,
-          rgba(248, 253, 249, 0.6) 100%
-        );
-        padding: 30px;
-        border-radius: 16px;
-        margin-top: 30px;
-        border: 1px solid rgba(76, 175, 80, 0.15);
-      }
-
-      .tax-breakdown .invoice-row {
-        border: none;
-      }
-
-      .invoice-total {
-        display: flex;
-        justify-content: space-between;
-        padding: 30px 0;
-        margin-top: 30px;
-        border-top: 3px solid var(--primary-green);
-        font-size: 24px;
-        font-weight: 800;
-        position: relative;
-      }
-
-      .invoice-total::before {
-        content: "";
-        position: absolute;
-        top: -3px;
-        left: 0;
-        width: 150px;
-        height: 3px;
-        background: var(--accent-green);
-      }
-
-      .compliance-content h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 35px;
-        font-weight: 800;
-        letter-spacing: -1px;
-      }
-
-      .compliance-content p {
-        font-size: 19px;
-        color: #666;
-        margin-bottom: 55px;
-        line-height: 1.8;
-      }
-
-      .compliance-features {
-        display: grid;
-        gap: 28px;
-      }
-
-      .compliance-feature {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.95) 0%,
-          rgba(248, 250, 252, 0.9) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 40px;
-        border-radius: 20px;
-        border-left: 5px solid var(--accent-green);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: var(--shadow-sm);
-        position: relative;
-        overflow: hidden;
-      }
-
-      .compliance-feature::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          rgba(76, 175, 80, 0.08),
-          transparent
-        );
-        transition: width 0.4s ease;
-      }
-
-      .compliance-feature:hover::before {
-        width: 100%;
-      }
-
-      .compliance-feature:hover {
-        transform: translateX(15px) scale(1.02);
-        box-shadow: 0 15px 45px rgba(76, 175, 80, 0.2);
-        border-left-width: 8px;
-      }
-
-      .compliance-feature h4 {
-        font-size: 22px;
-        color: var(--dark-text);
-        margin-bottom: 14px;
-        font-weight: 800;
-        position: relative;
-        z-index: 1;
-      }
-
-      .compliance-feature p {
-        font-size: 16px;
-        color: #666;
-        margin: 0;
-        line-height: 1.7;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Payment Portal Section */
-      .payment-portal-section {
-        padding: 140px 40px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
-        position: relative;
-      }
-
-      .portal-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .portal-header {
-        text-align: center;
-        margin-bottom: 90px;
-      }
-
-      .portal-header h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
-      }
-
-      .portal-header p {
-        font-size: 21px;
-        color: #666;
-        max-width: 900px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      .portal-features-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 45px;
-      }
-
-      .portal-feature-card {
+      /* ============================================
+         PROVIDER CARD
+         ============================================ */
+      #zoho-billing-wrapper .zb-provider-card {
         background: linear-gradient(
           135deg,
           rgba(248, 250, 252, 0.9) 0%,
           rgba(255, 255, 255, 0.95) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 60px;
-        border-radius: 28px;
-        border: 2px solid transparent;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
+        ) !important;
+        backdrop-filter: blur(20px) !important;
+        padding: 55px 45px !important;
+        border-radius: 28px !important;
+        border: 2px solid transparent !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-md) !important;
+        height: 100% !important;
       }
 
-      .portal-feature-card::before {
-        content: "";
-        position: absolute;
-        top: -100%;
-        left: -100%;
-        width: 300%;
-        height: 300%;
-        background: radial-gradient(
-          circle,
-          rgba(76, 175, 80, 0.12) 0%,
-          transparent 50%
-        );
-        transform: scale(0);
-        transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-provider-card:hover {
+        border-color: var(--zb-secondary-blue) !important;
+        transform: translateY(-15px) scale(1.03) !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .portal-feature-card:hover::before {
-        transform: scale(1);
+      #zoho-billing-wrapper .zb-provider-number {
+        width: 70px !important;
+        height: 70px !important;
+        background: var(--zb-gradient-green) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        font-size: 28px !important;
+        font-weight: 900 !important;
+        margin-bottom: 30px !important;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        box-shadow: var(--zb-shadow-green) !important;
       }
 
-      .portal-feature-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 28px;
-        padding: 2px;
-        background: var(--gradient-2);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.5s ease;
+      #zoho-billing-wrapper .zb-provider-card:hover .zb-provider-number {
+        transform: scale(1.15) rotate(360deg) !important;
       }
 
-      .portal-feature-card:hover::after {
-        opacity: 1;
+      /* ============================================
+         SCROLL TO TOP
+         ============================================ */
+      #zoho-billing-wrapper .zb-scroll-to-top {
+        position: fixed !important;
+        bottom: 45px !important;
+        right: 45px !important;
+        background: var(--zb-gradient-blue) !important;
+        color: white !important;
+        width: 65px !important;
+        height: 65px !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        cursor: pointer !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+        z-index: 9998 !important;
+        font-size: 28px !important;
+        font-weight: bold !important;
+        box-shadow: var(--zb-shadow-blue) !important;
       }
 
-      .portal-feature-card:hover {
-        background: rgba(255, 255, 255, 1);
-        transform: translateY(-15px) scale(1.02);
-        border-color: var(--accent-green);
-        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.25);
+      #zoho-billing-wrapper .zb-scroll-to-top.visible {
+        opacity: 1 !important;
+        visibility: visible !important;
       }
 
-      .feature-number {
-        width: 80px;
-        height: 80px;
-        background: var(--gradient-1);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 38px;
-        font-weight: 900;
-        margin-bottom: 35px;
-        position: relative;
-        z-index: 1;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.3);
+      #zoho-billing-wrapper .zb-scroll-to-top:hover {
+        transform: translateY(-8px) scale(1.1) !important;
+        box-shadow: 0 15px 50px rgba(59, 130, 246, 0.5) !important;
       }
 
-      .portal-feature-card:hover .feature-number {
-        transform: rotate(360deg) scale(1.1);
-        box-shadow: 0 12px 35px rgba(45, 95, 63, 0.4);
+      /* ============================================
+         FOOTER - Matching Screenshot Design
+         ============================================ */
+      #zoho-billing-wrapper .zb-footer {
+        background: #000000 !important;
+        color: #e5e7eb !important;
+        padding: 0 !important;
+        font-size: 14px !important;
       }
 
-      .portal-feature-card h3 {
-        font-size: 30px;
-        color: var(--dark-text);
-        margin-bottom: 20px;
-        font-weight: 800;
-        position: relative;
-        z-index: 1;
-        letter-spacing: -0.5px;
-      }
-
-      .portal-feature-card p {
-        font-size: 17px;
-        color: #666;
-        line-height: 1.8;
-        position: relative;
-        z-index: 1;
-      }
-
-      /* Analytics Section */
-      .analytics-section {
-        background: linear-gradient(180deg, #f8fdf9 0%, #ffffff 100%);
-        position: relative;
-      }
-
-      .analytics-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .analytics-header {
-        text-align: center;
-        margin-bottom: 90px;
-      }
-
-      .analytics-header h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
-      }
-
-      .analytics-header p {
-        font-size: 21px;
-        color: #666;
-        line-height: 1.8;
-      }
-
-      .metrics-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 35px;
-        margin-bottom: 70px;
-      }
-
-      .metric-card {
+      #zoho-billing-wrapper .zb-footer-top-bar {
         background: linear-gradient(
           135deg,
-          rgba(255, 255, 255, 0.95) 0%,
-          rgba(248, 250, 252, 0.9) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 50px 40px;
-        border-radius: 24px;
-        border: 2px solid var(--border-color);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-sm);
+          #dbeafe 0%,
+          #bfdbfe 50%,
+          #93c5fd 100%
+        ) !important;
+        height: 15px !important;
+        width: 100% !important;
       }
 
-      .metric-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 0%;
-        background: var(--gradient-2);
-        transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-footer-content {
+        padding: 75px 5% 25px !important;
       }
 
-      .metric-card:hover::before {
-        height: 100%;
+      #zoho-billing-wrapper .zb-footer h3 {
+        font-size: 22px !important;
+        margin-bottom: 14px !important;
+        color: #ffffff !important;
+        font-weight: 700 !important;
       }
 
-      .metric-card::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: radial-gradient(
-          circle at top right,
-          rgba(76, 175, 80, 0.08),
-          transparent
-        );
-        opacity: 0;
-        transition: opacity 0.4s ease;
+      #zoho-billing-wrapper .zb-footer p {
+        color: #cbd5e1 !important;
+        line-height: 1.7 !important;
+        margin-bottom: 14px !important;
       }
 
-      .metric-card:hover::after {
-        opacity: 1;
+      #zoho-billing-wrapper .zb-footer a {
+        color: #d1d5db !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        transition: all 0.25s ease !important;
+        display: inline-block !important;
       }
 
-      .metric-card:hover {
-        border-color: var(--accent-green);
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 25px 60px rgba(76, 175, 80, 0.2);
-        background: rgba(255, 255, 255, 1);
+      #zoho-billing-wrapper .zb-footer a:hover {
+        color: #60a5fa !important;
+        transform: translateX(5px) !important;
       }
 
-      .metric-label {
-        font-size: 13px;
-        color: #666;
-        margin-bottom: 20px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
+      #zoho-billing-wrapper .zb-tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive !important;
+        font-size: 18px !important;
+        color: #60a5fa !important;
+        margin-bottom: 12px !important;
+        font-weight: 600 !important;
       }
 
-      .metric-value {
-        font-size: 48px;
-        color: var(--dark-text);
-        font-weight: 900;
-        margin-bottom: 14px;
-        position: relative;
-        z-index: 1;
-        letter-spacing: -1px;
+      #zoho-billing-wrapper .zb-footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding-top: 25px !important;
+        margin-top: 40px !important;
       }
 
-      .metric-change {
-        font-size: 15px;
-        color: var(--accent-green);
-        font-weight: 700;
-        position: relative;
-        z-index: 1;
+      #zoho-billing-wrapper .zb-whatsapp-link {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+        color: #d1d5db !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        transition: all 0.3s ease !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        background: rgba(37, 211, 102, 0.1) !important;
       }
 
-      .metric-change.negative {
-        color: #c62828;
+      #zoho-billing-wrapper .zb-whatsapp-link:hover {
+        color: #25d366 !important;
+        background: rgba(37, 211, 102, 0.2) !important;
+        transform: translateX(5px) !important;
       }
 
-      .chart-placeholder {
-        background: linear-gradient(
-          135deg,
-          rgba(255, 255, 255, 0.95) 0%,
-          rgba(248, 250, 252, 0.9) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 70px;
-        border-radius: 28px;
-        box-shadow: var(--shadow-md);
-        border: 2px solid var(--border-color);
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      #zoho-billing-wrapper .zb-whatsapp-icon {
+        width: 22px !important;
+        height: 22px !important;
+        filter: brightness(0) invert(1) !important;
+        transition: filter 0.3s ease !important;
       }
 
-      .chart-placeholder:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.15);
-        border-color: var(--accent-green);
+      #zoho-billing-wrapper .zb-whatsapp-link:hover .zb-whatsapp-icon {
+        filter: brightness(0) saturate(100%) invert(72%) sepia(53%)
+          saturate(464%) hue-rotate(85deg) brightness(95%) contrast(90%) !important;
       }
 
-      .chart-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 50px;
+      #zoho-billing-wrapper .zb-zoho-partner-logo {
+        max-width: 140px !important;
+        opacity: 0.95 !important;
+        transition: opacity 0.3s ease !important;
       }
 
-      .chart-title {
-        font-size: 32px;
-        color: var(--dark-text);
-        font-weight: 800;
-        letter-spacing: -0.5px;
+      #zoho-billing-wrapper .zb-zoho-partner-logo:hover {
+        opacity: 1 !important;
+      }
+      /* Footer alignment fix */
+
+      #zoho-billing-wrapper .zb-footer .row {
+        align-items: flex-start !important;
       }
 
-      .chart-period {
-        font-size: 15px;
-        color: #666;
-        background: linear-gradient(
-          135deg,
-          var(--light-green) 0%,
-          #c8e6c9 100%
-        );
-        padding: 12px 28px;
-        border-radius: 30px;
-        font-weight: 700;
-        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+      #zoho-billing-wrapper .zb-footer h3 {
+        margin-bottom: 15px !important;
       }
 
-      .chart-bars {
-        display: flex;
-        gap: 25px;
-        align-items: flex-end;
-        height: 350px;
+      #zoho-billing-wrapper .zb-footer-links li {
+        margin-bottom: 6px !important;
       }
 
-      .chart-bar {
-        flex: 1;
-        background: var(--gradient-2);
-        border-radius: 16px 16px 0 0;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        cursor: pointer;
-        position: relative;
-        box-shadow: 0 -4px 20px rgba(76, 175, 80, 0.2);
+      #zoho-billing-wrapper .zb-footer-bottom p {
+        margin: 0 !important;
+        color: #94a3b8 !important;
+        font-size: 13px !important;
+      }
+      #zoho-billing-wrapper .zb-footer .zb-tagline {
+        color: #60a5fa !important;
+      }
+      /* Fix footer 2-column layout */
+      #zoho-billing-wrapper .zb-footer .row > .col-6 {
+        width: 50% !important;
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
       }
 
-      .chart-bar::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 0;
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.3),
-          transparent
-        );
-        border-radius: 16px 16px 0 0;
-        transition: height 0.4s ease;
-      }
-
-      .chart-bar:hover::before {
-        height: 100%;
-      }
-
-      .chart-bar:hover {
-        transform: translateY(-12px) scale(1.05);
-        box-shadow: 0 -8px 35px rgba(76, 175, 80, 0.4);
-      }
-
-      .chart-bar:nth-child(1) {
-        height: 60%;
-        animation: growBar 0.8s ease-out 0.1s both;
-      }
-      .chart-bar:nth-child(2) {
-        height: 80%;
-        animation: growBar 0.8s ease-out 0.2s both;
-      }
-      .chart-bar:nth-child(3) {
-        height: 45%;
-        animation: growBar 0.8s ease-out 0.3s both;
-      }
-      .chart-bar:nth-child(4) {
-        height: 90%;
-        animation: growBar 0.8s ease-out 0.4s both;
-      }
-      .chart-bar:nth-child(5) {
-        height: 70%;
-        animation: growBar 0.8s ease-out 0.5s both;
-      }
-      .chart-bar:nth-child(6) {
-        height: 85%;
-        animation: growBar 0.8s ease-out 0.6s both;
-      }
-      .chart-bar:nth-child(7) {
-        height: 95%;
-        animation: growBar 0.8s ease-out 0.7s both;
-      }
-      .chart-bar:nth-child(8) {
-        height: 75%;
-        animation: growBar 0.8s ease-out 0.8s both;
-      }
-      .chart-bar:nth-child(9) {
-        height: 100%;
-        animation: growBar 0.8s ease-out 0.9s both;
-      }
-      .chart-bar:nth-child(10) {
-        height: 88%;
-        animation: growBar 0.8s ease-out 1s both;
-      }
-      .chart-bar:nth-child(11) {
-        height: 92%;
-        animation: growBar 0.8s ease-out 1.1s both;
-      }
-      .chart-bar:nth-child(12) {
-        height: 98%;
-        animation: growBar 0.8s ease-out 1.2s both;
-      }
-
-      @keyframes growBar {
-        from {
-          height: 0;
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      /* Service Providers Section */
-      .service-providers-section {
-        padding: 140px 40px;
-        background: linear-gradient(180deg, #ffffff 0%, #f8fdf9 100%);
-        position: relative;
-      }
-
-      .providers-container {
-        max-width: 1400px;
-        margin: 0 auto;
-      }
-
-      .providers-header {
-        text-align: center;
-        margin-bottom: 90px;
-      }
-
-      .providers-header h2 {
-        font-size: 56px;
-        color: var(--dark-text);
-        margin-bottom: 25px;
-        font-weight: 800;
-        letter-spacing: -1px;
-      }
-
-      .providers-header p {
-        font-size: 21px;
-        color: #666;
-        max-width: 900px;
-        margin: 0 auto;
-        line-height: 1.8;
-      }
-
-      .providers-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 40px;
-      }
-
-      .provider-card {
-        background: linear-gradient(
-          135deg,
-          rgba(248, 250, 252, 0.9) 0%,
-          rgba(255, 255, 255, 0.95) 100%
-        );
-        backdrop-filter: blur(20px);
-        padding: 55px 45px;
-        border-radius: 28px;
-        border: 2px solid transparent;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        position: relative;
-        overflow: hidden;
-        box-shadow: var(--shadow-md);
-      }
-
-      .provider-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(76, 175, 80, 0.08) 0%,
-          transparent 100%
-        );
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-
-      .provider-card:hover::before {
-        opacity: 1;
-      }
-
-      .provider-card::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        border-radius: 28px;
-        padding: 2px;
-        background: var(--gradient-2);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.5s ease;
-      }
-
-      .provider-card:hover::after {
-        opacity: 1;
-      }
-
-      .provider-card:hover {
-        border-color: var(--accent-green);
-        transform: translateY(-15px) scale(1.03);
-        box-shadow: 0 35px 90px rgba(76, 175, 80, 0.3);
-        background: rgba(255, 255, 255, 1);
-      }
-
-      .provider-number {
-        width: 70px;
-        height: 70px;
-        background: var(--gradient-1);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 28px;
-        font-weight: 900;
-        margin-bottom: 30px;
-        position: relative;
-        z-index: 1;
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 8px 25px rgba(45, 95, 63, 0.3);
-      }
-
-      .provider-card:hover .provider-number {
-        background: var(--gradient-2);
-        transform: scale(1.15) rotate(360deg);
-        box-shadow: 0 12px 35px rgba(76, 175, 80, 0.4);
-      }
-
-      .provider-card h3 {
-        font-size: 26px;
-        color: var(--dark-text);
-        margin-bottom: 20px;
-        font-weight: 800;
-        position: relative;
-        z-index: 1;
-        letter-spacing: -0.5px;
-      }
-
-      .provider-card p {
-        font-size: 16px;
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 28px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .provider-features {
-        list-style: none;
-        position: relative;
-        z-index: 1;
-      }
-
-      .provider-features li {
-        font-size: 15px;
-        color: #555;
-        margin-bottom: 12px;
-        padding-left: 28px;
-        position: relative;
-        transition: all 0.3s ease;
-      }
-
-      .provider-features li:hover {
-        transform: translateX(6px);
-        color: var(--dark-text);
-      }
-
-      .provider-features li::before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--accent-green);
-        font-weight: bold;
-        font-size: 18px;
-      }
-
-      .scroll-to-top {
-        position: fixed;
-        bottom: 45px;
-        right: 45px;
-        background: var(--gradient-1);
-        color: white;
-        width: 65px;
-        height: 65px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        opacity: 0;
-        visibility: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        z-index: 999;
-        font-size: 28px;
-        font-weight: bold;
-        box-shadow: 0 10px 35px rgba(45, 95, 63, 0.5);
-        border: 2px solid rgba(255, 255, 255, 0.2);
-      }
-
-      .scroll-to-top::before {
-        content: "";
-        position: absolute;
-        inset: -3px;
-        border-radius: 50%;
-        padding: 3px;
-        background: var(--gradient-2);
-        -webkit-mask: linear-gradient(#fff 0 0) content-box,
-          linear-gradient(#fff 0 0);
-        -webkit-mask-composite: xor;
-        mask-composite: exclude;
-        opacity: 0;
-        transition: opacity 0.4s ease;
-      }
-
-      .scroll-to-top:hover::before {
-        opacity: 1;
-      }
-
-      .scroll-to-top.visible {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      .scroll-to-top:hover {
-        background: var(--gradient-2);
-        transform: translateY(-8px) scale(1.1);
-        box-shadow: 0 15px 50px rgba(76, 175, 80, 0.6);
-      }
-
-      /* Responsive Design */
-      @media (max-width: 1200px) {
-        .comparison-grid,
-        .subscription-grid,
-        .compliance-grid {
-          grid-template-columns: 1fr;
-          gap: 70px;
-        }
-
-        .providers-grid,
-        .use-cases-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
+      /* ============================================
+         RESPONSIVE DESIGN
+         ============================================ */
       @media (max-width: 768px) {
-        .hero-text h1 {
-          font-size: 44px;
+        #zoho-billing-wrapper .zb-hero h1 {
+          font-size: 44px !important;
         }
 
-        .challenges-header h2,
-        .subscription-content h2,
-        .compliance-content h2,
-        .portal-header h2,
-        .analytics-header h2,
-        .use-cases-header h2,
-        .providers-header h2 {
-          font-size: 38px;
+        #zoho-billing-wrapper .zb-section-title {
+          font-size: 38px !important;
         }
 
-        .providers-grid,
-        .portal-features-grid,
-        .metrics-grid,
-        .use-cases-grid {
-          grid-template-columns: 1fr;
+        #zoho-billing-wrapper .zb-hero {
+          padding: 160px 20px 90px !important;
         }
 
-        .capability-cards {
-          grid-template-columns: 1fr;
+        #zoho-billing-wrapper .zb-section {
+          padding: 90px 20px !important;
         }
 
-        nav {
-          padding: 0 1.5rem;
+        #zoho-billing-wrapper .zb-footer-content {
+          padding: 50px 20px 20px !important;
         }
 
-        .hero {
-          padding: 160px 20px 90px;
+        #zoho-billing-wrapper .zb-comparison-card,
+        #zoho-billing-wrapper .zb-use-case-card,
+        #zoho-billing-wrapper .zb-portal-feature-card,
+        #zoho-billing-wrapper .zb-provider-card {
+          padding: 40px 30px !important;
         }
 
-        .billing-challenges,
-        .audience-section,
-        .subscription-section,
-        .tax-compliance-section,
-        .payment-portal-section,
-        .analytics-section,
-        .service-providers-section {
-          padding: 90px 20px;
-        }
-      }
-
-      /* Scroll Animations */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(40px);
-        transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
-          transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Loading Animation */
-      @keyframes shimmer {
-        0% {
-          background-position: -1000px 0;
-        }
-        100% {
-          background-position: 1000px 0;
+        #zoho-billing-wrapper .zb-timeline-visual {
+          padding: 40px 30px !important;
         }
       }
     </style>
   </head>
   <body>
-    <header id="header">
-      <nav>
-        <div class="logo">
-          <img
-            src="https://www.zolytics.in/files/logo.png"
-            style="height: 80px; width: auto"
-            alt="Zolytics"
-          />
-          <img
-            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg"
-            alt="Zoho Billing"
-            style="height: 70px"
-          />
-        </div>
-      </nav>
-    </header>
-
-    <section class="hero">
-      <div class="hero-content">
-        <div class="hero-text">
-          <h1>
-            Revenue & Billing Systems<br />Designed for Growing Institutions
-          </h1>
-          <p>
-            Our team builds billing systems that bring structure to fee
-            collection, automate recurring payments, and keep your finances
-            compliant and predictable.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="billing-challenges">
-      <div class="challenges-container">
-        <div class="challenges-header fade-in">
-          <h2>Why Billing Breaks as Businesses Grow</h2>
-          <p>
-            Manual invoices, missed renewals, incorrect taxes, delayed payments,
-            and reconciliation issues slow down cash flow. Billing is no longer
-            just invoice creation—it's revenue operations.
-          </p>
-          <p style="margin-top: 20px; font-size: 18px; color: #555">
-            We design billing systems that run automatically, scale with your
-            business, and stay compliant.
-          </p>
-        </div>
-
-        <div class="comparison-grid">
-          <div class="comparison-card fade-in">
-            <span class="comparison-label before-label">Before Automation</span>
-            <h3>Manual Billing Chaos</h3>
-            <ul class="comparison-list before">
-              <li>Spreadsheet-based invoice tracking</li>
-              <li>Manual payment follow-ups</li>
-              <li>Tax calculation errors</li>
-              <li>Missed renewal opportunities</li>
-              <li>Time-consuming reconciliation</li>
-              <li>Revenue leakage from human errors</li>
-            </ul>
-          </div>
-          <div class="comparison-card fade-in">
-            <span class="comparison-label after-label">After Automation</span>
-            <h3>Automated Billing Excellence</h3>
-            <ul class="comparison-list after">
-              <li>Automated invoice generation</li>
-              <li>Smart payment reminders</li>
-              <li>Accurate tax calculations</li>
-              <li>Auto-renewal management</li>
-              <li>Real-time reconciliation</li>
-              <li>Zero revenue leakage</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="audience-section">
-      <div class="use-cases-container">
-        <div class="use-cases-header fade-in">
-          <h2>Who Is This Billing System Built For?</h2>
-          <p>
-            Designed for organizations that need accuracy, automation, and
-            compliance — not manual billing chaos.
-          </p>
-        </div>
-
-        <div class="use-cases-grid">
-          <div class="use-case-card fade-in">
-            <span class="use-case-badge">Education</span>
-            <h3>Schools, Colleges & EdTech</h3>
-            <p>
-              Handle admissions, recurring fees, installments, and GST-ready
-              invoicing with ease.
-            </p>
-            <ul class="use-case-features">
-              <li>Installment & recurring fees</li>
-              <li>Student payment portals</li>
-              <li>Fee-wise reporting</li>
-              <li>Audit-ready invoices</li>
-            </ul>
-          </div>
-
-          <div class="use-case-card fade-in">
-            <span class="use-case-badge">Subscription</span>
-            <h3>SaaS & Subscription Businesses</h3>
-            <p>
-              Automate recurring revenue, upgrades, renewals, and proration
-              without manual work.
-            </p>
-            <ul class="use-case-features">
-              <li>Auto-renewals</li>
-              <li>Plan upgrades/downgrades</li>
-              <li>MRR & churn tracking</li>
-              <li>Customer self-service</li>
-            </ul>
-          </div>
-
-          <div class="use-case-card fade-in">
-            <span class="use-case-badge">Multi-Branch</span>
-            <h3>Growing & Multi-Location Businesses</h3>
-            <p>
-              Centralized billing with branch-wise control, reporting, and tax
-              compliance.
-            </p>
-            <ul class="use-case-features">
-              <li>Branch-wise billing</li>
-              <li>Location-based taxes</li>
-              <li>Central finance control</li>
-              <li>Scalable operations</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="subscription-section">
-      <div class="subscription-container">
-        <div class="subscription-grid">
-          <div class="subscription-content fade-in">
-            <h2>Predictable Revenue Through Subscription Billing</h2>
-            <p>
-              Automate recurring revenue streams with intelligent subscription
-              management that handles upgrades, downgrades, and renewals without
-              manual intervention.
-            </p>
-
-            <div class="capability-cards">
-              <div class="capability-card">
-                <h4>Flexible Plans</h4>
-                <p>
-                  Monthly, quarterly, and annual billing cycles with custom
-                  durations
-                </p>
-              </div>
-              <div class="capability-card">
-                <h4>Auto-Renewals</h4>
-                <p>Set it and forget it - subscriptions renew automatically</p>
-              </div>
-              <div class="capability-card">
-                <h4>Plan Changes</h4>
-                <p>Seamless upgrades and downgrades with proration</p>
-              </div>
-              <div class="capability-card">
-                <h4>Smart Proration</h4>
-                <p>Fair billing adjustments for mid-cycle changes</p>
+    <div id="zoho-billing-wrapper">
+      <!-- Header -->
+      <header class="zb-header" id="zbHeader">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col">
+              <div class="zb-logo">
+                <img
+                  src="https://www.zolytics.in/files/logo.png"
+                  alt="Zolytics"
+                  style="height: 80px !important; width: auto !important"
+                />
+                <img
+                  src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg"
+                  alt="Zoho Billing"
+                  style="height: 70px !important"
+                />
               </div>
             </div>
           </div>
+        </div>
+      </header>
 
-          <div class="subscription-visual fade-in">
-            <div class="timeline-visual">
-              <div class="timeline-item">
-                <div class="timeline-dot">1</div>
-                <div class="timeline-content">
-                  <h5>Subscription Start</h5>
-                  <p>
-                    Customer subscribes to your service with automated
-                    onboarding
+      <!-- Hero Section -->
+      <section class="zb-hero">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center" data-aos="fade-up">
+              <h1>
+                Revenue & Billing Systems<br />Designed for Growing Institutions
+              </h1>
+              <p class="mx-auto" style="max-width: 950px !important">
+                Our team builds billing systems that bring structure to fee
+                collection, automate recurring payments, and keep your finances
+                compliant and predictable.
+              </p>
+              <div class="d-flex gap-3 justify-content-center flex-wrap">
+                <a href="#contact" class="zb-btn-primary">Get Started</a>
+                <a href="#features" class="zb-btn-secondary">Learn More</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Billing Challenges Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #fafbfc 100%
+          ) !important;
+          border-bottom: 2px solid rgba(24, 98, 7, 0.921) !important;
+        "
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <h2 class="zb-section-title">
+                Why Billing Breaks as Businesses Grow
+              </h2>
+              <p class="zb-section-subtitle">
+                Manual invoices, missed renewals, incorrect taxes, delayed
+                payments, and reconciliation issues slow down cash flow. Billing
+                is no longer just invoice creation—it's revenue operations.
+              </p>
+              <p
+                class="text-center"
+                style="
+                  font-size: 18px !important;
+                  color: #555 !important;
+                  margin-bottom: 70px !important;
+                "
+              >
+                We design billing systems that run automatically, scale with
+                your business, and stay compliant.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+              <div class="zb-comparison-card">
+                <span class="zb-comparison-label zb-before-label"
+                  >Before Automation</span
+                >
+                <h3>Manual Billing Chaos</h3>
+                <ul class="zb-comparison-list before">
+                  <li>Spreadsheet-based invoice tracking</li>
+                  <li>Manual payment follow-ups</li>
+                  <li>Tax calculation errors</li>
+                  <li>Missed renewal opportunities</li>
+                  <li>Time-consuming reconciliation</li>
+                  <li>Revenue leakage from human errors</li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left">
+              <div class="zb-comparison-card">
+                <span class="zb-comparison-label zb-after-label"
+                  >After Automation</span
+                >
+                <h3>Automated Billing Excellence</h3>
+                <ul class="zb-comparison-list after">
+                  <li>Automated invoice generation</li>
+                  <li>Smart payment reminders</li>
+                  <li>Accurate tax calculations</li>
+                  <li>Auto-renewal management</li>
+                  <li>Real-time reconciliation</li>
+                  <li>Zero revenue leakage</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audience Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #f0f9ff 0%,
+            #ffffff 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <h2 class="zb-section-title">
+                Who Is This Billing System Built For?
+              </h2>
+              <p class="zb-section-subtitle">
+                Designed for organizations that need accuracy, automation, and
+                compliance — not manual billing chaos.
+              </p>
+            </div>
+          </div>
+
+          <div class="row g-4">
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="zb-use-case-card">
+                <span class="zb-use-case-badge">Education</span>
+                <h3>Schools, Colleges & EdTech</h3>
+                <p>
+                  Handle admissions, recurring fees, installments, and GST-ready
+                  invoicing with ease.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Installment & recurring fees</li>
+                  <li>Student payment portals</li>
+                  <li>Fee-wise reporting</li>
+                  <li>Audit-ready invoices</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="zb-use-case-card">
+                <span class="zb-use-case-badge">Subscription</span>
+                <h3>SaaS & Subscription Businesses</h3>
+                <p>
+                  Automate recurring revenue, upgrades, renewals, and proration
+                  without manual work.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Auto-renewals</li>
+                  <li>Plan upgrades/downgrades</li>
+                  <li>MRR & churn tracking</li>
+                  <li>Customer self-service</li>
+                </ul>
+              </div>
+            </div>
+
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="zb-use-case-card">
+                <span class="zb-use-case-badge">Multi-Branch</span>
+                <h3>Growing & Multi-Location Businesses</h3>
+                <p>
+                  Centralized billing with branch-wise control, reporting, and
+                  tax compliance.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Branch-wise billing</li>
+                  <li>Location-based taxes</li>
+                  <li>Central finance control</li>
+                  <li>Scalable operations</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Subscription Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ecfdf5 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6" data-aos="fade-right">
+              <h2
+                style="
+                  font-size: 56px !important;
+                  font-weight: 800 !important;
+                  margin-bottom: 35px !important;
+                "
+              >
+                Predictable Revenue Through Subscription Billing
+              </h2>
+              <p
+                style="
+                  font-size: 19px !important;
+                  color: #666 !important;
+                  margin-bottom: 55px !important;
+                  line-height: 1.8 !important;
+                "
+              >
+                Automate recurring revenue streams with intelligent subscription
+                management that handles upgrades, downgrades, and renewals
+                without manual intervention.
+              </p>
+
+              <div class="row g-4">
+                <div class="col-md-6">
+                  <div
+                    class="p-4 bg-white rounded-4 border-2 border-transparent"
+                    style="
+                      transition: all 0.4s !important;
+                      box-shadow: var(--zb-shadow-sm) !important;
+                    "
+                  >
+                    <h4
+                      style="
+                        font-size: 22px !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 14px !important;
+                      "
+                    >
+                      Flexible Plans
+                    </h4>
+                    <p
+                      style="
+                        font-size: 16px !important;
+                        color: #666 !important;
+                        margin: 0 !important;
+                      "
+                    >
+                      Monthly, quarterly, and annual billing cycles with custom
+                      durations
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="p-4 bg-white rounded-4 border-2 border-transparent"
+                    style="
+                      transition: all 0.4s !important;
+                      box-shadow: var(--zb-shadow-sm) !important;
+                    "
+                  >
+                    <h4
+                      style="
+                        font-size: 22px !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 14px !important;
+                      "
+                    >
+                      Auto-Renewals
+                    </h4>
+                    <p
+                      style="
+                        font-size: 16px !important;
+                        color: #666 !important;
+                        margin: 0 !important;
+                      "
+                    >
+                      Set it and forget it - subscriptions renew automatically
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="p-4 bg-white rounded-4 border-2 border-transparent"
+                    style="
+                      transition: all 0.4s !important;
+                      box-shadow: var(--zb-shadow-sm) !important;
+                    "
+                  >
+                    <h4
+                      style="
+                        font-size: 22px !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 14px !important;
+                      "
+                    >
+                      Plan Changes
+                    </h4>
+                    <p
+                      style="
+                        font-size: 16px !important;
+                        color: #666 !important;
+                        margin: 0 !important;
+                      "
+                    >
+                      Seamless upgrades and downgrades with proration
+                    </p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div
+                    class="p-4 bg-white rounded-4 border-2 border-transparent"
+                    style="
+                      transition: all 0.4s !important;
+                      box-shadow: var(--zb-shadow-sm) !important;
+                    "
+                  >
+                    <h4
+                      style="
+                        font-size: 22px !important;
+                        font-weight: 800 !important;
+                        margin-bottom: 14px !important;
+                      "
+                    >
+                      Smart Proration
+                    </h4>
+                    <p
+                      style="
+                        font-size: 16px !important;
+                        color: #666 !important;
+                        margin: 0 !important;
+                      "
+                    >
+                      Fair billing adjustments for mid-cycle changes
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6" data-aos="fade-left">
+              <div class="zb-timeline-visual">
+                <div class="zb-timeline-item">
+                  <div class="zb-timeline-dot">1</div>
+                  <div class="zb-timeline-content">
+                    <h5>Subscription Start</h5>
+                    <p>
+                      Customer subscribes to your service with automated
+                      onboarding
+                    </p>
+                  </div>
+                </div>
+                <div class="zb-timeline-item">
+                  <div class="zb-timeline-dot">2</div>
+                  <div class="zb-timeline-content">
+                    <h5>Recurring Billing</h5>
+                    <p>Automatic invoice generation and payment collection</p>
+                  </div>
+                </div>
+                <div class="zb-timeline-item">
+                  <div class="zb-timeline-dot">3</div>
+                  <div class="zb-timeline-content">
+                    <h5>Plan Upgrade</h5>
+                    <p>Seamless transition with prorated billing adjustments</p>
+                  </div>
+                </div>
+                <div
+                  class="zb-timeline-item"
+                  style="margin-bottom: 0 !important"
+                >
+                  <div class="zb-timeline-dot">4</div>
+                  <div class="zb-timeline-content">
+                    <h5>Auto Renewal</h5>
+                    <p>Continuous service with zero manual intervention</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tax Compliance Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #ecfdf5 0%,
+            #ffffff 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row g-5 align-items-center">
+            <div class="col-lg-6 order-lg-2" data-aos="fade-left">
+              <div
+                class="p-5 bg-white rounded-4"
+                style="box-shadow: 0 40px 100px rgba(0, 0, 0, 0.15) !important"
+              >
+                <div class="zb-invoice-mockup">
+                  <div class="zb-invoice-header">
+                    <div class="zb-invoice-title">TAX INVOICE</div>
+                    <div
+                      style="
+                        font-size: 16px !important;
+                        color: #666 !important;
+                        font-weight: 700 !important;
+                      "
+                    >
+                      INV-2024-001
+                    </div>
+                  </div>
+                  <div class="zb-invoice-row">
+                    <span
+                      style="color: #666 !important; font-size: 16px !important"
+                      >Subscription Plan</span
+                    >
+                    <span style="font-weight: 700 !important">₹50,000.00</span>
+                  </div>
+                  <div class="zb-invoice-row">
+                    <span
+                      style="color: #666 !important; font-size: 16px !important"
+                      >Additional Services</span
+                    >
+                    <span style="font-weight: 700 !important">₹15,000.00</span>
+                  </div>
+                  <div class="zb-invoice-row">
+                    <span
+                      style="color: #666 !important; font-size: 16px !important"
+                      >Subtotal</span
+                    >
+                    <span style="font-weight: 700 !important">₹65,000.00</span>
+                  </div>
+                  <div
+                    class="p-4 rounded-3 mt-4"
+                    style="
+                      background: linear-gradient(
+                        135deg,
+                        rgba(255, 255, 255, 0.8) 0%,
+                        rgba(236, 253, 245, 0.6) 100%
+                      ) !important;
+                      border: 1px solid rgba(5, 150, 105, 0.15) !important;
+                    "
+                  >
+                    <div class="zb-invoice-row" style="border: none !important">
+                      <span
+                        style="
+                          color: #666 !important;
+                          font-size: 16px !important;
+                        "
+                        >CGST @ 9%</span
+                      >
+                      <span style="font-weight: 700 !important">₹5,850.00</span>
+                    </div>
+                    <div class="zb-invoice-row" style="border: none !important">
+                      <span
+                        style="
+                          color: #666 !important;
+                          font-size: 16px !important;
+                        "
+                        >SGST @ 9%</span
+                      >
+                      <span style="font-weight: 700 !important">₹5,850.00</span>
+                    </div>
+                  </div>
+                  <div class="zb-invoice-total">
+                    <span>Total Amount</span>
+                    <span>₹76,700.00</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 order-lg-1" data-aos="fade-right">
+              <h2
+                style="
+                  font-size: 56px !important;
+                  font-weight: 800 !important;
+                  margin-bottom: 35px !important;
+                "
+              >
+                Compliant Billing Without Complexity
+              </h2>
+              <p
+                style="
+                  font-size: 19px !important;
+                  color: #666 !important;
+                  margin-bottom: 55px !important;
+                  line-height: 1.8 !important;
+                "
+              >
+                Configure tax rules once and every invoice remains compliant
+                without manual checks. Stay audit-ready with automated tax
+                calculations.
+              </p>
+
+              <div class="d-grid gap-4">
+                <div
+                  class="p-4 bg-white rounded-4 border-start border-5 border-success"
+                  style="box-shadow: var(--zb-shadow-sm) !important"
+                >
+                  <h4
+                    style="
+                      font-size: 22px !important;
+                      font-weight: 800 !important;
+                      margin-bottom: 14px !important;
+                    "
+                  >
+                    GST / VAT Configuration
+                  </h4>
+                  <p
+                    style="
+                      font-size: 16px !important;
+                      color: #666 !important;
+                      margin: 0 !important;
+                    "
+                  >
+                    Automated GST calculation with CGST, SGST, and IGST support
+                    based on customer location
+                  </p>
+                </div>
+                <div
+                  class="p-4 bg-white rounded-4 border-start border-5 border-success"
+                  style="box-shadow: var(--zb-shadow-sm) !important"
+                >
+                  <h4
+                    style="
+                      font-size: 22px !important;
+                      font-weight: 800 !important;
+                      margin-bottom: 14px !important;
+                    "
+                  >
+                    Location-Based Tax Rules
+                  </h4>
+                  <p
+                    style="
+                      font-size: 16px !important;
+                      color: #666 !important;
+                      margin: 0 !important;
+                    "
+                  >
+                    Intelligent tax application based on customer geography and
+                    tax jurisdiction
+                  </p>
+                </div>
+                <div
+                  class="p-4 bg-white rounded-4 border-start border-5 border-success"
+                  style="box-shadow: var(--zb-shadow-sm) !important"
+                >
+                  <h4
+                    style="
+                      font-size: 22px !important;
+                      font-weight: 800 !important;
+                      margin-bottom: 14px !important;
+                    "
+                  >
+                    Reverse Charge Handling
+                  </h4>
+                  <p
+                    style="
+                      font-size: 16px !important;
+                      color: #666 !important;
+                      margin: 0 !important;
+                    "
+                  >
+                    Automatic reverse charge mechanism for B2B transactions
+                    where applicable
                   </p>
                 </div>
               </div>
-              <div class="timeline-item">
-                <div class="timeline-dot">2</div>
-                <div class="timeline-content">
-                  <h5>Recurring Billing</h5>
-                  <p>Automatic invoice generation and payment collection</p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot">3</div>
-                <div class="timeline-content">
-                  <h5>Plan Upgrade</h5>
-                  <p>Seamless transition with prorated billing adjustments</p>
-                </div>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-dot">4</div>
-                <div class="timeline-content">
-                  <h5>Auto Renewal</h5>
-                  <p>Continuous service with zero manual intervention</p>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section class="tax-compliance-section">
-      <div class="compliance-container">
-        <div class="compliance-grid">
-          <div class="compliance-visual fade-in">
-            <div class="invoice-mockup">
-              <div class="invoice-header">
-                <div class="invoice-title">TAX INVOICE</div>
-                <div class="invoice-number">INV-2024-001</div>
-              </div>
-              <div class="invoice-row">
-                <span class="invoice-label">Subscription Plan</span>
-                <span class="invoice-value">₹50,000.00</span>
-              </div>
-              <div class="invoice-row">
-                <span class="invoice-label">Additional Services</span>
-                <span class="invoice-value">₹15,000.00</span>
-              </div>
-              <div class="invoice-row">
-                <span class="invoice-label">Subtotal</span>
-                <span class="invoice-value">₹65,000.00</span>
-              </div>
-              <div class="tax-breakdown">
-                <div class="invoice-row">
-                  <span class="invoice-label">CGST @ 9%</span>
-                  <span class="invoice-value">₹5,850.00</span>
-                </div>
-                <div class="invoice-row">
-                  <span class="invoice-label">SGST @ 9%</span>
-                  <span class="invoice-value">₹5,850.00</span>
-                </div>
-              </div>
-              <div class="invoice-total">
-                <span>Total Amount</span>
-                <span>₹76,700.00</span>
-              </div>
+      </section>
+      <!-- Payment Portal Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f0f9ff 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <h2 class="zb-section-title">Faster Payments, Less Follow-Ups</h2>
+              <p class="zb-section-subtitle">
+                Enable customers to view, pay, and manage their invoices
+                independently through a branded self-service portal
+              </p>
             </div>
           </div>
 
-          <div class="compliance-content fade-in">
-            <h2>Compliant Billing Without Complexity</h2>
-            <p>
-              Configure tax rules once and every invoice remains compliant
-              without manual checks. Stay audit-ready with automated tax
-              calculations.
-            </p>
-
-            <div class="compliance-features">
-              <div class="compliance-feature">
-                <h4>GST / VAT Configuration</h4>
+          <div class="row g-4">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+              <div class="zb-portal-feature-card">
+                <div class="zb-feature-number">1</div>
+                <h3>Online Payment Gateway</h3>
                 <p>
-                  Automated GST calculation with CGST, SGST, and IGST support
-                  based on customer location
+                  Accept payments through multiple gateways with automatic
+                  payment reconciliation and instant confirmation emails
                 </p>
               </div>
-              <div class="compliance-feature">
-                <h4>Location-Based Tax Rules</h4>
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+              <div class="zb-portal-feature-card">
+                <div class="zb-feature-number">2</div>
+                <h3>Auto-Payment Reminders</h3>
                 <p>
-                  Intelligent tax application based on customer geography and
-                  tax jurisdiction
+                  Smart reminder sequences that reduce collection time without
+                  annoying your customers with excessive follow-ups
                 </p>
               </div>
-              <div class="compliance-feature">
-                <h4>Reverse Charge Handling</h4>
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+              <div class="zb-portal-feature-card">
+                <div class="zb-feature-number">3</div>
+                <h3>Customer Self-Service</h3>
                 <p>
-                  Automatic reverse charge mechanism for B2B transactions where
-                  applicable
+                  Give customers 24/7 access to invoices, payment history, and
+                  subscription management capabilities
                 </p>
               </div>
-              <div class="compliance-feature">
-                <h4>Tax-Ready Formats</h4>
+            </div>
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+              <div class="zb-portal-feature-card">
+                <div class="zb-feature-number">4</div>
+                <h3>Payment Status Tracking</h3>
                 <p>
-                  Generate invoices in formats that meet all statutory
-                  requirements and audit standards
+                  Real-time visibility into payment status with automated
+                  updates and notifications for all stakeholders
                 </p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="payment-portal-section">
-      <div class="portal-container">
-        <div class="portal-header fade-in">
-          <h2>Faster Payments, Less Follow-Ups</h2>
-          <p>
-            Enable customers to view, pay, and manage their invoices
-            independently through a branded self-service portal
-          </p>
-        </div>
+      <!-- Analytics Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #f0f9ff 0%,
+            #ffffff 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <h2 class="zb-section-title">Complete Visibility Into Revenue</h2>
+              <p class="zb-section-subtitle">
+                Track key metrics and make data-driven decisions with
+                comprehensive billing analytics
+              </p>
+            </div>
+          </div>
 
-        <div class="portal-features-grid">
-          <div class="portal-feature-card fade-in">
-            <div class="feature-number">1</div>
-            <h3>Online Payment Gateway</h3>
-            <p>
-              Accept payments through multiple gateways with automatic payment
-              reconciliation and instant confirmation emails
-            </p>
-          </div>
-          <div class="portal-feature-card fade-in">
-            <div class="feature-number">2</div>
-            <h3>Auto-Payment Reminders</h3>
-            <p>
-              Smart reminder sequences that reduce collection time without
-              annoying your customers with excessive follow-ups
-            </p>
-          </div>
-          <div class="portal-feature-card fade-in">
-            <div class="feature-number">3</div>
-            <h3>Customer Self-Service</h3>
-            <p>
-              Give customers 24/7 access to invoices, payment history, and
-              subscription management capabilities
-            </p>
-          </div>
-          <div class="portal-feature-card fade-in">
-            <div class="feature-number">4</div>
-            <h3>Payment Status Tracking</h3>
-            <p>
-              Real-time visibility into payment status with automated updates
-              and notifications for all stakeholders
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="analytics-section">
-      <div class="analytics-container">
-        <div class="analytics-header fade-in">
-          <h2>Complete Visibility Into Revenue</h2>
-          <p>
-            Track key metrics and make data-driven decisions with comprehensive
-            billing analytics
-          </p>
-        </div>
-
-        <div class="metrics-grid">
-          <div class="metric-card fade-in">
-            <div class="metric-label">Monthly Recurring</div>
-            <div class="metric-value">$127K</div>
-            <div class="metric-change">↑ 12.5%</div>
-          </div>
-          <div class="metric-card fade-in">
-            <div class="metric-label">Annual Revenue</div>
-            <div class="metric-value">$1.5M</div>
-            <div class="metric-change">↑ 23.8%</div>
-          </div>
-          <div class="metric-card fade-in">
-            <div class="metric-label">Churn Rate</div>
-            <div class="metric-value">2.3%</div>
-            <div class="metric-change negative">↑ 0.5%</div>
-          </div>
-          <div class="metric-card fade-in">
-            <div class="metric-label">Outstanding</div>
-            <div class="metric-value">$45K</div>
-            <div class="metric-change">↓ 8.2%</div>
-          </div>
-        </div>
-
-        <div class="chart-placeholder fade-in">
-          <div class="chart-header">
-            <div class="chart-title">Revenue Growth Trend</div>
-            <div class="chart-period">Last 12 Months</div>
-          </div>
-          <div class="chart-bars">
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-            <div class="chart-bar"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="service-providers-section">
-      <div class="providers-container">
-        <div class="providers-header fade-in">
-          <h2>How Businesses Use Automated Billing</h2>
-          <p>
-            Industry-specific billing solutions tailored to your business needs
-          </p>
-        </div>
-
-        <div class="providers-grid">
-          <div class="provider-card fade-in">
-            <div class="provider-number">1</div>
-            <h3>SaaS & Subscription</h3>
-            <p>
-              Manage complex subscription models with automated recurring
-              billing and renewals.
-            </p>
-            <ul class="provider-features">
-              <li>Multi-tier subscription plans</li>
-              <li>Usage-based add-ons</li>
-              <li>Trial to paid conversions</li>
-              <li>Churn management</li>
-            </ul>
-          </div>
-          <div class="provider-card fade-in">
-            <div class="provider-number">2</div>
-            <h3>Professional Services</h3>
-            <p>
-              Handle milestone-based and recurring client billing with project
-              tracking.
-            </p>
-            <ul class="provider-features">
-              <li>Project milestone billing</li>
-              <li>Time & material tracking</li>
-              <li>Retainer management</li>
-              <li>Expense reimbursement</li>
-            </ul>
-          </div>
-          <div class="provider-card fade-in">
-            <div class="provider-number">3</div>
-            <h3>Agencies & Consultants</h3>
-            <p>
-              Manage retainers, hourly billing, and project-based invoicing
-              seamlessly.
-            </p>
-            <ul class="provider-features">
-              <li>Monthly retainers</li>
-              <li>Hourly billing rates</li>
-              <li>Project-based pricing</li>
-              <li>Client portal access</li>
-            </ul>
-          </div>
-          <div class="provider-card fade-in">
-            <div class="provider-number">4</div>
-            <h3>E-Commerce Platforms</h3>
-            <p>
-              Automate invoicing for online sales with integrated payment
-              processing.
-            </p>
-            <ul class="provider-features">
-              <li>Order-based invoicing</li>
-              <li>Payment gateway integration</li>
-              <li>Refund management</li>
-              <li>Multi-currency support</li>
-            </ul>
-          </div>
-          <div class="provider-card fade-in">
-            <div class="provider-number">5</div>
-            <h3>Healthcare Providers</h3>
-            <p>
-              Streamline patient billing with insurance integration and payment
-              plans.
-            </p>
-            <ul class="provider-features">
-              <li>Insurance claim processing</li>
-              <li>Patient payment portals</li>
-              <li>Installment planning</li>
-              <li>HIPAA compliance</li>
-            </ul>
-          </div>
-          <div class="provider-card fade-in">
-            <div class="provider-number">6</div>
-            <h3>Membership Organizations</h3>
-            <p>Automate membership dues, renewals, and benefit tracking.</p>
-            <ul class="provider-features">
-              <li>Annual membership billing</li>
-              <li>Tier-based pricing</li>
-              <li>Auto-renewal reminders</li>
-              <li>Member portal access</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Global Footer -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <!-- Company Info -->
-        <div class="footer-section">
-          <h3>Zolytics</h3>
-          <p class="tagline">Certified Zoho Partner</p>
-          <p>
-            We help businesses simplify operations by implementing, customizing,
-            and automating Zoho applications tailored to real-world business
-            workflows.
-          </p>
-        </div>
-
-       <!-- Zoho Solutions - Centered with balanced columns -->
-        <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
-          <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics-html">Zoho Analytics</a></li>
-              <li><a href="bigin-html">Zoho Bigin</a></li>
-              <li><a href="billing-html">Zoho Billing</a></li>
-              <li><a href="books-html">Zoho Books</a></li>
-              <li><a href="commerce-html">Zoho Commerce</a></li>
-              <li><a href="/zoho-crm-html">Zoho CRM</a></li>
-              <li><a href="expense-html">Zoho Expense</a></li>
-              <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory-html">Zoho Inventory</a></li>
-
-              <li><a href="payroll-html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus-html">Zoho People Plus</a></li>
-
-              <li><a href="recruit-html">Zoho Recruit</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>
-            Email: info@zolytics.in <br />
-            Phone: +91 90 7313 9613<br />
-            Location: India
-             <div
-            style="
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              margin-top: 5px;
-            "
-          >
-            <a
-              href="https://wa.me/+919073139613"
-              target="_blank"
-              style="
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: inherit;
-              "
+          <div class="row g-4 mb-5">
+            <div
+              class="col-lg-3 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
             >
-              <img
-                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
-                alt="WhatsApp"
-                width="22"
-                height="22"
-              />
-              <span style="font-weight: 500">  +91 90 7313 9613</span>
-            </a>
+              <div class="zb-metric-card">
+                <div class="zb-metric-label">Monthly Recurring</div>
+                <div class="zb-metric-value">$127K</div>
+                <div class="zb-metric-change">↑ 12.5%</div>
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="zb-metric-card">
+                <div class="zb-metric-label">Annual Revenue</div>
+                <div class="zb-metric-value">$1.5M</div>
+                <div class="zb-metric-change">↑ 23.8%</div>
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="zb-metric-card">
+                <div class="zb-metric-label">Churn Rate</div>
+                <div class="zb-metric-value">2.3%</div>
+                <div class="zb-metric-change negative">↑ 0.5%</div>
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="zb-metric-card">
+                <div class="zb-metric-label">Outstanding</div>
+                <div class="zb-metric-value">$45K</div>
+                <div class="zb-metric-change">↓ 8.2%</div>
+              </div>
+            </div>
           </div>
-          </p>
-          <div class="zoho-logo">
-            <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
-              alt="Zoho Premium Partner"
-            />
+
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <div class="zb-chart-placeholder">
+                <div
+                  class="d-flex justify-content-between align-items-center mb-5"
+                >
+                  <div
+                    style="
+                      font-size: 32px !important;
+                      font-weight: 800 !important;
+                    "
+                  >
+                    Revenue Growth Trend
+                  </div>
+                  <div
+                    style="
+                      font-size: 15px !important;
+                      background: linear-gradient(
+                        135deg,
+                        var(--zb-light-blue) 0%,
+                        #bfdbfe 100%
+                      ) !important;
+                      color: var(--zb-primary-blue) !important;
+                      padding: 12px 28px !important;
+                      border-radius: 30px !important;
+                      font-weight: 700 !important;
+                      box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2) !important;
+                    "
+                  >
+                    Last 12 Months
+                  </div>
+                </div>
+                <div class="zb-chart-bars">
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 60% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 80% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 45% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 90% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 70% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 85% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 95% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 75% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 100% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 88% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 92% !important"
+                  ></div>
+                  <div
+                    class="zb-chart-bar"
+                    style="height: 98% !important"
+                  ></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
 
-      <div class="footer-bottom">
-        <p>
-          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
-          Zoho Consulting Partner
-        </p>
-      </div>
-    </footer>
+      <!-- Service Providers Section -->
+      <section
+        class="zb-section"
+        style="
+          background: linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #ecfdf5 100%
+          ) !important;
+        "
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-12" data-aos="fade-up">
+              <h2 class="zb-section-title">
+                How Businesses Use Automated Billing
+              </h2>
+              <p class="zb-section-subtitle">
+                Industry-specific billing solutions tailored to your business
+                needs
+              </p>
+            </div>
+          </div>
 
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
+          <div class="row g-4">
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">1</div>
+                <h3>SaaS & Subscription</h3>
+                <p>
+                  Manage complex subscription models with automated recurring
+                  billing and renewals.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Multi-tier subscription plans</li>
+                  <li>Usage-based add-ons</li>
+                  <li>Trial to paid conversions</li>
+                  <li>Churn management</li>
+                </ul>
+              </div>
+            </div>
 
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">2</div>
+                <h3>Professional Services</h3>
+                <p>
+                  Handle milestone-based and recurring client billing with
+                  project tracking.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Project milestone billing</li>
+                  <li>Time & material tracking</li>
+                  <li>Retainer management</li>
+                  <li>Expense reimbursement</li>
+                </ul>
+              </div>
+            </div>
 
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">3</div>
+                <h3>Agencies & Consultants</h3>
+                <p>
+                  Manage retainers, hourly billing, and project-based invoicing
+                  seamlessly.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Monthly retainers</li>
+                  <li>Hourly billing rates</li>
+                  <li>Project-based pricing</li>
+                  <li>Client portal access</li>
+                </ul>
+              </div>
+            </div>
 
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">4</div>
+                <h3>E-Commerce Platforms</h3>
+                <p>
+                  Automate invoicing for online sales with integrated payment
+                  processing.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Order-based invoicing</li>
+                  <li>Payment gateway integration</li>
+                  <li>Refund management</li>
+                  <li>Multi-currency support</li>
+                </ul>
+              </div>
+            </div>
 
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="500"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">5</div>
+                <h3>Healthcare Providers</h3>
+                <p>
+                  Streamline patient billing with insurance integration and
+                  payment plans.
+                </p>
+                <ul class="zb-feature-list">
+                  <li>Insurance claim processing</li>
+                  <li>Patient payment portals</li>
+                  <li>Installment planning</li>
+                  <li>HIPAA compliance</li>
+                </ul>
+              </div>
+            </div>
 
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
+            <div
+              class="col-lg-4 col-md-6"
+              data-aos="fade-up"
+              data-aos-delay="600"
+            >
+              <div class="zb-provider-card">
+                <div class="zb-provider-number">6</div>
+                <h3>Membership Organizations</h3>
+                <p>Automate membership dues, renewals, and benefit tracking.</p>
+                <ul class="zb-feature-list">
+                  <li>Annual membership billing</li>
+                  <li>Tier-based pricing</li>
+                  <li>Auto-renewal reminders</li>
+                  <li>Member portal access</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+      <!-- Footer -->
+      <footer class="zb-footer">
+        <!-- Blue Top Bar -->
+        <div class="zb-footer-top-bar"></div>
 
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
+        <!-- Footer Content -->
+        <div class="zb-footer-content">
+          <div class="container">
+            <!-- Main Footer Row -->
+            <div class="row gy-4 align-items-start">
+              <!-- About -->
+              <div class="col-lg-4">
+                <h3>Zolytics</h3>
+                <p class="zb-tagline">Certified Zoho Partner</p>
 
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
+                <p>
+                  We help businesses simplify operations by implementing,
+                  customizing, and automating Zoho applications tailored to
+                  real-world business workflows.
+                </p>
+              </div>
 
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
+              <!-- Solutions -->
+              <div class="col-lg-4">
+                <h3>Zoho Solutions</h3>
 
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
+                <div class="row">
+                  <div class="col-6">
+                    <ul class="list-unstyled zb-footer-links">
+                      <li><a href="analytics.html">Zoho Analytics</a></li>
+                      <li><a href="bigin.html">Zoho Bigin</a></li>
+                      <li><a href="billing.html">Zoho Billing</a></li>
+                      <li><a href="books.html">Zoho Books</a></li>
+                      <li><a href="commerce.html">Zoho Commerce</a></li>
+                      <li><a href="zoho-crm.html">Zoho CRM</a></li>
+                    </ul>
+                  </div>
 
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
+                  <div class="col-6">
+                    <ul class="list-unstyled zb-footer-links">
+                      <li><a href="expense.html">Zoho Expense</a></li>
+                      <li><a href="finance.html">Zoho Finance Plus</a></li>
+                      <li><a href="inventory.html">Zoho Inventory</a></li>
+                      <li><a href="payroll.html">Zoho Payroll</a></li>
+                      <li><a href="peopleplus.html">Zoho People Plus</a></li>
+                      <li><a href="recruit.html">Zoho Recruit</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
 
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
+              <!-- Contact -->
+              <div class="col-lg-4">
+                <h3>Contact Us</h3>
 
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
+                <p>
+                  Email: <a href="mailto:info@zolytics.in">info@zolytics.in</a
+                  ><br />
+                  Phone: +91 90 7313 9613<br />
+                  Location: India
+                </p>
+                <a
+                  href="https://wa.me/+919073139613"
+                  target="_blank"
+                  style="
+                    display: flex;
+                    align-items: center;
+                    text-decoration: none;
+                    color: inherit;
+                  "
+                >
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
+                    alt="WhatsApp"
+                    width="22"
+                    height="22"
+                  />
+                  <span>+91 90 7313 9613</span>
+                </a>
 
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
+                <div class="mt-4">
+                  <img
+                    src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+                    alt="Zoho Partner"
+                    class="zb-zoho-partner-logo"
+                  />
+                </div>
+              </div>
+            </div>
 
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+            <!-- Bottom Bar -->
+            <div class="zb-footer-bottom text-center mt-5 pt-4">
+              <p>
+                © 2026 Zolytics. All rights reserved. | Certified Zoho
+                Consulting Partner
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
 
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
+      <!-- Scroll to Top Button -->
+      <div class="zb-scroll-to-top" id="zbScrollToTop">↑</div>
+    </div>
 
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
 
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
-
-    <div class="scroll-to-top" id="scrollToTop">↑</div>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 100,
+      });
+
       // Header scroll effect
-      const header = document.getElementById("header");
+      const header = document.getElementById("zbHeader");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 50) {
           header.classList.add("scrolled");
@@ -2768,7 +2458,7 @@
       });
 
       // Scroll to top button
-      const scrollToTopBtn = document.getElementById("scrollToTop");
+      const scrollToTopBtn = document.getElementById("zbScrollToTop");
       window.addEventListener("scroll", () => {
         if (window.scrollY > 300) {
           scrollToTopBtn.classList.add("visible");
@@ -2792,39 +2482,97 @@
         });
       });
 
-      // Intersection Observer for scroll animations
+      // Chart bar animation on scroll
+      const chartBars = document.querySelectorAll(".zb-chart-bar");
       const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -80px 0px",
+        threshold: 0.5,
+        rootMargin: "0px",
       };
 
-      const observer = new IntersectionObserver((entries) => {
+      const chartObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
+            const bars = entry.target.querySelectorAll(".zb-chart-bar");
+            bars.forEach((bar, index) => {
+              setTimeout(() => {
+                bar.style.opacity = "1";
+                bar.style.transform = "scaleY(1)";
+              }, index * 100);
+            });
+            chartObserver.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      // Observe all fade-in elements
-      document.querySelectorAll(".fade-in").forEach((el) => {
-        observer.observe(el);
+      const chartContainer = document.querySelector(".zb-chart-bars");
+      if (chartContainer) {
+        chartObserver.observe(chartContainer);
+      }
+
+      // Add initial chart bar styles
+      chartBars.forEach((bar) => {
+        bar.style.opacity = "0";
+        bar.style.transform = "scaleY(0)";
+        bar.style.transformOrigin = "bottom";
+        bar.style.transition = "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)";
       });
 
-      // Parallax effect for hero
-      let ticking = false;
-      window.addEventListener("scroll", () => {
-        if (!ticking) {
-          window.requestAnimationFrame(() => {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector(".hero");
-            if (hero && scrolled < window.innerHeight) {
-              hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+      // Enhanced hover effects for cards
+      document.addEventListener("DOMContentLoaded", function () {
+        // Add parallax effect to hero section
+        window.addEventListener("scroll", function () {
+          const scrolled = window.pageYOffset;
+          const parallax = document.querySelector(".zb-hero");
+          if (parallax) {
+            parallax.style.transform = "translateY(" + scrolled * 0.3 + "px)";
+          }
+        });
+
+        // Add stagger animation to metric cards
+        const metricCards = document.querySelectorAll(".zb-metric-card");
+        metricCards.forEach((card, index) => {
+          card.style.animationDelay = index * 0.1 + "s";
+        });
+
+        // Interactive number animation for metrics
+        const animateValue = (element, start, end, duration) => {
+          let startTimestamp = null;
+          const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min(
+              (timestamp - startTimestamp) / duration,
+              1,
+            );
+            const value = Math.floor(progress * (end - start) + start);
+            element.textContent = value;
+            if (progress < 1) {
+              window.requestAnimationFrame(step);
             }
-            ticking = false;
-          });
-          ticking = true;
-        }
+          };
+          window.requestAnimationFrame(step);
+        };
+
+        // Observe metric cards and animate when visible
+        const metricObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                const valueElement =
+                  entry.target.querySelector(".zb-metric-value");
+                if (
+                  valueElement &&
+                  !valueElement.classList.contains("animated")
+                ) {
+                  valueElement.classList.add("animated");
+                  // Animation would go here if values were numeric
+                }
+              }
+            });
+          },
+          { threshold: 0.5 },
+        );
+
+        metricCards.forEach((card) => metricObserver.observe(card));
       });
     </script>
   </body>
