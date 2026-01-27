@@ -33,9 +33,9 @@
       :root {
         --pg: #0d7a3f;
         --pgd: #0a5c30;
-        --pgl: #10b759;
+        --pgl: #1064b7;
         --ag: #34d399;
-        --dg: #064e2f;
+        --dg: #820606;
         --w: #fff;
         --ow: #f8fffe;
         --lgbg: #e8f5f0;
@@ -219,35 +219,37 @@
         color: var(--w) !important;
       }
       #zcp .sb {
-        background: linear-gradient(135deg, var(--pg), var(--dg)) !important;
+        background: rgb(248, 245, 245) !important;
         padding: 80px 60px !important;
+        border-bottom: 2px solid green;
       }
       #zcp .stc {
         text-align: center !important;
-        color: var(--w) !important;
+        color: black !important;
         padding: 36px 24px !important;
         border-radius: 16px !important;
         background: rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px) !important;
-        border: 2px solid rgba(255, 255, 255, 0.15) !important;
+        border: 3px solid rgba(8, 8, 8, 0.15) !important;
         transition: all 0.3s !important;
         margin-bottom: 30px !important;
+        
       }
       #zcp .stc:hover {
         transform: translateY(-8px) !important;
         background: rgba(255, 255, 255, 0.15) !important;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 20px 40px solid rgba(0, 0, 0, 0.3) !important;
       }
       #zcp .stn {
         font-size: 3.5rem !important;
         font-weight: 700 !important;
         margin-bottom: 8px !important;
         display: block !important;
-        color: var(--w) !important;
+        color: black !important;
       }
       #zcp .stl {
         font-size: 1rem !important;
-        color: var(--w) !important;
+        color: black !important;
       }
       #zcp .sec {
         padding: 120px 60px !important;
@@ -672,10 +674,7 @@
         margin-bottom: 14px !important;
         color: white !important;
       }
-      #zcp .footer-section p {
-        color: #cbd5e1 !important;
-        line-height: 1.7 !important;
-      }
+     
       #zcp .ftb {
         border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
         padding-top: 18px !important;
@@ -689,6 +688,10 @@
         max-width: 140px !important;
         opacity: 0.95 !important;
       }
+      .site-footer .tagline {
+   color: #38bdf8;
+}
+
       @media (max-width: 768px) {
         #zcp .hero {
           padding: 140px 30px 80px !important;
@@ -1461,17 +1464,17 @@
       }
 
       /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+     .zoho-solutions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* LEFT */
+}
 
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
+.solutions-wrapper {
+  display: block; /* No centering */
+  width: 100%;
+}
+
 
       .solutions-grid {
         display: grid;
