@@ -107,7 +107,7 @@
 
       .zolytics-bigin-container .custom-navbar {
         display: flex !important;
-        justify-content: space-between !important;
+       justify-content: center !important;
         align-items: center !important;
       }
 
@@ -116,6 +116,12 @@
         align-items: center !important;
         gap: 20px !important;
       }
+/* Make Zolytics logo bigger than Zoho Bigin logo */
+.zolytics-bigin-container .logo-section .imge {
+  height: 90px !important;   /* Increase size */
+  width: auto !important;
+}
+
 
       .zolytics-bigin-container .logo-section img {
         height: 50px !important;
@@ -1087,8 +1093,8 @@
             <div class="logo-section">
               <img
                 src="images/logo.png"
-                style="height: 80px; width: auto"
                 alt="Zolytics"
+                class="imge"
               />
               <img
                 src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg"
