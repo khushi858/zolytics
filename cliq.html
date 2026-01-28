@@ -1,319 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zoho Cliq Consultant - Transform Chats Into Workflows</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+
     <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
+      /* Zoho Sites Compatibility - Namespace all styles with .zcliq-wrapper */
+      .zcliq-wrapper {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial,
+          sans-serif !important;
+        color: #1a1a1a !important;
+        overflow-x: hidden !important;
+        background: white !important;
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        color: #1a1a1a;
-        overflow-x: hidden;
-        background: white;
+      .zcliq-wrapper * {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
       }
 
-      /* Animated Background Lines */
-      .bg-lines {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.03;
+      /* Reset Bootstrap conflicts */
+      .zcliq-wrapper .container,
+      .zcliq-wrapper .row,
+      .zcliq-wrapper .col {
+        margin: 0 !important;
+        padding: 0 !important;
       }
 
-      .bg-line {
-        position: absolute;
-        background: #2874a6;
-        animation: moveLine 20s linear infinite;
+      /* Animated Background */
+      .zcliq-wrapper .zcliq-bg-lines {
+        position: fixed !important;
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0 !important;
+        pointer-events: none !important;
+        opacity: 0.03 !important;
+        top: 0 !important;
+        left: 0 !important;
       }
 
-      .bg-line:nth-child(1) {
-        width: 2px;
-        height: 100%;
-        left: 20%;
-        animation-delay: 0s;
+      .zcliq-wrapper .zcliq-bg-line {
+        position: absolute !important;
+        background: linear-gradient(
+          180deg,
+          transparent,
+          #2874a6,
+          transparent
+        ) !important;
+        animation: zcliqMoveLine 20s linear infinite !important;
+        width: 2px !important;
+        height: 100% !important;
       }
 
-      .bg-line:nth-child(2) {
-        width: 2px;
-        height: 100%;
-        left: 40%;
-        animation-delay: 5s;
+      .zcliq-wrapper .zcliq-bg-line:nth-child(1) {
+        left: 20% !important;
+        animation-delay: 0s !important;
       }
 
-      .bg-line:nth-child(3) {
-        width: 2px;
-        height: 100%;
-        left: 60%;
-        animation-delay: 10s;
+      .zcliq-wrapper .zcliq-bg-line:nth-child(2) {
+        left: 40% !important;
+        animation-delay: 5s !important;
       }
 
-      .bg-line:nth-child(4) {
-        width: 2px;
-        height: 100%;
-        left: 80%;
-        animation-delay: 15s;
+      .zcliq-wrapper .zcliq-bg-line:nth-child(3) {
+        left: 60% !important;
+        animation-delay: 10s !important;
       }
 
-      @keyframes moveLine {
+      .zcliq-wrapper .zcliq-bg-line:nth-child(4) {
+        left: 80% !important;
+        animation-delay: 15s !important;
+      }
+
+      @keyframes zcliqMoveLine {
         0%,
         100% {
           transform: translateY(0) scaleY(1);
+          opacity: 0.03;
         }
         50% {
-          transform: translateY(-20px) scaleY(1.1);
+          transform: translateY(-30px) scaleY(1.15);
+          opacity: 0.05;
         }
       }
 
       /* Header Styles */
-      header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-        background: rgba(255, 255, 255, 0.98);
-        backdrop-filter: blur(20px);
-        border-bottom: 3px solid transparent;
-        padding: 1.2rem 0;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+      .zcliq-wrapper .zcliq-header {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 1000 !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        backdrop-filter: blur(20px) !important;
+        border-bottom: 3px solid transparent !important;
+        padding: 1.2rem 0 !important;
+        transition: all 0.3s ease !important;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05) !important;
       }
 
-      header.scrolled {
-        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
-        border-bottom-color: #e74c3c;
+      .zcliq-wrapper .zcliq-header.scrolled {
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1) !important;
+        border-bottom-color: #e74c3c !important;
       }
 
-      
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 1.5rem;
-        animation: slideInLeft 0.6s ease-out;
+      .zcliq-wrapper .zcliq-header-container {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        padding: 0 2rem !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
       }
 
-      .header-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      .zcliq-wrapper .zcliq-logo {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
       }
 
-      .logo-section {
-        display: flex;
-        align-items: center;
-        gap: 3rem;
+      .zcliq-wrapper .zcliq-logo img {
+        height: 60px !important;
+        width: auto !important;
+        transition: transform 0.3s ease !important;
       }
 
-      .zolytics-logo {
-        font-size: 2.2rem;
-        font-weight: 900;
-        color: #e74c3c;
-        letter-spacing: -2px;
-        transition: all 0.3s ease;
-        position: relative;
-        cursor: pointer;
+      .zcliq-wrapper .zcliq-logo img:hover {
+        transform: scale(1.05) !important;
       }
 
-      .zolytics-logo::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 3px;
-        background: #2874a6;
-        transition: width 0.3s ease;
+      .zcliq-wrapper .zcliq-body-content {
+        padding-top: 100px !important;
       }
 
-      .zolytics-logo:hover::after {
-        width: 100%;
+      /* Hero Section */
+      .zcliq-wrapper .zcliq-hero {
+        min-height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f8f9fa 100%
+        ) !important;
+        padding: 6rem 2rem !important;
       }
 
-      .logo-divider {
-        width: 2px;
-        height: 50px;
-        background: linear-gradient(180deg, transparent, #ddd, transparent);
+      .zcliq-wrapper .zcliq-hero-decoration {
+        position: absolute !important;
+        width: 100% !important;
+        height: 100% !important;
+        pointer-events: none !important;
+        top: 0 !important;
+        left: 0 !important;
       }
 
-      .cliq-logo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 1.6rem;
-        font-weight: 800;
-        color: #2874a6;
-        transition: all 0.3s ease;
-        cursor: pointer;
+      .zcliq-wrapper .zcliq-hero-circle {
+        position: absolute !important;
+        border-radius: 50% !important;
+        opacity: 0.06 !important;
+        filter: blur(60px) !important;
       }
 
-      .cliq-logo:hover {
-        transform: translateY(-3px);
+      .zcliq-wrapper .zcliq-hero-circle-1 {
+        width: 600px !important;
+        height: 600px !important;
+        background: #2874a6 !important;
+        top: -250px !important;
+        right: -100px !important;
+        animation: zcliqFloat 20s ease-in-out infinite !important;
       }
 
-      .cliq-icon {
-        width: 55px;
-        height: 55px;
-        background: #2874a6;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(40, 116, 166, 0.3);
-        transition: all 0.3s ease;
+      .zcliq-wrapper .zcliq-hero-circle-2 {
+        width: 450px !important;
+        height: 450px !important;
+        background: #e74c3c !important;
+        bottom: -150px !important;
+        left: -80px !important;
+        animation: zcliqFloat 15s ease-in-out infinite reverse !important;
       }
 
-      .cliq-logo:hover .cliq-icon {
-        box-shadow: 0 8px 30px rgba(40, 116, 166, 0.5);
-        transform: rotate(5deg);
+      .zcliq-wrapper .zcliq-hero-circle-3 {
+        width: 300px !important;
+        height: 300px !important;
+        background: #2874a6 !important;
+        top: 40% !important;
+        left: 10% !important;
+        animation: zcliqFloat 12s ease-in-out infinite !important;
       }
 
-      .cliq-icon::before {
-        content: "";
-        position: absolute;
-        width: 22px;
-        height: 22px;
-        background: white;
-        border-radius: 50%;
-        top: 9px;
-        left: 9px;
-      }
-
-      .cliq-icon::after {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        background: white;
-        border-radius: 50%;
-        bottom: 9px;
-        right: 9px;
-      }
-
-      nav {
-        display: flex;
-        gap: 3rem;
-        align-items: center;
-      }
-
-      nav a {
-        color: #1a1a1a;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1rem;
-        position: relative;
-        transition: all 0.3s ease;
-        padding: 0.5rem 0;
-      }
-
-      nav a::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 3px;
-        background: #e74c3c;
-        transition: width 0.3s ease;
-      }
-
-      nav a:hover {
-        color: #e74c3c;
-      }
-
-      nav a:hover::after {
-        width: 100%;
-      }
-
-      body {
-        padding-top: 95px;
-      }
-
-      /* Hero Section - WHITE */
-      .hero {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
-        background: white;
-        padding: 4rem 2rem;
-      }
-
-      .hero-decoration {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-      }
-
-      .hero-circle {
-        position: absolute;
-        border-radius: 50%;
-        opacity: 0.05;
-      }
-
-      .hero-circle-1 {
-        width: 500px;
-        height: 500px;
-        background: #2874a6;
-        top: -250px;
-        right: -100px;
-        animation: float 20s ease-in-out infinite;
-      }
-
-      .hero-circle-2 {
-        width: 350px;
-        height: 350px;
-        background: #e74c3c;
-        bottom: -150px;
-        left: -80px;
-        animation: float 15s ease-in-out infinite reverse;
-      }
-
-      .hero-circle-3 {
-        width: 200px;
-        height: 200px;
-        background: #2874a6;
-        top: 40%;
-        left: 10%;
-        animation: float 12s ease-in-out infinite;
-      }
-
-      @keyframes float {
+      @keyframes zcliqFloat {
         0%,
         100% {
           transform: translate(0, 0) scale(1);
         }
         50% {
-          transform: translate(30px, 30px) scale(1.1);
+          transform: translate(40px, 40px) scale(1.15);
         }
       }
 
-      .hero-content {
-        text-align: center;
-        z-index: 2;
-        padding: 2rem;
-        max-width: 1200px;
-        animation: fadeInUp 1s ease-out;
-        position: relative;
+      .zcliq-wrapper .zcliq-hero-content {
+        text-align: center !important;
+        z-index: 2 !important;
+        padding: 2rem !important;
+        max-width: 1200px !important;
+        animation: zcliqFadeInUp 1s ease-out !important;
+        position: relative !important;
       }
 
-      @keyframes fadeInUp {
+      @keyframes zcliqFadeInUp {
         from {
           opacity: 0;
           transform: translateY(50px);
@@ -324,184 +247,201 @@
         }
       }
 
-      .hero h1 {
-        font-size: 5rem;
-        color: #1a1a1a;
-        margin-bottom: 1.5rem;
-        line-height: 1.1;
-        font-weight: 900;
-        letter-spacing: -2px;
+      .zcliq-wrapper .zcliq-hero h1 {
+        font-size: 4.5rem !important;
+        color: #1a1a1a !important;
+        margin-bottom: 1.5rem !important;
+        line-height: 1.15 !important;
+        font-weight: 900 !important;
+        letter-spacing: -2px !important;
       }
 
-      .hero h1 span {
-        color: #2874a6;
-        position: relative;
-        display: inline-block;
+      .zcliq-wrapper .zcliq-hero h1 span {
+        color: #2874a6 !important;
+        position: relative !important;
+        display: inline-block !important;
       }
 
-      .hero h1 span::after {
-        content: "";
-        position: absolute;
-        bottom: 10px;
-        left: 0;
-        width: 100%;
-        height: 20px;
-        background: rgba(231, 76, 60, 0.2);
-        z-index: -1;
-        transform: skewX(-10deg);
+      .zcliq-wrapper .zcliq-hero h1 span::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: 10px !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 20px !important;
+        background: rgba(231, 76, 60, 0.2) !important;
+        z-index: -1 !important;
+        transform: skewX(-10deg) !important;
       }
 
-      .hero .subtitle {
-        font-size: 1.9rem;
-        color: #666;
-        margin-bottom: 3rem;
-        font-weight: 400;
-        max-width: 900px;
-        margin-left: auto;
-        margin-right: auto;
+      .zcliq-wrapper .zcliq-hero .zcliq-subtitle {
+        font-size: 1.75rem !important;
+        color: #555 !important;
+        margin-bottom: 3rem !important;
+        font-weight: 400 !important;
+        max-width: 900px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        line-height: 1.6 !important;
       }
 
-      .cta-buttons {
-        display: flex;
-        gap: 2rem;
-        justify-content: center;
-        flex-wrap: wrap;
-        margin-top: 3rem;
+      .zcliq-wrapper .zcliq-cta-buttons {
+        display: flex !important;
+        gap: 2rem !important;
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+        margin-top: 3rem !important;
       }
 
-      .cta-btn {
-        padding: 1.4rem 3.8rem;
-        font-size: 1.15rem;
-        border: none;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        text-decoration: none;
-        display: inline-block;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-        position: relative;
-        overflow: hidden;
+      .zcliq-wrapper .zcliq-cta-btn {
+        padding: 1.4rem 3.8rem !important;
+        font-size: 1.15rem !important;
+        border: none !important;
+        border-radius: 12px !important;
+        cursor: pointer !important;
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+        text-decoration: none !important;
+        display: inline-block !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 1.5px !important;
+        position: relative !important;
+        overflow: hidden !important;
       }
 
-      .cta-btn::before {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 0;
-        height: 0;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
+      .zcliq-wrapper .zcliq-cta-btn::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        width: 0 !important;
+        height: 0 !important;
+        background: rgba(255, 255, 255, 0.3) !important;
+        border-radius: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        transition:
+          width 0.6s,
+          height 0.6s !important;
       }
 
-      .cta-btn:hover::before {
-        width: 400px;
-        height: 400px;
+      .zcliq-wrapper .zcliq-cta-btn:hover::before {
+        width: 400px !important;
+        height: 400px !important;
       }
 
-      .cta-primary {
-        background: #e74c3c;
-        color: white;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4);
+      .zcliq-wrapper .zcliq-cta-primary {
+        background: linear-gradient(
+          135deg,
+          #e74c3c 0%,
+          #c0392b 100%
+        ) !important;
+        color: white !important;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.4) !important;
       }
 
-      .cta-primary:hover {
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.5);
-        background: #c0392b;
+      .zcliq-wrapper .zcliq-cta-primary:hover {
+        transform: translateY(-8px) scale(1.05) !important;
+        box-shadow: 0 15px 40px rgba(231, 76, 60, 0.6) !important;
       }
 
-      .cta-secondary {
-        background: white;
-        color: #2874a6;
-        border: 3px solid #2874a6;
-        box-shadow: 0 10px 30px rgba(40, 116, 166, 0.2);
+      .zcliq-wrapper .zcliq-cta-secondary {
+        background: white !important;
+        color: #2874a6 !important;
+        border: 3px solid #2874a6 !important;
+        box-shadow: 0 10px 30px rgba(40, 116, 166, 0.2) !important;
       }
 
-      .cta-secondary:hover {
-        background: #2874a6;
-        color: white;
-        transform: translateY(-8px) scale(1.05);
-        box-shadow: 0 15px 40px rgba(40, 116, 166, 0.4);
+      .zcliq-wrapper .zcliq-cta-secondary:hover {
+        background: linear-gradient(
+          135deg,
+          #2874a6 0%,
+          #1f5f8b 100%
+        ) !important;
+        color: white !important;
+        transform: translateY(-8px) scale(1.05) !important;
+        box-shadow: 0 15px 40px rgba(40, 116, 166, 0.5) !important;
       }
 
       /* Section Styles */
-      section {
-        padding: 8rem 2rem;
-        position: relative;
+      .zcliq-wrapper .zcliq-section {
+        padding: 8rem 2rem !important;
+        position: relative !important;
       }
 
-      /* Alternating Section Colors */
-      .white-section {
-        background: white;
-        position: relative;
+      .zcliq-wrapper .zcliq-white-section {
+        background: white !important;
+        position: relative !important;
       }
 
-      .blue-section {
-        background: #2874a6;
-        color: white;
-        position: relative;
+      .zcliq-wrapper .zcliq-blue-section {
+        background: linear-gradient(
+          135deg,
+          #2874a6 0%,
+          #1f5f8b 100%
+        ) !important;
+        color: white !important;
+        position: relative !important;
       }
 
-      .blue-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        background: linear-gradient(180deg, white, #2874a6);
+      .zcliq-wrapper .zcliq-blue-section::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 100px !important;
+        background: linear-gradient(180deg, white, #2874a6) !important;
       }
 
-      .red-section {
-        background: #e74c3c;
-        color: white;
-        position: relative;
+      .zcliq-wrapper .zcliq-red-section {
+        background: linear-gradient(
+          135deg,
+          #e74c3c 0%,
+          #c0392b 100%
+        ) !important;
+        color: white !important;
+        position: relative !important;
       }
 
-      .red-section::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-        background: linear-gradient(180deg, white, #e74c3c);
+      .zcliq-wrapper .zcliq-red-section::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 100px !important;
+        background: linear-gradient(180deg, white, #e74c3c) !important;
       }
 
-      .container {
-        max-width: 1400px;
-        margin: 0 auto;
-        position: relative;
-        z-index: 2;
+      .zcliq-wrapper .zcliq-container {
+        max-width: 1400px !important;
+        margin: 0 auto !important;
+        position: relative !important;
+        z-index: 2 !important;
       }
 
-      .section-title {
-        font-size: 3.8rem;
-        text-align: center;
-        margin-bottom: 1rem;
-        font-weight: 900;
-        letter-spacing: -2px;
-        position: relative;
-        display: inline-block;
-        width: 100%;
+      .zcliq-wrapper .zcliq-section-title {
+        font-size: 3.8rem !important;
+        text-align: center !important;
+        margin-bottom: 1rem !important;
+        font-weight: 900 !important;
+        letter-spacing: -2px !important;
+        position: relative !important;
+        display: inline-block !important;
+        width: 100% !important;
       }
 
-      .section-title::after {
-        content: "";
-        display: block;
-        width: 150px;
-        height: 6px;
-        margin: 2rem auto 0;
-        border-radius: 3px;
-        animation: expandBar 1s ease-out;
+      .zcliq-wrapper .zcliq-section-title::after {
+        content: "" !important;
+        display: block !important;
+        width: 150px !important;
+        height: 6px !important;
+        margin: 2rem auto 0 !important;
+        border-radius: 3px !important;
+        animation: zcliqExpandBar 1s ease-out !important;
       }
 
-      @keyframes expandBar {
+      @keyframes zcliqExpandBar {
         from {
           width: 0;
         }
@@ -510,1086 +450,993 @@
         }
       }
 
-      .white-section .section-title {
-        color: #1a1a1a;
+      .zcliq-wrapper .zcliq-white-section .zcliq-section-title {
+        color: #1a1a1a !important;
       }
 
-      .white-section .section-title::after {
-        background: #e74c3c;
+      .zcliq-wrapper .zcliq-white-section .zcliq-section-title::after {
+        background: linear-gradient(90deg, #e74c3c, #c0392b) !important;
       }
 
-      .blue-section .section-title::after {
-        background: white;
+      .zcliq-wrapper .zcliq-blue-section .zcliq-section-title::after,
+      .zcliq-wrapper .zcliq-red-section .zcliq-section-title::after {
+        background: white !important;
       }
 
-      .red-section .section-title::after {
-        background: white;
+      .zcliq-wrapper .zcliq-section-subtitle {
+        text-align: center !important;
+        font-size: 1.5rem !important;
+        margin-bottom: 5rem !important;
+        font-weight: 300 !important;
       }
 
-      .section-subtitle {
-        text-align: center;
-        font-size: 1.5rem;
-        margin-bottom: 5rem;
-        font-weight: 300;
+      .zcliq-wrapper .zcliq-white-section .zcliq-section-subtitle {
+        color: #666 !important;
       }
 
-      .white-section .section-subtitle {
-        color: #666;
+      .zcliq-wrapper .zcliq-blue-section .zcliq-section-subtitle,
+      .zcliq-wrapper .zcliq-red-section .zcliq-section-subtitle {
+        color: rgba(255, 255, 255, 0.9) !important;
       }
 
-      .blue-section .section-subtitle,
-      .red-section .section-subtitle {
-        color: rgba(255, 255, 255, 0.9);
+      /* Problem Cards */
+      .zcliq-wrapper .zcliq-problems-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 3rem !important;
+        margin-top: 4rem !important;
       }
 
-      /* Use Cases Grid - White Background */
-      .use-cases-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 3rem;
-        margin-top: 4rem;
+      .zcliq-wrapper .zcliq-problem-card {
+        background: white !important;
+        padding: 3rem !important;
+        border-radius: 20px !important;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        cursor: pointer !important;
+        border: 2px solid transparent !important;
       }
 
-      .use-case-card {
-        background: white;
-        padding: 0;
-        border-radius: 20px;
-        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        cursor: pointer;
-        overflow: hidden;
-        border: 2px solid transparent;
-        position: relative;
+      .zcliq-wrapper .zcliq-problem-card::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 8px !important;
+        height: 0 !important;
+        background: linear-gradient(180deg, #e74c3c, #c0392b) !important;
+        transition: height 0.6s ease !important;
       }
 
-      .use-case-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
+      .zcliq-wrapper .zcliq-problem-card:hover::before {
+        height: 100% !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card::after {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 8px !important;
+        background: linear-gradient(90deg, transparent, #e74c3c) !important;
+        opacity: 0 !important;
+        transition: opacity 0.6s ease !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card:hover::after {
+        opacity: 1 !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card:hover {
+        transform: translateY(-20px) scale(1.03) !important;
+        box-shadow: 0 25px 70px rgba(231, 76, 60, 0.15) !important;
+        border-color: #e74c3c !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-badge {
+        width: 70px !important;
+        height: 70px !important;
+        background: linear-gradient(
+          135deg,
+          #e74c3c 0%,
+          #c0392b 100%
+        ) !important;
+        color: white !important;
+        border-radius: 15px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 1.5rem !important;
+        font-weight: 900 !important;
+        margin-bottom: 1.8rem !important;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3) !important;
+        transition: all 0.4s ease !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card:hover .zcliq-problem-badge {
+        transform: scale(1.15) rotate(10deg) !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card h3 {
+        font-size: 1.7rem !important;
+        margin-bottom: 1.3rem !important;
+        color: #1a1a1a !important;
+        font-weight: 800 !important;
+      }
+
+      .zcliq-wrapper .zcliq-problem-card p {
+        line-height: 1.9 !important;
+        color: #666 !important;
+        font-size: 1.05rem !important;
+      }
+
+      /* Use Cases Grid */
+      .zcliq-wrapper .zcliq-use-cases-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        gap: 3rem !important;
+        margin-top: 4rem !important;
+      }
+
+      .zcliq-wrapper .zcliq-use-case-card {
+        background: white !important;
+        padding: 0 !important;
+        border-radius: 20px !important;
+        box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        cursor: pointer !important;
+        overflow: hidden !important;
+        border: 2px solid transparent !important;
+        position: relative !important;
+      }
+
+      .zcliq-wrapper .zcliq-use-case-card::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: -100% !important;
+        width: 100% !important;
+        height: 100% !important;
         background: linear-gradient(
           90deg,
           transparent,
           rgba(40, 116, 166, 0.1),
           transparent
-        );
-        transition: left 0.6s;
+        ) !important;
+        transition: left 0.6s !important;
       }
 
-      .use-case-card:hover::before {
-        left: 100%;
+      .zcliq-wrapper .zcliq-use-case-card:hover::before {
+        left: 100% !important;
       }
 
-      .use-case-card:hover {
-        transform: translateY(-20px) scale(1.03);
-        box-shadow: 0 25px 70px rgba(40, 116, 166, 0.15);
-        border-color: #2874a6;
+      .zcliq-wrapper .zcliq-use-case-card:hover {
+        transform: translateY(-20px) scale(1.03) !important;
+        box-shadow: 0 25px 70px rgba(40, 116, 166, 0.15) !important;
+        border-color: #2874a6 !important;
       }
 
-      .card-image {
-        width: 100%;
-        height: 250px;
-        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        overflow: hidden;
+      .zcliq-wrapper .zcliq-card-image {
+        width: 100% !important;
+        height: 250px !important;
+        background: linear-gradient(
+          135deg,
+          #f8f9fa 0%,
+          #e9ecef 100%
+        ) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important;
       }
 
-      .card-image::before {
-        content: "";
-        position: absolute;
-        width: 150px;
-        height: 150px;
-        background: #2874a6;
-        border-radius: 50%;
-        opacity: 0.05;
-        top: -50px;
-        left: -50px;
-        transition: all 0.6s ease;
+      .zcliq-wrapper .zcliq-card-image::before {
+        content: "" !important;
+        position: absolute !important;
+        width: 150px !important;
+        height: 150px !important;
+        background: #2874a6 !important;
+        border-radius: 50% !important;
+        opacity: 0.05 !important;
+        top: -50px !important;
+        left: -50px !important;
+        transition: all 0.6s ease !important;
       }
 
-      .use-case-card:hover .card-image::before {
-        transform: scale(1.5);
-        opacity: 0.08;
+      .zcliq-wrapper .zcliq-use-case-card:hover .zcliq-card-image::before {
+        transform: scale(1.5) !important;
+        opacity: 0.08 !important;
       }
 
-      .card-image::after {
-        content: "";
-        position: absolute;
-        width: 100px;
-        height: 100px;
-        background: #e74c3c;
-        border-radius: 50%;
-        opacity: 0.05;
-        bottom: -30px;
-        right: -30px;
-        transition: all 0.6s ease;
+      .zcliq-wrapper .zcliq-card-image::after {
+        content: "" !important;
+        position: absolute !important;
+        width: 100px !important;
+        height: 100px !important;
+        background: #e74c3c !important;
+        border-radius: 50% !important;
+        opacity: 0.05 !important;
+        bottom: -30px !important;
+        right: -30px !important;
+        transition: all 0.6s ease !important;
       }
 
-      .use-case-card:hover .card-image::after {
-        transform: scale(1.5);
-        opacity: 0.08;
+      .zcliq-wrapper .zcliq-use-case-card:hover .zcliq-card-image::after {
+        transform: scale(1.5) !important;
+        opacity: 0.08 !important;
       }
 
-      .image-placeholder {
-        width: 140px;
-        height: 140px;
-        background: white;
-        border: 5px solid #2874a6;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3.5rem;
-        font-weight: 900;
-        color: #2874a6;
-        position: relative;
-        z-index: 2;
-        transition: all 0.4s ease;
-        box-shadow: 0 10px 30px rgba(40, 116, 166, 0.2);
+      .zcliq-wrapper .zcliq-image-placeholder {
+        width: 140px !important;
+        height: 140px !important;
+        background: white !important;
+        border: 5px solid #2874a6 !important;
+        border-radius: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 3.5rem !important;
+        font-weight: 900 !important;
+        color: #2874a6 !important;
+        position: relative !important;
+        z-index: 2 !important;
+        transition: all 0.4s ease !important;
+        box-shadow: 0 10px 30px rgba(40, 116, 166, 0.2) !important;
       }
 
-      .use-case-card:nth-child(2) .image-placeholder {
-        border-color: #e74c3c;
-        color: #e74c3c;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
+      .zcliq-wrapper
+        .zcliq-use-case-card:nth-child(2)
+        .zcliq-image-placeholder {
+        border-color: #e74c3c !important;
+        color: #e74c3c !important;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2) !important;
       }
 
-      .use-case-card:nth-child(3) .image-placeholder {
-        border-color: #2874a6;
-        color: #2874a6;
+      .zcliq-wrapper .zcliq-use-case-card:hover .zcliq-image-placeholder {
+        transform: scale(1.1) rotate(5deg) !important;
       }
 
-      .use-case-card:nth-child(4) .image-placeholder {
-        border-color: #e74c3c;
-        color: #e74c3c;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.2);
+      .zcliq-wrapper .zcliq-card-content {
+        padding: 2.5rem !important;
       }
 
-      .use-case-card:hover .image-placeholder {
-        transform: scale(1.1) rotate(5deg);
+      .zcliq-wrapper .zcliq-use-case-card h3 {
+        font-size: 1.9rem !important;
+        margin-bottom: 1.2rem !important;
+        color: #1a1a1a !important;
+        font-weight: 800 !important;
       }
 
-      .card-content {
-        padding: 2.5rem;
+      .zcliq-wrapper .zcliq-use-case-card p {
+        color: #666 !important;
+        line-height: 1.9 !important;
+        font-size: 1.05rem !important;
       }
 
-      .use-case-card h3 {
-        font-size: 1.9rem;
-        margin-bottom: 1.2rem;
-        color: #1a1a1a;
-        font-weight: 800;
+      /* Differentiation Grid */
+      .zcliq-wrapper .zcliq-diff-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+        gap: 3rem !important;
+        margin-top: 4rem !important;
       }
 
-      .use-case-card p {
-        color: #666;
-        line-height: 1.9;
-        font-size: 1.05rem;
+      .zcliq-wrapper .zcliq-diff-item {
+        background: white !important;
+        padding: 3rem !important;
+        border-radius: 20px !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        cursor: pointer !important;
       }
 
-      /* Differentiation Section - Blue Background */
-      .diff-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 3rem;
-        margin-top: 4rem;
+      .zcliq-wrapper .zcliq-diff-item::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 8px !important;
+        height: 0 !important;
+        background: linear-gradient(180deg, #e74c3c, #c0392b) !important;
+        transition: height 0.6s ease !important;
       }
 
-      .diff-item {
-        background: white;
-        padding: 3rem;
-        border-radius: 20px;
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
+      .zcliq-wrapper .zcliq-diff-item:hover::before {
+        height: 100% !important;
       }
 
-      .diff-item::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 8px;
-        height: 0;
-        background: #e74c3c;
-        transition: height 0.6s ease;
+      .zcliq-wrapper .zcliq-diff-item::after {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        height: 8px !important;
+        background: linear-gradient(90deg, transparent, #e74c3c) !important;
+        opacity: 0 !important;
+        transition: opacity 0.6s ease !important;
       }
 
-      .diff-item:hover::before {
-        height: 100%;
+      .zcliq-wrapper .zcliq-diff-item:hover::after {
+        opacity: 1 !important;
       }
 
-      .diff-item::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 100%;
-        height: 8px;
-        background: linear-gradient(90deg, transparent, #e74c3c);
-        opacity: 0;
-        transition: opacity 0.6s ease;
+      .zcliq-wrapper .zcliq-diff-item:hover {
+        transform: translateY(-15px) scale(1.02) !important;
+        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2) !important;
       }
 
-      .diff-item:hover::after {
-        opacity: 1;
+      .zcliq-wrapper .zcliq-diff-number {
+        width: 70px !important;
+        height: 70px !important;
+        background: linear-gradient(
+          135deg,
+          #c0392b 0%,
+          #e74c3c 100%
+        ) !important;
+        color: white !important;
+        border-radius: 15px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 2.5rem !important;
+        font-weight: 900 !important;
+        margin-bottom: 1.8rem !important;
+        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3) !important;
+        transition: all 0.4s ease !important;
       }
 
-      .diff-item:hover {
-        transform: translateY(-15px) scale(1.02);
-        box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      .zcliq-wrapper .zcliq-diff-item:hover .zcliq-diff-number {
+        transform: scale(1.15) rotate(10deg) !important;
       }
 
-      .diff-number {
-        width: 70px;
-        height: 70px;
-        background: #bf3627;
-        color: white;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        font-weight: 900;
-        margin-bottom: 1.8rem;
-        box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
-        transition: all 0.4s ease;
+      .zcliq-wrapper .zcliq-diff-item h3 {
+        font-size: 1.6rem !important;
+        margin-bottom: 1.3rem !important;
+        color: #1a1a1a !important;
+        font-weight: 800 !important;
       }
 
-      .diff-item:hover .diff-number {
-        transform: scale(1.15) rotate(10deg);
+      .zcliq-wrapper .zcliq-diff-item p {
+        line-height: 1.9 !important;
+        color: #666 !important;
+        font-size: 1.05rem !important;
       }
 
-      .diff-item h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1.3rem;
-        color: #1a1a1a;
-        font-weight: 800;
+      /* Implementation Cards */
+      .zcliq-wrapper .zcliq-impl-grid {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)) !important;
+        gap: 3.5rem !important;
+        margin-top: 4rem !important;
       }
 
-      .diff-item p {
-        line-height: 1.9;
-        color: #666;
-        font-size: 1.05rem;
+      .zcliq-wrapper .zcliq-impl-card {
+        background: white !important;
+        padding: 0 !important;
+        border-radius: 20px !important;
+        overflow: hidden !important;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25) !important;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+        position: relative !important;
+        cursor: pointer !important;
       }
 
-      /* Problems Section - White Background with Problem Cards */
-.problems-section {
-  background: white;
-  position: relative;
-}
-
-.problems-section .section-title {
-  color: #1a1a1a;
-}
-
-.problems-section .section-title::after {
-  background: #e74c3c;
-}
-
-.problems-section .section-subtitle {
-  color: #666;
-}
-
-/* Problem Cards Grid */
-.problems-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  margin-top: 4rem;
-}
-
-.problem-card {
-  background: white;
-  padding: 3rem;
-  border-radius: 20px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-
-.problem-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 8px;
-  height: 0;
-  background: #e74c3c;
-  transition: height 0.6s ease;
-}
-
-.problem-card:hover::before {
-  height: 100%;
-}
-
-.problem-card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 8px;
-  background: linear-gradient(90deg, transparent, #e74c3c);
-  opacity: 0;
-  transition: opacity 0.6s ease;
-}
-
-.problem-card:hover::after {
-  opacity: 1;
-}
-
-.problem-card:hover {
-  transform: translateY(-20px) scale(1.03);
-  box-shadow: 0 25px 70px rgba(231, 76, 60, 0.15);
-  border-color: #e74c3c;
-}
-
-.problem-icon {
-  width: 70px;
-  height: 70px;
-  background: #e74c3c;
-  color: white;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  font-weight: 900;
-  margin-bottom: 1.8rem;
-  box-shadow: 0 10px 30px rgba(231, 76, 60, 0.3);
-  transition: all 0.4s ease;
-}
-
-.problem-card:hover .problem-icon {
-  transform: scale(1.15) rotate(10deg);
-}
-
-.problem-card h3 {
-  font-size: 1.7rem;
-  margin-bottom: 1.3rem;
-  color: #1a1a1a;
-  font-weight: 800;
-}
-
-.problem-card p {
-  line-height: 1.9;
-  color: #666;
-  font-size: 1.05rem;
-}
-
-/* Responsive */
-@media (max-width: 1024px) {
-  .problems-grid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .problems-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-      /* Real Implementations - Red Background */
-      .impl-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-        gap: 3.5rem;
-        margin-top: 4rem;
-      }
-
-      .impl-card {
-        background: white;
-        padding: 0;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
-        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        position: relative;
-        cursor: pointer;
-      }
-
-      .impl-card::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
+      .zcliq-wrapper .zcliq-impl-card::before {
+        content: "" !important;
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
         background: linear-gradient(
           135deg,
           transparent,
           rgba(255, 255, 255, 0.1)
-        );
-        opacity: 0;
-        transition: opacity 0.6s ease;
-        pointer-events: none;
+        ) !important;
+        opacity: 0 !important;
+        transition: opacity 0.6s ease !important;
+        pointer-events: none !important;
       }
 
-      .impl-card:hover::before {
-        opacity: 1;
+      .zcliq-wrapper .zcliq-impl-card:hover::before {
+        opacity: 1 !important;
       }
 
-      .impl-card:hover {
-        transform: translateY(-15px) scale(1.03);
-        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+      .zcliq-wrapper .zcliq-impl-card:hover {
+        transform: translateY(-15px) scale(1.03) !important;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3) !important;
       }
 
-      .impl-header {
-        padding: 2.5rem;
-        background: #2874a6;
-        color: white;
-        position: relative;
-        min-height: 160px;
-        display: flex;
-        align-items: center;
-        transition: all 0.4s ease;
+      .zcliq-wrapper .zcliq-impl-header {
+        padding: 2.5rem !important;
+        background: linear-gradient(
+          135deg,
+          #2874a6 0%,
+          #1f5f8b 100%
+        ) !important;
+        color: white !important;
+        position: relative !important;
+        min-height: 160px !important;
+        display: flex !important;
+        align-items: center !important;
+        transition: all 0.4s ease !important;
       }
 
-      .impl-card:hover .impl-header {
-        background: #1f5f8b;
+      .zcliq-wrapper .zcliq-impl-card:hover .zcliq-impl-header {
+        background: linear-gradient(
+          135deg,
+          #1f5f8b 0%,
+          #174a6e 100%
+        ) !important;
       }
 
-      .impl-header::after {
-        content: "";
-        position: absolute;
-        bottom: -25px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 0;
-        height: 0;
-        border-left: 25px solid transparent;
-        border-right: 25px solid transparent;
-        border-top: 25px solid #2874a6;
-        transition: all 0.4s ease;
+      .zcliq-wrapper .zcliq-impl-header::after {
+        content: "" !important;
+        position: absolute !important;
+        bottom: -25px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: 0 !important;
+        height: 0 !important;
+        border-left: 25px solid transparent !important;
+        border-right: 25px solid transparent !important;
+        border-top: 25px solid #2874a6 !important;
+        transition: all 0.4s ease !important;
       }
 
-      .impl-card:hover .impl-header::after {
-        border-top-color: #1f5f8b;
+      .zcliq-wrapper .zcliq-impl-card:hover .zcliq-impl-header::after {
+        border-top-color: #1f5f8b !important;
       }
 
-      .impl-card:nth-child(2) .impl-header {
-        background: white;
-        color: #1a1a1a;
+      .zcliq-wrapper .zcliq-impl-card:nth-child(2) .zcliq-impl-header {
+        background: linear-gradient(
+          135deg,
+          #ffffff 0%,
+          #f8f9fa 100%
+        ) !important;
+        color: #1a1a1a !important;
       }
 
-      .impl-card:nth-child(2):hover .impl-header {
-        background: #f8f9fa;
+      .zcliq-wrapper .zcliq-impl-card:nth-child(2):hover .zcliq-impl-header {
+        background: linear-gradient(
+          135deg,
+          #f8f9fa 0%,
+          #e9ecef 100%
+        ) !important;
       }
 
-      .impl-card:nth-child(2) .impl-header::after {
-        border-top-color: white;
+      .zcliq-wrapper .zcliq-impl-card:nth-child(2) .zcliq-impl-header::after {
+        border-top-color: white !important;
       }
 
-      .impl-card:nth-child(2):hover .impl-header::after {
-        border-top-color: #f8f9fa;
+      .zcliq-wrapper
+        .zcliq-impl-card:nth-child(2):hover
+        .zcliq-impl-header::after {
+        border-top-color: #f8f9fa !important;
       }
 
-      .impl-card:nth-child(3) .impl-header {
-        background: #2874a6;
+      .zcliq-wrapper .zcliq-impl-header h3 {
+        font-size: 1.8rem !important;
+        font-weight: 800 !important;
+        margin-bottom: 0 !important;
+        line-height: 1.4 !important;
       }
 
-      .impl-header h3 {
-        font-size: 1.8rem;
-        font-weight: 800;
-        margin-bottom: 0;
-        line-height: 1.4;
+      .zcliq-wrapper .zcliq-impl-body {
+        padding: 3.5rem 2.5rem 2.5rem !important;
       }
 
-      .impl-body {
-        padding: 3.5rem 2.5rem 2.5rem;
+      .zcliq-wrapper .zcliq-impl-body p {
+        color: #666 !important;
+        line-height: 2 !important;
+        font-size: 1.1rem !important;
       }
 
-      .impl-body p {
-        color: #666;
-        line-height: 2;
-        font-size: 1.1rem;
-      }
-
-     
       /* Scroll Animations */
-      .scroll-reveal {
-        opacity: 0;
-        transform: translateY(60px);
-        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      .zcliq-wrapper .zcliq-scroll-reveal {
+        opacity: 0 !important;
+        transform: translateY(60px) !important;
+        transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
       }
 
-      .scroll-reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
+      .zcliq-wrapper .zcliq-scroll-reveal.visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
       }
 
-      /* Staggered Animation */
-      .scroll-reveal:nth-child(1) {
-        transition-delay: 0.1s;
+      .zcliq-wrapper .zcliq-scroll-reveal:nth-child(1) {
+        transition-delay: 0.1s !important;
       }
-      .scroll-reveal:nth-child(2) {
-        transition-delay: 0.2s;
+      .zcliq-wrapper .zcliq-scroll-reveal:nth-child(2) {
+        transition-delay: 0.2s !important;
       }
-      .scroll-reveal:nth-child(3) {
-        transition-delay: 0.3s;
+      .zcliq-wrapper .zcliq-scroll-reveal:nth-child(3) {
+        transition-delay: 0.3s !important;
       }
-      .scroll-reveal:nth-child(4) {
-        transition-delay: 0.4s;
+      .zcliq-wrapper .zcliq-scroll-reveal:nth-child(4) {
+        transition-delay: 0.4s !important;
+      }
+
+      /* Footer */
+      .zcliq-wrapper .zcliq-footer {
+        background: #050505 !important;
+        color: #e5e7eb !important;
+        padding: 75px 5% 25px !important;
+        font-size: 14px !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer-content {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+        gap: 40px !important;
+        margin-bottom: 35px !important;
+        max-width: 1400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer-section h3 {
+        font-size: 22px !important;
+        margin-bottom: 14px !important;
+        color: #ffffff !important;
+      }
+
+      .zcliq-wrapper .zcliq-tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive !important;
+        font-size: 18px !important;
+        color: #38bdf8 !important;
+        margin-bottom: 12px !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer-section p {
+        color: #cbd5e1 !important;
+        line-height: 1.7 !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer a {
+        color: #d1d5db !important;
+        text-decoration: none !important;
+        font-weight: 500 !important;
+        transition: color 0.25s ease !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer a:hover {
+        color: #38bdf8 !important;
+      }
+
+      .zcliq-wrapper .zcliq-solutions-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(150px, 180px)) !important;
+        column-gap: 40px !important;
+        row-gap: 10px !important;
+        list-style: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+        padding-top: 18px !important;
+        text-align: center !important;
+        max-width: 1400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+      }
+
+      .zcliq-wrapper .zcliq-footer-bottom p {
+        margin: 0 !important;
+        color: #94a3b8 !important;
+        font-size: 13px !important;
       }
 
       /* Responsive */
       @media (max-width: 1024px) {
-        .use-cases-grid {
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        .zcliq-wrapper .zcliq-use-cases-grid,
+        .zcliq-wrapper .zcliq-problems-grid,
+        .zcliq-wrapper .zcliq-diff-grid {
+          grid-template-columns: repeat(
+            auto-fit,
+            minmax(280px, 1fr)
+          ) !important;
         }
 
-        .impl-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .diff-grid {
-          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        .zcliq-wrapper .zcliq-impl-grid {
+          grid-template-columns: 1fr !important;
         }
       }
 
       @media (max-width: 768px) {
-        .header-container {
-          flex-direction: column;
-          gap: 1.5rem;
+        .zcliq-wrapper .zcliq-header-container {
+          flex-direction: column !important;
+          gap: 1.5rem !important;
         }
 
-        .logo-section {
-          flex-direction: column;
-          gap: 1rem;
-          text-align: center;
+        .zcliq-wrapper .zcliq-hero h1 {
+          font-size: 2.8rem !important;
         }
 
-        .logo-divider {
-          width: 60px;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, #ddd, transparent);
+        .zcliq-wrapper .zcliq-hero .zcliq-subtitle {
+          font-size: 1.4rem !important;
         }
 
-        nav {
-          flex-wrap: wrap;
-          justify-content: center;
-          gap: 1.5rem;
+        .zcliq-wrapper .zcliq-section-title {
+          font-size: 2.5rem !important;
         }
 
-        .footer-container {
-          grid-template-columns: 1fr;
-          gap: 3rem;
+        .zcliq-wrapper .zcliq-cta-buttons {
+          flex-direction: column !important;
+          align-items: stretch !important;
         }
 
-        .hero h1 {
-          font-size: 2.8rem;
+        .zcliq-wrapper .zcliq-cta-btn {
+          width: 100% !important;
         }
 
-        .hero .subtitle {
-          font-size: 1.4rem;
+        .zcliq-wrapper .zcliq-use-cases-grid,
+        .zcliq-wrapper .zcliq-diff-grid,
+        .zcliq-wrapper .zcliq-problems-grid {
+          grid-template-columns: 1fr !important;
         }
 
-        .section-title {
-          font-size: 2.5rem;
+        .zcliq-wrapper .zcliq-footer-content {
+          grid-template-columns: 1fr !important;
         }
 
-        .cta-buttons {
-          flex-direction: column;
-          align-items: stretch;
-        }
-
-        .cta-btn {
-          width: 100%;
-        }
-
-        .final-cta h2 {
-          font-size: 2.5rem;
-        }
-
-        .use-cases-grid,
-        .diff-grid {
-          grid-template-columns: 1fr;
+        .zcliq-wrapper .zcliq-solutions-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+          column-gap: 20px !important;
         }
       }
     </style>
   </head>
   <body>
-    <!-- Background Lines -->
-    <div class="bg-lines">
-      <div class="bg-line"></div>
-      <div class="bg-line"></div>
-      <div class="bg-line"></div>
-      <div class="bg-line"></div>
-    </div>
-
-    <!-- Header -->
-    <header id="header">
-      <div class="header-container">
-        <div class="logo">
-          <img
-            src="https://www.zolytics.in/files/logo.png"
-            style="height: 80px; width: auto"
-            alt="Zolytics"
-          />
-          <img
-            src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/cliq.svg"
-            alt="Zoho Cliq"
-            style="height: 50px"
-          />
-        </div>
-      </div>
-      </div>
-    </header>
-
-    <!-- Hero Section - WHITE -->
-    <div class="hero">
-      <div class="hero-decoration">
-        <div class="hero-circle hero-circle-1"></div>
-        <div class="hero-circle hero-circle-2"></div>
-        <div class="hero-circle hero-circle-3"></div>
-      </div>
-      <div class="hero-content">
-        <h1>Turn Internal Chats Into <span>Business Workflows</span></h1>
-        <p class="subtitle">
-          Zoho Cliq Consulting That Transforms Communication Into Automation
-        </p>
-       
-      </div>
-    </div>
-
-   <section class="white-section problems-section">
-  <div class="container">
-    <h2 class="section-title scroll-reveal">Problems We Replace With Zoho Cliq</h2>
-    <p class="section-subtitle scroll-reveal">
-      If this sounds familiar, Cliq automation is the solution
-    </p>
-
-    <div class="problems-grid">
-      <div class="problem-card scroll-reveal">
-        <div class="problem-icon">⚠️</div>
-        <h3>Slack Chaos & Noise</h3>
-        <p>
-          Too many channels, no ownership, and important updates getting buried.
-        </p>
+    <div class="zcliq-wrapper">
+      <!-- Background Lines -->
+      <div class="zcliq-bg-lines">
+        <div class="zcliq-bg-line"></div>
+        <div class="zcliq-bg-line"></div>
+        <div class="zcliq-bg-line"></div>
+        <div class="zcliq-bg-line"></div>
       </div>
 
-      <div class="problem-card scroll-reveal">
-        <div class="problem-icon">⏱️</div>
-        <h3>Manual Status Updates</h3>
-        <p>
-          Teams wasting time posting updates instead of doing actual work.
-        </p>
-      </div>
-
-      <div class="problem-card scroll-reveal">
-        <div class="problem-icon">🔌</div>
-        <h3>Disconnected Tools</h3>
-        <p>
-          CRM, Desk, Projects updates living outside your daily conversations.
-        </p>
-      </div>
-
-      <div class="problem-card scroll-reveal">
-        <div class="problem-icon">🚨</div>
-        <h3>Missed Critical Alerts</h3>
-        <p>
-          High-priority deals, tickets, or incidents not reaching the right
-          people on time.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!-- Use Cases Section - WHITE -->
-    <section id="use-cases" class="white-section">
-      <div class="container">
-        <h2 class="section-title scroll-reveal">Cliq Use-Cases We Build</h2>
-        <p class="section-subtitle scroll-reveal">
-          Real-world implementations that drive productivity
-        </p>
-
-        <div class="use-cases-grid">
-          <div class="use-case-card scroll-reveal">
-            <div class="card-image">
-              <div class="image-placeholder">01</div>
-            </div>
-            <div class="card-content">
-              <h3>Sales & Support Collaboration</h3>
-              <p>
-                Unite your sales and support teams with intelligent channels
-                that keep everyone aligned. Real-time deal updates, customer
-                insights, and seamless handoffs.
-              </p>
-            </div>
-          </div>
-
-          <div class="use-case-card scroll-reveal">
-            <div class="card-image">
-              <div class="image-placeholder">02</div>
-            </div>
-            <div class="card-content">
-              <h3>HR Announcements & Onboarding</h3>
-              <p>
-                Automate employee onboarding with dedicated channels, automated
-                welcome messages, and instant access to resources. Keep your
-                entire organization informed.
-              </p>
-            </div>
-          </div>
-
-          <div class="use-case-card scroll-reveal">
-            <div class="card-image">
-              <div class="image-placeholder">03</div>
-            </div>
-            <div class="card-content">
-              <h3>Project-Based Channels</h3>
-              <p>
-                Create dynamic project channels that sync with your workflows.
-                Automatic task updates, milestone notifications, and team
-                coordination in one place.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Differentiation Section - BLUE -->
-    <section class="blue-section" id="differentiation">
-      <div class="container">
-        <h2 class="section-title scroll-reveal">Your Differentiation</h2>
-        <p class="section-subtitle scroll-reveal">
-          Why choose us over generic Slack implementations
-        </p>
-
-        <div class="diff-grid">
-          <div class="diff-item scroll-reveal">
-            <div class="diff-number">1</div>
-            <h3>Custom Bots & Commands</h3>
-            <p>
-              We build intelligent bots tailored to your business processes.
-              From simple commands to complex workflows, automation that
-              actually works.
-            </p>
-          </div>
-
-          <div class="diff-item scroll-reveal">
-            <div class="diff-number">2</div>
-            <h3>Workflow-Triggered Notifications</h3>
-            <p>
-              Connect your workflows to Cliq channels. When things happen in
-              your business, your team knows instantly—no manual updates needed.
-            </p>
-          </div>
-
-          <div class="diff-item scroll-reveal">
-            <div class="diff-number">3</div>
-            <h3>CRM Deal Updates Inside Chat</h3>
-            <p>
-              Close deals faster with real-time CRM updates in your sales
-              channels. Deal stage changes, new opportunities, and win
-              notifications—all automated.
-            </p>
-          </div>
-
-          <div class="diff-item scroll-reveal">
-            <div class="diff-number">4</div>
-            <h3>Cross-Team Automation</h3>
-            <p>
-              No Slack chaos. We create structured, automated cross-team
-              communication that scales with your organization without the
-              noise.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Real Implementations Section - RED -->
-    <section class="red-section" id="implementations">
-      <div class="container">
-        <h2 class="section-title scroll-reveal">Real Implementations</h2>
-        <p class="section-subtitle scroll-reveal">
-          See how we've transformed businesses with Zoho Cliq
-        </p>
-
-        <div class="impl-grid">
-          <div class="impl-card scroll-reveal">
-            <div class="impl-header">
-              <h3>Zoho Cliq + CRM<br />Deal Alerts</h3>
-            </div>
-            <div class="impl-body">
-              <p>
-                Implemented automated deal progression alerts for a 50-person
-                sales team. Every stage change, high-value opportunity, and won
-                deal triggers instant team notifications. Result: 40% faster
-                response times and improved collaboration.
-              </p>
-            </div>
-          </div>
-
-          <div class="impl-card scroll-reveal">
-            <div class="impl-header">
-              <h3>Zoho Cliq + Desk<br />Ticket Notifications</h3>
-            </div>
-            <div class="impl-body">
-              <p>
-                Built intelligent ticket routing for support teams with
-                priority-based channel notifications. High-priority tickets get
-                immediate team attention while routine tickets flow through
-                standard channels. Reduced response time by 60%.
-              </p>
-            </div>
-          </div>
-
-          <div class="impl-card scroll-reveal">
-            <div class="impl-header">
-              <h3>Zoho Cliq + Projects<br />Task Updates</h3>
-            </div>
-            <div class="impl-body">
-              <p>
-                Automated project milestone tracking with smart notifications.
-                Team members receive contextual updates based on their role and
-                project involvement. Project managers get overview dashboards,
-                teams get their specific tasks—all in Cliq.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Global Footer -->
-    <footer class="site-footer">
-      <div class="footer-content">
-        <!-- Company Info -->
-        <div class="footer-section">
-          <h3>Zolytics</h3>
-          <p class="tagline">Certified Zoho Partner</p>
-          <p>
-            We help businesses simplify operations by implementing, customizing,
-            and automating Zoho applications tailored to real-world business
-            workflows.
-          </p>
-        </div>
-
-         <!-- Zoho Solutions - Centered with balanced columns -->
-        <div class="footer-section zoho-solutions">
-          <h3 class="center-heading">Zoho Solutions</h3>
-          <div class="solutions-wrapper">
-            <ul class="solutions-grid">
-              <li><a href="analytics-html">Zoho Analytics</a></li>
-              <li><a href="bigin-html">Zoho Bigin</a></li>
-              <li><a href="billing-html">Zoho Billing</a></li>
-              <li><a href="books-html">Zoho Books</a></li>
-              <li><a href="commerce-html">Zoho Commerce</a></li>
-              <li><a href="crm-html">Zoho CRM</a></li>
-              <li><a href="expense-html">Zoho Expense</a></li>
-              <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory-html">Zoho Inventory</a></li>
-
-              <li><a href="payroll-html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus-html">Zoho People Plus</a></li>
-
-              <li><a href="recruit-html">Zoho Recruit</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- Contact -->
-        <div class="footer-section">
-          <h3>Contact Us</h3>
-          <p>
-            Email: info@zolytics.in <br />
-            Phone: +91 90 7313 9613<br />
-            Location: India
-             <div
-            style="
-              display: flex;
-              align-items: center;
-              gap: 8px;
-              margin-top: 5px;
-            "
-          >
-            <a
-              href="https://wa.me/+919073139613"
-              target="_blank"
-              style="
-                display: flex;
-                align-items: center;
-                text-decoration: none;
-                color: inherit;
-              "
-            >
-              <img
-                src="data:image/png;base64,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"
-                alt="WhatsApp"
-                width="22"
-                height="22"
-              />
-              <span style="font-weight: 500">  +91 90 7313 9613</span>
-            </a>
-          </div>
-          </p>
-          <div class="zoho-logo">
+      <!-- Header -->
+      <header class="zcliq-header" id="zcliqHeader">
+        <div class="zcliq-header-container">
+          <div class="zcliq-logo">
+            <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
             <img
-              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
-              alt="Zoho Premium Partner"
+              src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/cliq.svg"
+              alt="Zoho Cliq"
             />
           </div>
         </div>
+      </header>
+
+      <!-- Main Content -->
+      <div class="zcliq-body-content">
+        <!-- Hero Section -->
+        <div class="zcliq-hero">
+          <div class="zcliq-hero-decoration">
+            <div class="zcliq-hero-circle zcliq-hero-circle-1"></div>
+            <div class="zcliq-hero-circle zcliq-hero-circle-2"></div>
+            <div class="zcliq-hero-circle zcliq-hero-circle-3"></div>
+          </div>
+          <div class="zcliq-hero-content">
+            <h1>Turn Internal Chats Into <span>Business Workflows</span></h1>
+            <p class="zcliq-subtitle">
+              Zoho Cliq Consulting That Transforms Communication Into Automation
+            </p>
+          </div>
+        </div>
+
+        <!-- Problems Section -->
+        <section class="zcliq-section zcliq-white-section">
+          <div class="zcliq-container">
+            <h2 class="zcliq-section-title zcliq-scroll-reveal">
+              Problems We Replace With Zoho Cliq
+            </h2>
+            <p class="zcliq-section-subtitle zcliq-scroll-reveal">
+              If this sounds familiar, Cliq automation is the solution
+            </p>
+
+            <div class="zcliq-problems-grid">
+              <div class="zcliq-problem-card zcliq-scroll-reveal">
+                <div class="zcliq-problem-badge">01</div>
+                <h3>Slack Chaos & Noise</h3>
+                <p>
+                  Too many channels, no ownership, and important updates getting
+                  buried in endless threads.
+                </p>
+              </div>
+
+              <div class="zcliq-problem-card zcliq-scroll-reveal">
+                <div class="zcliq-problem-badge">02</div>
+                <h3>Manual Status Updates</h3>
+                <p>
+                  Teams wasting valuable time posting repetitive updates instead
+                  of focusing on actual productive work.
+                </p>
+              </div>
+
+              <div class="zcliq-problem-card zcliq-scroll-reveal">
+                <div class="zcliq-problem-badge">03</div>
+                <h3>Disconnected Tools</h3>
+                <p>
+                  CRM, Desk, and Projects updates living in silos outside your
+                  daily team conversations.
+                </p>
+              </div>
+
+              <div class="zcliq-problem-card zcliq-scroll-reveal">
+                <div class="zcliq-problem-badge">04</div>
+                <h3>Missed Critical Alerts</h3>
+                <p>
+                  High-priority deals, urgent tickets, or critical incidents not
+                  reaching the right people on time.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section class="zcliq-section zcliq-white-section">
+          <div class="zcliq-container">
+            <h2 class="zcliq-section-title zcliq-scroll-reveal">
+              Cliq Use-Cases We Build
+            </h2>
+            <p class="zcliq-section-subtitle zcliq-scroll-reveal">
+              Real-world implementations that drive productivity
+            </p>
+
+            <div class="zcliq-use-cases-grid">
+              <div class="zcliq-use-case-card zcliq-scroll-reveal">
+                <div class="zcliq-card-image">
+                  <div class="zcliq-image-placeholder">01</div>
+                </div>
+                <div class="zcliq-card-content">
+                  <h3>Sales & Support Collaboration</h3>
+                  <p>
+                    Unite your sales and support teams with intelligent channels
+                    that keep everyone aligned. Real-time deal updates, customer
+                    insights, and seamless handoffs.
+                  </p>
+                </div>
+              </div>
+
+              <div class="zcliq-use-case-card zcliq-scroll-reveal">
+                <div class="zcliq-card-image">
+                  <div class="zcliq-image-placeholder">02</div>
+                </div>
+                <div class="zcliq-card-content">
+                  <h3>HR Announcements & Onboarding</h3>
+                  <p>
+                    Automate employee onboarding with dedicated channels,
+                    automated welcome messages, and instant access to resources.
+                    Keep your entire organization informed.
+                  </p>
+                </div>
+              </div>
+
+              <div class="zcliq-use-case-card zcliq-scroll-reveal">
+                <div class="zcliq-card-image">
+                  <div class="zcliq-image-placeholder">03</div>
+                </div>
+                <div class="zcliq-card-content">
+                  <h3>Project-Based Channels</h3>
+                  <p>
+                    Create dynamic project channels that sync with your
+                    workflows. Automatic task updates, milestone notifications,
+                    and team coordination in one place.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Differentiation Section -->
+        <section class="zcliq-section zcliq-blue-section">
+          <div class="zcliq-container">
+            <h2 class="zcliq-section-title zcliq-scroll-reveal">
+              Your Differentiation
+            </h2>
+            <p class="zcliq-section-subtitle zcliq-scroll-reveal">
+              Why choose us over generic Slack implementations
+            </p>
+
+            <div class="zcliq-diff-grid">
+              <div class="zcliq-diff-item zcliq-scroll-reveal">
+                <div class="zcliq-diff-number">1</div>
+                <h3>Custom Bots & Commands</h3>
+                <p>
+                  We build intelligent bots tailored to your business processes.
+                  From simple commands to complex workflows, automation that
+                  actually works.
+                </p>
+              </div>
+
+              <div class="zcliq-diff-item zcliq-scroll-reveal">
+                <div class="zcliq-diff-number">2</div>
+                <h3>Workflow-Triggered Notifications</h3>
+                <p>
+                  Connect your workflows to Cliq channels. When things happen in
+                  your business, your team knows instantly—no manual updates
+                  needed.
+                </p>
+              </div>
+
+              <div class="zcliq-diff-item zcliq-scroll-reveal">
+                <div class="zcliq-diff-number">3</div>
+                <h3>CRM Deal Updates Inside Chat</h3>
+                <p>
+                  Close deals faster with real-time CRM updates in your sales
+                  channels. Deal stage changes, new opportunities, and win
+                  notifications—all automated.
+                </p>
+              </div>
+
+              <div class="zcliq-diff-item zcliq-scroll-reveal">
+                <div class="zcliq-diff-number">4</div>
+                <h3>Cross-Team Automation</h3>
+                <p>
+                  No Slack chaos. We create structured, automated cross-team
+                  communication that scales with your organization without the
+                  noise.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Real Implementations Section -->
+        <section class="zcliq-section zcliq-red-section">
+          <div class="zcliq-container">
+            <h2 class="zcliq-section-title zcliq-scroll-reveal">
+              Real Implementations
+            </h2>
+            <p class="zcliq-section-subtitle zcliq-scroll-reveal">
+              See how we've transformed businesses with Zoho Cliq
+            </p>
+
+            <div class="zcliq-impl-grid">
+              <div class="zcliq-impl-card zcliq-scroll-reveal">
+                <div class="zcliq-impl-header">
+                  <h3>Zoho Cliq + CRM<br />Deal Alerts</h3>
+                </div>
+                <div class="zcliq-impl-body">
+                  <p>
+                    Implemented automated deal progression alerts for a
+                    50-person sales team. Every stage change, high-value
+                    opportunity, and won deal triggers instant team
+                    notifications. Result: 40% faster response times and
+                    improved collaboration.
+                  </p>
+                </div>
+              </div>
+
+              <div class="zcliq-impl-card zcliq-scroll-reveal">
+                <div class="zcliq-impl-header">
+                  <h3>Zoho Cliq + Desk<br />Ticket Notifications</h3>
+                </div>
+                <div class="zcliq-impl-body">
+                  <p>
+                    Built intelligent ticket routing for support teams with
+                    priority-based channel notifications. High-priority tickets
+                    get immediate team attention while routine tickets flow
+                    through standard channels. Reduced response time by 60%.
+                  </p>
+                </div>
+              </div>
+
+              <div class="zcliq-impl-card zcliq-scroll-reveal">
+                <div class="zcliq-impl-header">
+                  <h3>Zoho Cliq + Projects<br />Task Updates</h3>
+                </div>
+                <div class="zcliq-impl-body">
+                  <p>
+                    Automated project milestone tracking with smart
+                    notifications. Team members receive contextual updates based
+                    on their role and project involvement. Project managers get
+                    overview dashboards, teams get their specific tasks—all in
+                    Cliq.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="zcliq-footer">
+          <div class="zcliq-footer-content">
+            <!-- Company Info -->
+            <div class="zcliq-footer-section">
+              <h3>Zolytics</h3>
+              <p class="zcliq-tagline">Certified Zoho Partner</p>
+              <p>
+                We help businesses simplify operations by implementing,
+                customizing, and automating Zoho applications tailored to
+                real-world business workflows.
+              </p>
+            </div>
+
+            <!-- Zoho Solutions -->
+            <div class="zcliq-footer-section">
+              <h3>Zoho Solutions</h3>
+              <ul class="zcliq-solutions-grid">
+                <li><a href="analytics-html">Zoho Analytics</a></li>
+                <li><a href="bigin-html">Zoho Bigin</a></li>
+                <li><a href="billing-html">Zoho Billing</a></li>
+                <li><a href="books-html">Zoho Books</a></li>
+                <li><a href="commerce-html">Zoho Commerce</a></li>
+                <li><a href="crm-html">Zoho CRM</a></li>
+                <li><a href="expense-html">Zoho Expense</a></li>
+                <li><a href="finance.html">Zoho Finance Plus</a></li>
+                <li><a href="inventory-html">Zoho Inventory</a></li>
+                <li><a href="payroll-html">Zoho Payroll</a></li>
+                <li><a href="peopleplus-html">Zoho People Plus</a></li>
+                <li><a href="recruit-html">Zoho Recruit</a></li>
+              </ul>
+            </div>
+
+            <!-- Contact -->
+            <div class="zcliq-footer-section">
+              <h3>Contact Us</h3>
+              <p>
+                Email: info@zolytics.in<br />
+                Phone: +91 90 7313 9613<br />
+                Location: India
+              </p>
+              <div style="margin-top: 10px">
+                <a
+                  href="https://wa.me/+919073139613"
+                  target="_blank"
+                  style="display: inline-flex; align-items: center; gap: 8px"
+                >
+                  <img
+                    src="data:image/png;base64,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"
+                    alt="WhatsApp"
+                    width="22"
+                    height="22"
+                    style="margin: 0 !important"
+                  />
+                  <span>+91 90 7313 9613</span>
+                </a>
+              </div>
+              <div style="margin-top: 16px">
+                <img
+                  src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+                  alt="Zoho Premium Partner"
+                  style="max-width: 140px; opacity: 0.95"
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="zcliq-footer-bottom">
+            <p>
+              © 2026 Zolytics. All rights reserved, All wrong reversed. |
+              Certified Zoho Consulting Partner
+            </p>
+          </div>
+        </footer>
       </div>
+    </div>
 
-      <div class="footer-bottom">
-        <p>
-          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
-          Zoho Consulting Partner
-        </p>
-      </div>
-    </footer>
-
-    <style>
-      /* Footer Styles */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-
-      .tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
-      .zoho-solutions {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .solutions-wrapper {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-      }
-
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-
-      /* Links */
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
-      }
-
-      /* Responsive adjustments */
-      @media (max-width: 768px) {
-        .footer-content {
-          grid-template-columns: 1fr;
-          gap: 30px;
-        }
-
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
-        }
-      }
-    </style>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
       // Header scroll effect
       window.addEventListener("scroll", function () {
-        const header = document.getElementById("header");
+        const header = document.getElementById("zcliqHeader");
         if (window.scrollY > 50) {
           header.classList.add("scrolled");
         } else {
@@ -1597,7 +1444,7 @@
         }
       });
 
-      // Scroll reveal animation with intersection observer
+      // Scroll reveal animation
       const observerOptions = {
         threshold: 0.15,
         rootMargin: "0px 0px -100px 0px",
@@ -1611,40 +1458,15 @@
         });
       }, observerOptions);
 
-      document.querySelectorAll(".scroll-reveal").forEach((element) => {
+      document.querySelectorAll(".zcliq-scroll-reveal").forEach((element) => {
         observer.observe(element);
       });
 
-      // Smooth scroll for anchor links
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          const target = document.querySelector(this.getAttribute("href"));
-          if (target) {
-            const headerHeight = 95;
-            const targetPosition = target.offsetTop - headerHeight;
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth",
-            });
-          }
-        });
-      });
-
-      // Video placeholder click animation
-      const videoPlaceholder = document.querySelector(".video-placeholder");
-      if (videoPlaceholder) {
-        videoPlaceholder.addEventListener("click", function () {
-          this.style.transform = "scale(0.97)";
-          setTimeout(() => {
-            this.style.transform = "scale(1)";
-          }, 200);
-        });
-      }
-
-      // Advanced 3D card tilt effect
+      // 3D card tilt effect
       document
-        .querySelectorAll(".use-case-card, .diff-item, .impl-card")
+        .querySelectorAll(
+          ".zcliq-use-case-card, .zcliq-diff-item, .zcliq-impl-card, .zcliq-problem-card",
+        )
         .forEach((card) => {
           card.addEventListener("mousemove", function (e) {
             const rect = this.getBoundingClientRect();
@@ -1665,63 +1487,25 @@
           });
         });
 
-      // Parallax effect for hero elements
+      // Parallax effect
       window.addEventListener("scroll", function () {
         const scrolled = window.pageYOffset;
 
-        // Hero parallax
-        const hero = document.querySelector(".hero-content");
+        const hero = document.querySelector(".zcliq-hero-content");
         if (hero && scrolled < window.innerHeight) {
           hero.style.transform = `translateY(${scrolled * 0.4}px)`;
           hero.style.opacity = Math.max(0, 1 - scrolled / 600);
         }
 
-        // Floating circles in hero
-        const circles = document.querySelectorAll(".hero-circle");
+        const circles = document.querySelectorAll(".zcliq-hero-circle");
         circles.forEach((circle, index) => {
           const speed = 0.1 + index * 0.05;
-          circle.style.transform = `translate(${scrolled * speed}px, ${
-            scrolled * speed * 0.5
-          }px)`;
+          circle.style.transform = `translate(${scrolled * speed}px, ${scrolled * speed * 0.5}px)`;
         });
       });
 
-      // Animate CTA buttons on load
-      setTimeout(() => {
-        const ctaButtons = document.querySelectorAll(".cta-btn");
-        ctaButtons.forEach((btn, index) => {
-          setTimeout(() => {
-            btn.style.animation = `fadeInUp 0.6s ease-out forwards`;
-          }, index * 150);
-        });
-      }, 500);
-
-      // Number counter animation for diff-number
-      const animateNumbers = () => {
-        const numbers = document.querySelectorAll(".diff-number");
-        numbers.forEach((num) => {
-          if (num.getBoundingClientRect().top < window.innerHeight * 0.8) {
-            const target = parseInt(num.textContent);
-            let current = 0;
-            const increment = target / 30;
-
-            const timer = setInterval(() => {
-              current += increment;
-              if (current >= target) {
-                num.textContent = target;
-                clearInterval(timer);
-              } else {
-                num.textContent = Math.floor(current);
-              }
-            }, 30);
-          }
-        });
-      };
-
-      window.addEventListener("scroll", animateNumbers);
-
-      // Add ripple effect on CTA button click
-      document.querySelectorAll(".cta-btn").forEach((button) => {
+      // CTA button ripple effect
+      document.querySelectorAll(".zcliq-cta-btn").forEach((button) => {
         button.addEventListener("click", function (e) {
           const ripple = document.createElement("span");
           const rect = this.getBoundingClientRect();
@@ -1736,7 +1520,7 @@
           ripple.style.borderRadius = "50%";
           ripple.style.background = "rgba(255, 255, 255, 0.5)";
           ripple.style.transform = "scale(0)";
-          ripple.style.animation = "ripple 0.6s ease-out";
+          ripple.style.animation = "zcliqRipple 0.6s ease-out";
           ripple.style.pointerEvents = "none";
 
           this.appendChild(ripple);
@@ -1748,22 +1532,29 @@
       // Add ripple animation
       const style = document.createElement("style");
       style.textContent = `
-            @keyframes ripple {
-                to {
-                    transform: scale(4);
-                    opacity: 0;
-                }
-            }
-        `;
+        @keyframes zcliqRipple {
+          to {
+            transform: scale(4);
+            opacity: 0;
+          }
+        }
+      `;
       document.head.appendChild(style);
 
-      // Logo hover animation
-      const zolyticsLogo = document.querySelector(".zolytics-logo");
-      zolyticsLogo.addEventListener("mouseenter", function () {
-        this.style.transform = "scale(1.1) rotate(-2deg)";
-      });
-      zolyticsLogo.addEventListener("mouseleave", function () {
-        this.style.transform = "";
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const headerHeight = 100;
+            const targetPosition = target.offsetTop - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+          }
+        });
       });
     </script>
   </body>
