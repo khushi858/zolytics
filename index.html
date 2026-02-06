@@ -368,6 +368,59 @@
         width: 100%;
       }
 
+       /* Dropdown Container */
+.dropdown {
+  position: relative;
+}
+
+/* Main Button */
+.dropbtn {
+  cursor: pointer;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  min-width: 180px;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+/* Show on Hover */
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Dropdown Links */
+.dropdown-menu li a {
+  display: block;
+  padding: 10px 20px;
+  color: #000;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Hover Effect */
+.dropdown-menu li a:hover {
+  background: #f5f7fa;
+  color: var(--accent-blue);
+}
+
+
 
       /* NAVBAR CTA BUTTON – LIKE 2ND IMAGE */
 .nav-cta {
@@ -5562,6 +5615,7 @@ let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
     ></script>
    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
 <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siqb722856ae3f305dfe620d16e5e3588c546cb4c94622e81fff56cbb615c1e9f2e" defer></script>
+
 
 
 
