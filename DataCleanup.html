@@ -1,0 +1,2255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Cleanup & Re-migration to Zoho | Migration Services</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-blue: #0066ff;
+        --dark-blue: #003d99;
+        --light-blue: #e6f0ff;
+        --accent-blue: #00b4ff;
+        --black: #1a1a1a;
+        --dark-grey: #2d2d2d;
+        --white: #ffffff;
+        --light-grey: #f8f9fa;
+        --gradient-blue: linear-gradient(135deg, #0066ff 0%, #00b4ff 100%);
+        --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        color: var(--black);
+        background: var(--white);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+      }
+
+      /* HEADER */
+      header {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s ease;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: -90px !important;
+      }
+
+      header.scrolled {
+        box-shadow: 0 4px 40px rgba(106, 17, 203, 0.15);
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-section img {
+        height: 90px;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.08) rotate(2deg);
+        filter: drop-shadow(0 8px 20px rgba(139, 92, 246, 0.3));
+      }
+
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background: var(--gradient-blue);
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+        padding-top: 80px;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="white" opacity="0.1"/></svg>');
+        animation: float 60s linear infinite;
+      }
+
+      @keyframes float {
+        from {
+          transform: translate(0, 0);
+        }
+        to {
+          transform: translate(-100px, -100px);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        margin-bottom: 2.5rem;
+        opacity: 0.95;
+        font-weight: 400;
+      }
+
+      .hero-image {
+        position: relative;
+        z-index: 2;
+      }
+
+      .hero-image img {
+        max-width: 100%;
+        height: auto;
+        filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.3));
+        animation: floatImage 6s ease-in-out infinite;
+      }
+
+      @keyframes floatImage {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 18px 45px;
+        background: var(--white);
+        color: var(--primary-blue);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+      }
+
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 255, 255, 0.4);
+        color: var(--primary-blue);
+      }
+
+      .cta-button-primary {
+        background: var(--primary-blue);
+        color: var(--white);
+        border: 2px solid var(--white);
+      }
+
+      .cta-button-primary:hover {
+        background: var(--dark-blue);
+        color: var(--white);
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounce 2s infinite;
+        z-index: 2;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translate(-50%, 0);
+        }
+        50% {
+          transform: translate(-50%, 15px);
+        }
+      }
+
+      .scroll-indicator i {
+        font-size: 2rem;
+        color: var(--white);
+        opacity: 0.8;
+      }
+
+      /* Logo Carousel */
+      .logo-carousel {
+        background: var(--white);
+        padding: 60px 0;
+        border-top: 1px solid rgba(0, 102, 255, 0.1);
+        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+      }
+
+      .logo-carousel h3 {
+        text-align: center;
+        color: var(--black);
+        margin-bottom: 3rem;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .logos-slider {
+        display: flex;
+        gap: 4rem;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .logo-item {
+        height: 60px;
+        opacity: 0.6;
+        transition: all 0.3s ease;
+        filter: grayscale(100%);
+      }
+
+      .logo-item:hover {
+        opacity: 1;
+        filter: grayscale(0%);
+        transform: scale(1.1);
+      }
+
+      /* Section Styles */
+      .section {
+        padding: 100px 0;
+        position: relative;
+      }
+
+      .section-title {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1rem;
+        color: var(--black);
+        font-weight: 800;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: var(--dark-grey);
+        margin-bottom: 3rem;
+        font-weight: 400;
+      }
+
+      .section-bg-light {
+        background: var(--light-grey);
+      }
+
+      .section-bg-dark {
+        background: var(--gradient-dark);
+        color: var(--white);
+      }
+
+      .section-bg-dark .section-title,
+      .section-bg-dark .section-subtitle {
+        color: var(--white);
+      }
+
+      .section-bg-blue {
+        background: var(--light-blue);
+      }
+
+      /* Problems Section */
+      .problem-card {
+        padding: 2.5rem;
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 102, 255, 0.08);
+        transition: all 0.4s ease;
+        height: 100%;
+        border: 2px solid transparent;
+      }
+
+      .problem-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 102, 255, 0.15);
+        border-color: var(--primary-blue);
+      }
+
+      .problem-card h3 {
+        font-size: 1.5rem;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-weight: 700;
+      }
+
+      .problem-card p {
+        color: var(--dark-grey);
+        line-height: 1.8;
+      }
+
+      .problem-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--light-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+      }
+
+      .problem-icon i {
+        font-size: 2rem;
+        color: var(--primary-blue);
+      }
+
+      /* Service Description with Image */
+      .service-content {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+      }
+
+      .service-image img {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 102, 255, 0.2);
+      }
+
+      /* Process Timeline */
+      .process-timeline {
+        position: relative;
+        margin-top: 4rem;
+      }
+
+      .process-step {
+        display: flex;
+        gap: 3rem;
+        margin-bottom: 4rem;
+        align-items: flex-start;
+      }
+
+      .step-number {
+        min-width: 80px;
+        height: 80px;
+        background: var(--gradient-blue);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 800;
+        box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+      }
+
+      .step-content {
+        flex: 1;
+        padding: 2rem;
+        background: var(--white);
+        border-radius: 15px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .step-content h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      /* Data Scope Grid */
+      .data-scope-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: 1.5rem;
+        margin-top: 3rem;
+      }
+
+      .data-item {
+        padding: 1.5rem;
+        background: var(--white);
+        border: 2px solid var(--primary-blue);
+        border-radius: 12px;
+        text-align: center;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        color: var(--primary-blue);
+      }
+
+      .data-item:hover {
+        background: var(--primary-blue);
+        color: var(--white);
+        transform: scale(1.05);
+        box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+      }
+
+      /* Security Features */
+      .security-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .security-card {
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .security-card:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-10px);
+      }
+
+      .security-card h3 {
+        color: var(--white);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .security-card::before {
+        content: "";
+        display: block;
+        width: 60px;
+        height: 4px;
+        background: var(--accent-blue);
+        margin-bottom: 1.5rem;
+      }
+
+      /* Tools Showcase */
+      .tools-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .tool-card {
+        padding: 2rem;
+        background: var(--white);
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+      }
+
+      .tool-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
+      }
+
+      .tool-card img {
+        height: 50px;
+        margin-bottom: 1rem;
+      }
+
+      .tool-card h4 {
+        font-size: 1rem;
+        color: var(--black);
+        font-weight: 600;
+      }
+
+      /* Before/After Comparison */
+      .comparison-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-top: 3rem;
+      }
+
+      @media (max-width: 768px) {
+        .comparison-container {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .comparison-box {
+        padding: 3rem;
+        border-radius: 20px;
+        position: relative;
+      }
+
+      .before-box {
+        background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
+        color: white;
+      }
+
+      .after-box {
+        background: var(--gradient-blue);
+        color: white;
+      }
+
+      .comparison-box h3 {
+        color: white;
+        margin-bottom: 2rem;
+        font-size: 2rem;
+      }
+
+      .comparison-list {
+        list-style: none;
+      }
+
+      .comparison-list li {
+        padding: 1rem 0;
+        padding-left: 2.5rem;
+        position: relative;
+        font-size: 1.05rem;
+      }
+
+      .comparison-list li::before {
+        position: absolute;
+        left: 0;
+        font-size: 1.3rem;
+        font-family: "Font Awesome 6 Free";
+        font-weight: 900;
+      }
+
+      .before-box li::before {
+        content: "\f00d";
+        color: #fff;
+      }
+
+      .after-box li::before {
+        content: "\f00c";
+        color: #90e0ff;
+      }
+
+      /* Benefits Grid */
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .benefit-card {
+        padding: 2.5rem;
+        background: var(--white);
+        border-radius: 20px;
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        border-top: 5px solid var(--primary-blue);
+        text-align: center;
+      }
+
+      .benefit-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+      }
+
+      .benefit-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .benefit-card h3 {
+        color: var(--black);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      /* Industries Grid */
+      .industries-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .industry-item {
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 15px;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      .industry-item:hover {
+        background: var(--primary-blue);
+        transform: scale(1.05);
+      }
+
+      /* Why Us Section */
+      .why-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2.5rem;
+        margin-top: 4rem;
+      }
+
+      .why-card {
+        padding: 2.5rem;
+        background: var(--white);
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 25px rgba(0, 102, 255, 0.1);
+        border: 2px solid transparent;
+      }
+
+      .why-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-blue);
+        box-shadow: 0 15px 40px rgba(0, 102, 255, 0.2);
+      }
+
+      .why-card h3 {
+        color: var(--primary-blue);
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+      }
+
+      .why-card p {
+        color: var(--dark-grey);
+      }
+
+      .why-icon {
+        width: 80px;
+        height: 80px;
+        background: var(--light-blue);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+      }
+
+      .why-icon i {
+        font-size: 2.5rem;
+        color: var(--primary-blue);
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: var(--gradient-blue);
+        padding: 80px 0;
+        text-align: center;
+        color: var(--white);
+      }
+
+      .cta-section h2 {
+        font-size: clamp(2rem, 4vw, 3rem);
+        margin-bottom: 1.5rem;
+        color: var(--white);
+      }
+
+      .cta-section p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+      }
+
+     
+
+      /* Scroll to Top Button */
+      .scroll-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 55px;
+        height: 55px;
+        background: var(--gradient-blue);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 5px 20px rgba(0, 102, 255, 0.4);
+      }
+
+      .scroll-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .scroll-to-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 102, 255, 0.5);
+      }
+
+      /* Animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .slide-in-left {
+        animation: slideInLeft 0.8s ease-out;
+      }
+
+      .slide-in-right {
+        animation: slideInRight 0.8s ease-out;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        background: var(--white);
+        padding: 60px 0;
+        border-top: 1px solid rgba(0, 102, 255, 0.1);
+        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 800;
+        color: var(--primary-blue);
+        font-family: "Poppins", sans-serif;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1.1rem;
+        color: var(--dark-grey);
+        font-weight: 600;
+      }
+
+      /* Smooth Scroll */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .service-content {
+          flex-direction: column;
+        }
+
+        .process-step {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+
+        .hero {
+          padding-top: 100px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header/Navbar -->
+    <header>
+      <nav>
+        <div class="logo-section">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics Logo"
+          />
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 hero-content">
+            <h1>Transform Your Data with Seamless Zoho Migration</h1>
+            <p class="hero-subtitle">
+              Clean, migrate, and optimize your business data with zero
+              downtime. Experience the power of professional data
+              transformation.
+            </p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#contact" class="cta-button">Get Started Free</a>
+              <a href="#service" class="cta-button cta-button-primary"
+                >Learn More</a
+              >
+            </div>
+          </div>
+          <div class="col-lg-6 hero-image">
+            <svg
+              width="100%"
+              height="400"
+              viewBox="0 0 600 400"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Cloud Storage Illustration -->
+              <rect
+                x="50"
+                y="100"
+                width="200"
+                height="250"
+                rx="10"
+                fill="#E6F0FF"
+                stroke="#0066FF"
+                stroke-width="3"
+              />
+              <text
+                x="150"
+                y="140"
+                font-size="18"
+                fill="#0066FF"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                Legacy Data
+              </text>
+              <rect
+                x="80"
+                y="160"
+                width="140"
+                height="30"
+                rx="5"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+              <rect
+                x="80"
+                y="200"
+                width="140"
+                height="30"
+                rx="5"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+              <rect
+                x="80"
+                y="240"
+                width="140"
+                height="30"
+                rx="5"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+              <rect
+                x="80"
+                y="280"
+                width="140"
+                height="30"
+                rx="5"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+
+              <!-- Arrow -->
+              <path
+                d="M 260 225 L 330 225"
+                stroke="#00B4FF"
+                stroke-width="4"
+                fill="none"
+                marker-end="url(#arrowhead)"
+              />
+              <defs>
+                <marker
+                  id="arrowhead"
+                  markerWidth="10"
+                  markerHeight="7"
+                  refX="9"
+                  refY="3.5"
+                  orient="auto"
+                >
+                  <polygon points="0 0, 10 3.5, 0 7" fill="#00B4FF" />
+                </marker>
+              </defs>
+              <circle
+                cx="295"
+                cy="225"
+                r="25"
+                fill="white"
+                stroke="#00B4FF"
+                stroke-width="3"
+              />
+              <path
+                d="M 285 225 L 290 230 L 305 215"
+                stroke="#00B4FF"
+                stroke-width="3"
+                fill="none"
+              />
+
+              <!-- Zoho Cloud -->
+              <rect
+                x="350"
+                y="100"
+                width="200"
+                height="250"
+                rx="10"
+                fill="#0066FF"
+                opacity="0.1"
+                stroke="#0066FF"
+                stroke-width="3"
+              />
+              <text
+                x="450"
+                y="140"
+                font-size="18"
+                fill="#0066FF"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                Zoho CRM
+              </text>
+              <circle cx="380" cy="190" r="15" fill="#0066FF" />
+              <circle cx="450" cy="190" r="15" fill="#0066FF" />
+              <circle cx="520" cy="190" r="15" fill="#0066FF" />
+              <circle cx="380" cy="250" r="15" fill="#00B4FF" />
+              <circle cx="450" cy="250" r="15" fill="#00B4FF" />
+              <circle cx="520" cy="250" r="15" fill="#00B4FF" />
+              <circle cx="380" cy="310" r="15" fill="#0066FF" />
+              <circle cx="450" cy="310" r="15" fill="#0066FF" />
+              <circle cx="520" cy="310" r="15" fill="#0066FF" />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="scroll-indicator">
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="section section-bg-light" id="problems">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">The Data Migration Challenges You Face</h2>
+          <p class="section-subtitle">
+            Common obstacles that slow down your business growth
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="problem-card fade-in-up">
+              <div class="problem-icon">
+                <i class="fas fa-database"></i>
+              </div>
+              <h3>Messy Legacy Data</h3>
+              <p>
+                Duplicate records, inconsistent formats, and outdated
+                information cluttering your system.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="problem-card fade-in-up">
+              <div class="problem-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <h3>Failed Migrations</h3>
+              <p>
+                Previous migration attempts resulted in data loss and broken
+                relationships.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="problem-card fade-in-up">
+              <div class="problem-icon">
+                <i class="fas fa-link"></i>
+              </div>
+              <h3>Integration Issues</h3>
+              <p>
+                Disconnected systems and poor data mapping causing workflow
+                bottlenecks.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="problem-card fade-in-up">
+              <div class="problem-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3>Business Impact</h3>
+              <p>
+                Inaccurate reporting and decreased team efficiency due to
+                unreliable data.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What is Service Section -->
+    <section class="section" id="service">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">What is Data Cleanup & Re-migration?</h2>
+          <p class="section-subtitle">
+            Professional data transformation services for your business
+          </p>
+        </div>
+        <div class="row align-items-center">
+          <div class="col-lg-6">
+            <p
+              style="font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 500"
+            >
+              Our comprehensive service transforms your existing data and
+              migrates it flawlessly to Zoho, ensuring data integrity,
+              consistency, and usability from day one.
+            </p>
+            <p style="margin-bottom: 1.5rem">
+              We don't just move data—we refine it, validate it, and optimize it
+              for your business processes. This involves thorough data auditing,
+              deduplication, formatting standardization, relationship mapping,
+              and quality assurance testing.
+            </p>
+            <p>
+              The result is a clean, organized Zoho environment that empowers
+              your team to make confident, data-driven decisions without the
+              noise of legacy system baggage.
+            </p>
+            <a href="#contact" class="cta-button cta-button-primary mt-3"
+              >Start Your Migration</a
+            >
+          </div>
+          <div class="col-lg-6 service-image">
+            <svg
+              width="100%"
+              height="350"
+              viewBox="0 0 500 350"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <!-- Data Cleaning Illustration -->
+              <rect
+                x="50"
+                y="50"
+                width="180"
+                height="250"
+                rx="15"
+                fill="#E6F0FF"
+                stroke="#0066FF"
+                stroke-width="3"
+              />
+              <text
+                x="140"
+                y="85"
+                font-size="16"
+                fill="#0066FF"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                Raw Data
+              </text>
+
+              <!-- Messy bars -->
+              <rect
+                x="70"
+                y="100"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#FF4444"
+                opacity="0.7"
+              />
+              <rect
+                x="70"
+                y="130"
+                width="100"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+              <rect
+                x="70"
+                y="160"
+                width="130"
+                height="20"
+                rx="3"
+                fill="#FF4444"
+                opacity="0.7"
+              />
+              <rect
+                x="70"
+                y="190"
+                width="90"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+              <rect
+                x="70"
+                y="220"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#FF4444"
+                opacity="0.7"
+              />
+              <rect
+                x="70"
+                y="250"
+                width="110"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+                opacity="0.3"
+              />
+
+              <!-- Processing icon -->
+              <circle
+                cx="250"
+                cy="175"
+                r="40"
+                fill="white"
+                stroke="#00B4FF"
+                stroke-width="4"
+              />
+              <path
+                d="M 230 175 L 245 190 L 270 165"
+                stroke="#00B4FF"
+                stroke-width="4"
+                fill="none"
+                stroke-linecap="round"
+              />
+              <circle
+                cx="250"
+                cy="175"
+                r="50"
+                fill="none"
+                stroke="#00B4FF"
+                stroke-width="2"
+                stroke-dasharray="5,5"
+              >
+                <animateTransform
+                  attributeName="transform"
+                  type="rotate"
+                  from="0 250 175"
+                  to="360 250 175"
+                  dur="3s"
+                  repeatCount="indefinite"
+                />
+              </circle>
+
+              <!-- Clean data -->
+              <rect
+                x="270"
+                y="50"
+                width="180"
+                height="250"
+                rx="15"
+                fill="#0066FF"
+                opacity="0.1"
+                stroke="#0066FF"
+                stroke-width="3"
+              />
+              <text
+                x="360"
+                y="85"
+                font-size="16"
+                fill="#0066FF"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                Clean Data
+              </text>
+
+              <!-- Organized bars -->
+              <rect
+                x="290"
+                y="100"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+              />
+              <rect
+                x="290"
+                y="130"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+              />
+              <rect
+                x="290"
+                y="160"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#0066FF"
+              />
+              <rect
+                x="290"
+                y="190"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#00B4FF"
+              />
+              <rect
+                x="290"
+                y="220"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#00B4FF"
+              />
+              <rect
+                x="290"
+                y="250"
+                width="140"
+                height="20"
+                rx="3"
+                fill="#00B4FF"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- When Needed Section -->
+    <section class="section section-bg-dark">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">When Do You Need This Service?</h2>
+          <p class="section-subtitle">
+            Perfect for these critical business scenarios
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>System Migration</strong><br />
+              Moving from legacy CRM/ERP to Zoho
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>Data Quality Issues</strong><br />
+              High duplicate rates or inconsistent records
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>Failed Migration</strong><br />
+              Previous attempt resulted in data loss
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>Business Growth</strong><br />
+              Scaling operations require clean data
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>Compliance Requirements</strong><br />
+              Need accurate, auditable records
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="industry-item">
+              <strong>Multiple Sources</strong><br />
+              Consolidating data from various systems
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section section-bg-light" id="process">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Our Proven Migration Process</h2>
+          <p class="section-subtitle">
+            A systematic approach to flawless data migration
+          </p>
+        </div>
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h3>Discovery & Audit</h3>
+              <p>
+                We analyze your current data landscape, identify quality issues,
+                map data relationships, and define migration scope. A
+                comprehensive audit report outlines all challenges and
+                opportunities.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h3>Data Cleanup & Preparation</h3>
+              <p>
+                Remove duplicates, standardize formats, validate accuracy,
+                enrich missing information, and restructure data to align with
+                Zoho's best practices and your business workflows.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h3>Mapping & Configuration</h3>
+              <p>
+                Create detailed field mappings, configure Zoho modules, set up
+                custom fields, establish data relationships, and ensure all
+                dependencies are properly configured.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h3>Test Migration</h3>
+              <p>
+                Execute pilot migration with sample data, validate accuracy and
+                completeness, identify and resolve issues, and refine the
+                migration strategy based on results.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+              <h3>Full Migration</h3>
+              <p>
+                Execute complete data transfer in scheduled phases, monitor
+                progress in real-time, perform immediate validation checks, and
+                ensure zero data loss during the process.
+              </p>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="step-number">6</div>
+            <div class="step-content">
+              <h3>Validation & Support</h3>
+              <p>
+                Comprehensive post-migration validation, user training and
+                documentation, ongoing support for issue resolution, and
+                optimization recommendations for maximum ROI.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Scope Section -->
+    <section class="section section-bg-blue">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Data We Migrate & Clean</h2>
+          <p class="section-subtitle">
+            Comprehensive coverage of all your business data
+          </p>
+        </div>
+        <div class="data-scope-grid">
+          <div class="data-item">Contacts</div>
+          <div class="data-item">Accounts</div>
+          <div class="data-item">Leads</div>
+          <div class="data-item">Deals</div>
+          <div class="data-item">Tasks</div>
+          <div class="data-item">Events</div>
+          <div class="data-item">Calls</div>
+          <div class="data-item">Emails</div>
+          <div class="data-item">Products</div>
+          <div class="data-item">Quotes</div>
+          <div class="data-item">Invoices</div>
+          <div class="data-item">Orders</div>
+          <div class="data-item">Cases</div>
+          <div class="data-item">Custom Modules</div>
+          <div class="data-item">Attachments</div>
+          <div class="data-item">Relationships</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Section -->
+    <section class="section section-bg-dark">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Enterprise-Grade Security</h2>
+          <p class="section-subtitle">Your data security is our top priority</p>
+        </div>
+        <div class="security-grid">
+          <div class="security-card fade-in-up">
+            <h3>Encrypted Transfer</h3>
+            <p>
+              All data transfers use AES-256 encryption and secure protocols to
+              protect your sensitive information during migration.
+            </p>
+          </div>
+          <div class="security-card fade-in-up">
+            <h3>Compliance Ready</h3>
+            <p>
+              GDPR, HIPAA, and SOC 2 compliant processes ensure your data
+              handling meets the strictest regulatory standards.
+            </p>
+          </div>
+          <div class="security-card fade-in-up">
+            <h3>Access Control</h3>
+            <p>
+              Role-based permissions, audit trails, and multi-factor
+              authentication protect your data at every stage.
+            </p>
+          </div>
+          <div class="security-card fade-in-up">
+            <h3>Backup & Recovery</h3>
+            <p>
+              Multiple backup points and rollback capabilities ensure your data
+              is always safe and recoverable.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Technologies & Tools We Use</h2>
+          <p class="section-subtitle">
+            Industry-leading platforms for seamless migration
+          </p>
+        </div>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#0066FF" />
+              <text
+                x="25"
+                y="32"
+                font-size="12"
+                fill="white"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                API
+              </text>
+            </svg>
+            <h4>Zoho API</h4>
+          </div>
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#3776AB" />
+              <text
+                x="25"
+                y="32"
+                font-size="14"
+                fill="white"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                Py
+              </text>
+            </svg>
+            <h4>Python</h4>
+          </div>
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#336791" />
+              <text
+                x="25"
+                y="32"
+                font-size="12"
+                fill="white"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                SQL
+              </text>
+            </svg>
+            <h4>SQL Database</h4>
+          </div>
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#217346" />
+              <text
+                x="25"
+                y="32"
+                font-size="12"
+                fill="white"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                XLS
+              </text>
+            </svg>
+            <h4>Excel Tools</h4>
+          </div>
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#FF6B00" />
+              <text
+                x="25"
+                y="32"
+                font-size="12"
+                fill="white"
+                text-anchor="middle"
+                font-weight="bold"
+              >
+                ETL
+              </text>
+            </svg>
+            <h4>ETL Platform</h4>
+          </div>
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#00B4FF" />
+              <circle cx="25" cy="25" r="8" fill="white" />
+            </svg>
+            <h4>Data Quality</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Before/After Section -->
+    <section class="section section-bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">The Transformation</h2>
+          <p class="section-subtitle">
+            See the dramatic difference professional migration makes
+          </p>
+        </div>
+        <div class="comparison-container">
+          <div class="comparison-box before-box">
+            <h3>Before</h3>
+            <ul class="comparison-list">
+              <li>Duplicate records everywhere</li>
+              <li>Inconsistent data formats</li>
+              <li>Missing critical information</li>
+              <li>Broken relationships between records</li>
+              <li>Poor data quality scores</li>
+              <li>Unreliable reporting</li>
+              <li>Manual data cleanup required</li>
+              <li>Team frustration and low adoption</li>
+            </ul>
+          </div>
+          <div class="comparison-box after-box">
+            <h3>After</h3>
+            <ul class="comparison-list">
+              <li>100% unique, validated records</li>
+              <li>Standardized, consistent formats</li>
+              <li>Complete data enrichment</li>
+              <li>Accurate relational mapping</li>
+              <li>95%+ data quality scores</li>
+              <li>Trustworthy insights and analytics</li>
+              <li>Automated data maintenance</li>
+              <li>High user satisfaction and engagement</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="section" id="benefits">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Why Clean Data Matters</h2>
+          <p class="section-subtitle">
+            Measurable impact on your business performance
+          </p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">85%</div>
+            <h3>Time Savings</h3>
+            <p>
+              Eliminate manual data cleanup tasks and reduce time spent
+              searching for accurate information.
+            </p>
+          </div>
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">99%</div>
+            <h3>Data Accuracy</h3>
+            <p>
+              Make confident decisions based on validated, reliable data across
+              all departments.
+            </p>
+          </div>
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">3x</div>
+            <h3>Productivity Boost</h3>
+            <p>
+              Empower teams with instant access to clean, organized data that
+              drives results.
+            </p>
+          </div>
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">$0</div>
+            <h3>Data Loss</h3>
+            <p>
+              Guaranteed data integrity with comprehensive validation and backup
+              protocols.
+            </p>
+          </div>
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">100%</div>
+            <h3>Compliance</h3>
+            <p>
+              Meet regulatory requirements with properly structured, auditable
+              data records.
+            </p>
+          </div>
+          <div class="benefit-card fade-in-up">
+            <div class="benefit-number">24/7</div>
+            <h3>Support</h3>
+            <p>
+              Ongoing assistance to ensure your Zoho environment runs smoothly
+              post-migration.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section class="section section-bg-dark">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Industries We Serve</h2>
+          <p class="section-subtitle">Specialized solutions for every sector</p>
+        </div>
+        <div class="industries-grid">
+          <div class="industry-item">Healthcare</div>
+          <div class="industry-item">Finance</div>
+          <div class="industry-item">Retail</div>
+          <div class="industry-item">Manufacturing</div>
+          <div class="industry-item">Education</div>
+          <div class="industry-item">Real Estate</div>
+          <div class="industry-item">Technology</div>
+          <div class="industry-item">Logistics</div>
+          <div class="industry-item">Creative Agencies</div>
+          <div class="industry-item">Legal Services</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="section">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="section-title">Why Choose Us</h2>
+          <p class="section-subtitle">
+            Your trusted partner in data transformation
+          </p>
+        </div>
+        <div class="why-grid">
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3>Zoho Experts</h3>
+            <p>
+              Certified professionals with 500+ successful migrations and deep
+              platform expertise.
+            </p>
+          </div>
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-cogs"></i>
+            </div>
+            <h3>Proven Methodology</h3>
+            <p>
+              Battle-tested processes that ensure accuracy, security, and zero
+              downtime.
+            </p>
+          </div>
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-bolt"></i>
+            </div>
+            <h3>Fast Turnaround</h3>
+            <p>
+              Efficient execution that gets you up and running quickly without
+              sacrificing quality.
+            </p>
+          </div>
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-headset"></i>
+            </div>
+            <h3>Dedicated Support</h3>
+            <p>
+              Personal migration specialist assigned to your project from start
+              to finish.
+            </p>
+          </div>
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-puzzle-piece"></i>
+            </div>
+            <h3>Custom Solutions</h3>
+            <p>
+              Tailored approach that fits your unique business requirements and
+              workflows.
+            </p>
+          </div>
+          <div class="why-card fade-in-up">
+            <div class="why-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Quality Guarantee</h3>
+            <p>
+              We stand behind our work with comprehensive validation and
+              satisfaction guarantee.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+      <div class="container">
+        <h2>Ready to Transform Your Data?</h2>
+        <p>Let's discuss your migration needs and create a customized plan.</p>
+        <div class="d-flex gap-3 justify-content-center flex-wrap">
+          <a href="mailto:contact@yourdomain.com" class="cta-button"
+            >Schedule Free Consultation</a
+          >
+          <a href="tel:+15551234567" class="cta-button cta-button-primary"
+            >Call Us Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // Active nav link on scroll
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll(".nav-link");
+
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.clientHeight;
+          if (scrollY >= sectionTop - 200) {
+            current = section.getAttribute("id");
+          }
+        });
+
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${current}`) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+      // Scroll to top button
+      const scrollToTopBtn = document.getElementById("scrollToTop");
+
+      window.addEventListener("scroll", function () {
+        if (window.scrollY > 300) {
+          scrollToTopBtn.classList.add("visible");
+        } else {
+          scrollToTopBtn.classList.remove("visible");
+        }
+      });
+
+      scrollToTopBtn.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // Fade in animation on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".fade-in-up").forEach((element) => {
+        observer.observe(element);
+      });
+
+      // Smooth scroll for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            const navbarHeight = document.querySelector(".navbar").offsetHeight;
+            const targetPosition = target.offsetTop - navbarHeight;
+
+            window.scrollTo({
+              top: targetPosition,
+              behavior: "smooth",
+            });
+
+            // Close mobile menu if open
+            const navbarCollapse = document.querySelector(".navbar-collapse");
+            if (navbarCollapse.classList.contains("show")) {
+              navbarCollapse.classList.remove("show");
+            }
+          }
+        });
+      });
+
+      // Counter animation for stats and benefit numbers
+      function animateCounter(element, target, duration, suffix = "") {
+        let start = 0;
+        const increment = target / (duration / 16);
+        const timer = setInterval(() => {
+          start += increment;
+          if (start >= target) {
+            element.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            if (suffix === "x") {
+              element.textContent = Math.floor(start) + suffix;
+            } else if (suffix === "%") {
+              element.textContent = Math.floor(start) + suffix;
+            } else if (suffix === "+") {
+              element.textContent = Math.floor(start) + suffix;
+            } else {
+              element.textContent = "$" + Math.floor(start);
+            }
+          }
+        }, 16);
+      }
+
+      // Animate stats
+      const statsObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const number = entry.target.querySelector(".stat-number");
+              if (number && !number.classList.contains("animated")) {
+                number.classList.add("animated");
+                const text = number.textContent;
+                if (text.includes("+")) {
+                  const value = parseInt(text);
+                  number.textContent = "0+";
+                  animateCounter(number, value, 2000, "+");
+                } else if (text.includes("%")) {
+                  const value = parseFloat(text);
+                  number.textContent = "0%";
+                  animateCounter(number, value, 2000, "%");
+                } else if (text.includes("/")) {
+                  // For 24/7, just show it
+                }
+              }
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      document.querySelectorAll(".stat-item").forEach((item) => {
+        statsObserver.observe(item);
+      });
+
+      // Animate benefit numbers
+      const benefitObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const number = entry.target.querySelector(".benefit-number");
+              if (number && !number.classList.contains("animated")) {
+                number.classList.add("animated");
+                const text = number.textContent;
+                if (text.includes("%")) {
+                  const value = parseInt(text);
+                  number.textContent = "0%";
+                  animateCounter(number, value, 2000, "%");
+                } else if (text.includes("x")) {
+                  const value = parseInt(text);
+                  number.textContent = "0x";
+                  animateCounter(number, value, 2000, "x");
+                } else if (text === "$0") {
+                  // Keep as $0
+                } else if (text.includes("/")) {
+                  // Keep 24/7 as is
+                } else {
+                  const value = parseInt(text);
+                  number.textContent = "0";
+                  animateCounter(number, value, 2000);
+                }
+              }
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      document.querySelectorAll(".benefit-card").forEach((card) => {
+        benefitObserver.observe(card);
+      });
+
+      // Parallax effect for hero
+      window.addEventListener("scroll", function () {
+        const scrolled = window.scrollY;
+        const hero = document.querySelector(".hero");
+        if (hero && scrolled < window.innerHeight) {
+          hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+        }
+      });
+    </script>
+  </body>
+</html>
