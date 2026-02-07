@@ -2510,6 +2510,47 @@
       }
 
       /* Dropdown multi-select styling */
+      .dropdown-logo {
+  width: 84px;
+  height: 94px;
+  margin-right: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+  transition: transform 0.2s ease;
+}
+      /* Update dropdown-item to flex layout */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 0.95rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.dropdown-item:hover .dropdown-logo {
+  transform: scale(1.1);
+}
+
+.dropdown-item.selected {
+  background: #e0f3ff;
+  font-weight: 600;
+}
+
+.dropdown-item.selected .dropdown-logo {
+  filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.3));
+}
+
+.dropdown-item span {
+  flex: 1;
+}
       .dropdown-multi {
         position: relative;
         margin-bottom: 1.5rem;
@@ -2705,7 +2746,7 @@
   <ul class="dropdown-menu">
     <li><a href="tally-html">Tally to Zoho</a></li>
     <li><a href="qbo-html">QBO to Zoho</a></li>
-     <li><a href="Excel_Legacy.html">Excel ERP to Zoho</a></li>
+     <li><a href="Excel_Legacy.html">Excel / Legacy ERP to Zoho</a></li>
     <li><a href="DataCleanup.html">Data Cleanup & Re-migration</a></li>
   </ul>
 </li>
@@ -4829,132 +4870,150 @@ document.addEventListener('DOMContentLoaded', function() {
           />
 
           <!-- ✅ Multi-Select Dropdown for Zoho Apps -->
-          <div
-            class="dropdown-multi"
-            style="position: relative; margin-bottom: 1.5rem"
-          >
-            <button
-              type="button"
-              id="dropdownToggle"
-              style="
-                width: 100%;
-                padding: 1rem;
-                border: none;
-                border-radius: 10px;
-                background: white;
-                color: #555;
-                font-size: 1rem;
-                text-align: left;
-                cursor: pointer;
-              "
-            >
-              Select Zoho Apps *
-            </button>
-            <div
-              id="dropdownContent"
-              style="
-                display: none;
-                position: absolute;
-                background: #fff;
-                width: 100%;
-                max-height: 220px;
-                overflow-y: auto;
-                border-radius: 10px;
-                box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-                z-index: 1000;
-                padding: 10px;
-              "
-            >
-              <div class="dropdown-item" data-value="Zoho Analytics">
-                Zoho Analytics
-              </div>
-              <div class="dropdown-item" data-value="Zoho Books">
-                Zoho Books
-              </div>
-              <div class="dropdown-item" data-value="Zoho Bigin">
-                Zoho Bigin
-              </div>
-              <div class="dropdown-item" data-value="Zoho Billing">
-                Zoho Billing
-              </div>
-              <div class="dropdown-item" data-value="Zoho Campaigns">
-                Zoho Campaigns
-              </div>
-              <div class="dropdown-item" data-value="Zoho Checkout">
-                Zoho Checkout
-              </div>
-              <div class="dropdown-item" data-value="Zoho Cliq">Zoho Cliq</div>
-              <div class="dropdown-item" data-value="Zoho Commerce">
-                Zoho Commerce
-              </div>
-              <div class="dropdown-item" data-value="Zoho Creator">
-                Zoho Creator
-              </div>
-              <div class="dropdown-item" data-value="Zoho CRM">Zoho CRM</div>
-              <div class="dropdown-item" data-value="Zoho CRM Plus">
-                Zoho CRM Plus
-              </div>
-              <div class="dropdown-item" data-value="Zoho Desk">Zoho Desk</div>
-              <div class="dropdown-item" data-value="Zoho Expenses">
-                Zoho Expenses
-              </div>
-              <div class="dropdown-item" data-value="Zoho Finance">
-                Zoho Finance
-              </div>
-              <div class="dropdown-item" data-value="Zoho Finance Plus">
-                Zoho Finance Plus
-              </div>
-              <div class="dropdown-item" data-value="Zoho Flow">Zoho Flow</div>
-              <div class="dropdown-item" data-value="Zoho Inventory">
-                Zoho Inventory
-              </div>
-              <div class="dropdown-item" data-value="Zoho Invoice">
-                Zoho Invoice
-              </div>
-              <div class="dropdown-item" data-value="Zoho Mail">Zoho Mail</div>
-              <div class="dropdown-item" data-value="Zoho Payment">
-                Zoho Payment
-              </div>
-              <div class="dropdown-item" data-value="Zoho Payroll">
-                Zoho Payroll
-              </div>
-              <div class="dropdown-item" data-value="Zoho People">
-                Zoho People
-              </div>
-              <div class="dropdown-item" data-value="Zoho People Plus">
-                Zoho People Plus
-              </div>
-              <div class="dropdown-item" data-value="Zoho POS">Zoho POS</div>
-              <div class="dropdown-item" data-value="Zoho Practice">
-                Zoho Practice
-              </div>
-              <div class="dropdown-item" data-value="Zoho Projects">
-                Zoho Projects
-              </div>
-              <div class="dropdown-item" data-value="Zoho Recruit">
-                Zoho Recruit
-              </div>
-              <div class="dropdown-item" data-value="Zoho Service Plus">
-                Zoho Service Plus
-              </div>
-              <div class="dropdown-item" data-value="Zoho Shift">
-                Zoho Shift
-              </div>
-              <div class="dropdown-item" data-value="Zoho Sign">Zoho Sign</div>
-              <div class="dropdown-item" data-value="Zoho WorkDrive">
-                Zoho WorkDrive
-              </div>
-              <div class="dropdown-item" data-value="Zoho Workerly">
-                Zoho Workerly
-              </div>
-              <div class="dropdown-item" data-value="Not mentioned in the list">
-                Not mentioned in the list
-              </div>
-            </div>
-
-            <input type="hidden" id="selectedApps" name="LEADCF1" required />
-          </div>
-
+        <!-- ✅ Multi-Select Dropdown for Zoho Apps with Logos -->
+<div class="dropdown-multi">
+  <button
+    type="button"
+    id="dropdownToggle"
+    class="dropdown-btn-custom"
+  >
+    Select Zoho Apps *
+  </button>
+  <div id="dropdownContent" class="dropdown-content-custom">
+    <div class="dropdown-item" data-value="Zoho Analytics">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/analytics.svg" alt="Analytics" class="dropdown-logo">
+      <span>Zoho Analytics</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Books">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg" alt="Books" class="dropdown-logo">
+      <span>Zoho Books</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Bigin">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/bigin.svg" alt="Bigin" class="dropdown-logo">
+      <span>Zoho Bigin</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Billing">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/billing.svg" alt="Billing" class="dropdown-logo">
+      <span>Zoho Billing</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Campaigns">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/campaigns.svg" alt="Campaigns" class="dropdown-logo">
+      <span>Zoho Campaigns</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Checkout">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/checkout.svg" alt="Checkout" class="dropdown-logo">
+      <span>Zoho Checkout</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Cliq">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/cliq.svg" alt="Cliq" class="dropdown-logo">
+      <span>Zoho Cliq</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Commerce">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg" alt="Commerce" class="dropdown-logo">
+      <span>Zoho Commerce</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Creator">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/creator.svg" alt="Creator" class="dropdown-logo">
+      <span>Zoho Creator</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho CRM">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg" alt="CRM" class="dropdown-logo">
+      <span>Zoho CRM</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho CRM Plus">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crmplus.svg" alt="CRM Plus" class="dropdown-logo">
+      <span>Zoho CRM Plus</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Desk">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/desk.svg" alt="Desk" class="dropdown-logo">
+      <span>Zoho Desk</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Expenses">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/expense.svg" alt="Expenses" class="dropdown-logo">
+      <span>Zoho Expenses</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Finance">
+      <img src="https://www.zolytics.in/files/finance-removebg-preview.png" alt="Finance" class="dropdown-logo">
+      <span>Zoho Finance</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Finance Plus">
+      <img src="https://www.zolytics.in/files/finance-removebg-preview.png" alt="Finance Plus" class="dropdown-logo">
+      <span>Zoho Finance Plus</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Flow">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/flow.svg" alt="Flow" class="dropdown-logo">
+      <span>Zoho Flow</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Inventory">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg" alt="Inventory" class="dropdown-logo">
+      <span>Zoho Inventory</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Invoice">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/invoice.svg" alt="Invoice" class="dropdown-logo">
+      <span>Zoho Invoice</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Mail">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/mail.svg" alt="Mail" class="dropdown-logo">
+      <span>Zoho Mail</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Payment">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/payments.svg" alt="Payment" class="dropdown-logo">
+      <span>Zoho Payment</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Payroll">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/payroll.svg" alt="Payroll" class="dropdown-logo">
+      <span>Zoho Payroll</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho People">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/people.svg" alt="People" class="dropdown-logo">
+      <span>Zoho People</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho People Plus">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/peopleplus.svg" alt="People Plus" class="dropdown-logo">
+      <span>Zoho People Plus</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho POS">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/pos.svg" alt="POS" class="dropdown-logo">
+      <span>Zoho POS</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Practice">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/practice.svg" alt="Practice" class="dropdown-logo">
+      <span>Zoho Practice</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Projects">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/projects.svg" alt="Projects" class="dropdown-logo">
+      <span>Zoho Projects</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Recruit">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/recruit.svg" alt="Recruit" class="dropdown-logo">
+      <span>Zoho Recruit</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Service Plus">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/serviceplus.svg" alt="Service Plus" class="dropdown-logo">
+      <span>Zoho Service Plus</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Shift">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/shifts.svg" alt="Shift" class="dropdown-logo">
+      <span>Zoho Shift</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Sign">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/sign.svg" alt="Sign" class="dropdown-logo">
+      <span>Zoho Sign</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho WorkDrive">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/workdrive.svg" alt="WorkDrive" class="dropdown-logo">
+      <span>Zoho WorkDrive</span>
+    </div>
+    <div class="dropdown-item" data-value="Zoho Workerly">
+      <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/workerly.svg" alt="Workerly" class="dropdown-logo">
+      <span>Zoho Workerly</span>
+    </div>
+    <div class="dropdown-item" data-value="Not mentioned in the list">
+      <span style="margin-left: 32px;">Not mentioned in the list</span>
+    </div>
+  </div>
+  <input type="hidden" id="selectedApps" name="LEADCF1" required />
+</div>
           <textarea
             id="Description"
             name="Description"
@@ -4967,6 +5026,7 @@ document.addEventListener('DOMContentLoaded', function() {
           </button>
         </form>
       </div>
+          
 
       <!-- Success Popup -->
       <div id="zohoPopup" class="zoho-popup" style="display: none">
@@ -5615,6 +5675,7 @@ let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
     ></script>
    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
 <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siqb722856ae3f305dfe620d16e5e3588c546cb4c94622e81fff56cbb615c1e9f2e" defer></script>
+
 
 
 
