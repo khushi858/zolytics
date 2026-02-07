@@ -194,11 +194,17 @@
         padding: 0;
         box-sizing: border-box;
       }
+
+      
       body {
-        font-family: "Lato", "Open Sans", sans-serif;
+        font-family: "Lato", "Open Sans", sans-serif !important;
         line-height: 1.6;
         color: #333;
         overflow-x: hidden;
+        body {
+  padding-top: 120px;
+}
+
       }
       header {
         position: fixed;
@@ -217,6 +223,8 @@
         justify-content: space-between;
         align-items: center;
         padding: 1rem 2rem;
+        perspective: 800px;
+
       }
       /* ✅ Logos container */
       .logos {
@@ -227,18 +235,7 @@
         width: auto;
       }
 
-      /* ✅ Main Zolytics Logo (class="log") with Animation */
-      .log {
-        height: 90px;
-        width: auto;
-        display: block;
-        animation: logoAssemble 2s cubic-bezier(0.68, -0.55, 0.265, 1.55)
-          forwards;
-        transform-origin: center;
-        filter: drop-shadow(0 4px 8px rgba(220, 38, 38, 0.2));
-        transition: all 0.4s ease;
-        cursor: pointer;
-      }
+
 
       /* Logo Assembly Animation - Pieces coming together */
       @keyframes logoAssemble {
@@ -260,11 +257,41 @@
       }
 
       /* Hover Effect - Interactive Animation */
-      .log:hover {
-        transform: scale(1.1) rotate(5deg);
-        filter: drop-shadow(0 8px 20px rgba(220, 38, 38, 0.5));
-        animation: logoFloat 2s ease-in-out infinite;
-      }
+  /* Parent for 3D */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  perspective: 800px;
+
+  
+}
+
+/* MAIN LOGO */
+.log {
+  height: 90px;
+  width: auto;
+  display: block;
+  cursor: pointer;
+  
+  /* ✅ Page Load Animation */
+  animation: logoAssemble 2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+
+  /* ✅ Smooth Hover */
+  transition: transform 0.4s ease, filter 0.4s ease;
+
+  transform-style: preserve-3d;
+
+  filter: drop-shadow(0 4px 8px rgba(220, 38, 38, 0.2));
+}
+
+.log:hover {
+  transform: scale(1.2) translateY(-3px) !important;
+  filter: drop-shadow(0 20px 35px rgba(220, 38, 38, 0.5)) !important;
+}
+
+
+
 
       /* Floating animation on hover */
       @keyframes logoFloat {
@@ -276,15 +303,7 @@
           transform: scale(1.1) translateY(-5px) rotate(5deg);
         }
       }
-      .logo {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        font-size: 2rem;
-        font-weight: 900;
-
-        letter-spacing: -1px;
-      }
+      
       .zolytics-text {
         font-size: 2rem;
         font-weight: 900;
@@ -307,13 +326,6 @@
         align-items: center;
         gap: 0.5rem;
         height: 50px;
-        width: auto;
-      }
-      .log {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        height: 90px;
         width: auto;
       }
 
@@ -367,8 +379,7 @@
       .nav-links a:hover::after {
         width: 100%;
       }
-
-       /* Dropdown Container */
+      /* Dropdown Container */
 .dropdown {
   position: relative;
 }
@@ -448,12 +459,13 @@
 }
 
       .hero {
-        margin-top: 80px;
+       margin-top: 100px !important;
         height: 500px;
         background: linear-gradient(135deg, #eaf1f7 0%, #f0e1e1 100%);
         text-align: center;
         position: relative;
         overflow: hidden;
+        padding-top: 120px
       }
       .hero-content {
         max-width: 1000px;
@@ -462,18 +474,30 @@
         z-index: 1;
       }
       .hero h1 {
-        font-size: 3.5rem;
-        color: #1a1a1a;
-        margin-bottom: 1rem;
-        font-weight: 900;
-        line-height: 1.2;
+        font-size: 3.5rem !important;
+        color: #1a1a1a !important;
+        margin-bottom: 1rem !important;
+        font-weight: 900 !important;
+        line-height: 1.2 !important;
       }
       .hero p {
-        font-size: 1.3rem;
-        color: #666;
-        margin-bottom: 2rem;
-        line-height: 1.8;
+        font-size: 1.3rem !important;
+        color: #666 !important;
+        margin-bottom: 2rem !important;
+        line-height: 1.8 !important;
       }
+      /* FORCE Hero Font Override (Zoho Fix) */
+section.hero h1,
+section.hero p {
+   font-family: "Lato", "Open Sans", sans-serif !important;
+   
+}
+
+/* If Zoho still overrides headings */
+section.hero * {
+   font-family: "Lato", "Open Sans", sans-serif !important;
+}
+
       .hero-buttons {
         display: flex;
         gap: 1rem;
@@ -515,26 +539,36 @@
         color: white;
         transform: translateY(-3px);
       }
-      section {
-        padding: 5rem 2rem;
-        max-width: 1400px;
-        margin: 0 auto;
+     section {
+        padding: 5rem 2rem !important;
+        max-width: 1400px !important;
+        margin: 0 auto !important;
       }
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        color: #1a1a1a;
-        margin-bottom: 1rem;
-        font-weight: 700;
-      }
+   .section-title {
+  font-size: 45px !important; /* Slightly bigger */
+  color: #000 !important;
+   margin-bottom: 1rem !important;
+  line-height: 1.15 !important;
+  text-align: center !important;
+    font-family: "Lato", "Open Sans", sans-serif !important;
+  font-weight: 900 !important;
+  /* Extra Bold Shadow Stack */
+ text-shadow:
+     0 3px 6px rgba(0,0,0,0.25),
+    0 6px 12px rgba(0,0,0,0.2),
+    0 10px 20px rgba(0,0,0,0.15),
+    0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+
       .section-subtitle {
-        text-align: center;
-        font-size: 1rem;
-        color: #dc2626;
-        margin-bottom: 3rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
+        text-align: center !important;
+        font-size: 1rem !important;
+       color: #1d2879 !important;
+        margin-bottom: 1rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 2px !important;
       }
 
       /* About Section with Image */
@@ -647,9 +681,7 @@
           gap: 50px;
         }
 
-        .section-title {
-          font-size: 2rem;
-        }
+        
 
         .video-wrapper {
           height: 400px;
@@ -721,24 +753,7 @@
       }
 
       /* Expertise Grid */
-      .section-subtitle {
-        text-align: center;
-        font-size: 1rem;
-        color: #1d2879;
-        margin-bottom: 1rem;
-        font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 2px;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        color: #111;
-        margin-bottom: 3rem;
-        font-weight: 700;
-      }
-
+     
       .scrolling-container {
         overflow: hidden;
         white-space: nowrap;
@@ -843,6 +858,7 @@
         color: #111;
         font-weight: 700;
         position: relative;
+         font-family: "Lato", "Open Sans", sans-serif !important;
       }
 
 
@@ -854,6 +870,7 @@
         background: linear-gradient(90deg, #ff4d4f, #1eca37);
         margin: 6px auto 10px;
         border-radius: 4px;
+         font-family: "Lato", "Open Sans", sans-serif !important;
       }
 
       .overlay p {
@@ -861,6 +878,7 @@
         color: #444;
         margin-bottom: 15px;
         line-height: 1.5;
+         font-family: "Lato", "Open Sans", sans-serif !important;
       }
 
       .overlay a {
@@ -980,27 +998,6 @@
             66% { transform: translate(35px, -35px) scale(0.88); }
         }
 
-        .section-subtitle {
-            text-align: center;
-            font-size: 0.9rem;
-            color: #1565c0;
-            margin-bottom: 1rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.8rem;
-            color: #0b0b0b;
-            margin-bottom: 1rem;
-            font-weight: 700;
-            position: relative;
-            z-index: 1;
-        }
 
         /* Progress Bar */
         .workflow-progress {
@@ -1034,6 +1031,7 @@
             max-width: 1400px;
             position: relative;
             z-index: 1;
+            
         }
 
         /* White Step Cards */
@@ -1177,6 +1175,7 @@
             transition: color 0.3s ease;
             position: relative;
             z-index: 1;
+             font-family: "Lato", "Open Sans", sans-serif !important;
         }
 
         .workflow-step p {
@@ -1186,6 +1185,7 @@
             transition: color 0.3s ease;
             position: relative;
             z-index: 1;
+             font-family: "Lato", "Open Sans", sans-serif !important;
         }
 
         /* Extra Detail Section */
@@ -1210,6 +1210,7 @@
             margin-bottom: 0.8rem;
             font-size: 0.95rem;
             color: #e3f2fd;
+             font-family: "Lato", "Open Sans", sans-serif !important;
         }
 
         .extra-detail strong {
@@ -1289,6 +1290,7 @@
             font-size: 2rem;
             margin-bottom: 2rem;
             font-weight: 700;
+             font-family: "Lato", "Open Sans", sans-serif !important;
         }
 
         .workflow-cta .btn-primary {
@@ -2273,6 +2275,117 @@
   color: #dc2626;
   font-size: 1.1rem;
 }
+/* Dropdown multi-select styling */
+/* ✅ FIXED Dropdown Styling */
+/* Dropdown logo styling */
+.dropdown-logo {
+  width: 84px;
+  height: 94px;
+  margin-right: 10px;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
+  transition: transform 0.2s ease;
+}
+
+/* Update dropdown-item to flex layout */
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-size: 0.95rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.dropdown-item:hover .dropdown-logo {
+  transform: scale(1.1);
+}
+
+.dropdown-item.selected {
+  background: #e0f3ff;
+  font-weight: 600;
+}
+
+.dropdown-item.selected .dropdown-logo {
+  filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.3));
+}
+
+.dropdown-item span {
+  flex: 1;
+}
+.dropdown-multi {
+  position: relative;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.dropdown-btn-custom {
+  width: 100%;
+  background: #fff;
+  color: #555;
+  padding: 1rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  position: relative;
+}
+
+.dropdown-btn-custom::after {
+  content: "▼";
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  color: #d81414;
+}
+
+.dropdown-content-custom {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 5px;
+  z-index: 1000;
+  padding: 10px 15px;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+.dropdown-content-custom.show {
+  display: block;
+}
+
+.dropdown-item {
+  display: block;
+  color: #333;
+  font-size: 0.95rem;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.dropdown-item.selected {
+  background: #e0f3ff;
+  font-weight: 600;
+}
       /* FOOTER WITH ZOHO LOGO */
       footer {
         background: #fdfbfb;
@@ -2509,118 +2622,7 @@
         }
       }
 
-   /* Dropdown multi-select styling */
-/* ✅ FIXED Dropdown Styling */
-/* Dropdown logo styling */
-.dropdown-logo {
-  width: 84px;
-  height: 94px;
-  margin-right: 10px;
-  object-fit: contain;
-  flex-shrink: 0;
-  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.1));
-  transition: transform 0.2s ease;
-}
-
-/* Update dropdown-item to flex layout */
-.dropdown-item {
-  display: flex;
-  align-items: center;
-  color: #333;
-  font-size: 0.95rem;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.2s ease;
-}
-
-.dropdown-item:hover {
-  background: #f0f0f0;
-}
-
-.dropdown-item:hover .dropdown-logo {
-  transform: scale(1.1);
-}
-
-.dropdown-item.selected {
-  background: #e0f3ff;
-  font-weight: 600;
-}
-
-.dropdown-item.selected .dropdown-logo {
-  filter: drop-shadow(0 2px 4px rgba(220, 38, 38, 0.3));
-}
-
-.dropdown-item span {
-  flex: 1;
-}
-.dropdown-multi {
-  position: relative;
-  margin-bottom: 1.5rem;
-  text-align: left;
-}
-
-.dropdown-btn-custom {
-  width: 100%;
-  background: #fff;
-  color: #555;
-  padding: 1rem;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-family: inherit;
-  cursor: pointer;
-  text-align: left;
-  position: relative;
-}
-
-.dropdown-btn-custom::after {
-  content: "▼";
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 0.9rem;
-  color: #d81414;
-}
-
-.dropdown-content-custom {
-  display: none;
-  position: absolute;
-  width: 100%;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  margin-top: 5px;
-  z-index: 1000;
-  padding: 10px 15px;
-  max-height: 220px;
-  overflow-y: auto;
-}
-
-.dropdown-content-custom.show {
-  display: block;
-}
-
-.dropdown-item {
-  display: block;
-  color: #333;
-  font-size: 0.95rem;
-  padding: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: background 0.2s ease;
-}
-
-.dropdown-item:hover {
-  background: #f0f0f0;
-}
-
-.dropdown-item.selected {
-  background: #e0f3ff;
-  font-weight: 600;
-}
-
+    
       footer {
         background: #fdfbfb;
         color: rgb(3, 3, 3);
@@ -2726,7 +2728,7 @@
     </style>
   
   
-    <header>
+    <header >
       <nav>
         <div class="logo">
           <img
@@ -2753,15 +2755,15 @@
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#solutions">Solutions</a></li>
-         
+          
           <li class="dropdown">
   <a href="#" class="dropbtn">Migration Services ▾</a>
 
   <ul class="dropdown-menu">
     <li><a href="tally-html">Tally to Zoho</a></li>
     <li><a href="qbo-html">QBO to Zoho</a></li>
-     <li><a href="Excel_Legacy.html">Excel / Legacy ERP to Zoho</a></li>
-    <li><a href="DataCleanup.html">Data Cleanup & Re-migration</a></li>
+     <li><a href="excel-html">Excel / Legacy ERP to Zoho</a></li>
+    <li><a href="Cleanup">Data Cleanup & Re-migration</a></li>
   </ul>
 </li>
           <li><a href="#contact">Contact</a></li>
@@ -2769,7 +2771,8 @@
         <a href="#contact" class="nav-cta">Book Consultation</a>
       </nav>
     </header>
-    <section class="hero" id="home">
+
+    <section class="hero" id="home" >
       <div class="hero-content" data-aos="fade-up">
         <h1>Transform the Way You Work with Zoho.</h1>
         <p>
@@ -2895,7 +2898,7 @@
               <div class="overlay">
                 <h3>Zoho Books</h3>
                 <p>Complete accounting automation</p>
-                <a href="books.html">Learn More →</a>
+                <a href="books-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2907,7 +2910,7 @@
               <div class="overlay">
                 <h3>Zoho Inventory</h3>
                 <p>Streamline stock management</p>
-                <a href="inventory.html">Learn More →</a>
+                <a href="inventory-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2919,7 +2922,7 @@
               <div class="overlay">
                 <h3>Zoho Expense</h3>
                 <p>Track expenses effortlessly</p>
-                <a href="expense.html">Learn More →</a>
+                <a href="expense-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2931,7 +2934,7 @@
               <div class="overlay">
                 <h3>Zoho CRM</h3>
                 <p>Manage customer relationships</p>
-                <a href="crm.html">Learn More →</a>
+                <a href="crm-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2943,7 +2946,7 @@
               <div class="overlay">
                 <h3>Zoho Finance</h3>
                 <p>All-in-one suite to manage your operations and finances.</p>
-                <a href="finance.html">Learn More →</a>
+                <a href="finance-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2957,7 +2960,7 @@
                 <p>
                   E-Commerce platform to manage and market your online store.
                 </p>
-                <a href="commerce.html">Learn More →</a>
+                <a href="commerce-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2969,7 +2972,7 @@
               <div class="overlay">
                 <h3>Zoho People</h3>
                 <p>Organize, automate, and simplify your HR processes.</p>
-                <a href="people.html">Learn More →</a>
+                <a href="people-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2981,7 +2984,7 @@
               <div class="overlay">
                 <h3>Zoho Billing</h3>
                 <p>End-to-end billing solution for your business.</p>
-                <a href="billing.html">Learn More →</a>
+                <a href="billing-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -2993,7 +2996,7 @@
               <div class="overlay">
                 <h3>Zoho Invoice</h3>
                 <p>100% Free invoicing solution.</p>
-                <a href="invoice.html">Learn More →</a>
+                <a href="invoice-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3005,7 +3008,7 @@
               <div class="overlay">
                 <h3>Zoho Practice</h3>
                 <p>Practice management software for accounting firms.</p>
-                <a href="practice.html">Learn More →</a>
+                <a href="practice-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3017,7 +3020,7 @@
               <div class="overlay">
                 <h3>Zoho Cliq</h3>
                 <p>Team communication and collaboration platform.</p>
-                <a href="cliq.html">Learn More →</a>
+                <a href="cliq-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3029,7 +3032,7 @@
               <div class="overlay">
                 <h3>Zoho Mail</h3>
                 <p>Secure email hosting for your business.</p>
-                <a href="mail.html">Learn More →</a>
+                <a href="mail-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3041,7 +3044,7 @@
               <div class="overlay">
                 <h3>Zoho WorkDrive</h3>
                 <p>File management and team collaboration.</p>
-                <a href="workdrive.html">Learn More →</a>
+                <a href="workdrive-html">Learn More →</a>
               </div>
             </div>
           </div>
@@ -3057,7 +3060,7 @@
               <div class="overlay">
                 <h3>Zoho Books</h3>
                 <p>Complete accounting automation</p>
-                <a href="books.html">Learn More →</a>
+                <a href="books-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3069,7 +3072,7 @@
               <div class="overlay">
                 <h3>Zoho Inventory</h3>
                 <p>Streamline stock management</p>
-                <a href="inventory.html">Learn More →</a>
+                <a href="inventory-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3081,7 +3084,7 @@
               <div class="overlay">
                 <h3>Zoho Expense</h3>
                 <p>Track expenses effortlessly</p>
-                <a href="expense.html">Learn More →</a>
+                <a href="expense-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3093,7 +3096,7 @@
               <div class="overlay">
                 <h3>Zoho CRM</h3>
                 <p>Manage customer relationships</p>
-                <a href="crm.html">Learn More →</a>
+                <a href="crm-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3105,7 +3108,7 @@
               <div class="overlay">
                 <h3>Zoho Finance</h3>
                 <p>All-in-one suite to manage your operations and finances.</p>
-                <a href="finance.html">Learn More →</a>
+                <a href="finance-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3119,7 +3122,7 @@
                 <p>
                   E-Commerce platform to manage and market your online store.
                 </p>
-                <a href="commerce.html">Learn More →</a>
+                <a href="commerce-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3131,7 +3134,7 @@
               <div class="overlay">
                 <h3>Zoho People</h3>
                 <p>Organize, automate, and simplify your HR processes.</p>
-                <a href="people.html">Learn More →</a>
+                <a href="people-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3143,7 +3146,7 @@
               <div class="overlay">
                 <h3>Zoho Billing</h3>
                 <p>End-to-end billing solution for your business.</p>
-                <a href="billing.html">Learn More →</a>
+                <a href="billing-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3155,7 +3158,7 @@
               <div class="overlay">
                 <h3>Zoho Invoice</h3>
                 <p>100% Free invoicing solution.</p>
-                <a href="invoice.html">Learn More →</a>
+                <a href="invoice-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3167,7 +3170,7 @@
               <div class="overlay">
                 <h3>Zoho Practice</h3>
                 <p>Practice management software for accounting firms.</p>
-                <a href="practice.html">Learn More →</a>
+                <a href="practice-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3179,7 +3182,7 @@
               <div class="overlay">
                 <h3>Zoho Cliq</h3>
                 <p>Team communication and collaboration platform.</p>
-                <a href="cliq.html">Learn More →</a>
+                <a href="cliq-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3191,7 +3194,7 @@
               <div class="overlay">
                 <h3>Zoho Mail</h3>
                 <p>Secure email hosting for your business.</p>
-                <a href="mail.html">Learn More →</a>
+                <a href="mail-html">Learn More →</a>
               </div>
             </div>
             <div class="expertise-card">
@@ -3203,7 +3206,7 @@
               <div class="overlay">
                 <h3>Zoho WorkDrive</h3>
                 <p>File management and team collaboration.</p>
-                <a href="workdrive.html">Learn More →</a>
+                <a href="workdrive-html">Learn More →</a>
               </div>
             </div>
           </div>
@@ -3224,7 +3227,7 @@
               <div class="overlay">
                 <h3>Zoho Bigin</h3>
                 <p>CRM for small businesses</p>
-                <a href="bigin.html">Learn More →</a>
+                <a href="bigin-html">Learn More →</a>
               </div>
             </div>
 
@@ -3237,7 +3240,7 @@
               <div class="overlay">
                 <h3>Zoho Analytics</h3>
                 <p>Data-driven insights</p>
-                <a href="analytics.html">Learn More →</a>
+                <a href="analytics-html">Learn More →</a>
               </div>
             </div>
 
@@ -3250,7 +3253,7 @@
               <div class="overlay">
                 <h3>Zoho Payroll</h3>
                 <p>Automated payroll processing</p>
-                <a href="payroll.html">Learn More →</a>
+                <a href="payroll-html">Learn More →</a>
               </div>
             </div>
 
@@ -3263,7 +3266,7 @@
               <div class="overlay">
                 <h3>Zoho Checkout</h3>
                 <p>Collect payments online with custom branded pages.</p>
-                <a href="checkout.html">Learn More →</a>
+                <a href="checkout-html">Learn More →</a>
               </div>
             </div>
 
@@ -3276,7 +3279,7 @@
               <div class="overlay">
                 <h3>Zoho Payments</h3>
                 <p>Unified payment solution built for all businesses.</p>
-                <a href="payments.html">Learn More →</a>
+                <a href="payments-html">Learn More →</a>
               </div>
             </div>
 
@@ -3292,7 +3295,7 @@
                   Intuitive recruiting platform built to provide hiring
                   solutions.
                 </p>
-                <a href="recruit.html">Learn More →</a>
+                <a href="recruit-html">Learn More →</a>
               </div>
             </div>
 
@@ -3305,7 +3308,7 @@
               <div class="overlay">
                 <h3>Zoho Sign</h3>
                 <p>Digital signature app for businesses.</p>
-                <a href="sign.html">Learn More →</a>
+                <a href="sign-html">Learn More →</a>
               </div>
             </div>
 
@@ -3321,7 +3324,7 @@
                   Manage temporary staffing with an employee scheduling
                   solution.
                 </p>
-                <a href="workerly.html">Learn More →</a>
+                <a href="workerly-html">Learn More →</a>
               </div>
             </div>
 
@@ -3334,7 +3337,7 @@
               <div class="overlay">
                 <h3>Zoho Shifts</h3>
                 <p>Employee scheduling and time tracking app.</p>
-                <a href="shifts.html">Learn More →</a>
+                <a href="shifts-html">Learn More →</a>
               </div>
             </div>
 
@@ -3347,7 +3350,7 @@
               <div class="overlay">
                 <h3>Zoho Projects</h3>
                 <p>Plan, track, and collaborate on projects.</p>
-                <a href="projects.html">Learn More →</a>
+                <a href="projects-html">Learn More →</a>
               </div>
             </div>
 
@@ -3360,7 +3363,7 @@
               <div class="overlay">
                 <h3>Zoho POS</h3>
                 <p>Modern retail point of sale system.</p>
-                <a href="pos.html">Learn More →</a>
+                <a href="pos-html">Learn More →</a>
               </div>
             </div>
 
@@ -3375,7 +3378,7 @@
                 <p>
                   Comprehensive HR platform for seamless employee experiences.
                 </p>
-                <a href="peopleplus.html">Learn More →</a>
+                <a href="peopleplus-html">Learn More →</a>
               </div>
             </div>
           </div>
@@ -3391,7 +3394,7 @@
               <div class="overlay">
                 <h3>Zoho Bigin</h3>
                 <p>CRM for small businesses</p>
-                <a href="bigin.html">Learn More →</a>
+                <a href="bigin-html">Learn More →</a>
               </div>
             </div>
 
@@ -3404,7 +3407,7 @@
               <div class="overlay">
                 <h3>Zoho Analytics</h3>
                 <p>Data-driven insights</p>
-                <a href="analytics.html">Learn More →</a>
+                <a href="analytics-html">Learn More →</a>
               </div>
             </div>
 
@@ -3417,7 +3420,7 @@
               <div class="overlay">
                 <h3>Zoho Payroll</h3>
                 <p>Automated payroll processing</p>
-                <a href="payroll.html">Learn More →</a>
+                <a href="payroll-html">Learn More →</a>
               </div>
             </div>
 
@@ -3430,7 +3433,7 @@
               <div class="overlay">
                 <h3>Zoho Checkout</h3>
                 <p>Collect payments online with custom branded pages.</p>
-                <a href="checkout.html">Learn More →</a>
+                <a href="checkout-html">Learn More →</a>
               </div>
             </div>
 
@@ -3443,7 +3446,7 @@
               <div class="overlay">
                 <h3>Zoho Payments</h3>
                 <p>Unified payment solution built for all businesses.</p>
-                <a href="payments.html">Learn More →</a>
+                <a href="payments-html">Learn More →</a>
               </div>
             </div>
 
@@ -3459,7 +3462,7 @@
                   Intuitive recruiting platform built to provide hiring
                   solutions.
                 </p>
-                <a href="recruit.html">Learn More →</a>
+                <a href="recruit-html">Learn More →</a>
               </div>
             </div>
 
@@ -3472,7 +3475,7 @@
               <div class="overlay">
                 <h3>Zoho Sign</h3>
                 <p>Digital signature app for businesses.</p>
-                <a href="sign.html">Learn More →</a>
+                <a href="sign-html">Learn More →</a>
               </div>
             </div>
 
@@ -3488,7 +3491,7 @@
                   Manage temporary staffing with an employee scheduling
                   solution.
                 </p>
-                <a href="workerly.html">Learn More →</a>
+                <a href="workerly-html">Learn More →</a>
               </div>
             </div>
 
@@ -3501,7 +3504,7 @@
               <div class="overlay">
                 <h3>Zoho Shifts</h3>
                 <p>Employee scheduling and time tracking app.</p>
-                <a href="shifts.html">Learn More →</a>
+                <a href="shifts-html">Learn More →</a>
               </div>
             </div>
 
@@ -3514,7 +3517,7 @@
               <div class="overlay">
                 <h3>Zoho Projects</h3>
                 <p>Plan, track, and collaborate on projects.</p>
-                <a href="projects.html">Learn More →</a>
+                <a href="projects-html">Learn More →</a>
               </div>
             </div>
 
@@ -3527,7 +3530,7 @@
               <div class="overlay">
                 <h3>Zoho POS</h3>
                 <p>Modern retail point of sale system.</p>
-                <a href="pos.html">Learn More →</a>
+                <a href="pos-html">Learn More →</a>
               </div>
             </div>
 
@@ -3542,7 +3545,7 @@
                 <p>
                   Comprehensive HR platform for seamless employee experiences.
                 </p>
-                <a href="peopleplus.html">Learn More →</a>
+                <a href="peopleplus-html">Learn More →</a>
               </div>
             </div>
           </div>
@@ -3936,548 +3939,8 @@
         </div>
       </div>
     </section>
-
-
-
-
- <!-- Customization Services Section -->
-<!-- Customization Services Section -->
-<section class="services-section" >
-  <div class="services-container">
-    <div class="section-header">
-      <div class="title-wrapper">
-        <h2 class="section-title">Customization, Automation & Development</h2>
-        <div class="title-underline"></div>
-      </div>
-      <span class="badge-premium">HIGH VALUE SOLUTIONS</span>
-      <p class="section-subtitle">Transform your Zoho ecosystem with cutting-edge custom solutions tailored to your business needs</p>
-    </div>
     
-    <div class="services-grid">
-      <div class="service-card card-accent-red">
-        <div class="card-header">
-          <h3 class="service-title">Zoho Custom Development</h3>
-          <div class="service-tag">Enterprise Grade</div>
-        </div>
-        <p class="service-description">
-          Build powerful, scalable solutions that extend Zoho's native capabilities. From custom fields to complex business logic, we architect solutions that grow with your business.
-        </p>
-        <ul class="feature-list">
-          <li>Custom Field Configurations</li>
-          <li>Advanced Business Logic</li>
-          <li>Scalable Architecture Design</li>
-        </ul>
-      </div>
-      
-      <div class="service-card card-accent-black">
-        <div class="card-header">
-          <h3 class="service-title">Deluge Custom Functions</h3>
-          <div class="service-tag">Code Excellence</div>
-        </div>
-        <p class="service-description">
-          Harness the power of Deluge scripting to automate complex workflows, create custom buttons, and implement sophisticated business rules that save hours of manual work.
-        </p>
-        <ul class="feature-list">
-          <li>Custom Button Actions</li>
-          <li>Automated Calculations</li>
-          <li>Data Validation & Processing</li>
-        </ul>
-      </div>
-      
-      <div class="service-card card-accent-red">
-        <div class="card-header">
-          <h3 class="service-title">Zoho Creator App Development</h3>
-          <div class="service-tag">Full-Stack Apps</div>
-        </div>
-        <p class="service-description">
-          Design and deploy custom low-code applications that solve unique business challenges. From inventory management to client portals, we build apps that work seamlessly.
-        </p>
-        <ul class="feature-list">
-          <li>Custom Application Design</li>
-          <li>Multi-User Collaboration</li>
-          <li>Mobile-Responsive Interfaces</li>
-        </ul>
-      </div>
-      
-      <div class="service-card card-accent-black">
-        <div class="card-header">
-          <h3 class="service-title">Custom Modules & Workflows</h3>
-          <div class="service-tag">Process Automation</div>
-        </div>
-        <p class="service-description">
-          Streamline operations with intelligent workflows and custom modules. Automate approvals, notifications, and data updates to eliminate bottlenecks and boost efficiency.
-        </p>
-        <ul class="feature-list">
-          <li>Approval Workflow Automation</li>
-          <li>Custom Module Creation</li>
-          <li>Trigger-Based Actions</li>
-        </ul>
-      </div>
-      
-      <div class="service-card card-accent-red">
-        <div class="card-header">
-          <h3 class="service-title">API Integrations</h3>
-          <div class="service-tag">Zoho ↔ Third-Party</div>
-        </div>
-        <p class="service-description">
-          Connect Zoho with your favorite tools and platforms. Seamless data synchronization between Zoho CRM, payment gateways, marketing tools, ERPs, and custom applications.
-        </p>
-        <ul class="feature-list">
-          <li>RESTful API Development</li>
-          <li>Real-Time Data Sync</li>
-          <li>OAuth & Authentication Setup</li>
-        </ul>
-      </div>
-      
-      <div class="service-card card-accent-black">
-        <div class="card-header">
-          <h3 class="service-title">Automation for Revenue, Incentives & Accruals</h3>
-          <div class="service-tag">Financial Intelligence</div>
-        </div>
-        <p class="service-description">
-          Automate complex financial calculations, commission tracking, and revenue recognition. Real-time dashboards provide instant visibility into your financial metrics.
-        </p>
-        <ul class="feature-list">
-          <li>Commission & Incentive Engines</li>
-          <li>Revenue Recognition Automation</li>
-          <li>Financial Reporting Dashboards</li>
-        </ul>
-      </div>
-    </div>
-    
-   
-     
-  </div>
-</section>
 
-<style>
-.services-section {
-  padding: 100px 20px;
-  background-color:rgb(226, 238, 250) ;
-  position: relative;
-  overflow: hidden;
-}
-
-.services-section::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(255, 0, 0, 0.08) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 20s infinite ease-in-out;
-}
-
-.services-section::after {
-  content: '';
-  position: absolute;
-  bottom: -30%;
-  left: -5%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.05) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: float 15s infinite ease-in-out reverse;
-}
-
-.services-container {
-  max-width: 1300px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.section-header {
-  text-align: center;
-  margin-bottom: 70px;
-  animation: fadeInDown 0.8s ease-out;
-}
-
-.title-wrapper {
-  display: inline-block;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.section-title {
-  font-size: 3rem;
-  font-weight: 800;
-  color: #000000;
-  margin: 0 0 15px 0;
-  letter-spacing: -1px;
-  text-transform: uppercase;
-}
-
-.title-underline {
-  height: 6px;
-  background: linear-gradient(90deg, #ff0000 0%, #000000 100%);
-  border-radius: 3px;
-  animation: expandWidth 1.2s ease-out;
-}
-
-.badge-premium {
-  display: inline-block;
-  padding: 12px 30px;
-  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-  color: #ffffff;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  box-shadow: 0 6px 25px rgba(255, 0, 0, 0.4);
-  margin-bottom: 20px;
-  animation: glow 2s infinite alternate;
-}
-
-.section-subtitle {
-  font-size: 1.2rem;
-  color: #1a1a1a;
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-  font-weight: 400;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 35px;
-  margin-bottom: 60px;
-  animation: fadeInUp 1s ease-out;
-}
-
-.service-card {
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 40px 35px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  border-left: 5px solid transparent;
-}
-
-.service-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.02) 100%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.service-card:hover::before {
-  opacity: 1;
-}
-
-.card-accent-red {
-  border-left-color: #ff0000;
-}
-
-.card-accent-red:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 15px 50px rgba(255, 0, 0, 0.25);
-}
-
-.card-accent-black {
-  border-left-color: #000000;
-}
-
-.card-accent-black:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.25);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.service-title {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #000000;
-  margin: 0;
-  line-height: 1.3;
-  flex: 1;
-  min-width: 200px;
-}
-
-.service-tag {
-  background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-  color: #ff0000;
-  padding: 6px 16px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  white-space: nowrap;
-}
-
-.service-description {
-  color: #333333;
-  font-size: 1rem;
-  line-height: 1.7;
-  margin-bottom: 25px;
-  font-weight: 400;
-}
-
-.feature-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.feature-list li {
-  color: #1a1a1a;
-  font-size: 0.95rem;
-  padding: 10px 0 10px 25px;
-  position: relative;
-  font-weight: 500;
-  transition: all 0.3s ease;
-}
-
-.feature-list li:hover {
-  padding-left: 30px;
-  color: #ff0000;
-}
-
-.feature-list li::before {
-  content: '▶';
-  position: absolute;
-  left: 0;
-  color: #ff0000;
-  font-size: 0.7rem;
-  transition: all 0.3s ease;
-}
-
-.card-accent-black .feature-list li::before {
-  color: #000000;
-}
-
-.card-accent-black .feature-list li:hover {
-  color: #000000;
-}
-
-.cta-section {
-  background: linear-gradient(135deg, #000000 0%, #333333 100%);
-  border-radius: 20px;
-  padding: 50px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-  animation: slideInUp 1s ease-out;
-  flex-wrap: wrap;
-}
-
-.cta-content {
-  flex: 1;
-  min-width: 250px;
-}
-
-.cta-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 10px 0;
-}
-
-.cta-text {
-  color: #e0e0e0;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-.cta-button {
-  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
-  color: #ffffff;
-  border: none;
-  padding: 18px 45px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 25px rgba(255, 0, 0, 0.4);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-.cta-button:hover {
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 35px rgba(255, 0, 0, 0.6);
-}
-
-.cta-button:active {
-  transform: translateY(-1px) scale(1.02);
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes expandWidth {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes glow {
-  0% {
-    box-shadow: 0 6px 25px rgba(255, 0, 0, 0.4);
-  }
-  100% {
-    box-shadow: 0 6px 35px rgba(255, 0, 0, 0.7);
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-30px) rotate(5deg);
-  }
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-  .section-title {
-    font-size: 2.2rem;
-  }
-  
-  .services-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .cta-section {
-    text-align: center;
-    flex-direction: column;
-  }
-  
-  .cta-title {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .services-section {
-    padding: 60px 15px;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-  }
-  
-  .service-card {
-    padding: 30px 25px;
-  }
-  
-  .card-header {
-    flex-direction: column;
-  }
-}
-</style>
-
-<script>
-// Scroll-triggered animations
-document.addEventListener('DOMContentLoaded', function() {
-  const cards = document.querySelectorAll('.service-card');
-  const cta = document.querySelector('.cta-section');
-  
-  const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -80px 0px'
-  };
-  
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach((entry, index) => {
-      if (entry.isIntersecting) {
-        setTimeout(() => {
-          entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }, index * 120);
-        observer.unobserve(entry.target);
-      }
-    });
-  }, observerOptions);
-  
-  // Animate cards
-  cards.forEach(card => {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(40px)';
-    card.style.transition = 'all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-    observer.observe(card);
-  });
-  
-  // Animate CTA
-  if (cta) {
-    cta.style.opacity = '0';
-    cta.style.transform = 'translateY(40px)';
-    cta.style.transition = 'all 0.7s ease-out';
-    observer.observe(cta);
-  }
-  
-  // Add click effect to cards
-  cards.forEach(card => {
-    card.addEventListener('click', function() {
-      this.style.animation = 'none';
-      setTimeout(() => {
-        this.style.animation = '';
-      }, 10);
-    });
-  });
-});
-</script>
-
-
-  
 
     <!-- Industries We Serve Section -->
     <section class="industries-section">
@@ -4500,7 +3963,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         <!-- Right side: cards -->
         <div class="industries-cards" data-aos="fade-left">
-           <a href="Accounting&Firm.html" class="industry-card-link">
+           <a href="accounting-firm-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>Accounting & Finance</h3>
@@ -4512,7 +3975,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </a>
 
 
-          <a href="E-Commerce.html" class="industry-card-link">
+          <a href="E-Commerce-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>E-commerce</h3>
@@ -4521,9 +3984,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </p>
   </div>
 </a>
-
-          
-          <a href="Hospitality.html" class="industry-card-link">
+ <a href="hospitality-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>Hospitality & Real Estate</h3>
@@ -4534,7 +3995,7 @@ document.addEventListener('DOMContentLoaded', function() {
 </a>
 
           
-          <a href="IT.html" class="industry-card-link">
+          <a href="it-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>IT & Software
@@ -4545,7 +4006,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </a>
           
-          <a href="Logistic.html" class="industry-card-link">
+          <a href="logistic-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>Logistics & Supply Chain</h3>
@@ -4556,7 +4017,7 @@ document.addEventListener('DOMContentLoaded', function() {
   </div>
 </a>
 
-<a href="Professional.html" class="industry-card-link">
+<a href="professional-html" class="industry-card-link">
   <div class="industry-card">
     <div class="icon"></div>
     <h3>Professional Services</h3>
@@ -4569,6 +4030,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       </div>
     </section>
+
 
     <!-- Partners Section -->
     <section
@@ -4836,13 +4298,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
       <div id="crmWebToEntityForm" class="crmWebToEntityForm">
         <form
-          id="webform957096000001814003"
-          action="https://crm.zoho.in/crm/WebToLeadForm"
-          name="WebToLeads957096000001814003"
-          method="POST"
-          accept-charset="UTF-8"
-          onsubmit="return checkMandatory957096000001814003()"
-        >
+  id="webform957096000001814003"
+  action="https://crm.zoho.in/crm/WebToLeadForm"
+  name="WebToLeads957096000001814003"
+  method="POST"
+  accept-charset="UTF-8"
+>
           <!-- Required Hidden Fields -->
           <input
             type="hidden"
@@ -4884,7 +4345,8 @@ document.addEventListener('DOMContentLoaded', function() {
           />
 
           <!-- ✅ Multi-Select Dropdown for Zoho Apps -->
-        <!-- ✅ Multi-Select Dropdown for Zoho Apps with Logos -->
+          <!-- ✅ Multi-Select Dropdown for Zoho Apps -->
+<!-- ✅ Multi-Select Dropdown for Zoho Apps with Logos -->
 <div class="dropdown-multi">
   <button
     type="button"
@@ -5040,7 +4502,6 @@ document.addEventListener('DOMContentLoaded', function() {
           </button>
         </form>
       </div>
-          
 
       <!-- Success Popup -->
       <div id="zohoPopup" class="zoho-popup" style="display: none">
@@ -5067,7 +4528,7 @@ document.addEventListener('DOMContentLoaded', function() {
           <p>
             📧 Email us:
             <a href="mailto:info@zolytics.in">info@zolytics.in</a><br />
-            🕒 Office Hours: Mon - Fri (10 AM – 6 PM )
+            🕒 Office Hours: Mon - Fri (10 AM – 6 PM)
           </p>
           <!-- WhatsApp icon and number perfectly in one line -->
           <div
@@ -5161,527 +4622,358 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
-      // Header shadow on scroll
-      window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        if (window.scrollY > 100) {
-          header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
+      // ========================================
+// COMPLETE FIXED DROPDOWN & FORM SCRIPT
+// ========================================
+
+// Wait for DOM to be fully loaded
+document.addEventListener("DOMContentLoaded", function() {
+  
+  // ========================================
+  // 1. DROPDOWN FUNCTIONALITY
+  // ========================================
+  
+  const dropdownToggle = document.getElementById("dropdownToggle");
+  const dropdownContent = document.getElementById("dropdownContent");
+  const selectedAppsInput = document.getElementById("selectedApps");
+  let selectedApps = [];
+
+  // Toggle dropdown on button click
+  if (dropdownToggle) {
+    dropdownToggle.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Toggle the show class
+      const isVisible = dropdownContent.classList.contains("show");
+      dropdownContent.classList.toggle("show");
+      
+      // Update arrow direction
+      this.style.setProperty('--arrow', isVisible ? '"▼"' : '"▲"');
+    });
+  }
+
+  // Handle item selection
+  if (dropdownContent) {
+    const dropdownItems = dropdownContent.querySelectorAll(".dropdown-item");
+    
+    dropdownItems.forEach(function(item) {
+      item.addEventListener("click", function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const value = this.getAttribute("data-value");
+        
+        // Toggle selection
+        if (selectedApps.includes(value)) {
+          // Remove from array
+          selectedApps = selectedApps.filter(function(v) {
+            return v !== value;
+          });
+          this.classList.remove("selected");
         } else {
-          header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+          // Add to array
+          selectedApps.push(value);
+          this.classList.add("selected");
+        }
+        
+        // Update hidden input value
+        selectedAppsInput.value = selectedApps.join(", ");
+        
+        // Update button text
+        if (selectedApps.length > 0) {
+          dropdownToggle.textContent = selectedApps.length === 1 
+            ? selectedApps[0] 
+            : selectedApps.length + " apps selected";
+        } else {
+          dropdownToggle.textContent = "Select Zoho Apps *";
         }
       });
-      // Floating circles that respond to scroll - ADD THIS
-      function updateWorkflowCircles() {
-        const workflow = document.querySelector(".workflow");
-        if (!workflow) return;
+    });
+  }
 
-        const rect = workflow.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-
-        // Check if workflow section is in viewport
-        if (rect.top < windowHeight && rect.bottom > 0) {
-          // Calculate scroll progress through the section (0 to 1)
-          const scrollProgress = Math.max(
-            0,
-            Math.min(
-              1,
-              (windowHeight - rect.top) / (windowHeight + rect.height)
-            )
-          );
-
-          // Calculate movement based on scroll progress
-          const moveX = scrollProgress * 150;
-          const moveY = scrollProgress * 75;
-          const rotate = scrollProgress * 360;
-
-          // Apply transforms
-          workflow.style.setProperty("--scroll-x", moveX + "px");
-          workflow.style.setProperty("--scroll-y", moveY + "px");
-          workflow.style.setProperty("--scroll-rotate", rotate + "deg");
+  // Close dropdown when clicking outside
+  document.addEventListener("click", function(e) {
+    if (!e.target.closest(".dropdown-multi")) {
+      if (dropdownContent && dropdownContent.classList.contains("show")) {
+        dropdownContent.classList.remove("show");
+        if (dropdownToggle) {
+          dropdownToggle.style.setProperty('--arrow', '"▼"');
         }
       }
+    }
+  });
 
-      // Run on scroll
-      window.addEventListener("scroll", updateWorkflowCircles);
+  // ========================================
+  // 2. FORM VALIDATION & SUBMISSION
+  // ========================================
+  
+  const form = document.getElementById("webform957096000001814003");
+  const popup = document.getElementById("zohoPopup");
+  const closeBtn = document.getElementById("closeZohoPopup");
 
-      // Run once on page load
-      window.addEventListener("load", updateWorkflowCircles);
-
-      AOS.init();
-
-      const steps = document.querySelectorAll("#steps [data-step]");
-      const stepImage = document.getElementById("step-image");
-      const stepDesc = document.getElementById("step-description");
-
-      const stepData = {
-        1: {
-          img: "https://cdn.dribbble.com/users/417326/screenshots/15368288/media/7b5ff4067c5224a657e301f7b6a4b0ec.gif",
-          desc: "In the discovery phase, we learn your business processes and challenges to shape the perfect Zoho solution.",
-        },
-        2: {
-          img: "https://cdn.dribbble.com/users/1579322/screenshots/17176256/media/792ea03c8a4eb3b5d9d9e5ad4b3843a2.gif",
-          desc: "In the design phase, we visualize workflows and build user-friendly Zoho dashboards tailored for you.",
-        },
-        3: {
-          img: "https://cdn.dribbble.com/users/1718876/screenshots/11241074/media/f41826a03ad0bfb90d3a6f43dc9e1f91.gif",
-          desc: "Implementation focuses on bringing the design to life, ensuring smooth integration and automation.",
-        },
-        4: {
-          img: "https://cdn.dribbble.com/users/1787323/screenshots/16298432/media/59e3daffcf519c38206b9c2d50d1cb3d.gif",
-          desc: "Our support team trains your staff, ensuring they are confident using Zoho tools daily.",
-        },
-      };
-
-      steps.forEach((step) => {
-        step.addEventListener("mouseenter", () => {
-          const stepNum = step.dataset.step;
-          stepImage.src = stepData[stepNum].img;
-          stepDesc.textContent = stepData[stepNum].desc;
-
-          steps.forEach((s) => s.classList.remove("step-active"));
-          step.classList.add("step-active");
-        });
-      });
-
-      // ===== Image Slideshow Script =====
-      let slides = document.querySelectorAll(".why-slideshow .slide");
-      let currentSlide = 0;
-
-      setInterval(() => {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
-      }, 3000);
-
-      // Intersection Observer for scroll animations
-      const observerOptions = {
-        threshold: 0.15,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
-          if (entry.isIntersecting) {
-            setTimeout(() => {
-              entry.target.classList.add("visible");
-            }, index * 100);
-          }
-        });
-      }, observerOptions);
-
-      // Observe all story cards
-      document.querySelectorAll(".story-card").forEach((card) => {
-        observer.observe(card);
-      });
-
-      // Auto-rotate stories
-      function rotateStories() {
-        const cards = document.querySelectorAll(".story-card");
-
-        cards.forEach((card, cardIndex) => {
-          const stories = card.querySelectorAll(".story-item");
-          const indicators = card.querySelectorAll(".indicator");
-          let currentIndex = 0;
-
-          function showNextStory() {
-            // Fade out current story
-            stories[currentIndex].classList.add("fade-out");
-            indicators[currentIndex].classList.remove("active");
-
-            setTimeout(() => {
-              stories[currentIndex].classList.remove("active", "fade-out");
-
-              // Move to next story
-              currentIndex = (currentIndex + 1) % stories.length;
-
-              // Fade in next story
-              stories[currentIndex].classList.add("active");
-              indicators[currentIndex].classList.add("active");
-            }, 800); // Wait for fade out to complete
-          }
-
-          // Start rotation after initial delay, staggered for each card
-          setTimeout(() => {
-            setInterval(showNextStory, 6000); // Change every 6 seconds
-          }, cardIndex * 2000); // Stagger start by 2 seconds per card
-        });
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      // Get form values
+      const lastName = document.getElementById("Last_Name");
+      const company = document.getElementById("Company");
+      
+      // Validation
+      let isValid = true;
+      let errorMessage = "";
+      
+      if (!lastName || !lastName.value.trim()) {
+        isValid = false;
+        errorMessage = "Please enter your name";
+      } else if (!company || !company.value.trim()) {
+        isValid = false;
+        errorMessage = "Please enter your company name";
+      } else if (selectedApps.length === 0) {
+        isValid = false;
+        errorMessage = "Please select at least one Zoho App";
       }
-
-      // Start rotation when page loads
-      window.addEventListener("load", () => {
-        setTimeout(rotateStories, 1000); // Start after 1 second
-      });
-
-      // Manual click on indicators
-      document.querySelectorAll(".story-card").forEach((card) => {
-        const indicators = card.querySelectorAll(".indicator");
-        const stories = card.querySelectorAll(".story-item");
-
-        indicators.forEach((indicator, index) => {
-          indicator.addEventListener("click", () => {
-            // Remove active from all
-            stories.forEach((s) => s.classList.remove("active", "fade-out"));
-            indicators.forEach((i) => i.classList.remove("active"));
-
-            // Add active to clicked
-            stories[index].classList.add("active");
-            indicators[index].classList.add("active");
+      
+      // Show error if validation fails
+      if (!isValid) {
+        alert(errorMessage);
+        return false;
+      }
+      
+      // If validation passes, submit form
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: "POST",
+        body: formData,
+        mode: "no-cors"
+      })
+      .then(function() {
+        // Show success popup
+        if (popup) {
+          popup.style.display = "flex";
+        }
+        
+        // Reset form
+        form.reset();
+        selectedApps = [];
+        selectedAppsInput.value = "";
+        
+        // Reset dropdown button text
+        if (dropdownToggle) {
+          dropdownToggle.textContent = "Select Zoho Apps *";
+        }
+        
+        // Remove selected class from all items
+        if (dropdownContent) {
+          dropdownContent.querySelectorAll(".dropdown-item").forEach(function(item) {
+            item.classList.remove("selected");
           });
-        });
+        }
+      })
+      .catch(function(err) {
+        console.error("Zoho submission failed:", err);
+        alert("There was an error submitting the form. Please try again.");
       });
+    });
+  }
 
-      // Animated counter for stats
-      function animateCounter(element) {
-        const target = parseInt(element.getAttribute("data-count"));
-        const duration = 2000;
-        const step = target / (duration / 16);
-        let current = 0;
-
-        const counter = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            element.textContent = target + (target === 98 ? "%" : "+");
-            clearInterval(counter);
-          } else {
-            element.textContent =
-              Math.floor(current) + (target === 98 ? "%" : "+");
-          }
-        }, 16);
+  // Close popup button
+  if (closeBtn && popup) {
+    closeBtn.addEventListener("click", function() {
+      popup.style.display = "none";
+    });
+  }
+  
+  // Close popup when clicking outside
+  if (popup) {
+    popup.addEventListener("click", function(e) {
+      if (e.target === popup) {
+        popup.style.display = "none";
       }
+    });
+  }
 
-      // Intersection Observer for counter animation
-      const counterObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (
-              entry.isIntersecting &&
-              !entry.target.classList.contains("counted")
-            ) {
-              animateCounter(entry.target);
-              entry.target.classList.add("counted");
-            }
-          });
-        },
-        { threshold: 0.5 }
+  // ========================================
+  // 3. OTHER PAGE SCRIPTS
+  // ========================================
+  
+  // Header shadow on scroll
+  window.addEventListener("scroll", function() {
+    const header = document.querySelector("header");
+    if (header) {
+      if (window.scrollY > 100) {
+        header.style.boxShadow = "0 5px 20px rgba(0,0,0,0.15)";
+      } else {
+        header.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+      }
+    }
+  });
+
+  // Workflow circles animation
+  function updateWorkflowCircles() {
+    const workflow = document.querySelector(".workflow");
+    if (!workflow) return;
+
+    const rect = workflow.getBoundingClientRect();
+    const windowHeight = window.innerHeight;
+
+    if (rect.top < windowHeight && rect.bottom > 0) {
+      const scrollProgress = Math.max(
+        0,
+        Math.min(1, (windowHeight - rect.top) / (windowHeight + rect.height))
       );
 
-      // Observe all stat numbers
-      document.querySelectorAll(".stat-number").forEach((stat) => {
-        counterObserver.observe(stat);
-      });
-      AOS.init({
-        duration: 1000,
-        once: true,
-        easing: "ease-out-cubic",
-      });
+      const moveX = scrollProgress * 150;
+      const moveY = scrollProgress * 75;
+      const rotate = scrollProgress * 360;
 
-      function checkMandatory957096000001814003() {
-        var mndFileds = ["Company", "Last Name"];
-        var fldLangVal = ["Company", "Last Name"];
-        for (i = 0; i < mndFileds.length; i++) {
-          var fieldObj =
-            document.forms["WebToLeads957096000001814003"][mndFileds[i]];
-          if (fieldObj) {
-            if (fieldObj.value.replace(/^\s+|\s+$/g, "").length == 0) {
-              alert(fldLangVal[i] + " cannot be empty.");
-              fieldObj.focus();
-              return;
-              false;
-            }
-          }
-        }
-        document.querySelector(".formsubmit").setAttribute("disabled", true);
+      workflow.style.setProperty("--scroll-x", moveX + "px");
+      workflow.style.setProperty("--scroll-y", moveY + "px");
+      workflow.style.setProperty("--scroll-rotate", rotate + "deg");
+    }
+  }
+
+  window.addEventListener("scroll", updateWorkflowCircles);
+  window.addEventListener("load", updateWorkflowCircles);
+
+  // Initialize AOS
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 1000,
+      once: true,
+      easing: "ease-out-cubic"
+    });
+  }
+
+  // Image Slideshow
+  const slides = document.querySelectorAll(".why-slideshow .slide");
+  if (slides.length > 0) {
+    let currentSlide = 0;
+    setInterval(function() {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 3000);
+  }
+
+  // Story cards observer
+  const observerOptions = {
+    threshold: 0.15,
+    rootMargin: "0px 0px -50px 0px"
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry, index) {
+      if (entry.isIntersecting) {
+        setTimeout(function() {
+          entry.target.classList.add("visible");
+        }, index * 100);
       }
-      document.addEventListener("DOMContentLoaded", function () {
-        const form = document.getElementById("webform957096000001814003");
-        const popup = document.getElementById("zohoPopup");
-        const closeBtn = document.getElementById("closeZohoPopup");
+    });
+  }, observerOptions);
 
-        form.addEventListener("submit", function (e) {
-          e.preventDefault();
+  document.querySelectorAll(".story-card").forEach(function(card) {
+    observer.observe(card);
+  });
 
-          const formData = new FormData(form);
+  // Animated counter
+  function animateCounter(element) {
+    const target = parseInt(element.getAttribute("data-count"));
+    const duration = 2000;
+    const step = target / (duration / 16);
+    let current = 0;
 
-          fetch(form.action, {
-            method: "POST",
-            body: formData,
-            mode: "no-cors",
-          })
-            .then(() => {
-              popup.style.display = "flex";
-              form.reset();
-            })
-            .catch((err) => console.error("Zoho submission failed:", err));
-        });
-
-        closeBtn.addEventListener("click", function () {
-          popup.style.display = "none";
-        });
-      });
-
-      // Replace the scroll button logic with this speed control logic
-      const wrapper1 = document.querySelector(
-        ".left-to-right .scrolling-wrapper"
-      );
-      const wrapper2 = document.querySelector(
-        ".right-to-left .scrolling-wrapper"
-      );
-      const decreaseBtn = document.getElementById("decreaseSpeed");
-      const increaseBtn = document.getElementById("increaseSpeed");
-      const speedLevel = document.getElementById("speedLevel");
-let currentSpeed = 1; // 1x speed
-const speedLevels = [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5]; // Available speed multipliers - MORE OPTIONS
-let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
-
-      function updateAnimationSpeed() {
-        const baseSpeed = 50; // Base animation duration in seconds
-        const newDuration = baseSpeed / currentSpeed;
-
-        wrapper1.style.animation = `scroll-left ${newDuration}s linear infinite`;
-        wrapper2.style.animation = `scroll-right ${newDuration}s linear infinite`;
-
-        speedLevel.textContent = currentSpeed + "x";
+    const counter = setInterval(function() {
+      current += step;
+      if (current >= target) {
+        element.textContent = target + (target === 98 ? "%" : "+");
+        clearInterval(counter);
+      } else {
+        element.textContent = Math.floor(current) + (target === 98 ? "%" : "+");
       }
+    }, 16);
+  }
 
-      decreaseBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (currentSpeedIndex > 0) {
-          currentSpeedIndex--;
-          currentSpeed = speedLevels[currentSpeedIndex];
-          updateAnimationSpeed();
-        }
-      });
-
-      increaseBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (currentSpeedIndex < speedLevels.length - 1) {
-          currentSpeedIndex++;
-          currentSpeed = speedLevels[currentSpeedIndex];
-          updateAnimationSpeed();
-        }
-      });
-
-      // Initialize with default speed
-      updateAnimationSpeed();
-      //////
-      const leftBtn = document.getElementById("leftBtn");
-      const rightBtn = document.getElementById("rightBtn");
-      const scrollThumb = document.getElementById("scrollThumb");
-
-      const scrollSpeed = 2200; // Increased from 870 to scroll ~50% per click
-      let isScrolling = false;
-      let manualControl = false;
-      let offset1 = 0;
-      let offset2 = 0;
-      let autoScrollTimer;
-      let stopTimer;
-
-      // Calculate scrollbar position
-      function updateScrollbar() {
-        const maxScroll = wrapper1.scrollWidth / 2;
-        const currentScroll = Math.abs(offset1) % maxScroll;
-        const scrollPercent = (currentScroll / maxScroll) * 100;
-        const thumbPosition = Math.min(Math.max(scrollPercent * 0.7, 0), 70); // 70% max position
-        scrollThumb.style.left = thumbPosition + "%";
+  const counterObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting && !entry.target.classList.contains("counted")) {
+        animateCounter(entry.target);
+        entry.target.classList.add("counted");
       }
+    });
+  }, { threshold: 0.5 });
 
-      function disableAutoScroll() {
-        manualControl = true;
-        wrapper1.style.animation = "none";
-        wrapper2.style.animation = "none";
+  document.querySelectorAll(".stat-number").forEach(function(stat) {
+    counterObserver.observe(stat);
+  });
+
+  // Speed control for scrolling sections
+  const wrapper1 = document.querySelector(".left-to-right .scrolling-wrapper");
+  const wrapper2 = document.querySelector(".right-to-left .scrolling-wrapper");
+  const decreaseBtn = document.getElementById("decreaseSpeed");
+  const increaseBtn = document.getElementById("increaseSpeed");
+  const speedLevel = document.getElementById("speedLevel");
+  
+  let currentSpeed = 1;
+  const speedLevels = [0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3, 4, 5];
+  let currentSpeedIndex = 3;
+
+  function updateAnimationSpeed() {
+    if (!wrapper1 || !wrapper2) return;
+    
+    const baseSpeed = 50;
+    const newDuration = baseSpeed / currentSpeed;
+
+    wrapper1.style.animation = "scroll-left " + newDuration + "s linear infinite";
+    wrapper2.style.animation = "scroll-right " + newDuration + "s linear infinite";
+
+    if (speedLevel) {
+      speedLevel.textContent = currentSpeed + "x";
+    }
+  }
+
+  if (decreaseBtn) {
+    decreaseBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (currentSpeedIndex > 0) {
+        currentSpeedIndex--;
+        currentSpeed = speedLevels[currentSpeedIndex];
+        updateAnimationSpeed();
       }
+    });
+  }
 
-      function enableAutoScroll() {
-        manualControl = false;
-        offset1 = 0;
-        offset2 = 0;
-        wrapper1.style.transform = "translateX(0)";
-        wrapper2.style.transform = "translateX(0)";
-        wrapper1.style.animation = "scroll-left 50s linear infinite";
-        wrapper2.style.animation = "scroll-right 50s linear infinite";
-        updateScrollbar();
+  if (increaseBtn) {
+    increaseBtn.addEventListener("click", function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (currentSpeedIndex < speedLevels.length - 1) {
+        currentSpeedIndex++;
+        currentSpeed = speedLevels[currentSpeedIndex];
+        updateAnimationSpeed();
       }
+    });
+  }
 
-      function resetAutoScrollTimer() {
-        clearTimeout(autoScrollTimer);
-        autoScrollTimer = setTimeout(enableAutoScroll, 3000); // 3 seconds
-      }
+  // Initialize animation speed
+  updateAnimationSpeed();
+  
+  // Workflow step toggle function
+  window.toggleStep = function(element) {
+    element.classList.toggle("expanded");
+  };
+});
 
-      function stopScrollingFor3Seconds() {
-        clearTimeout(stopTimer);
-        wrapper1.style.animationPlayState = "paused";
-        wrapper2.style.animationPlayState = "paused";
+// ========================================
+// END OF SCRIPT
+// ========================================
 
-        stopTimer = setTimeout(() => {
-          if (!manualControl) {
-            wrapper1.style.animationPlayState = "running";
-            wrapper2.style.animationPlayState = "running";
-          }
-        }, 3000); // 3 seconds stop
-      }
 
-      leftBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isScrolling) return;
-        isScrolling = true;
-
-        if (!manualControl) {
-          disableAutoScroll();
-        }
-
-        offset1 -= scrollSpeed;
-        offset2 += scrollSpeed;
-
-        wrapper1.style.transition = "transform 0.6s ease";
-        wrapper2.style.transition = "transform 0.6s ease";
-        wrapper1.style.transform = `translateX(${offset1}px)`;
-        wrapper2.style.transform = `translateX(${offset2}px)`;
-
-        updateScrollbar();
-        stopScrollingFor3Seconds();
-
-        setTimeout(() => {
-          isScrolling = false;
-        }, 600);
-
-        resetAutoScrollTimer();
-      });
-
-      rightBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isScrolling) return;
-        isScrolling = true;
-
-        if (!manualControl) {
-          disableAutoScroll();
-        }
-
-        offset1 += scrollSpeed;
-        offset2 -= scrollSpeed;
-
-        wrapper1.style.transition = "transform 0.6s ease";
-        wrapper2.style.transition = "transform 0.6s ease";
-        wrapper1.style.transform = `translateX(${offset1}px)`;
-        wrapper2.style.transform = `translateX(${offset2}px)`;
-
-        updateScrollbar();
-        stopScrollingFor3Seconds();
-
-        setTimeout(() => {
-          isScrolling = false;
-        }, 600);
-
-        resetAutoScrollTimer();
-      });
-
-      // Update scrollbar during auto-scroll animation
-      setInterval(() => {
-        if (!manualControl) {
-          updateScrollbar();
-        }
-      }, 100);
-
-      // Initialize scrollbar position
-      updateScrollbar();
-
-      [container1, container2].forEach((container) => {
-        container.addEventListener("mousedown", (e) => {
-          isDragging = true;
-          container.style.cursor = "grabbing";
-          startX = e.pageX - container.offsetLeft;
-          scrollLeft1 = container1.scrollLeft;
-          scrollLeft2 = container2.scrollLeft;
-
-          // Pause animations while dragging
-          wrapper1.style.animationPlayState = "paused";
-          wrapper2.style.animationPlayState = "paused";
-        });
-
-        container.addEventListener("mouseleave", () => {
-          isDragging = false;
-          container.style.cursor = "grab";
-          wrapper1.style.animationPlayState = "running";
-          wrapper2.style.animationPlayState = "running";
-        });
-
-        container.addEventListener("mouseup", () => {
-          isDragging = false;
-          container.style.cursor = "grab";
-          wrapper1.style.animationPlayState = "running";
-          wrapper2.style.animationPlayState = "running";
-        });
-
-        container.addEventListener("mousemove", (e) => {
-          if (!isDragging) return;
-          e.preventDefault();
-          const x = e.pageX - container.offsetLeft;
-          const walk = (x - startX) * 2;
-
-          if (container === container1) {
-            container1.scrollLeft = scrollLeft1 - walk;
-            container2.scrollLeft = scrollLeft2 + walk;
-          } else {
-            container1.scrollLeft = scrollLeft1 + walk;
-            container2.scrollLeft = scrollLeft2 - walk;
-          }
-        });
-      });
-
-      // Set cursor style
-      container1.style.cursor = "grab";
-      container2.style.cursor = "grab";
-
-      const dropdownToggle = document.getElementById("dropdownToggle");
-      const dropdownContent = document.getElementById("dropdownContent");
-      const selectedAppsInput = document.getElementById("selectedApps");
-      let selectedApps = [];
-
-      dropdownToggle.addEventListener("click", () => {
-        dropdownContent.style.display =
-          dropdownContent.style.display === "block" ? "none" : "block";
-      });
-
-      dropdownContent.querySelectorAll(".dropdown-item").forEach((item) => {
-        item.addEventListener("click", () => {
-          const value = item.getAttribute("data-value");
-          if (selectedApps.includes(value)) {
-            selectedApps = selectedApps.filter((v) => v !== value);
-            item.style.background = "";
-          } else {
-            selectedApps.push(value);
-            item.style.background = "#e0f3ff";
-          }
-          selectedAppsInput.value = selectedApps.join(", ");
-          dropdownToggle.textContent =
-            selectedApps.length > 0
-              ? selectedApps.join(", ")
-              : "Select Zoho Apps *";
-        });
-      });
-
-      function checkMandatory957096000001814003() {
-        if (!document.getElementById("Last_Name").value.trim()) {
-          alert("Please enter your name");
-          return false;
-        }
-        if (!document.getElementById("Company").value.trim()) {
-          alert("Please enter your company name");
-          return false;
-        }
-        if (!selectedApps.length) {
-          alert("Please select at least one Zoho App");
-          return false;
-        }
-        return true;
-      }
     </script>
     <script
       id="wf_anal"
@@ -5689,12 +4981,3 @@ let currentSpeedIndex = 3; // Start at 1x (index 3 in new array)
     ></script>
    <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script>
 <script id="zsiqscript" src="https://salesiq.zohopublic.in/widget?wc=siqb722856ae3f305dfe620d16e5e3588c546cb4c94622e81fff56cbb615c1e9f2e" defer></script>
-
-
-
-
-
-
-
-
-
