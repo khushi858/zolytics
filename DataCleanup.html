@@ -61,7 +61,7 @@
         font-weight: 700;
       }
 
-      /* HEADER */
+      /* HEADER - FIXED: removed negative margin-top that was causing the overlap/disappearing button issue */
       header {
         background: rgba(255, 255, 255, 0.98) !important;
         box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
@@ -74,7 +74,7 @@
         padding: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin-top: -90px !important;
+        /* REMOVED: margin-top: -90px !important; — this was the culprit */
       }
 
       header.scrolled {
@@ -84,33 +84,33 @@
       nav {
         max-width: 1400px;
         margin: 0 auto;
-        padding: 1.2rem 2rem;
+        padding: 1rem 2rem;
         display: flex;
         justify-content: space-between;
         align-items: center;
       }
 
       .logo-section img {
-        height: 90px;
+        height: 70px;
         transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
       }
 
       .logo-section img:hover {
-        transform: scale(1.08) rotate(2deg);
+        transform: scale(1.08) translateY(-4px);
         filter: drop-shadow(0 8px 20px rgba(139, 92, 246, 0.3));
       }
 
       /* Hero Section */
       .hero {
-        min-height: 100vh;
+        min-height: calc(100vh - 92px);
         display: flex;
         align-items: center;
         background: var(--gradient-blue);
         color: var(--white);
         position: relative;
         overflow: hidden;
-        padding-top: 80px;
+        padding: 60px 0;
       }
 
       .hero::before {
@@ -228,43 +228,6 @@
         opacity: 0.8;
       }
 
-      /* Logo Carousel */
-      .logo-carousel {
-        background: var(--white);
-        padding: 60px 0;
-        border-top: 1px solid rgba(0, 102, 255, 0.1);
-        border-bottom: 1px solid rgba(0, 102, 255, 0.1);
-      }
-
-      .logo-carousel h3 {
-        text-align: center;
-        color: var(--black);
-        margin-bottom: 3rem;
-        font-size: 1.5rem;
-        font-weight: 600;
-      }
-
-      .logos-slider {
-        display: flex;
-        gap: 4rem;
-        align-items: center;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .logo-item {
-        height: 60px;
-        opacity: 0.6;
-        transition: all 0.3s ease;
-        filter: grayscale(100%);
-      }
-
-      .logo-item:hover {
-        opacity: 1;
-        filter: grayscale(0%);
-        transform: scale(1.1);
-      }
-
       /* Section Styles */
       .section {
         padding: 100px 0;
@@ -288,19 +251,17 @@
       .section-bg-light {
         background: var(--light-grey);
       }
-
       .section-bg-dark {
         background: var(--gradient-dark);
         color: var(--white);
+      }
+      .section-bg-blue {
+        background: var(--light-blue);
       }
 
       .section-bg-dark .section-title,
       .section-bg-dark .section-subtitle {
         color: var(--white);
-      }
-
-      .section-bg-blue {
-        background: var(--light-blue);
       }
 
       /* Problems Section */
@@ -326,7 +287,6 @@
         margin-bottom: 1rem;
         font-weight: 700;
       }
-
       .problem-card p {
         color: var(--dark-grey);
         line-height: 1.8;
@@ -342,19 +302,12 @@
         justify-content: center;
         margin-bottom: 1.5rem;
       }
-
       .problem-icon i {
         font-size: 2rem;
         color: var(--primary-blue);
       }
 
-      /* Service Description with Image */
-      .service-content {
-        display: flex;
-        align-items: center;
-        gap: 4rem;
-      }
-
+      /* Service Section */
       .service-image img {
         width: 100%;
         border-radius: 20px;
@@ -395,37 +348,86 @@
         border-radius: 15px;
         box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
       }
-
       .step-content h3 {
         color: var(--primary-blue);
         margin-bottom: 1rem;
         font-size: 1.5rem;
       }
 
-      /* Data Scope Grid */
+      /* ======================================================
+         DATA SCOPE — UPDATED: categorised tabs layout
+         ====================================================== */
+      .data-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+
+      .data-tab-btn {
+        padding: 0.55rem 1.4rem;
+        border: 2px solid var(--primary-blue);
+        border-radius: 50px;
+        background: transparent;
+        color: var(--primary-blue);
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+
+      .data-tab-btn.active,
+      .data-tab-btn:hover {
+        background: var(--primary-blue);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 18px rgba(0, 102, 255, 0.3);
+      }
+
+      .data-panel {
+        display: none;
+      }
+      .data-panel.active {
+        display: block;
+      }
+
       .data-scope-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-        gap: 1.5rem;
-        margin-top: 3rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+        margin-top: 1rem;
       }
 
       .data-item {
-        padding: 1.5rem;
+        padding: 1.2rem 1rem;
         background: var(--white);
         border: 2px solid var(--primary-blue);
         border-radius: 12px;
         text-align: center;
         font-weight: 600;
+        font-size: 0.95rem;
         transition: all 0.3s ease;
         color: var(--primary-blue);
+      }
+
+      .data-item span {
+        display: block;
+        font-size: 0.78rem;
+        color: #666;
+        font-weight: 400;
+        margin-top: 4px;
       }
 
       .data-item:hover {
         background: var(--primary-blue);
         color: var(--white);
-        transform: scale(1.05);
+        transform: scale(1.04);
         box-shadow: 0 10px 30px rgba(0, 102, 255, 0.3);
+      }
+
+      .data-item:hover span {
+        color: rgba(255, 255, 255, 0.8);
       }
 
       /* Security Features */
@@ -465,11 +467,11 @@
         margin-bottom: 1.5rem;
       }
 
-      /* Tools Showcase */
+      /* Tools */
       .tools-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 1.8rem;
         margin-top: 3rem;
       }
 
@@ -487,18 +489,13 @@
         box-shadow: 0 10px 30px rgba(0, 102, 255, 0.2);
       }
 
-      .tool-card img {
-        height: 50px;
-        margin-bottom: 1rem;
-      }
-
       .tool-card h4 {
         font-size: 1rem;
         color: var(--black);
         font-weight: 600;
       }
 
-      /* Before/After Comparison */
+      /* Before/After */
       .comparison-container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -517,17 +514,14 @@
         border-radius: 20px;
         position: relative;
       }
-
       .before-box {
         background: linear-gradient(135deg, #ff4444 0%, #cc0000 100%);
         color: white;
       }
-
       .after-box {
         background: var(--gradient-blue);
         color: white;
       }
-
       .comparison-box h3 {
         color: white;
         margin-bottom: 2rem;
@@ -537,14 +531,12 @@
       .comparison-list {
         list-style: none;
       }
-
       .comparison-list li {
         padding: 1rem 0;
         padding-left: 2.5rem;
         position: relative;
         font-size: 1.05rem;
       }
-
       .comparison-list li::before {
         position: absolute;
         left: 0;
@@ -552,18 +544,16 @@
         font-family: "Font Awesome 6 Free";
         font-weight: 900;
       }
-
       .before-box li::before {
         content: "\f00d";
         color: #fff;
       }
-
       .after-box li::before {
         content: "\f00c";
         color: #90e0ff;
       }
 
-      /* Benefits Grid */
+      /* Benefits */
       .benefits-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -600,7 +590,7 @@
         font-size: 1.5rem;
       }
 
-      /* Industries Grid */
+      /* Industries */
       .industries-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -624,7 +614,7 @@
         transform: scale(1.05);
       }
 
-      /* Why Us Section */
+      /* Why Us */
       .why-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -653,7 +643,6 @@
         margin-bottom: 1rem;
         font-size: 1.5rem;
       }
-
       .why-card p {
         color: var(--dark-grey);
       }
@@ -668,7 +657,6 @@
         justify-content: center;
         margin: 0 auto 1.5rem;
       }
-
       .why-icon i {
         font-size: 2.5rem;
         color: var(--primary-blue);
@@ -681,21 +669,17 @@
         text-align: center;
         color: var(--white);
       }
-
       .cta-section h2 {
         font-size: clamp(2rem, 4vw, 3rem);
         margin-bottom: 1.5rem;
         color: var(--white);
       }
-
       .cta-section p {
         font-size: 1.2rem;
         margin-bottom: 2.5rem;
       }
 
-     
-
-      /* Scroll to Top Button */
+      /* Scroll to Top */
       .scroll-to-top {
         position: fixed;
         bottom: 30px;
@@ -718,7 +702,6 @@
         opacity: 1;
         visibility: visible;
       }
-
       .scroll-to-top:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 30px rgba(0, 102, 255, 0.5);
@@ -730,55 +713,22 @@
         transform: translateY(30px);
         transition: all 0.6s ease;
       }
-
       .fade-in-up.visible {
         opacity: 1;
         transform: translateY(0);
       }
 
-      @keyframes slideInLeft {
-        from {
-          opacity: 0;
-          transform: translateX(-50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      @keyframes slideInRight {
-        from {
-          opacity: 0;
-          transform: translateX(50px);
-        }
-        to {
-          opacity: 1;
-          transform: translateX(0);
-        }
-      }
-
-      .slide-in-left {
-        animation: slideInLeft 0.8s ease-out;
-      }
-
-      .slide-in-right {
-        animation: slideInRight 0.8s ease-out;
-      }
-
-      /* Stats Section */
+      /* Stats */
       .stats-section {
         background: var(--white);
         padding: 60px 0;
         border-top: 1px solid rgba(0, 102, 255, 0.1);
         border-bottom: 1px solid rgba(0, 102, 255, 0.1);
       }
-
       .stat-item {
         text-align: center;
         padding: 2rem;
       }
-
       .stat-number {
         font-size: 3.5rem;
         font-weight: 800;
@@ -786,31 +736,26 @@
         font-family: "Poppins", sans-serif;
         margin-bottom: 0.5rem;
       }
-
       .stat-label {
         font-size: 1.1rem;
         color: var(--dark-grey);
         font-weight: 600;
       }
 
-      /* Smooth Scroll */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Responsive */
       @media (max-width: 768px) {
-        .service-content {
-          flex-direction: column;
-        }
-
         .process-step {
           flex-direction: column;
           gap: 1.5rem;
         }
-
-        .hero {
-          padding-top: 100px;
+        .why-grid {
+          grid-template-columns: 1fr;
+        }
+        .data-scope-grid {
+          grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         }
       }
     </style>
@@ -820,10 +765,14 @@
     <header>
       <nav>
         <div class="logo-section">
-          <img
-            src="https://www.zolytics.in/files/logo.png"
-            alt="Zolytics Logo"
-          />
+          <a href="index.html" class="home-logo">
+            <img
+              src="https://www.zolytics.in/files/logo.png"
+              alt="Zolytics"
+              class="logo-img main-logo"
+              style="height: 70px"
+            />
+          </a>
         </div>
       </nav>
     </header>
@@ -853,7 +802,6 @@
               viewBox="0 0 600 400"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <!-- Cloud Storage Illustration -->
               <rect
                 x="50"
                 y="100"
@@ -910,8 +858,6 @@
                 fill="#0066FF"
                 opacity="0.3"
               />
-
-              <!-- Arrow -->
               <path
                 d="M 260 225 L 330 225"
                 stroke="#00B4FF"
@@ -945,8 +891,6 @@
                 stroke-width="3"
                 fill="none"
               />
-
-              <!-- Zoho Cloud -->
               <rect
                 x="350"
                 y="100"
@@ -966,7 +910,7 @@
                 text-anchor="middle"
                 font-weight="bold"
               >
-                Zoho CRM
+                Zoho
               </text>
               <circle cx="380" cy="190" r="15" fill="#0066FF" />
               <circle cx="450" cy="190" r="15" fill="#0066FF" />
@@ -998,9 +942,7 @@
         <div class="row g-4">
           <div class="col-lg-3 col-md-6">
             <div class="problem-card fade-in-up">
-              <div class="problem-icon">
-                <i class="fas fa-database"></i>
-              </div>
+              <div class="problem-icon"><i class="fas fa-database"></i></div>
               <h3>Messy Legacy Data</h3>
               <p>
                 Duplicate records, inconsistent formats, and outdated
@@ -1022,9 +964,7 @@
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="problem-card fade-in-up">
-              <div class="problem-icon">
-                <i class="fas fa-link"></i>
-              </div>
+              <div class="problem-icon"><i class="fas fa-link"></i></div>
               <h3>Integration Issues</h3>
               <p>
                 Disconnected systems and poor data mapping causing workflow
@@ -1034,9 +974,7 @@
           </div>
           <div class="col-lg-3 col-md-6">
             <div class="problem-card fade-in-up">
-              <div class="problem-icon">
-                <i class="fas fa-chart-line"></i>
-              </div>
+              <div class="problem-icon"><i class="fas fa-chart-line"></i></div>
               <h3>Business Impact</h3>
               <p>
                 Inaccurate reporting and decreased team efficiency due to
@@ -1088,7 +1026,6 @@
               viewBox="0 0 500 350"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <!-- Data Cleaning Illustration -->
               <rect
                 x="50"
                 y="50"
@@ -1109,8 +1046,6 @@
               >
                 Raw Data
               </text>
-
-              <!-- Messy bars -->
               <rect
                 x="70"
                 y="100"
@@ -1165,8 +1100,6 @@
                 fill="#0066FF"
                 opacity="0.3"
               />
-
-              <!-- Processing icon -->
               <circle
                 cx="250"
                 cy="175"
@@ -1200,8 +1133,6 @@
                   repeatCount="indefinite"
                 />
               </circle>
-
-              <!-- Clean data -->
               <rect
                 x="270"
                 y="50"
@@ -1223,8 +1154,6 @@
               >
                 Clean Data
               </text>
-
-              <!-- Organized bars -->
               <rect
                 x="290"
                 y="100"
@@ -1291,38 +1220,38 @@
         <div class="row g-4">
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>System Migration</strong><br />
-              Moving from legacy CRM/ERP to Zoho
+              <strong>System Migration</strong><br />Moving from legacy CRM/ERP
+              to Zoho
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>Data Quality Issues</strong><br />
-              High duplicate rates or inconsistent records
+              <strong>Data Quality Issues</strong><br />High duplicate rates or
+              inconsistent records
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>Failed Migration</strong><br />
-              Previous attempt resulted in data loss
+              <strong>Failed Migration</strong><br />Previous attempt resulted
+              in data loss
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>Business Growth</strong><br />
-              Scaling operations require clean data
+              <strong>Business Growth</strong><br />Scaling operations require
+              clean data
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>Compliance Requirements</strong><br />
-              Need accurate, auditable records
+              <strong>Compliance Requirements</strong><br />Need accurate,
+              auditable records
             </div>
           </div>
           <div class="col-lg-4 col-md-6">
             <div class="industry-item">
-              <strong>Multiple Sources</strong><br />
-              Consolidating data from various systems
+              <strong>Multiple Sources</strong><br />Consolidating data from
+              various systems
             </div>
           </div>
         </div>
@@ -1351,7 +1280,6 @@
               </p>
             </div>
           </div>
-
           <div class="process-step">
             <div class="step-number">2</div>
             <div class="step-content">
@@ -1363,7 +1291,6 @@
               </p>
             </div>
           </div>
-
           <div class="process-step">
             <div class="step-number">3</div>
             <div class="step-content">
@@ -1375,7 +1302,6 @@
               </p>
             </div>
           </div>
-
           <div class="process-step">
             <div class="step-number">4</div>
             <div class="step-content">
@@ -1387,7 +1313,6 @@
               </p>
             </div>
           </div>
-
           <div class="process-step">
             <div class="step-number">5</div>
             <div class="step-content">
@@ -1399,7 +1324,6 @@
               </p>
             </div>
           </div>
-
           <div class="process-step">
             <div class="step-number">6</div>
             <div class="step-content">
@@ -1415,32 +1339,220 @@
       </div>
     </section>
 
-    <!-- Data Scope Section -->
-    <section class="section section-bg-blue">
+    <!-- ============================================================
+         DATA SCOPE SECTION — COMPLETELY REDESIGNED
+         Now shows actual data types with categories and descriptions,
+         not just CRM module names.
+         ============================================================ -->
+    <section class="section section-bg-blue" id="data-scope">
       <div class="container">
-        <div class="text-center mb-5">
+        <div class="text-center mb-4">
           <h2 class="section-title">Data We Migrate & Clean</h2>
           <p class="section-subtitle">
-            Comprehensive coverage of all your business data
+            Every record type, format, and relationship — handled with precision
           </p>
         </div>
-        <div class="data-scope-grid">
-          <div class="data-item">Contacts</div>
-          <div class="data-item">Accounts</div>
-          <div class="data-item">Leads</div>
-          <div class="data-item">Deals</div>
-          <div class="data-item">Tasks</div>
-          <div class="data-item">Events</div>
-          <div class="data-item">Calls</div>
-          <div class="data-item">Emails</div>
-          <div class="data-item">Products</div>
-          <div class="data-item">Quotes</div>
-          <div class="data-item">Invoices</div>
-          <div class="data-item">Orders</div>
-          <div class="data-item">Cases</div>
-          <div class="data-item">Custom Modules</div>
-          <div class="data-item">Attachments</div>
-          <div class="data-item">Relationships</div>
+
+        <!-- Category Tabs -->
+        <div class="data-tabs">
+          <button class="data-tab-btn active" data-tab="contacts">
+            Contact & Account Data
+          </button>
+          <button class="data-tab-btn" data-tab="sales">
+            Sales Pipeline Data
+          </button>
+          <button class="data-tab-btn" data-tab="activity">
+            Activity & Communication
+          </button>
+          <button class="data-tab-btn" data-tab="finance">
+            Finance & Orders
+          </button>
+          <button class="data-tab-btn" data-tab="support">
+            Support & Service
+          </button>
+          <button class="data-tab-btn" data-tab="files">
+            Files & Custom Data
+          </button>
+        </div>
+
+        <!-- Contact & Account Data -->
+        <div class="data-panel active" id="tab-contacts">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Contacts<span>Names, phones, emails, addresses</span>
+            </div>
+            <div class="data-item">
+              Accounts / Companies<span>Org details, industries, revenue</span>
+            </div>
+            <div class="data-item">
+              Vendors<span>Supplier profiles & payment terms</span>
+            </div>
+            <div class="data-item">
+              Competitors<span>Competitive intel & comparisons</span>
+            </div>
+            <div class="data-item">
+              Partners<span>Partner tiers, agreements, history</span>
+            </div>
+            <div class="data-item">
+              Contact Relationships<span>Parent-child & peer links</span>
+            </div>
+            <div class="data-item">
+              Duplicate Contacts<span>Merged & de-duplicated records</span>
+            </div>
+            <div class="data-item">
+              Tag & Segment Data<span>Lists, segments, marketing tags</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sales Pipeline Data -->
+        <div class="data-panel" id="tab-sales">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Leads<span>Source, status, scoring data</span>
+            </div>
+            <div class="data-item">
+              Deals / Opportunities<span>Stage, value, close probability</span>
+            </div>
+            <div class="data-item">
+              Pipelines<span>Custom stages & workflows</span>
+            </div>
+            <div class="data-item">
+              Deal History<span>Stage transitions & timestamps</span>
+            </div>
+            <div class="data-item">
+              Lost Reasons<span>Closed-lost notes & categorization</span>
+            </div>
+            <div class="data-item">
+              Forecasts<span>Revenue projections & targets</span>
+            </div>
+            <div class="data-item">
+              Proposals<span>Linked docs & approval status</span>
+            </div>
+            <div class="data-item">
+              Products in Deals<span>Line items, pricing, quantities</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity & Communication -->
+        <div class="data-panel" id="tab-activity">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Calls<span>Call logs, recordings, outcomes</span>
+            </div>
+            <div class="data-item">
+              Emails<span>Sent / received email threads</span>
+            </div>
+            <div class="data-item">
+              Tasks<span>To-dos, deadlines, owners</span>
+            </div>
+            <div class="data-item">
+              Events / Meetings<span>Calendar entries & attendees</span>
+            </div>
+            <div class="data-item">
+              Notes<span>Internal notes & comments</span>
+            </div>
+            <div class="data-item">
+              Follow-ups<span>Reminders & scheduled actions</span>
+            </div>
+            <div class="data-item">
+              Social Interactions<span>Social media touchpoints</span>
+            </div>
+            <div class="data-item">
+              Chat Transcripts<span>Live chat & messaging history</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance & Orders -->
+        <div class="data-panel" id="tab-finance">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Quotes / Estimates<span>Pricing & discount details</span>
+            </div>
+            <div class="data-item">
+              Sales Orders<span>Confirmed order data</span>
+            </div>
+            <div class="data-item">
+              Purchase Orders<span>Vendor purchase records</span>
+            </div>
+            <div class="data-item">
+              Invoices<span>Billed amounts, tax, due dates</span>
+            </div>
+            <div class="data-item">
+              Credit Notes<span>Refunds & adjustments</span>
+            </div>
+            <div class="data-item">
+              Payments<span>Received & pending payments</span>
+            </div>
+            <div class="data-item">
+              Products / Catalogue<span>SKUs, pricing tiers, inventory</span>
+            </div>
+            <div class="data-item">
+              Price Books<span>Multi-currency & customer pricing</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Support & Service -->
+        <div class="data-panel" id="tab-support">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Support Tickets / Cases<span>Issue details, priority, SLA</span>
+            </div>
+            <div class="data-item">
+              Ticket Comments<span>Agent & customer replies</span>
+            </div>
+            <div class="data-item">
+              Solutions / KB Articles<span>Knowledge base content</span>
+            </div>
+            <div class="data-item">
+              SLA Records<span>Response & resolution times</span>
+            </div>
+            <div class="data-item">
+              Escalations<span>Escalation chains & outcomes</span>
+            </div>
+            <div class="data-item">
+              CSAT Feedback<span>Customer satisfaction scores</span>
+            </div>
+            <div class="data-item">
+              Service Contracts<span>Agreement terms & renewals</span>
+            </div>
+            <div class="data-item">
+              Assets<span>Customer-owned asset tracking</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Files & Custom Data -->
+        <div class="data-panel" id="tab-files">
+          <div class="data-scope-grid">
+            <div class="data-item">
+              Attachments & Files<span>Documents linked to records</span>
+            </div>
+            <div class="data-item">
+              Custom Modules<span>Bespoke objects & fields</span>
+            </div>
+            <div class="data-item">
+              Custom Fields<span>All non-standard field values</span>
+            </div>
+            <div class="data-item">
+              Relationships & Links<span>Cross-module associations</span>
+            </div>
+            <div class="data-item">
+              Audit Logs<span>Record change history</span>
+            </div>
+            <div class="data-item">
+              User / Owner Data<span>Record ownership & roles</span>
+            </div>
+            <div class="data-item">
+              Tags & Labels<span>Categorization metadata</span>
+            </div>
+            <div class="data-item">
+              Workflow History<span>Automation trigger logs</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1495,6 +1607,7 @@
           </p>
         </div>
         <div class="tools-grid">
+          <!-- Row 1: Original 6 -->
           <div class="tool-card">
             <svg
               width="50"
@@ -1516,6 +1629,7 @@
             </svg>
             <h4>Zoho API</h4>
           </div>
+
           <div class="tool-card">
             <svg
               width="50"
@@ -1537,6 +1651,7 @@
             </svg>
             <h4>Python</h4>
           </div>
+
           <div class="tool-card">
             <svg
               width="50"
@@ -1558,6 +1673,7 @@
             </svg>
             <h4>SQL Database</h4>
           </div>
+
           <div class="tool-card">
             <svg
               width="50"
@@ -1579,6 +1695,7 @@
             </svg>
             <h4>Excel Tools</h4>
           </div>
+
           <div class="tool-card">
             <svg
               width="50"
@@ -1600,6 +1717,7 @@
             </svg>
             <h4>ETL Platform</h4>
           </div>
+
           <div class="tool-card">
             <svg
               width="50"
@@ -1611,6 +1729,169 @@
               <circle cx="25" cy="25" r="8" fill="white" />
             </svg>
             <h4>Data Quality</h4>
+          </div>
+
+          <!-- Row 2: 6 New Tools -->
+
+          <!-- Zapier — orange Z -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#FF4A00" />
+              <text
+                x="25"
+                y="35"
+                font-size="26"
+                fill="white"
+                text-anchor="middle"
+                font-weight="900"
+                font-family="Arial Black, sans-serif"
+              >
+                Z
+              </text>
+            </svg>
+            <h4>Zapier</h4>
+          </div>
+
+          <!-- Google Sheets — green grid -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#0F9D58" />
+              <rect
+                x="10"
+                y="14"
+                width="30"
+                height="4"
+                rx="1"
+                fill="white"
+                opacity="0.9"
+              />
+              <rect
+                x="10"
+                y="22"
+                width="30"
+                height="4"
+                rx="1"
+                fill="white"
+                opacity="0.9"
+              />
+              <rect
+                x="10"
+                y="30"
+                width="30"
+                height="4"
+                rx="1"
+                fill="white"
+                opacity="0.9"
+              />
+              <rect
+                x="20"
+                y="12"
+                width="4"
+                height="26"
+                rx="1"
+                fill="white"
+                opacity="0.4"
+              />
+            </svg>
+            <h4>Google Sheets</h4>
+          </div>
+
+          <!-- Postman — orange hex -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#FF6C37" />
+              <circle
+                cx="25"
+                cy="22"
+                r="10"
+                fill="none"
+                stroke="white"
+                stroke-width="3"
+              />
+              <line
+                x1="32"
+                y1="29"
+                x2="40"
+                y2="38"
+                stroke="white"
+                stroke-width="3"
+                stroke-linecap="round"
+              />
+              <circle cx="25" cy="22" r="4" fill="white" />
+            </svg>
+            <h4>Postman</h4>
+          </div>
+
+          <!-- MongoDB — leaf logo -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#13AA52" />
+              <path
+                d="M25 8 C25 8, 36 18, 36 28 C36 35, 31 41, 25 43 C19 41, 14 35, 14 28 C14 18, 25 8, 25 8Z"
+                fill="white"
+                opacity="0.95"
+              />
+              <rect
+                x="23.5"
+                y="35"
+                width="3"
+                height="7"
+                rx="1.5"
+                fill="white"
+              />
+            </svg>
+            <h4>MongoDB</h4>
+          </div>
+
+          <!-- Power BI — yellow bar chart -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#F2C811" />
+              <rect x="10" y="30" width="7" height="12" rx="2" fill="#1a1a1a" />
+              <rect x="21" y="20" width="7" height="22" rx="2" fill="#1a1a1a" />
+              <rect x="32" y="12" width="7" height="30" rx="2" fill="#1a1a1a" />
+            </svg>
+            <h4>Power BI</h4>
+          </div>
+
+          <!-- Talend — blue T -->
+          <div class="tool-card">
+            <svg
+              width="50"
+              height="50"
+              viewBox="0 0 50 50"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect width="50" height="50" rx="8" fill="#1675BC" />
+              <rect x="10" y="13" width="30" height="5" rx="2.5" fill="white" />
+              <rect x="22" y="13" width="6" height="26" rx="3" fill="white" />
+            </svg>
+            <h4>Talend</h4>
           </div>
         </div>
       </div>
@@ -1751,9 +2032,7 @@
         </div>
         <div class="why-grid">
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-award"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-award"></i></div>
             <h3>Zoho Experts</h3>
             <p>
               Certified professionals with 500+ successful migrations and deep
@@ -1761,9 +2040,7 @@
             </p>
           </div>
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-cogs"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-cogs"></i></div>
             <h3>Proven Methodology</h3>
             <p>
               Battle-tested processes that ensure accuracy, security, and zero
@@ -1771,9 +2048,7 @@
             </p>
           </div>
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-bolt"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-bolt"></i></div>
             <h3>Fast Turnaround</h3>
             <p>
               Efficient execution that gets you up and running quickly without
@@ -1781,9 +2056,7 @@
             </p>
           </div>
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-headset"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-headset"></i></div>
             <h3>Dedicated Support</h3>
             <p>
               Personal migration specialist assigned to your project from start
@@ -1791,9 +2064,7 @@
             </p>
           </div>
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-puzzle-piece"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-puzzle-piece"></i></div>
             <h3>Custom Solutions</h3>
             <p>
               Tailored approach that fits your unique business requirements and
@@ -1801,9 +2072,7 @@
             </p>
           </div>
           <div class="why-card fade-in-up">
-            <div class="why-icon">
-              <i class="fas fa-check-circle"></i>
-            </div>
+            <div class="why-icon"><i class="fas fa-check-circle"></i></div>
             <h3>Quality Guarantee</h3>
             <p>
               We stand behind our work with comprehensive validation and
@@ -1820,20 +2089,19 @@
         <h2>Ready to Transform Your Data?</h2>
         <p>Let's discuss your migration needs and create a customized plan.</p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
-          <a href="mailto:contact@yourdomain.com" class="cta-button"
+          <a href="mailto:info@zolytics.in" class="cta-button"
             >Schedule Free Consultation</a
           >
-          <a href="tel:+15551234567" class="cta-button cta-button-primary"
+          <a href="tel:+919073139613" class="cta-button cta-button-primary"
             >Call Us Now</a
           >
         </div>
       </div>
     </section>
 
-    <!-- Global Footer -->
+    <!-- Footer -->
     <footer class="site-footer">
       <div class="footer-content">
-        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
           <p class="tagline">Certified Zoho Partner</p>
@@ -1844,43 +2112,39 @@
           </p>
         </div>
 
-         <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
             <ul class="solutions-grid">
-              <li><a href="analytics-html">Zoho Analytics</a></li>
-              <li><a href="bigin-html">Zoho Bigin</a></li>
-              <li><a href="billing-html">Zoho Billing</a></li>
-              <li><a href="books-html">Zoho Books</a></li>
-              <li><a href="commerce-html">Zoho Commerce</a></li>
-              <li><a href="crm-html">Zoho CRM</a></li>
-              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="analytics.html">Zoho Analytics</a></li>
+              <li><a href="bigin.html">Zoho Bigin</a></li>
+              <li><a href="billing.html">Zoho Billing</a></li>
+              <li><a href="books.html">Zoho Books</a></li>
+              <li><a href="commerce.html">Zoho Commerce</a></li>
+              <li><a href="crm.html">Zoho CRM</a></li>
+              <li><a href="expense.html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
-              <li><a href="inventory-html">Zoho Inventory</a></li>
-
-              <li><a href="payroll-html">Zoho Payroll</a></li>
-
-              <li><a href="peopleplus-html">Zoho People Plus</a></li>
-
-              <li><a href="recruit-html">Zoho Recruit</a></li>
+              <li><a href="inventory.html">Zoho Inventory</a></li>
+              <li><a href="payroll.html">Zoho Payroll</a></li>
+              <li><a href="peopleplus.html">Zoho People Plus</a></li>
+              <li><a href="recruit.html">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
 
-        <!-- Contact -->
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>
-            Email: info@zolytics.in <br />
+            Email: info@zolytics.in<br />
             Phone: +91 90 7313 9613<br />
             Location: India
-             <div
+          </p>
+          <div
             style="
               display: flex;
               align-items: center;
               gap: 8px;
-              margin-top: 5px;
+              margin-top: 10px;
             "
           >
             <a
@@ -1899,19 +2163,20 @@
                 width="22"
                 height="22"
               />
-              <span style="font-weight: 500">  +91 90 7313 9613</span>
+              <span style="font-weight: 500; margin-left: 6px"
+                >+91 90 7313 9613</span
+              >
             </a>
           </div>
-          </p>
-          <div class="zoho-logo">
+          <div class="zoho-logo" style="margin-top: 16px">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
               alt="Zoho Premium Partner"
+              style="max-width: 140px; opacity: 0.95"
             />
           </div>
         </div>
       </div>
-
       <div class="footer-bottom">
         <p>
           © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
@@ -1921,14 +2186,12 @@
     </footer>
 
     <style>
-      /* Footer Styles */
       .site-footer {
         background: #050505;
         color: #e5e7eb;
         padding: 75px 5% 25px;
         font-size: 14px;
       }
-
       .footer-content {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1938,44 +2201,36 @@
         margin-left: auto;
         margin-right: auto;
       }
-
       .footer-section h3 {
         font-size: 22px;
         margin-bottom: 14px;
         color: #ffffff;
       }
-
       .tagline {
         font-family: "Segoe Script", "Lucida Handwriting", cursive;
         font-size: 18px;
         color: #38bdf8;
         margin-bottom: 12px;
       }
-
       .center-heading {
         text-align: left;
         margin-bottom: 18px;
         margin-right: 240px;
       }
-
       .footer-section p {
         color: #cbd5e1;
         line-height: 1.7;
       }
-
-      /* Solutions Grid - Perfectly Centered & Aligned */
       .zoho-solutions {
         display: flex;
         flex-direction: column;
         align-items: center;
       }
-
       .solutions-wrapper {
         display: flex;
         justify-content: center;
         width: 100%;
       }
-
       .solutions-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(150px, 180px));
@@ -1985,7 +2240,6 @@
         padding: 0;
         margin: 0;
       }
-
       .solutions-grid li {
         text-align: left;
         white-space: nowrap;
@@ -1994,33 +2248,18 @@
         transition: color 0.25s ease;
         cursor: pointer;
       }
-
       .solutions-grid li:hover {
         color: #38bdf8;
       }
-
-      /* Links */
       .site-footer a {
         color: #d1d5db;
         text-decoration: none;
         font-weight: 500;
         transition: color 0.25s ease;
       }
-
       .site-footer a:hover {
         color: #38bdf8;
       }
-
-      /* Zoho Logo */
-      .zoho-logo {
-        margin-top: 16px;
-      }
-
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-
       .footer-bottom {
         border-top: 1px solid rgba(255, 255, 255, 0.12);
         padding-top: 18px;
@@ -2029,20 +2268,16 @@
         margin-left: auto;
         margin-right: auto;
       }
-
       .footer-bottom p {
         margin: 0;
         color: #94a3b8;
         font-size: 13px;
       }
-
-      /* Responsive adjustments */
       @media (max-width: 768px) {
         .footer-content {
           grid-template-columns: 1fr;
           gap: 30px;
         }
-
         .solutions-grid {
           grid-template-columns: repeat(2, 1fr);
           column-gap: 20px;
@@ -2050,7 +2285,7 @@
       }
     </style>
 
-    <!-- Scroll to Top Button -->
+    <!-- Scroll to Top -->
     <button class="scroll-to-top" id="scrollToTop">
       <i class="fas fa-arrow-up"></i>
     </button>
@@ -2058,178 +2293,91 @@
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom JavaScript -->
     <script>
-      // Navbar scroll effect
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-
-      // Active nav link on scroll
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll(".nav-link");
-
-      window.addEventListener("scroll", () => {
-        let current = "";
-        sections.forEach((section) => {
-          const sectionTop = section.offsetTop;
-          const sectionHeight = section.clientHeight;
-          if (scrollY >= sectionTop - 200) {
-            current = section.getAttribute("id");
-          }
-        });
-
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${current}`) {
-            link.classList.add("active");
-          }
-        });
-      });
-
-      // Scroll to top button
+      // ── Scroll-to-top button ──────────────────────────────────────
       const scrollToTopBtn = document.getElementById("scrollToTop");
-
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 300) {
-          scrollToTopBtn.classList.add("visible");
-        } else {
-          scrollToTopBtn.classList.remove("visible");
-        }
+      window.addEventListener("scroll", () => {
+        scrollToTopBtn.classList.toggle("visible", window.scrollY > 300);
       });
+      scrollToTopBtn.addEventListener("click", () =>
+        window.scrollTo({ top: 0, behavior: "smooth" }),
+      );
 
-      scrollToTopBtn.addEventListener("click", function () {
-        window.scrollTo({
-          top: 0,
-          behavior: "smooth",
+      // ── Fade-in-up observer ───────────────────────────────────────
+      const fadeObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) e.target.classList.add("visible");
+          });
+        },
+        { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
+      );
+      document
+        .querySelectorAll(".fade-in-up")
+        .forEach((el) => fadeObserver.observe(el));
+
+      // ── Data-scope tabs ───────────────────────────────────────────
+      const tabBtns = document.querySelectorAll(".data-tab-btn");
+      const tabPanels = document.querySelectorAll(".data-panel");
+
+      tabBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          tabBtns.forEach((b) => b.classList.remove("active"));
+          tabPanels.forEach((p) => p.classList.remove("active"));
+
+          btn.classList.add("active");
+          const target = document.getElementById("tab-" + btn.dataset.tab);
+          if (target) target.classList.add("active");
         });
       });
 
-      // Fade in animation on scroll
-      const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px",
-      };
-
-      const observer = new IntersectionObserver(function (entries) {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll(".fade-in-up").forEach((element) => {
-        observer.observe(element);
-      });
-
-      // Smooth scroll for navigation links
+      // ── Smooth scroll for anchor links ────────────────────────────
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
-          e.preventDefault();
           const target = document.querySelector(this.getAttribute("href"));
           if (target) {
-            const navbarHeight = document.querySelector(".navbar").offsetHeight;
-            const targetPosition = target.offsetTop - navbarHeight;
-
+            e.preventDefault();
+            const headerH = document.querySelector("header").offsetHeight;
             window.scrollTo({
-              top: targetPosition,
+              top: target.offsetTop - headerH - 10,
               behavior: "smooth",
             });
-
-            // Close mobile menu if open
-            const navbarCollapse = document.querySelector(".navbar-collapse");
-            if (navbarCollapse.classList.contains("show")) {
-              navbarCollapse.classList.remove("show");
-            }
           }
         });
       });
 
-      // Counter animation for stats and benefit numbers
-      function animateCounter(element, target, duration, suffix = "") {
+      // ── Benefit counter animation ─────────────────────────────────
+      function animateCounter(el, target, duration, suffix) {
         let start = 0;
-        const increment = target / (duration / 16);
+        const step = target / (duration / 16);
         const timer = setInterval(() => {
-          start += increment;
+          start += step;
           if (start >= target) {
-            element.textContent = target + suffix;
+            el.textContent = suffix === "$0" ? "$0" : target + suffix;
             clearInterval(timer);
           } else {
-            if (suffix === "x") {
-              element.textContent = Math.floor(start) + suffix;
-            } else if (suffix === "%") {
-              element.textContent = Math.floor(start) + suffix;
-            } else if (suffix === "+") {
-              element.textContent = Math.floor(start) + suffix;
-            } else {
-              element.textContent = "$" + Math.floor(start);
-            }
+            if (suffix === "x" || suffix === "%")
+              el.textContent = Math.floor(start) + suffix;
+            else if (suffix === "+") el.textContent = Math.floor(start) + "+";
+            else el.textContent = "$" + Math.floor(start);
           }
         }, 16);
       }
 
-      // Animate stats
-      const statsObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              const number = entry.target.querySelector(".stat-number");
-              if (number && !number.classList.contains("animated")) {
-                number.classList.add("animated");
-                const text = number.textContent;
-                if (text.includes("+")) {
-                  const value = parseInt(text);
-                  number.textContent = "0+";
-                  animateCounter(number, value, 2000, "+");
-                } else if (text.includes("%")) {
-                  const value = parseFloat(text);
-                  number.textContent = "0%";
-                  animateCounter(number, value, 2000, "%");
-                } else if (text.includes("/")) {
-                  // For 24/7, just show it
-                }
-              }
-            }
-          });
-        },
-        { threshold: 0.5 },
-      );
-
-      document.querySelectorAll(".stat-item").forEach((item) => {
-        statsObserver.observe(item);
-      });
-
-      // Animate benefit numbers
       const benefitObserver = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
             if (entry.isIntersecting) {
-              const number = entry.target.querySelector(".benefit-number");
-              if (number && !number.classList.contains("animated")) {
-                number.classList.add("animated");
-                const text = number.textContent;
-                if (text.includes("%")) {
-                  const value = parseInt(text);
-                  number.textContent = "0%";
-                  animateCounter(number, value, 2000, "%");
-                } else if (text.includes("x")) {
-                  const value = parseInt(text);
-                  number.textContent = "0x";
-                  animateCounter(number, value, 2000, "x");
-                } else if (text === "$0") {
-                  // Keep as $0
-                } else if (text.includes("/")) {
-                  // Keep 24/7 as is
-                } else {
-                  const value = parseInt(text);
-                  number.textContent = "0";
-                  animateCounter(number, value, 2000);
+              const num = entry.target.querySelector(".benefit-number");
+              if (num && !num.classList.contains("animated")) {
+                num.classList.add("animated");
+                const t = num.textContent;
+                if (t.includes("%"))
+                  animateCounter(num, parseInt(t), 2000, "%");
+                else if (t.includes("x"))
+                  animateCounter(num, parseInt(t), 2000, "x");
+                else if (t === "$0" || t === "24/7") {
+                  /* keep as-is */
                 }
               }
             }
@@ -2237,19 +2385,9 @@
         },
         { threshold: 0.5 },
       );
-
-      document.querySelectorAll(".benefit-card").forEach((card) => {
-        benefitObserver.observe(card);
-      });
-
-      // Parallax effect for hero
-      window.addEventListener("scroll", function () {
-        const scrolled = window.scrollY;
-        const hero = document.querySelector(".hero");
-        if (hero && scrolled < window.innerHeight) {
-          hero.style.transform = `translateY(${scrolled * 0.5}px)`;
-        }
-      });
+      document
+        .querySelectorAll(".benefit-card")
+        .forEach((c) => benefitObserver.observe(c));
     </script>
   </body>
 </html>
