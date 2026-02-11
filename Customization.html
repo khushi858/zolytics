@@ -1,0 +1,2402 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Zoho Customization, Automation & Development | High-Value Solutions
+    </title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Animate.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
+    <style>
+      :root {
+        --primary-color: #0a0a0a;
+        --secondary-color: #10b981;
+        --accent-color: #34d399;
+        --dark-text: #0a0a0a;
+        --light-text: #6b7280;
+        --bg-light: #f9fafb;
+        --white: #ffffff;
+        --gradient-1: linear-gradient(135deg, #0a0a0a 0%, #1f2937 100%);
+        --gradient-2: linear-gradient(135deg, #10b981 0%, #34d399 100%);
+        --gradient-3: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        --gradient-dark: linear-gradient(135deg, #111827 0%, #0a0a0a 100%);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+        --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+        --shadow-lg: 0 12px 32px rgba(16, 185, 129, 0.2);
+        --shadow-xl: 0 20px 48px rgba(16, 185, 129, 0.25);
+        --border-radius: 20px;
+        --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        line-height: 1.7;
+        color: var(--dark-text);
+        background: #ffffff;
+        overflow-x: hidden;
+      }
+
+      /* HEADER */
+      header {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s ease;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: -90px !important;
+      }
+
+      header.scrolled {
+        box-shadow: 0 4px 40px rgba(106, 17, 203, 0.15);
+      }
+
+      nav {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 1.2rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo-section img {
+        height: 90px;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.08) rotate(2deg);
+        filter: drop-shadow(0 8px 20px rgba(139, 92, 246, 0.3));
+      }
+
+      /* Particle Background */
+      .particles-bg {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        top: 0;
+        left: 0;
+      }
+
+      .particle {
+        position: absolute;
+        background: rgba(16, 185, 129, 0.15);
+        border-radius: 50%;
+        animation: float 15s infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 0.3;
+        }
+        50% {
+          transform: translateY(-100px) rotate(180deg);
+          opacity: 0.6;
+        }
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: var(--gradient-dark);
+        color: white;
+        padding: 120px 0 100px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 20% 50%,
+            rgba(16, 185, 129, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 80% 80%,
+            rgba(52, 211, 153, 0.2) 0%,
+            transparent 50%
+          );
+        animation: gradientShift 10s ease-in-out infinite;
+      }
+
+      @keyframes gradientShift {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+      }
+
+      .hero-section h1 {
+        font-family: "Poppins", sans-serif;
+        font-size: 4rem;
+        font-weight: 900;
+        margin-bottom: 1.5rem;
+        line-height: 1.1;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        background: linear-gradient(135deg, #ffffff 0%, #10b981 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        opacity: 0.95;
+        margin-bottom: 2.5rem;
+        font-weight: 300;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        color: #e5e7eb;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        background: rgba(16, 185, 129, 0.2);
+        backdrop-filter: blur(20px);
+        padding: 12px 35px;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border: 2px solid rgba(16, 185, 129, 0.4);
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.2);
+        transition: var(--transition);
+        color: #10b981;
+      }
+
+      .hero-badge:hover {
+        transform: translateY(-3px);
+        background: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
+      }
+
+      /* Logo Showcase */
+      .logo-showcase {
+        background: white;
+        padding: 40px 0;
+        border-bottom: 1px solid #e5e7eb;
+      }
+
+      .logo-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 40px;
+        padding: 20px 0;
+      }
+
+      .logo-item {
+        width: 140px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        background: white;
+        border-radius: 12px;
+        transition: var(--transition);
+        filter: grayscale(1) opacity(0.6);
+        border: 2px solid transparent;
+      }
+
+      .logo-item:hover {
+        filter: grayscale(0) opacity(1);
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--secondary-color);
+      }
+
+      .logo-item img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+      }
+
+      /* Section Styling */
+      .section-padding {
+        padding: 100px 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 70px;
+        position: relative;
+      }
+
+      .section-header h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 3.2rem;
+        color: var(--primary-color);
+        margin-bottom: 1.2rem;
+        font-weight: 800;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-header h2::before {
+        content: "";
+        position: absolute;
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 5px;
+        background: var(--gradient-2);
+        border-radius: 3px;
+      }
+
+      .section-header p {
+        font-size: 1.25rem;
+        color: var(--light-text);
+        max-width: 850px;
+        margin: 2rem auto 0;
+        line-height: 1.8;
+      }
+
+      /* Challenges Section */
+      .challenges-section {
+        background: var(--gradient-3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .challenges-section::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+
+      .challenge-card {
+        background: white;
+        padding: 40px 35px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        height: 100%;
+        border-left: 5px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .challenge-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(16, 185, 129, 0.05),
+          transparent
+        );
+        transition: left 0.6s;
+      }
+
+      .challenge-card:hover::before {
+        left: 100%;
+      }
+
+      .challenge-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: var(--shadow-xl);
+        border-left-width: 8px;
+      }
+
+      .challenge-card h4 {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+        font-family: "Poppins", sans-serif;
+      }
+
+      .challenge-card p {
+        color: var(--light-text);
+        margin-bottom: 0;
+        line-height: 1.8;
+        font-size: 1.05rem;
+      }
+
+      .challenge-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background: var(--gradient-2);
+        color: white;
+        border-radius: 50%;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        transition: var(--transition);
+      }
+
+      .challenge-card:hover .challenge-number {
+        transform: rotate(360deg) scale(1.1);
+      }
+
+      /* Service Cards */
+      .service-card {
+        background: white;
+        border-radius: var(--border-radius);
+        padding: 45px 35px;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        height: 100%;
+        position: relative;
+        border: 2px solid transparent;
+        overflow: hidden;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 6px;
+        background: var(--gradient-2);
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .service-card::after {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.05) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .service-card:hover {
+        transform: translateY(-12px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--secondary-color);
+      }
+
+      .service-card:hover::before {
+        opacity: 1;
+      }
+
+      .service-card:hover::after {
+        opacity: 1;
+        animation: ripple 2s infinite;
+      }
+
+      @keyframes ripple {
+        0% {
+          transform: scale(0.8) rotate(0deg);
+        }
+        100% {
+          transform: scale(1.2) rotate(360deg);
+        }
+      }
+
+      .service-card h3 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.7rem;
+        color: var(--primary-color);
+        margin-bottom: 1.3rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .service-card p {
+        color: var(--light-text);
+        margin-bottom: 1.8rem;
+        font-size: 1.08rem;
+        line-height: 1.8;
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      .feature-list li {
+        padding: 14px 0;
+        color: #374151;
+        position: relative;
+        padding-left: 35px;
+        font-size: 1.02rem;
+        line-height: 1.7;
+        transition: var(--transition);
+      }
+
+      .feature-list li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background: var(--gradient-2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .feature-list li::after {
+        content: "✓";
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: white;
+        font-weight: bold;
+        font-size: 0.85rem;
+      }
+
+      .feature-list li:hover {
+        padding-left: 40px;
+        color: var(--primary-color);
+      }
+
+      /* Highlight Boxes */
+      .highlight-box {
+        background: white;
+        border-left: 6px solid var(--secondary-color);
+        padding: 50px 45px;
+        border-radius: var(--border-radius);
+        margin-bottom: 35px;
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .highlight-box::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 150px;
+        height: 150px;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.08) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        transform: translate(30%, -30%);
+      }
+
+      .highlight-box:hover {
+        transform: translateX(5px);
+        box-shadow: var(--shadow-lg);
+        border-left-width: 10px;
+      }
+
+      .highlight-box h3 {
+        font-family: "Poppins", sans-serif;
+        color: var(--primary-color);
+        margin-bottom: 2rem;
+        font-size: 2rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .highlight-box ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        position: relative;
+        z-index: 1;
+      }
+
+      .highlight-box li {
+        padding-left: 35px;
+        position: relative;
+        color: #374151;
+        font-size: 1.08rem;
+        line-height: 1.7;
+        transition: var(--transition);
+      }
+
+      .highlight-box li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 22px;
+        height: 22px;
+        background: var(--gradient-2);
+        border-radius: 4px;
+        transform: rotate(45deg);
+      }
+
+      .highlight-box li::after {
+        content: "▸";
+        position: absolute;
+        left: 5px;
+        top: 3px;
+        color: white;
+        font-size: 1.1rem;
+        font-weight: bold;
+        transform: rotate(-45deg);
+      }
+
+      .highlight-box li:hover {
+        padding-left: 42px;
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      /* Zoho Modules Grid with Logos */
+      .module-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .module-card {
+        background: white;
+        padding: 35px 25px;
+        border-radius: 16px;
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+        text-align: center;
+        border: 2px solid #f1f5f9;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .module-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-3);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .module-card:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: var(--shadow-lg);
+        border-color: var(--secondary-color);
+      }
+
+      .module-card:hover::before {
+        opacity: 1;
+      }
+
+      .module-logo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 20px;
+        background: var(--gradient-3);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .module-card:hover .module-logo {
+        transform: scale(1.1) rotate(5deg);
+        background: var(--gradient-2);
+        color: white;
+      }
+
+      .module-card h4 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        margin-bottom: 10px;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .module-card p {
+        font-size: 0.95rem;
+        color: var(--light-text);
+        margin: 0;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Use Cases Section */
+      .use-case-card {
+        background: white;
+        padding: 40px 35px;
+        border-radius: var(--border-radius);
+        box-shadow: var(--shadow-md);
+        transition: var(--transition);
+        height: 100%;
+        border-top: 5px solid var(--secondary-color);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .use-case-card::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 120px;
+        height: 120px;
+        background: var(--gradient-3);
+        border-radius: 50%;
+        transform: translate(40%, 40%);
+        transition: var(--transition);
+      }
+
+      .use-case-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-xl);
+        border-top-width: 8px;
+      }
+
+      .use-case-card:hover::before {
+        transform: translate(30%, 30%) scale(1.5);
+      }
+
+      .use-case-card h4 {
+        font-family: "Poppins", sans-serif;
+        color: var(--primary-color);
+        font-size: 1.6rem;
+        margin-bottom: 1.3rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .use-case-description {
+        color: var(--light-text);
+        margin-bottom: 1.5rem;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .use-case-tag {
+        display: inline-block;
+        background: var(--gradient-3);
+        color: var(--secondary-color);
+        padding: 8px 20px;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border: 2px solid transparent;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+      }
+
+      .use-case-tag:hover {
+        background: var(--secondary-color);
+        color: white;
+        transform: translateY(-2px);
+        border-color: var(--secondary-color);
+        box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      }
+
+      /* Support Cards */
+      .support-card {
+        background: white;
+        padding: 45px 35px;
+        border-radius: var(--border-radius);
+        text-align: center;
+        transition: var(--transition);
+        height: 100%;
+        border: 2px solid #f1f5f9;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .support-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-3);
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .support-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--secondary-color);
+        box-shadow: var(--shadow-xl);
+      }
+
+      .support-card:hover::before {
+        opacity: 1;
+      }
+
+      .support-icon-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 25px;
+        background: var(--gradient-2);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        transition: var(--transition);
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
+      }
+
+      .support-card:hover .support-icon-wrapper {
+        transform: rotateY(360deg);
+        background: var(--gradient-dark);
+      }
+
+      .support-card h4 {
+        font-family: "Poppins", sans-serif;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .support-card p {
+        color: var(--light-text);
+        margin-bottom: 0;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* Security Section */
+      .security-section {
+        background: var(--gradient-dark);
+        color: white;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .security-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(16, 185, 129, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 90% 80%,
+            rgba(52, 211, 153, 0.25) 0%,
+            transparent 50%
+          );
+      }
+
+      .security-item {
+        background: rgba(16, 185, 129, 0.1);
+        backdrop-filter: blur(20px);
+        padding: 40px 35px;
+        border-radius: var(--border-radius);
+        border: 2px solid rgba(16, 185, 129, 0.3);
+        transition: var(--transition);
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .security-item::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(16, 185, 129, 0.15) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .security-item:hover {
+        background: rgba(16, 185, 129, 0.15);
+        transform: translateY(-8px);
+        border-color: rgba(16, 185, 129, 0.5);
+        box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+      }
+
+      .security-item:hover::before {
+        opacity: 1;
+        animation: rotate 8s linear infinite;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .security-item h4 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.5rem;
+        margin-bottom: 1.2rem;
+        font-weight: 700;
+        position: relative;
+        z-index: 1;
+      }
+
+      .security-item p {
+        margin-bottom: 0;
+        opacity: 0.95;
+        line-height: 1.8;
+        font-size: 1.05rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: var(--gradient-dark);
+        color: white;
+        padding: 100px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background:
+          radial-gradient(
+            circle at 30% 50%,
+            rgba(16, 185, 129, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 50%,
+            rgba(52, 211, 153, 0.2) 0%,
+            transparent 50%
+          );
+        animation: pulseGradient 6s ease-in-out infinite;
+      }
+
+      @keyframes pulseGradient {
+        0%,
+        100% {
+          opacity: 0.5;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .cta-content {
+        position: relative;
+        z-index: 2;
+      }
+
+      .cta-section h2 {
+        font-family: "Poppins", sans-serif;
+        font-size: 3.2rem;
+        margin-bottom: 1.8rem;
+        font-weight: 800;
+        text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      }
+
+      .cta-section p {
+        font-size: 1.4rem;
+        margin-bottom: 3rem;
+        opacity: 0.95;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+        color: #e5e7eb;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background: var(--secondary-color);
+        color: white;
+        padding: 20px 60px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.3rem;
+        transition: var(--transition);
+        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: var(--accent-color);
+        transition:
+          width 0.6s,
+          height 0.6s,
+          top 0.6s,
+          left 0.6s;
+        transform: translate(-50%, -50%);
+        z-index: -1;
+      }
+
+      .cta-button:hover::before {
+        width: 300%;
+        height: 300%;
+      }
+
+      .cta-button:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 16px 48px rgba(16, 185, 129, 0.4);
+        color: white;
+      }
+
+      /* Stats Counter Section */
+      .stats-section {
+        background: var(--primary-color);
+        padding: 80px 0;
+        border-top: 1px solid rgba(16, 185, 129, 0.2);
+        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 30px;
+        position: relative;
+      }
+
+      .stat-number {
+        font-family: "Poppins", sans-serif;
+        font-size: 3.5rem;
+        font-weight: 800;
+        background: var(--gradient-2);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 10px;
+        line-height: 1;
+      }
+
+      .stat-label {
+        font-size: 1.2rem;
+        color: #9ca3af;
+        font-weight: 600;
+      }
+
+      /* Parallax Effect */
+      .parallax-section {
+        background-image:
+          linear-gradient(rgba(10, 10, 10, 0.95), rgba(31, 41, 55, 0.95)),
+          url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(16,185,129,0.1)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid3)"/></svg>');
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: repeat;
+        background-size: auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .hero-section h1 {
+          font-size: 3rem;
+        }
+
+        .section-header h2 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hero-section h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+          font-size: 1.2rem;
+        }
+
+        .section-header h2 {
+          font-size: 2.2rem;
+        }
+
+        .highlight-box ul {
+          grid-template-columns: 1fr;
+        }
+
+        .stat-number {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-section {
+          padding: 80px 0 60px;
+        }
+
+        .hero-section h1 {
+          font-size: 2rem;
+        }
+
+        .section-padding {
+          padding: 60px 0;
+        }
+
+        .section-header h2 {
+          font-size: 1.8rem;
+        }
+
+        .cta-section h2 {
+          font-size: 2rem;
+        }
+
+        .logo-container {
+          gap: 25px;
+        }
+
+        .logo-item {
+          width: 100px;
+          height: 60px;
+        }
+
+        .module-grid {
+          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          gap: 20px;
+        }
+      }
+
+      /* Loading Animation */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fadeInUp 0.6s ease-out;
+      }
+
+      /* Scroll Progress Bar */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 4px;
+        background: var(--gradient-2);
+        z-index: 9999;
+        transition: width 0.2s;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    <header>
+      <nav>
+        <div class="logo-section">
+  <a href="index.html" class="home-logo">
+    <img
+      src="https://www.zolytics.in/files/logo.png"
+      alt="Zolytics"
+      class="logo-img main-logo"
+      style="height: 90px;"
+    />
+  </a>
+</div>
+      </nav>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="particles-bg" id="particles"></div>
+      <div class="container">
+        <div class="hero-content">
+          <h1 data-aos="fade-up" class="animate__animated animate__fadeInUp">
+            Customization, Automation & Development
+          </h1>
+          <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
+            Enterprise-Grade Zoho Solutions for High-Value Business Operations
+          </p>
+          <div class="hero-badge" data-aos="fade-up" data-aos-delay="200">
+            Premium Development Services
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Logo Showcase -->
+    <section class="logo-showcase" data-aos="fade-up">
+      <div class="container">
+        <div class="logo-container">
+          <div class="logo-item" data-aos="zoom-in" data-aos-delay="100">
+            <img
+              src="https://www.zoho.com/branding/images/zoho-logo.svg"
+              alt="Zoho"
+            />
+          </div>
+          <div class="logo-item" data-aos="zoom-in" data-aos-delay="150">
+            <img
+              src="https://logos-world.net/wp-content/uploads/2021/02/Salesforce-Logo.png"
+              alt="Salesforce"
+            />
+          </div>
+          <div class="logo-item" data-aos="zoom-in" data-aos-delay="200">
+            <img
+              src="https://cdn.worldvectorlogo.com/logos/google-cloud-1.svg"
+              alt="Google Cloud"
+            />
+          </div>
+          <div class="logo-item" data-aos="zoom-in" data-aos-delay="250">
+            <img
+              src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg"
+              alt="Microsoft"
+            />
+          </div>
+          <div class="logo-item" data-aos="zoom-in" data-aos-delay="300">
+            <img
+              src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg"
+              alt="Slack"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="row">
+          <div
+            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="stat-item">
+              <div class="stat-number" data-count="500">0</div>
+              <div class="stat-label">Projects Completed</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="stat-item">
+              <div class="stat-number" data-count="250">0</div>
+              <div class="stat-label">Happy Clients</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="stat-item">
+              <div class="stat-number" data-count="15">0</div>
+              <div class="stat-label">Years Experience</div>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <div class="stat-item">
+              <div class="stat-number" data-count="98">0</div>
+              <div class="stat-label">Success Rate %</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Challenges Section -->
+    <section class="challenges-section section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up">Business Challenges We Solve</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            We understand your pain points. Our solutions are designed to
+            address the real-world challenges businesses face every day.
+          </p>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">1</div>
+              <h4>Manual Data Entry</h4>
+              <p>
+                Eliminate time-consuming manual processes and reduce human
+                errors with intelligent automation that saves hours of work
+                daily.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">2</div>
+              <h4>Poor Reporting & Analytics</h4>
+              <p>
+                Get real-time insights with customized dashboards and reports
+                that provide actionable intelligence for better decision-making.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">3</div>
+              <h4>Disconnected Systems</h4>
+              <p>
+                Break down data silos by integrating all your business systems
+                for seamless information flow across departments.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">4</div>
+              <h4>Delayed Approvals</h4>
+              <p>
+                Streamline approval workflows with automated routing,
+                notifications, and escalations to accelerate business processes.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">5</div>
+              <h4>Revenue Leakage</h4>
+              <p>
+                Prevent revenue loss with automated tracking, validation, and
+                reconciliation of all financial transactions and opportunities.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="350"
+          >
+            <div class="challenge-card">
+              <div class="challenge-number">6</div>
+              <h4>Lack of Visibility</h4>
+              <p>
+                Gain complete transparency into your operations with real-time
+                monitoring, alerts, and comprehensive audit trails.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Services Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up">Our Core Development Services</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Comprehensive Zoho customization and automation solutions tailored
+            to your unique business needs
+          </p>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="service-card">
+              <h3>Zoho Custom Development</h3>
+              <p>
+                Tailored solutions designed to meet your unique business
+                requirements with scalable, robust architecture.
+              </p>
+              <ul class="feature-list">
+                <li>Custom module development</li>
+                <li>Bespoke workflow automation</li>
+                <li>Advanced field customization</li>
+                <li>Custom button actions</li>
+                <li>Role-based custom views</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="service-card">
+              <h3>Deluge Custom Functions</h3>
+              <p>
+                Powerful server-side scripting to automate complex business
+                logic and data operations.
+              </p>
+              <ul class="feature-list">
+                <li>Custom validation rules</li>
+                <li>Automated data processing</li>
+                <li>Complex calculations & formulas</li>
+                <li>Scheduled functions & triggers</li>
+                <li>Multi-module data sync</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="service-card">
+              <h3>Zoho Creator App Development</h3>
+              <p>
+                Build custom applications from scratch to solve specific
+                business challenges and streamline processes.
+              </p>
+              <ul class="feature-list">
+                <li>Custom database design</li>
+                <li>Mobile-responsive interfaces</li>
+                <li>Advanced form logic</li>
+                <li>Report & dashboard creation</li>
+                <li>User permission management</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <div class="service-card">
+              <h3>Custom Modules & Workflows</h3>
+              <p>
+                Design and implement intelligent workflows that adapt to your
+                evolving business processes.
+              </p>
+              <ul class="feature-list">
+                <li>Multi-stage approval workflows</li>
+                <li>Conditional automation rules</li>
+                <li>Custom notification systems</li>
+                <li>Task assignment automation</li>
+                <li>Process optimization analysis</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="service-card">
+              <h3>API Integrations</h3>
+              <p>
+                Seamlessly connect Zoho with third-party platforms for unified
+                data flow and enhanced functionality.
+              </p>
+              <ul class="feature-list">
+                <li>Zoho ↔ ERP systems</li>
+                <li>Payment gateway integration</li>
+                <li>Marketing tool connections</li>
+                <li>Accounting software sync</li>
+                <li>Custom API development</li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="350"
+          >
+            <div class="service-card">
+              <h3>Revenue & Incentive Automation</h3>
+              <p>
+                Automate complex financial calculations for revenue tracking,
+                incentives, and accruals with precision.
+              </p>
+              <ul class="feature-list">
+                <li>Automated commission calculations</li>
+                <li>Revenue recognition rules</li>
+                <li>Incentive program management</li>
+                <li>Accrual tracking & reporting</li>
+                <li>Real-time financial dashboards</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Zoho Modules Section -->
+    <section class="section-padding" style="background: #f9fafb">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up">Zoho Modules We Specialize In</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Comprehensive expertise across the entire Zoho ecosystem to power
+            your business operations
+          </p>
+        </div>
+
+        <div class="module-grid">
+          <div class="module-card" data-aos="flip-left" data-aos-delay="100">
+            <h4>Zoho CRM</h4>
+            <p>Sales & Customer Management</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="150">
+            <h4>Zoho Books</h4>
+            <p>Accounting & Finance</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="200">
+            <h4>Zoho People</h4>
+            <p>HR & Employee Management</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="250">
+            <h4>Zoho Creator</h4>
+            <p>Custom App Development</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="300">
+            <h4>Zoho Inventory</h4>
+            <p>Stock Management</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="350">
+            <h4>Zoho Analytics</h4>
+            <p>Business Intelligence</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="400">
+            <h4>Zoho Desk</h4>
+            <p>Customer Support</p>
+          </div>
+          <div class="module-card" data-aos="flip-left" data-aos-delay="450">
+            <h4>Zoho Projects</h4>
+            <p>Project Management</p>
+          </div>
+        </div>
+
+        <div class="row mt-5">
+          <div class="col-12" data-aos="fade-up" data-aos-delay="200">
+            <div class="highlight-box">
+              <h3>Specialized Automation Capabilities</h3>
+              <ul>
+                <li>Revenue Operations Automation</li>
+                <li>Sales Incentive & Commission Systems</li>
+                <li>Financial Accrual Management</li>
+                <li>Multi-Currency Transaction Processing</li>
+                <li>Automated Reporting & Analytics</li>
+                <li>Custom KPI Dashboards</li>
+                <li>Workflow Orchestration</li>
+                <li>Data Migration & Synchronization</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Automation Use Cases Section -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up">Popular Automation Use-Cases</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Real-world applications that demonstrate tangible value and
+            measurable ROI
+          </p>
+        </div>
+        <div class="row g-4">
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="use-case-card">
+              <h4>Lead-to-Deal Automation</h4>
+              <p class="use-case-description">
+                Automatically convert qualified leads to deals, assign sales
+                reps based on territory/product, send personalized email
+                sequences, and update CRM stages based on prospect interactions.
+              </p>
+              <div>
+                <span class="use-case-tag">Sales</span>
+                <span class="use-case-tag">CRM</span>
+                <span class="use-case-tag">Marketing</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="use-case-card">
+              <h4>Invoice & Payment Reconciliation</h4>
+              <p class="use-case-description">
+                Match payments to invoices automatically, send payment reminders
+                for overdue accounts, generate aging reports, and sync financial
+                data across Books, CRM, and bank accounts.
+              </p>
+              <div>
+                <span class="use-case-tag">Finance</span>
+                <span class="use-case-tag">Accounting</span>
+                <span class="use-case-tag">Collections</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="use-case-card">
+              <h4>Employee Onboarding Workflow</h4>
+              <p class="use-case-description">
+                Automatically create employee profiles, assign training modules,
+                generate offer letters, trigger IT provisioning requests, and
+                schedule orientation sessions with automated follow-ups.
+              </p>
+              <div>
+                <span class="use-case-tag">HR</span>
+                <span class="use-case-tag">Onboarding</span>
+                <span class="use-case-tag">Training</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="use-case-card">
+              <h4>Inventory Reorder Automation</h4>
+              <p class="use-case-description">
+                Monitor stock levels in real-time, automatically generate
+                purchase orders when inventory falls below thresholds, notify
+                suppliers, and update forecasts based on sales trends.
+              </p>
+              <div>
+                <span class="use-case-tag">Inventory</span>
+                <span class="use-case-tag">Supply Chain</span>
+                <span class="use-case-tag">Procurement</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="use-case-card">
+              <h4>Support Ticket Escalation</h4>
+              <p class="use-case-description">
+                Route tickets based on priority and category, escalate
+                unresolved issues automatically, assign to specialized agents,
+                send customer notifications, and generate SLA compliance
+                reports.
+              </p>
+              <div>
+                <span class="use-case-tag">Support</span>
+                <span class="use-case-tag">Service Desk</span>
+                <span class="use-case-tag">SLA</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="use-case-card">
+              <h4>Commission & Incentive Calculation</h4>
+              <p class="use-case-description">
+                Calculate sales commissions based on complex rule sets, track
+                performance against targets, generate incentive reports, handle
+                multi-tier structures, and automate payout processing.
+              </p>
+              <div>
+                <span class="use-case-tag">Sales Ops</span>
+                <span class="use-case-tag">Finance</span>
+                <span class="use-case-tag">Compensation</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Support & Maintenance Section -->
+    <section class="section-padding" style="background: #f9fafb">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up">Ongoing Support & Maintenance</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            We don't just deliver solutions — we ensure they continue to perform
+            optimally long after implementation
+          </p>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="support-card">
+              <h4>24/7 Technical Support</h4>
+              <p>
+                Round-the-clock assistance for critical issues with dedicated
+                support channels and guaranteed response times.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="support-card">
+              <h4>Regular Updates</h4>
+              <p>
+                Continuous improvements, feature enhancements, and compatibility
+                updates to keep your system current.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="support-card">
+              <h4>Performance Monitoring</h4>
+              <p>
+                Proactive system health checks, performance optimization, and
+                issue detection before they impact operations.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-3 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <div class="support-card">
+              <h4>Training & Documentation</h4>
+              <p>
+                Comprehensive user training, detailed documentation, and
+                knowledge transfer for your team's success.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12" data-aos="fade-up" data-aos-delay="300">
+            <div class="highlight-box">
+              <h3>Our Support Commitments</h3>
+              <ul>
+                <li>Dedicated Account Manager</li>
+                <li>Priority Issue Resolution</li>
+                <li>Monthly System Health Reports</li>
+                <li>Quarterly Business Reviews</li>
+                <li>Emergency Hotline Access</li>
+                <li>Unlimited Email & Chat Support</li>
+                <li>Regular Security Updates</li>
+                <li>Backup & Disaster Recovery</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security & Compliance Section -->
+    <section class="security-section section-padding parallax-section">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-aos="fade-up" style="color: white">
+            Data Security & Compliance
+          </h2>
+          <p
+            data-aos="fade-up"
+            data-aos-delay="100"
+            style="color: rgba(229, 231, 235, 0.9)"
+          >
+            Enterprise-grade security measures and compliance standards to
+            protect your critical business data
+          </p>
+        </div>
+        <div class="row g-4">
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="100"
+          >
+            <div class="security-item">
+              <h4>Data Encryption</h4>
+              <p>
+                End-to-end encryption for data at rest and in transit using
+                industry-standard AES-256 encryption protocols.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="150"
+          >
+            <div class="security-item">
+              <h4>GDPR Compliance</h4>
+              <p>
+                Full compliance with GDPR, CCPA, and other data privacy
+                regulations to ensure lawful data processing.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="200"
+          >
+            <div class="security-item">
+              <h4>Role-Based Access</h4>
+              <p>
+                Granular permission controls ensuring users access only the data
+                and functions relevant to their roles.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="250"
+          >
+            <div class="security-item">
+              <h4>Audit Trails</h4>
+              <p>
+                Comprehensive logging of all system activities for compliance,
+                troubleshooting, and security monitoring.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="300"
+          >
+            <div class="security-item">
+              <h4>SOC 2 Certified</h4>
+              <p>
+                Adherence to SOC 2 Type II standards for security, availability,
+                and confidentiality controls.
+              </p>
+            </div>
+          </div>
+          <div
+            class="col-lg-4 col-md-6"
+            data-aos="fade-up"
+            data-aos-delay="350"
+          >
+            <div class="security-item">
+              <h4>Data Backup</h4>
+              <p>
+                Automated daily backups with point-in-time recovery options and
+                geo-redundant storage solutions.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-12" data-aos="fade-up" data-aos-delay="400">
+            <div
+              class="highlight-box"
+              style="
+                background: rgba(16, 185, 129, 0.1);
+                backdrop-filter: blur(20px);
+                border-left-color: var(--secondary-color);
+              "
+            >
+              <h3 style="color: white">Industry-Specific Compliance</h3>
+              <ul style="color: rgba(253, 254, 255, 0.9)">
+                <li>HIPAA - Healthcare Data Protection</li>
+                <li>PCI DSS - Payment Card Industry Standards</li>
+                <li>SOX - Financial Reporting Controls</li>
+                <li>ISO 27001 - Information Security Management</li>
+                <li>FINRA - Financial Services Compliance</li>
+                <li>FERPA - Educational Records Privacy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <div class="container">
+        <div class="cta-content">
+          <h2 data-aos="fade-up">Ready to Elevate Your Zoho Experience?</h2>
+          <p data-aos="fade-up" data-aos-delay="100">
+            Let's discuss how custom development and automation can transform
+            your business operations
+          </p>
+          <a
+            href="#contact"
+            class="cta-button"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            >Get Started Today</a
+          >
+        </div>
+      </div>
+    </section>
+  <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        easing: "ease-out-cubic",
+        once: true,
+        mirror: false,
+        offset: 100,
+      });
+
+      // Scroll Progress Bar
+      window.addEventListener("scroll", function () {
+        const scrollProgress = document.getElementById("scrollProgress");
+        const scrollHeight =
+          document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = (window.scrollY / scrollHeight) * 100;
+        scrollProgress.style.width = scrolled + "%";
+      });
+
+      // Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Particle Background
+      function createParticles() {
+        const particlesContainer = document.getElementById("particles");
+        const particleCount = 30;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.width = Math.random() * 5 + 2 + "px";
+          particle.style.height = particle.style.width;
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 15 + "s";
+          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+          particlesContainer.appendChild(particle);
+        }
+      }
+
+      createParticles();
+
+      // Counter Animation
+      function animateCounters() {
+        const counters = document.querySelectorAll(".stat-number");
+
+        const observerOptions = {
+          threshold: 0.5,
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = parseInt(entry.target.getAttribute("data-count"));
+              let count = 0;
+              const increment = target / 100;
+              const duration = 2000;
+              const stepTime = duration / 100;
+
+              const timer = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                  entry.target.textContent =
+                    target + (target === 98 ? "%" : "+");
+                  clearInterval(timer);
+                } else {
+                  entry.target.textContent =
+                    Math.floor(count) + (target === 98 ? "%" : "+");
+                }
+              }, stepTime);
+
+              observer.unobserve(entry.target);
+            }
+          });
+        }, observerOptions);
+
+        counters.forEach((counter) => observer.observe(counter));
+      }
+
+      animateCounters();
+
+      // Card hover effect enhancement
+      const cards = document.querySelectorAll(
+        ".service-card, .challenge-card, .use-case-card, .support-card, .module-card",
+      );
+      cards.forEach((card) => {
+        card.addEventListener("mouseenter", function () {
+          this.style.transition = "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)";
+        });
+      });
+
+      // Parallax effect
+      window.addEventListener("scroll", function () {
+        const parallaxSections = document.querySelectorAll(".parallax-section");
+        parallaxSections.forEach((section) => {
+          const scrolled = window.pageYOffset;
+          const rate = scrolled * 0.3;
+          section.style.backgroundPositionY = rate + "px";
+        });
+      });
+
+      // Logo hover effect
+      const logoItems = document.querySelectorAll(".logo-item");
+      logoItems.forEach((logo) => {
+        logo.addEventListener("mouseenter", function () {
+          logoItems.forEach((l) => {
+            if (l !== this) {
+              l.style.filter = "grayscale(1) opacity(0.3)";
+            }
+          });
+        });
+
+        logo.addEventListener("mouseleave", function () {
+          logoItems.forEach((l) => {
+            l.style.filter = "grayscale(1) opacity(0.6)";
+          });
+        });
+      });
+
+      // Intersection Observer for fade-in animations
+      const observeElements = document.querySelectorAll(
+        ".service-card, .challenge-card, .use-case-card",
+      );
+
+      const fadeInObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("fade-in-up");
+              fadeInObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      observeElements.forEach((el) => fadeInObserver.observe(el));
+
+      // Dynamic gradient animation for green
+      let hue = 142; // Green base hue
+      setInterval(() => {
+        hue = 142 + Math.sin(Date.now() / 1000) * 10;
+        document.documentElement.style.setProperty(
+          "--accent-color",
+          `hsl(${hue}, 70%, 65%)`,
+        );
+      }, 100);
+
+      // Add loading class removal
+      window.addEventListener("load", () => {
+        document.body.classList.add("loaded");
+      });
+
+      // Enhanced scroll behavior
+      let lastScrollTop = 0;
+      window.addEventListener(
+        "scroll",
+        function () {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          if (scrollTop > lastScrollTop) {
+            document.body.classList.add("scrolling-down");
+            document.body.classList.remove("scrolling-up");
+          } else {
+            document.body.classList.add("scrolling-up");
+            document.body.classList.remove("scrolling-down");
+          }
+
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+        },
+        false,
+      );
+
+      // Add ripple effect to buttons
+      document
+        .querySelectorAll(".cta-button, .use-case-tag")
+        .forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const ripple = document.createElement("span");
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = x + "px";
+            ripple.style.top = y + "px";
+            ripple.classList.add("ripple-effect");
+
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+          });
+        });
+    </script>
+  </body>
+</html>
