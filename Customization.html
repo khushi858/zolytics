@@ -15,9 +15,12 @@
 
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=Poppins:wght@300;400;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
@@ -31,12 +34,19 @@
     <style>
       :root {
         --primary-color: #0a0a0a;
+        --primary-dark: #111827;
         --secondary-color: #10b981;
         --accent-color: #34d399;
+        --accent-emerald: #10b981;
+        --accent-teal: #14b8a6;
+        --accent-red: #ef4444;
         --dark-text: #0a0a0a;
         --light-text: #6b7280;
+        --text-primary: #0f172a;
+        --text-secondary: #64748b;
         --bg-light: #f9fafb;
         --white: #ffffff;
+        --border-subtle: #e2e8f0;
         --gradient-1: linear-gradient(135deg, #0a0a0a 0%, #1f2937 100%);
         --gradient-2: linear-gradient(135deg, #10b981 0%, #34d399 100%);
         --gradient-3: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
@@ -225,54 +235,12 @@
         box-shadow: 0 12px 32px rgba(16, 185, 129, 0.3);
       }
 
-      /* Logo Showcase */
-      .logo-showcase {
-        background: white;
-        padding: 40px 0;
-        border-bottom: 1px solid #e5e7eb;
-      }
-
-      .logo-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 40px;
-        padding: 20px 0;
-      }
-
-      .logo-item {
-        width: 140px;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 15px;
-        background: white;
-        border-radius: 12px;
-        transition: var(--transition);
-        filter: grayscale(1) opacity(0.6);
-        border: 2px solid transparent;
-      }
-
-      .logo-item:hover {
-        filter: grayscale(0) opacity(1);
-        transform: translateY(-5px) scale(1.05);
-        box-shadow: var(--shadow-lg);
-        border-color: var(--secondary-color);
-      }
-
-      .logo-item img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
-      }
-
       /* Section Styling */
       .section-padding {
         padding: 100px 0;
       }
 
+      /* GENERIC SECTION HEADER */
       .section-header {
         text-align: center;
         margin-bottom: 70px;
@@ -309,14 +277,16 @@
         line-height: 1.8;
       }
 
-      /* Challenges Section */
-      .challenges-section {
+      /* ============================================ */
+      /* BUSINESS CHALLENGES SECTION (Old Style) */
+      /* ============================================ */
+      .business-challenges-section {
         background: var(--gradient-3);
         position: relative;
         overflow: hidden;
       }
 
-      .challenges-section::before {
+      .business-challenges-section::before {
         content: "";
         position: absolute;
         top: -50%;
@@ -331,7 +301,7 @@
         border-radius: 50%;
       }
 
-      .challenge-card {
+      .old-challenge-card {
         background: white;
         padding: 40px 35px;
         border-radius: var(--border-radius);
@@ -343,7 +313,7 @@
         overflow: hidden;
       }
 
-      .challenge-card::before {
+      .old-challenge-card::before {
         content: "";
         position: absolute;
         top: 0;
@@ -359,17 +329,17 @@
         transition: left 0.6s;
       }
 
-      .challenge-card:hover::before {
+      .old-challenge-card:hover::before {
         left: 100%;
       }
 
-      .challenge-card:hover {
+      .old-challenge-card:hover {
         transform: translateY(-10px) scale(1.02);
         box-shadow: var(--shadow-xl);
         border-left-width: 8px;
       }
 
-      .challenge-card h4 {
+      .old-challenge-card h4 {
         color: var(--primary-color);
         font-size: 1.5rem;
         margin-bottom: 1.2rem;
@@ -377,14 +347,14 @@
         font-family: "Poppins", sans-serif;
       }
 
-      .challenge-card p {
+      .old-challenge-card p {
         color: var(--light-text);
         margin-bottom: 0;
         line-height: 1.8;
         font-size: 1.05rem;
       }
 
-      .challenge-number {
+      .old-challenge-number {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -400,11 +370,324 @@
         transition: var(--transition);
       }
 
-      .challenge-card:hover .challenge-number {
+      .old-challenge-card:hover .old-challenge-number {
         transform: rotate(360deg) scale(1.1);
       }
 
-      /* Service Cards */
+      /* ============================================ */
+      /* CHALLENGE-SOLUTION SECTION (New Split Style) */
+      /* ============================================ */
+      .challenge-solution-section {
+        padding: 100px 0;
+        background: #ffffff;
+      }
+
+      /* Section Header for Challenge-Solution */
+      .challenge-solution-section .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .challenge-solution-section .section-header h2::before {
+        display: none; /* Remove the underline */
+      }
+
+      .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(16,185,129,0.1);
+        border: 1px solid rgba(16,185,129,0.25);
+        color: #059669;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 6px 16px;
+        border-radius: 100px;
+        margin-bottom: 50px;
+      }
+
+      .challenge-solution-section .section-header h2 {
+       
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        margin-bottom: 16px;
+      }
+
+      .challenge-solution-section .section-header h2 em {
+       
+        background: linear-gradient(135deg, var(--accent-emerald), var(--accent-teal));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .challenge-solution-section .section-header p {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.7;
+      }
+
+      /* Split Layout */
+      .split-container {
+        display: grid;
+        grid-template-columns: 1fr 72px 1fr;
+        gap: 0;
+        align-items: start;
+      }
+
+      /* Divider */
+      .divider-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 60px;
+        position: relative;
+      }
+
+      .divider-line {
+        width: 2px;
+        flex: 1;
+        background: linear-gradient(to bottom,
+          transparent,
+          #d1fae5 15%,
+          var(--accent-emerald) 50%,
+          #fecaca 85%,
+          transparent
+        );
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .divider-badge {
+        position: relative;
+        z-index: 2;
+        width: 48px; height: 48px;
+        background: white;
+        border: 2px solid var(--border-subtle);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+       
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        text-align: center;
+        line-height: 1.2;
+        margin-top: 8px;
+      }
+
+      /* Column Headers */
+      .col-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 32px;
+        padding-bottom: 20px;
+        border-bottom: 2px solid;
+      }
+
+      .challenge-column .col-header { border-color: #fecaca; }
+      .solution-column .col-header  { border-color: #d1fae5; }
+
+      .col-header-icon {
+        width: 44px; height: 44px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        flex-shrink: 0;
+      }
+
+      .challenge-column .col-header-icon {
+        background: #fef2f2;
+        color: var(--accent-red);
+      }
+      .solution-column .col-header-icon {
+        background: #ecfdf5;
+        color: var(--accent-emerald);
+      }
+
+      .col-header h3 {
+       
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+      .challenge-column .col-header h3 { color: var(--accent-red); }
+      .solution-column  .col-header h3 { color: #059669; }
+
+      .col-header small {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-top: 2px;
+      }
+
+      /* Cards */
+      .challenge-item,
+      .solution-item {
+        background: white;
+        border-radius: 16px;
+        padding: 28px 28px 28px 24px;
+        margin-bottom: 20px;
+        border: 1px solid var(--border-subtle);
+        border-left: 4px solid;
+        transition: var(--transition);
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .challenge-item { border-left-color: #f87171; }
+      .solution-item  { border-left-color: var(--accent-emerald); }
+
+      .challenge-item::after,
+      .solution-item::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        transition: var(--transition);
+        border-radius: inherit;
+      }
+
+      .challenge-item::after { background: linear-gradient(135deg, rgba(239,68,68,0.03), transparent); }
+      .solution-item::after  { background: linear-gradient(135deg, rgba(16,185,129,0.04), transparent); }
+
+      .challenge-item:hover::after,
+      .solution-item:hover::after { opacity: 1; }
+
+      .challenge-item:hover,
+      .solution-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 32px rgba(15,23,42,0.1);
+      }
+
+      .challenge-item:hover { border-color: #fca5a5; border-left-color: #ef4444; }
+      .solution-item:hover  { border-color: #6ee7b7; border-left-color: var(--accent-teal); }
+
+      .card-top {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+
+      .card-icon {
+        width: 38px; height: 38px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        flex-shrink: 0;
+      }
+
+      .challenge-item .card-icon { background: #fef2f2; color: #ef4444; }
+      .solution-item  .card-icon { background: #ecfdf5; color: var(--accent-emerald); }
+
+      .card-top h4 {
+        
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        padding-top: 8px;
+      }
+
+      .challenge-item .card-top h4 { color: #b91c1c; }
+      .solution-item  .card-top h4 { color: #065f46; }
+
+      .card-body {
+        padding-left: 52px;
+      }
+
+      .card-body p {
+        color: var(--text-secondary);
+        font-size: 0.92rem;
+        line-height: 1.7;
+        margin: 0;
+      }
+
+      .card-tag {
+        display: inline-block;
+        margin-top: 12px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 3px 10px;
+        border-radius: 100px;
+      }
+
+      .challenge-item .card-tag {
+        background: #fef2f2;
+        color: #ef4444;
+      }
+      .solution-item .card-tag {
+        background: #ecfdf5;
+        color: #059669;
+      }
+
+      /* Animations for Challenge-Solution Section */
+      @keyframes fadeSlideUp {
+        from { opacity: 0; transform: translateY(24px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeSlideRight {
+        from { opacity: 0; transform: translateX(-24px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes fadeSlideLeft {
+        from { opacity: 0; transform: translateX(24px); }
+        to   { opacity: 1; transform: translateX(0); }
+      }
+
+      .challenge-solution-section .section-header { animation: fadeSlideUp 0.7s ease both; }
+
+      .challenge-column .challenge-item:nth-child(2) { animation: fadeSlideRight 0.6s 0.2s ease both; }
+      .challenge-column .challenge-item:nth-child(3) { animation: fadeSlideRight 0.6s 0.35s ease both; }
+      .challenge-column .challenge-item:nth-child(4) { animation: fadeSlideRight 0.6s 0.5s ease both; }
+      .challenge-column .challenge-item:nth-child(5) { animation: fadeSlideRight 0.6s 0.65s ease both; }
+
+      .solution-column .solution-item:nth-child(2) { animation: fadeSlideLeft 0.6s 0.2s ease both; }
+      .solution-column .solution-item:nth-child(3) { animation: fadeSlideLeft 0.6s 0.35s ease both; }
+      .solution-column .solution-item:nth-child(4) { animation: fadeSlideLeft 0.6s 0.5s ease both; }
+      .solution-column .solution-item:nth-child(5) { animation: fadeSlideLeft 0.6s 0.65s ease both; }
+
+      /* Responsive for Challenge-Solution */
+      @media (max-width: 900px) {
+        .split-container {
+          grid-template-columns: 1fr;
+          gap: 48px;
+        }
+
+        .divider-column { display: none; }
+      }
+
+      @media (max-width: 560px) {
+        .challenge-solution-section { padding: 80px 0; }
+        .challenge-item, .solution-item { padding: 22px 20px 22px 18px; }
+        .card-body { padding-left: 0; }
+      }
+
+      /* ============================================ */
+      /* SERVICE CARDS */
+      /* ============================================ */
       .service-card {
         background: white;
         border-radius: var(--border-radius);
@@ -632,7 +915,7 @@
         font-weight: 600;
       }
 
-      /* Zoho Modules Grid with Logos */
+      /* Zoho Modules Grid */
       .module-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -672,28 +955,6 @@
 
       .module-card:hover::before {
         opacity: 1;
-      }
-
-      .module-logo {
-        width: 80px;
-        height: 80px;
-        margin: 0 auto 20px;
-        background: var(--gradient-3);
-        border-radius: 16px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 2.5rem;
-        transition: var(--transition);
-        position: relative;
-        z-index: 1;
-        box-shadow: var(--shadow-sm);
-      }
-
-      .module-card:hover .module-logo {
-        transform: scale(1.1) rotate(5deg);
-        background: var(--gradient-2);
-        color: white;
       }
 
       .module-card h4 {
@@ -796,7 +1057,7 @@
       /* Support Cards */
       .support-card {
         background: white;
-        padding: 45px 35px;
+       
         border-radius: var(--border-radius);
         text-align: center;
         transition: var(--transition);
@@ -828,27 +1089,6 @@
         opacity: 1;
       }
 
-      .support-icon-wrapper {
-        width: 100px;
-        height: 100px;
-        margin: 0 auto 25px;
-        background: var(--gradient-2);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 3rem;
-        transition: var(--transition);
-        position: relative;
-        z-index: 1;
-        box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
-      }
-
-      .support-card:hover .support-icon-wrapper {
-        transform: rotateY(360deg);
-        background: var(--gradient-dark);
-      }
-
       .support-card h4 {
         font-family: "Poppins", sans-serif;
         color: var(--primary-color);
@@ -874,6 +1114,7 @@
         color: white;
         position: relative;
         overflow: hidden;
+       
       }
 
       .security-section::before {
@@ -1071,38 +1312,6 @@
         color: white;
       }
 
-      /* Stats Counter Section */
-      .stats-section {
-        background: var(--primary-color);
-        padding: 80px 0;
-        border-top: 1px solid rgba(16, 185, 129, 0.2);
-        border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-      }
-
-      .stat-item {
-        text-align: center;
-        padding: 30px;
-        position: relative;
-      }
-
-      .stat-number {
-        font-family: "Poppins", sans-serif;
-        font-size: 3.5rem;
-        font-weight: 800;
-        background: var(--gradient-2);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        margin-bottom: 10px;
-        line-height: 1;
-      }
-
-      .stat-label {
-        font-size: 1.2rem;
-        color: #9ca3af;
-        font-weight: 600;
-      }
-
       /* Parallax Effect */
       .parallax-section {
         background-image:
@@ -1141,10 +1350,6 @@
         .highlight-box ul {
           grid-template-columns: 1fr;
         }
-
-        .stat-number {
-          font-size: 2.8rem;
-        }
       }
 
       @media (max-width: 768px) {
@@ -1166,15 +1371,6 @@
 
         .cta-section h2 {
           font-size: 2rem;
-        }
-
-        .logo-container {
-          gap: 25px;
-        }
-
-        .logo-item {
-          width: 100px;
-          height: 60px;
         }
 
         .module-grid {
@@ -1210,25 +1406,151 @@
         z-index: 9999;
         transition: width 0.2s;
       }
+
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
     </style>
   </head>
   <body>
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress" id="scrollProgress"></div>
+    
     <header>
       <nav>
         <div class="logo-section">
-  <a href="index.html" class="home-logo">
-    <img
-      src="https://www.zolytics.in/files/logo.png"
-      alt="Zolytics"
-      class="logo-img main-logo"
-      style="height: 90px;"
-    />
-  </a>
-</div>
+          <a href="index.html" class="home-logo">
+            <img
+              src="https://www.zolytics.in/files/logo.png"
+              alt="Zolytics"
+              class="logo-img main-logo"
+              style="height: 90px;"
+            />
+          </a>
+        </div>
       </nav>
     </header>
+
     <!-- Hero Section -->
     <section class="hero-section">
       <div class="particles-bg" id="particles"></div>
@@ -1240,101 +1562,13 @@
           <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="100">
             Enterprise-Grade Zoho Solutions for High-Value Business Operations
           </p>
-          <div class="hero-badge" data-aos="fade-up" data-aos-delay="200">
-            Premium Development Services
-          </div>
+          
         </div>
       </div>
     </section>
 
-    <!-- Logo Showcase -->
-    <section class="logo-showcase" data-aos="fade-up">
-      <div class="container">
-        <div class="logo-container">
-          <div class="logo-item" data-aos="zoom-in" data-aos-delay="100">
-            <img
-              src="https://www.zoho.com/branding/images/zoho-logo.svg"
-              alt="Zoho"
-            />
-          </div>
-          <div class="logo-item" data-aos="zoom-in" data-aos-delay="150">
-            <img
-              src="https://logos-world.net/wp-content/uploads/2021/02/Salesforce-Logo.png"
-              alt="Salesforce"
-            />
-          </div>
-          <div class="logo-item" data-aos="zoom-in" data-aos-delay="200">
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/google-cloud-1.svg"
-              alt="Google Cloud"
-            />
-          </div>
-          <div class="logo-item" data-aos="zoom-in" data-aos-delay="250">
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/microsoft-5.svg"
-              alt="Microsoft"
-            />
-          </div>
-          <div class="logo-item" data-aos="zoom-in" data-aos-delay="300">
-            <img
-              src="https://cdn.worldvectorlogo.com/logos/slack-new-logo.svg"
-              alt="Slack"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-      <div class="container">
-        <div class="row">
-          <div
-            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="stat-item">
-              <div class="stat-number" data-count="500">0</div>
-              <div class="stat-label">Projects Completed</div>
-            </div>
-          </div>
-          <div
-            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
-            <div class="stat-item">
-              <div class="stat-number" data-count="250">0</div>
-              <div class="stat-label">Happy Clients</div>
-            </div>
-          </div>
-          <div
-            class="col-lg-3 col-md-6 mb-4 mb-lg-0"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="stat-item">
-              <div class="stat-number" data-count="15">0</div>
-              <div class="stat-label">Years Experience</div>
-            </div>
-          </div>
-          <div
-            class="col-lg-3 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
-            <div class="stat-item">
-              <div class="stat-number" data-count="98">0</div>
-              <div class="stat-label">Success Rate %</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Business Challenges Section -->
-    <section class="challenges-section section-padding">
+    <!-- Business Challenges Section (OLD STYLE) -->
+    <section class="business-challenges-section section-padding">
       <div class="container">
         <div class="section-header">
           <h2 data-aos="fade-up">Business Challenges We Solve</h2>
@@ -1344,13 +1578,9 @@
           </p>
         </div>
         <div class="row g-4">
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">1</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">1</div>
               <h4>Manual Data Entry</h4>
               <p>
                 Eliminate time-consuming manual processes and reduce human
@@ -1359,13 +1589,9 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">2</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">2</div>
               <h4>Poor Reporting & Analytics</h4>
               <p>
                 Get real-time insights with customized dashboards and reports
@@ -1373,13 +1599,9 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">3</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">3</div>
               <h4>Disconnected Systems</h4>
               <p>
                 Break down data silos by integrating all your business systems
@@ -1387,13 +1609,9 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">4</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">4</div>
               <h4>Delayed Approvals</h4>
               <p>
                 Streamline approval workflows with automated routing,
@@ -1401,13 +1619,9 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">5</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">5</div>
               <h4>Revenue Leakage</h4>
               <p>
                 Prevent revenue loss with automated tracking, validation, and
@@ -1415,13 +1629,9 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="350"
-          >
-            <div class="challenge-card">
-              <div class="challenge-number">6</div>
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
+            <div class="old-challenge-card">
+              <div class="old-challenge-number">6</div>
               <h4>Lack of Visibility</h4>
               <p>
                 Gain complete transparency into your operations with real-time
@@ -1444,11 +1654,7 @@
           </p>
         </div>
         <div class="row g-4">
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="service-card">
               <h3>Zoho Custom Development</h3>
               <p>
@@ -1464,11 +1670,7 @@
               </ul>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
             <div class="service-card">
               <h3>Deluge Custom Functions</h3>
               <p>
@@ -1484,11 +1686,7 @@
               </ul>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-card">
               <h3>Zoho Creator App Development</h3>
               <p>
@@ -1504,11 +1702,7 @@
               </ul>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
             <div class="service-card">
               <h3>Custom Modules & Workflows</h3>
               <p>
@@ -1524,11 +1718,7 @@
               </ul>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-card">
               <h3>API Integrations</h3>
               <p>
@@ -1544,11 +1734,7 @@
               </ul>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="350"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
             <div class="service-card">
               <h3>Revenue & Incentive Automation</h3>
               <p>
@@ -1562,6 +1748,139 @@
                 <li>Accrual tracking & reporting</li>
                 <li>Real-time financial dashboards</li>
               </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenge-Solution Section (NEW SPLIT STYLE) -->
+    <section class="challenge-solution-section">
+      <div class="container">
+        <!-- Section Header -->
+        <div class="section-header">
+          <h2 style=" justify-content: center;">From Challenges to Solutions</h2>
+          <p>We identify your operational bottlenecks and engineer precise automation solutions that drive measurable results.</p>
+        </div>
+
+        <!-- Two-Column Split -->
+        <div class="split-container">
+          <!-- CHALLENGES -->
+          <div class="challenge-column">
+            <div class="col-header">
+              <div class="col-header-icon">
+                <i class="fas fa-triangle-exclamation"></i>
+              </div>
+              <div>
+                <h3>Business Challenges</h3>
+                <small>Pain points we regularly solve</small>
+              </div>
+            </div>
+
+            <div class="challenge-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-keyboard"></i></div>
+                <h4>Manual Data Entry</h4>
+              </div>
+              <div class="card-body">
+                <p>Hours wasted on repetitive data entry tasks across multiple systems, leading to human errors and operational delays.</p>
+                <span class="card-tag">High Impact</span>
+              </div>
+            </div>
+
+            <div class="challenge-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-link-slash"></i></div>
+                <h4>Disconnected Systems</h4>
+              </div>
+              <div class="card-body">
+                <p>Critical business data scattered across incompatible platforms, creating information silos and workflow inefficiencies.</p>
+                <span class="card-tag">Systemic</span>
+              </div>
+            </div>
+
+            <div class="challenge-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-hourglass-half"></i></div>
+                <h4>Delayed Approvals</h4>
+              </div>
+              <div class="card-body">
+                <p>Approval processes stuck in email chains and manual routing, creating bottlenecks in critical business operations.</p>
+                <span class="card-tag">Bottleneck</span>
+              </div>
+            </div>
+
+            <div class="challenge-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-chart-line-down"></i></div>
+                <h4>Revenue Leakage</h4>
+              </div>
+              <div class="card-body">
+                <p>Lost revenue from billing errors, missed renewals, and inadequate tracking of financial transactions.</p>
+                <span class="card-tag">Financial Risk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIVIDER -->
+          <div class="divider-column">
+            
+          </div>
+
+          <!-- SOLUTIONS -->
+          <div class="solution-column">
+            <div class="col-header">
+              <div class="col-header-icon">
+                <i class="fas fa-circle-check"></i>
+              </div>
+              <div>
+                <h3>Our Solutions</h3>
+                <small>Engineered outcomes we deliver</small>
+              </div>
+            </div>
+
+            <div class="solution-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-robot"></i></div>
+                <h4>Intelligent Automation</h4>
+              </div>
+              <div class="card-body">
+                <p>Automated data capture, validation, and processing that eliminates manual work with 99.9% accuracy and real-time synchronization.</p>
+                <span class="card-tag">Fully Automated</span>
+              </div>
+            </div>
+
+            <div class="solution-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-plug-circle-check"></i></div>
+                <h4>Seamless Integration</h4>
+              </div>
+              <div class="card-body">
+                <p>Unified system architecture with bi-directional data flow, ensuring all platforms communicate in real-time without data loss.</p>
+                <span class="card-tag">Bi-Directional Sync</span>
+              </div>
+            </div>
+
+            <div class="solution-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-diagram-project"></i></div>
+                <h4>Smart Workflows</h4>
+              </div>
+              <div class="card-body">
+                <p>Intelligent approval routing with conditional logic, automated escalations, and real-time notifications to all stakeholders.</p>
+                <span class="card-tag">Conditional Logic</span>
+              </div>
+            </div>
+
+            <div class="solution-item">
+              <div class="card-top">
+                <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+                <h4>Revenue Protection</h4>
+              </div>
+              <div class="card-body">
+                <p>Comprehensive tracking, automated validation, and reconciliation systems that prevent revenue loss and ensure financial accuracy.</p>
+                <span class="card-tag">Zero Leakage</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1751,11 +2070,7 @@
           </p>
         </div>
         <div class="row g-4">
-          <div
-            class="col-lg-3 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="support-card">
               <h4>24/7 Technical Support</h4>
               <p>
@@ -1764,11 +2079,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-3 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="150">
             <div class="support-card">
               <h4>Regular Updates</h4>
               <p>
@@ -1777,11 +2088,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-3 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="support-card">
               <h4>Performance Monitoring</h4>
               <p>
@@ -1790,11 +2097,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-3 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
+          <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="250">
             <div class="support-card">
               <h4>Training & Documentation</h4>
               <p>
@@ -1831,21 +2134,13 @@
           <h2 data-aos="fade-up" style="color: white">
             Data Security & Compliance
           </h2>
-          <p
-            data-aos="fade-up"
-            data-aos-delay="100"
-            style="color: rgba(229, 231, 235, 0.9)"
-          >
+          <p data-aos="fade-up" data-aos-delay="100" style="color: rgba(229, 231, 235, 0.9)">
             Enterprise-grade security measures and compliance standards to
             protect your critical business data
           </p>
         </div>
         <div class="row g-4">
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="100"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
             <div class="security-item">
               <h4>Data Encryption</h4>
               <p>
@@ -1854,11 +2149,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="150"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
             <div class="security-item">
               <h4>GDPR Compliance</h4>
               <p>
@@ -1867,11 +2158,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="200"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="security-item">
               <h4>Role-Based Access</h4>
               <p>
@@ -1880,11 +2167,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="250"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="250">
             <div class="security-item">
               <h4>Audit Trails</h4>
               <p>
@@ -1893,11 +2176,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="300"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
             <div class="security-item">
               <h4>SOC 2 Certified</h4>
               <p>
@@ -1906,11 +2185,7 @@
               </p>
             </div>
           </div>
-          <div
-            class="col-lg-4 col-md-6"
-            data-aos="fade-up"
-            data-aos-delay="350"
-          >
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="350">
             <div class="security-item">
               <h4>Data Backup</h4>
               <p>
@@ -1922,22 +2197,15 @@
         </div>
         <div class="row mt-5">
           <div class="col-12" data-aos="fade-up" data-aos-delay="400">
-            <div
-              class="highlight-box"
-              style="
-                background: rgba(16, 185, 129, 0.1);
-                backdrop-filter: blur(20px);
-                border-left-color: var(--secondary-color);
-              "
-            >
+            <div class="highlight-box" style="background: rgba(16, 185, 129, 0.1); backdrop-filter: blur(20px); border-left-color: var(--secondary-color);">
               <h3 style="color: white">Industry-Specific Compliance</h3>
               <ul style="color: rgba(253, 254, 255, 0.9)">
-                <li>HIPAA - Healthcare Data Protection</li>
-                <li>PCI DSS - Payment Card Industry Standards</li>
-                <li>SOX - Financial Reporting Controls</li>
-                <li>ISO 27001 - Information Security Management</li>
-                <li>FINRA - Financial Services Compliance</li>
-                <li>FERPA - Educational Records Privacy</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">HIPAA - Healthcare Data Protection</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">PCI DSS - Payment Card Industry Standards</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">SOX - Financial Reporting Controls</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">ISO 27001 - Information Security Management</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">FINRA - Financial Services Compliance</li>
+                <li style="color: rgba(253, 254, 255, 0.9)">FERPA - Educational Records Privacy</li>
               </ul>
             </div>
           </div>
@@ -1954,17 +2222,12 @@
             Let's discuss how custom development and automation can transform
             your business operations
           </p>
-          <a
-            href="#contact"
-            class="cta-button"
-            data-aos="fade-up"
-            data-aos-delay="200"
-            >Get Started Today</a
-          >
+          <a href="#contact" class="cta-button" data-aos="fade-up" data-aos-delay="200">Get Started Today</a>
         </div>
       </div>
     </section>
-  <!-- Global Footer -->
+
+    <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
         <!-- Company Info -->
