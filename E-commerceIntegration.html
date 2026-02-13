@@ -1,0 +1,2317 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerce Integration - Zolytics</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --primary: #6366f1;
+        --primary-dark: #4f46e5;
+        --secondary: #ec4899;
+        --accent: #14b8a6;
+        --dark: #0f172a;
+        --light: #f8fafc;
+        --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: var(--dark);
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Animated Background */
+      .animated-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background: var(--dark);
+      }
+
+      .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.15;
+        animation: float 20s infinite ease-in-out;
+      }
+
+      .shape:nth-child(1) {
+        width: 500px;
+        height: 500px;
+        background: var(--primary);
+        top: -10%;
+        left: -10%;
+        animation-delay: 0s;
+      }
+
+      .shape:nth-child(2) {
+        width: 400px;
+        height: 400px;
+        background: var(--secondary);
+        top: 50%;
+        right: -10%;
+        animation-delay: -7s;
+      }
+
+      .shape:nth-child(3) {
+        width: 300px;
+        height: 300px;
+        background: var(--accent);
+        bottom: -10%;
+        left: 30%;
+        animation-delay: -14s;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -50px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(240deg);
+        }
+      }
+
+      /* Navigation - White and Scrollable */
+      .navbar {
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        height: 90px !important;
+        transition: transform 0.3s ease;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      
+
+      /* Hero Section */
+      .hero-section {
+        padding: 150px 0 100px;
+        position: relative;
+      }
+
+      .hero-content {
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: rgba(99, 102, 241, 0.1);
+        border: 1px solid rgba(99, 102, 241, 0.3);
+        border-radius: 50px;
+        color: var(--primary);
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+        animation: slideDown 0.8s ease-out;
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        font-weight: 800;
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+        animation: fadeInUp 0.8s ease-out 0.2s backwards;
+      }
+
+      .gradient-text {
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero-description {
+        font-size: 1.3rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 3rem;
+        animation: fadeInUp 0.8s ease-out 0.4s backwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Problem-Solution Section */
+      .problem-solution-section {
+        padding: 100px 0;
+        background: linear-gradient(
+          180deg,
+          white 0%,
+          rgba(254, 254, 255, 0.95) 100%
+        );
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-solution-container {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+       
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: rgb(253, 248, 248);
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        margin-bottom: 4rem;
+        position: relative;
+      }
+
+     
+
+      .problem-side,
+      .solution-side {
+        padding: 3rem;
+        border-radius: 25px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .problem-side {
+        background: rgba(239, 68, 68, 0.1);
+        border: 2px solid rgba(166, 15, 15, 0.948);
+      }
+
+      .solution-side {
+        background: rgba(16, 185, 129, 0.1);
+        border: 2px solid rgba(16, 185, 103, 0.897);
+      }
+
+      .side-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      
+
+      .problem-side .side-icon {
+        background: rgba(239, 68, 68, 0.2);
+      }
+
+      .solution-side .side-icon {
+        background: rgba(16, 185, 129, 0.2);
+      }
+
+      .side-title {
+        font-size: 1.8rem;
+        font-weight: 700;
+      }
+
+      .problem-side .side-title {
+        color: #f9f7f7;
+      }
+
+      .solution-side .side-title {
+        color: #6ee7b7;
+      }
+
+      .pain-points-list,
+      .solution-points-list {
+        list-style: none;
+        padding: 0;
+      }
+
+      .pain-points-list li,
+      .solution-points-list li {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        animation: slideInLeft 0.6s ease-out backwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .pain-points-list li {
+        background: rgba(239, 68, 68, 0.1);
+        border-left: 4px solid #ef4444;
+      }
+
+      .solution-points-list li {
+        background: rgba(16, 185, 129, 0.1);
+        border-left: 4px solid #10b981;
+        animation: slideInRight 0.6s ease-out backwards;
+      }
+
+      .pain-points-list li:nth-child(1),
+      .solution-points-list li:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .pain-points-list li:nth-child(2),
+      .solution-points-list li:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .pain-points-list li:nth-child(3),
+      .solution-points-list li:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .pain-points-list li:nth-child(4),
+      .solution-points-list li:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes slideInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .point-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .point-content h4 {
+        font-size: 1.1rem;
+        font-weight: 700;
+         color: rgba(6, 6, 6, 0.7);
+        margin-bottom: 0.5rem;
+      }
+
+      .point-content p {
+        font-size: 0.95rem;
+        color: rgba(6, 6, 6, 0.7);
+        margin: 0;
+      }
+
+      /* Zoho Ecosystem Section - Advanced Styling */
+
+.zoho-ecosystem-section {
+  padding: 100px 0;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated background pattern */
+.zoho-ecosystem-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.zoho-ecosystem-section .section-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  position: relative;
+  display: inline-block;
+}
+
+.zoho-ecosystem-section .section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #6366f1 0%, #14b8a6 100%);
+  border-radius: 2px;
+}
+
+.zoho-ecosystem-section .section-subtitle {
+  font-size: 1.2rem;
+  color: #64748b;
+  margin-bottom: 3rem;
+  font-weight: 400;
+}
+
+/* Ecosystem Cards */
+.ecosystem-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid transparent;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Top accent bar - different color for each card */
+.ecosystem-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease;
+}
+
+.ecosystem-card:nth-child(1)::before {
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+.ecosystem-card:nth-child(2)::before {
+  background: linear-gradient(90deg, #14b8a6 0%, #06b6d4 100%);
+}
+
+.ecosystem-card:nth-child(3)::before {
+  background: linear-gradient(90deg, #f59e0b 0%, #f97316 100%);
+}
+
+.ecosystem-card:nth-child(4)::before {
+  background: linear-gradient(90deg, #ec4899 0%, #f43f5e 100%);
+}
+
+/* Animated gradient background on hover */
+.ecosystem-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.03) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 0;
+}
+
+.ecosystem-card:hover {
+  transform: translateY(-15px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+.ecosystem-card:hover::before {
+  transform: scaleX(1);
+}
+
+.ecosystem-card:hover::after {
+  opacity: 1;
+}
+
+/* Icon container */
+.ecosystem-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.05) 100%);
+}
+
+.ecosystem-card:nth-child(1) .ecosystem-icon {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+}
+
+.ecosystem-card:nth-child(2) .ecosystem-icon {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.1) 0%, rgba(6, 182, 212, 0.1) 100%);
+}
+
+.ecosystem-card:nth-child(3) .ecosystem-icon {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(249, 115, 22, 0.1) 100%);
+}
+
+.ecosystem-card:nth-child(4) .ecosystem-icon {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.1) 0%, rgba(244, 63, 94, 0.1) 100%);
+}
+
+/* Pulse ring effect on hover */
+.ecosystem-icon::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px solid #6366f1;
+  opacity: 0;
+  animation: pulse-ring 2s infinite;
+}
+
+.ecosystem-card:nth-child(2) .ecosystem-icon::before {
+  border-color: #14b8a6;
+}
+
+.ecosystem-card:nth-child(3) .ecosystem-icon::before {
+  border-color: #f59e0b;
+}
+
+.ecosystem-card:nth-child(4) .ecosystem-icon::before {
+  border-color: #ec4899;
+}
+
+.ecosystem-card:hover .ecosystem-icon::before {
+  opacity: 1;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+.ecosystem-card:hover .ecosystem-icon {
+  transform: scale(1.15) rotate(10deg);
+}
+
+/* Card title */
+.ecosystem-card h6 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.ecosystem-card:hover h6 {
+  color: #6366f1;
+}
+
+.ecosystem-card:nth-child(2):hover h6 {
+  color: #14b8a6;
+}
+
+.ecosystem-card:nth-child(3):hover h6 {
+  color: #f59e0b;
+}
+
+.ecosystem-card:nth-child(4):hover h6 {
+  color: #ec4899;
+}
+
+/* Card description */
+.ecosystem-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #64748b;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Feature list */
+.ecosystem-features {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  position: relative;
+  z-index: 1;
+}
+
+.ecosystem-features li {
+  padding: 0.6rem 0;
+  color: #475569;
+  font-size: 0.9rem;
+  position: relative;
+  padding-left: 25px;
+  transition: all 0.3s ease;
+}
+
+.ecosystem-features li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: #6366f1;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.ecosystem-card:nth-child(2) .ecosystem-features li::before {
+  color: #14b8a6;
+}
+
+.ecosystem-card:nth-child(3) .ecosystem-features li::before {
+  color: #f59e0b;
+}
+
+.ecosystem-card:nth-child(4) .ecosystem-features li::before {
+  color: #ec4899;
+}
+
+.ecosystem-card:hover .ecosystem-features li {
+  padding-left: 30px;
+  color: #1e293b;
+}
+
+.ecosystem-card:hover .ecosystem-features li::before {
+  transform: translateX(5px);
+}
+
+/* Connection lines between cards */
+.ecosystem-connector {
+  position: relative;
+}
+
+.ecosystem-connector::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -2rem;
+  width: 4rem;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0) 100%);
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.ecosystem-connector:hover::after {
+  opacity: 1;
+}
+
+/* Badge on card */
+.ecosystem-badge {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  padding: 0.4rem 1rem;
+  background: rgba(99, 102, 241, 0.1);
+  color: #6366f1;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
+}
+
+.ecosystem-card:nth-child(2) .ecosystem-badge {
+  background: rgba(20, 184, 166, 0.1);
+  color: #14b8a6;
+}
+
+.ecosystem-card:nth-child(3) .ecosystem-badge {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+}
+
+.ecosystem-card:nth-child(4) .ecosystem-badge {
+  background: rgba(236, 72, 153, 0.1);
+  color: #ec4899;
+}
+
+/* Central integration diagram */
+.ecosystem-diagram {
+  margin: 4rem auto;
+  max-width: 800px;
+  position: relative;
+  padding: 3rem 0;
+}
+
+.ecosystem-center {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.ecosystem-center::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  border: 2px dashed rgba(99, 102, 241, 0.3);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scroll reveal animation */
+.ecosystem-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.ecosystem-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.ecosystem-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.ecosystem-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+
+.ecosystem-card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+      /* Impact Metrics */
+      .impact-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .impact-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2.5rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s;
+      }
+
+      .impact-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: var(--gradient-1);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.4s;
+      }
+
+      .impact-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+      }
+
+      .impact-card:hover::before {
+        transform: scaleX(1);
+      }
+
+      .impact-value {
+        font-size: 3rem;
+        font-weight: 800;
+        background: var(--gradient-1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 1rem;
+      }
+
+      .impact-label {
+        font-size: 1.1rem;
+        color: rgba(255, 255, 255, 0.8);
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .impact-description {
+        font-size: 0.9rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Platforms Section */
+      .platforms-section {
+        padding: 80px 0;
+      }
+
+      .platforms-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .platform-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 2rem;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .platform-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--gradient-1);
+        opacity: 0;
+        transition: opacity 0.4s;
+        z-index: 0;
+      }
+
+      .platform-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 60px rgba(99, 102, 241, 0.3);
+      }
+
+      .platform-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .platform-card > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .platform-logo {
+        width: 60px;
+        height: 60px;
+        background: rgba(99, 102, 241, 0.1);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+        color: var(--primary);
+      }
+
+      .platform-card:hover .platform-logo {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      .platform-name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+      }
+
+      .platform-description {
+        color: rgba(255, 255, 255, 0.6);
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+      }
+
+      .platform-features {
+        list-style: none;
+        padding: 0;
+        margin-bottom: 1.5rem;
+      }
+
+      .platform-features li {
+        padding: 0.5rem 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+        position: relative;
+        padding-left: 20px;
+      }
+
+      .platform-features li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+      }
+
+      
+
+      /* Workflow Animation Section */
+      .workflow-section {
+        padding: 100px 0;
+        background: white;
+        color: var(--dark);
+      }
+
+      .workflow-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .workflow-header {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .workflow-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        color: var(--dark);
+      }
+
+      .workflow-subtitle {
+        font-size: 1.1rem;
+        color: rgba(15, 23, 42, 0.6);
+      }
+
+      .workflow-diagram {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 60px 0;
+        padding: 40px 0;
+      }
+
+      .workflow-step {
+        flex: 1;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      .step-circle {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: white;
+        border: 4px solid var(--primary);
+        margin: 0 auto 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 800;
+        color: var(--primary);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        position: relative;
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+      }
+
+      .step-circle.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .step-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: var(--dark);
+      }
+
+      .step-description {
+        font-size: 0.95rem;
+        color: rgba(15, 23, 42, 0.6);
+        max-width: 200px;
+        margin: 0 auto;
+      }
+
+      /* Animated Connection Lines */
+      .connection-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        z-index: 1;
+        transform: translateY(-50%);
+      }
+
+      .connection-line svg {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        top: -48px;
+      }
+
+      .line-path {
+        fill: none;
+        stroke: var(--primary);
+        stroke-width: 3;
+        stroke-dasharray: 10;
+        animation: dash 2s linear infinite;
+      }
+
+      @keyframes dash {
+        to {
+          stroke-dashoffset: -20;
+        }
+      }
+
+      .data-particle {
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        background: var(--accent);
+        border-radius: 50%;
+        animation: moveParticle 3s linear infinite;
+      }
+
+      @keyframes moveParticle {
+        0% {
+          left: 0;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          left: 100%;
+          opacity: 0;
+        }
+      }
+
+      .data-particle:nth-child(2) {
+        animation-delay: 1s;
+      }
+
+      .data-particle:nth-child(3) {
+        animation-delay: 2s;
+      }
+
+      /* Integration Process */
+      .integration-process {
+        padding: 100px 0;
+        background: white;
+        color: var(--dark);
+      }
+
+      .process-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        margin-top: 60px;
+      }
+
+      .process-card {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(99, 102, 241, 0.05);
+        border-radius: 20px;
+        border: 2px solid transparent;
+        transition: all 0.3s;
+      }
+
+      .process-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-10px);
+      }
+
+      .process-number {
+        width: 60px;
+        height: 60px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 800;
+        margin: 0 auto 1.5rem;
+      }
+
+      .process-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+      }
+
+      .process-description {
+        color: rgba(15, 23, 42, 0.7);
+      }
+
+     
+      /* Scroll Animations */
+      .scroll-animate {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: all 0.8s ease-out;
+      }
+
+      .scroll-animate.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .workflow-diagram {
+          flex-direction: column;
+        }
+
+        .workflow-step {
+          margin-bottom: 3rem;
+        }
+
+        .connection-line {
+          display: none;
+        }
+
+        .cta-title {
+          font-size: 2rem;
+        }
+
+        .platforms-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .comparison-grid {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .vs-divider {
+          top: auto;
+          bottom: -40px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Loading Animation */
+      .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: var(--dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        transition:
+          opacity 0.5s,
+          visibility 0.5s;
+      }
+
+      .loader.hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(99, 102, 241, 0.2);
+        border-top-color: var(--primary);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loader -->
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+      </div>
+    </div>
+
+    <!-- Navigation - White and Scrollable -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a href="index.html" class="navbar-brand">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics"
+            class="logo"
+          />
+        </a>
+        
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+         
+          <h1 class="hero-title">
+            Connect Your Store to
+            <span class="gradient-text">Powerful Analytics</span>
+          </h1>
+          <p class="hero-description">
+            Integrate with leading e-commerce platforms in minutes. Track sales,
+            analyze customer behavior, and optimize your business with real-time
+            insights powered by AI.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem-Solution Section -->
+    <section class="problem-solution-section" id="problem">
+      <div class="problem-solution-container">
+        <div class="section-header scroll-animate">
+          <h2 class="section-title" style="color: rgb(8, 8, 8);">The E-Commerce Data Challenge</h2>
+          <p class="section-subtitle" style="color: rgb(8, 8, 8);">
+            Understanding your business shouldn't be this complicated
+          </p>
+        </div>
+
+        <div class="comparison-grid scroll-animate">
+         
+
+          <!-- Problem Side -->
+          <div class="problem-side">
+            <div class="side-header">
+              
+              <h3 class="side-title" style="color: rgb(159, 9, 9);">Without Integration</h3>
+            </div>
+            <ul class="pain-points-list">
+              <li>
+                
+                <div class="point-content">
+                  <h4>Hours of Manual Work</h4>
+                  <p>
+                    Spending 10-15 hours weekly pulling data from multiple
+                    platforms, copying into spreadsheets, and manually
+                    calculating metrics
+                  </p>
+                </div>
+              </li>
+              <li>
+                
+                <div class="point-content">
+                  <h4>Fragmented Data Silos</h4>
+                  <p>
+                    Customer data scattered across Shopify, Amazon, eBay with no
+                    unified view of your business performance
+                  </p>
+                </div>
+              </li>
+              <li>
+                
+                <div class="point-content">
+                  <h4>Delayed Insights</h4>
+                  <p>
+                    Making decisions based on week-old data, missing real-time
+                    opportunities and market trends
+                  </p>
+                </div>
+              </li>
+              <li>
+                
+                <div class="point-content">
+                  <h4>Lost Revenue</h4>
+                  <p>
+                    Unable to identify cart abandonment patterns, optimize
+                    pricing, or target high-value customers effectively
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Solution Side -->
+          <div class="solution-side">
+            <div class="side-header">
+              
+              <h3 class="side-title" style="color: rgb(11, 148, 54);">With Zolytics</h3>
+            </div>
+            <ul class="solution-points-list">
+              <li>
+                
+                <div class="point-content">
+                  <h4>Instant Automation</h4>
+                  <p>
+                    Connect once, and all your data syncs automatically every 15
+                    minutes. Reclaim your time for strategic work
+                  </p>
+                </div>
+              </li>
+              <li>
+                
+                <div class="point-content">
+                  <h4>Unified Analytics Hub</h4>
+                  <p>
+                    See all platforms in one dashboard - compare performance,
+                    track trends, and understand your complete customer journey
+                  </p>
+                </div>
+              </li>
+              <li>
+               
+                <div class="point-content">
+                  <h4>Real-Time Intelligence</h4>
+                  <p>
+                    AI-powered insights updated live, with instant alerts for
+                    critical events and actionable recommendations
+                  </p>
+                </div>
+              </li>
+              <li>
+                
+                <div class="point-content">
+                  <h4>Revenue Growth</h4>
+                  <p>
+                    Predictive analytics identifies opportunities, optimizes
+                    marketing spend, and increases conversion rates by 25%+
+                  </p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+       
+        </div>
+      </div>
+    </section>
+
+   <!-- Build Your Store Section -->
+<section style="padding:120px 0; background:#fbfcfe; position:relative; overflow:hidden;">
+  <!-- Animated Gradient Background -->
+  <div style="position:absolute; top:0; left:0; right:0; bottom:0; background:radial-gradient(circle at 20% 50%, rgba(99,102,241,0.15) 0%, transparent 50%), radial-gradient(circle at 80% 80%, rgba(139,92,246,0.15) 0%, transparent 50%); z-index:0;"></div>
+  
+  <!-- Grid Lines Background -->
+  <div style="position:absolute; top:0; left:0; right:0; bottom:0; background-image: linear-gradient(rgba(99,102,241,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,0.1) 1px, transparent 1px); background-size: 50px 50px; z-index:0; opacity:0.3;"></div>
+  
+  <div class="container" style="position:relative; z-index:1;">
+    <!-- Header -->
+    <div class="text-center mb-5" style="max-width:900px; margin:0 auto 80px;">
+      <div style="display:inline-flex; align-items:center; gap:12px; padding:12px 28px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.3); border-radius:50px; margin-bottom:30px; backdrop-filter:blur(10px);">
+        <div style="width:8px; height:8px; background:#6366f1; border-radius:50%; animation:pulse 2s infinite;"></div>
+        <span style="color:#070707; font-size:14px; font-weight:600; letter-spacing:2px; text-transform:uppercase;">End-to-End Solution</span>
+      </div>
+      
+      <h2 style="font-size:52px; font-weight:900; background:linear-gradient(135deg, #090909 0%, #050505 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:25px; line-height:1.2;">
+        We Build & Automate Your<br>Complete Online Store
+      </h2>
+      
+      <p style="font-size:20px; color:#050505; line-height:1.8; max-width:700px; margin:0 auto;">
+        From storefront to backend automation — payment gateways, inventory sync, billing, and real-time analytics, all seamlessly integrated.
+      </p>
+    </div>
+
+    <!-- Advanced Grid Layout -->
+    <div style="display:grid; grid-template-columns:repeat(12, 1fr); gap:24px; margin-top:60px;">
+      
+      <!-- Card 1 - Spans 6 columns -->
+      <div style="grid-column:span 6; position:relative; background:linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(99,102,241,0.2); border-radius:24px; padding:50px; overflow:hidden; backdrop-filter:blur(20px); transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(99,102,241,0.6)'; this.style.boxShadow='0 25px 50px rgba(99,102,241,0.2)'; this.querySelector('.hover-gradient').style.opacity='0.8'; this.querySelector('.feature-number').style.transform='scale(1.1) ';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(99,102,241,0.2)'; this.style.boxShadow='none'; this.querySelector('.hover-gradient').style.opacity='0'; this.querySelector('.feature-number').style.transform='scale(1) ';">
+        
+        <!-- Hover Gradient Effect -->
+        <div class="hover-gradient" style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(99,102,241,0.3) 0%, transparent 70%); opacity:0; transition:opacity 0.5s; pointer-events:none; z-index:0;"></div>
+        
+        <!-- Content -->
+        <div style="position:relative; z-index:1;">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:30px;">
+            <div>
+              <div style="display:inline-block; padding:8px 18px; background:rgba(99,102,241,0.15); border:1px solid rgba(99,102,241,0.3); border-radius:12px; margin-bottom:20px;">
+                <span style="color:#818cf8; font-size:13px; font-weight:700; letter-spacing:1.5px;">STOREFRONT</span>
+              </div>
+              <h3 style="font-size:32px; font-weight:800; color:#ffffff; margin-bottom:15px; line-height:1.3;">Online Store Setup</h3>
+            </div>
+            <div class="feature-number" style="font-size:72px; font-weight:900; color:rgba(99,102,241,0.15); line-height:1; transition:all 0.4s;">01</div>
+          </div>
+          
+          <p style="font-size:17px; color:#cbd5e1; line-height:1.8; margin-bottom:30px;">
+            Professional, mobile-responsive e-commerce website with secure checkout, product catalogs, and intuitive customer experience designed to convert visitors into buyers.
+          </p>
+          
+          <!-- Feature List -->
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <span style="padding:10px 20px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:20px; color:#a5b4fc; font-size:14px; font-weight:600;">Responsive Design</span>
+            <span style="padding:10px 20px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:20px; color:#a5b4fc; font-size:14px; font-weight:600;">Secure Checkout</span>
+            <span style="padding:10px 20px; background:rgba(99,102,241,0.1); border:1px solid rgba(99,102,241,0.2); border-radius:20px; color:#a5b4fc; font-size:14px; font-weight:600;">Product Catalogs</span>
+          </div>
+        </div>
+        
+        <!-- Decorative Element -->
+        <div style="position:absolute; bottom:-30px; right:-30px; width:150px; height:150px; background:linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); border-radius:50%; opacity:0.1; filter:blur(40px);"></div>
+      </div>
+
+      <!-- Card 2 - Spans 6 columns -->
+      <div style="grid-column:span 6; position:relative; background:linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(16,185,129,0.2); border-radius:24px; padding:50px; overflow:hidden; backdrop-filter:blur(20px); transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(16,185,129,0.6)'; this.style.boxShadow='0 25px 50px rgba(16,185,129,0.2)'; this.querySelector('.hover-gradient').style.opacity='0.8'; this.querySelector('.feature-number').style.transform='scale(1.1) ';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(16,185,129,0.2)'; this.style.boxShadow='none'; this.querySelector('.hover-gradient').style.opacity='0'; this.querySelector('.feature-number').style.transform='scale(1) rotate(0deg)';">
+        
+        <div class="hover-gradient" style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(16,185,129,0.3) 0%, transparent 70%); opacity:0; transition:opacity 0.5s; pointer-events:none; z-index:0;"></div>
+        
+        <div style="position:relative; z-index:1;">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:30px;">
+            <div>
+              <div style="display:inline-block; padding:8px 18px; background:rgba(16,185,129,0.15); border:1px solid rgba(16,185,129,0.3); border-radius:12px; margin-bottom:20px;">
+                <span style="color:#6ee7b7; font-size:13px; font-weight:700; letter-spacing:1.5px;">PAYMENTS</span>
+              </div>
+              <h3 style="font-size:32px; font-weight:800; color:#ffffff; margin-bottom:15px; line-height:1.3;">Payment Integration</h3>
+            </div>
+            <div class="feature-number" style="font-size:72px; font-weight:900; color:rgba(16,185,129,0.15); line-height:1; transition:all 0.4s;">02</div>
+          </div>
+          
+          <p style="font-size:17px; color:#cbd5e1; line-height:1.8; margin-bottom:30px;">
+            Seamless integration with Razorpay, Stripe, UPI, and multiple payment gateways. Accept payments globally with PCI-compliant security and instant transaction processing.
+          </p>
+          
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <span style="padding:10px 20px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:20px; color:#6ee7b7; font-size:14px; font-weight:600;">Razorpay</span>
+            <span style="padding:10px 20px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:20px; color:#6ee7b7; font-size:14px; font-weight:600;">Stripe</span>
+            <span style="padding:10px 20px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:20px; color:#6ee7b7; font-size:14px; font-weight:600;">UPI</span>
+            <span style="padding:10px 20px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.2); border-radius:20px; color:#6ee7b7; font-size:14px; font-weight:600;">COD</span>
+          </div>
+        </div>
+        
+        <div style="position:absolute; bottom:-30px; right:-30px; width:150px; height:150px; background:linear-gradient(135deg, #10b981 0%, #059669 100%); border-radius:50%; opacity:0.1; filter:blur(40px);"></div>
+      </div>
+
+      <!-- Card 3 - Spans 6 columns -->
+      <div style="grid-column:span 6; position:relative; background:linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(245,158,11,0.2); border-radius:24px; padding:50px; overflow:hidden; backdrop-filter:blur(20px); transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(245,158,11,0.6)'; this.style.boxShadow='0 25px 50px rgba(245,158,11,0.2)'; this.querySelector('.hover-gradient').style.opacity='0.8'; this.querySelector('.feature-number').style.transform='scale(1.1) ';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(245,158,11,0.2)'; this.style.boxShadow='none'; this.querySelector('.hover-gradient').style.opacity='0'; this.querySelector('.feature-number').style.transform='scale(1) rotate(0deg)';">
+        
+        <div class="hover-gradient" style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(245,158,11,0.3) 0%, transparent 70%); opacity:0; transition:opacity 0.5s; pointer-events:none; z-index:0;"></div>
+        
+        <div style="position:relative; z-index:1;">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:30px;">
+            <div>
+              <div style="display:inline-block; padding:8px 18px; background:rgba(245,158,11,0.15); border:1px solid rgba(245,158,11,0.3); border-radius:12px; margin-bottom:20px;">
+                <span style="color:#fbbf24; font-size:13px; font-weight:700; letter-spacing:1.5px;">AUTOMATION</span>
+              </div>
+              <h3 style="font-size:32px; font-weight:800; color:#ffffff; margin-bottom:15px; line-height:1.3;">Inventory Management</h3>
+            </div>
+            <div class="feature-number" style="font-size:72px; font-weight:900; color:rgba(245,158,11,0.15); line-height:1; transition:all 0.4s;">03</div>
+          </div>
+          
+          <p style="font-size:17px; color:#cbd5e1; line-height:1.8; margin-bottom:30px;">
+            Real-time stock synchronization with Zoho Inventory and Books. Automated purchase orders, multi-warehouse tracking, and low-stock alerts to prevent stockouts.
+          </p>
+          
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <span style="padding:10px 20px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:20px; color:#fbbf24; font-size:14px; font-weight:600;">Live Sync</span>
+            <span style="padding:10px 20px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:20px; color:#fbbf24; font-size:14px; font-weight:600;">Multi-Warehouse</span>
+            <span style="padding:10px 20px; background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); border-radius:20px; color:#fbbf24; font-size:14px; font-weight:600;">Auto Alerts</span>
+          </div>
+        </div>
+        
+        <div style="position:absolute; bottom:-30px; right:-30px; width:150px; height:150px; background:linear-gradient(135deg, #f59e0b 0%, #d97706 100%); border-radius:50%; opacity:0.1; filter:blur(40px);"></div>
+      </div>
+
+      <!-- Card 4 - Spans 6 columns -->
+      <div style="grid-column:span 6; position:relative; background:linear-gradient(135deg, rgba(30,41,59,0.8) 0%, rgba(15,23,42,0.9) 100%); border:1px solid rgba(239,68,68,0.2); border-radius:24px; padding:50px; overflow:hidden; backdrop-filter:blur(20px); transition:all 0.5s cubic-bezier(0.4, 0, 0.2, 1);"
+           onmouseover="this.style.transform='translateY(-8px)'; this.style.borderColor='rgba(239,68,68,0.6)'; this.style.boxShadow='0 25px 50px rgba(239,68,68,0.2)'; this.querySelector('.hover-gradient').style.opacity='0.8'; this.querySelector('.feature-number').style.transform='scale(1.1) ';"
+           onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(239,68,68,0.2)'; this.style.boxShadow='none'; this.querySelector('.hover-gradient').style.opacity='0'; this.querySelector('.feature-number').style.transform='scale(1) rotate(0deg)';">
+        
+        <div class="hover-gradient" style="position:absolute; top:-50%; left:-50%; width:200%; height:200%; background:radial-gradient(circle, rgba(239,68,68,0.3) 0%, transparent 70%); opacity:0; transition:opacity 0.5s; pointer-events:none; z-index:0;"></div>
+        
+        <div style="position:relative; z-index:1;">
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:30px;">
+            <div>
+              <div style="display:inline-block; padding:8px 18px; background:rgba(239,68,68,0.15); border:1px solid rgba(239,68,68,0.3); border-radius:12px; margin-bottom:20px;">
+                <span style="color:#fca5a5; font-size:13px; font-weight:700; letter-spacing:1.5px;">INSIGHTS</span>
+              </div>
+              <h3 style="font-size:32px; font-weight:800; color:#ffffff; margin-bottom:15px; line-height:1.3;">Sales & Analytics</h3>
+            </div>
+            <div class="feature-number" style="font-size:72px; font-weight:900; color:rgba(239,68,68,0.15); line-height:1; transition:all 0.4s;">04</div>
+          </div>
+          
+          <p style="font-size:17px; color:#cbd5e1; line-height:1.8; margin-bottom:30px;">
+            Comprehensive dashboard tracking revenue, customer behavior, conversion rates, and product performance. Make data-driven decisions with real-time business intelligence.
+          </p>
+          
+          <div style="display:flex; flex-wrap:wrap; gap:12px;">
+            <span style="padding:10px 20px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); border-radius:20px; color:#fca5a5; font-size:14px; font-weight:600;">Revenue Tracking</span>
+            <span style="padding:10px 20px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); border-radius:20px; color:#fca5a5; font-size:14px; font-weight:600;">Customer Insights</span>
+            <span style="padding:10px 20px; background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.2); border-radius:20px; color:#fca5a5; font-size:14px; font-weight:600;">Reports</span>
+          </div>
+        </div>
+        
+        <div style="position:absolute; bottom:-30px; right:-30px; width:150px; height:150px; background:linear-gradient(135deg, #ef4444 0%, #dc2626 100%); border-radius:50%; opacity:0.1; filter:blur(40px);"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CSS Animation for pulse -->
+  <style>
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    
+    @media (max-width: 991px) {
+      section > div > div:last-child > div {
+        grid-column: span 12 !important;
+      }
+    }
+  </style>
+</section>
+
+
+    <!-- Platforms Section -->
+    <section class="platforms-section" id="platforms">
+      <div class="container">
+        <div class="section-header scroll-animate">
+          <h2 class="section-title">Supported Platforms</h2>
+          <p class="section-subtitle">
+            Connect with your favorite e-commerce platform and marketplace
+          </p>
+        </div>
+
+        <div class="platforms-grid">
+          <div class="platform-card scroll-animate">
+            <div class="platform-logo">SH</div>
+            <h3 class="platform-name">Shopify</h3>
+            <p class="platform-description">
+              Full integration with Shopify stores for comprehensive analytics
+            </p>
+            <ul class="platform-features">
+              <li>Real-time order tracking</li>
+              <li>Customer behavior analysis</li>
+              <li>Product performance metrics</li>
+              <li>Automated reporting</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.1s"
+          >
+            <div class="platform-logo">WC</div>
+            <h3 class="platform-name">WooCommerce</h3>
+            <p class="platform-description">
+              Seamless WordPress WooCommerce integration
+            </p>
+            <ul class="platform-features">
+              <li>Plugin-based setup</li>
+              <li>Sales funnel tracking</li>
+              <li>Cart abandonment insights</li>
+              <li>Custom event tracking</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.2s"
+          >
+            <div class="platform-logo">MG</div>
+            <h3 class="platform-name">Magento</h3>
+            <p class="platform-description">
+              Enterprise-level Magento analytics integration
+            </p>
+            <ul class="platform-features">
+              <li>Multi-store support</li>
+              <li>Advanced segmentation</li>
+              <li>B2B analytics</li>
+              <li>Custom dashboards</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.3s"
+          >
+            <div class="platform-logo">AZ</div>
+            <h3 class="platform-name">Amazon</h3>
+            <p class="platform-description">
+              Track your Amazon marketplace performance
+            </p>
+            <ul class="platform-features">
+              <li>Seller central integration</li>
+              <li>Inventory analytics</li>
+              <li>Advertising performance</li>
+              <li>Competitive insights</li>
+            </ul>
+            
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.4s"
+          >
+            <div class="platform-logo">BC</div>
+            <h3 class="platform-name">BigCommerce</h3>
+            <p class="platform-description">
+              Complete BigCommerce store analytics
+            </p>
+            <ul class="platform-features">
+              <li>One-click integration</li>
+              <li>Revenue tracking</li>
+              <li>Customer lifetime value</li>
+              <li>Conversion optimization</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.5s"
+          >
+            <div class="platform-logo">EB</div>
+            <h3 class="platform-name">eBay</h3>
+            <p class="platform-description">
+              Comprehensive eBay seller analytics
+            </p>
+            <ul class="platform-features">
+              <li>Listing performance</li>
+              <li>Bidding analytics</li>
+              <li>Seller metrics dashboard</li>
+              <li>Competitor analysis</li>
+            </ul>
+            
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.6s"
+          >
+            <div class="platform-logo">ET</div>
+            <h3 class="platform-name">Etsy</h3>
+            <p class="platform-description">
+              Track your handmade marketplace success
+            </p>
+            <ul class="platform-features">
+              <li>Shop performance tracking</li>
+              <li>Listing optimization</li>
+              <li>Customer demographics</li>
+              <li>Revenue forecasting</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.7s"
+          >
+            <div class="platform-logo">SQ</div>
+            <h3 class="platform-name">Square</h3>
+            <p class="platform-description">
+              POS and online store analytics combined
+            </p>
+            <ul class="platform-features">
+              <li>Omnichannel tracking</li>
+              <li>Payment analytics</li>
+              <li>Customer insights</li>
+              <li>Inventory management</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.8s"
+          >
+            <div class="platform-logo">WX</div>
+            <h3 class="platform-name">Wix Stores</h3>
+            <p class="platform-description">
+              Wix e-commerce analytics made simple
+            </p>
+            <ul class="platform-features">
+              <li>Easy integration</li>
+              <li>Store performance</li>
+              <li>Customer journey mapping</li>
+              <li>Marketing attribution</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 0.9s"
+          >
+            <div class="platform-logo">PR</div>
+            <h3 class="platform-name">PrestaShop</h3>
+            <p class="platform-description">
+              European e-commerce platform integration
+            </p>
+            <ul class="platform-features">
+              <li>Multi-language support</li>
+              <li>Module installation</li>
+              <li>Sales analysis</li>
+              <li>Customer retention</li>
+            </ul>
+            
+          </div>
+
+          <div class="platform-card scroll-animate" style="animation-delay: 1s">
+            <div class="platform-logo">SF</div>
+            <h3 class="platform-name">Salesforce Commerce</h3>
+            <p class="platform-description">
+              Enterprise commerce cloud analytics
+            </p>
+            <ul class="platform-features">
+              <li>B2B & B2C analytics</li>
+              <li>Einstein AI insights</li>
+              <li>Customer 360 view</li>
+              <li>Predictive analytics</li>
+            </ul>
+           
+          </div>
+
+          <div
+            class="platform-card scroll-animate"
+            style="animation-delay: 1.1s"
+          >
+            <div class="platform-logo">API</div>
+            <h3 class="platform-name">Custom API</h3>
+            <p class="platform-description">
+              Build custom integrations with our API
+            </p>
+            <ul class="platform-features">
+              <li>RESTful API</li>
+              <li>Webhook support</li>
+              <li>Comprehensive docs</li>
+              <li>Developer support</li>
+            </ul>
+           
+          </div>
+        </div>
+      </div>
+    </section>
+
+   <!-- Zoho Ecosystem Section -->
+<!-- Zoho Ecosystem Section -->
+<section style="padding:100px 0; background:linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%); position:relative; overflow:hidden;">
+  <!-- Decorative Background Elements -->
+  <div style="position:absolute; top:-50px; right:-50px; width:300px; height:300px; background:rgba(99,102,241,0.05); border-radius:50%; z-index:0;"></div>
+  <div style="position:absolute; bottom:-80px; left:-80px; width:400px; height:400px; background:rgba(99,102,241,0.03); border-radius:50%; z-index:0;"></div>
+  
+  <div class="container" style="position:relative; z-index:1;">
+    <div class="text-center mb-5">
+      <span style="display:inline-block; padding:8px 20px; background:rgba(99,102,241,0.1); color:#6366f1; border-radius:30px; font-size:14px; font-weight:600; letter-spacing:0.5px; margin-bottom:15px;">INTEGRATION ECOSYSTEM</span>
+      <h2 style="font-size:42px; font-weight:700; color:#111; margin-bottom:20px; line-height:1.2;">Powered by Zoho Commerce</h2>
+      <p style="font-size:18px; color:#666; max-width:600px; margin:0 auto;">
+        Seamlessly connect your store with powerful tools for accounting, inventory, CRM & marketing automation.
+      </p>
+    </div>
+
+    <div class="row g-4 mt-4">
+      <!-- Card 1 -->
+      <div class="col-lg-3 col-md-6">
+        <div style="background:#ffffff; border-radius:16px; padding:35px 25px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; height:100%; border:1px solid rgba(99,102,241,0.1);" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 35px rgba(99,102,241,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
+          <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/commerce.svg" alt="Zoho Commerce" style="max-width:140px; max-height:50px; object-fit:contain;">
+          </div>
+          <h6 style="font-size:20px; font-weight:700; color:#111; margin-bottom:12px;">Zoho Commerce</h6>
+          <p style="font-size:15px; color:#666; line-height:1.6; margin:0;">Build & manage your online store with ease.</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-3 col-md-6">
+        <div style="background:#ffffff; border-radius:16px; padding:35px 25px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; height:100%; border:1px solid rgba(99,102,241,0.1);" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 35px rgba(99,102,241,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
+          <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/inventory.svg" alt="Zoho Inventory" style="max-width:140px; max-height:50px; object-fit:contain;">
+          </div>
+          <h6 style="font-size:20px; font-weight:700; color:#111; margin-bottom:12px;">Zoho Inventory</h6>
+          <p style="font-size:15px; color:#666; line-height:1.6; margin:0;">Real-time stock & warehouse management.</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-3 col-md-6">
+        <div style="background:#ffffff; border-radius:16px; padding:35px 25px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; height:100%; border:1px solid rgba(99,102,241,0.1);" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 35px rgba(99,102,241,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
+          <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/books.svg" alt="Zoho Books" style="max-width:140px; max-height:50px; object-fit:contain;">
+          </div>
+          <h6 style="font-size:20px; font-weight:700; color:#111; margin-bottom:12px;">Zoho Books</h6>
+          <p style="font-size:15px; color:#666; line-height:1.6; margin:0;">Automated invoicing & GST billing.</p>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-3 col-md-6">
+        <div style="background:#ffffff; border-radius:16px; padding:35px 25px; box-shadow:0 4px 20px rgba(0,0,0,0.08); transition:all 0.3s ease; height:100%; border:1px solid rgba(99,102,241,0.1);" onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 12px 35px rgba(99,102,241,0.15)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
+          <div style="width:100%; height:60px; display:flex; align-items:center; justify-content:center; margin-bottom:20px;">
+            <img src="https://www.zohowebstatic.com/sites/zweb/images/productlogos/crm.svg" alt="Zoho CRM" style="max-width:140px; max-height:50px; object-fit:contain;">
+          </div>
+          <h6 style="font-size:20px; font-weight:700; color:#111; margin-bottom:12px;">Zoho CRM</h6>
+          <p style="font-size:15px; color:#666; line-height:1.6; margin:0;">Customer tracking & sales automation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Workflow Animation Section -->
+    <section class="workflow-section" id="workflow">
+      <div class="workflow-container">
+        <div class="workflow-header scroll-animate">
+          <h2 class="workflow-title">Integration Journey</h2>
+          <p class="workflow-subtitle">
+            From connection to insights in four simple steps
+          </p>
+        </div>
+
+        <div class="workflow-diagram scroll-animate">
+          <div class="connection-line">
+            <svg>
+              <line class="line-path" x1="10%" y1="50" x2="90%" y2="50"></line>
+            </svg>
+            <div class="data-particle" style="top: 46px"></div>
+            <div class="data-particle" style="top: 46px"></div>
+            <div class="data-particle" style="top: 46px"></div>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-circle">1</div>
+            <h3 class="step-title">Connect</h3>
+            <p class="step-description">
+              Link your e-commerce platform with secure OAuth authentication
+            </p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-circle">2</div>
+            <h3 class="step-title">Configure</h3>
+            <p class="step-description">
+              Set up tracking parameters and define your key metrics
+            </p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-circle">3</div>
+            <h3 class="step-title">Sync</h3>
+            <p class="step-description">
+              Automatic data synchronization with historical data import
+            </p>
+          </div>
+
+          <div class="workflow-step">
+            <div class="step-circle">4</div>
+            <h3 class="step-title">Analyze</h3>
+            <p class="step-description">
+              Access real-time insights and AI-powered recommendations
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,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"
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Remove loader
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          document.querySelector(".loader").classList.add("hidden");
+        }, 500);
+      });
+
+      // Scroll animations
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("active");
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll(".scroll-animate").forEach((el) => {
+        observer.observe(el);
+      });
+
+      // Smooth scrolling for navigation links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+
+      // Platform card interactions
+      document.querySelectorAll(".connect-btn").forEach((btn) => {
+        btn.addEventListener("click", function () {
+          const platform =
+            this.closest(".platform-card").querySelector(
+              ".platform-name",
+            ).textContent;
+          alert(`Connecting to ${platform}... (Demo Mode)`);
+        });
+      });
+
+      // CTA button interactions
+      document
+        .querySelectorAll(".btn-primary-custom, .btn-secondary-custom")
+        .forEach((btn) => {
+          btn.addEventListener("click", function () {
+            const action = this.textContent.trim();
+            alert(`${action} - Feature coming soon!`);
+          });
+        });
+
+      // Parallax effect for floating shapes
+      let mouseX = 0;
+      let mouseY = 0;
+
+      document.addEventListener("mousemove", (e) => {
+        mouseX = e.clientX / window.innerWidth - 0.5;
+        mouseY = e.clientY / window.innerHeight - 0.5;
+      });
+
+      function animateShapes() {
+        const shapes = document.querySelectorAll(".shape");
+        shapes.forEach((shape, index) => {
+          const speed = (index + 1) * 20;
+          const x = mouseX * speed;
+          const y = mouseY * speed;
+          shape.style.transform = `translate(${x}px, ${y}px)`;
+        });
+        requestAnimationFrame(animateShapes);
+      }
+
+      animateShapes();
+
+      // Workflow step animation
+      let currentStep = 0;
+      const stepCircles = document.querySelectorAll(".step-circle");
+
+      function animateWorkflowSteps() {
+        stepCircles.forEach((circle, index) => {
+          circle.classList.remove("active");
+        });
+
+        stepCircles[currentStep].classList.add("active");
+        currentStep = (currentStep + 1) % stepCircles.length;
+      }
+
+      // Start workflow animation when visible
+      const workflowObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              setInterval(animateWorkflowSteps, 2000);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+
+      const workflowSection = document.querySelector(".workflow-diagram");
+      if (workflowSection) {
+        workflowObserver.observe(workflowSection);
+      }
+
+      // Animate impact metrics when visible
+      const impactObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const cards = entry.target.querySelectorAll(".impact-card");
+              cards.forEach((card, index) => {
+                setTimeout(() => {
+                  card.style.animation = "fadeInUp 0.6s ease-out forwards";
+                }, index * 100);
+              });
+            }
+          });
+        },
+        { threshold: 0.3 },
+      );
+
+      const impactSection = document.querySelector(".impact-metrics");
+      if (impactSection) {
+        impactObserver.observe(impactSection);
+      }
+    </script>
+  </body>
+</html>
