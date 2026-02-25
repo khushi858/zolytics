@@ -1,0 +1,2368 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Case Studies – Zolytics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --cream: #f8f6f1;
+        --white: #ffffff;
+        --teal: #2a7f72;
+        --teal-mid: #3a9e8f;
+        --teal-pale: #e6f4f2;
+        --teal-deep: #1b5e55;
+        --gold: #b8822e;
+        --gold-pale: #fdf0dc;
+        --purple: #6b4fa0;
+        --purple-pale: #f0eafa;
+        --blue: #2f6db5;
+        --blue-pale: #e8f0fb;
+        --text-dark: #18202e;
+        --text-mid: #4a5568;
+        --text-light: #8896a8;
+        --border: #e4e8e4;
+        --border-hover: rgba(42, 127, 114, 0.28);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--cream);
+        color: var(--text-dark);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+      nav {
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 2px 30px rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(20px);
+        transition: all 0.4s ease;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: -90px !important;
+        border-bottom: 2px solid rgb(69, 19, 19);
+      }
+
+      .logo-section img {
+        height: 90px;
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+      }
+
+      .logo-section img:hover {
+        transform: scale(1.08);
+        filter: drop-shadow(0 8px 20px rgba(139, 92, 246, 0.3));
+      }
+
+      /* HEADER */
+      .page-header {
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 70px 40px 56px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .page-header::before {
+        content: "";
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 700px;
+        height: 400px;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(42, 127, 114, 0.07) 0%,
+          transparent 68%
+        );
+        pointer-events: none;
+      }
+      .page-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(42, 127, 114, 0.25),
+          transparent
+        );
+      }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 22px;
+      }
+      .eyebrow-dot {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--teal);
+        display: inline-block;
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(1.4);
+        }
+      }
+      .page-header h1 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(34px, 5vw, 58px);
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1.12;
+        margin-bottom: 18px;
+      }
+      .page-header h1 em {
+        font-style: italic;
+        color: var(--teal);
+      }
+      .page-header > p {
+        font-size: 16px;
+        color: var(--text-mid);
+        max-width: 520px;
+        margin: 0 auto 32px;
+        line-height: 1.75;
+        font-weight: 300;
+      }
+      .stats-row {
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+        margin-top: 32px;
+        padding-top: 32px;
+        border-top: 1px solid var(--border);
+      }
+      .stat-val {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: var(--teal);
+        display: block;
+      }
+      .stat-lbl {
+        font-size: 11px;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 2px;
+      }
+
+      /* CONTROLS */
+      .controls-bar {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 36px 32px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .filter-tabs {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .ftab {
+        background: var(--white);
+        border: 1px solid var(--border);
+        color: var(--text-mid);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 8px 18px;
+        border-radius: 24px;
+        cursor: pointer;
+        transition: all 0.22s ease;
+        font-family: "DM Sans", sans-serif;
+      }
+      .ftab:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+      }
+      .ftab.active {
+        background: var(--teal);
+        color: #fff;
+        border-color: var(--teal);
+      }
+      .search-wrap {
+        position: relative;
+      }
+      .search-wrap svg {
+        position: absolute;
+        left: 12px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-light);
+        pointer-events: none;
+      }
+      #searchInput {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 9px 16px 9px 36px;
+        font-size: 13px;
+        font-family: "DM Sans", sans-serif;
+        color: var(--text-dark);
+        width: 220px;
+        outline: none;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      #searchInput:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(42, 127, 114, 0.1);
+      }
+      .count-label {
+        font-size: 12px;
+        color: var(--text-light);
+        font-weight: 500;
+      }
+
+      /* GRID */
+      .grid-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 28px 32px 80px;
+      }
+      .case-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+        gap: 22px;
+      }
+
+      /* CARD */
+      .case-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 26px 26px 22px;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        animation: cardIn 0.5s ease both;
+      }
+      @keyframes cardIn {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .case-card.hidden {
+        display: none;
+      }
+      .case-card::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: 18px;
+        opacity: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(42, 127, 114, 0.04) 0%,
+          transparent 60%
+        );
+        transition: opacity 0.3s;
+      }
+      .case-card:hover {
+        border-color: var(--border-hover);
+        box-shadow:
+          0 16px 52px rgba(42, 127, 114, 0.13),
+          0 2px 8px rgba(0, 0, 0, 0.04);
+        transform: translateY(-5px);
+      }
+      .case-card:hover::after {
+        opacity: 1;
+      }
+      .card-stripe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        border-radius: 18px 18px 0 0;
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.38s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .case-card:hover .card-stripe {
+        transform: scaleX(1);
+      }
+      .stripe-finance {
+        background: linear-gradient(90deg, #c8933a, #e8b860);
+      }
+      .stripe-analytics {
+        background: linear-gradient(90deg, #2a7f72, #3abfa8);
+      }
+      .stripe-integration {
+        background: linear-gradient(90deg, #6b4fa0, #9b7ed0);
+      }
+      .stripe-reporting {
+        background: linear-gradient(90deg, #2f6db5, #5b9ee0);
+      }
+      .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 14px;
+      }
+      .card-tag {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 4px 11px;
+        border-radius: 6px;
+      }
+      .tag-finance {
+        background: var(--gold-pale);
+        color: var(--gold);
+      }
+      .tag-analytics {
+        background: var(--teal-pale);
+        color: var(--teal);
+      }
+      .tag-integration {
+        background: var(--purple-pale);
+        color: var(--purple);
+      }
+      .tag-reporting {
+        background: var(--blue-pale);
+        color: var(--blue);
+      }
+      .card-number {
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--border);
+        font-family: "Playfair Display", serif;
+        letter-spacing: 1px;
+      }
+      .case-card h3 {
+        font-family: "Playfair Display", serif;
+        font-size: 16.5px;
+        font-weight: 700;
+        color: var(--text-dark);
+        line-height: 1.4;
+        margin-bottom: 9px;
+      }
+      .case-card > p {
+        font-size: 13px;
+        color: var(--text-mid);
+        line-height: 1.68;
+        font-weight: 300;
+        margin-bottom: 18px;
+        flex: 1;
+      }
+      .card-metrics {
+        display: flex;
+        gap: 0;
+        background: var(--cream);
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 16px;
+        border: 1px solid var(--border);
+      }
+      .metric {
+        flex: 1;
+        padding: 10px 8px;
+        text-align: center;
+        border-right: 1px solid var(--border);
+      }
+      .metric:last-child {
+        border-right: none;
+      }
+      .metric-val {
+        font-family: "Playfair Display", serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: var(--teal);
+        display: block;
+        line-height: 1;
+      }
+      .metric-lbl {
+        font-size: 9.5px;
+        color: var(--text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        margin-top: 3px;
+        display: block;
+      }
+      .card-tools {
+        display: flex;
+        gap: 5px;
+        flex-wrap: wrap;
+        margin-bottom: 18px;
+      }
+      .tool-badge {
+        font-size: 10px;
+        font-weight: 500;
+        color: var(--text-mid);
+        background: var(--cream);
+        border: 1px solid var(--border);
+        padding: 3px 8px;
+        border-radius: 4px;
+        letter-spacing: 0.3px;
+      }
+      .card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        margin-top: auto;
+      }
+      .card-client {
+        font-size: 11.5px;
+        color: var(--text-light);
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .client-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal-pale);
+        border: 1.5px solid var(--teal);
+        flex-shrink: 0;
+      }
+      .read-btn {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 11px;
+        font-weight: 700;
+        color: var(--teal);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1.5px solid var(--teal-pale);
+        background: var(--teal-pale);
+        transition: all 0.22s;
+      }
+      .read-btn svg {
+        transition: transform 0.22s;
+      }
+      .case-card:hover .read-btn {
+        background: var(--teal);
+        color: #fff;
+        border-color: var(--teal);
+      }
+      .case-card:hover .read-btn svg {
+        transform: translateX(3px);
+      }
+      .no-results {
+        text-align: center;
+        padding: 80px 20px;
+        color: var(--text-light);
+        font-size: 15px;
+        grid-column: 1/-1;
+        display: none;
+      }
+
+      /* MODAL */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(18, 28, 42, 0.6);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 2000;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+      .modal-overlay.active {
+        display: flex;
+        animation: ovIn 0.22s ease;
+      }
+      @keyframes ovIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .modal {
+        background: var(--white);
+        border-radius: 22px;
+        max-width: 780px;
+        width: 100%;
+        max-height: 90vh;
+        overflow-y: auto;
+        animation: mIn 0.32s cubic-bezier(0.25, 0.8, 0.25, 1);
+        position: relative;
+        box-shadow: 0 32px 80px rgba(0, 0, 0, 0.22);
+      }
+      @keyframes mIn {
+        from {
+          transform: translateY(32px) scale(0.97);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+      .modal::-webkit-scrollbar {
+        width: 4px;
+      }
+      .modal::-webkit-scrollbar-thumb {
+        background: var(--border);
+        border-radius: 2px;
+      }
+      .modal-header {
+        padding: 38px 38px 30px;
+        border-radius: 22px 22px 0 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .modal-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          140deg,
+          var(--teal-deep) 0%,
+          var(--teal) 55%,
+          var(--teal-mid) 100%
+        );
+        z-index: 0;
+      }
+      .modal-header::after {
+        content: "";
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 40px;
+        background: var(--white);
+        clip-path: ellipse(60% 100% at 50% 100%);
+        z-index: 1;
+      }
+      .modal-header > * {
+        position: relative;
+        z-index: 2;
+      }
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 18px;
+        z-index: 10;
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 16px;
+        line-height: 1;
+        transition: background 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .modal-close:hover {
+        background: rgba(255, 255, 255, 0.28);
+      }
+      .modal-header-tag {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.18);
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        padding: 5px 13px;
+        border-radius: 6px;
+        margin-bottom: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .modal-header h2 {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(20px, 3vw, 27px);
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.28;
+        margin-bottom: 10px;
+        max-width: 580px;
+      }
+      .modal-header-sub {
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .modal-header-sub span {
+        background: rgba(255, 255, 255, 0.12);
+        padding: 3px 10px;
+        border-radius: 4px;
+      }
+      .modal-numbers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        background: var(--teal-pale);
+        border-bottom: 1px solid rgba(42, 127, 114, 0.12);
+      }
+      .mn-item {
+        padding: 18px 14px;
+        text-align: center;
+        border-right: 1px solid rgba(42, 127, 114, 0.12);
+      }
+      .mn-item:last-child {
+        border-right: none;
+      }
+      .mn-val {
+        font-family: "Playfair Display", serif;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--teal);
+        display: block;
+        line-height: 1;
+      }
+      .mn-lbl {
+        font-size: 10px;
+        color: var(--text-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+        margin-top: 4px;
+      }
+      .modal-body {
+        padding: 36px 38px 38px;
+      }
+      .approach-timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        margin-top: 12px;
+      }
+      .at-step {
+        display: flex;
+        gap: 16px;
+        position: relative;
+      }
+      .at-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        left: 15px;
+        top: 32px;
+        bottom: 0;
+        width: 1px;
+        background: linear-gradient(to bottom, var(--teal), transparent);
+        opacity: 0.3;
+      }
+      .at-num {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--teal-pale);
+        border: 1.5px solid rgba(42, 127, 114, 0.3);
+        color: var(--teal);
+        font-size: 12px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .at-content {
+        padding-bottom: 20px;
+      }
+      .at-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--text-dark);
+        margin-bottom: 3px;
+      }
+      .at-desc {
+        font-size: 13px;
+        color: var(--text-mid);
+        line-height: 1.65;
+        font-weight: 300;
+      }
+      .ms-head {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 14px;
+      }
+      .ms-icon {
+        width: 32px;
+        height: 32px;
+        border-radius: 9px;
+        background: var(--teal-pale);
+        border: 1px solid rgba(42, 127, 114, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+        flex-shrink: 0;
+      }
+      .ms-head h4 {
+        font-family: "Playfair Display", serif;
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--text-dark);
+      }
+      .ms-divider {
+        height: 1px;
+        background: var(--border);
+        margin: 26px 0;
+      }
+      .challenges-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+        margin-top: 12px;
+      }
+      .ch-item {
+        background: var(--cream);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 10px 13px;
+        font-size: 12.5px;
+        color: var(--text-mid);
+        line-height: 1.5;
+        font-weight: 400;
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      .ch-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--teal);
+        flex-shrink: 0;
+        margin-top: 5px;
+        opacity: 0.6;
+      }
+      .results-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+        margin-top: 12px;
+      }
+      .r-card {
+        background: linear-gradient(
+          135deg,
+          var(--teal-pale),
+          rgba(255, 255, 255, 0.6)
+        );
+        border: 1px solid rgba(42, 127, 114, 0.18);
+        border-radius: 10px;
+        padding: 14px 12px;
+        text-align: center;
+      }
+      .r-val {
+        font-family: "Playfair Display", serif;
+        font-size: 22px;
+        font-weight: 700;
+        color: var(--teal);
+        display: block;
+        line-height: 1;
+        margin-bottom: 4px;
+      }
+      .r-lbl {
+        font-size: 11px;
+        color: var(--text-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+      }
+      .impact-box {
+        background: linear-gradient(135deg, var(--teal-deep), var(--teal));
+        border-radius: 12px;
+        padding: 20px 22px;
+        margin-top: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+      .impact-box::before {
+        content: '"';
+        position: absolute;
+        top: -12px;
+        left: 14px;
+        font-size: 80px;
+        font-family: "Playfair Display", serif;
+        color: rgba(255, 255, 255, 0.1);
+        line-height: 1;
+      }
+      .impact-box p {
+        font-size: 14px;
+        color: #fff;
+        line-height: 1.75;
+        font-weight: 300;
+        position: relative;
+        z-index: 1;
+      }
+      .tools-row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin-top: 12px;
+      }
+      .tool-chip {
+        background: var(--teal-pale);
+        color: var(--teal);
+        border: 1px solid rgba(42, 127, 114, 0.2);
+        font-size: 12px;
+        font-weight: 500;
+        padding: 6px 14px;
+        border-radius: 8px;
+      }
+      .modal-nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 38px;
+        border-top: 1px solid var(--border);
+        background: var(--cream);
+        border-radius: 0 0 22px 22px;
+      }
+      .mnav-btn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--text-mid);
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        cursor: pointer;
+        border: none;
+        background: none;
+        padding: 8px 16px;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        transition: all 0.2s;
+        font-family: "DM Sans", sans-serif;
+      }
+      .mnav-btn:hover {
+        border-color: var(--teal);
+        color: var(--teal);
+        background: var(--teal-pale);
+      }
+      .mnav-btn:disabled {
+        opacity: 0.35;
+        cursor: default;
+        pointer-events: none;
+      }
+      .mnav-count {
+        font-size: 12px;
+        color: var(--text-light);
+        font-weight: 500;
+      }
+
+      @media (max-width: 640px) {
+        .page-header {
+          padding: 50px 20px 40px;
+        }
+        .controls-bar,
+        .grid-section {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+        .case-grid {
+          grid-template-columns: 1fr;
+        }
+        .challenges-list,
+        .results-grid {
+          grid-template-columns: 1fr;
+        }
+        .modal-body {
+          padding: 24px 22px 26px;
+        }
+        .modal-header {
+          padding: 28px 22px 22px;
+        }
+        .modal-nav {
+          padding: 16px 22px;
+        }
+        .stats-row {
+          gap: 24px;
+        }
+        #searchInput {
+          width: 160px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo-section">
+        <a href="index.html" class="home-logo">
+          <img
+            src="https://www.zolytics.in/files/logo.png"
+            alt="Zolytics"
+            class="logo-img main-logo"
+            style="height: 90px"
+          />
+        </a>
+      </div>
+    </nav>
+
+    <header class="page-header">
+      <div class="eyebrow">
+        <span class="eyebrow-dot"></span>
+        Zolytics · Verified Client Work
+      </div>
+      <h1>Where Numbers Met <em>Clarity.</em></h1>
+      <p>
+        Every engagement here is a real problem solved — with Zoho Analytics,
+        CA-level financial thinking, and precision SQL engineering that CFOs
+        actually trust.
+      </p>
+      <div class="stats-row">
+        <div class="stat-item">
+          <span class="stat-val">15+</span
+          ><span class="stat-lbl">Engagements</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">8+</span
+          ><span class="stat-lbl">Countries Served</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">₹0</span
+          ><span class="stat-lbl">Hidden Excel Errors</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-val">100%</span
+          ><span class="stat-lbl">Real-Time Reporting</span>
+        </div>
+      </div>
+    </header>
+
+    <div class="controls-bar">
+      <div class="filter-tabs" id="filterTabs">
+        <button class="ftab active" data-filter="all">All Cases</button>
+        <button class="ftab" data-filter="finance">Finance</button>
+        <button class="ftab" data-filter="analytics">Analytics</button>
+        <button class="ftab" data-filter="integration">Integration</button>
+        <button class="ftab" data-filter="reporting">Reporting</button>
+      </div>
+      <div
+        style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap"
+      >
+        <span class="count-label" id="countLabel">Showing 15 case studies</span>
+        <div class="search-wrap">
+          <svg
+            width="14"
+            height="14"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.35-4.35" />
+          </svg>
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search case studies…"
+          />
+        </div>
+      </div>
+    </div>
+
+    <section class="grid-section">
+      <div class="case-grid" id="caseGrid">
+        <div class="no-results" id="noResults">
+          No case studies match your search. Try a different keyword or filter.
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal" id="modalBox"></div>
+    </div>
+
+      <!-- Global Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Company Info -->
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+         <!-- Zoho Solutions - Centered with balanced columns -->
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in <br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+             <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 5px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
+            </a>
+          </div>
+          </p>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <script>
+      const cases = [
+        {
+          id: 1,
+          tag: "Finance",
+          tagClass: "tag-finance",
+          stripe: "stripe-finance",
+          title: "Multi-Currency Consolidated Reporting in USD",
+          summary:
+            "Five entities across UAE, India, and Europe — each reporting in a different currency. We built a single real-time USD dashboard that replaced weeks of error-prone manual forex work.",
+          client: "Middle-East Manufacturing Group",
+          industry: "Manufacturing · UAE",
+          metrics: [
+            { val: "70%", lbl: "Reporting Faster" },
+            { val: "5", lbl: "Entities Merged" },
+            { val: "4", lbl: "Currencies" },
+          ],
+          tools: ["Zoho Analytics", "Zoho Books", "SQL", "Forex Rate API"],
+          problem:
+            "Management required consolidated reporting in USD across INR, AED, EUR, and GBP entities. Excel-based manual forex conversion was producing material errors and delaying board packages by 10+ days every month. No single person had a complete picture of overall group financial performance.",
+          challenges: [
+            "Rate date selection: invoice date vs payment date vs month-end closing",
+            "Historical forex rate preservation across 24 reporting periods",
+            "Handling unrealized vs realized foreign exchange gain and loss",
+            "Consolidating 5 separate Zoho Books organizations into one workspace",
+            "Eliminating intercompany receivables, payables, and revenue",
+            "Mapping 5 different charts of accounts into a unified group structure",
+          ],
+          steps: [
+            {
+              title: "Data Integration",
+              desc: "Connected all 5 Zoho Books organizations into a single Zoho Analytics workspace with automated hourly sync and entity-level tagging.",
+            },
+            {
+              title: "Forex Master Table Design",
+              desc: "Built a dedicated currency rate master with historical rate storage, month-end closing rates, and invoice-date-based lookup logic engineered in SQL.",
+            },
+            {
+              title: "Conversion Logic Engineering",
+              desc: "Created dynamic calculated fields — USD Amount = Local Amount ÷ Applicable Rate — with period-aware rate selection by currency code and transaction date.",
+            },
+            {
+              title: "Unified COA Mapping",
+              desc: "Mapped all 5 charts of accounts to a standardized global structure across Revenue, COGS, Operating Expenses, EBITDA, and Net Profit layers.",
+            },
+            {
+              title: "Dashboard Delivery",
+              desc: "Delivered consolidated P&L, entity-wise comparison, currency exposure heatmap, and realized vs unrealized forex impact — all live and automated.",
+            },
+          ],
+          results: [
+            { val: "100%", lbl: "Excel Eliminated" },
+            { val: "70%", lbl: "Time Saved" },
+            { val: "Day 1", lbl: "Board Reports" },
+            { val: "Clean", lbl: "Audit Trail" },
+          ],
+          impact:
+            "Management now reviews full group performance in one unified currency by Day 1 of the month — not Day 12. Investor confidence improved measurably. The finance team reclaimed 10 person-days monthly previously spent on manual reconciliation and forex lookup.",
+        },
+        {
+          id: 2,
+          tag: "Analytics",
+          tagClass: "tag-analytics",
+          stripe: "stripe-analytics",
+          title: "Automated MIS Replacing 40 Excel Sheets",
+          summary:
+            "A Dubai trading firm's finance team spent 5 working days every month building reports manually. We automated the entire process and delivered it to leadership every Monday at 8 AM — untouched by human hands.",
+          client: "Trading Company",
+          industry: "Trading · Dubai, UAE",
+          metrics: [
+            { val: "40+", lbl: "Sheets Replaced" },
+            { val: "5 Days", lbl: "Saved Monthly" },
+            { val: "Monday 8AM", lbl: "Auto Delivery" },
+          ],
+          tools: [
+            "Zoho Analytics",
+            "Zoho Books",
+            "SQL",
+            "Scheduled Email Reports",
+          ],
+          problem:
+            "Finance team maintained 40+ Excel sheets monthly covering sales, collections, payables, and margin analysis. The process was error-prone and took 5 full working days after month-end — leaving leadership flying blind for the first week of every new month.",
+          challenges: [
+            "Multi-level product categorization with a 3-tier hierarchy",
+            "Custom gross margin formulas varying by product line and customer type",
+            "Party-wise outstanding aging with dynamic 0-30/31-60/61-90/90+ day buckets",
+            "Budget vs actuals variance with drill-down by cost center",
+            "Sales representative performance scorecards with quota tracking",
+            "Weekly automated email delivery with zero manual trigger required",
+          ],
+          steps: [
+            {
+              title: "Workflow Audit",
+              desc: "Mapped every one of the 40 Excel sheets to its source data in Zoho Books, identifying what could be replaced by SQL query tables vs custom formula fields.",
+            },
+            {
+              title: "Star-Schema Data Model",
+              desc: "Constructed a data model with sales, purchase, party, and product dimensions in Zoho Analytics — replacing the fragmented spreadsheet structure.",
+            },
+            {
+              title: "SQL Logic Engineering",
+              desc: "Coded all margin calculations, aging bucket classification, and budget variance logic in SQL — replacing over 800 Excel formulas with auditable, version-controlled queries.",
+            },
+            {
+              title: "Executive Dashboard Design",
+              desc: "Built an MIS dashboard with category drill-down, top and bottom customer analysis, outstanding heatmap, and salesperson leaderboard.",
+            },
+            {
+              title: "Automation Setup",
+              desc: "Configured automated PDF report delivery every Monday at 8 AM to all department heads — with no manual intervention required at any step.",
+            },
+          ],
+          results: [
+            { val: "Zero", lbl: "Manual Effort" },
+            { val: "99%", lbl: "Accuracy Rate" },
+            { val: "Auto", lbl: "Weekly Delivery" },
+            { val: "₹0", lbl: "Reporting Overhead" },
+          ],
+          impact:
+            "Finance team operates 5 days leaner every month. Leadership receives structured, accurate insights every Monday before they open their laptops. Report error rate dropped from approximately 12% (Excel era) to near-zero in the first quarter.",
+        },
+        {
+          id: 3,
+          tag: "Reporting",
+          tagClass: "tag-reporting",
+          stripe: "stripe-reporting",
+          title: "Project-Wise P&L for a GCC Contracting Firm",
+          summary:
+            "30+ simultaneous construction projects with zero real-time cost visibility. Budget overruns were discovered only at project completion. We fixed that with live phase-wise tracking and early-warning alerts.",
+          client: "Contracting Company",
+          industry: "Construction · GCC Region",
+          metrics: [
+            { val: "30+", lbl: "Projects Live" },
+            { val: "4%", lbl: "Margin Gained" },
+            { val: "Same Week", lbl: "Overrun Detection" },
+          ],
+          tools: [
+            "Zoho Books",
+            "Zoho Analytics",
+            "SQL",
+            "Budget Upload Templates",
+          ],
+          problem:
+            "The company was managing 30+ active construction projects across Saudi Arabia, UAE, and Qatar. Costs were logged in Zoho Books but never analyzed against project budgets. Overruns were discovered only at project completion — when corrective action was impossible.",
+          challenges: [
+            "Budget vs actual cost tracking at project phase level",
+            "Subcontractor payment milestone and advance recovery tracking",
+            "Retention money management and scheduled release tracking",
+            "Resource utilization vs billing efficiency by project",
+            "Multi-currency billing across USD, SAR, and AED",
+            "Early warning threshold logic: cost vs physical progress correlation",
+          ],
+          steps: [
+            {
+              title: "Project Dimension Design",
+              desc: "Created a project and phase tagging framework in Zoho Books and Analytics, linking every expense, bill, and invoice to a specific project phase.",
+            },
+            {
+              title: "Budget Upload System",
+              desc: "Built an Excel-based budget template for Project Managers to upload phase-wise estimates — feeding directly into the comparison layer in Analytics.",
+            },
+            {
+              title: "Retention and Milestone Tracking",
+              desc: "Engineered retention calculation logic and subcontractor milestone payment schedules in SQL for all active contracts.",
+            },
+            {
+              title: "Early Warning Alerts",
+              desc: "Configured automated alerts when any project phase exceeded 85% of budget before physical completion reached 80% — giving teams time to intervene.",
+            },
+            {
+              title: "Executive Portfolio Dashboard",
+              desc: "Delivered a project portfolio overview, phase-wise cost drill-down, and cost-to-complete projection across all 30+ projects.",
+            },
+          ],
+          results: [
+            { val: "Same Week", lbl: "Overrun Detection" },
+            { val: "4%", lbl: "Margin Gain" },
+            { val: "Phase-Wise", lbl: "Cost Visibility" },
+            { val: "30+", lbl: "Projects Monitored" },
+          ],
+          impact:
+            "Management now identifies and acts on cost overruns within the same week rather than discovering them post-completion. Gross margin improved 4% in the first quarter after implementation. Project Manager teams reported measurably higher cost discipline.",
+        },
+        {
+          id: 4,
+          tag: "Integration",
+          tagClass: "tag-integration",
+          stripe: "stripe-integration",
+          title: "Zoho CRM to Zoho Books Revenue Bridge",
+          summary:
+            "Sales closed deals. Finance raised invoices. Nobody knew why the numbers never matched. We built the bridge that unified pipeline, invoicing, collection, and commissions into one source of truth.",
+          client: "SaaS Company",
+          industry: "Software Services · Bengaluru, India",
+          metrics: [
+            { val: "3 Days→20min", lbl: "Month-End Recon" },
+            { val: "Auto", lbl: "Commission Reports" },
+            { val: "Zero", lbl: "CRM-Books Mismatch" },
+          ],
+          tools: ["Zoho CRM", "Zoho Books", "Zoho Analytics", "SQL Joins"],
+          problem:
+            "Sales tracked deals in CRM; finance managed invoices in Books. No unified view existed for pipeline-to-revenue conversion, deal-to-invoice matching, or salesperson commissions. Month-end reconciliation between CRM and Books took 3 full days and still produced errors that caused commission disputes.",
+          challenges: [
+            "Mapping 14 CRM pipeline stages to invoice lifecycle statuses",
+            "Partial invoicing against single multi-year contracts",
+            "New business vs renewal vs upsell revenue classification",
+            "Salesperson commission slab calculation with quota-based overrides",
+            "Real-time MRR, churn, and expansion revenue tracking",
+            "Automated alert for Closed-Won deals without an invoice within 48 hours",
+          ],
+          steps: [
+            {
+              title: "Data Join Architecture",
+              desc: "Used Zoho Analytics SQL to join CRM Deals, Contacts, and Accounts with Books Invoices, Payments, and Credit Notes on a common customer identifier.",
+            },
+            {
+              title: "Revenue Bridge Table",
+              desc: "Built a unified bridge table showing each deal's journey: CRM stage → invoice raised → invoice paid → collection lag in days.",
+            },
+            {
+              title: "Commission Calculation Engine",
+              desc: "Coded a slab-wise commission engine in SQL with deal-type overrides and quota-breach escalation multipliers.",
+            },
+            {
+              title: "Weighted Revenue Forecast",
+              desc: "Created a pipeline forecast view combining CRM probability scores with historical stage-wise conversion rates for a live revenue projection.",
+            },
+            {
+              title: "Reconciliation Alert System",
+              desc: "Configured daily automated alerts for any Closed-Won CRM deal without a corresponding invoice in Books after 48 hours.",
+            },
+          ],
+          results: [
+            { val: "3 Days→20min", lbl: "Recon Time" },
+            { val: "Auto", lbl: "Commission Calc" },
+            { val: "Live", lbl: "Revenue Forecast" },
+            { val: "Zero", lbl: "Disputes" },
+          ],
+          impact:
+            "CFO now has a single source of truth linking every CRM deal to its invoice and collection record. Month-end reconciliation that consumed 3 person-days now takes 20 minutes. Sales commissions are paid on time without disputes for the first time in 3 years.",
+        },
+        {
+          id: 5,
+          tag: "Finance",
+          tagClass: "tag-finance",
+          stripe: "stripe-finance",
+          title: "13-Week Rolling Cash Flow Forecast",
+          summary:
+            "A diversified group with 8 bank accounts and 5 business units had no forward cash visibility. Liquidity crises were reactive. We made them preventable — with a live 13-week rolling forecast.",
+          client: "Diversified Business Group",
+          industry: "Conglomerate · India",
+          metrics: [
+            { val: "13-Week", lbl: "Rolling Forecast" },
+            { val: "8", lbl: "Banks Unified" },
+            { val: "Zero", lbl: "Liquidity Crises" },
+          ],
+          tools: [
+            "Zoho Books",
+            "Zoho Analytics",
+            "SQL",
+            "Bank Feed Integration",
+          ],
+          problem:
+            "Treasury was manually building cash projections in Excel every fortnight, unable to incorporate live outstanding payables, receivables, and upcoming loan EMIs. Two near-miss liquidity events occurred in the preceding 6 months. The group had no unified view of cash across 8 bank accounts in 3 banks.",
+          challenges: [
+            "Consolidating real-time cash across 8 bank accounts in 3 different banks",
+            "Collection probability scoring based on customer payment history",
+            "Scheduled payment forecasting from recurring vendor and loan contracts",
+            "Intercompany fund flow netting across 5 business units",
+            "FD maturity, loan repayment, GST, and TDS payment calendars",
+            "Minimum cash threshold alerts with 3-week lead time by entity",
+          ],
+          steps: [
+            {
+              title: "Cash Position Foundation",
+              desc: "Integrated all 8 bank accounts via Zoho Books bank feeds into a unified daily cash balance summary, updated automatically each morning.",
+            },
+            {
+              title: "Receivables Probability Model",
+              desc: "Built a collection probability engine based on 24 months of customer payment history — assigning 90%/60%/30% weights to receivables by age bucket.",
+            },
+            {
+              title: "Payment Calendar Mapping",
+              desc: "Mapped all recurring vendor payments, loan EMIs, statutory dues (GST, TDS, PF), and payroll dates into a structured 13-week payment calendar in SQL.",
+            },
+            {
+              title: "FD and Liability Integration",
+              desc: "Added FD maturity dates, bank guarantee renewals, LC expiry dates, and working capital limit utilization into the forecast model.",
+            },
+            {
+              title: "Alert Infrastructure",
+              desc: "Deployed entity-wise minimum cash balance threshold alerts with automated email escalations when projected balances breached warning levels.",
+            },
+          ],
+          results: [
+            { val: "13-Week", lbl: "Live Forecast" },
+            { val: "Zero", lbl: "Liquidity Crises" },
+            { val: "Daily", lbl: "Cash Position" },
+            { val: "Early", lbl: "Deficit Warnings" },
+          ],
+          impact:
+            "The group eliminated two near-miss liquidity situations in the first quarter. Banking relationships improved as the treasury team now proactively communicates upcoming large payments. The Group CFO called it 'the most impactful single implementation in five years.'",
+        },
+        {
+          id: 6,
+          tag: "Analytics",
+          tagClass: "tag-analytics",
+          stripe: "stripe-analytics",
+          title: "25-Outlet Retail Chain Inventory Intelligence",
+          summary:
+            "Overstocked slow movers in some stores, stockouts of bestsellers in others — with no visibility into which SKUs actually made money. We built an analytics layer that transformed how they buy and sell.",
+          client: "Retail Chain",
+          industry: "Retail · West India",
+          metrics: [
+            { val: "25", lbl: "Outlets Tracked" },
+            { val: "30%", lbl: "Stockout Reduction" },
+            { val: "18%", lbl: "Carrying Cost Saved" },
+          ],
+          tools: ["Zoho Inventory", "Zoho Analytics", "SQL", "POS Integration"],
+          problem:
+            "A 25-outlet retail chain had no real-time visibility into fast vs slow-moving stock by location. Buying was driven by intuition and supplier pressure. Overstock in some outlets and stockouts in others were hurting both gross margins and NPS scores.",
+          challenges: [
+            "SKU-level tracking across 25 outlets with different product assortments",
+            "Dead stock identification with age-based value erosion modeling",
+            "Category-wise gross margin analysis after markdowns, returns, and shrinkage",
+            "Demand-based reorder point calculation per location per SKU",
+            "Festival and seasonal demand pattern modeling for advance purchasing",
+            "Inter-outlet transfer recommendation logic to balance stock positions",
+          ],
+          steps: [
+            {
+              title: "Data Integration",
+              desc: "Connected Zoho Inventory and POS data into Analytics with outlet-level tagging across all 25 locations and daily automated sync.",
+            },
+            {
+              title: "ABC-XYZ Classification",
+              desc: "Built a combined ABC analysis (revenue contribution) with XYZ analysis (demand variability) to classify all SKUs into 9 buying strategy buckets.",
+            },
+            {
+              title: "Stockout and Overstock Model",
+              desc: "Calculated days-of-stock-remaining per SKU per outlet and flagged items below reorder point or above 90-day stock cover for action.",
+            },
+            {
+              title: "Margin Analytics Layer",
+              desc: "Computed outlet-wise and category-wise gross margin after all deductions — revealing which outlets and categories were genuinely profitable vs subsidized.",
+            },
+            {
+              title: "Automated Reorder Alerts",
+              desc: "Deployed daily reorder alerts to the buying team with outlet-specific reorder quantities and inter-outlet transfer suggestions to balance stock positions.",
+            },
+          ],
+          results: [
+            { val: "30%", lbl: "Stockouts Down" },
+            { val: "18%", lbl: "Carrying Cost" },
+            { val: "9-Bucket", lbl: "SKU Strategy" },
+            { val: "Daily", lbl: "Buying Signals" },
+          ],
+          impact:
+            "Inventory carrying cost reduced by 18% in 6 months. Stockout incidents dropped 30% across all outlets. The buying team shifted from supplier-led purchasing to data-driven reorder signals — measurably improving in-store availability and customer satisfaction scores.",
+        },
+        {
+          id: 7,
+          tag: "Reporting",
+          tagClass: "tag-reporting",
+          stripe: "stripe-reporting",
+          title: "NBFC RBI Regulatory Reporting Automation",
+          summary:
+            "Compliance team spent 7 full days every month manually building RBI returns across NPA, ALM, and CAR formats. We automated the entire pipeline — delivering same-day, submission-ready reports.",
+          client: "Non-Banking Financial Company",
+          industry: "Financial Services · Mumbai",
+          metrics: [
+            { val: "7→0 Days", lbl: "Manual Effort" },
+            { val: "Same Day", lbl: "Report Generation" },
+            { val: "Zero", lbl: "RBI Queries (12mo)" },
+          ],
+          tools: [
+            "Zoho Analytics",
+            "SQL",
+            "Custom Data Lake",
+            "RBI-Format Excel Export",
+          ],
+          problem:
+            "The compliance team aggregated loan data manually from 3 internal systems every month to build RBI-mandated returns covering NPA classification, ALM statements, and Capital Adequacy Ratios. The 7-day process was deadline-critical, consistently error-prone, and left no bandwidth for actual portfolio analysis.",
+          challenges: [
+            "NPA classification per RBI Master Directions: SMA-0, SMA-1, SMA-2, and NPA buckets",
+            "Provisioning computation at asset classification level with write-off netting",
+            "Sector-wise loan exposure mapping to RBI category codes",
+            "Capital Adequacy Ratio computation with Tier 1 and Tier 2 capital breakdown",
+            "ALM maturity bucket classification for both assets and liabilities",
+            "Generating 6 different export formats matching RBI-prescribed Excel templates",
+          ],
+          steps: [
+            {
+              title: "Loan Master Data Model",
+              desc: "Built a central loan master table in Analytics combining disbursement records, repayment schedules, and overdue tracking from all 3 source systems.",
+            },
+            {
+              title: "NPA Classification Engine",
+              desc: "Coded RBI-compliant NPA classification logic in SQL — automatically assigning SMA-0/1/2 or NPA status based on Days Past Due and restructuring flags.",
+            },
+            {
+              title: "Provisioning Calculator",
+              desc: "Built provisioning calculation logic per RBI norms across Standard, Sub-Standard, Doubtful (D1/D2/D3), and Loss asset categories.",
+            },
+            {
+              title: "ALM and CAR Modules",
+              desc: "Engineered maturity bucket classification for the ALM statement and Tier 1/Tier 2 capital computation for the CAR return — both fully SQL-driven.",
+            },
+            {
+              title: "One-Click Export",
+              desc: "Created one-click export automation generating all 6 RBI returns in the exact prescribed Excel formats — ready for portal upload without manual formatting.",
+            },
+          ],
+          results: [
+            { val: "Same Day", lbl: "All 6 Returns" },
+            { val: "Zero", lbl: "RBI Queries" },
+            { val: "7 Days", lbl: "Saved Monthly" },
+            { val: "Audit-Ready", lbl: "Output Quality" },
+          ],
+          impact:
+            "Zero regulatory queries received in 12 consecutive months after go-live. Compliance team redirected 7 person-days monthly toward risk analysis and portfolio quality review — activities that were previously impossible within the reporting cycle. Audit preparation time dropped from 4 days to under 4 hours.",
+        },
+        {
+          id: 8,
+          tag: "Finance",
+          tagClass: "tag-finance",
+          stripe: "stripe-finance",
+          title: "AR Collections Cockpit — DSO Reduced 35%",
+          summary:
+            "A B2B IT firm with 75-day DSO and reactive collections. We built a live AR cockpit with collector accountability, promise-to-pay tracking, and automated escalations — freeing ₹1.2Cr per month.",
+          client: "B2B IT Services Firm",
+          industry: "Technology Services · Pune, India",
+          metrics: [
+            { val: "75→49", lbl: "DSO (Days)" },
+            { val: "35%", lbl: "Faster Collections" },
+            { val: "₹1.2Cr", lbl: "Avg Cash Freed" },
+          ],
+          tools: ["Zoho Books", "Zoho Analytics", "SQL", "Zoho CRM"],
+          problem:
+            "Collections were reactive and unstructured. No collector was formally accountable for a specific customer portfolio. Overdue invoices sat unaddressed for weeks. DSO of 75 days against a 45-day industry benchmark was creating chronic working capital strain that constrained business growth.",
+          challenges: [
+            "Dynamic aging buckets refreshed daily: 0-30, 31-60, 61-90, 91-180, and 180+ days",
+            "Collector assignment with individual performance dashboards and portfolio aging views",
+            "Promise-to-pay date capture and automated follow-up workflow",
+            "Dispute flagging with escalation routing to the relevant Relationship Manager",
+            "Customer credit limit monitoring with breach alerts before new orders",
+            "Automated dunning email sequences at 30, 60, and 90 day overdue milestones",
+          ],
+          steps: [
+            {
+              title: "AR Cockpit Foundation",
+              desc: "Built a live aging dashboard pulling real-time invoice and payment data from Zoho Books — refreshed daily with dynamic bucket recalculation in SQL.",
+            },
+            {
+              title: "Collector Assignment Framework",
+              desc: "Created a collector master with customer-to-collector mapping, enabling individual performance dashboards showing each collector's portfolio aging and recovery rate.",
+            },
+            {
+              title: "PTP and Dispute Workflow",
+              desc: "Added structured promise-to-pay date fields and dispute classification reasons — replacing the ad-hoc WhatsApp follow-up culture with a tracked, accountable process.",
+            },
+            {
+              title: "Escalation Automation",
+              desc: "Configured automated escalation emails to Relationship Managers and the Finance Head when invoices crossed 60 days without a valid PTP date logged.",
+            },
+            {
+              title: "Credit Limit Monitoring",
+              desc: "Built daily credit utilization reports with breach alerts triggered before new orders were processed for customers with overdue balances above threshold.",
+            },
+          ],
+          results: [
+            { val: "75→49", lbl: "DSO Reduced" },
+            { val: "35%", lbl: "Recovery Speed" },
+            { val: "₹1.2Cr", lbl: "Cash Freed" },
+            { val: "2x", lbl: "Team Efficiency" },
+          ],
+          impact:
+            "DSO dropped from 75 to 49 days within 6 months. Average monthly free cash flow improved by ₹1.2 Crore without adding collection headcount. Disputes are resolved 60% faster due to structured tracking. The collections team describes the cockpit as 'the single biggest change in how we work.'",
+        },
+        {
+          id: 9,
+          tag: "Integration",
+          tagClass: "tag-integration",
+          stripe: "stripe-integration",
+          title: "E-Commerce Multi-Marketplace Profitability Analytics",
+          summary:
+            "Selling on Amazon, Flipkart, and Meesho with no idea which channel — or which SKU — was profitable after returns, platform fees, and ad spend. We built the visibility that led to a 3.2% margin improvement.",
+          client: "D2C Consumer Brand",
+          industry: "E-commerce · Bengaluru, India",
+          metrics: [
+            { val: "3→1", lbl: "Reports Unified" },
+            { val: "SKU-Level", lbl: "Net Margin Known" },
+            { val: "3.2%", lbl: "Margin Gain" },
+          ],
+          tools: [
+            "Zoho Analytics",
+            "Zoho Inventory",
+            "SQL",
+            "Marketplace Settlement APIs",
+          ],
+          problem:
+            "Finance downloaded settlement reports from 3 marketplaces monthly and reconciled manually in Excel — a 4-day process every month. True SKU-level profitability after commissions, returns, and advertising costs was unknown. Two high-volume SKUs were suspected loss-makers but the data to confirm or refute this did not exist.",
+          challenges: [
+            "Normalizing 3 different settlement report schemas into a single data model",
+            "Return deduction timing mismatches across different settlement cycles",
+            "Platform commission rate variation by product category and seller tier",
+            "Ad spend attribution per ASIN/SKU from Seller Central and Flipkart Ads Manager",
+            "COGS allocation from Zoho Inventory using the weighted average cost method",
+            "Multi-currency conversion for cross-border marketplace settlements",
+          ],
+          steps: [
+            {
+              title: "API Integration Layer",
+              desc: "Built automated API connectors for Amazon, Flipkart, and Meesho settlement feeds — delivering daily normalized data into a unified staging table in Zoho Analytics.",
+            },
+            {
+              title: "Returns and Fees Model",
+              desc: "Engineered SKU-level gross revenue calculation: Selling Price minus Platform Commission minus Return Deductions minus Shipping Charges, at transaction level.",
+            },
+            {
+              title: "Ad Spend Attribution",
+              desc: "Pulled Sponsored Product and Display campaign data from marketplace ad APIs and attributed spend to individual SKUs using campaign-to-product-ID mapping.",
+            },
+            {
+              title: "COGS Integration",
+              desc: "Linked Zoho Inventory weighted average cost to each settlement line item, enabling true net margin computation at the individual transaction level.",
+            },
+            {
+              title: "Channel P&L Dashboard",
+              desc: "Delivered a unified channel profitability dashboard with SKU drill-down, category heatmap, return rate trends, and monthly channel comparison view.",
+            },
+          ],
+          results: [
+            { val: "4 Days→Auto", lbl: "Reconciliation" },
+            { val: "SKU", lbl: "Net Margin Live" },
+            { val: "3.2%", lbl: "Blended Margin Up" },
+            { val: "2 SKUs", lbl: "Discontinued" },
+          ],
+          impact:
+            "Brand confirmed the 2 suspected loss-making SKUs were indeed destroying value after full cost allocation. Discontinued listings immediately, freeing inventory capital and improving blended margin by 3.2%. Monthly marketplace reconciliation became fully automated and audit-ready.",
+        },
+        {
+          id: 10,
+          tag: "Analytics",
+          tagClass: "tag-analytics",
+          stripe: "stripe-analytics",
+          title: "Hospital Revenue Cycle & TPA Claims Analytics",
+          summary:
+            "A 3-hospital chain was losing 20% of revenue to undetected billing gaps and slow insurance claim realizations. Our revenue cycle dashboard surfaced every rupee of leakage — systematically.",
+          client: "Multi-Specialty Hospital Chain",
+          industry: "Healthcare · South India",
+          metrics: [
+            { val: "20%", lbl: "Revenue Recovered" },
+            { val: "90→52", lbl: "TPA Claim Days" },
+            { val: "3", lbl: "Hospitals Unified" },
+          ],
+          tools: [
+            "Zoho Analytics",
+            "SQL",
+            "Hospital HIS API",
+            "Custom ETL Connectors",
+          ],
+          problem:
+            "Hospital management lacked visibility into department-wise revenue, TPA claim aging, rejection rates, and the gap between services rendered and amounts billed. Revenue leakages from unbilled services and delayed insurance realizations were going undetected for months.",
+          challenges: [
+            "OPD vs IPD revenue separation with specialty and doctor tagging",
+            "Billing efficiency ratio: services ordered vs services billed",
+            "TPA claim lifecycle: submission, pending, approved, rejected, and appealed",
+            "Package billing vs itemized billing reconciliation for surgical procedures",
+            "Unbilled service detection by comparing clinical logs against billing entries",
+            "Pharmacy dispensing vs billing reconciliation to catch dispensing-without-billing instances",
+          ],
+          steps: [
+            {
+              title: "HIS Data Integration",
+              desc: "Integrated hospital information system data via custom API connectors into Zoho Analytics, establishing daily sync of patient visits, services, and billing records.",
+            },
+            {
+              title: "Unbilled Services Engine",
+              desc: "Built a daily comparison between clinical service logs and billing entries — automatically flagging all services rendered but not billed within a 24-hour window.",
+            },
+            {
+              title: "TPA Claims Lifecycle Tracker",
+              desc: "Created a full insurance claim dashboard tracking submission date, pending duration, approval/rejection status, and appeal outcomes — segmented by TPA and specialty.",
+            },
+            {
+              title: "Department Revenue Dashboard",
+              desc: "Built doctor-wise and department-wise revenue dashboards with billing efficiency ratios, collection lag, and month-over-month trend analysis.",
+            },
+            {
+              title: "Pharmacy Leakage Alert",
+              desc: "Engineered a daily dispensing-vs-billing reconciliation for the pharmacy, generating actionable flags for items dispensed without corresponding billing entries.",
+            },
+          ],
+          results: [
+            { val: "20%", lbl: "Leakage Recovered" },
+            { val: "38 Days", lbl: "Faster TPA Realization" },
+            { val: "Daily", lbl: "Unbilled Alerts" },
+            { val: "Dept-Wise", lbl: "Revenue Visibility" },
+          ],
+          impact:
+            "Recovered 20% revenue leakage in the first 3 months of operation. TPA claim realization time dropped from 90 to 52 days through systematic follow-up driven by the aging dashboard. All 3 hospitals now have a daily view of revenue generation vs collection by department and doctor.",
+        },
+        {
+          id: 11,
+          tag: "Finance",
+          tagClass: "tag-finance",
+          stripe: "stripe-finance",
+          title: "GST Reconciliation — 3,000+ Invoices Automated",
+          summary:
+            "Manual GSTR-2A/2B matching in Excel for 3,000+ invoices per month was delaying ITC claims and consuming 4 person-days. We automated the match logic end-to-end with tolerance rules and vendor compliance scoring.",
+          client: "Manufacturing Company",
+          industry: "Manufacturing · Surat, Gujarat",
+          metrics: [
+            { val: "3,000+", lbl: "Invoices/Month" },
+            { val: "98%", lbl: "Auto-Match Rate" },
+            { val: "4 Days", lbl: "Saved Monthly" },
+          ],
+          tools: ["Zoho Books", "Zoho Analytics", "SQL", "GST Portal API"],
+          problem:
+            "The accounts team spent 4 days every month manually matching 3,000+ purchase invoices against GSTR-2A/2B downloads in Excel. Mismatches due to vendor GSTIN errors, invoice number formatting differences, and filing timing lags were common. ITC worth significant amounts was being missed or delayed every month.",
+          challenges: [
+            "Exact vs fuzzy invoice number matching across varied vendor formatting conventions",
+            "Vendor GSTIN validation and non-filer identification with automated alerts",
+            "Cross-period reconciliation for invoices filed late by vendors",
+            "B2B vs RCM vs B2G invoice category handling with separate treatment rules",
+            "Debit and credit note adjustment matching across periods",
+            "Vendor compliance scoring and procurement team integration for vendor evaluation",
+          ],
+          steps: [
+            {
+              title: "GST Portal Automation",
+              desc: "Automated GSTR-2A/2B data ingestion via GST Portal API into a monthly staging table in Zoho Analytics, eliminating manual downloads entirely.",
+            },
+            {
+              title: "3-Tier Match Engine",
+              desc: "Built a SQL-based matching engine with 3 tiers: exact invoice number match → amount tolerance match (±1%) → fuzzy GSTIN and date match — achieving 98% auto-resolution.",
+            },
+            {
+              title: "Mismatch Root Cause Classification",
+              desc: "Classified all unmatched invoices by root cause: vendor not filed, GSTIN mismatch, amount variance, period lag — each with a system-recommended corrective action.",
+            },
+            {
+              title: "Vendor Compliance Scoring",
+              desc: "Created a monthly vendor compliance score (0-100) based on GSTR-1 filing history and match rate, made available to the procurement team for vendor performance reviews.",
+            },
+            {
+              title: "ITC Eligibility Dashboard",
+              desc: "Built an ITC tracker showing matched (claim now), provisional (claim conditionally), and ineligible credit by month and vendor — ensuring no ITC was missed or over-claimed.",
+            },
+          ],
+          results: [
+            { val: "98%", lbl: "Match Rate" },
+            { val: "Zero", lbl: "Missed ITC" },
+            { val: "4 Days", lbl: "Saved Monthly" },
+            { val: "94%", lbl: "Vendor Compliance" },
+          ],
+          impact:
+            "ITC claims became accurate and timely from the first month. Vendor GSTR-1 compliance improved from 71% to 94% within 2 months of sharing compliance scores. 4 person-days saved monthly were redirected toward strategic indirect tax planning.",
+        },
+        {
+          id: 12,
+          tag: "Reporting",
+          tagClass: "tag-reporting",
+          stripe: "stripe-reporting",
+          title: "Group Consolidated Financial Statements — 7 Entities",
+          summary:
+            "Monthly consolidation across 7 subsidiaries took 12 days and still had auditor-flagged errors every year. We built a one-click consolidation engine with automatic intercompany elimination — delivering results by Day 1.",
+          client: "Indian Conglomerate",
+          industry: "Diversified Group · India",
+          metrics: [
+            { val: "12→1", lbl: "Days to Consolidate" },
+            { val: "7", lbl: "Entities Merged" },
+            { val: "Zero", lbl: "Audit Errors (3yrs)" },
+          ],
+          tools: ["Zoho Books", "Zoho Analytics", "SQL", "Power Pivot Export"],
+          problem:
+            "The Group CFO needed monthly consolidated P&L, Balance Sheet, and Cash Flow across 7 subsidiaries — each with a different chart of accounts and accounting team. Manual consolidation involved 12 days of intercompany matching, elimination journaling, and format harmonization. Auditors flagged material errors in the consolidated statements in each of the 3 preceding years.",
+          challenges: [
+            "Mapping 7 different charts of accounts to a standardized group COA",
+            "Identifying intercompany transactions across all 21 entity-pair combinations at transaction level",
+            "Eliminating intercompany receivables, payables, revenues, and cost simultaneously",
+            "Dividend upstream elimination and minority interest calculation for 3 partially-owned subsidiaries",
+            "Goodwill computation and amortization for the 2 acquisition-basis entities",
+            "Generating audit-ready elimination schedules in a format acceptable to Big 4 auditors",
+          ],
+          steps: [
+            {
+              title: "Group COA Framework",
+              desc: "Designed a master group Chart of Accounts and built an automated mapping layer translating each subsidiary's trial balance into the standardized group structure.",
+            },
+            {
+              title: "IC Transaction Detection",
+              desc: "Created SQL logic to auto-identify intercompany transactions using entity-pair tagging, party master cross-referencing, and amount plus date matching across all 7 entities.",
+            },
+            {
+              title: "Automated Elimination Engine",
+              desc: "Built elimination schedules for IC receivables/payables, IC revenue/cost, intercompany dividends, and investment-equity offsets — all generated without manual journal entries.",
+            },
+            {
+              title: "Minority Interest and Goodwill",
+              desc: "Engineered minority interest computation and goodwill amortization schedules for the 5 entities held on a non-100% basis or acquisition cost basis.",
+            },
+            {
+              title: "One-Click Board Pack",
+              desc: "Delivered a single-click consolidated P&L, Balance Sheet, and Cash Flow with full elimination schedules — formatted for board presentation and audit submission.",
+            },
+          ],
+          results: [
+            { val: "12→1", lbl: "Consolidation Days" },
+            { val: "Auto", lbl: "IC Elimination" },
+            { val: "Group COA", lbl: "Standardized" },
+            { val: "Audit-Ready", lbl: "Every Month" },
+          ],
+          impact:
+            "Board packs distributed by Day 2 instead of Day 15. Auditors found zero material errors in consolidated statements for 3 consecutive years — the first time in the group's history. Group CFO now spends consolidation week on strategic analysis rather than data assembly and manual elimination journals.",
+        },
+        {
+          id: 13,
+          tag: "Integration",
+          tagClass: "tag-integration",
+          stripe: "stripe-integration",
+          title: "SAP B1 to Zoho Ecosystem Migration — Zero Data Loss",
+          summary:
+            "5 years of SAP Business One data, ₹18 Lakh in annual maintenance costs, and a genuine fear of losing history. We executed a validated, phased migration in exactly 8 weeks — on schedule, on budget.",
+          client: "Manufacturing SME",
+          industry: "Manufacturing · Rajasthan, India",
+          metrics: [
+            { val: "₹18L", lbl: "Annual Savings" },
+            { val: "5 Years", lbl: "History Preserved" },
+            { val: "8 Weeks", lbl: "On-Schedule Go-Live" },
+          ],
+          tools: [
+            "SAP Business One",
+            "Zoho Books",
+            "SQL",
+            "Python ETL Scripts",
+            "Zoho Analytics",
+          ],
+          problem:
+            "Client was paying ₹18 Lakh annually in SAP B1 licensing and support. They wanted to migrate to Zoho but feared losing 5 years of financial and operational data. Two previous migration attempts by other vendors had failed at the data validation stage, eroding internal confidence in any migration project.",
+          challenges: [
+            "Field-level data mapping across 180 relevant SAP B1 tables to Zoho Books equivalents",
+            "Open transaction migration: live invoices, bills, purchase orders, and delivery notes in progress",
+            "Historical reporting access for all transactions predating the go-live date",
+            "Balance sheet reconciliation at the cut-off date across every ledger account",
+            "Change management and training for 35 active system users across 3 departments",
+            "Business continuity during the 4-week parallel-run period",
+          ],
+          steps: [
+            {
+              title: "Data Mapping Blueprint",
+              desc: "Prepared a field-level mapping document across all 180 relevant SAP B1 tables, with each field mapped to its Zoho Books equivalent — reviewed and signed off before any data was touched.",
+            },
+            {
+              title: "4-Phase Migration Plan",
+              desc: "Executed in 4 signed-off phases: Chart of Accounts and Masters → Open Transactions → Historical Closed Data → Reporting and Analytics Layer.",
+            },
+            {
+              title: "Python Transformation Scripts",
+              desc: "Wrote Python scripts to extract, clean, transform, and format SAP data for Zoho Books import APIs — handling all data type, date format, and currency conversions.",
+            },
+            {
+              title: "100% Balance Validation",
+              desc: "Built SQL validation scripts comparing SAP closing balances against Zoho Books opening balances across every account — achieving a 100% match before go-live authorization.",
+            },
+            {
+              title: "Historical Analytics Warehouse",
+              desc: "Built a Zoho Analytics historical data warehouse for all pre-migration transactions, maintaining 5-year trend analysis continuity from day one of the new system.",
+            },
+          ],
+          results: [
+            { val: "100%", lbl: "Balance Match" },
+            { val: "₹18L", lbl: "Saved Annually" },
+            { val: "5 Years", lbl: "History Live" },
+            { val: "Zero", lbl: "Post Go-Live Errors" },
+          ],
+          impact:
+            "Client saved ₹18 Lakh in the first year. All 5 years of history is accessible in Zoho Analytics for audits and trend analysis. Go-live achieved on schedule with zero post-migration data discrepancies reported in 6 months of operation — reversing 2 years of failed vendor attempts.",
+        },
+        {
+          id: 14,
+          tag: "Analytics",
+          tagClass: "tag-analytics",
+          stripe: "stripe-analytics",
+          title: "Distributor Network Analytics for an FMCG Brand",
+          summary:
+            "80+ distributors, zero visibility into secondary sales, outlet coverage, or which distributors were actually growing. We built an analytics layer that changed how the entire sales function operates.",
+          client: "Regional FMCG Brand",
+          industry: "Consumer Goods · Maharashtra, India",
+          metrics: [
+            { val: "80+", lbl: "Distributors Tracked" },
+            { val: "22%", lbl: "Collection Efficiency" },
+            { val: "Real-Time", lbl: "Secondary Sales" },
+          ],
+          tools: ["Zoho Analytics", "Zoho Books", "SQL", "DMS API Integration"],
+          problem:
+            "Brand management had visibility into primary sales (factory to distributor) but zero visibility into secondary sales (distributor to retailer). Distributor stock positions, outlet coverage, and collection status were tracked through monthly phone calls. Decisions affecting crores of rupees in inventory and credit were made on data that was 30 days old.",
+          challenges: [
+            "Integrating DMS secondary sales data with Zoho Books primary sales at SKU level",
+            "Distributor-wise current inventory position and days-of-stock calculation",
+            "Outlet coverage percentage vs territory target by sales beat",
+            "Sales representative beat plan adherence and lines-per-call tracking",
+            "Trade scheme and distributor discount accrual reconciliation",
+            "Payment collection efficiency and distributor credit risk scoring",
+          ],
+          steps: [
+            {
+              title: "DMS Data Pipeline",
+              desc: "Built an automated daily data pipeline from the brand's Distributor Management System pulling secondary sales, current stock, and outlet visit data into Zoho Analytics.",
+            },
+            {
+              title: "Primary-to-Secondary Bridge",
+              desc: "Created a bridge table comparing primary sales (factory billing) with secondary sales (DMS offtake) to identify stock build-up and pipeline fill ratios by territory and SKU.",
+            },
+            {
+              title: "Territory Performance Layer",
+              desc: "Built territory scorecards covering outlet coverage percentage, numeric distribution, lines per call, and beat plan adherence — benchmarked against territory targets.",
+            },
+            {
+              title: "Distributor Health Index",
+              desc: "Engineered a composite Distributor Health Index (DHI) combining collection efficiency, stock days, secondary growth rate, and outlet coverage into a single 0-100 score per distributor.",
+            },
+            {
+              title: "Field Force Mobile Dashboard",
+              desc: "Delivered a mobile-friendly dashboard for Territory Managers showing their day's beat plan, distributor health scores, and pending collection status — accessible before each field visit.",
+            },
+          ],
+          results: [
+            { val: "22%", lbl: "Collection Efficiency" },
+            { val: "Real-Time", lbl: "Secondary Sales" },
+            { val: "DHI Score", lbl: "Per Distributor" },
+            { val: "Data-Driven", lbl: "Field Visits" },
+          ],
+          impact:
+            "Brand management shifted from monthly anecdotal distributor reviews to weekly data-driven conversations. Collection efficiency improved 22% in the first two quarters. Territory Managers enter every field visit with complete distributor context — replacing the guesswork that previously defined field-force planning.",
+        },
+        {
+          id: 15,
+          tag: "Reporting",
+          tagClass: "tag-reporting",
+          stripe: "stripe-reporting",
+          title: "Portfolio Analytics for a Private Equity Fund",
+          summary:
+            "6 portfolio companies across retail, manufacturing, and services — each on different accounting software. Quarterly board packs took 3 weeks and missed deadlines. We unified everything and cut it to 2 days.",
+          client: "Private Equity Fund",
+          industry: "Investment Management · Mumbai, India",
+          metrics: [
+            { val: "3 Weeks→2 Days", lbl: "Board Pack Time" },
+            { val: "6", lbl: "Companies Unified" },
+            { val: "Series B", lbl: "Fundraising Supported" },
+          ],
+          tools: [
+            "Zoho Analytics",
+            "SQL",
+            "Tally XML",
+            "QuickBooks API",
+            "PowerPoint Export",
+          ],
+          problem:
+            "The fund's 6 portfolio companies used 3 different accounting systems (Tally, Zoho Books, QuickBooks). Quarterly board pack preparation required 3 weeks of manual aggregation, format harmonization, and KPI normalization. Investor reporting deadlines were routinely missed, creating credibility risk with LPs.",
+          challenges: [
+            "Simultaneous data ingestion from Tally, Zoho Books, and QuickBooks in different formats",
+            "Standardizing financial statements across 3 accounting standards and 6 reporting formats",
+            "KPI normalization across industries: retail metrics vs manufacturing metrics vs service metrics",
+            "EBITDA bridge calculation comparing quarter-on-quarter and year-on-year performance",
+            "Portfolio-level cash flow consolidation and debt covenant tracking across all 6 entities",
+            "Automated board pack data generation in slide-ready format for the quarterly investor presentation",
+          ],
+          steps: [
+            {
+              title: "Multi-Source ETL Pipelines",
+              desc: "Built ETL pipelines for all 3 accounting systems — Tally via XML export, Zoho Books via API, QuickBooks via CSV — feeding into a unified financial data lake in Zoho Analytics.",
+            },
+            {
+              title: "Universal Financial Statement Framework",
+              desc: "Designed a master financial statement template mapping each company's trial balance to a common P&L, Balance Sheet, and Cash Flow format regardless of source system.",
+            },
+            {
+              title: "Industry-Adjusted KPI Modules",
+              desc: "Built industry-specific KPI layers: Same-Store Sales Growth and inventory turn for retail; OEE and material cost ratio for manufacturing; utilization and realization rate for services.",
+            },
+            {
+              title: "EBITDA Bridge and Waterfall",
+              desc: "Engineered automated EBITDA bridge charts isolating volume, price, mix, and cost components — rendered as presentation-ready data outputs for each portfolio company.",
+            },
+            {
+              title: "Board Pack Automation",
+              desc: "Built a quarterly data automation workflow generating slide-ready financial exhibits, KPI scorecards, and portfolio summary data — reducing pack preparation from 3 weeks to 2 days.",
+            },
+          ],
+          results: [
+            { val: "3 Wks→2 Days", lbl: "Board Pack Time" },
+            { val: "6", lbl: "Companies Unified" },
+            { val: "Zero", lbl: "Missed Deadlines" },
+            { val: "Series B", lbl: "Analytics Supported" },
+          ],
+          impact:
+            "Quarterly board packs are now distributed within 5 business days of quarter close — previously 4 weeks. Portfolio performance conversations shifted from 'let me check and get back to you' to 'here is what the data shows.' Two portfolio companies leveraged the analytics framework to support successful Series B fundraising rounds.",
+        },
+      ];
+
+      /* ─── RENDER CARDS ─── */
+      const grid = document.getElementById("caseGrid");
+      cases.forEach((cs, i) => {
+        const card = document.createElement("div");
+        card.className = "case-card";
+        card.dataset.tag = cs.tag.toLowerCase();
+        card.style.animationDelay = i * 0.045 + "s";
+        card.innerHTML = `
+    <div class="card-stripe ${cs.stripe}"></div>
+    <div class="card-top">
+      <span class="card-tag ${cs.tagClass}">${cs.tag}</span>
+      <span class="card-number">${String(i + 1).padStart(2, "0")}</span>
+    </div>
+    <h3>${cs.title}</h3>
+    <p>${cs.summary}</p>
+    <div class="card-metrics">
+      ${cs.metrics.map((m) => `<div class="metric"><span class="metric-val">${m.val}</span><span class="metric-lbl">${m.lbl}</span></div>`).join("")}
+    </div>
+    <div class="card-tools">
+      ${cs.tools
+        .slice(0, 3)
+        .map((t) => `<span class="tool-badge">${t}</span>`)
+        .join("")}
+      ${cs.tools.length > 3 ? `<span class="tool-badge">+${cs.tools.length - 3} more</span>` : ""}
+    </div>
+    <div class="card-footer">
+      <span class="card-client"><span class="client-dot"></span>${cs.industry}</span>
+      <span class="read-btn">Read Case Study <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+    </div>
+  `;
+        card.addEventListener("click", () => openModal(cs.id));
+        grid.appendChild(card);
+      });
+
+      /* ─── FILTER & SEARCH ─── */
+      let activeFilter = "all",
+        activeSearch = "";
+      function applyFilters() {
+        const cards = grid.querySelectorAll(".case-card");
+        let vis = 0;
+        cards.forEach((card) => {
+          const tag = card.dataset.tag;
+          const h3 = card.querySelector("h3").textContent.toLowerCase();
+          const p = card.querySelector("p").textContent.toLowerCase();
+          const fMatch = activeFilter === "all" || tag === activeFilter;
+          const sMatch =
+            !activeSearch ||
+            h3.includes(activeSearch) ||
+            p.includes(activeSearch);
+          if (fMatch && sMatch) {
+            card.classList.remove("hidden");
+            vis++;
+          } else card.classList.add("hidden");
+        });
+        document.getElementById("countLabel").textContent =
+          `Showing ${vis} case ${vis === 1 ? "study" : "studies"}`;
+        document.getElementById("noResults").style.display =
+          vis === 0 ? "block" : "none";
+      }
+      document.getElementById("filterTabs").addEventListener("click", (e) => {
+        if (!e.target.classList.contains("ftab")) return;
+        document
+          .querySelectorAll(".ftab")
+          .forEach((t) => t.classList.remove("active"));
+        e.target.classList.add("active");
+        activeFilter = e.target.dataset.filter;
+        applyFilters();
+      });
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        activeSearch = e.target.value.toLowerCase().trim();
+        applyFilters();
+      });
+
+      /* ─── MODAL ─── */
+      let currentId = null;
+      const visIds = () =>
+        cases
+          .filter((c) => {
+            const tag = c.tag.toLowerCase();
+            return (
+              (activeFilter === "all" || tag === activeFilter) &&
+              (!activeSearch ||
+                c.title.toLowerCase().includes(activeSearch) ||
+                c.summary.toLowerCase().includes(activeSearch))
+            );
+          })
+          .map((c) => c.id);
+
+      function buildModal(cs) {
+        const ids = visIds(),
+          idx = ids.indexOf(cs.id);
+        const prev = idx > 0 ? ids[idx - 1] : null,
+          next = idx < ids.length - 1 ? ids[idx + 1] : null;
+        return `
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="modal-header-tag">${cs.tag}</div>
+      <h2>${cs.title}</h2>
+      <div class="modal-header-sub">
+        <span>📍 ${cs.client}</span><span>${cs.industry}</span>
+      </div>
+    </div>
+    <div class="modal-numbers">
+      ${cs.results.map((r) => `<div class="mn-item"><span class="mn-val">${r.val}</span><div class="mn-lbl">${r.lbl}</div></div>`).join("")}
+    </div>
+    <div class="modal-body">
+      <div>
+        <div class="ms-head"><div class="ms-icon">🚨</div><h4>Problem Statement</h4></div>
+        <p style="font-size:14px;color:var(--text-mid);line-height:1.8;font-weight:300;">${cs.problem}</p>
+      </div>
+      <div class="ms-divider"></div>
+      <div>
+        <div class="ms-head"><div class="ms-icon">⚠️</div><h4>Key Challenges</h4></div>
+        <div class="challenges-list">
+          ${cs.challenges.map((c) => `<div class="ch-item"><span class="ch-dot"></span>${c}</div>`).join("")}
+        </div>
+      </div>
+      <div class="ms-divider"></div>
+      <div>
+        <div class="ms-head"><div class="ms-icon">🛠️</div><h4>Our Step-by-Step Approach</h4></div>
+        <div class="approach-timeline">
+          ${cs.steps
+            .map(
+              (s, i) => `
+            <div class="at-step">
+              <div class="at-num">${i + 1}</div>
+              <div class="at-content">
+                <div class="at-title">${s.title}</div>
+                <div class="at-desc">${s.desc}</div>
+              </div>
+            </div>
+          `,
+            )
+            .join("")}
+        </div>
+      </div>
+      <div class="ms-divider"></div>
+      <div>
+        <div class="ms-head"><div class="ms-icon">📈</div><h4>Measurable Results</h4></div>
+        <div class="results-grid">
+          ${cs.results.map((r) => `<div class="r-card"><span class="r-val">${r.val}</span><div class="r-lbl">${r.lbl}</div></div>`).join("")}
+        </div>
+      </div>
+      <div class="ms-divider"></div>
+      <div>
+        <div class="ms-head"><div class="ms-icon">💼</div><h4>Business Impact</h4></div>
+        <div class="impact-box"><p>${cs.impact}</p></div>
+      </div>
+      <div class="ms-divider"></div>
+      <div>
+        <div class="ms-head"><div class="ms-icon">🔧</div><h4>Tools & Technologies</h4></div>
+        <div class="tools-row">${cs.tools.map((t) => `<span class="tool-chip">${t}</span>`).join("")}</div>
+      </div>
+    </div>
+    <div class="modal-nav">
+      <button class="mnav-btn" onclick="navModal(${prev})" ${!prev ? "disabled" : ""}>
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg> Previous
+      </button>
+      <span class="mnav-count">${idx + 1} of ${ids.length}</span>
+      <button class="mnav-btn" onclick="navModal(${next})" ${!next ? "disabled" : ""}>
+        Next <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  `;
+      }
+
+      function openModal(id) {
+        currentId = id;
+        const cs = cases.find((c) => c.id === id);
+        const box = document.getElementById("modalBox");
+        box.innerHTML = buildModal(cs);
+        box.scrollTop = 0;
+        document.getElementById("modalOverlay").classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      function navModal(id) {
+        if (!id) return;
+        const box = document.getElementById("modalBox");
+        box.style.cssText =
+          "opacity:0;transform:translateY(12px);transition:opacity 0.18s,transform 0.18s;";
+        setTimeout(() => {
+          currentId = id;
+          box.innerHTML = buildModal(cases.find((c) => c.id === id));
+          box.scrollTop = 0;
+          box.style.cssText =
+            "opacity:1;transform:translateY(0);transition:opacity 0.22s,transform 0.22s;";
+          setTimeout(() => (box.style.cssText = ""), 300);
+        }, 180);
+      }
+
+      function closeModal() {
+        document.getElementById("modalOverlay").classList.remove("active");
+        document.body.style.overflow = "";
+      }
+
+      document.getElementById("modalOverlay").addEventListener("click", (e) => {
+        if (e.target === document.getElementById("modalOverlay")) closeModal();
+      });
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+        if (e.key === "ArrowRight" && currentId) {
+          const ids = visIds();
+          const i = ids.indexOf(currentId);
+          if (i < ids.length - 1) navModal(ids[i + 1]);
+        }
+        if (e.key === "ArrowLeft" && currentId) {
+          const ids = visIds();
+          const i = ids.indexOf(currentId);
+          if (i > 0) navModal(ids[i - 1]);
+        }
+      });
+    </script>
+  </body>
+</html>
