@@ -8,7 +8,6 @@
       name="description"
       content="Expert insights on Zoho, business automation, CRM, accounting, and digital transformation from Zolytics — India's trusted Zoho consulting partner."
     />
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -18,37 +17,46 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,700;1,400&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Playfair+Display:ital,wght@0,700;1,500&display=swap"
       rel="stylesheet"
     />
 
     <style>
       :root {
-        --red: #e8531a;
-        --red-dark: #c43e0e;
-        --red-light: #ff6b35;
+        --red: #16368e;
+        --red-dark: #172d6a;
+        --red-light: #224ab9;
         --red-bg: #fff3ef;
+        --red-bg2: #ffe8df;
         --blue: #1a56db;
         --blue-light: #e8f0fe;
         --green: #0f9d58;
         --green-bg: #e6f4ea;
         --yellow: #f9ab00;
         --yellow-bg: #fef9e7;
+        --purple: #7c3aed;
+        --purple-bg: #ede9fe;
+        --teal: #0694a2;
+        --teal-bg: #e0f5f5;
         --white: #ffffff;
-        --bg: #f5f7fa;
+        --bg: #f7f8fb;
         --bg2: #eef1f7;
-        --text: #1a1a2e;
-        --text-2: #3d4461;
-        --text-muted: #6b7280;
-        --border: #e2e6ef;
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
-        --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.11);
-        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.14);
-        --font-body: "Nunito", sans-serif;
-        --font-head: "Merriweather", serif;
-        --radius: 14px;
-        --radius-sm: 8px;
+        --text: #0f0f1a;
+        --text-2: #2d3452;
+        --text-muted: #64748b;
+        --border: #e2e7f0;
+        --border2: #d0d7e8;
+        --card-shadow:
+          0 1px 3px rgba(0, 0, 0, 0.06), 0 4px 16px rgba(0, 0, 0, 0.06);
+        --card-shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.13);
+        --font-body: "DM Sans", sans-serif;
+        --font-head: "Syne", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --radius: 16px;
+        --radius-sm: 10px;
+        --radius-xs: 6px;
       }
+
       *,
       *::before,
       *::after {
@@ -56,6 +64,7 @@
         margin: 0;
         padding: 0;
       }
+
       body {
         font-family: var(--font-body);
         background: var(--bg);
@@ -64,131 +73,221 @@
         overflow-x: hidden;
       }
 
-      /* NAVBAR */
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: var(--border2);
+        border-radius: 99px;
+      }
+
+      /* ── NAVBAR ── */
       .navbar {
-        background: var(--white);
-        border-bottom: 2px solid var(--border);
-        padding: 12px 0;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 0;
         position: sticky;
         top: 0;
         z-index: 1000;
-        box-shadow: var(--shadow-sm);
+      }
+      .navbar-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0;
+        gap: 20px;
       }
       .navbar-brand img {
-        height: 90px;
+        height: 72px;
       }
-      .zoho-badge img {
-        height: 46px;
+      .zoho-badge-wrap {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 6px 14px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+      }
+      .zoho-badge-wrap img {
+        height: 34px;
         opacity: 0.9;
       }
-      .navbar-nav .nav-link {
-        color: var(--text-2) !important;
-        font-weight: 700;
-        font-size: 0.87rem;
-        padding: 6px 13px !important;
-        border-radius: var(--radius-sm);
-        transition: all 0.2s;
-      }
-      .navbar-nav .nav-link:hover,
-      .navbar-nav .nav-link.active {
-        color: var(--red) !important;
-        background: var(--red-bg);
-      }
-      .navbar-toggler {
-        border: none;
-      }
 
-      /* HERO */
+      /* ── HERO ── */
       .blog-hero {
-        background: linear-gradient(135deg, #fff 0%, #fef3ef 40%, #e8f0fe 100%);
-        padding: 72px 0 54px;
-        border-bottom: 2px solid var(--border);
+        background: var(--white);
+        border-bottom: 1px solid var(--border);
+        padding: 80px 0 60px;
         position: relative;
         overflow: hidden;
       }
-      .blog-hero::before {
-        content: "";
+      .hero-bg-pattern {
         position: absolute;
-        top: -100px;
-        right: -100px;
-        width: 420px;
-        height: 420px;
-        background: radial-gradient(
-          circle,
-          rgba(232, 83, 26, 0.1) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 80% 20%,
+            rgba(232, 83, 26, 0.07) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 20% 80%,
+            rgba(26, 86, 219, 0.05) 0%,
+            transparent 50%
+          );
         pointer-events: none;
       }
-      .blog-hero::after {
-        content: "";
+      .hero-grid-lines {
         position: absolute;
-        bottom: -60px;
-        left: 40%;
-        width: 300px;
-        height: 300px;
-        background: radial-gradient(
-          circle,
-          rgba(26, 86, 219, 0.07) 0%,
-          transparent 70%
-        );
-        border-radius: 50%;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--border) 1px, transparent 1px),
+          linear-gradient(90deg, var(--border) 1px, transparent 1px);
+        background-size: 60px 60px;
+        opacity: 0.35;
         pointer-events: none;
       }
       .hero-eyebrow {
         display: inline-flex;
         align-items: center;
-        gap: 7px;
+        gap: 8px;
         background: var(--red-bg);
         color: var(--red);
-        border: 1.5px solid rgba(232, 83, 26, 0.25);
-        border-radius: 50px;
-        padding: 5px 16px;
-        font-size: 0.76rem;
-        font-weight: 800;
+        border: 1px solid rgba(232, 83, 26, 0.2);
+        border-radius: 99px;
+        padding: 5px 16px 5px 8px;
+        font-size: 0.73rem;
+        font-weight: 700;
         letter-spacing: 0.12em;
         text-transform: uppercase;
-        margin-bottom: 18px;
+        margin-bottom: 22px;
+      }
+      .hero-eyebrow-dot {
+        width: 22px;
+        height: 22px;
+        background: var(--red);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 0.65rem;
       }
       .blog-hero h1 {
         font-family: var(--font-head);
-        font-size: clamp(2rem, 4.5vw, 3.2rem);
-        font-weight: 700;
-        line-height: 1.22;
+        font-size: clamp(2.2rem, 5vw, 3.6rem);
+        font-weight: 800;
+        line-height: 1.12;
         color: var(--text);
-        margin-bottom: 16px;
+        margin-bottom: 20px;
+        letter-spacing: -0.02em;
       }
-      .blog-hero h1 em {
+      .blog-hero h1 .accent {
         color: var(--red);
+        font-family: var(--font-serif);
         font-style: italic;
+        font-weight: 700;
       }
       .blog-hero .lead {
         color: var(--text-muted);
         font-size: 1.05rem;
-        max-width: 540px;
-        font-weight: 500;
+        max-width: 520px;
+        font-weight: 400;
+        line-height: 1.75;
       }
-      .hero-stat-box {
+      .hero-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 28px;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        font-size: 0.82rem;
+        font-weight: 600;
+        padding: 7px 14px;
+        border-radius: 99px;
+      }
+      .hero-badge .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--green);
+        animation: pulse-dot 2s infinite;
+      }
+      @keyframes pulse-dot {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.7);
+        }
+      }
+      .hero-stat-panel {
         background: var(--white);
-        border: 1.5px solid var(--border);
+        border: 1px solid var(--border);
         border-radius: var(--radius);
-        padding: 22px 26px;
-        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
       }
-      .hero-stat-row {
+      .stat-panel-header {
+        background: var(--text);
+        color: #fff;
+        padding: 16px 22px;
+        font-family: var(--font-head);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
         display: flex;
         align-items: center;
-        gap: 14px;
-        padding: 10px 0;
-        border-bottom: 1px solid var(--border);
+        justify-content: space-between;
       }
-      .hero-stat-row:last-child {
+      .stat-panel-live {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.7rem;
+        font-weight: 600;
+        opacity: 0.75;
+      }
+      .live-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #4ade80;
+        animation: pulse-dot 1.5s infinite;
+      }
+      .stat-panel-row {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 22px;
+        border-bottom: 1px solid var(--border);
+        transition: background 0.15s;
+      }
+      .stat-panel-row:last-child {
         border-bottom: none;
       }
-      .stat-icon {
-        width: 40px;
-        height: 40px;
+      .stat-panel-row:hover {
+        background: var(--bg);
+      }
+      .stat-icon-box {
+        width: 42px;
+        height: 42px;
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -196,39 +295,44 @@
         font-size: 1.1rem;
         flex-shrink: 0;
       }
-      .stat-icon.red {
+      .sib-red {
         background: var(--red-bg);
       }
-      .stat-icon.blue {
+      .sib-blue {
         background: var(--blue-light);
       }
-      .stat-icon.green {
+      .sib-green {
         background: var(--green-bg);
       }
-      .stat-label {
-        font-weight: 800;
-        font-size: 0.9rem;
+      .stat-panel-label {
+        font-weight: 700;
+        font-size: 0.92rem;
         color: var(--text);
-        margin-bottom: 1px;
+        margin-bottom: 2px;
       }
-      .stat-sub {
+      .stat-panel-sub {
         font-size: 0.76rem;
         color: var(--text-muted);
-        font-weight: 500;
       }
 
-      /* FILTER BAR */
+      /* ── FILTER BAR ── */
       .filter-bar {
         background: var(--white);
-        border-bottom: 1.5px solid var(--border);
-        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        padding: 12px 0;
         position: sticky;
-        top: 66px;
+        top: 93px;
         z-index: 99;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+      .filter-bar-inner {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
       }
       .search-wrap {
         position: relative;
+        flex: 0 0 260px;
       }
       .search-wrap i {
         position: absolute;
@@ -236,17 +340,17 @@
         top: 50%;
         transform: translateY(-50%);
         color: var(--text-muted);
-        font-size: 0.9rem;
+        font-size: 0.88rem;
       }
       .search-input {
         background: var(--bg);
         border: 1.5px solid var(--border);
         border-radius: var(--radius-sm);
         color: var(--text);
-        padding: 9px 13px 9px 38px;
+        padding: 9px 13px 9px 36px;
         font-size: 0.87rem;
         font-family: var(--font-body);
-        font-weight: 600;
+        font-weight: 500;
         width: 100%;
         transition:
           border-color 0.2s,
@@ -255,358 +359,612 @@
       .search-input:focus {
         outline: none;
         border-color: var(--red);
-        box-shadow: 0 0 0 3px rgba(232, 83, 26, 0.12);
+        box-shadow: 0 0 0 3px rgba(232, 83, 26, 0.1);
       }
       .search-input::placeholder {
         color: var(--text-muted);
-        font-weight: 500;
+      }
+      .divider-v {
+        width: 1px;
+        height: 28px;
+        background: var(--border);
+        flex-shrink: 0;
       }
       .filter-tabs {
         display: flex;
-        gap: 7px;
+        gap: 6px;
         flex-wrap: wrap;
       }
       .filter-tab {
-        background: var(--bg);
+        background: transparent;
         border: 1.5px solid var(--border);
         color: var(--text-2);
-        border-radius: 50px;
+        border-radius: 99px;
         padding: 6px 16px;
         font-size: 0.8rem;
-        font-weight: 700;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.18s;
-        white-space: nowrap;
         font-family: var(--font-body);
       }
       .filter-tab:hover {
-        background: var(--red-bg);
         border-color: var(--red);
         color: var(--red);
+        background: var(--red-bg);
       }
       .filter-tab.active {
         background: var(--red);
         border-color: var(--red);
         color: #fff;
       }
-
-      /* BLOG SECTION */
-      .blog-section {
-        padding: 54px 0 80px;
+      .article-count {
+        margin-left: auto;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        white-space: nowrap;
       }
-      .section-eyebrow {
-        font-size: 0.72rem;
-        font-weight: 800;
+
+      /* ── MAIN LAYOUT ── */
+      .blog-section {
+        padding: 60px 0 100px;
+      }
+      .section-label {
+        font-family: var(--font-head);
+        font-size: 0.7rem;
+        font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--red);
-        margin-bottom: 6px;
+        margin-bottom: 5px;
       }
-      .section-title {
+      .section-heading {
         font-family: var(--font-head);
-        font-size: clamp(1.5rem, 2.8vw, 2rem);
-        font-weight: 700;
+        font-size: clamp(1.5rem, 2.5vw, 1.85rem);
+        font-weight: 800;
         color: var(--text);
-        margin-bottom: 32px;
+        margin-bottom: 36px;
+        letter-spacing: -0.01em;
       }
 
-      /* Featured Card */
-      .blog-card-featured {
-        background: var(--white);
-        border: 1.5px solid var(--border);
+      /* ── NEW RELEASES SECTION HEADER ── */
+      .releases-section-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 56px 0 32px;
+        padding: 24px 28px;
+        background: linear-gradient(135deg, #0f0f1a 0%, #1a1a3e 100%);
         border-radius: var(--radius);
-        overflow: hidden;
-        transition: all 0.3s;
-        cursor: pointer;
-        height: 100%;
-        box-shadow: var(--shadow-sm);
-      }
-      .blog-card-featured:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-lg);
-        border-color: rgba(232, 83, 26, 0.35);
-      }
-      .featured-img-wrap {
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
         position: relative;
+        overflow: hidden;
       }
-      .featured-img-wrap img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s;
-      }
-      .blog-card-featured:hover .featured-img-wrap img {
-        transform: scale(1.04);
-      }
-      .featured-badge {
+      .releases-section-header::before {
+        content: "";
         position: absolute;
-        top: 14px;
-        left: 14px;
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 90% 50%,
+            rgba(232, 83, 26, 0.2) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 10% 50%,
+            rgba(99, 102, 241, 0.15) 0%,
+            transparent 50%
+          );
+        pointer-events: none;
+      }
+      .releases-badge {
         background: var(--red);
         color: #fff;
-        font-size: 0.7rem;
-        font-weight: 800;
+        padding: 6px 14px;
+        border-radius: 99px;
+        font-size: 0.68rem;
+        font-weight: 700;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        padding: 4px 12px;
-        border-radius: 50px;
+        white-space: nowrap;
+        position: relative;
       }
-      .card-body-pad {
-        padding: 26px;
-      }
-      .cat-badge {
-        display: inline-block;
-        border-radius: 50px;
-        padding: 3px 12px;
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-      }
-      .cat-red {
-        background: var(--red-bg);
-        color: var(--red);
-      }
-      .cat-blue {
-        background: var(--blue-light);
-        color: var(--blue);
-      }
-      .cat-green {
-        background: var(--green-bg);
-        color: var(--green);
-      }
-      .card-title-text {
+      .releases-section-header h3 {
         font-family: var(--font-head);
-        font-size: 1.28rem;
-        font-weight: 700;
-        line-height: 1.35;
-        margin-bottom: 10px;
-        color: var(--text);
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #fff;
+        margin: 0;
+        position: relative;
       }
-      .card-excerpt {
+      .releases-section-header p {
+        font-size: 0.83rem;
+        color: rgba(255, 255, 255, 0.55);
+        margin: 3px 0 0;
+        position: relative;
+      }
+      .releases-section-header .icon-wrap {
+        width: 48px;
+        height: 48px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        flex-shrink: 0;
+        position: relative;
+      }
+
+      /* ── RELEASE CARD ── */
+      .release-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: var(--card-shadow);
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s,
+          border-color 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .release-card:hover {
+        box-shadow: var(--card-shadow-hover);
+        transform: translateY(-5px);
+        border-color: rgba(232, 83, 26, 0.25);
+      }
+      .release-card-header {
+        padding: 22px 24px 18px;
+        border-bottom: 1px solid var(--border);
+        position: relative;
+      }
+      .release-card-icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.3rem;
+        margin-bottom: 14px;
+      }
+      .release-card-title {
+        font-family: var(--font-head);
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.38;
+        color: var(--text);
+        margin-bottom: 6px;
+        letter-spacing: -0.005em;
+      }
+      .release-card-quarter {
+        font-size: 0.71rem;
         color: var(--text-muted);
-        font-size: 0.88rem;
+        font-weight: 500;
+      }
+      .release-card-body {
+        padding: 20px 24px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .release-card-excerpt {
+        color: var(--text-muted);
+        font-size: 0.85rem;
         line-height: 1.7;
-        margin-bottom: 18px;
+        font-weight: 400;
         display: -webkit-box;
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical;
         overflow: hidden;
+        flex: 1;
+      }
+      .release-features {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-top: 6px;
+      }
+      .feature-tag {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        font-size: 0.69rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 99px;
+      }
+      .release-card-footer {
+        padding: 14px 24px 18px;
+        border-top: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+      .release-meta {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.75rem;
+        color: var(--text-muted);
         font-weight: 500;
       }
-      .card-meta {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        flex-wrap: wrap;
-        padding-top: 14px;
-        border-top: 1px solid var(--border);
+      .release-meta i {
+        color: var(--red);
+        font-size: 0.7rem;
       }
-      .author-chip {
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: 800;
-        font-size: 0.72rem;
-        color: #fff;
-        flex-shrink: 0;
-      }
-      .chip-red {
-        background: linear-gradient(135deg, var(--red), var(--red-dark));
-      }
-      .chip-blue {
-        background: linear-gradient(135deg, #1a56db, #1043a8);
-      }
-      .chip-green {
-        background: linear-gradient(135deg, #0f9d58, #0a7a44);
-      }
-      .meta-text {
-        font-size: 0.78rem;
-        color: var(--text-muted);
-        font-weight: 600;
-      }
-      .meta-text strong {
-        color: var(--text-2);
-      }
-      .read-time {
+      .read-more-link {
         display: inline-flex;
         align-items: center;
-        gap: 4px;
-        background: var(--bg2);
-        color: var(--text-2);
-        border-radius: 50px;
-        padding: 2px 9px;
-        font-size: 0.7rem;
-        font-weight: 700;
-      }
-      .read-more-arrow {
-        margin-left: auto;
+        gap: 5px;
         color: var(--red);
-        font-size: 0.82rem;
-        font-weight: 800;
-        display: flex;
-        align-items: center;
-        gap: 4px;
+        font-size: 0.78rem;
+        font-weight: 700;
         text-decoration: none;
-        transition:
-          gap 0.2s,
-          color 0.2s;
+        transition: gap 0.2s;
       }
-      .read-more-arrow:hover {
+      .read-more-link:hover {
         gap: 9px;
         color: var(--red-dark);
       }
 
-      /* Regular Cards */
-      .blog-card {
+      /* ── FEATURED CARD ── */
+      .card-featured {
         background: var(--white);
-        border: 1.5px solid var(--border);
+        border: 1px solid var(--border);
         border-radius: var(--radius);
         overflow: hidden;
-        transition: all 0.3s;
         cursor: pointer;
+        box-shadow: var(--card-shadow);
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s,
+          border-color 0.3s;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      .card-featured:hover {
+        box-shadow: var(--card-shadow-hover);
+        transform: translateY(-4px);
+        border-color: rgba(232, 83, 26, 0.3);
+      }
+      .featured-img {
+        position: relative;
+        overflow: hidden;
+        min-height: 300px;
+      }
+      .featured-img img {
+        width: 100%;
         height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s ease;
+      }
+      .card-featured:hover .featured-img img {
+        transform: scale(1.06);
+      }
+      .featured-img-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(232, 83, 26, 0.25) 0%,
+          transparent 60%
+        );
+      }
+      .featured-tag {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+        background: var(--red);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 5px 13px;
+        border-radius: 99px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      .featured-body {
+        padding: 36px;
         display: flex;
         flex-direction: column;
-        box-shadow: var(--shadow-sm);
+        justify-content: center;
+      }
+      .cat-pill {
+        display: inline-block;
+        border-radius: 99px;
+        padding: 3px 12px;
+        font-size: 0.71rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 14px;
+      }
+      .cat-red {
+        background: var(--red-bg2);
+        color: var(--red-dark);
+      }
+      .cat-blue {
+        background: #dbeafe;
+        color: #1d4ed8;
+      }
+      .cat-green {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .cat-purple {
+        background: #ede9fe;
+        color: #6d28d9;
+      }
+      .cat-teal {
+        background: var(--teal-bg);
+        color: var(--teal);
+      }
+      .cat-yellow {
+        background: var(--yellow-bg);
+        color: #b45309;
+      }
+      .featured-title {
+        font-family: var(--font-serif);
+        font-size: 1.5rem;
+        font-weight: 700;
+        line-height: 1.32;
+        color: var(--text);
+        margin-bottom: 14px;
+      }
+      .card-excerpt {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+        line-height: 1.75;
+        margin-bottom: 22px;
+        font-weight: 400;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding-top: 18px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+      .author-avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 0.72rem;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .av-red {
+        background: linear-gradient(135deg, #e8531a, #c43e0e);
+      }
+      .av-blue {
+        background: linear-gradient(135deg, #1a56db, #1043a8);
+      }
+      .av-green {
+        background: linear-gradient(135deg, #0f9d58, #0a7a44);
+      }
+      .av-purple {
+        background: linear-gradient(135deg, #7c3aed, #5b21b6);
+      }
+      .av-teal {
+        background: linear-gradient(135deg, #0694a2, #047481);
+      }
+      .meta-author {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: var(--text-2);
+      }
+      .meta-date {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+      }
+      .read-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        font-size: 0.72rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 99px;
+        margin-left: auto;
+      }
+      .read-more-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: var(--red);
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-decoration: none;
+        transition: gap 0.2s;
+        margin-top: 12px;
+      }
+      .read-more-btn:hover {
+        gap: 10px;
+        color: var(--red-dark);
+      }
+
+      /* ── REGULAR CARDS ── */
+      .blog-card {
+        background: var(--white);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        box-shadow: var(--card-shadow);
+        transition:
+          box-shadow 0.3s,
+          transform 0.3s,
+          border-color 0.3s;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
       }
       .blog-card:hover {
-        transform: translateY(-6px);
-        box-shadow: var(--shadow-lg);
-        border-color: rgba(232, 83, 26, 0.28);
+        box-shadow: var(--card-shadow-hover);
+        transform: translateY(-5px);
+        border-color: rgba(232, 83, 26, 0.25);
       }
-      .card-img-wrap {
+      .card-img {
         width: 100%;
-        height: 185px;
+        height: 200px;
         overflow: hidden;
         position: relative;
       }
-      .card-img-wrap img {
+      .card-img img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         transition: transform 0.5s;
       }
-      .blog-card:hover .card-img-wrap img {
-        transform: scale(1.06);
+      .blog-card:hover .card-img img {
+        transform: scale(1.07);
       }
-      .img-tag {
+      .card-img-label {
         position: absolute;
-        top: 10px;
-        left: 10px;
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(5px);
-        color: var(--text-2);
-        font-size: 0.68rem;
-        font-weight: 800;
+        bottom: 12px;
+        left: 12px;
+        background: rgba(255, 255, 255, 0.93);
+        backdrop-filter: blur(8px);
+        color: var(--text);
+        font-size: 0.67rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
         padding: 3px 10px;
-        border-radius: 50px;
-        border: 1px solid var(--border);
+        border-radius: 99px;
+        border: 1px solid rgba(255, 255, 255, 0.5);
       }
-      .blog-card .card-body-pad {
-        padding: 20px;
+      .card-body {
+        padding: 22px;
         flex: 1;
         display: flex;
         flex-direction: column;
       }
-      .blog-card .card-title-text {
-        font-size: 1rem;
-        margin-bottom: 8px;
+      .card-title {
+        font-family: var(--font-head);
+        font-size: 1.02rem;
+        font-weight: 700;
+        line-height: 1.38;
+        color: var(--text);
+        margin-bottom: 10px;
+        letter-spacing: -0.005em;
       }
       .blog-card .card-excerpt {
         -webkit-line-clamp: 2;
-        margin-bottom: auto;
-        padding-bottom: 14px;
+        font-size: 0.86rem;
+        margin-bottom: 0;
+        flex: 1;
+        padding-bottom: 16px;
       }
 
-      /* SIDEBAR */
-      .sidebar-widget {
+      /* ── SIDEBAR ── */
+      .sidebar-card {
         background: var(--white);
-        border: 1.5px solid var(--border);
+        border: 1px solid var(--border);
         border-radius: var(--radius);
         padding: 22px;
-        margin-bottom: 22px;
-        box-shadow: var(--shadow-sm);
+        margin-bottom: 20px;
+        box-shadow: var(--card-shadow);
       }
-      .widget-title {
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 0.1em;
+      .widget-heading {
+        font-family: var(--font-head);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
         text-transform: uppercase;
-        color: var(--red);
-        margin-bottom: 14px;
-        padding-bottom: 10px;
-        border-bottom: 1.5px solid var(--border);
+        color: var(--text-muted);
+        margin-bottom: 16px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border);
+        display: flex;
+        align-items: center;
+        gap: 7px;
       }
-      .recent-post-item {
+      .widget-heading i {
+        color: var(--red);
+      }
+      .recent-item {
         display: flex;
         gap: 12px;
         align-items: flex-start;
-        padding: 10px 0;
+        padding: 11px 0;
         border-bottom: 1px solid var(--border);
         cursor: pointer;
         transition: opacity 0.2s;
       }
-      .recent-post-item:last-child {
+      .recent-item:last-child {
         border-bottom: none;
       }
-      .recent-post-item:hover {
-        opacity: 0.7;
+      .recent-item:hover {
+        opacity: 0.65;
       }
-      .recent-post-img {
-        width: 52px;
-        height: 52px;
-        border-radius: 9px;
+      .recent-thumb {
+        width: 54px;
+        height: 54px;
+        border-radius: 10px;
         object-fit: cover;
-        flex-shrink: 0;
         border: 1px solid var(--border);
+        flex-shrink: 0;
       }
-      .recent-post-title {
-        font-size: 0.82rem;
-        font-weight: 700;
+      .recent-title {
+        font-size: 0.83rem;
+        font-weight: 600;
         color: var(--text);
-        line-height: 1.4;
+        line-height: 1.42;
         margin-bottom: 4px;
         display: -webkit-box;
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
       }
-      .recent-post-date {
-        font-size: 0.7rem;
+      .recent-date {
+        font-size: 0.71rem;
         color: var(--text-muted);
-        font-weight: 600;
       }
-      .tag-cloud {
+      .tags-wrap {
         display: flex;
         flex-wrap: wrap;
         gap: 7px;
       }
-      .tag-pill {
+      .tag-chip {
         background: var(--bg);
-        border: 1.5px solid var(--border);
+        border: 1px solid var(--border);
         color: var(--text-2);
         padding: 5px 14px;
-        border-radius: 50px;
+        border-radius: 99px;
         font-size: 0.76rem;
-        font-weight: 700;
+        font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s;
+        transition: all 0.18s;
         text-decoration: none;
       }
-      .tag-pill:hover {
+      .tag-chip:hover {
         background: var(--red);
         border-color: var(--red);
         color: #fff;
       }
-      .stat-row {
+      .stats-row {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -614,221 +972,244 @@
         border-bottom: 1px solid var(--border);
         font-size: 0.84rem;
       }
-      .stat-row:last-child {
+      .stats-row:last-child {
         border-bottom: none;
       }
-      .stat-row span:first-child {
+      .stats-row .sk {
         color: var(--text-muted);
-        font-weight: 600;
-      }
-      .stat-row span:last-child {
-        color: var(--red);
-        font-weight: 800;
-        background: var(--red-bg);
-        padding: 2px 10px;
-        border-radius: 50px;
-        font-size: 0.78rem;
-      }
-
-      /* CTA */
-      .cta-widget {
-        background: linear-gradient(135deg, var(--red) 0%, #c43e0e 100%);
-        border: none;
-        border-radius: var(--radius);
-        padding: 26px;
-        margin-bottom: 22px;
-        box-shadow: 0 8px 28px rgba(232, 83, 26, 0.28);
-        color: #fff;
-      }
-      .cta-widget .cta-icon {
-        font-size: 2rem;
-        margin-bottom: 10px;
-      }
-      .cta-widget h4 {
-        font-family: var(--font-head);
-        font-size: 1.05rem;
-        font-weight: 700;
-        margin-bottom: 8px;
-      }
-      .cta-widget p {
-        font-size: 0.84rem;
-        opacity: 0.88;
-        margin-bottom: 18px;
         font-weight: 500;
       }
-      .btn-cta-white {
-        display: block;
-        background: #fff;
+      .stats-row .sv {
         color: var(--red);
-        text-align: center;
-        border-radius: var(--radius-sm);
-        padding: 10px 18px;
-        font-weight: 800;
-        font-size: 0.86rem;
-        text-decoration: none;
-        transition: all 0.2s;
-      }
-      .btn-cta-white:hover {
+        font-weight: 700;
         background: var(--red-bg);
-        transform: translateY(-2px);
-        color: var(--red-dark);
+        padding: 2px 10px;
+        border-radius: 99px;
+        font-size: 0.77rem;
       }
 
-      /* NEWSLETTER */
+      /* ── CTA WIDGET ── */
+      .cta-card {
+        background: linear-gradient(145deg, #1a1a2e 0%, #2d1a6e 100%);
+        border-radius: var(--radius);
+        padding: 28px;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-card::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 83, 26, 0.3) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+      }
+      .cta-card h4 {
+        font-family: var(--font-head);
+        font-size: 1.1rem;
+        font-weight: 800;
+        color: #fff;
+        margin-bottom: 8px;
+        position: relative;
+      }
+      .cta-card p {
+        font-size: 0.84rem;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .btn-cta-primary {
+        display: block;
+        text-align: center;
+        background: var(--red);
+        color: #fff;
+        text-decoration: none;
+        border-radius: var(--radius-sm);
+        padding: 11px 18px;
+        font-weight: 700;
+        font-size: 0.86rem;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+        position: relative;
+      }
+      .btn-cta-primary:hover {
+        background: var(--red-light);
+        color: #fff;
+        transform: translateY(-2px);
+      }
+
+      /* ── NEWSLETTER ── */
       .newsletter-section {
-        background: linear-gradient(135deg, var(--blue) 0%, #0c3fa0 100%);
-        padding: 58px 0;
+        background: var(--text);
+        padding: 70px 0;
         position: relative;
         overflow: hidden;
       }
       .newsletter-section::before {
         content: "";
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 600px;
-        height: 300px;
-        background: radial-gradient(
-          ellipse,
-          rgba(255, 255, 255, 0.06) 0%,
-          transparent 70%
-        );
+        inset: 0;
+        background-image:
+          radial-gradient(
+            circle at 10% 50%,
+            rgba(232, 83, 26, 0.15) 0%,
+            transparent 40%
+          ),
+          radial-gradient(
+            circle at 90% 50%,
+            rgba(99, 102, 241, 0.1) 0%,
+            transparent 40%
+          );
       }
-      .newsletter-section .section-eyebrow {
-        color: rgba(255, 255, 255, 0.75);
+      .nl-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 16px;
       }
       .newsletter-section h2 {
         font-family: var(--font-head);
-        font-size: clamp(1.5rem, 3vw, 2rem);
-        font-weight: 700;
+        font-size: clamp(1.7rem, 3.5vw, 2.4rem);
+        font-weight: 800;
         color: #fff;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
       }
-      .newsletter-section p {
-        color: rgba(255, 255, 255, 0.78);
-        font-size: 0.95rem;
+      .newsletter-section h2 em {
+        font-family: var(--font-serif);
+        font-style: italic;
         font-weight: 500;
+        color: var(--red-light);
       }
-      .nl-form {
+      .newsletter-section .sub {
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.96rem;
+        font-weight: 400;
+        max-width: 460px;
+      }
+      .nl-form-wrap {
+        margin-top: 28px;
         display: flex;
         gap: 10px;
-        max-width: 470px;
-        margin-top: 22px;
+        max-width: 480px;
       }
       .nl-input {
         flex: 1;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 0.09);
+        border: 1.5px solid rgba(255, 255, 255, 0.18);
         border-radius: var(--radius-sm);
         color: #fff;
-        padding: 11px 15px;
+        padding: 12px 16px;
         font-size: 0.9rem;
         font-family: var(--font-body);
-        font-weight: 600;
         transition: border-color 0.2s;
       }
       .nl-input:focus {
         outline: none;
-        border-color: #fff;
-        background: rgba(255, 255, 255, 0.18);
+        border-color: var(--red-light);
       }
       .nl-input::placeholder {
-        color: rgba(255, 255, 255, 0.55);
-        font-weight: 500;
+        color: rgba(255, 255, 255, 0.4);
       }
-      .btn-sub {
-        background: #fff;
-        color: var(--blue);
+      .btn-subscribe {
+        background: var(--red);
+        color: #fff;
         border: none;
         border-radius: var(--radius-sm);
-        padding: 11px 22px;
-        font-weight: 800;
-        font-size: 0.86rem;
+        padding: 12px 24px;
+        font-weight: 700;
+        font-size: 0.87rem;
         cursor: pointer;
         font-family: var(--font-body);
         transition: all 0.2s;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 7px;
       }
-      .btn-sub:hover {
-        background: var(--red-bg);
-        color: var(--red);
+      .btn-subscribe:hover {
+        background: var(--red-light);
         transform: translateY(-1px);
       }
       .nl-note {
-        color: rgba(255, 255, 255, 0.55);
+        color: rgba(255, 255, 255, 0.35);
         font-size: 0.74rem;
-        margin-top: 8px;
-        font-weight: 600;
+        margin-top: 10px;
       }
-      .nl-feature-box {
-        background: rgba(255, 255, 255, 0.1);
-        border: 1px solid rgba(255, 255, 255, 0.18);
-        border-radius: var(--radius);
-        padding: 15px 18px;
+      .nl-features {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      .nl-feat {
+        background: rgba(255, 255, 255, 0.06);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-sm);
+        padding: 16px 18px;
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 14px;
-        margin-bottom: 10px;
       }
-      .nl-feature-box:last-child {
-        margin-bottom: 0;
-      }
-      .nl-feature-box .emoji {
-        font-size: 1.5rem;
-      }
-      .nl-feature-box .label {
+      .nl-feat .label {
         font-weight: 700;
         font-size: 0.88rem;
         color: #fff;
-        margin-bottom: 1px;
+        margin-bottom: 2px;
       }
-      .nl-feature-box .sub {
+      .nl-feat .desc {
         font-size: 0.76rem;
-        color: rgba(255, 255, 255, 0.65);
-        font-weight: 500;
+        color: rgba(255, 255, 255, 0.5);
       }
 
-      /* MODAL */
+      /* ── MODAL ── */
       .blog-modal .modal-content {
         background: var(--white);
-        border: 1.5px solid var(--border);
+        border: 1px solid var(--border);
         border-radius: var(--radius);
         color: var(--text);
-        box-shadow: var(--shadow-lg);
       }
       .blog-modal .modal-header {
-        border-bottom: 1.5px solid var(--border);
-        padding: 22px 26px 18px;
+        border-bottom: 1px solid var(--border);
+        padding: 24px 28px 20px;
         background: var(--bg);
+        border-radius: var(--radius) var(--radius) 0 0;
       }
       .blog-modal .modal-title {
         font-family: var(--font-head);
-        font-size: 1.35rem;
-        font-weight: 700;
+        font-size: 1.2rem;
+        font-weight: 800;
         color: var(--text);
-        line-height: 1.35;
-      }
-      .blog-modal .btn-close {
-        opacity: 0.5;
+        line-height: 1.38;
       }
       .blog-modal .modal-body {
-        padding: 26px;
+        padding: 28px;
       }
       .modal-hero-img {
         width: 100%;
         height: 260px;
         object-fit: cover;
-        border-radius: var(--radius);
-        margin-bottom: 20px;
+        border-radius: var(--radius-sm);
+        margin-bottom: 22px;
       }
       .modal-meta {
         display: flex;
-        gap: 16px;
+        gap: 18px;
         flex-wrap: wrap;
-        margin-bottom: 20px;
-        padding-bottom: 16px;
-        border-bottom: 1.5px solid var(--border);
+        margin-bottom: 22px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border);
       }
       .modal-meta-item {
         display: flex;
@@ -836,7 +1217,7 @@
         gap: 5px;
         color: var(--text-muted);
         font-size: 0.82rem;
-        font-weight: 600;
+        font-weight: 500;
       }
       .modal-meta-item i {
         color: var(--red);
@@ -845,114 +1226,115 @@
         font-size: 0.94rem;
         line-height: 1.85;
         color: var(--text-2);
-        font-weight: 500;
+        font-weight: 400;
       }
       .blog-content h3 {
         font-family: var(--font-head);
         color: var(--text);
-        font-size: 1.15rem;
+        font-size: 1.12rem;
         font-weight: 700;
-        margin: 22px 0 10px;
+        margin: 26px 0 10px;
       }
       .blog-content p {
-        margin-bottom: 12px;
-      }
-      .blog-content ul {
-        padding-left: 20px;
         margin-bottom: 14px;
       }
+      .blog-content ul {
+        padding-left: 22px;
+        margin-bottom: 16px;
+      }
       .blog-content ul li {
-        margin-bottom: 5px;
+        margin-bottom: 6px;
       }
       .blog-content .highlight {
-        background: var(--red-bg);
-        border-left: 4px solid var(--red);
-        padding: 14px 18px;
+        background: linear-gradient(135deg, var(--red-bg) 0%, #fff8f5 100%);
+        border-left: 3px solid var(--red);
+        padding: 16px 20px;
         border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-        margin: 18px 0;
+        margin: 20px 0;
         font-style: italic;
         color: var(--text);
-        font-weight: 600;
+        font-weight: 500;
       }
       .modal-footer-bar {
-        padding: 16px 26px 22px;
-        border-top: 1.5px solid var(--border);
+        padding: 16px 28px 22px;
+        border-top: 1px solid var(--border);
         display: flex;
         gap: 10px;
         align-items: center;
         flex-wrap: wrap;
         background: var(--bg);
+        border-radius: 0 0 var(--radius) var(--radius);
       }
-      .btn-cta-red {
+      .btn-modal-cta {
         background: var(--red);
         color: #fff;
         border: none;
         border-radius: var(--radius-sm);
-        padding: 9px 20px;
-        font-weight: 800;
+        padding: 10px 20px;
+        font-weight: 700;
         font-size: 0.86rem;
         cursor: pointer;
         text-decoration: none;
-        transition: all 0.2s;
-      }
-      .btn-cta-red:hover {
-        background: var(--red-dark);
-        color: #fff;
-        transform: translateY(-1px);
-      }
-      .btn-share-out {
-        background: var(--white);
-        border: 1.5px solid var(--border);
-        color: var(--text-2);
-        border-radius: var(--radius-sm);
-        padding: 9px 14px;
-        font-size: 0.84rem;
-        font-weight: 700;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 5px;
         font-family: var(--font-body);
         transition: all 0.2s;
       }
-      .btn-share-out:hover {
-        border-color: var(--blue);
-        color: var(--blue);
+      .btn-modal-cta:hover {
+        background: var(--red-dark);
+        color: #fff;
+      }
+      .btn-share {
+        background: var(--white);
+        border: 1px solid var(--border);
+        color: var(--text-2);
+        border-radius: var(--radius-sm);
+        padding: 10px 14px;
+        font-size: 0.84rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+      }
+      .btn-share:hover {
+        border-color: var(--red);
+        color: var(--red);
       }
       .more-link {
+        margin-left: auto;
         color: var(--text-muted);
         font-size: 0.8rem;
+        font-weight: 600;
         text-decoration: none;
-        margin-left: auto;
-        font-weight: 700;
         transition: color 0.2s;
       }
       .more-link:hover {
         color: var(--red);
       }
 
-      /* No Results */
+      /* ── NO RESULTS ── */
       .no-results {
         text-align: center;
         padding: 60px 20px;
         display: none;
       }
       .no-results i {
-        font-size: 3rem;
-        color: var(--text-muted);
+        font-size: 2.5rem;
+        color: var(--border2);
         margin-bottom: 14px;
         display: block;
       }
       .no-results p {
         color: var(--text-muted);
-        font-weight: 600;
+        font-weight: 500;
       }
 
-      /* Animations */
+      /* ── ANIMATIONS ── */
       @keyframes fadeUp {
         from {
           opacity: 0;
-          transform: translateY(22px);
+          transform: translateY(24px);
         }
         to {
           opacity: 1;
@@ -960,256 +1342,214 @@
         }
       }
       .fade-up {
-        animation: fadeUp 0.55s ease forwards;
+        animation: fadeUp 0.6s ease forwards;
       }
       .d1 {
-        animation-delay: 0.08s;
+        animation-delay: 0.1s;
         opacity: 0;
       }
       .d2 {
-        animation-delay: 0.18s;
+        animation-delay: 0.22s;
+        opacity: 0;
+      }
+      .d3 {
+        animation-delay: 0.32s;
+        opacity: 0;
+      }
+      .d4 {
+        animation-delay: 0.42s;
         opacity: 0;
       }
 
-      /* FOOTER */
-      .site-footer {
-        background: #050505;
-        color: #e5e7eb;
-        padding: 75px 5% 25px;
-        font-size: 14px;
-      }
-      .footer-content {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 40px;
-        margin-bottom: 35px;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-      .footer-section h3 {
-        font-size: 22px;
-        margin-bottom: 14px;
-        color: #ffffff;
-      }
-      .footer-tagline {
-        font-family: "Segoe Script", "Lucida Handwriting", cursive;
-        font-size: 18px;
-        color: #38bdf8;
-        margin-bottom: 12px;
-      }
-      .center-heading {
-        text-align: left;
-        margin-bottom: 18px;
-        margin-right: 240px;
-      }
-      .footer-section p {
-        color: #cbd5e1;
-        line-height: 1.7;
-      }
-      .zoho-solutions {
+      /* ── TOAST ── */
+      .toast-wrap {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        z-index: 9999;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        gap: 8px;
+        pointer-events: none;
       }
-      .solutions-wrapper {
+      .toast-msg {
+        background: var(--text);
+        color: #fff;
+        padding: 12px 20px;
+        border-radius: var(--radius-sm);
+        font-size: 0.86rem;
+        font-weight: 600;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
         display: flex;
-        justify-content: center;
-        width: 100%;
+        align-items: center;
+        gap: 8px;
+        animation: slideUp 0.3s ease;
+        pointer-events: auto;
       }
-      .solutions-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(150px, 180px));
-        column-gap: 40px;
-        row-gap: 10px;
-        list-style: none;
-        padding: 0;
-        margin: 0;
+      .toast-msg .ti {
+        color: #4ade80;
       }
-      .solutions-grid li {
-        text-align: left;
-        white-space: nowrap;
-        color: #d1d5db;
-        font-weight: 500;
-        transition: color 0.25s ease;
-        cursor: pointer;
-      }
-      .solutions-grid li:hover {
-        color: #38bdf8;
-      }
-      .site-footer a {
-        color: #d1d5db;
-        text-decoration: none;
-        font-weight: 500;
-        transition: color 0.25s ease;
-      }
-      .site-footer a:hover {
-        color: #38bdf8;
-      }
-      .zoho-logo {
-        margin-top: 16px;
-      }
-      .zoho-logo img {
-        max-width: 140px;
-        opacity: 0.95;
-      }
-      .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.12);
-        padding-top: 18px;
-        text-align: center;
-        max-width: 1400px;
-        margin-left: auto;
-        margin-right: auto;
-        margin-top: 35px;
-      }
-      .footer-bottom p {
-        margin: 0;
-        color: #94a3b8;
-        font-size: 13px;
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(12px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
-      @media (max-width: 768px) {
-        .blog-hero {
-          padding: 54px 0 36px;
+  
+
+      /* ── RESPONSIVE ── */
+      @media (max-width: 991px) {
+        .card-featured {
+          grid-template-columns: 1fr;
         }
-        .filter-bar {
-          top: 62px;
+        .featured-img {
+          min-height: 220px;
         }
-        .nl-form {
-          flex-direction: column;
+        .featured-body {
+          padding: 26px;
         }
-        .footer-content {
+        .footer-grid {
           grid-template-columns: 1fr;
           gap: 30px;
         }
-        .solutions-grid {
-          grid-template-columns: repeat(2, 1fr);
-          column-gap: 20px;
+        .filter-bar-inner {
+          gap: 10px;
         }
-        .center-heading {
-          margin-right: 0;
+        .search-wrap {
+          flex: 0 0 100%;
+        }
+        .divider-v {
+          display: none;
+        }
+      }
+      @media (max-width: 767px) {
+        .blog-hero {
+          padding: 60px 0 40px;
+        }
+        .filter-bar {
+          top: 85px;
+        }
+        .nl-form-wrap {
+          flex-direction: column;
+        }
+        .featured-title {
+          font-size: 1.2rem;
         }
       }
     </style>
   </head>
   <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar">
       <div class="container">
-        <a class="navbar-brand" href="https://zolytics.in/">
-          <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
-        </a>
-        <div class="zoho-badge d-none d-md-flex align-items-center gap-2 ms-2">
-          <img
-            src="https://www.zolytics.in/files/Zoho_logo-removebg-preview.png"
-            alt="Zoho"
-          />
-          <img
-            src="https://www.zolytics.in/files/zoho_Partner-removebg-preview.png"
-            alt="Partner"
-          />
+        <div class="navbar-inner">
+          <a href="https://zolytics.in/">
+            <img
+              src="https://www.zolytics.in/files/logo.png"
+              alt="Zolytics"
+              style="height: 72px"
+            />
+          </a>
+          <div class="d-none d-md-flex align-items-center gap-3">
+            <div class="zoho-badge-wrap">
+              <img
+                src="https://www.zolytics.in/files/Zoho_logo-removebg-preview.png"
+                alt="Zoho"
+              />
+              <img
+                src="https://www.zolytics.in/files/zoho_Partner-removebg-preview.png"
+                alt="Partner"
+              />
+            </div>
+          </div>
         </div>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navMain"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
       </div>
     </nav>
 
     <!-- HERO -->
     <section class="blog-hero">
+      <div class="hero-bg-pattern"></div>
+      <div class="hero-grid-lines"></div>
       <div class="container">
-        <div class="row align-items-center g-4">
+        <div class="row align-items-center g-5">
           <div class="col-lg-7 fade-up">
             <div class="hero-eyebrow">
-              <i class="bi bi-book-half"></i> Knowledge Hub
+              <span class="hero-eyebrow-dot"
+                ><i class="bi bi-book-half" style="font-size: 0.65rem"></i
+              ></span>
+              Knowledge Hub
             </div>
             <h1>
-              Zolytics Insights, Tips &<br /><em>Expert Guides</em> for Your
-              Business
+              Zolytics Insights,<br />Tips &
+              <span class="accent">Expert Guides</span><br />for Your Business
             </h1>
             <p class="lead">
               Fresh articles on Zoho automation, accounting, CRM, GST, and
               digital transformation — published daily by our certified
               consultants.
             </p>
-            <div class="d-flex gap-3 mt-4 flex-wrap">
-              <span
-                style="
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 6px;
-                  font-size: 0.83rem;
-                  font-weight: 700;
-                  color: var(--text-2);
-                "
-                ><i
-                  class="bi bi-check-circle-fill"
-                  style="color: var(--green)"
-                ></i>
-                2–3 Articles Daily</span
+            <div class="hero-badges">
+              <span class="hero-badge"
+                ><span class="dot"></span> 2–3 Articles Daily</span
               >
-              <span
-                style="
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 6px;
-                  font-size: 0.83rem;
-                  font-weight: 700;
-                  color: var(--text-2);
-                "
+              <span class="hero-badge"
                 ><i
-                  class="bi bi-check-circle-fill"
-                  style="color: var(--green)"
+                  class="bi bi-patch-check-fill"
+                  style="color: var(--blue); font-size: 0.75rem"
                 ></i>
                 Certified Zoho Experts</span
               >
-              <span
-                style="
-                  display: inline-flex;
-                  align-items: center;
-                  gap: 6px;
-                  font-size: 0.83rem;
-                  font-weight: 700;
-                  color: var(--text-2);
-                "
+              <span class="hero-badge"
                 ><i
-                  class="bi bi-check-circle-fill"
-                  style="color: var(--green)"
+                  class="bi bi-globe2"
+                  style="color: var(--text-muted); font-size: 0.75rem"
                 ></i>
                 India · UAE · USA</span
               >
             </div>
           </div>
           <div class="col-lg-5 d-none d-lg-block fade-up d2">
-            <div class="hero-stat-box">
-              <div class="hero-stat-row">
-                <div class="stat-icon red"><span>✍️</span></div>
+            <div class="hero-stat-panel">
+              <div class="stat-panel-header">
+                Blog Dashboard
+                <div class="stat-panel-live">
+                  <span class="live-dot"></span>Live
+                </div>
+              </div>
+              <div class="stat-panel-row">
+                <div class="stat-icon-box sib-red">✍️</div>
                 <div>
-                  <div class="stat-label">2–3 Articles Daily</div>
-                  <div class="stat-sub">
+                  <div class="stat-panel-label">
+                    2–3 Articles Published Daily
+                  </div>
+                  <div class="stat-panel-sub">
                     Fresh Zolytics insights every single day
                   </div>
                 </div>
               </div>
-              <div class="hero-stat-row">
-                <div class="stat-icon blue"><span>🏅</span></div>
+              <div class="stat-panel-row">
+                <div class="stat-icon-box sib-blue">🏅</div>
                 <div>
-                  <div class="stat-label">Certified Experts</div>
-                  <div class="stat-sub">
-                    Written by Zoho-certified professionals
+                  <div class="stat-panel-label">
+                    Written by Certified Experts
+                  </div>
+                  <div class="stat-panel-sub">
+                    Zoho-certified professionals only
                   </div>
                 </div>
               </div>
-              <div class="hero-stat-row">
-                <div class="stat-icon green"><span>🌏</span></div>
+              <div class="stat-panel-row">
+                <div class="stat-icon-box sib-green">🌏</div>
                 <div>
-                  <div class="stat-label">India, UAE & USA</div>
-                  <div class="stat-sub">Region-specific business guidance</div>
+                  <div class="stat-panel-label">India, UAE & USA Coverage</div>
+                  <div class="stat-panel-sub">
+                    Region-specific business guidance
+                  </div>
                 </div>
               </div>
             </div>
@@ -1221,56 +1561,53 @@
     <!-- FILTER BAR -->
     <div class="filter-bar">
       <div class="container">
-        <div class="row align-items-center g-3">
-          <div class="col-lg-4">
-            <div class="search-wrap">
-              <i class="bi bi-search"></i>
-              <input
-                type="text"
-                class="search-input"
-                id="blogSearch"
-                placeholder="Search articles…"
-                oninput="filterBlogs()"
-              />
-            </div>
+        <div class="filter-bar-inner">
+          <div class="search-wrap">
+            <i class="bi bi-search"></i>
+            <input
+              type="text"
+              class="search-input"
+              id="blogSearch"
+              placeholder="Search articles…"
+              oninput="filterBlogs()"
+            />
           </div>
-          <div class="col-lg-8">
-            <div class="filter-tabs">
-              <button
-                class="filter-tab active"
-                onclick="setCategory('all', this)"
-              >
-                All Articles
-              </button>
-              <button
-                class="filter-tab"
-                onclick="setCategory('zoho-crm', this)"
-              >
-                Zoho CRM
-              </button>
-              <button
-                class="filter-tab"
-                onclick="setCategory('accounting', this)"
-              >
-                Accounting
-              </button>
-              <button
-                class="filter-tab"
-                onclick="setCategory('automation', this)"
-              >
-                Automation
-              </button>
-              <button
-                class="filter-tab"
-                onclick="setCategory('migration', this)"
-              >
-                Migration
-              </button>
-              <button class="filter-tab" onclick="setCategory('tips', this)">
-                Tips & Tricks
-              </button>
-            </div>
+          <div class="divider-v"></div>
+          <div class="filter-tabs">
+            <button
+              class="filter-tab active"
+              onclick="setCategory('all', this)"
+            >
+              All Articles
+            </button>
+            <button class="filter-tab" onclick="setCategory('zoho-crm', this)">
+              Zoho CRM
+            </button>
+            <button
+              class="filter-tab"
+              onclick="setCategory('accounting', this)"
+            >
+              Accounting
+            </button>
+            <button
+              class="filter-tab"
+              onclick="setCategory('automation', this)"
+            >
+              Automation
+            </button>
+            <button class="filter-tab" onclick="setCategory('inventory', this)">
+              Inventory
+            </button>
+            <button class="filter-tab" onclick="setCategory('migration', this)">
+              Migration
+            </button>
+            <button class="filter-tab" onclick="setCategory('tips', this)">
+              Tips & Tricks
+            </button>
           </div>
+          <span class="article-count d-none d-md-inline" id="articleCount"
+            >7 articles</span
+          >
         </div>
       </div>
     </div>
@@ -1278,32 +1615,34 @@
     <!-- BLOG SECTION -->
     <section class="blog-section">
       <div class="container">
-        <div class="row g-4">
+        <div class="row g-5">
           <!-- MAIN -->
           <div class="col-lg-8">
-            <div class="section-eyebrow">Latest Articles</div>
-            <div class="section-title">What's New on the Blog</div>
+            <div class="section-label">Latest Articles</div>
+            <div class="section-heading">What's New on the Blog</div>
 
-            <div id="blogGrid" class="row g-4">
-              <!-- BLOG 1 — Featured -->
+            <div id="blogGrid" class="d-flex flex-column gap-4">
+              <!-- FEATURED -->
               <div
-                class="col-12 blog-item"
+                class="blog-item"
                 data-category="accounting"
                 data-title="why every indian sme should migrate tally zoho books"
               >
-                <div class="blog-card-featured" onclick="openModal(0)">
-                  <div class="featured-img-wrap">
+                <div class="card-featured fade-up d1" onclick="openModal(0)">
+                  <div class="featured-img">
                     <img
                       src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900"
                       alt="Tally to Zoho Books Migration"
                     />
-                    <span class="featured-badge">⭐ Featured</span>
+                    <div class="featured-img-overlay"></div>
+                    <div class="featured-tag">
+                      <i class="bi bi-star-fill" style="font-size: 0.6rem"></i>
+                      Featured
+                    </div>
                   </div>
-                  <div class="card-body-pad">
-                    <span class="cat-badge cat-red"
-                      >Accounting & Migration</span
-                    >
-                    <h2 class="card-title-text">
+                  <div class="featured-body">
+                    <span class="cat-pill cat-red">Accounting & Migration</span>
+                    <h2 class="featured-title">
                       Why Every Indian SME Should Migrate from Tally to Zoho
                       Books in 2025
                     </h2>
@@ -1311,147 +1650,624 @@
                       Tally has been the backbone of Indian accounting for
                       decades — but in a world of real-time dashboards, GST
                       automation, and cloud-first operations, is it still the
-                      right fit? We break down exactly why thousands of SMEs
-                      across India are making the switch to Zoho Books and what
-                      it means for your bottom line.
+                      right fit? We break down exactly why thousands of SMEs are
+                      making the switch.
                     </p>
                     <div class="card-meta">
-                      <div class="author-chip chip-red">RK</div>
-                      <div class="meta-text">
-                        <strong>Rahul Kumar</strong> &bull; Apr 5, 2025
-                        <span class="read-time ms-2"
-                          ><i class="bi bi-clock"></i> 8 min read</span
-                        >
+                      <div class="author-avatar av-red">RK</div>
+                      <div>
+                        <div class="meta-author">Rahul Kumar</div>
+                        <div class="meta-date">Apr 5, 2025</div>
                       </div>
-                      <a
-                        class="read-more-arrow"
-                        href="#"
-                        onclick="
-                          event.preventDefault();
-                          openModal(0);
-                        "
-                        >Read Article <i class="bi bi-arrow-right"></i
-                      ></a>
+                      <span class="read-badge"
+                        ><i class="bi bi-clock"></i> 8 min</span
+                      >
                     </div>
+                    <a
+                      class="read-more-btn"
+                      href="#"
+                      onclick="
+                        event.preventDefault();
+                        openModal(0);
+                      "
+                      >Read Article <i class="bi bi-arrow-right"></i
+                    ></a>
                   </div>
                 </div>
               </div>
 
-              <!-- BLOG 2 -->
-              <div
-                class="col-md-6 blog-item"
-                data-category="zoho-crm"
-                data-title="zoho crm automations double sales pipeline efficiency"
-              >
-                <div class="blog-card" onclick="openModal(1)">
-                  <div class="card-img-wrap">
-                    <img
-                      src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="Zoho CRM Sales Automation"
-                    />
-                    <span class="img-tag">Zoho CRM</span>
-                  </div>
-                  <div class="card-body-pad">
-                    <span class="cat-badge cat-blue">CRM & Sales</span>
-                    <h3 class="card-title-text">
-                      5 Zoho CRM Automations That Will Double Your Sales
-                      Pipeline Efficiency
-                    </h3>
-                    <p class="card-excerpt">
-                      Stop doing manually what Zoho CRM can do automatically.
-                      These five workflow automations are the difference between
-                      a struggling pipeline and a conversion machine.
-                    </p>
-                    <div class="card-meta">
-                      <div class="author-chip chip-blue">PS</div>
-                      <div class="meta-text">
-                        <strong>Priya Sharma</strong> &bull; Apr 6, 2025
-                        <span class="read-time ms-2"
+              <!-- CARD GRID -->
+              <div class="row g-4">
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="zoho-crm"
+                  data-title="zoho crm automations double sales pipeline efficiency"
+                >
+                  <div class="blog-card fade-up d2" onclick="openModal(1)">
+                    <div class="card-img">
+                      <img
+                        src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="Zoho CRM Sales Automation"
+                      />
+                      <span class="card-img-label">Zoho CRM</span>
+                    </div>
+                    <div class="card-body">
+                      <span class="cat-pill cat-blue">CRM & Sales</span>
+                      <h3 class="card-title">
+                        5 Zoho CRM Automations That Will Double Your Sales
+                        Pipeline Efficiency
+                      </h3>
+                      <p class="card-excerpt">
+                        Stop doing manually what Zoho CRM can do automatically.
+                        These five workflow automations are the difference
+                        between a struggling pipeline and a conversion machine.
+                      </p>
+                      <div class="card-meta" style="margin-top: auto">
+                        <div class="author-avatar av-blue">PS</div>
+                        <div>
+                          <div class="meta-author">Priya Sharma</div>
+                          <div class="meta-date">Apr 6, 2025</div>
+                        </div>
+                        <span class="read-badge"
                           ><i class="bi bi-clock"></i> 6 min</span
                         >
                       </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="automation"
+                  data-title="automate gst filing zoho books step by step guide india compliance"
+                >
+                  <div class="blog-card fade-up d3" onclick="openModal(2)">
+                    <div class="card-img">
+                      <img
+                        src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=800"
+                        alt="GST Automation Zoho Books"
+                      />
+                      <span class="card-img-label">Automation</span>
+                    </div>
+                    <div class="card-body">
+                      <span class="cat-pill cat-green">GST & Compliance</span>
+                      <h3 class="card-title">
+                        How to Automate GST Filing Completely Using Zoho Books —
+                        Step-by-Step
+                      </h3>
+                      <p class="card-excerpt">
+                        GST compliance doesn't have to eat up your CA's
+                        weekends. Zoho Books automates everything from invoice
+                        matching to GSTR-1 and GSTR-3B filing.
+                      </p>
+                      <div class="card-meta" style="margin-top: auto">
+                        <div class="author-avatar av-green">AM</div>
+                        <div>
+                          <div class="meta-author">Amit Mehta</div>
+                          <div class="meta-date">Apr 7, 2025</div>
+                        </div>
+                        <span class="read-badge"
+                          ><i class="bi bi-clock"></i> 10 min</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ═══════════════════════════════════════════════════
+                   NEW RELEASES — ZOHO INVENTORY Q1 2026
+              ════════════════════════════════════════════════════ -->
+              <div
+                class="blog-item"
+                data-category="inventory"
+                data-title="zoho inventory new releases q1 2026"
+              >
+                <div class="releases-section-header fade-up">
+                  <div class="icon-wrap">📦</div>
+                  <div>
+                    <h3>New Releases by Zoho Inventory</h3>
+                    <p>What's New in Zoho Inventory | January – March 2026</p>
+                  </div>
+                  <div class="releases-badge ms-auto">Q1 2026</div>
+                </div>
+              </div>
+
+              <!-- Release Cards Row 1 -->
+              <div class="row g-4">
+                <!-- Card: Item Unification -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="item item groups unification zoho inventory 2026"
+                >
+                  <div class="release-card fade-up d1" onclick="openModal(3)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--red-bg)"
+                      >
+                        🗂️
+                      </div>
+                      <div class="cat-pill cat-red" style="margin-bottom: 10px">
+                        Item Management
+                      </div>
+                      <h3 class="release-card-title">
+                        Item & Item Groups Unification
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Zoho
+                        Inventory
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Create items and their variants from a single unified
+                        page. Choose between a single item or one with variants
+                        — define attributes like size, colour, and material, and
+                        generate all combinations right away.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Single item creation</span>
+                        <span class="feature-tag">Variant attributes</span>
+                        <span class="feature-tag">Multi-image upload</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
                       <a
-                        class="read-more-arrow"
+                        class="read-more-link"
                         href="#"
                         onclick="
                           event.preventDefault();
-                          openModal(1);
+                          openModal(3);
                         "
-                        ><i class="bi bi-arrow-right"></i
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card: Unit Groups -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="unit groups early access zoho inventory 2026 weight kg lb"
+                >
+                  <div class="release-card fade-up d2" onclick="openModal(4)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--blue-light)"
+                      >
+                        ⚖️
+                      </div>
+                      <div
+                        class="cat-pill cat-blue"
+                        style="margin-bottom: 10px"
+                      >
+                        Early Access
+                      </div>
+                      <h3 class="release-card-title">
+                        Introducing Unit Groups
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Early
+                        Access
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Unit Conversions move into a dedicated Unit Groups tab.
+                        Create groups like "Weight" (kg, g, lb) and associate
+                        each item with a specific group — ideal when purchasing
+                        and selling in different units.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Unit conversions</span>
+                        <span class="feature-tag">Base unit flexibility</span>
+                        <span class="feature-tag">Item association</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(4);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
                       ></a>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <!-- BLOG 3 -->
-              <div
-                class="col-md-6 blog-item"
-                data-category="automation"
-                data-title="automate gst filing zoho books step by step guide india compliance"
-              >
-                <div class="blog-card" onclick="openModal(2)">
-                  <div class="card-img-wrap">
-                    <img
-                      src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      alt="GST Automation Zoho Books"
-                    />
-                    <span class="img-tag">Automation</span>
-                  </div>
-                  <div class="card-body-pad">
-                    <span class="cat-badge cat-green">GST & Compliance</span>
-                    <h3 class="card-title-text">
-                      How to Automate GST Filing Completely Using Zoho Books —
-                      Step-by-Step
-                    </h3>
-                    <p class="card-excerpt">
-                      GST compliance doesn't have to eat up your CA's weekends.
-                      Zoho Books automates everything from invoice matching to
-                      GSTR-1 and GSTR-3B filing.
-                    </p>
-                    <div class="card-meta">
-                      <div class="author-chip chip-green">AM</div>
-                      <div class="meta-text">
-                        <strong>Amit Mehta</strong> &bull; Apr 7, 2025
-                        <span class="read-time ms-2"
-                          ><i class="bi bi-clock"></i> 10 min</span
-                        >
+              <!-- Release Cards Row 2 -->
+              <div class="row g-4">
+                <!-- Card: Batch Price Management -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="batch price management selling price mrp zoho inventory"
+                >
+                  <div class="release-card fade-up d1" onclick="openModal(5)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--green-bg)"
+                      >
+                        💰
+                      </div>
+                      <div
+                        class="cat-pill cat-green"
+                        style="margin-bottom: 10px"
+                      >
+                        Pricing
+                      </div>
+                      <h3 class="release-card-title">Batch Price Management</h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Zoho
+                        Inventory
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Set different selling prices for batch-tracked items
+                        instead of one global price. The system picks the right
+                        batch price per transaction — default, highest, latest,
+                        or from a rate list — and auto-splits line items when
+                        needed.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Per-batch MRP</span>
+                        <span class="feature-tag">Sales margin</span>
+                        <span class="feature-tag">Auto line-item split</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
                       </div>
                       <a
-                        class="read-more-arrow"
+                        class="read-more-link"
                         href="#"
                         onclick="
                           event.preventDefault();
-                          openModal(2);
+                          openModal(5);
                         "
-                        ><i class="bi bi-arrow-right"></i
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card: Profit Margin -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="profit margin calculation sales orders invoices zoho inventory premium"
+                >
+                  <div class="release-card fade-up d2" onclick="openModal(6)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--purple-bg)"
+                      >
+                        📈
+                      </div>
+                      <div
+                        class="cat-pill cat-purple"
+                        style="margin-bottom: 10px"
+                      >
+                        Premium & Enterprise
+                      </div>
+                      <h3 class="release-card-title">
+                        Profit Margin Calculation
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Premium+
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        View estimated profit margins directly within Sales
+                        Orders and Invoices, giving you instant visibility into
+                        profitability before confirming a transaction. Also
+                        available in Sales Order Details and Invoice Details
+                        reports.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Real-time margins</span>
+                        <span class="feature-tag">FIFO / WAC cost</span>
+                        <span class="feature-tag">Reports integration</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(6);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Release Cards Row 3 -->
+              <div class="row g-4">
+                <!-- Card: Count Stocks on Web -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="count stocks web stock counts warehouse bins zoho inventory"
+                >
+                  <div class="release-card fade-up d1" onclick="openModal(7)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--teal-bg)"
+                      >
+                        🏭
+                      </div>
+                      <div
+                        class="cat-pill cat-teal"
+                        style="margin-bottom: 10px"
+                      >
+                        Warehouse Ops
+                      </div>
+                      <h3 class="release-card-title">Count Stocks on Web</h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Zoho
+                        Inventory
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Stock counting is no longer mobile-only. Start, perform,
+                        and submit stock counts directly from the web app using
+                        Items View or Bins View. Save drafts and resume later,
+                        then review counted vs. expected quantities before
+                        submission.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Items View</span>
+                        <span class="feature-tag">Bins View</span>
+                        <span class="feature-tag">Draft & resume</span>
+                        <span class="feature-tag">Barcode scan</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(7);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card: Advanced Reporting Tags -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="advanced reporting tags line item transaction level zoho inventory"
+                >
+                  <div class="release-card fade-up d2" onclick="openModal(8)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--yellow-bg)"
+                      >
+                        🏷️
+                      </div>
+                      <div
+                        class="cat-pill cat-yellow"
+                        style="margin-bottom: 10px"
+                      >
+                        Reports
+                      </div>
+                      <h3 class="release-card-title">
+                        Advanced Reporting Tags
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Zoho
+                        Inventory
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Apply tags at transaction and line-item level for
+                        granular categorization. Organize options in
+                        parent-child hierarchies (Region → Country → City), mark
+                        tags mandatory, control visibility, and use them across
+                        reports for deeper insights.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Line-item tags</span>
+                        <span class="feature-tag">Parent-child hierarchy</span>
+                        <span class="feature-tag">Up to 5,000 options</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(8);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Release Cards Row 4 -->
+              <div class="row g-4">
+                <!-- Card: Integrations -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="woocommerce xpressbees shopify amazon etsy bob go integration zoho inventory 2026"
+                >
+                  <div class="release-card fade-up d1" onclick="openModal(9)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--blue-light)"
+                      >
+                        🔗
+                      </div>
+                      <div
+                        class="cat-pill cat-blue"
+                        style="margin-bottom: 10px"
+                      >
+                        Integrations
+                      </div>
+                      <h3 class="release-card-title">
+                        New & Enhanced Integrations
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 ·
+                        Marketplace
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        WooCommerce integration syncs products and orders with
+                        24-hour auto-sync. XpressBees (India) and Bob Go (South
+                        Africa) ship directly from Inventory. Amazon, Shopify,
+                        and Etsy integrations see major enhancements including
+                        editable orders and image sync.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">WooCommerce</span>
+                        <span class="feature-tag">XpressBees</span>
+                        <span class="feature-tag">Bob Go</span>
+                        <span class="feature-tag">Amazon / Shopify</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(9);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Card: New Reports -->
+                <div
+                  class="col-md-6 blog-item"
+                  data-category="inventory"
+                  data-title="stock movement inventory turnover zia insights custom reports zoho inventory 2026"
+                >
+                  <div class="release-card fade-up d2" onclick="openModal(10)">
+                    <div class="release-card-header">
+                      <div
+                        class="release-card-icon"
+                        style="background: var(--green-bg)"
+                      >
+                        📊
+                      </div>
+                      <div
+                        class="cat-pill cat-green"
+                        style="margin-bottom: 10px"
+                      >
+                        Reports & AI
+                      </div>
+                      <h3 class="release-card-title">
+                        New Reports & Zia AI Insights
+                      </h3>
+                      <div class="release-card-quarter">
+                        <i class="bi bi-calendar3"></i> Jan–Mar 2026 · Zoho
+                        Inventory
+                      </div>
+                    </div>
+                    <div class="release-card-body">
+                      <p class="release-card-excerpt">
+                        Stock Movement Report traces every inward/outward
+                        movement across warehouses. Two new Inventory Turnover
+                        reports (by Amount and Quantity) help measure
+                        efficiency. Zia AI adds descriptive insights to reports,
+                        plus date range filters for custom reports.
+                      </p>
+                      <div class="release-features">
+                        <span class="feature-tag">Stock Movement</span>
+                        <span class="feature-tag">Turnover by Amount</span>
+                        <span class="feature-tag">Turnover by Qty</span>
+                        <span class="feature-tag">Zia AI Insights</span>
+                      </div>
+                    </div>
+                    <div class="release-card-footer">
+                      <div class="release-meta">
+                        <i class="bi bi-box-seam"></i> Inventory
+                      </div>
+                      <a
+                        class="read-more-link"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(10);
+                        "
+                        >Read more <i class="bi bi-arrow-right"></i
                       ></a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- /blogGrid -->
-
-            <!-- No Results -->
+            <!-- no results -->
             <div class="no-results" id="noResults">
               <i class="bi bi-search"></i>
-              <p>No articles found. Try a different search or category.</p>
+              <p>No articles found. Try a different keyword or category.</p>
             </div>
           </div>
 
           <!-- SIDEBAR -->
           <div class="col-lg-4">
-            <div class="sidebar-widget">
-              <div class="widget-title">
-                <i class="bi bi-info-circle me-1"></i>About This Blog
+            <div class="sidebar-card">
+              <div class="widget-heading">
+                <i class="bi bi-info-circle"></i> About This Blog
               </div>
               <p
                 style="
-                  font-size: 0.84rem;
+                  font-size: 0.85rem;
                   color: var(--text-muted);
-                  line-height: 1.7;
-                  font-weight: 500;
+                  line-height: 1.75;
                 "
               >
                 Expert Zoho insights from Zolytics — India's certified Zoho
@@ -1465,110 +2281,173 @@
                   align-items: center;
                   gap: 6px;
                   color: var(--red);
-                  font-size: 0.82rem;
-                  font-weight: 800;
+                  font-size: 0.83rem;
+                  font-weight: 700;
                   text-decoration: none;
-                  margin-top: 10px;
+                  margin-top: 12px;
                 "
                 >Work With Us <i class="bi bi-arrow-right"></i
               ></a>
             </div>
 
-            <div class="cta-widget">
-              <div class="cta-icon">🚀</div>
+            <div class="cta-card">
+              <div
+                style="
+                  font-size: 1.8rem;
+                  margin-bottom: 10px;
+                  position: relative;
+                "
+              >
+                🚀
+              </div>
               <h4>Ready to Automate Your Business?</h4>
               <p>
                 Book a free 30-minute consultation with our certified Zoho
                 experts.
               </p>
-              <a href="https://zolytics.in/#contact" class="btn-cta-white"
-                >Book Free Consultation</a
+              <a href="https://zolytics.in/#contact" class="btn-cta-primary"
+                >Book Free Consultation →</a
               >
             </div>
 
-            <div class="sidebar-widget">
-              <div class="widget-title">
-                <i class="bi bi-clock-history me-1"></i>Recent Posts
+            <div class="sidebar-card">
+              <div class="widget-heading">
+                <i class="bi bi-clock-history"></i> Recent Posts
               </div>
-              <div class="recent-post-item" onclick="openModal(0)">
+              <div class="recent-item" onclick="openModal(0)">
                 <img
-                  class="recent-post-img"
+                  class="recent-thumb"
                   src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=200"
                   alt=""
                 />
                 <div>
-                  <div class="recent-post-title">
+                  <div class="recent-title">
                     Migrate from Tally to Zoho Books in 2025
                   </div>
-                  <div class="recent-post-date">
+                  <div class="recent-date">
                     <i class="bi bi-calendar3"></i> Apr 5, 2025 · 8 min
                   </div>
                 </div>
               </div>
-              <div class="recent-post-item" onclick="openModal(1)">
+              <div class="recent-item" onclick="openModal(1)">
                 <img
-                  class="recent-post-img"
+                  class="recent-thumb"
                   src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=200"
                   alt=""
                 />
                 <div>
-                  <div class="recent-post-title">
+                  <div class="recent-title">
                     5 CRM Automations That Double Pipeline Efficiency
                   </div>
-                  <div class="recent-post-date">
+                  <div class="recent-date">
                     <i class="bi bi-calendar3"></i> Apr 6, 2025 · 6 min
                   </div>
                 </div>
               </div>
-              <div class="recent-post-item" onclick="openModal(2)">
+              <div class="recent-item" onclick="openModal(2)">
                 <img
-                  class="recent-post-img"
+                  class="recent-thumb"
                   src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=200"
                   alt=""
                 />
                 <div>
-                  <div class="recent-post-title">
+                  <div class="recent-title">
                     Automate GST Filing Using Zoho Books
                   </div>
-                  <div class="recent-post-date">
+                  <div class="recent-date">
                     <i class="bi bi-calendar3"></i> Apr 7, 2025 · 10 min
+                  </div>
+                </div>
+              </div>
+              <div class="recent-item" onclick="openModal(3)">
+                <div
+                  style="
+                    width: 54px;
+                    height: 54px;
+                    border-radius: 10px;
+                    background: var(--red-bg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.4rem;
+                    flex-shrink: 0;
+                  "
+                >
+                  🗂️
+                </div>
+                <div>
+                  <div class="recent-title">
+                    Item & Item Groups Unification — Q1 2026
+                  </div>
+                  <div class="recent-date">
+                    <i class="bi bi-calendar3"></i> Mar 2026 · Inventory
+                  </div>
+                </div>
+              </div>
+              <div class="recent-item" onclick="openModal(10)">
+                <div
+                  style="
+                    width: 54px;
+                    height: 54px;
+                    border-radius: 10px;
+                    background: var(--green-bg);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-size: 1.4rem;
+                    flex-shrink: 0;
+                  "
+                >
+                  📊
+                </div>
+                <div>
+                  <div class="recent-title">
+                    New Reports & Zia AI Insights — Q1 2026
+                  </div>
+                  <div class="recent-date">
+                    <i class="bi bi-calendar3"></i> Mar 2026 · Inventory
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="sidebar-widget">
-              <div class="widget-title">
-                <i class="bi bi-tags me-1"></i>Topics
+            <div class="sidebar-card">
+              <div class="widget-heading">
+                <i class="bi bi-tags"></i> Topics
               </div>
-              <div class="tag-cloud">
-                <a class="tag-pill" href="#">Zoho Books</a>
-                <a class="tag-pill" href="#">Zoho CRM</a>
-                <a class="tag-pill" href="#">GST</a>
-                <a class="tag-pill" href="#">Automation</a>
-                <a class="tag-pill" href="#">Tally Migration</a>
-                <a class="tag-pill" href="#">Inventory</a>
-                <a class="tag-pill" href="#">Analytics</a>
-                <a class="tag-pill" href="#">Payroll</a>
-                <a class="tag-pill" href="#">E-commerce</a>
-                <a class="tag-pill" href="#">Zoho One</a>
+              <div class="tags-wrap">
+                <a class="tag-chip" href="#">Zoho Books</a>
+                <a class="tag-chip" href="#">Zoho CRM</a>
+                <a class="tag-chip" href="#">GST</a>
+                <a class="tag-chip" href="#">Automation</a>
+                <a class="tag-chip" href="#">Tally Migration</a>
+                <a class="tag-chip" href="#">Inventory</a>
+                <a class="tag-chip" href="#">Analytics</a>
+                <a class="tag-chip" href="#">Payroll</a>
+                <a class="tag-chip" href="#">E-commerce</a>
+                <a class="tag-chip" href="#">Zoho One</a>
+                <a class="tag-chip" href="#">Warehouse</a>
+                <a class="tag-chip" href="#">Integrations</a>
               </div>
             </div>
 
-            <div class="sidebar-widget">
-              <div class="widget-title">
-                <i class="bi bi-bar-chart me-1"></i>Blog Stats
+            <div class="sidebar-card">
+              <div class="widget-heading">
+                <i class="bi bi-bar-chart"></i> Blog Stats
               </div>
-              <div class="stat-row">
-                <span>Total Articles</span><span>3</span>
+              <div class="stats-row">
+                <span class="sk">Total Articles</span><span class="sv">11</span>
               </div>
-              <div class="stat-row">
-                <span>Published This Week</span><span>3</span>
+              <div class="stats-row">
+                <span class="sk">Published This Quarter</span
+                ><span class="sv">8</span>
               </div>
-              <div class="stat-row">
-                <span>Topics Covered</span><span>6</span>
+              <div class="stats-row">
+                <span class="sk">Topics Covered</span><span class="sv">8</span>
               </div>
-              <div class="stat-row"><span>Authors</span><span>3</span></div>
+              <div class="stats-row">
+                <span class="sk">Authors</span><span class="sv">3</span>
+              </div>
             </div>
           </div>
         </div>
@@ -1577,53 +2456,58 @@
 
     <!-- NEWSLETTER -->
     <section class="newsletter-section">
-      <div class="container">
-        <div class="row align-items-center g-4">
+      <div class="container" style="position: relative">
+        <div class="row align-items-center g-5">
           <div class="col-lg-6">
-            <div class="section-eyebrow">Stay Updated</div>
-            <h2>Get Zolytics Insights in Your Inbox</h2>
-            <p>
+            <div class="nl-eyebrow">
+              <i class="bi bi-envelope-paper"></i> Stay Updated
+            </div>
+            <h2>Get Zolytics Insights<br /><em>in Your Inbox</em></h2>
+            <p class="sub">
               Join 500+ business owners and finance professionals who receive
               our weekly digest of Zoho tips, case studies, and automation
               guides.
             </p>
-            <div class="nl-form">
+            <div class="nl-form-wrap">
               <input
                 type="email"
                 class="nl-input"
-                placeholder="Enter your email address"
+                placeholder="your@email.com"
                 id="nlEmail"
               />
-              <button class="btn-sub" onclick="subscribeNewsletter()">
+              <button class="btn-subscribe" onclick="subscribeNewsletter()">
                 Subscribe <i class="bi bi-send"></i>
               </button>
             </div>
             <p class="nl-note">
-              <i class="bi bi-shield-lock me-1"></i>No spam ever. Unsubscribe
-              anytime.
+              <i class="bi bi-shield-lock" style="margin-right: 4px"></i>No
+              spam. Unsubscribe anytime.
             </p>
           </div>
           <div class="col-lg-6 d-none d-lg-block">
-            <div>
-              <div class="nl-feature-box">
-                <span class="emoji"></span>
+            <div class="nl-features">
+              <div class="nl-feat">
                 <div>
-                  <div class="label">Weekly Digest</div>
-                  <div class="sub">Top Zoho articles every Monday</div>
+                  <div class="label">New Article Alerts</div>
+                  <div class="desc">
+                    Instant email when we publish — never miss a guide
+                  </div>
                 </div>
               </div>
-              <div class="nl-feature-box">
-                <span class="emoji"></span>
+              <div class="nl-feat">
                 <div>
-                  <div class="label">Pro Tips</div>
-                  <div class="sub">Hidden Zoho features revealed</div>
+                  <div class="label">Pro Tips & Tricks</div>
+                  <div class="desc">
+                    Hidden Zoho features revealed every week
+                  </div>
                 </div>
               </div>
-              <div class="nl-feature-box">
-                <span class="emoji"></span>
+              <div class="nl-feat">
                 <div>
-                  <div class="label">Case Studies</div>
-                  <div class="sub">Real client success stories</div>
+                  <div class="label">Real Case Studies</div>
+                  <div class="desc">
+                    Client success stories from India, UAE & USA
+                  </div>
                 </div>
               </div>
             </div>
@@ -1632,12 +2516,13 @@
       </div>
     </section>
 
-    <!-- FOOTER -->
+     <!-- Global Footer -->
     <footer class="site-footer">
       <div class="footer-content">
+        <!-- Company Info -->
         <div class="footer-section">
           <h3>Zolytics</h3>
-          <p class="footer-tagline">Certified Zoho Partner</p>
+          <p class="tagline">Certified Zoho Partner</p>
           <p>
             We help businesses simplify operations by implementing, customizing,
             and automating Zoho applications tailored to real-world business
@@ -1645,6 +2530,7 @@
           </p>
         </div>
 
+         <!-- Zoho Solutions - Centered with balanced columns -->
         <div class="footer-section zoho-solutions">
           <h3 class="center-heading">Zoho Solutions</h3>
           <div class="solutions-wrapper">
@@ -1658,26 +2544,29 @@
               <li><a href="expense-html">Zoho Expense</a></li>
               <li><a href="finance.html">Zoho Finance Plus</a></li>
               <li><a href="inventory-html">Zoho Inventory</a></li>
+
               <li><a href="payroll-html">Zoho Payroll</a></li>
+
               <li><a href="peopleplus-html">Zoho People Plus</a></li>
+
               <li><a href="recruit-html">Zoho Recruit</a></li>
             </ul>
           </div>
         </div>
 
+        <!-- Contact -->
         <div class="footer-section">
           <h3>Contact Us</h3>
           <p>
-            Email: info@zolytics.in<br />
+            Email: info@zolytics.in <br />
             Phone: +91 90 7313 9613<br />
             Location: India
-          </p>
-          <div
+             <div
             style="
               display: flex;
               align-items: center;
               gap: 8px;
-              margin-top: 10px;
+              margin-top: 5px;
             "
           >
             <a
@@ -1686,9 +2575,8 @@
               style="
                 display: flex;
                 align-items: center;
-                gap: 6px;
                 text-decoration: none;
-                color: #d1d5db;
+                color: inherit;
               "
             >
               <img
@@ -1697,9 +2585,10 @@
                 width="22"
                 height="22"
               />
-              <span style="font-weight: 500">+91 90 7313 9613</span>
+              <span style="font-weight: 500">  +91 90 7313 9613</span>
             </a>
           </div>
+          </p>
           <div class="zoho-logo">
             <img
               src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
@@ -1717,7 +2606,140 @@
       </div>
     </footer>
 
-    <!-- MODALS -->
+    <style>
+      /* Footer Styles */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      /* Solutions Grid - Perfectly Centered & Aligned */
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+
+      /* Links */
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+
+      /* Zoho Logo */
+      .zoho-logo {
+        margin-top: 16px;
+      }
+
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+      }
+    </style>
+
+    <!-- TOAST -->
+    <div class="toast-wrap" id="toastWrap"></div>
+
+    <!-- MODALS 0–2 (existing) -->
     <div class="modal fade blog-modal" id="modal0" tabindex="-1">
       <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
@@ -1738,7 +2760,7 @@
               src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900"
               alt=""
             />
-            <span class="cat-badge cat-red">Accounting & Migration</span>
+            <span class="cat-pill cat-red">Accounting & Migration</span>
             <div class="modal-meta">
               <div class="modal-meta-item">
                 <i class="bi bi-person-circle"></i> Rahul Kumar
@@ -1749,19 +2771,14 @@
               <div class="modal-meta-item">
                 <i class="bi bi-clock"></i> 8 min read
               </div>
-              <div class="modal-meta-item">
-                <i class="bi bi-tag"></i> Accounting, Migration
-              </div>
             </div>
             <div class="blog-content">
               <p>
                 For over three decades, Tally has been the default accounting
-                software for Indian businesses. It's reliable, familiar, and
-                deeply embedded in the workflow of millions of finance teams.
-                But the business world in 2025 looks nothing like it did in
-                1990. The question isn't whether Tally served you well — it's
-                whether it's still the right tool for where your business is
-                going.
+                software for Indian businesses. But the business world in 2025
+                looks nothing like 1990. The question isn't whether Tally served
+                you well — it's whether it's still the right tool for where your
+                business is going.
               </p>
               <div class="highlight">
                 "The businesses that will win in the next decade are those that
@@ -1770,58 +2787,37 @@
               </div>
               <h3>1. Real-Time Access, Anywhere</h3>
               <p>
-                Tally is installed software. Your finance data lives on a
-                specific machine in your office. Zoho Books is cloud-native —
-                your CFO can pull up your P&L from Dubai while your accountant
-                reconciles bank feeds from Bangalore. For businesses managing
-                teams across multiple cities or countries, this alone is a
-                game-changer.
+                Tally is installed software. Zoho Books is cloud-native — your
+                CFO can pull up your P&L from Dubai while your accountant
+                reconciles bank feeds from Bangalore.
               </p>
               <h3>2. GST Automation Built-In</h3>
               <p>
-                With Zoho Books, GST is not an add-on — it's baked into every
-                transaction. The system auto-populates GSTR-1 and GSTR-3B,
-                matches purchase records with supplier invoices, and flags
-                mismatches before they become filing errors.
+                With Zoho Books, GST is baked into every transaction. The system
+                auto-populates GSTR-1 and GSTR-3B, matches purchase records with
+                supplier invoices, and flags mismatches before they become
+                filing errors.
               </p>
-              <ul>
-                <li>Automatic GST calculation across all invoices</li>
-                <li>Direct e-invoicing integration with the GST portal</li>
-                <li>Real-time reconciliation of input tax credits</li>
-                <li>One-click GSTR filing submissions</li>
-              </ul>
               <h3>3. Integration With Your Entire Business</h3>
               <p>
                 Zoho Books connects natively with Zoho CRM, Zoho Inventory, Zoho
-                Expense, and 50+ other apps in the Zoho ecosystem. When a sale
-                closes in CRM, an invoice is auto-generated in Books. When stock
-                is dispatched from Inventory, COGS is updated automatically.
+                Expense, and 50+ other apps in the Zoho ecosystem.
               </p>
-              <h3>4. Multi-Currency & International Compliance</h3>
-              <p>
-                Zoho Books handles multi-currency transactions automatically,
-                applies real-time forex rates, and generates reports compliant
-                with both Indian and international accounting standards.
-              </p>
-              <h3>5. The Migration Is Simpler Than You Think</h3>
+              <h3>4. The Migration Is Simpler Than You Think</h3>
               <p>
                 At Zolytics, we've migrated dozens of companies from Tally to
-                Zoho Books — ledgers, transactions, opening balances, and custom
-                configurations — with zero data loss and minimal downtime.
-                Typically 2–4 weeks from start to go-live.
+                Zoho Books — with zero data loss and minimal downtime. Typically
+                2–4 weeks from start to go-live.
               </p>
             </div>
           </div>
           <div class="modal-footer-bar">
-            <a href="https://zolytics.in/#contact" class="btn-cta-red"
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
               >Talk to a Migration Expert</a
             >
-            <button class="btn-share-out" onclick="copyLink()">
+            <button class="btn-share" onclick="copyLink()">
               <i class="bi bi-share"></i> Share
             </button>
-            <a href="https://www.zolytics.in/tally-html" class="more-link"
-              >Learn about Tally Migration →</a
-            >
           </div>
         </div>
       </div>
@@ -1847,7 +2843,7 @@
               src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=900"
               alt=""
             />
-            <span class="cat-badge cat-blue">CRM & Sales</span>
+            <span class="cat-pill cat-blue">CRM & Sales</span>
             <div class="modal-meta">
               <div class="modal-meta-item">
                 <i class="bi bi-person-circle"></i> Priya Sharma
@@ -1858,79 +2854,50 @@
               <div class="modal-meta-item">
                 <i class="bi bi-clock"></i> 6 min read
               </div>
-              <div class="modal-meta-item">
-                <i class="bi bi-tag"></i> Zoho CRM, Automation
-              </div>
             </div>
             <div class="blog-content">
               <p>
                 Most businesses using Zoho CRM use less than 30% of its
-                capabilities. They log deals, track contacts, and maybe send a
-                few emails. But the teams consistently closing 40–60% more
-                deals? They've set up the right automations. Here are the five
-                that make the biggest difference.
+                capabilities. The teams consistently closing 40–60% more deals?
+                They've set up the right automations.
               </p>
               <h3>1. Lead Scoring & Auto-Assignment</h3>
               <p>
-                Zoho CRM's lead scoring rules let you automatically rank
-                incoming leads based on source, company size, engagement level,
-                and behavior. High-score leads get routed directly to your
-                senior reps within seconds — no manual triaging, no lost
-                opportunities over a weekend.
+                Automatically rank incoming leads based on source, company size,
+                and engagement level. High-score leads get routed to senior reps
+                within seconds.
               </p>
-              <div class="highlight">
-                "A lead that is followed up within 5 minutes is 21x more likely
-                to convert than one followed up after 30 minutes."
-              </div>
               <h3>2. Automatic Follow-Up Sequences</h3>
               <p>
-                Create workflow rules that trigger a sequence of personalized
-                emails and tasks when a lead moves to a specific stage. If a
-                prospect downloads your pricing brochure, they automatically
-                receive a follow-up email in 24 hours and a task for your rep to
-                call in 48 hours.
+                Trigger a sequence of personalized emails and tasks when a lead
+                moves to a specific stage.
               </p>
               <h3>3. Deal Stagnation Alerts</h3>
               <p>
-                Deals that sit untouched for more than a set number of days get
-                flagged automatically. Your sales manager receives an alert, the
-                deal owner gets a task reminder, and the lead is tagged for a
-                review call. No deal falls through the cracks silently again.
+                Deals untouched for more than a set number of days get flagged
+                automatically, ensuring no deal falls through the cracks.
               </p>
               <h3>4. Quote-to-Invoice in One Click</h3>
               <p>
-                When a deal is marked "Closed Won" in Zoho CRM, a workflow can
-                automatically generate a quote in Zoho Books, send it to the
-                client for e-signature via Zoho Sign, and create the invoice
-                upon approval — all without anyone touching a keyboard.
+                When a deal is marked "Closed Won", workflows auto-generate a
+                quote in Zoho Books, send it for e-signature, and create the
+                invoice upon approval.
               </p>
               <h3>5. Customer Health Score Monitoring</h3>
               <p>
-                Set up a composite score based on last purchase date, support
-                ticket volume, email engagement, and contract renewal proximity.
                 When a customer's health score drops below a threshold, your
                 account manager gets an alert to reach out proactively — before
                 they churn.
               </p>
-              <ul>
-                <li>Triggers: field updates, date-based, activity-based</li>
-                <li>
-                  Actions: emails, tasks, record updates, webhooks, Cliq alerts
-                </li>
-                <li>Advanced: Blueprint for stage-gated sales processes</li>
-              </ul>
             </div>
           </div>
           <div class="modal-footer-bar">
-            <a href="https://zolytics.in/#contact" class="btn-cta-red"
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
               >Set Up CRM Automations</a
             >
-            <button class="btn-share-out" onclick="copyLink()">
+            <button class="btn-share" onclick="copyLink()">
               <i class="bi bi-share"></i> Share
             </button>
-            <a href="https://www.zolytics.in/crm-html" class="more-link"
-              >Explore Zoho CRM Solutions →</a
-            >
           </div>
         </div>
       </div>
@@ -1941,8 +2908,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title">
-              How to Automate GST Filing Completely Using Zoho Books — A
-              Step-by-Step Guide
+              How to Automate GST Filing Completely Using Zoho Books
             </h5>
             <button
               type="button"
@@ -1956,7 +2922,7 @@
               src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=900"
               alt=""
             />
-            <span class="cat-badge cat-green">GST & Compliance</span>
+            <span class="cat-pill cat-green">GST & Compliance</span>
             <div class="modal-meta">
               <div class="modal-meta-item">
                 <i class="bi bi-person-circle"></i> Amit Mehta
@@ -1967,78 +2933,625 @@
               <div class="modal-meta-item">
                 <i class="bi bi-clock"></i> 10 min read
               </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                For most Indian businesses, GST filing is a monthly anxiety.
+                Zoho Books, configured correctly, can automate the entire GST
+                workflow from invoice creation to return filing.
+              </p>
+              <h3>Step 1: Configure GSTIN and Tax Rates</h3>
+              <p>
+                Go to Settings → GST Settings. Enter your GSTIN, filing
+                frequency, and business type. Zoho Books auto-populates the
+                applicable GST slabs and HSN/SAC codes.
+              </p>
+              <h3>Step 2: Enable E-Invoicing Integration</h3>
+              <p>
+                Zoho Books integrates directly with the Invoice Registration
+                Portal (IRP). Every invoice is automatically validated,
+                IRN-generated, and QR-coded.
+              </p>
+              <h3>Step 3: Automate GSTR-1 Preparation</h3>
+              <p>
+                Zoho Books auto-categorises every sales transaction into the
+                correct GSTR-1 tables. At month end, click "Prepare GSTR-1" and
+                the form is ready to review.
+              </p>
+              <h3>Step 4: Reconcile Input Tax Credits</h3>
+              <p>
+                Auto-fetch suppliers' GSTR-2A/2B data and match it against your
+                purchase register. Unmatched records are flagged for vendor
+                follow-up.
+              </p>
+              <div class="highlight">
+                "After switching to Zoho Books with automated GST, our monthly
+                compliance time dropped from 3 days to just 4 hours." — Zolytics
+                client, Pune
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Set Up GST Automation</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MODALS 3–10: Zoho Inventory Q1 2026 releases -->
+    <div class="modal fade blog-modal" id="modal3" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Item & Item Groups Unification — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-red">Item Management</span>
+            <div class="modal-meta">
               <div class="modal-meta-item">
-                <i class="bi bi-tag"></i> GST, Zoho Books, Compliance
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-tag"></i> New Feature
               </div>
             </div>
             <div class="blog-content">
               <p>
-                For most Indian businesses, GST filing is a monthly anxiety — a
-                frantic scramble of Excel sheets, GSTN portal errors, and
-                last-minute calls to your CA. Zoho Books, configured correctly,
-                can automate the entire GST workflow from invoice creation to
-                return filing. Here's how to do it.
+                We've unified the way you create and manage items and their
+                variants. Previously, items and item groups were managed as
+                separate modules. Now, you can create an item and its variants
+                from a single item creation page in the Items module.
               </p>
-              <h3>Step 1: Configure Your GSTIN and Tax Rates</h3>
+              <h3>What's New</h3>
               <p>
-                In Zoho Books, navigate to Settings → GST Settings. Enter your
-                GSTIN, filing frequency (monthly/quarterly), and business type.
-                Zoho Books will auto-populate the applicable GST slabs (5%, 12%,
-                18%, 28%) and apply the correct SAC/HSN codes to your items and
-                services.
-              </p>
-              <h3>Step 2: Enable E-Invoicing Integration</h3>
-              <p>
-                If your turnover exceeds ₹5 crore, e-invoicing is mandatory.
-                Zoho Books integrates directly with the Invoice Registration
-                Portal (IRP). Every invoice you raise is automatically
-                validated, IRN-generated, and QR-coded.
+                When creating a new item, choose whether it is a single item or
+                if it contains variants. If you select
+                <strong>Contains Variants</strong>, you can define variant
+                attributes (such as size, colour, material, etc.) and generate
+                all variant combinations right from the same page.
               </p>
               <ul>
-                <li>Auto-generation of IRN (Invoice Reference Number)</li>
-                <li>Dynamic QR code embedded on every invoice</li>
-                <li>Instant validation and error reporting</li>
-                <li>Bulk e-invoicing for high-volume businesses</li>
+                <li>
+                  Refreshed item list view with collapsed and expanded modes
+                </li>
+                <li>
+                  New multi-image component for uploading and managing multiple
+                  images
+                </li>
+                <li>
+                  Improved auto-population of item details in the items table
+                </li>
+                <li>
+                  Items display followed by their variants for quicker selection
+                  in transactions
+                </li>
               </ul>
               <div class="highlight">
-                "After switching to Zoho Books with automated GST, our monthly
-                compliance time dropped from 3 days to just 4 hours." — A
-                Zolytics client, Manufacturing sector, Pune
+                Note: This flow is currently available for newly created
+                organizations only. Existing organizations will receive these
+                changes soon.
               </div>
-              <h3>Step 3: Automate GSTR-1 Preparation</h3>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal4" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Introducing Unit Groups [Early Access] — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-blue">Early Access</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
               <p>
-                Zoho Books automatically categorises every sales transaction
-                into the correct GSTR-1 tables: B2B, B2C Large, B2C Small,
-                exports, credit notes, and amendments. At the end of each month,
-                click "Prepare GSTR-1" and the form is populated — reviewed, not
-                built from scratch.
+                Unit Conversions have been moved into a new tab called
+                <strong>Unit Groups</strong>. You can now create Unit Groups
+                (for example, "Weight" containing kg, g, lb) where each item can
+                be associated with a specific unit group.
               </p>
-              <h3>Step 4: Reconcile Input Tax Credits (ITC)</h3>
+              <h3>Key Benefits</h3>
+              <ul>
+                <li>
+                  Set different conversions from the same base unit for an item
+                </li>
+                <li>
+                  Flexibility when dealing with items purchased in one unit and
+                  sold in another
+                </li>
+                <li>
+                  Associate items directly with a unit group for consistent
+                  tracking
+                </li>
+              </ul>
+              <h3>How to Enable</h3>
               <p>
-                Zoho Books auto-fetches your suppliers' GSTR-2A/2B data and
-                matches it against your purchase register. Unmatched records are
-                flagged for follow-up with vendors before the filing deadline.
-                You claim every rupee of ITC you're entitled to.
+                Go to
+                <strong
+                  >Settings → Module Settings → Under Inventory → Units of
+                  Measurement → + New Unit Group</strong
+                >.
               </p>
-              <h3>Step 5: File GSTR-3B with One Click</h3>
+              <div class="highlight">
+                If Unit Groups is not available in your organization, contact
+                support@zohoinventory.com to get it enabled.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal5" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Batch Price Management — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-green">Pricing Control</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
               <p>
-                Once your GSTR-1 is filed and ITC is reconciled, Zoho Books
-                auto-computes your GSTR-3B liability. Review the summary, verify
-                the tax payable amount, and submit directly through the GST
-                portal integration.
+                You can now set different prices for your batch-tracked items
+                instead of using a single price for selling all batch items.
+                This ensures each sale reflects your preferred price even when
+                batches vary in MRP.
+              </p>
+              <h3>Price Selection Options</h3>
+              <ul>
+                <li>Item's default price</li>
+                <li>Highest price across batches</li>
+                <li>Latest price</li>
+                <li>Price from rate list</li>
+              </ul>
+              <p>
+                You can also set sales margins at the item or organization level
+                for default price calculation. During transactions, the system
+                applies the right batch price and splits line items when
+                multiple batches have different prices and quantities.
+              </p>
+              <h3>How to Enable</h3>
+              <p>
+                Go to
+                <strong
+                  >Settings → Module Settings → Items → Advanced Inventory
+                  Tracking → Allow different MRP/Selling price for each Batch
+                  Tracked Items</strong
+                >.
               </p>
             </div>
           </div>
           <div class="modal-footer-bar">
-            <a href="https://zolytics.in/#contact" class="btn-cta-red"
-              >Set Up GST Automation</a
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
             >
-            <button class="btn-share-out" onclick="copyLink()">
+            <button class="btn-share" onclick="copyLink()">
               <i class="bi bi-share"></i> Share
             </button>
-            <a href="https://www.zolytics.in/books-html" class="more-link"
-              >Learn About Zoho Books →</a
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal6" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Profit Margin Calculation — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-purple">Premium & Enterprise</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-star"></i> Premium+
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                Profit margin is the percentage of money you keep as profit from
+                a sale after subtracting the cost price and any discount. This
+                feature allows you to view estimated profit margins directly
+                within Sales Orders and Invoices — giving you instant visibility
+                into profitability before confirming a transaction.
+              </p>
+              <h3>Cost Price Sources</h3>
+              <ul>
+                <li>Item details</li>
+                <li>Purchase bills</li>
+                <li>Inventory Valuation Methods (FIFO and WAC)</li>
+                <li>Custom rate depending on item type</li>
+              </ul>
+              <h3>Where It Appears</h3>
+              <p>
+                Sales Orders, Invoices, and Receivables reports including Sales
+                Order Details and Invoice Details.
+              </p>
+              <h3>How to Enable</h3>
+              <p>
+                Go to
+                <strong>Settings → Under General → check Profit Margin</strong>.
+              </p>
+              <div class="highlight">
+                This feature is available only for Premium and Enterprise plans.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
             >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal7" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Count Stocks on Web — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-teal">Warehouse Operations</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                Counting stocks is no longer limited to the mobile app. You can
+                now start, perform, and submit stock counts directly from the
+                web application.
+              </p>
+              <h3>Two Web Views</h3>
+              <ul>
+                <li>
+                  <strong>Items View:</strong> See your items in a list and
+                  enter the counted quantity for each item. Use filters, search,
+                  and scan barcodes to locate items quickly.
+                </li>
+                <li>
+                  <strong>Bins View:</strong> Navigate through your bin
+                  locations and count the stock stored in each bin.
+                </li>
+              </ul>
+              <p>
+                Once the stock count is complete, you can review the results,
+                compare counted vs. expected quantities, and submit for
+                adjustment. Stock counts can also be saved as drafts and resumed
+                later.
+              </p>
+              <h3>How to Access</h3>
+              <p>
+                Go to
+                <strong
+                  >Inventory → Stock Counts → Select the stock count → Click
+                  Start Counting</strong
+                >.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal8" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Advanced Reporting Tags — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-yellow">Reports</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                You can now use reporting tags at a more granular level to
+                categorize and analyze your data. Tags can be applied at both
+                the transaction and line-item level, and you can mark tags as
+                mandatory.
+              </p>
+              <h3>Key Capabilities</h3>
+              <ul>
+                <li>
+                  Associate tags with items, customers, vendors, and
+                  transactions
+                </li>
+                <li>
+                  Organize options in parent-child hierarchy (e.g., Region →
+                  Country → City)
+                </li>
+                <li>Control tag visibility based on other tags or locations</li>
+                <li>Restrict user access based on tag associations</li>
+                <li>Create up to 5,000 options in a tag</li>
+                <li>
+                  Include tags in PDF and email templates using placeholders
+                </li>
+              </ul>
+              <h3>How to Configure</h3>
+              <p>
+                Go to
+                <strong>Settings → Customization → Reporting Tags</strong>.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal9" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              New & Enhanced Integrations — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-blue">Integrations & Marketplace</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>WooCommerce Integration</h3>
+              <p>
+                Integrate WooCommerce with Zoho Inventory to seamlessly sync
+                products and sales orders. Items sync as items with variants,
+                with auto-sync every 24 hours. Tax values come directly from
+                WooCommerce, ensuring storefront accuracy.
+              </p>
+              <h3>XpressBees Shipping Integration [India]</h3>
+              <p>
+                Manage shipments directly from Zoho Inventory with real-time
+                shipping rates by entering package details like weight,
+                dimensions, and service tracking preferences.
+              </p>
+              <h3>Bob Go Shipping Integration [South Africa]</h3>
+              <p>
+                Access multiple courier services from a single platform, compare
+                delivery options, and create shipments without leaving the app.
+              </p>
+              <h3>Enhanced Amazon Integration</h3>
+              <ul>
+                <li>Tax values used directly instead of recalculation</li>
+                <li>
+                  Accurate tax percentages derived from Amazon's total tax
+                  amount
+                </li>
+                <li>Sales orders synced from Amazon are now editable</li>
+              </ul>
+              <h3>Enhanced Shopify Integration</h3>
+              <p>
+                Create packages and shipments independently from marketplace
+                orders. Image sync added, triggerable directly from the Item
+                Details page.
+              </p>
+              <h3>Enhanced Etsy Integration</h3>
+              <p>
+                Packages and Shipments sync now automated. Connect multiple Etsy
+                stores to a single organization with plan-based store limits.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade blog-modal" id="modal10" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              New Reports & Zia AI Insights — Zoho Inventory Q1 2026
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <span class="cat-pill cat-green">Reports & AI</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> Jan–Mar 2026
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-box-seam"></i> Zoho Inventory
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>Stock Movement Report</h3>
+              <p>
+                A detailed view of how stock moves across warehouses, customers,
+                and vendors within a selected date range. Every transaction that
+                impacts stock is captured, making it easy to trace whether
+                movement was inward or outward.
+              </p>
+              <p>
+                <strong>Access:</strong> Reports → Inventory category → Stock
+                Movement.
+              </p>
+              <h3>Inventory Turnover by Amount</h3>
+              <p>
+                Calculates turnover ratio as COGS / Average Inventory Value,
+                helping you understand how effectively you're converting
+                inventory investment into sales.
+              </p>
+              <p>
+                <strong>Access:</strong> Reports → Inventory Valuation Category
+                → Inventory Turnover by Amount.
+              </p>
+              <h3>Inventory Turnover by Quantity</h3>
+              <p>
+                Calculates turnover ratio as Total Quantity Sold / Average
+                Inventory Quantity — a volume-based view of inventory
+                efficiency.
+              </p>
+              <p>
+                <strong>Access:</strong> Reports → Inventory Category →
+                Inventory Turnover by Quantity.
+              </p>
+              <h3>Zia Insights in Reports</h3>
+              <p>
+                Powered by Zia, Zoho's in-house AI, these insights highlight key
+                patterns and trends to help you make faster, data-driven
+                decisions. Descriptive analysis of your business data is now
+                surfaced directly inside reports.
+              </p>
+              <h3>Date Range Filter for Custom Reports</h3>
+              <p>
+                Custom reports now support a date range filter, allowing you to
+                narrow down report data to a specific period without manually
+                filtering rows each time.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-modal-cta"
+              >Talk to a Zoho Expert</a
+            >
+            <button class="btn-share" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
           </div>
         </div>
       </div>
@@ -2074,28 +3587,48 @@
         });
         document.getElementById("noResults").style.display =
           visible === 0 ? "block" : "none";
+        const countEl = document.getElementById("articleCount");
+        if (countEl)
+          countEl.textContent =
+            visible + " article" + (visible !== 1 ? "s" : "");
       }
 
       function openModal(id) {
         new bootstrap.Modal(document.getElementById("modal" + id)).show();
       }
 
+      function showToast(msg, icon) {
+        const wrap = document.getElementById("toastWrap");
+        const el = document.createElement("div");
+        el.className = "toast-msg";
+        el.innerHTML = `<i class="bi ${icon} ti"></i> ${msg}`;
+        wrap.appendChild(el);
+        setTimeout(() => el.remove(), 3500);
+      }
+
       function subscribeNewsletter() {
-        const email = document.getElementById("nlEmail").value.trim();
-        if (!email || !email.includes("@")) {
-          alert("Please enter a valid email address.");
+        const emailEl = document.getElementById("nlEmail");
+        const email = emailEl.value.trim();
+        if (!email || !email.includes("@") || !email.includes(".")) {
+          showToast(
+            "Please enter a valid email address.",
+            "bi-exclamation-circle",
+          );
           return;
         }
-        document.getElementById("nlEmail").value = "";
-        alert(
-          "🎉 Thanks for subscribing! You'll receive our first digest shortly.",
+        emailEl.value = "";
+        showToast(
+          "🎉 Subscribed! You'll get notified on every new article.",
+          "bi-check-circle-fill",
         );
       }
 
       function copyLink() {
         navigator.clipboard
           .writeText(window.location.href)
-          .then(() => alert("Link copied to clipboard!"));
+          .then(() =>
+            showToast("Link copied to clipboard!", "bi-clipboard-check"),
+          );
       }
     </script>
   </body>
