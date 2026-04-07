@@ -1,1225 +1,2102 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — Zolytics | Zoho Insights & Business Automation</title>
-  <meta name="description" content="Expert insights on Zoho, business automation, CRM, accounting, and digital transformation from Zolytics — India's trusted Zoho consulting partner." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog — Zolytics | Zoho Insights & Business Automation</title>
+    <meta
+      name="description"
+      content="Expert insights on Zoho, business automation, CRM, accounting, and digital transformation from Zolytics — India's trusted Zoho consulting partner."
+    />
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Merriweather:ital,wght@0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
-    :root {
-      --red:        #e8531a;
-      --red-dark:   #c43e0e;
-      --red-light:  #ff6b35;
-      --red-bg:     #fff3ef;
-      --blue:       #1a56db;
-      --blue-light: #e8f0fe;
-      --green:      #0f9d58;
-      --green-bg:   #e6f4ea;
-      --yellow:     #f9ab00;
-      --yellow-bg:  #fef9e7;
-      --white:      #ffffff;
-      --bg:         #f5f7fa;
-      --bg2:        #eef1f7;
-      --text:       #1a1a2e;
-      --text-2:     #3d4461;
-      --text-muted: #6b7280;
-      --border:     #e2e6ef;
-      --shadow-sm:  0 2px 8px rgba(0,0,0,0.07);
-      --shadow-md:  0 8px 28px rgba(0,0,0,0.11);
-      --shadow-lg:  0 20px 60px rgba(0,0,0,0.14);
-      --font-body:  'Nunito', sans-serif;
-      --font-head:  'Merriweather', serif;
-      --radius:     14px;
-      --radius-sm:  8px;
-    }
+    <style>
+      :root {
+        --red: #e8531a;
+        --red-dark: #c43e0e;
+        --red-light: #ff6b35;
+        --red-bg: #fff3ef;
+        --blue: #1a56db;
+        --blue-light: #e8f0fe;
+        --green: #0f9d58;
+        --green-bg: #e6f4ea;
+        --yellow: #f9ab00;
+        --yellow-bg: #fef9e7;
+        --white: #ffffff;
+        --bg: #f5f7fa;
+        --bg2: #eef1f7;
+        --text: #1a1a2e;
+        --text-2: #3d4461;
+        --text-muted: #6b7280;
+        --border: #e2e6ef;
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.07);
+        --shadow-md: 0 8px 28px rgba(0, 0, 0, 0.11);
+        --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.14);
+        --font-body: "Nunito", sans-serif;
+        --font-head: "Merriweather", serif;
+        --radius: 14px;
+        --radius-sm: 8px;
+      }
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.7;
+        overflow-x: hidden;
+      }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+      /* NAVBAR */
+      .navbar {
+        background: var(--white);
+        border-bottom: 2px solid var(--border);
+        padding: 12px 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: var(--shadow-sm);
+      }
+      .navbar-brand img {
+        height: 90px;
+      }
+      .zoho-badge img {
+        height: 46px;
+        opacity: 0.9;
+      }
+      .navbar-nav .nav-link {
+        color: var(--text-2) !important;
+        font-weight: 700;
+        font-size: 0.87rem;
+        padding: 6px 13px !important;
+        border-radius: var(--radius-sm);
+        transition: all 0.2s;
+      }
+      .navbar-nav .nav-link:hover,
+      .navbar-nav .nav-link.active {
+        color: var(--red) !important;
+        background: var(--red-bg);
+      }
+      .navbar-toggler {
+        border: none;
+      }
 
-    body {
-      font-family: var(--font-body);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.7;
-      overflow-x: hidden;
-    }
+      /* HERO */
+      .blog-hero {
+        background: linear-gradient(135deg, #fff 0%, #fef3ef 40%, #e8f0fe 100%);
+        padding: 72px 0 54px;
+        border-bottom: 2px solid var(--border);
+        position: relative;
+        overflow: hidden;
+      }
+      .blog-hero::before {
+        content: "";
+        position: absolute;
+        top: -100px;
+        right: -100px;
+        width: 420px;
+        height: 420px;
+        background: radial-gradient(
+          circle,
+          rgba(232, 83, 26, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .blog-hero::after {
+        content: "";
+        position: absolute;
+        bottom: -60px;
+        left: 40%;
+        width: 300px;
+        height: 300px;
+        background: radial-gradient(
+          circle,
+          rgba(26, 86, 219, 0.07) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        pointer-events: none;
+      }
+      .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        background: var(--red-bg);
+        color: var(--red);
+        border: 1.5px solid rgba(232, 83, 26, 0.25);
+        border-radius: 50px;
+        padding: 5px 16px;
+        font-size: 0.76rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 18px;
+      }
+      .blog-hero h1 {
+        font-family: var(--font-head);
+        font-size: clamp(2rem, 4.5vw, 3.2rem);
+        font-weight: 700;
+        line-height: 1.22;
+        color: var(--text);
+        margin-bottom: 16px;
+      }
+      .blog-hero h1 em {
+        color: var(--red);
+        font-style: italic;
+      }
+      .blog-hero .lead {
+        color: var(--text-muted);
+        font-size: 1.05rem;
+        max-width: 540px;
+        font-weight: 500;
+      }
+      .hero-stat-box {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px 26px;
+        box-shadow: var(--shadow-sm);
+      }
+      .hero-stat-row {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero-stat-row:last-child {
+        border-bottom: none;
+      }
+      .stat-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.1rem;
+        flex-shrink: 0;
+      }
+      .stat-icon.red {
+        background: var(--red-bg);
+      }
+      .stat-icon.blue {
+        background: var(--blue-light);
+      }
+      .stat-icon.green {
+        background: var(--green-bg);
+      }
+      .stat-label {
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: var(--text);
+        margin-bottom: 1px;
+      }
+      .stat-sub {
+        font-size: 0.76rem;
+        color: var(--text-muted);
+        font-weight: 500;
+      }
 
-    /* ── NAVBAR ── */
-    .navbar {
-      background: var(--white);
-      border-bottom: 2px solid var(--border);
-      padding: 12px 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: var(--shadow-sm);
-    }
-    .navbar-brand img { height: 40px; }
-    .zoho-badge img { height: 26px; opacity: 0.9; }
-    .navbar-nav .nav-link {
-      color: var(--text-2) !important;
-      font-weight: 700;
-      font-size: 0.87rem;
-      padding: 6px 13px !important;
-      border-radius: var(--radius-sm);
-      transition: all 0.2s;
-    }
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active {
-      color: var(--red) !important;
-      background: var(--red-bg);
-    }
-    .navbar-toggler { border: none; }
-    .btn-consult {
-      background: var(--red);
-      color: #fff !important;
-      border-radius: var(--radius-sm);
-      padding: 9px 22px !important;
-      font-weight: 800;
-      font-size: 0.84rem;
-      letter-spacing: 0.02em;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .btn-consult:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 4px 14px rgba(232,83,26,0.3); }
-    .dropdown-menu {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 8px;
-      box-shadow: var(--shadow-md);
-    }
-    .dropdown-item {
-      color: var(--text-2);
-      font-size: 0.85rem;
-      font-weight: 600;
-      border-radius: var(--radius-sm);
-      padding: 8px 14px;
-      transition: all 0.15s;
-    }
-    .dropdown-item:hover { background: var(--red-bg); color: var(--red); }
+      /* FILTER BAR */
+      .filter-bar {
+        background: var(--white);
+        border-bottom: 1.5px solid var(--border);
+        padding: 14px 0;
+        position: sticky;
+        top: 66px;
+        z-index: 99;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+      }
+      .search-wrap {
+        position: relative;
+      }
+      .search-wrap i {
+        position: absolute;
+        left: 13px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+      .search-input {
+        background: var(--bg);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius-sm);
+        color: var(--text);
+        padding: 9px 13px 9px 38px;
+        font-size: 0.87rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+        width: 100%;
+        transition:
+          border-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .search-input:focus {
+        outline: none;
+        border-color: var(--red);
+        box-shadow: 0 0 0 3px rgba(232, 83, 26, 0.12);
+      }
+      .search-input::placeholder {
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+      .filter-tabs {
+        display: flex;
+        gap: 7px;
+        flex-wrap: wrap;
+      }
+      .filter-tab {
+        background: var(--bg);
+        border: 1.5px solid var(--border);
+        color: var(--text-2);
+        border-radius: 50px;
+        padding: 6px 16px;
+        font-size: 0.8rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.18s;
+        white-space: nowrap;
+        font-family: var(--font-body);
+      }
+      .filter-tab:hover {
+        background: var(--red-bg);
+        border-color: var(--red);
+        color: var(--red);
+      }
+      .filter-tab.active {
+        background: var(--red);
+        border-color: var(--red);
+        color: #fff;
+      }
 
-    /* ── HERO ── */
-    .blog-hero {
-      background: linear-gradient(135deg, #fff 0%, #fef3ef 40%, #e8f0fe 100%);
-      padding: 72px 0 54px;
-      border-bottom: 2px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-    .blog-hero::before {
-      content: '';
-      position: absolute;
-      top: -100px; right: -100px;
-      width: 420px; height: 420px;
-      background: radial-gradient(circle, rgba(232,83,26,0.10) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .blog-hero::after {
-      content: '';
-      position: absolute;
-      bottom: -60px; left: 40%;
-      width: 300px; height: 300px;
-      background: radial-gradient(circle, rgba(26,86,219,0.07) 0%, transparent 70%);
-      border-radius: 50%;
-      pointer-events: none;
-    }
-    .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: var(--red-bg);
-      color: var(--red);
-      border: 1.5px solid rgba(232,83,26,0.25);
-      border-radius: 50px;
-      padding: 5px 16px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-    .blog-hero h1 {
-      font-family: var(--font-head);
-      font-size: clamp(2rem, 4.5vw, 3.2rem);
-      font-weight: 700;
-      line-height: 1.22;
-      color: var(--text);
-      margin-bottom: 16px;
-    }
-    .blog-hero h1 em { color: var(--red); font-style: italic; }
-    .blog-hero .lead {
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      max-width: 540px;
-      font-weight: 500;
-    }
-    .hero-stat-box {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 26px;
-      box-shadow: var(--shadow-sm);
-    }
-    .hero-stat-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-    }
-    .hero-stat-row:last-child { border-bottom: none; }
-    .stat-icon {
-      width: 40px; height: 40px;
-      border-radius: 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-    .stat-icon.red   { background: var(--red-bg); }
-    .stat-icon.blue  { background: var(--blue-light); }
-    .stat-icon.green { background: var(--green-bg); }
-    .stat-label { font-weight: 800; font-size: 0.9rem; color: var(--text); margin-bottom: 1px; }
-    .stat-sub   { font-size: 0.76rem; color: var(--text-muted); font-weight: 500; }
+      /* BLOG SECTION */
+      .blog-section {
+        padding: 54px 0 80px;
+      }
+      .section-eyebrow {
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 6px;
+      }
+      .section-title {
+        font-family: var(--font-head);
+        font-size: clamp(1.5rem, 2.8vw, 2rem);
+        font-weight: 700;
+        color: var(--text);
+        margin-bottom: 32px;
+      }
 
-    /* ── FILTER BAR ── */
-    .filter-bar {
-      background: var(--white);
-      border-bottom: 1.5px solid var(--border);
-      padding: 14px 0;
-      position: sticky;
-      top: 66px;
-      z-index: 99;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
-    }
-    .search-wrap { position: relative; }
-    .search-wrap i { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--text-muted); font-size: 0.9rem; }
-    .search-input {
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius-sm);
-      color: var(--text);
-      padding: 9px 13px 9px 38px;
-      font-size: 0.87rem;
-      font-family: var(--font-body);
-      font-weight: 600;
-      width: 100%;
-      transition: border-color 0.2s, box-shadow 0.2s;
-    }
-    .search-input:focus { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(232,83,26,0.12); }
-    .search-input::placeholder { color: var(--text-muted); font-weight: 500; }
-    .filter-tabs { display: flex; gap: 7px; flex-wrap: wrap; }
-    .filter-tab {
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      color: var(--text-2);
-      border-radius: 50px;
-      padding: 6px 16px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.18s;
-      white-space: nowrap;
-      font-family: var(--font-body);
-    }
-    .filter-tab:hover { background: var(--red-bg); border-color: var(--red); color: var(--red); }
-    .filter-tab.active { background: var(--red); border-color: var(--red); color: #fff; }
+      /* Featured Card */
+      .blog-card-featured {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: all 0.3s;
+        cursor: pointer;
+        height: 100%;
+        box-shadow: var(--shadow-sm);
+      }
+      .blog-card-featured:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(232, 83, 26, 0.35);
+      }
+      .featured-img-wrap {
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        position: relative;
+      }
+      .featured-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .blog-card-featured:hover .featured-img-wrap img {
+        transform: scale(1.04);
+      }
+      .featured-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: var(--red);
+        color: #fff;
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        padding: 4px 12px;
+        border-radius: 50px;
+      }
+      .card-body-pad {
+        padding: 26px;
+      }
+      .cat-badge {
+        display: inline-block;
+        border-radius: 50px;
+        padding: 3px 12px;
+        font-size: 0.72rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 10px;
+      }
+      .cat-red {
+        background: var(--red-bg);
+        color: var(--red);
+      }
+      .cat-blue {
+        background: var(--blue-light);
+        color: var(--blue);
+      }
+      .cat-green {
+        background: var(--green-bg);
+        color: var(--green);
+      }
+      .card-title-text {
+        font-family: var(--font-head);
+        font-size: 1.28rem;
+        font-weight: 700;
+        line-height: 1.35;
+        margin-bottom: 10px;
+        color: var(--text);
+      }
+      .card-excerpt {
+        color: var(--text-muted);
+        font-size: 0.88rem;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-weight: 500;
+      }
+      .card-meta {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+      }
+      .author-chip {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: 0.72rem;
+        color: #fff;
+        flex-shrink: 0;
+      }
+      .chip-red {
+        background: linear-gradient(135deg, var(--red), var(--red-dark));
+      }
+      .chip-blue {
+        background: linear-gradient(135deg, #1a56db, #1043a8);
+      }
+      .chip-green {
+        background: linear-gradient(135deg, #0f9d58, #0a7a44);
+      }
+      .meta-text {
+        font-size: 0.78rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+      .meta-text strong {
+        color: var(--text-2);
+      }
+      .read-time {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        background: var(--bg2);
+        color: var(--text-2);
+        border-radius: 50px;
+        padding: 2px 9px;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+      .read-more-arrow {
+        margin-left: auto;
+        color: var(--red);
+        font-size: 0.82rem;
+        font-weight: 800;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        text-decoration: none;
+        transition:
+          gap 0.2s,
+          color 0.2s;
+      }
+      .read-more-arrow:hover {
+        gap: 9px;
+        color: var(--red-dark);
+      }
 
-    /* ── BLOG SECTION ── */
-    .blog-section { padding: 54px 0 80px; }
+      /* Regular Cards */
+      .blog-card {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        transition: all 0.3s;
+        cursor: pointer;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        box-shadow: var(--shadow-sm);
+      }
+      .blog-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-lg);
+        border-color: rgba(232, 83, 26, 0.28);
+      }
+      .card-img-wrap {
+        width: 100%;
+        height: 185px;
+        overflow: hidden;
+        position: relative;
+      }
+      .card-img-wrap img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s;
+      }
+      .blog-card:hover .card-img-wrap img {
+        transform: scale(1.06);
+      }
+      .img-tag {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(5px);
+        color: var(--text-2);
+        font-size: 0.68rem;
+        font-weight: 800;
+        padding: 3px 10px;
+        border-radius: 50px;
+        border: 1px solid var(--border);
+      }
+      .blog-card .card-body-pad {
+        padding: 20px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .blog-card .card-title-text {
+        font-size: 1rem;
+        margin-bottom: 8px;
+      }
+      .blog-card .card-excerpt {
+        -webkit-line-clamp: 2;
+        margin-bottom: auto;
+        padding-bottom: 14px;
+      }
 
-    .section-eyebrow {
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 6px;
-    }
-    .section-title {
-      font-family: var(--font-head);
-      font-size: clamp(1.5rem, 2.8vw, 2rem);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 32px;
-    }
+      /* SIDEBAR */
+      .sidebar-widget {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        padding: 22px;
+        margin-bottom: 22px;
+        box-shadow: var(--shadow-sm);
+      }
+      .widget-title {
+        font-size: 0.75rem;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 14px;
+        padding-bottom: 10px;
+        border-bottom: 1.5px solid var(--border);
+      }
+      .recent-post-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border);
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .recent-post-item:last-child {
+        border-bottom: none;
+      }
+      .recent-post-item:hover {
+        opacity: 0.7;
+      }
+      .recent-post-img {
+        width: 52px;
+        height: 52px;
+        border-radius: 9px;
+        object-fit: cover;
+        flex-shrink: 0;
+        border: 1px solid var(--border);
+      }
+      .recent-post-title {
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.4;
+        margin-bottom: 4px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .recent-post-date {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+      .tag-cloud {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+      .tag-pill {
+        background: var(--bg);
+        border: 1.5px solid var(--border);
+        color: var(--text-2);
+        padding: 5px 14px;
+        border-radius: 50px;
+        font-size: 0.76rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+      .tag-pill:hover {
+        background: var(--red);
+        border-color: var(--red);
+        color: #fff;
+      }
+      .stat-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 9px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.84rem;
+      }
+      .stat-row:last-child {
+        border-bottom: none;
+      }
+      .stat-row span:first-child {
+        color: var(--text-muted);
+        font-weight: 600;
+      }
+      .stat-row span:last-child {
+        color: var(--red);
+        font-weight: 800;
+        background: var(--red-bg);
+        padding: 2px 10px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+      }
 
-    /* Featured Card */
-    .blog-card-featured {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-      height: 100%;
-      box-shadow: var(--shadow-sm);
-    }
-    .blog-card-featured:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(232,83,26,0.35);
-    }
-    .featured-img-wrap { width: 100%; height: 250px; overflow: hidden; position: relative; }
-    .featured-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .blog-card-featured:hover .featured-img-wrap img { transform: scale(1.04); }
-    .featured-badge {
-      position: absolute;
-      top: 14px; left: 14px;
-      background: var(--red);
-      color: #fff;
-      font-size: 0.7rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 50px;
-    }
-    .card-body-pad { padding: 26px; }
+      /* CTA */
+      .cta-widget {
+        background: linear-gradient(135deg, var(--red) 0%, #c43e0e 100%);
+        border: none;
+        border-radius: var(--radius);
+        padding: 26px;
+        margin-bottom: 22px;
+        box-shadow: 0 8px 28px rgba(232, 83, 26, 0.28);
+        color: #fff;
+      }
+      .cta-widget .cta-icon {
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      .cta-widget h4 {
+        font-family: var(--font-head);
+        font-size: 1.05rem;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+      .cta-widget p {
+        font-size: 0.84rem;
+        opacity: 0.88;
+        margin-bottom: 18px;
+        font-weight: 500;
+      }
+      .btn-cta-white {
+        display: block;
+        background: #fff;
+        color: var(--red);
+        text-align: center;
+        border-radius: var(--radius-sm);
+        padding: 10px 18px;
+        font-weight: 800;
+        font-size: 0.86rem;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-cta-white:hover {
+        background: var(--red-bg);
+        transform: translateY(-2px);
+        color: var(--red-dark);
+      }
 
-    .cat-badge {
-      display: inline-block;
-      border-radius: 50px;
-      padding: 3px 12px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-    .cat-red    { background: var(--red-bg);    color: var(--red);   }
-    .cat-blue   { background: var(--blue-light); color: var(--blue);  }
-    .cat-green  { background: var(--green-bg);   color: var(--green); }
-    .cat-yellow { background: var(--yellow-bg);  color: #b35c00;      }
+      /* NEWSLETTER */
+      .newsletter-section {
+        background: linear-gradient(135deg, var(--blue) 0%, #0c3fa0 100%);
+        padding: 58px 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .newsletter-section::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 600px;
+        height: 300px;
+        background: radial-gradient(
+          ellipse,
+          rgba(255, 255, 255, 0.06) 0%,
+          transparent 70%
+        );
+      }
+      .newsletter-section .section-eyebrow {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .newsletter-section h2 {
+        font-family: var(--font-head);
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 8px;
+      }
+      .newsletter-section p {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+      .nl-form {
+        display: flex;
+        gap: 10px;
+        max-width: 470px;
+        margin-top: 22px;
+      }
+      .nl-input {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+        border-radius: var(--radius-sm);
+        color: #fff;
+        padding: 11px 15px;
+        font-size: 0.9rem;
+        font-family: var(--font-body);
+        font-weight: 600;
+        transition: border-color 0.2s;
+      }
+      .nl-input:focus {
+        outline: none;
+        border-color: #fff;
+        background: rgba(255, 255, 255, 0.18);
+      }
+      .nl-input::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+        font-weight: 500;
+      }
+      .btn-sub {
+        background: #fff;
+        color: var(--blue);
+        border: none;
+        border-radius: var(--radius-sm);
+        padding: 11px 22px;
+        font-weight: 800;
+        font-size: 0.86rem;
+        cursor: pointer;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+        white-space: nowrap;
+      }
+      .btn-sub:hover {
+        background: var(--red-bg);
+        color: var(--red);
+        transform: translateY(-1px);
+      }
+      .nl-note {
+        color: rgba(255, 255, 255, 0.55);
+        font-size: 0.74rem;
+        margin-top: 8px;
+        font-weight: 600;
+      }
+      .nl-feature-box {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        border-radius: var(--radius);
+        padding: 15px 18px;
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px;
+      }
+      .nl-feature-box:last-child {
+        margin-bottom: 0;
+      }
+      .nl-feature-box .emoji {
+        font-size: 1.5rem;
+      }
+      .nl-feature-box .label {
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: #fff;
+        margin-bottom: 1px;
+      }
+      .nl-feature-box .sub {
+        font-size: 0.76rem;
+        color: rgba(255, 255, 255, 0.65);
+        font-weight: 500;
+      }
 
-    .card-title-text {
-      font-family: var(--font-head);
-      font-size: 1.28rem;
-      font-weight: 700;
-      line-height: 1.35;
-      margin-bottom: 10px;
-      color: var(--text);
-    }
-    .card-excerpt {
-      color: var(--text-muted);
-      font-size: 0.88rem;
-      line-height: 1.7;
-      margin-bottom: 18px;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      font-weight: 500;
-    }
-    .card-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      padding-top: 14px;
-      border-top: 1px solid var(--border);
-    }
-    .author-chip {
-      width: 32px; height: 32px;
-      border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; font-size: 0.72rem; color: #fff;
-      flex-shrink: 0;
-    }
-    .chip-red   { background: linear-gradient(135deg, var(--red), var(--red-dark)); }
-    .chip-blue  { background: linear-gradient(135deg, #1a56db, #1043a8); }
-    .chip-green { background: linear-gradient(135deg, #0f9d58, #0a7a44); }
-    .meta-text { font-size: 0.78rem; color: var(--text-muted); font-weight: 600; }
-    .meta-text strong { color: var(--text-2); }
-    .read-time {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: var(--bg2);
-      color: var(--text-2);
-      border-radius: 50px;
-      padding: 2px 9px;
-      font-size: 0.7rem;
-      font-weight: 700;
-    }
-    .read-more-arrow {
-      margin-left: auto;
-      color: var(--red);
-      font-size: 0.82rem;
-      font-weight: 800;
-      display: flex; align-items: center; gap: 4px;
-      text-decoration: none;
-      transition: gap 0.2s, color 0.2s;
-    }
-    .read-more-arrow:hover { gap: 9px; color: var(--red-dark); }
+      /* MODAL */
+      .blog-modal .modal-content {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        border-radius: var(--radius);
+        color: var(--text);
+        box-shadow: var(--shadow-lg);
+      }
+      .blog-modal .modal-header {
+        border-bottom: 1.5px solid var(--border);
+        padding: 22px 26px 18px;
+        background: var(--bg);
+      }
+      .blog-modal .modal-title {
+        font-family: var(--font-head);
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: var(--text);
+        line-height: 1.35;
+      }
+      .blog-modal .btn-close {
+        opacity: 0.5;
+      }
+      .blog-modal .modal-body {
+        padding: 26px;
+      }
+      .modal-hero-img {
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+        border-radius: var(--radius);
+        margin-bottom: 20px;
+      }
+      .modal-meta {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+        padding-bottom: 16px;
+        border-bottom: 1.5px solid var(--border);
+      }
+      .modal-meta-item {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        color: var(--text-muted);
+        font-size: 0.82rem;
+        font-weight: 600;
+      }
+      .modal-meta-item i {
+        color: var(--red);
+      }
+      .blog-content {
+        font-size: 0.94rem;
+        line-height: 1.85;
+        color: var(--text-2);
+        font-weight: 500;
+      }
+      .blog-content h3 {
+        font-family: var(--font-head);
+        color: var(--text);
+        font-size: 1.15rem;
+        font-weight: 700;
+        margin: 22px 0 10px;
+      }
+      .blog-content p {
+        margin-bottom: 12px;
+      }
+      .blog-content ul {
+        padding-left: 20px;
+        margin-bottom: 14px;
+      }
+      .blog-content ul li {
+        margin-bottom: 5px;
+      }
+      .blog-content .highlight {
+        background: var(--red-bg);
+        border-left: 4px solid var(--red);
+        padding: 14px 18px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        margin: 18px 0;
+        font-style: italic;
+        color: var(--text);
+        font-weight: 600;
+      }
+      .modal-footer-bar {
+        padding: 16px 26px 22px;
+        border-top: 1.5px solid var(--border);
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+        background: var(--bg);
+      }
+      .btn-cta-red {
+        background: var(--red);
+        color: #fff;
+        border: none;
+        border-radius: var(--radius-sm);
+        padding: 9px 20px;
+        font-weight: 800;
+        font-size: 0.86rem;
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .btn-cta-red:hover {
+        background: var(--red-dark);
+        color: #fff;
+        transform: translateY(-1px);
+      }
+      .btn-share-out {
+        background: var(--white);
+        border: 1.5px solid var(--border);
+        color: var(--text-2);
+        border-radius: var(--radius-sm);
+        padding: 9px 14px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-family: var(--font-body);
+        transition: all 0.2s;
+      }
+      .btn-share-out:hover {
+        border-color: var(--blue);
+        color: var(--blue);
+      }
+      .more-link {
+        color: var(--text-muted);
+        font-size: 0.8rem;
+        text-decoration: none;
+        margin-left: auto;
+        font-weight: 700;
+        transition: color 0.2s;
+      }
+      .more-link:hover {
+        color: var(--red);
+      }
 
-    /* Regular Cards */
-    .blog-card {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: all 0.3s;
-      cursor: pointer;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      box-shadow: var(--shadow-sm);
-    }
-    .blog-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: rgba(232,83,26,0.28);
-    }
-    .card-img-wrap { width: 100%; height: 185px; overflow: hidden; position: relative; }
-    .card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-    .blog-card:hover .card-img-wrap img { transform: scale(1.06); }
-    .img-tag {
-      position: absolute;
-      top: 10px; left: 10px;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(5px);
-      color: var(--text-2);
-      font-size: 0.68rem;
-      font-weight: 800;
-      padding: 3px 10px;
-      border-radius: 50px;
-      border: 1px solid var(--border);
-    }
-    .blog-card .card-body-pad { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-    .blog-card .card-title-text { font-size: 1rem; margin-bottom: 8px; }
-    .blog-card .card-excerpt { -webkit-line-clamp: 2; margin-bottom: auto; padding-bottom: 14px; }
+      /* No Results */
+      .no-results {
+        text-align: center;
+        padding: 60px 20px;
+        display: none;
+      }
+      .no-results i {
+        font-size: 3rem;
+        color: var(--text-muted);
+        margin-bottom: 14px;
+        display: block;
+      }
+      .no-results p {
+        color: var(--text-muted);
+        font-weight: 600;
+      }
 
-    /* ── SIDEBAR ── */
-    .sidebar-widget {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 22px;
-      box-shadow: var(--shadow-sm);
-    }
-    .widget-title {
-      font-size: 0.75rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--red);
-      margin-bottom: 14px;
-      padding-bottom: 10px;
-      border-bottom: 1.5px solid var(--border);
-    }
-    .recent-post-item {
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--border);
-      cursor: pointer;
-      transition: opacity 0.2s;
-    }
-    .recent-post-item:last-child { border-bottom: none; }
-    .recent-post-item:hover { opacity: 0.7; }
-    .recent-post-img { width: 52px; height: 52px; border-radius: 9px; object-fit: cover; flex-shrink: 0; border: 1px solid var(--border); }
-    .recent-post-title { font-size: 0.82rem; font-weight: 700; color: var(--text); line-height: 1.4; margin-bottom: 4px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-    .recent-post-date { font-size: 0.7rem; color: var(--text-muted); font-weight: 600; }
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 7px; }
-    .tag-pill {
-      background: var(--bg);
-      border: 1.5px solid var(--border);
-      color: var(--text-2);
-      padding: 5px 14px;
-      border-radius: 50px;
-      font-size: 0.76rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-decoration: none;
-    }
-    .tag-pill:hover { background: var(--red); border-color: var(--red); color: #fff; }
-    .stat-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.84rem;
-    }
-    .stat-row:last-child { border-bottom: none; }
-    .stat-row span:first-child { color: var(--text-muted); font-weight: 600; }
-    .stat-row span:last-child { color: var(--red); font-weight: 800; background: var(--red-bg); padding: 2px 10px; border-radius: 50px; font-size: 0.78rem; }
+      /* Animations */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(22px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .fade-up {
+        animation: fadeUp 0.55s ease forwards;
+      }
+      .d1 {
+        animation-delay: 0.08s;
+        opacity: 0;
+      }
+      .d2 {
+        animation-delay: 0.18s;
+        opacity: 0;
+      }
 
-    /* ── CTA Sidebar ── */
-    .cta-widget {
-      background: linear-gradient(135deg, var(--red) 0%, #c43e0e 100%);
-      border: none;
-      border-radius: var(--radius);
-      padding: 26px;
-      margin-bottom: 22px;
-      box-shadow: 0 8px 28px rgba(232,83,26,0.28);
-      color: #fff;
-    }
-    .cta-widget .cta-icon { font-size: 2rem; margin-bottom: 10px; }
-    .cta-widget h4 { font-family: var(--font-head); font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
-    .cta-widget p { font-size: 0.84rem; opacity: 0.88; margin-bottom: 18px; font-weight: 500; }
-    .btn-cta-white {
-      display: block;
-      background: #fff;
-      color: var(--red);
-      text-align: center;
-      border-radius: var(--radius-sm);
-      padding: 10px 18px;
-      font-weight: 800;
-      font-size: 0.86rem;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-cta-white:hover { background: var(--red-bg); transform: translateY(-2px); color: var(--red-dark); }
+      /* FOOTER */
+      .site-footer {
+        background: #050505;
+        color: #e5e7eb;
+        padding: 75px 5% 25px;
+        font-size: 14px;
+      }
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 35px;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .footer-section h3 {
+        font-size: 22px;
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+      .footer-tagline {
+        font-family: "Segoe Script", "Lucida Handwriting", cursive;
+        font-size: 18px;
+        color: #38bdf8;
+        margin-bottom: 12px;
+      }
+      .center-heading {
+        text-align: left;
+        margin-bottom: 18px;
+        margin-right: 240px;
+      }
+      .footer-section p {
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+      .zoho-solutions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .solutions-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+      .solutions-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(150px, 180px));
+        column-gap: 40px;
+        row-gap: 10px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .solutions-grid li {
+        text-align: left;
+        white-space: nowrap;
+        color: #d1d5db;
+        font-weight: 500;
+        transition: color 0.25s ease;
+        cursor: pointer;
+      }
+      .solutions-grid li:hover {
+        color: #38bdf8;
+      }
+      .site-footer a {
+        color: #d1d5db;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.25s ease;
+      }
+      .site-footer a:hover {
+        color: #38bdf8;
+      }
+      .zoho-logo {
+        margin-top: 16px;
+      }
+      .zoho-logo img {
+        max-width: 140px;
+        opacity: 0.95;
+      }
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+        padding-top: 18px;
+        text-align: center;
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 35px;
+      }
+      .footer-bottom p {
+        margin: 0;
+        color: #94a3b8;
+        font-size: 13px;
+      }
 
-    /* ── NEWSLETTER ── */
-    .newsletter-section {
-      background: linear-gradient(135deg, var(--blue) 0%, #0c3fa0 100%);
-      padding: 58px 0;
-      position: relative;
-      overflow: hidden;
-    }
-    .newsletter-section::before {
-      content: '';
-      position: absolute;
-      top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px; height: 300px;
-      background: radial-gradient(ellipse, rgba(255,255,255,0.06) 0%, transparent 70%);
-    }
-    .newsletter-section .section-eyebrow { color: rgba(255,255,255,0.75); }
-    .newsletter-section h2 { font-family: var(--font-head); font-size: clamp(1.5rem,3vw,2rem); font-weight: 700; color: #fff; margin-bottom: 8px; }
-    .newsletter-section p { color: rgba(255,255,255,0.78); font-size: 0.95rem; font-weight: 500; }
-    .nl-form { display: flex; gap: 10px; max-width: 470px; margin-top: 22px; }
-    .nl-input {
-      flex: 1;
-      background: rgba(255,255,255,0.12);
-      border: 1.5px solid rgba(255,255,255,0.25);
-      border-radius: var(--radius-sm);
-      color: #fff;
-      padding: 11px 15px;
-      font-size: 0.9rem;
-      font-family: var(--font-body);
-      font-weight: 600;
-      transition: border-color 0.2s;
-    }
-    .nl-input:focus { outline: none; border-color: #fff; background: rgba(255,255,255,0.18); }
-    .nl-input::placeholder { color: rgba(255,255,255,0.55); font-weight: 500; }
-    .btn-sub {
-      background: #fff;
-      color: var(--blue);
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 11px 22px;
-      font-weight: 800;
-      font-size: 0.86rem;
-      cursor: pointer;
-      font-family: var(--font-body);
-      transition: all 0.2s;
-      white-space: nowrap;
-    }
-    .btn-sub:hover { background: var(--red-bg); color: var(--red); transform: translateY(-1px); }
-    .nl-note { color: rgba(255,255,255,0.55); font-size: 0.74rem; margin-top: 8px; font-weight: 600; }
-    .nl-feature-box {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: var(--radius);
-      padding: 15px 18px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 10px;
-    }
-    .nl-feature-box:last-child { margin-bottom: 0; }
-    .nl-feature-box .emoji { font-size: 1.5rem; }
-    .nl-feature-box .label { font-weight: 700; font-size: 0.88rem; color: #fff; margin-bottom: 1px; }
-    .nl-feature-box .sub   { font-size: 0.76rem; color: rgba(255,255,255,0.65); font-weight: 500; }
-
-    /* ── MODAL ── */
-    .blog-modal .modal-content {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      border-radius: var(--radius);
-      color: var(--text);
-      box-shadow: var(--shadow-lg);
-    }
-    .blog-modal .modal-header {
-      border-bottom: 1.5px solid var(--border);
-      padding: 22px 26px 18px;
-      background: var(--bg);
-    }
-    .blog-modal .modal-title { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; color: var(--text); line-height: 1.35; }
-    .blog-modal .btn-close { opacity: 0.5; }
-    .blog-modal .modal-body { padding: 26px; }
-    .modal-hero-img { width: 100%; height: 260px; object-fit: cover; border-radius: var(--radius); margin-bottom: 20px; }
-    .modal-meta { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; padding-bottom: 16px; border-bottom: 1.5px solid var(--border); }
-    .modal-meta-item { display: flex; align-items: center; gap: 5px; color: var(--text-muted); font-size: 0.82rem; font-weight: 600; }
-    .modal-meta-item i { color: var(--red); }
-    .blog-content { font-size: 0.94rem; line-height: 1.85; color: var(--text-2); font-weight: 500; }
-    .blog-content h3 { font-family: var(--font-head); color: var(--text); font-size: 1.15rem; font-weight: 700; margin: 22px 0 10px; }
-    .blog-content p { margin-bottom: 12px; }
-    .blog-content ul { padding-left: 20px; margin-bottom: 14px; }
-    .blog-content ul li { margin-bottom: 5px; }
-    .blog-content .highlight {
-      background: var(--red-bg);
-      border-left: 4px solid var(--red);
-      padding: 14px 18px;
-      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-      margin: 18px 0;
-      font-style: italic;
-      color: var(--text);
-      font-weight: 600;
-    }
-    .modal-footer-bar {
-      padding: 16px 26px 22px;
-      border-top: 1.5px solid var(--border);
-      display: flex;
-      gap: 10px;
-      align-items: center;
-      flex-wrap: wrap;
-      background: var(--bg);
-    }
-    .btn-cta-red {
-      background: var(--red);
-      color: #fff;
-      border: none;
-      border-radius: var(--radius-sm);
-      padding: 9px 20px;
-      font-weight: 800;
-      font-size: 0.86rem;
-      cursor: pointer;
-      text-decoration: none;
-      transition: all 0.2s;
-    }
-    .btn-cta-red:hover { background: var(--red-dark); color: #fff; transform: translateY(-1px); }
-    .btn-share-out {
-      background: var(--white);
-      border: 1.5px solid var(--border);
-      color: var(--text-2);
-      border-radius: var(--radius-sm);
-      padding: 9px 14px;
-      font-size: 0.84rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex; align-items: center; gap: 5px;
-      font-family: var(--font-body);
-      transition: all 0.2s;
-    }
-    .btn-share-out:hover { border-color: var(--blue); color: var(--blue); }
-    .more-link { color: var(--text-muted); font-size: 0.8rem; text-decoration: none; margin-left: auto; font-weight: 700; transition: color 0.2s; }
-    .more-link:hover { color: var(--red); }
-
-    /* ── FOOTER ── */
-    .site-footer { background: var(--text); border-top: 2px solid rgba(255,255,255,0.08); padding: 50px 0 24px; }
-    .footer-brand img { height: 36px; margin-bottom: 12px; filter: brightness(0) invert(1); }
-    .footer-tagline { color: rgba(255,255,255,0.55); font-size: 0.84rem; line-height: 1.7; margin-bottom: 14px; font-weight: 500; }
-    .footer-contact a { display: flex; align-items: center; gap: 7px; color: rgba(255,255,255,0.55); font-size: 0.82rem; text-decoration: none; margin-bottom: 7px; font-weight: 600; transition: color 0.2s; }
-    .footer-contact a:hover { color: var(--red-light); }
-    .footer-contact a i { color: var(--red); }
-    .footer-heading { font-size: 0.76rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.85); margin-bottom: 14px; padding-bottom: 7px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-    .footer-links { list-style: none; }
-    .footer-links li { margin-bottom: 7px; }
-    .footer-links a { color: rgba(255,255,255,0.55); font-size: 0.84rem; text-decoration: none; font-weight: 600; transition: color 0.2s; }
-    .footer-links a:hover { color: var(--red-light); }
-    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); margin-top: 38px; padding-top: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
-    .footer-bottom p { color: rgba(255,255,255,0.4); font-size: 0.78rem; margin: 0; font-weight: 600; }
-    .zoho-credit { display: flex; align-items: center; gap: 6px; }
-    .zoho-credit img { height: 15px; filter: invert(1) opacity(0.4); }
-
-    /* ── Pagination ── */
-    .pagination-wrap { display: flex; justify-content: center; gap: 7px; margin-top: 48px; }
-    .page-btn {
-      width: 38px; height: 38px;
-      border-radius: var(--radius-sm);
-      border: 1.5px solid var(--border);
-      background: var(--white);
-      color: var(--text-2);
-      display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      font-size: 0.86rem;
-      font-weight: 700;
-      transition: all 0.2s;
-      box-shadow: var(--shadow-sm);
-    }
-    .page-btn:hover, .page-btn.active { background: var(--red); border-color: var(--red); color: #fff; box-shadow: 0 4px 12px rgba(232,83,26,0.3); }
-
-    /* ── No Results ── */
-    .no-results { text-align: center; padding: 60px 20px; display: none; }
-    .no-results i { font-size: 3rem; color: var(--text-muted); margin-bottom: 14px; display: block; }
-    .no-results p { color: var(--text-muted); font-weight: 600; }
-
-    /* ── Animations ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp 0.55s ease forwards; }
-    .d1 { animation-delay: 0.08s; opacity: 0; }
-    .d2 { animation-delay: 0.18s; opacity: 0; }
-    .d3 { animation-delay: 0.28s; opacity: 0; }
-
-    @media (max-width: 768px) {
-      .blog-hero { padding: 54px 0 36px; }
-      .filter-bar { top: 62px; }
-      .nl-form { flex-direction: column; }
-    }
-  </style>
-</head>
-<body>
-
-<!-- ══════════ NAVBAR ══════════ -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container">
-    <a class="navbar-brand" href="https://zolytics.in/">
-      <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
-    </a>
-    <div class="zoho-badge d-none d-md-flex align-items-center gap-2 ms-2">
-      <img src="https://www.zolytics.in/files/Zoho_logo-removebg-preview.png" alt="Zoho" />
-      <img src="https://www.zolytics.in/files/zoho_Partner-removebg-preview.png" alt="Partner" />
-    </div>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navMain">
-      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
-        <li class="nav-item"><a class="nav-link" href="https://zolytics.in/#home">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://zolytics.in/#about">About</a></li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Solutions</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://www.zolytics.in/#solutions">Zoho One/Apps</a></li>
-            <li><a class="dropdown-item" href="https://www.zolytics.in/ZohoERP-html">Zoho ERP</a></li>
-            <li><a class="dropdown-item" href="https://www.zolytics.in/customization-html">Customization & Automation</a></li>
-            <li><a class="dropdown-item" href="https://www.zolytics.in/e-commerceintegration-html">E-commerce Integration</a></li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Migration</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="https://www.zolytics.in/tally-html">Tally to Zoho</a></li>
-            <li><a class="dropdown-item" href="https://www.zolytics.in/qbo-html">QBO to Zoho</a></li>
-            <li><a class="dropdown-item" href="https://www.zolytics.in/excel-html">Excel / Legacy ERP</a></li>
-          </ul>
-        </li>
-        <li class="nav-item"><a class="nav-link" href="https://www.zolytics.in/CaseStudy-html">Case Studies</a></li>
-        <li class="nav-item"><a class="nav-link active" href="#">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="https://zolytics.in/#contact">Contact</a></li>
-        <li class="nav-item ms-2"><a class="btn-consult" href="https://zolytics.in/#contact">Book Consultation</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-
-<!-- ══════════ HERO ══════════ -->
-<section class="blog-hero">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-7 fade-up">
-        <div class="hero-eyebrow"><i class="bi bi-book-half"></i> Knowledge Hub</div>
-        <h1>Zoho Insights, Tips &<br /><em>Expert Guides</em> for Your Business</h1>
-        <p class="lead">Fresh articles on Zoho automation, accounting, CRM, GST, and digital transformation — published daily by our certified consultants.</p>
-        <div class="d-flex gap-3 mt-4 flex-wrap">
-          <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.83rem;font-weight:700;color:var(--text-2);"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i> 2–3 Articles Daily</span>
-          <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.83rem;font-weight:700;color:var(--text-2);"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i> Certified Zoho Experts</span>
-          <span style="display:inline-flex;align-items:center;gap:6px;font-size:0.83rem;font-weight:700;color:var(--text-2);"><i class="bi bi-check-circle-fill" style="color:var(--green);"></i> India · UAE · USA</span>
-        </div>
-      </div>
-      <div class="col-lg-5 d-none d-lg-block fade-up d2">
-        <div class="hero-stat-box">
-          <div class="hero-stat-row">
-            <div class="stat-icon red"><span>✍️</span></div>
-            <div>
-              <div class="stat-label">2–3 Articles Daily</div>
-              <div class="stat-sub">Fresh Zoho insights every single day</div>
-            </div>
-          </div>
-          <div class="hero-stat-row">
-            <div class="stat-icon blue"><span>🏅</span></div>
-            <div>
-              <div class="stat-label">Certified Experts</div>
-              <div class="stat-sub">Written by Zoho-certified professionals</div>
-            </div>
-          </div>
-          <div class="hero-stat-row">
-            <div class="stat-icon green"><span>🌏</span></div>
-            <div>
-              <div class="stat-label">India, UAE & USA</div>
-              <div class="stat-sub">Region-specific business guidance</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ FILTER BAR ══════════ -->
-<div class="filter-bar">
-  <div class="container">
-    <div class="row align-items-center g-3">
-      <div class="col-lg-4">
-        <div class="search-wrap">
-          <i class="bi bi-search"></i>
-          <input type="text" class="search-input" id="blogSearch" placeholder="Search articles…" oninput="filterBlogs()" />
-        </div>
-      </div>
-      <div class="col-lg-8">
-        <div class="filter-tabs">
-          <button class="filter-tab active" onclick="setCategory('all', this)">All Articles</button>
-          <button class="filter-tab" onclick="setCategory('zoho-crm', this)">Zoho CRM</button>
-          <button class="filter-tab" onclick="setCategory('accounting', this)">Accounting</button>
-          <button class="filter-tab" onclick="setCategory('automation', this)">Automation</button>
-          <button class="filter-tab" onclick="setCategory('migration', this)">Migration</button>
-          <button class="filter-tab" onclick="setCategory('tips', this)">Tips & Tricks</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ══════════ BLOG SECTION ══════════ -->
-<section class="blog-section">
-  <div class="container">
-    <div class="row g-4">
-
-      <!-- MAIN -->
-      <div class="col-lg-8">
-        <div class="section-eyebrow">Latest Articles</div>
-        <div class="section-title">What's New on the Blog</div>
-
-        <div id="blogGrid" class="row g-4">
-
-          <!-- BLOG 1 — Featured -->
-          <div class="col-12 blog-item" data-category="accounting" data-title="why every indian sme should migrate tally zoho books">
-            <div class="blog-card-featured" onclick="openModal(0)">
-              <div class="featured-img-wrap">
-                <img src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Tally to Zoho Books Migration" />
-                <span class="featured-badge">⭐ Featured</span>
-              </div>
-              <div class="card-body-pad">
-                <span class="cat-badge cat-red">Accounting & Migration</span>
-                <h2 class="card-title-text">Why Every Indian SME Should Migrate from Tally to Zoho Books in 2025</h2>
-                <p class="card-excerpt">Tally has been the backbone of Indian accounting for decades — but in a world of real-time dashboards, GST automation, and cloud-first operations, is it still the right fit? We break down exactly why thousands of SMEs across India are making the switch to Zoho Books and what it means for your bottom line.</p>
-                <div class="card-meta">
-                  <div class="author-chip chip-red">RK</div>
-                  <div class="meta-text">
-                    <strong>Rahul Kumar</strong> &bull; Apr 5, 2025
-                    <span class="read-time ms-2"><i class="bi bi-clock"></i> 8 min read</span>
-                  </div>
-                  <a class="read-more-arrow" href="#" onclick="event.preventDefault(); openModal(0)">Read Article <i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOG 2 -->
-          <div class="col-md-6 blog-item" data-category="zoho-crm" data-title="zoho crm automations double sales pipeline efficiency">
-            <div class="blog-card" onclick="openModal(1)">
-              <div class="card-img-wrap">
-                <img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Zoho CRM Sales Automation" />
-                <span class="img-tag">Zoho CRM</span>
-              </div>
-              <div class="card-body-pad">
-                <span class="cat-badge cat-blue">CRM & Sales</span>
-                <h3 class="card-title-text">5 Zoho CRM Automations That Will Double Your Sales Pipeline Efficiency</h3>
-                <p class="card-excerpt">Stop doing manually what Zoho CRM can do automatically. These five workflow automations are the difference between a struggling pipeline and a conversion machine.</p>
-                <div class="card-meta">
-                  <div class="author-chip chip-blue">PS</div>
-                  <div class="meta-text">
-                    <strong>Priya Sharma</strong> &bull; Apr 6, 2025
-                    <span class="read-time ms-2"><i class="bi bi-clock"></i> 6 min</span>
-                  </div>
-                  <a class="read-more-arrow" href="#" onclick="event.preventDefault(); openModal(1)"><i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- BLOG 3 -->
-          <div class="col-md-6 blog-item" data-category="automation" data-title="automate gst filing zoho books step by step guide india compliance">
-            <div class="blog-card" onclick="openModal(2)">
-              <div class="card-img-wrap">
-                <img src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=800" alt="GST Automation Zoho Books" />
-                <span class="img-tag">Automation</span>
-              </div>
-              <div class="card-body-pad">
-                <span class="cat-badge cat-green">GST & Compliance</span>
-                <h3 class="card-title-text">How to Automate GST Filing Completely Using Zoho Books — Step-by-Step</h3>
-                <p class="card-excerpt">GST compliance doesn't have to eat up your CA's weekends. Zoho Books automates everything from invoice matching to GSTR-1 and GSTR-3B filing.</p>
-                <div class="card-meta">
-                  <div class="author-chip chip-green">AM</div>
-                  <div class="meta-text">
-                    <strong>Amit Mehta</strong> &bull; Apr 7, 2025
-                    <span class="read-time ms-2"><i class="bi bi-clock"></i> 10 min</span>
-                  </div>
-                  <a class="read-more-arrow" href="#" onclick="event.preventDefault(); openModal(2)"><i class="bi bi-arrow-right"></i></a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div><!-- /blogGrid -->
-
-        <!-- No Results -->
-        <div class="no-results" id="noResults">
-          <i class="bi bi-search"></i>
-          <p>No articles found. Try a different search or category.</p>
-        </div>
-
-        <!-- Pagination -->
-        <div class="pagination-wrap">
-          <div class="page-btn active">1</div>
-          <div class="page-btn">2</div>
-          <div class="page-btn">3</div>
-          <div class="page-btn"><i class="bi bi-chevron-right"></i></div>
-        </div>
-      </div>
-
-      <!-- SIDEBAR -->
-      <div class="col-lg-4">
-
-        <!-- About Widget -->
-        <div class="sidebar-widget">
-          <div class="widget-title"><i class="bi bi-info-circle me-1"></i>About This Blog</div>
-          <p style="font-size:0.84rem;color:var(--text-muted);line-height:1.7;font-weight:500;">Expert Zoho insights from Zolytics — India's certified Zoho consulting partner. 2–3 articles daily on automation, accounting, CRM, and digital transformation.</p>
-          <a href="https://zolytics.in/#contact" style="display:inline-flex;align-items:center;gap:6px;color:var(--red);font-size:0.82rem;font-weight:800;text-decoration:none;margin-top:10px;">Work With Us <i class="bi bi-arrow-right"></i></a>
-        </div>
-
-        <!-- CTA -->
-        <div class="cta-widget">
-          <div class="cta-icon">🚀</div>
-          <h4>Ready to Automate Your Business?</h4>
-          <p>Book a free 30-minute consultation with our certified Zoho experts.</p>
-          <a href="https://zolytics.in/#contact" class="btn-cta-white">Book Free Consultation</a>
-        </div>
-
-        <!-- Recent Posts -->
-        <div class="sidebar-widget">
-          <div class="widget-title"><i class="bi bi-clock-history me-1"></i>Recent Posts</div>
-          <div class="recent-post-item" onclick="openModal(0)">
-            <img class="recent-post-img" src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=200" alt="" />
-            <div>
-              <div class="recent-post-title">Migrate from Tally to Zoho Books in 2025</div>
-              <div class="recent-post-date"><i class="bi bi-calendar3"></i> Apr 5, 2025 · 8 min</div>
-            </div>
-          </div>
-          <div class="recent-post-item" onclick="openModal(1)">
-            <img class="recent-post-img" src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=200" alt="" />
-            <div>
-              <div class="recent-post-title">5 CRM Automations That Double Pipeline Efficiency</div>
-              <div class="recent-post-date"><i class="bi bi-calendar3"></i> Apr 6, 2025 · 6 min</div>
-            </div>
-          </div>
-          <div class="recent-post-item" onclick="openModal(2)">
-            <img class="recent-post-img" src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=200" alt="" />
-            <div>
-              <div class="recent-post-title">Automate GST Filing Using Zoho Books</div>
-              <div class="recent-post-date"><i class="bi bi-calendar3"></i> Apr 7, 2025 · 10 min</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Topics -->
-        <div class="sidebar-widget">
-          <div class="widget-title"><i class="bi bi-tags me-1"></i>Topics</div>
-          <div class="tag-cloud">
-            <a class="tag-pill" href="#">Zoho Books</a>
-            <a class="tag-pill" href="#">Zoho CRM</a>
-            <a class="tag-pill" href="#">GST</a>
-            <a class="tag-pill" href="#">Automation</a>
-            <a class="tag-pill" href="#">Tally Migration</a>
-            <a class="tag-pill" href="#">Inventory</a>
-            <a class="tag-pill" href="#">Analytics</a>
-            <a class="tag-pill" href="#">Payroll</a>
-            <a class="tag-pill" href="#">E-commerce</a>
-            <a class="tag-pill" href="#">Zoho One</a>
-          </div>
-        </div>
-
-        <!-- Stats -->
-        <div class="sidebar-widget">
-          <div class="widget-title"><i class="bi bi-bar-chart me-1"></i>Blog Stats</div>
-          <div class="stat-row"><span>Total Articles</span><span>3</span></div>
-          <div class="stat-row"><span>Published This Week</span><span>3</span></div>
-          <div class="stat-row"><span>Topics Covered</span><span>6</span></div>
-          <div class="stat-row"><span>Authors</span><span>3</span></div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ NEWSLETTER ══════════ -->
-<section class="newsletter-section">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-6">
-        <div class="section-eyebrow">Stay Updated</div>
-        <h2>Get Zoho Insights in Your Inbox</h2>
-        <p>Join 500+ business owners and finance professionals who receive our weekly digest of Zoho tips, case studies, and automation guides.</p>
-        <div class="nl-form">
-          <input type="email" class="nl-input" placeholder="Enter your email address" id="nlEmail" />
-          <button class="btn-sub" onclick="subscribeNewsletter()">Subscribe <i class="bi bi-send"></i></button>
-        </div>
-        <p class="nl-note"><i class="bi bi-shield-lock me-1"></i>No spam ever. Unsubscribe anytime.</p>
-      </div>
-      <div class="col-lg-6 d-none d-lg-block">
-        <div>
-          <div class="nl-feature-box"><span class="emoji">📊</span><div><div class="label">Weekly Digest</div><div class="sub">Top Zoho articles every Monday</div></div></div>
-          <div class="nl-feature-box"><span class="emoji">💡</span><div><div class="label">Pro Tips</div><div class="sub">Hidden Zoho features revealed</div></div></div>
-          <div class="nl-feature-box"><span class="emoji">🎯</span><div><div class="label">Case Studies</div><div class="sub">Real client success stories</div></div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ FOOTER ══════════ -->
-<footer class="site-footer">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-lg-4">
-        <div class="footer-brand">
+      @media (max-width: 768px) {
+        .blog-hero {
+          padding: 54px 0 36px;
+        }
+        .filter-bar {
+          top: 62px;
+        }
+        .nl-form {
+          flex-direction: column;
+        }
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+        .solutions-grid {
+          grid-template-columns: repeat(2, 1fr);
+          column-gap: 20px;
+        }
+        .center-heading {
+          margin-right: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="https://zolytics.in/">
           <img src="https://www.zolytics.in/files/logo.png" alt="Zolytics" />
+        </a>
+        <div class="zoho-badge d-none d-md-flex align-items-center gap-2 ms-2">
+          <img
+            src="https://www.zolytics.in/files/Zoho_logo-removebg-preview.png"
+            alt="Zoho"
+          />
+          <img
+            src="https://www.zolytics.in/files/zoho_Partner-removebg-preview.png"
+            alt="Partner"
+          />
         </div>
-        <p class="footer-tagline">Your trusted Zoho Partner for Finance, Analytics, and Automation. Serving businesses across India, UAE, and USA.</p>
-        <div class="footer-contact">
-          <a href="mailto:info@zolytics.in"><i class="bi bi-envelope"></i> info@zolytics.in</a>
-          <a href="https://wa.me/919073139613"><i class="bi bi-whatsapp"></i> +91 90731 39613</a>
-          <a href="#"><i class="bi bi-clock"></i> Mon–Fri, 10AM–6PM IST</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMain"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="blog-hero">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-7 fade-up">
+            <div class="hero-eyebrow">
+              <i class="bi bi-book-half"></i> Knowledge Hub
+            </div>
+            <h1>
+              Zolytics Insights, Tips &<br /><em>Expert Guides</em> for Your
+              Business
+            </h1>
+            <p class="lead">
+              Fresh articles on Zoho automation, accounting, CRM, GST, and
+              digital transformation — published daily by our certified
+              consultants.
+            </p>
+            <div class="d-flex gap-3 mt-4 flex-wrap">
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  font-size: 0.83rem;
+                  font-weight: 700;
+                  color: var(--text-2);
+                "
+                ><i
+                  class="bi bi-check-circle-fill"
+                  style="color: var(--green)"
+                ></i>
+                2–3 Articles Daily</span
+              >
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  font-size: 0.83rem;
+                  font-weight: 700;
+                  color: var(--text-2);
+                "
+                ><i
+                  class="bi bi-check-circle-fill"
+                  style="color: var(--green)"
+                ></i>
+                Certified Zoho Experts</span
+              >
+              <span
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  font-size: 0.83rem;
+                  font-weight: 700;
+                  color: var(--text-2);
+                "
+                ><i
+                  class="bi bi-check-circle-fill"
+                  style="color: var(--green)"
+                ></i>
+                India · UAE · USA</span
+              >
+            </div>
+          </div>
+          <div class="col-lg-5 d-none d-lg-block fade-up d2">
+            <div class="hero-stat-box">
+              <div class="hero-stat-row">
+                <div class="stat-icon red"><span>✍️</span></div>
+                <div>
+                  <div class="stat-label">2–3 Articles Daily</div>
+                  <div class="stat-sub">
+                    Fresh Zolytics insights every single day
+                  </div>
+                </div>
+              </div>
+              <div class="hero-stat-row">
+                <div class="stat-icon blue"><span>🏅</span></div>
+                <div>
+                  <div class="stat-label">Certified Experts</div>
+                  <div class="stat-sub">
+                    Written by Zoho-certified professionals
+                  </div>
+                </div>
+              </div>
+              <div class="hero-stat-row">
+                <div class="stat-icon green"><span>🌏</span></div>
+                <div>
+                  <div class="stat-label">India, UAE & USA</div>
+                  <div class="stat-sub">Region-specific business guidance</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="col-lg-2 col-6">
-        <div class="footer-heading">Quick Links</div>
-        <ul class="footer-links">
-          <li><a href="https://zolytics.in/#about">About Us</a></li>
-          <li><a href="https://zolytics.in/#solutions">Solutions</a></li>
-          <li><a href="https://www.zolytics.in/CaseStudy-html">Case Studies</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="https://zolytics.in/#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-2 col-6">
-        <div class="footer-heading">Migration</div>
-        <ul class="footer-links">
-          <li><a href="https://www.zolytics.in/tally-html">Tally to Zoho</a></li>
-          <li><a href="https://www.zolytics.in/qbo-html">QBO to Zoho</a></li>
-          <li><a href="https://www.zolytics.in/excel-html">Excel / ERP</a></li>
-          <li><a href="https://www.zolytics.in/cleanup-html">Data Cleanup</a></li>
-        </ul>
-      </div>
-      <div class="col-lg-4">
-        <div class="footer-heading">Blog Categories</div>
-        <div class="tag-cloud">
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">Zoho Books</a>
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">CRM</a>
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">GST</a>
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">Automation</a>
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">Migration</a>
-          <a class="tag-pill" href="#" style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);">Analytics</a>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar">
+      <div class="container">
+        <div class="row align-items-center g-3">
+          <div class="col-lg-4">
+            <div class="search-wrap">
+              <i class="bi bi-search"></i>
+              <input
+                type="text"
+                class="search-input"
+                id="blogSearch"
+                placeholder="Search articles…"
+                oninput="filterBlogs()"
+              />
+            </div>
+          </div>
+          <div class="col-lg-8">
+            <div class="filter-tabs">
+              <button
+                class="filter-tab active"
+                onclick="setCategory('all', this)"
+              >
+                All Articles
+              </button>
+              <button
+                class="filter-tab"
+                onclick="setCategory('zoho-crm', this)"
+              >
+                Zoho CRM
+              </button>
+              <button
+                class="filter-tab"
+                onclick="setCategory('accounting', this)"
+              >
+                Accounting
+              </button>
+              <button
+                class="filter-tab"
+                onclick="setCategory('automation', this)"
+              >
+                Automation
+              </button>
+              <button
+                class="filter-tab"
+                onclick="setCategory('migration', this)"
+              >
+                Migration
+              </button>
+              <button class="filter-tab" onclick="setCategory('tips', this)">
+                Tips & Tricks
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="footer-bottom">
-      <p>© 2026 Zolytics Consulting | All rights reserved</p>
-      <div class="zoho-credit">
-        <span style="color:rgba(255,255,255,0.35);font-size:0.76rem;font-weight:600;">Powered by</span>
-        <img src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-web.svg" alt="Zoho" />
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section">
+      <div class="container">
+        <div class="row g-4">
+          <!-- MAIN -->
+          <div class="col-lg-8">
+            <div class="section-eyebrow">Latest Articles</div>
+            <div class="section-title">What's New on the Blog</div>
+
+            <div id="blogGrid" class="row g-4">
+              <!-- BLOG 1 — Featured -->
+              <div
+                class="col-12 blog-item"
+                data-category="accounting"
+                data-title="why every indian sme should migrate tally zoho books"
+              >
+                <div class="blog-card-featured" onclick="openModal(0)">
+                  <div class="featured-img-wrap">
+                    <img
+                      src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900"
+                      alt="Tally to Zoho Books Migration"
+                    />
+                    <span class="featured-badge">⭐ Featured</span>
+                  </div>
+                  <div class="card-body-pad">
+                    <span class="cat-badge cat-red"
+                      >Accounting & Migration</span
+                    >
+                    <h2 class="card-title-text">
+                      Why Every Indian SME Should Migrate from Tally to Zoho
+                      Books in 2025
+                    </h2>
+                    <p class="card-excerpt">
+                      Tally has been the backbone of Indian accounting for
+                      decades — but in a world of real-time dashboards, GST
+                      automation, and cloud-first operations, is it still the
+                      right fit? We break down exactly why thousands of SMEs
+                      across India are making the switch to Zoho Books and what
+                      it means for your bottom line.
+                    </p>
+                    <div class="card-meta">
+                      <div class="author-chip chip-red">RK</div>
+                      <div class="meta-text">
+                        <strong>Rahul Kumar</strong> &bull; Apr 5, 2025
+                        <span class="read-time ms-2"
+                          ><i class="bi bi-clock"></i> 8 min read</span
+                        >
+                      </div>
+                      <a
+                        class="read-more-arrow"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(0);
+                        "
+                        >Read Article <i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BLOG 2 -->
+              <div
+                class="col-md-6 blog-item"
+                data-category="zoho-crm"
+                data-title="zoho crm automations double sales pipeline efficiency"
+              >
+                <div class="blog-card" onclick="openModal(1)">
+                  <div class="card-img-wrap">
+                    <img
+                      src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="Zoho CRM Sales Automation"
+                    />
+                    <span class="img-tag">Zoho CRM</span>
+                  </div>
+                  <div class="card-body-pad">
+                    <span class="cat-badge cat-blue">CRM & Sales</span>
+                    <h3 class="card-title-text">
+                      5 Zoho CRM Automations That Will Double Your Sales
+                      Pipeline Efficiency
+                    </h3>
+                    <p class="card-excerpt">
+                      Stop doing manually what Zoho CRM can do automatically.
+                      These five workflow automations are the difference between
+                      a struggling pipeline and a conversion machine.
+                    </p>
+                    <div class="card-meta">
+                      <div class="author-chip chip-blue">PS</div>
+                      <div class="meta-text">
+                        <strong>Priya Sharma</strong> &bull; Apr 6, 2025
+                        <span class="read-time ms-2"
+                          ><i class="bi bi-clock"></i> 6 min</span
+                        >
+                      </div>
+                      <a
+                        class="read-more-arrow"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(1);
+                        "
+                        ><i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- BLOG 3 -->
+              <div
+                class="col-md-6 blog-item"
+                data-category="automation"
+                data-title="automate gst filing zoho books step by step guide india compliance"
+              >
+                <div class="blog-card" onclick="openModal(2)">
+                  <div class="card-img-wrap">
+                    <img
+                      src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=800"
+                      alt="GST Automation Zoho Books"
+                    />
+                    <span class="img-tag">Automation</span>
+                  </div>
+                  <div class="card-body-pad">
+                    <span class="cat-badge cat-green">GST & Compliance</span>
+                    <h3 class="card-title-text">
+                      How to Automate GST Filing Completely Using Zoho Books —
+                      Step-by-Step
+                    </h3>
+                    <p class="card-excerpt">
+                      GST compliance doesn't have to eat up your CA's weekends.
+                      Zoho Books automates everything from invoice matching to
+                      GSTR-1 and GSTR-3B filing.
+                    </p>
+                    <div class="card-meta">
+                      <div class="author-chip chip-green">AM</div>
+                      <div class="meta-text">
+                        <strong>Amit Mehta</strong> &bull; Apr 7, 2025
+                        <span class="read-time ms-2"
+                          ><i class="bi bi-clock"></i> 10 min</span
+                        >
+                      </div>
+                      <a
+                        class="read-more-arrow"
+                        href="#"
+                        onclick="
+                          event.preventDefault();
+                          openModal(2);
+                        "
+                        ><i class="bi bi-arrow-right"></i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /blogGrid -->
+
+            <!-- No Results -->
+            <div class="no-results" id="noResults">
+              <i class="bi bi-search"></i>
+              <p>No articles found. Try a different search or category.</p>
+            </div>
+          </div>
+
+          <!-- SIDEBAR -->
+          <div class="col-lg-4">
+            <div class="sidebar-widget">
+              <div class="widget-title">
+                <i class="bi bi-info-circle me-1"></i>About This Blog
+              </div>
+              <p
+                style="
+                  font-size: 0.84rem;
+                  color: var(--text-muted);
+                  line-height: 1.7;
+                  font-weight: 500;
+                "
+              >
+                Expert Zoho insights from Zolytics — India's certified Zoho
+                consulting partner. 2–3 articles daily on automation,
+                accounting, CRM, and digital transformation.
+              </p>
+              <a
+                href="https://zolytics.in/#contact"
+                style="
+                  display: inline-flex;
+                  align-items: center;
+                  gap: 6px;
+                  color: var(--red);
+                  font-size: 0.82rem;
+                  font-weight: 800;
+                  text-decoration: none;
+                  margin-top: 10px;
+                "
+                >Work With Us <i class="bi bi-arrow-right"></i
+              ></a>
+            </div>
+
+            <div class="cta-widget">
+              <div class="cta-icon">🚀</div>
+              <h4>Ready to Automate Your Business?</h4>
+              <p>
+                Book a free 30-minute consultation with our certified Zoho
+                experts.
+              </p>
+              <a href="https://zolytics.in/#contact" class="btn-cta-white"
+                >Book Free Consultation</a
+              >
+            </div>
+
+            <div class="sidebar-widget">
+              <div class="widget-title">
+                <i class="bi bi-clock-history me-1"></i>Recent Posts
+              </div>
+              <div class="recent-post-item" onclick="openModal(0)">
+                <img
+                  class="recent-post-img"
+                  src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=200"
+                  alt=""
+                />
+                <div>
+                  <div class="recent-post-title">
+                    Migrate from Tally to Zoho Books in 2025
+                  </div>
+                  <div class="recent-post-date">
+                    <i class="bi bi-calendar3"></i> Apr 5, 2025 · 8 min
+                  </div>
+                </div>
+              </div>
+              <div class="recent-post-item" onclick="openModal(1)">
+                <img
+                  class="recent-post-img"
+                  src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=200"
+                  alt=""
+                />
+                <div>
+                  <div class="recent-post-title">
+                    5 CRM Automations That Double Pipeline Efficiency
+                  </div>
+                  <div class="recent-post-date">
+                    <i class="bi bi-calendar3"></i> Apr 6, 2025 · 6 min
+                  </div>
+                </div>
+              </div>
+              <div class="recent-post-item" onclick="openModal(2)">
+                <img
+                  class="recent-post-img"
+                  src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=200"
+                  alt=""
+                />
+                <div>
+                  <div class="recent-post-title">
+                    Automate GST Filing Using Zoho Books
+                  </div>
+                  <div class="recent-post-date">
+                    <i class="bi bi-calendar3"></i> Apr 7, 2025 · 10 min
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sidebar-widget">
+              <div class="widget-title">
+                <i class="bi bi-tags me-1"></i>Topics
+              </div>
+              <div class="tag-cloud">
+                <a class="tag-pill" href="#">Zoho Books</a>
+                <a class="tag-pill" href="#">Zoho CRM</a>
+                <a class="tag-pill" href="#">GST</a>
+                <a class="tag-pill" href="#">Automation</a>
+                <a class="tag-pill" href="#">Tally Migration</a>
+                <a class="tag-pill" href="#">Inventory</a>
+                <a class="tag-pill" href="#">Analytics</a>
+                <a class="tag-pill" href="#">Payroll</a>
+                <a class="tag-pill" href="#">E-commerce</a>
+                <a class="tag-pill" href="#">Zoho One</a>
+              </div>
+            </div>
+
+            <div class="sidebar-widget">
+              <div class="widget-title">
+                <i class="bi bi-bar-chart me-1"></i>Blog Stats
+              </div>
+              <div class="stat-row">
+                <span>Total Articles</span><span>3</span>
+              </div>
+              <div class="stat-row">
+                <span>Published This Week</span><span>3</span>
+              </div>
+              <div class="stat-row">
+                <span>Topics Covered</span><span>6</span>
+              </div>
+              <div class="stat-row"><span>Authors</span><span>3</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <div class="section-eyebrow">Stay Updated</div>
+            <h2>Get Zolytics Insights in Your Inbox</h2>
+            <p>
+              Join 500+ business owners and finance professionals who receive
+              our weekly digest of Zoho tips, case studies, and automation
+              guides.
+            </p>
+            <div class="nl-form">
+              <input
+                type="email"
+                class="nl-input"
+                placeholder="Enter your email address"
+                id="nlEmail"
+              />
+              <button class="btn-sub" onclick="subscribeNewsletter()">
+                Subscribe <i class="bi bi-send"></i>
+              </button>
+            </div>
+            <p class="nl-note">
+              <i class="bi bi-shield-lock me-1"></i>No spam ever. Unsubscribe
+              anytime.
+            </p>
+          </div>
+          <div class="col-lg-6 d-none d-lg-block">
+            <div>
+              <div class="nl-feature-box">
+                <span class="emoji"></span>
+                <div>
+                  <div class="label">Weekly Digest</div>
+                  <div class="sub">Top Zoho articles every Monday</div>
+                </div>
+              </div>
+              <div class="nl-feature-box">
+                <span class="emoji"></span>
+                <div>
+                  <div class="label">Pro Tips</div>
+                  <div class="sub">Hidden Zoho features revealed</div>
+                </div>
+              </div>
+              <div class="nl-feature-box">
+                <span class="emoji"></span>
+                <div>
+                  <div class="label">Case Studies</div>
+                  <div class="sub">Real client success stories</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Zolytics</h3>
+          <p class="footer-tagline">Certified Zoho Partner</p>
+          <p>
+            We help businesses simplify operations by implementing, customizing,
+            and automating Zoho applications tailored to real-world business
+            workflows.
+          </p>
+        </div>
+
+        <div class="footer-section zoho-solutions">
+          <h3 class="center-heading">Zoho Solutions</h3>
+          <div class="solutions-wrapper">
+            <ul class="solutions-grid">
+              <li><a href="analytics-html">Zoho Analytics</a></li>
+              <li><a href="bigin-html">Zoho Bigin</a></li>
+              <li><a href="billing-html">Zoho Billing</a></li>
+              <li><a href="books-html">Zoho Books</a></li>
+              <li><a href="commerce-html">Zoho Commerce</a></li>
+              <li><a href="crm-html">Zoho CRM</a></li>
+              <li><a href="expense-html">Zoho Expense</a></li>
+              <li><a href="finance.html">Zoho Finance Plus</a></li>
+              <li><a href="inventory-html">Zoho Inventory</a></li>
+              <li><a href="payroll-html">Zoho Payroll</a></li>
+              <li><a href="peopleplus-html">Zoho People Plus</a></li>
+              <li><a href="recruit-html">Zoho Recruit</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact Us</h3>
+          <p>
+            Email: info@zolytics.in<br />
+            Phone: +91 90 7313 9613<br />
+            Location: India
+          </p>
+          <div
+            style="
+              display: flex;
+              align-items: center;
+              gap: 8px;
+              margin-top: 10px;
+            "
+          >
+            <a
+              href="https://wa.me/+919073139613"
+              target="_blank"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                text-decoration: none;
+                color: #d1d5db;
+              "
+            >
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAMAAABC4vDmAAAAZlBMVEUAAAD////y8vL4+Pjq6urv7+/8/Pz19fXb29vMzMzj4+PU1NSKioq5ublubm6Dg4MiIiJcXFyxsbGfn58zMzNjY2MuLi5JSUl5eXlWVlampqZOTk4/Pz8TExMNDQ3GxsaTk5MaGhposn1kAAAJMklEQVR4nL1c2YKqMAydYd93ERWl/v9PXkV0kjalLdR7Hh3ohDTLSVL4+dmH+1gfyqw9N/k0TXnetCwri3q871x2B+p2ijz3V4DrRXEz/H/BxqFNRGkwnDw7/T+J7kPsqSRa5Iray/+QqMomPYHe8M7f1lfXKHdNRJh+08CK2FyiRa52/IpEtyIKtsr0gN98Qawi2iHRjMC2WJd4j5Y+2moreyL1jQWJZniZLZkGdVQKHtATKz7aEKlbj0tuEudtNjxQltmcBeNkVT6X7Zdp8KXLh96U1V114+64VmPRpr5csminwd+k1uTnbDVSV0Ur9Ven3CPTKFnXyw8afnTtWESQiCfO293wQFt4ynr9JdqQ3sJuo0wltZqbG+bX+0AavnfYJFNLyZRvWOs6UFbgbiEPlIlPW/2mIMhFYG7uubhKssNpKkLvgaHWb2LEDNvtIj1BBGFDXYl6Sup9Mj2QCQZvZFeCPQU71fRCJZBEt9C+Wdh/d7AhE5UgHF3XEeJTao8GFQ63tqcn1YFPDblN2n/gE3ykc1fHm+PZokjP9fmQNanvufPGaMXEIYQsz5S38MFgF8uQIOX+hyqIFsZPsQEdp6to3ZFGzgyt8XyMO2dXzerVk8nFO3DCTC1Yi6FchMq/JdPPzxHHHU9OG3us1eR7Mj0KEvz88rhzRtc5Vio0KXAuk6bmE1Ypne9u/QOVjRiPA6IshGIrpw2Kxd4DSWqhWdFjY6eDVY2uIWPH8S/sWTC4A7ZgvqidgdVJcbojjGIWQj3OHtSCBUrE1Obh4JLutyucmyNCVciiPKpW5MKwhf4qTmpiBD2iv1PphU/VNkIrMhmRWaF/6RH386n617EQFxChFJLNCGlqQIUosa/A9guFdcHHKraux0d9JMj0G1/3CzXCBQMchm6IdxFxrKLaATZGCUhVTC4wZVE4si6wwd6RVaXoT6geo6IY0Vr4/fUt7B8KRdjUYQgiKzGyfUY6hCmQV8MqBemQopsj3VbVqI6UuMHnhZaDfI+iURwleyPU7zPKgUwHLAh9j6xYiYAww0ZhgbaJfX6uZNv6Adlq/OXdZSOgQcd/ssIdIcnWmZfmfbWNaSxc/M/L4K8J6eYyTVnZPxgD3Y9OoEnRpR7jhXnDRlV/h/73fsoO/kiXhWRL/QHfhvuhyPxWCjJ/uqyvJeMfO2U93Id3pIJqoOn7T0XPWGzwhB9OK8tv0Ipl3QNy8k+S5g2oYEGyuB9MiUxyH+V+7rbxCgHoaYtRAy1IUyxFXfTbzSrATMNePwEjdmTBsBdJnsXeFcxir3rkBq1E2lMT9s9mnwjSl1eigaxT3j/mm8auxSMGPycowuz/MPOtJFiuyeda8rwZsOiM5soNcqVYfuOFC1U22+uQQyZzkmB6QvE03beoqg48cDKv22oKxVuVDS68oAfR80VezppC8QM308HmmlCAEjgnI6H4qUpihSLwQrlzZ6zRFUpg6tba7EhTFzOhhKGKpdkksX1QKEUhUHPHMeQJYLtQ/lzitfpCCRuY0vTLWCifFwrGKeWYks/LdkKoGBIQ8VTdfuRnwMyGUDB4vnrlMPdJ2DAAv4FWmhwo9135XzQsVziIYYHridTlCn7x1dONnqfr4X5dQbNeshfIaXTRjnEUyi1ZRXpqM72sDXP9Qh4TjfUhxBYM7YPPIwheriMWDMoLy4ZWopU5xHZHTtjiuETaXDk3RCXWUiXA6EkNSESIp609oeL4G6k7Km1RxShqFGglDsHYH6GB30IoeHheJRTQzp3ltxoGRD2SNPIx9KlkNI3jeSpbGZrAa9+UAJ0S0KQjNdVcaP62STQ7+eE51Ar6NBKhpdNNMxEHqg/jskUsssmWSMIsGqB9roE+rhOpZtANY489jVLWY5tIR4RP8NdeREMQ7VNABd2zcppM/ipESCkLMg/AnTz6Z5WuNpzmJx75BJkj8GFUp+izyVp+LNxAKGR/YDCGntngFNfR+C0aJi4C13DA7xXcv8RgDFsZvm5EsC90OgFFYBi+Vs8N8ZCfoifhiscd5KM12ItR1Vn8k2q+LDbDE1IrKpBwkLwjkzUrnI4GL0OJro1CP5dOkAuYNulKbWUJltGjP3NpGwULaedTho6c5opIhD1AJinYTbz6VyX6WPKKxbqikC5E18TnhjYM92u+0SBCNAt8bkTwAnwywSRWfTDm6xFelAl35wlugwdVbINQD0dsV8Q6C4q4IkV4lCJwm2BrQ2yYaOOKCEqEmSA5LMDHfrZ3NC+EuvyMKnfQJR7JLrFV7TpdXeQwcgVpRv3DO94aCVvG/GjfScDuwOIoSZIozbMLnSFw1kxlNBypiu0SSg1sLYH0ZROmdZUdcARRXkRBTVlqHMpwx+nSl3KAEcZ8628RIPBv0Mj7KqibYq1xT4IjrPL4g96/0npxZDM4uprIGyAdfTrn+zKtNShh8nO++DmBKy/Tmvki3/ueTEInd428HaHvfektkAdGnnbROW8B8j07x0UICOVruBqkoVbN6bAmSr79sJ44enj5t3ZPrFzZ6vXQ9zyqjbR/ikaUrYqnV/heFkd7xx1nsXOkmIFdoO9xmejEXnRs2hO8BoIlq6xE6ns9Sz/yuiL318SRqr+UOR/e9PG964H/+E7AtrwvU5PdBuWcCfkeW57unBAq91rTkvASUx8CcNVTILh7z7zXF428adEU+rs4lnSzT+elWrh7ye2Ur39GI4g0v4VymCSPFmvMti5wqhESIw4RSVus88BLmdPfbyDmOCSkB17XEHjpua6ILHm7H8smkj+arzc/UDdMpPDSps3K4nA6XS51MZTsPMk+vLGAmg0S6FcX0UEQOqHjhK663e/pTpw37d4mBI12CtX4YJJOn04tUqyfqE4qdwun7HSWuZI+UpOzAqu7F/jTy/e7VitUSBEVRnR2Zfe8fPiLRh3b8EGzBbHhafpOso7rNQcuz13rdMsu+o3x28P07iVnWt0X+XeJJIjLDcxCjJxh0l7kOff2oA+65uWbfFcIQPC9tFW3pk5sUsuV5OXWl77R7j2eTPeg6+1Y5in1PcinxyZxo/MxKCmAicSZ6VCmPwxZ20xx+uxvzi3OqWFlsbL5WnifnvKm4WtlsTFmzhnkw3c+Q7gR0W/S2DsEbAcd22WQX8E/qzJwhtC8WuwAAAAASUVORK5CYII="
+                alt="WhatsApp"
+                width="22"
+                height="22"
+              />
+              <span style="font-weight: 500">+91 90 7313 9613</span>
+            </a>
+          </div>
+          <div class="zoho-logo">
+            <img
+              src="https://www.zohowebstatic.com/sites/zweb/images/commonroot/zoho-logo-white.svg"
+              alt="Zoho Premium Partner"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>
+          © 2026 Zolytics. All rights reserved, All wrong reversed. | Certified
+          Zoho Consulting Partner
+        </p>
+      </div>
+    </footer>
+
+    <!-- MODALS -->
+    <div class="modal fade blog-modal" id="modal0" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              Why Every Indian SME Should Migrate from Tally to Zoho Books in
+              2025
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="modal-hero-img"
+              src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt=""
+            />
+            <span class="cat-badge cat-red">Accounting & Migration</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-person-circle"></i> Rahul Kumar
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> April 5, 2025
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-clock"></i> 8 min read
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-tag"></i> Accounting, Migration
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                For over three decades, Tally has been the default accounting
+                software for Indian businesses. It's reliable, familiar, and
+                deeply embedded in the workflow of millions of finance teams.
+                But the business world in 2025 looks nothing like it did in
+                1990. The question isn't whether Tally served you well — it's
+                whether it's still the right tool for where your business is
+                going.
+              </p>
+              <div class="highlight">
+                "The businesses that will win in the next decade are those that
+                can make decisions in real-time — not those waiting for an
+                end-of-month Tally report."
+              </div>
+              <h3>1. Real-Time Access, Anywhere</h3>
+              <p>
+                Tally is installed software. Your finance data lives on a
+                specific machine in your office. Zoho Books is cloud-native —
+                your CFO can pull up your P&L from Dubai while your accountant
+                reconciles bank feeds from Bangalore. For businesses managing
+                teams across multiple cities or countries, this alone is a
+                game-changer.
+              </p>
+              <h3>2. GST Automation Built-In</h3>
+              <p>
+                With Zoho Books, GST is not an add-on — it's baked into every
+                transaction. The system auto-populates GSTR-1 and GSTR-3B,
+                matches purchase records with supplier invoices, and flags
+                mismatches before they become filing errors.
+              </p>
+              <ul>
+                <li>Automatic GST calculation across all invoices</li>
+                <li>Direct e-invoicing integration with the GST portal</li>
+                <li>Real-time reconciliation of input tax credits</li>
+                <li>One-click GSTR filing submissions</li>
+              </ul>
+              <h3>3. Integration With Your Entire Business</h3>
+              <p>
+                Zoho Books connects natively with Zoho CRM, Zoho Inventory, Zoho
+                Expense, and 50+ other apps in the Zoho ecosystem. When a sale
+                closes in CRM, an invoice is auto-generated in Books. When stock
+                is dispatched from Inventory, COGS is updated automatically.
+              </p>
+              <h3>4. Multi-Currency & International Compliance</h3>
+              <p>
+                Zoho Books handles multi-currency transactions automatically,
+                applies real-time forex rates, and generates reports compliant
+                with both Indian and international accounting standards.
+              </p>
+              <h3>5. The Migration Is Simpler Than You Think</h3>
+              <p>
+                At Zolytics, we've migrated dozens of companies from Tally to
+                Zoho Books — ledgers, transactions, opening balances, and custom
+                configurations — with zero data loss and minimal downtime.
+                Typically 2–4 weeks from start to go-live.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-cta-red"
+              >Talk to a Migration Expert</a
+            >
+            <button class="btn-share-out" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+            <a href="https://www.zolytics.in/tally-html" class="more-link"
+              >Learn about Tally Migration →</a
+            >
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</footer>
 
-<!-- ══════════ MODALS ══════════ -->
-
-<!-- Modal 0: Tally to Zoho -->
-<div class="modal fade blog-modal" id="modal0" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Why Every Indian SME Should Migrate from Tally to Zoho Books in 2025</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img class="modal-hero-img" src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" />
-        <span class="cat-badge cat-red">Accounting & Migration</span>
-        <div class="modal-meta">
-          <div class="modal-meta-item"><i class="bi bi-person-circle"></i> Rahul Kumar</div>
-          <div class="modal-meta-item"><i class="bi bi-calendar3"></i> April 5, 2025</div>
-          <div class="modal-meta-item"><i class="bi bi-clock"></i> 8 min read</div>
-          <div class="modal-meta-item"><i class="bi bi-tag"></i> Accounting, Migration</div>
+    <div class="modal fade blog-modal" id="modal1" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              5 Zoho CRM Automations That Will Double Your Sales Pipeline
+              Efficiency
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="modal-hero-img"
+              src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt=""
+            />
+            <span class="cat-badge cat-blue">CRM & Sales</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-person-circle"></i> Priya Sharma
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> April 6, 2025
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-clock"></i> 6 min read
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-tag"></i> Zoho CRM, Automation
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                Most businesses using Zoho CRM use less than 30% of its
+                capabilities. They log deals, track contacts, and maybe send a
+                few emails. But the teams consistently closing 40–60% more
+                deals? They've set up the right automations. Here are the five
+                that make the biggest difference.
+              </p>
+              <h3>1. Lead Scoring & Auto-Assignment</h3>
+              <p>
+                Zoho CRM's lead scoring rules let you automatically rank
+                incoming leads based on source, company size, engagement level,
+                and behavior. High-score leads get routed directly to your
+                senior reps within seconds — no manual triaging, no lost
+                opportunities over a weekend.
+              </p>
+              <div class="highlight">
+                "A lead that is followed up within 5 minutes is 21x more likely
+                to convert than one followed up after 30 minutes."
+              </div>
+              <h3>2. Automatic Follow-Up Sequences</h3>
+              <p>
+                Create workflow rules that trigger a sequence of personalized
+                emails and tasks when a lead moves to a specific stage. If a
+                prospect downloads your pricing brochure, they automatically
+                receive a follow-up email in 24 hours and a task for your rep to
+                call in 48 hours.
+              </p>
+              <h3>3. Deal Stagnation Alerts</h3>
+              <p>
+                Deals that sit untouched for more than a set number of days get
+                flagged automatically. Your sales manager receives an alert, the
+                deal owner gets a task reminder, and the lead is tagged for a
+                review call. No deal falls through the cracks silently again.
+              </p>
+              <h3>4. Quote-to-Invoice in One Click</h3>
+              <p>
+                When a deal is marked "Closed Won" in Zoho CRM, a workflow can
+                automatically generate a quote in Zoho Books, send it to the
+                client for e-signature via Zoho Sign, and create the invoice
+                upon approval — all without anyone touching a keyboard.
+              </p>
+              <h3>5. Customer Health Score Monitoring</h3>
+              <p>
+                Set up a composite score based on last purchase date, support
+                ticket volume, email engagement, and contract renewal proximity.
+                When a customer's health score drops below a threshold, your
+                account manager gets an alert to reach out proactively — before
+                they churn.
+              </p>
+              <ul>
+                <li>Triggers: field updates, date-based, activity-based</li>
+                <li>
+                  Actions: emails, tasks, record updates, webhooks, Cliq alerts
+                </li>
+                <li>Advanced: Blueprint for stage-gated sales processes</li>
+              </ul>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-cta-red"
+              >Set Up CRM Automations</a
+            >
+            <button class="btn-share-out" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+            <a href="https://www.zolytics.in/crm-html" class="more-link"
+              >Explore Zoho CRM Solutions →</a
+            >
+          </div>
         </div>
-        <div class="blog-content">
-          <p>For over three decades, Tally has been the default accounting software for Indian businesses. It's reliable, familiar, and deeply embedded in the workflow of millions of finance teams. But the business world in 2025 looks nothing like it did in 1990. The question isn't whether Tally served you well — it's whether it's still the right tool for where your business is going.</p>
-          <div class="highlight">"The businesses that will win in the next decade are those that can make decisions in real-time — not those waiting for an end-of-month Tally report."</div>
-          <h3>1. Real-Time Access, Anywhere</h3>
-          <p>Tally is installed software. Your finance data lives on a specific machine in your office. Zoho Books is cloud-native — your CFO can pull up your P&L from Dubai while your accountant reconciles bank feeds from Bangalore. For businesses managing teams across multiple cities or countries, this alone is a game-changer.</p>
-          <h3>2. GST Automation Built-In</h3>
-          <p>With Zoho Books, GST is not an add-on — it's baked into every transaction. The system auto-populates GSTR-1 and GSTR-3B, matches purchase records with supplier invoices, and flags mismatches before they become filing errors.</p>
-          <ul>
-            <li>Automatic GST calculation across all invoices</li>
-            <li>Direct e-invoicing integration with the GST portal</li>
-            <li>Real-time reconciliation of input tax credits</li>
-            <li>One-click GSTR filing submissions</li>
-          </ul>
-          <h3>3. Integration With Your Entire Business</h3>
-          <p>Zoho Books connects natively with Zoho CRM, Zoho Inventory, Zoho Expense, and 50+ other apps in the Zoho ecosystem. When a sale closes in CRM, an invoice is auto-generated in Books. When stock is dispatched from Inventory, COGS is updated automatically.</p>
-          <h3>4. Multi-Currency & International Compliance</h3>
-          <p>Zoho Books handles multi-currency transactions automatically, applies real-time forex rates, and generates reports compliant with both Indian and international accounting standards.</p>
-          <h3>5. The Migration Is Simpler Than You Think</h3>
-          <p>At Zolytics, we've migrated dozens of companies from Tally to Zoho Books — ledgers, transactions, opening balances, and custom configurations — with zero data loss and minimal downtime. Typically 2–4 weeks from start to go-live.</p>
-        </div>
-      </div>
-      <div class="modal-footer-bar">
-        <a href="https://zolytics.in/#contact" class="btn-cta-red">Talk to a Migration Expert</a>
-        <button class="btn-share-out" onclick="copyLink()"><i class="bi bi-share"></i> Share</button>
-        <a href="https://www.zolytics.in/tally-html" class="more-link">Learn about Tally Migration →</a>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Modal 1: CRM Automations -->
-<div class="modal fade blog-modal" id="modal1" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">5 Zoho CRM Automations That Will Double Your Sales Pipeline Efficiency</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img class="modal-hero-img" src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" />
-        <span class="cat-badge cat-blue">CRM & Sales</span>
-        <div class="modal-meta">
-          <div class="modal-meta-item"><i class="bi bi-person-circle"></i> Priya Sharma</div>
-          <div class="modal-meta-item"><i class="bi bi-calendar3"></i> April 6, 2025</div>
-          <div class="modal-meta-item"><i class="bi bi-clock"></i> 6 min read</div>
-          <div class="modal-meta-item"><i class="bi bi-tag"></i> Zoho CRM, Automation</div>
+    <div class="modal fade blog-modal" id="modal2" tabindex="-1">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">
+              How to Automate GST Filing Completely Using Zoho Books — A
+              Step-by-Step Guide
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <img
+              class="modal-hero-img"
+              src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=900"
+              alt=""
+            />
+            <span class="cat-badge cat-green">GST & Compliance</span>
+            <div class="modal-meta">
+              <div class="modal-meta-item">
+                <i class="bi bi-person-circle"></i> Amit Mehta
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-calendar3"></i> April 7, 2025
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-clock"></i> 10 min read
+              </div>
+              <div class="modal-meta-item">
+                <i class="bi bi-tag"></i> GST, Zoho Books, Compliance
+              </div>
+            </div>
+            <div class="blog-content">
+              <p>
+                For most Indian businesses, GST filing is a monthly anxiety — a
+                frantic scramble of Excel sheets, GSTN portal errors, and
+                last-minute calls to your CA. Zoho Books, configured correctly,
+                can automate the entire GST workflow from invoice creation to
+                return filing. Here's how to do it.
+              </p>
+              <h3>Step 1: Configure Your GSTIN and Tax Rates</h3>
+              <p>
+                In Zoho Books, navigate to Settings → GST Settings. Enter your
+                GSTIN, filing frequency (monthly/quarterly), and business type.
+                Zoho Books will auto-populate the applicable GST slabs (5%, 12%,
+                18%, 28%) and apply the correct SAC/HSN codes to your items and
+                services.
+              </p>
+              <h3>Step 2: Enable E-Invoicing Integration</h3>
+              <p>
+                If your turnover exceeds ₹5 crore, e-invoicing is mandatory.
+                Zoho Books integrates directly with the Invoice Registration
+                Portal (IRP). Every invoice you raise is automatically
+                validated, IRN-generated, and QR-coded.
+              </p>
+              <ul>
+                <li>Auto-generation of IRN (Invoice Reference Number)</li>
+                <li>Dynamic QR code embedded on every invoice</li>
+                <li>Instant validation and error reporting</li>
+                <li>Bulk e-invoicing for high-volume businesses</li>
+              </ul>
+              <div class="highlight">
+                "After switching to Zoho Books with automated GST, our monthly
+                compliance time dropped from 3 days to just 4 hours." — A
+                Zolytics client, Manufacturing sector, Pune
+              </div>
+              <h3>Step 3: Automate GSTR-1 Preparation</h3>
+              <p>
+                Zoho Books automatically categorises every sales transaction
+                into the correct GSTR-1 tables: B2B, B2C Large, B2C Small,
+                exports, credit notes, and amendments. At the end of each month,
+                click "Prepare GSTR-1" and the form is populated — reviewed, not
+                built from scratch.
+              </p>
+              <h3>Step 4: Reconcile Input Tax Credits (ITC)</h3>
+              <p>
+                Zoho Books auto-fetches your suppliers' GSTR-2A/2B data and
+                matches it against your purchase register. Unmatched records are
+                flagged for follow-up with vendors before the filing deadline.
+                You claim every rupee of ITC you're entitled to.
+              </p>
+              <h3>Step 5: File GSTR-3B with One Click</h3>
+              <p>
+                Once your GSTR-1 is filed and ITC is reconciled, Zoho Books
+                auto-computes your GSTR-3B liability. Review the summary, verify
+                the tax payable amount, and submit directly through the GST
+                portal integration.
+              </p>
+            </div>
+          </div>
+          <div class="modal-footer-bar">
+            <a href="https://zolytics.in/#contact" class="btn-cta-red"
+              >Set Up GST Automation</a
+            >
+            <button class="btn-share-out" onclick="copyLink()">
+              <i class="bi bi-share"></i> Share
+            </button>
+            <a href="https://www.zolytics.in/books-html" class="more-link"
+              >Learn About Zoho Books →</a
+            >
+          </div>
         </div>
-        <div class="blog-content">
-          <p>Most businesses using Zoho CRM use less than 30% of its capabilities. They log deals, track contacts, and maybe send a few emails. But the teams consistently closing 40–60% more deals? They've set up the right automations. Here are the five that make the biggest difference.</p>
-          <h3>1. Lead Scoring & Auto-Assignment</h3>
-          <p>Zoho CRM's lead scoring rules let you automatically rank incoming leads based on source, company size, engagement level, and behavior. High-score leads get routed directly to your senior reps within seconds — no manual triaging, no lost opportunities over a weekend.</p>
-          <div class="highlight">"A lead that is followed up within 5 minutes is 21x more likely to convert than one followed up after 30 minutes."</div>
-          <h3>2. Automatic Follow-Up Sequences</h3>
-          <p>Create workflow rules that trigger a sequence of personalized emails and tasks when a lead moves to a specific stage. If a prospect downloads your pricing brochure, they automatically receive a follow-up email in 24 hours and a task for your rep to call in 48 hours.</p>
-          <h3>3. Deal Stagnation Alerts</h3>
-          <p>Deals that sit untouched for more than a set number of days get flagged automatically. Your sales manager receives an alert, the deal owner gets a task reminder, and the lead is tagged for a review call. No deal falls through the cracks silently again.</p>
-          <h3>4. Quote-to-Invoice in One Click</h3>
-          <p>When a deal is marked "Closed Won" in Zoho CRM, a workflow can automatically generate a quote in Zoho Books, send it to the client for e-signature via Zoho Sign, and create the invoice upon approval — all without anyone touching a keyboard.</p>
-          <h3>5. Customer Health Score Monitoring</h3>
-          <p>Set up a composite score based on last purchase date, support ticket volume, email engagement, and contract renewal proximity. When a customer's health score drops below a threshold, your account manager gets an alert to reach out proactively — before they churn.</p>
-          <ul>
-            <li>Triggers: field updates, date-based, activity-based</li>
-            <li>Actions: emails, tasks, record updates, webhooks, Cliq alerts</li>
-            <li>Advanced: Blueprint for stage-gated sales processes</li>
-          </ul>
-        </div>
-      </div>
-      <div class="modal-footer-bar">
-        <a href="https://zolytics.in/#contact" class="btn-cta-red">Set Up CRM Automations</a>
-        <button class="btn-share-out" onclick="copyLink()"><i class="bi bi-share"></i> Share</button>
-        <a href="https://www.zolytics.in/crm-html" class="more-link">Explore Zoho CRM Solutions →</a>
       </div>
     </div>
-  </div>
-</div>
 
-<!-- Modal 2: GST Automation -->
-<div class="modal fade blog-modal" id="modal2" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-scrollable">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">How to Automate GST Filing Completely Using Zoho Books — A Step-by-Step Guide</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <img class="modal-hero-img" src="https://images.pexels.com/photos/7681091/pexels-photo-7681091.jpeg?auto=compress&cs=tinysrgb&w=900" alt="" />
-        <span class="cat-badge cat-green">GST & Compliance</span>
-        <div class="modal-meta">
-          <div class="modal-meta-item"><i class="bi bi-person-circle"></i> Amit Mehta</div>
-          <div class="modal-meta-item"><i class="bi bi-calendar3"></i> April 7, 2025</div>
-          <div class="modal-meta-item"><i class="bi bi-clock"></i> 10 min read</div>
-          <div class="modal-meta-item"><i class="bi bi-tag"></i> GST, Zoho Books, Compliance</div>
-        </div>
-        <div class="blog-content">
-          <p>For most Indian businesses, GST filing is a monthly anxiety — a frantic scramble of Excel sheets, GSTN portal errors, and last-minute calls to your CA. Zoho Books, configured correctly, can automate the entire GST workflow from invoice creation to return filing. Here's how to do it.</p>
-          <h3>Step 1: Configure Your GSTIN and Tax Rates</h3>
-          <p>In Zoho Books, navigate to Settings → GST Settings. Enter your GSTIN, filing frequency (monthly/quarterly), and business type. Zoho Books will auto-populate the applicable GST slabs (5%, 12%, 18%, 28%) and apply the correct SAC/HSN codes to your items and services.</p>
-          <h3>Step 2: Enable E-Invoicing Integration</h3>
-          <p>If your turnover exceeds ₹5 crore, e-invoicing is mandatory. Zoho Books integrates directly with the Invoice Registration Portal (IRP). Every invoice you raise is automatically validated, IRN-generated, and QR-coded.</p>
-          <ul>
-            <li>Auto-generation of IRN (Invoice Reference Number)</li>
-            <li>Dynamic QR code embedded on every invoice</li>
-            <li>Instant validation and error reporting</li>
-            <li>Bulk e-invoicing for high-volume businesses</li>
-          </ul>
-          <div class="highlight">"After switching to Zoho Books with automated GST, our monthly compliance time dropped from 3 days to just 4 hours." — A Zolytics client, Manufacturing sector, Pune</div>
-          <h3>Step 3: Automate GSTR-1 Preparation</h3>
-          <p>Zoho Books automatically categorises every sales transaction into the correct GSTR-1 tables: B2B, B2C Large, B2C Small, exports, credit notes, and amendments. At the end of each month, click "Prepare GSTR-1" and the form is populated — reviewed, not built from scratch.</p>
-          <h3>Step 4: Reconcile Input Tax Credits (ITC)</h3>
-          <p>Zoho Books auto-fetches your suppliers' GSTR-2A/2B data and matches it against your purchase register. Unmatched records are flagged for follow-up with vendors before the filing deadline. You claim every rupee of ITC you're entitled to.</p>
-          <h3>Step 5: File GSTR-3B with One Click</h3>
-          <p>Once your GSTR-1 is filed and ITC is reconciled, Zoho Books auto-computes your GSTR-3B liability. Review the summary, verify the tax payable amount, and submit directly through the GST portal integration.</p>
-        </div>
-      </div>
-      <div class="modal-footer-bar">
-        <a href="https://zolytics.in/#contact" class="btn-cta-red">Set Up GST Automation</a>
-        <button class="btn-share-out" onclick="copyLink()"><i class="bi bi-share"></i> Share</button>
-        <a href="https://www.zolytics.in/books-html" class="more-link">Learn About Zoho Books →</a>
-      </div>
-    </div>
-  </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      let activeCategory = "all";
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  let activeCategory = 'all';
+      function setCategory(cat, btn) {
+        activeCategory = cat;
+        document
+          .querySelectorAll(".filter-tab")
+          .forEach((t) => t.classList.remove("active"));
+        btn.classList.add("active");
+        filterBlogs();
+      }
 
-  function setCategory(cat, btn) {
-    activeCategory = cat;
-    document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    filterBlogs();
-  }
+      function filterBlogs() {
+        const q = document
+          .getElementById("blogSearch")
+          .value.toLowerCase()
+          .trim();
+        const items = document.querySelectorAll(".blog-item");
+        let visible = 0;
+        items.forEach((item) => {
+          const matchCat =
+            activeCategory === "all" ||
+            item.dataset.category === activeCategory;
+          const matchQ = !q || item.dataset.title.includes(q);
+          item.style.display = matchCat && matchQ ? "" : "none";
+          if (matchCat && matchQ) visible++;
+        });
+        document.getElementById("noResults").style.display =
+          visible === 0 ? "block" : "none";
+      }
 
-  function filterBlogs() {
-    const q = document.getElementById('blogSearch').value.toLowerCase().trim();
-    const items = document.querySelectorAll('.blog-item');
-    let visible = 0;
-    items.forEach(item => {
-      const matchCat = activeCategory === 'all' || item.dataset.category === activeCategory;
-      const matchQ   = !q || item.dataset.title.includes(q);
-      item.style.display = (matchCat && matchQ) ? '' : 'none';
-      if (matchCat && matchQ) visible++;
-    });
-    document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
-  }
+      function openModal(id) {
+        new bootstrap.Modal(document.getElementById("modal" + id)).show();
+      }
 
-  function openModal(id) {
-    new bootstrap.Modal(document.getElementById('modal' + id)).show();
-  }
+      function subscribeNewsletter() {
+        const email = document.getElementById("nlEmail").value.trim();
+        if (!email || !email.includes("@")) {
+          alert("Please enter a valid email address.");
+          return;
+        }
+        document.getElementById("nlEmail").value = "";
+        alert(
+          "🎉 Thanks for subscribing! You'll receive our first digest shortly.",
+        );
+      }
 
-  function subscribeNewsletter() {
-    const email = document.getElementById('nlEmail').value.trim();
-    if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
-    document.getElementById('nlEmail').value = '';
-    alert('🎉 Thanks for subscribing! You\'ll receive our first digest shortly.');
-  }
-
-  function copyLink() {
-    navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'));
-  }
-</script>
-</body>
+      function copyLink() {
+        navigator.clipboard
+          .writeText(window.location.href)
+          .then(() => alert("Link copied to clipboard!"));
+      }
+    </script>
+  </body>
 </html>
